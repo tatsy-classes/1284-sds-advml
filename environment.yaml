@@ -1,0 +1,10 @@
+name: sds-1284-ml
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - numpy
+  - opencv
+  - matplotlib
+  - scikit-learn
+  - ipython
