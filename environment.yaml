@@ -1,4 +1,4 @@
-name: sds-1284-ml
+name: sds-ml-adv
 channels:
   - defaults
 dependencies:
