@@ -294,7 +294,7 @@ $$
 \min_{\mathbf{x}} \frac{1}{2} \| \mathbf{Ax} - \mathbf{b} \|^2
 $$
 
-この場合、 $\mathbf{x}$ について被最小化関数を微分したものがゼロベクトルになる箇所を探せば、それが求める$\mathbf{x}$だが、この際、被最小化関数の$\mathbf{x}$についての微分によって得られる
+この場合、 $\mathbf{x}$ について被最小化関数を微分したものがゼロベクトルになる箇所を探せば、それが求める $\mathbf{x}$ だが、この際、被最小化関数の $\mathbf{x}$ についての微分によって得られる
 
 $$
 \mathbf{A}^\top \mathbf{Ax} = \mathbf{A}^\top \mathbf{b}
