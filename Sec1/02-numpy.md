@@ -403,7 +403,11 @@ $$
 1. NumPyには多項方程式を解くための関数として`numpy.roots`という関数が用意されている ([参考](https://numpy.org/doc/stable/reference/generated/numpy.roots.html)、特性方程式の係数は手計算で求めること)。この関数を用いて、以下の行列について、特性方程式を解くことで得られる固有値と、`numpy.linalg.eig`を解くことで得られる固有値が一致することを調べよ。
 
 $$
-\mathbf{A} = \begin{pmatrix} 1 & 2 & 3 \\ 2 & 2 & 3 \\ 3 & 3 & 3 \end{pmatrix}
+\mathbf{A} = \begin{pmatrix}
+  1 & 2 & 3 \\
+  2 & 2 & 3 \\
+  3 & 3 & 3
+\end{pmatrix}
 $$
 
 
