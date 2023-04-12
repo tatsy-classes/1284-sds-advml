@@ -3,8 +3,53 @@ Matplotlibの基礎
 
 ## Matplotlibとは？
 
+Matplotlibはデータ可視化のためのPythonのライブラリで、様々なグラフを細かく調整を入れて作成することができる。また、今日は類似するライブラリとして[Seaborn](https://seaborn.pydata.org/)や[Plotly](https://plotly.com/python/), [Bokeh](https://bokeh.org/)などがあるが、この中では比較的単純 (がゆえに綺麗な可視化をしようとすると手間がかかる...)で、それ故、現在でも広く用いられているライブラリである。特に、Matplotlibは文法がMATLABと類似しているため、MATLABを使い慣れている読者には親しみやすいかもしれない。
+
+本講義では、その単純さからMatplotlibを用いるが、必要に応じて、Seaborn, Plotly, Bokehのギャラリーなどを見て、自分の好みのライブラリを使うのが良いだろう。
 
 ## 基本的なグラフの作成
+
+### 空の画面を表示する
+
+```python
+import matplotlib.pyplot as plt
+
+plt.figure()
+plt.show()
+```
+
+### 折れ線グラフ
+
+実験としてsin関数のグラフを $[-\pi, \pi]$ の範囲で書いてみよう。データの準備にはNumPyの `numpy.linspace` 関数を使うと良い。
+
+```python
+# データの用意
+xs = np.linspace(-np.pi, np.pi, 100)  # [-pi, pi]を100分割
+ys = np.sin(xs)
+# 折れ線グラフの描画
+plt.plot(xs, ys)
+plt.show()
+```
+
+![](./imgs/plt_sin_curve.jpg)
+
+### 散布図
+
+実験として、二次元正規分布に従うデータの散布図を作ってみよう。
+
+```python
+xs, ys = np.random.normal(size=(2, 100))
+plt.scatter(xs, ys)
+plt.show()
+```
+
+![](./imgs/plt_scatter.jpg)
+
+### 棒グラフ
+
+### 円グラフ
+
+### ヒストグラム
 
 Line plots
 Scatter plots
@@ -12,7 +57,15 @@ Bar plots (vertical and horizontal)
 Histograms
 Pie charts
 Box plots
-Error bars
+
+### グラフを保存する
+
+
+---
+
+#### 閑話休題: ラスタ画像とベクタ画像
+
+---
 
 ## グラフの調整
 
@@ -22,6 +75,7 @@ Axis labels and tick marks
 Gridlines and background colors
 Text annotations and arrows
 Logarithmic and other non-linear axes
+Error bars
 
 Advanced Plotting:
 
@@ -41,11 +95,7 @@ Customizing Matplotlib:
 Using different styles and themes
 Customizing Matplotlib's configuration (rcParams)
 Creating custom colormaps
-Saving and Sharing Plots:
 
-Exporting plots to various formats (PNG, JPEG, SVG, PDF, etc.)
-Adjusting plot size and resolution (dpi)
-Sharing plots online or embedding in websites
 
 Interactive Plots (optional):
 
@@ -55,6 +105,10 @@ End-to-End Data Visualization Project using Matplotlib:
 
 Walkthrough of a complete data visualization project using Matplotlib
 Interpretation and communication of results
+
+## 練習問題
+
+
 
 ## より深く学びたい人は？
 
