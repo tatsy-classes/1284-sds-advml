@@ -1,11 +1,10 @@
 Matplotlibの基礎
 ===
 
-Introduction to Matplotlib:
+## Matplotlibとは？
 
-Importance of data visualization
-Overview of Matplotlib and its components
-Basic Plotting:
+
+## 基本的なグラフの作成
 
 Line plots
 Scatter plots
@@ -14,7 +13,8 @@ Histograms
 Pie charts
 Box plots
 Error bars
-Customizing Plots:
+
+## グラフの調整
 
 Colors, markers, and linestyles
 Plot labels, titles, and legends
@@ -22,6 +22,7 @@ Axis labels and tick marks
 Gridlines and background colors
 Text annotations and arrows
 Logarithmic and other non-linear axes
+
 Advanced Plotting:
 
 Subplots and multiple plots in a single figure
@@ -45,6 +46,7 @@ Saving and Sharing Plots:
 Exporting plots to various formats (PNG, JPEG, SVG, PDF, etc.)
 Adjusting plot size and resolution (dpi)
 Sharing plots online or embedding in websites
+
 Interactive Plots (optional):
 
 Introduction to interactive plotting with Matplotlib
@@ -53,3 +55,6 @@ End-to-End Data Visualization Project using Matplotlib:
 
 Walkthrough of a complete data visualization project using Matplotlib
 Interpretation and communication of results
+
+## より深く学びたい人は？
+
