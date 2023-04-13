@@ -7,4 +7,9 @@ dependencies:
   - opencv
   - matplotlib
   - scikit-learn
+  - pandas
   - ipython
+  - yapf
+  - mypy
+  - isort
+  - flake8
