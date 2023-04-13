@@ -12,9 +12,10 @@ def main():
     y_train, y_test = model_selection.train_test_split(y, train_size=60000, shuffle=False)
 
     C_train = np.cov(X_train.T, bias=1)
-    eigval, eigvec = np.linalg.eigh(C_train)
-
+    _, eigvec = np.linalg.eigh(C_train)
     Z_train = X_train @ eigvec[:, -2:]
+
+    plt.figure()
     for i in range(10):
         idx = np.where(y_train == i)
         plt.scatter(Z_train[idx, 0], Z_train[idx, 1], s=0.7, label=str(i))

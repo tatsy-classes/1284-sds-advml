@@ -64,7 +64,7 @@ Z_train = X_train @ eigvec[:, -2:]
 これを各数字に別の色がつくようにMatplotlibを用いて可視化してみる。この際、何色がどの数字に対応するかが分かるように、`plt.legend`で凡例がつくようにしておこう。
 
 ```python
-Z_train = X_train @ eigvec[:, -2:]
+plt.figure()
 for i in range(10):
     idx = np.where(y_train == i)
     plt.scatter(Z_train[idx, 0], Z_train[idx, 1], label=str(i))
