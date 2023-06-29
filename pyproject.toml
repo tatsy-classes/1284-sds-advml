@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "sds-adv-ml"
+version = "0.1.0"
+description = ""
+authors = ["Tatsuya Yatagawa <tatsy.mail@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "advml" }, { include = "advml/reversi" }]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+numpy = "^1.25.0"
+scipy = "^1.11.1"
+scikit-learn = "^1.2.2"
+matplotlib = "^3.7.1"
+pandas = "^2.0.3"
+
+
+[tool.poetry.group.dev.dependencies]
+pyproject-flake8 = "^6.0.0.post1"
+flake8 = "^6.0.0"
+mypy = "^1.4.1"
+isort = "^5.12.0"
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
