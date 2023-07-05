@@ -3,4 +3,5 @@ __pycache__
 poetry.lock
 
 .vscode/*
+_build/*
 data/*

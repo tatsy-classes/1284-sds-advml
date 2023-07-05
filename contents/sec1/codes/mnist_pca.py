@@ -1,12 +1,12 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn import datasets, model_selection
 
 
 def main():
-    X, y = datasets.fetch_openml('mnist_784', return_X_y=True, data_home='./mnist')
-    X = np.array(X, dtype='float32')
-    y = np.array(y, dtype='uint8')
+    X, y = datasets.fetch_openml("mnist_784", return_X_y=True, data_home="./mnist")
+    X = np.array(X, dtype="float32")
+    y = np.array(y, dtype="uint8")
 
     X_train, X_test = model_selection.train_test_split(X, train_size=60000, shuffle=False)
     y_train, y_test = model_selection.train_test_split(y, train_size=60000, shuffle=False)
@@ -23,5 +23,5 @@ def main():
     plt.show()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
