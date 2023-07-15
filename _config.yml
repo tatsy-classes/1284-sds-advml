@@ -1,4 +1,4 @@
-title : 機械学習発展 (実践)
+title: 機械学習発展 (実践)
 author: Tatsuya Yatagawa
 # logo: 'qe-logo-large.png'
 
@@ -7,20 +7,28 @@ description: >-
   A brief introduction to Python programming for scientific applications.
 
 execute:
-  execute_notebooks           : cache
+  execute_notebooks: cache
 
 # HTML-specific settings
 html:
-  home_page_in_navbar         : false
+  home_page_in_navbar: false
 
 # Interact link settings
-notebook_interface            : "notebook"
+notebook_interface: "notebook"
 
 # Launch button settings
 repository:
-  url                         : https://github.com/tatsy/1284-sds-ml-advanced
-  path_to_book                : "contents"
+  url: https://github.com/tatsy/1284-sds-ml-advanced
+  path_to_book: "contents"
 
+# Sphinx
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+parse:
+  myst_enable_extensions:
+    - amsmath
 # binder:
 #   binderhub_url               : "https://mybinder.org"
 #   text                        : "Launch binder"
@@ -32,3 +40,4 @@ repository:
 #   latex_engine                : "xelatex"
 #   latex_documents:
 #     targetname: book.tex
+

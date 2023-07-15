@@ -4,15 +4,15 @@ parts:
   - caption: 第1部 画像読み取り式数独ソルバの実装
     numbered: True
     chapters:
-    - file: contents/sec1/01-setup
-    - file: contents/sec1/02-numpy
-    - file: contents/sec1/03-matplotlib
-    - file: contents/sec1/04-opencv
-    - file: contents/sec1/05-sklearn
-    - file: contents/sec1/06-figure-detection
-    - file: contents/sec1/07-homography
-    - file: contents/sec1/08-solve-sudoku
-    - file: contents/sec1/09-exercise
+      - file: contents/sec1/01-setup
+      - file: contents/sec1/02-numpy
+      - file: contents/sec1/03-matplotlib
+      - file: contents/sec1/04-opencv
+      - file: contents/sec1/05-scikit-learn
+      - file: contents/sec1/06-dimensionality-reduction
+      - file: contents/sec1/07-solve-sudoku
+      - file: contents/sec1/08-figure-detection
+      - file: contents/sec1/09-exercise
   - caption: 第2部 ひらがなOCRソフトと百人一首エージェントの実装
     numbered: True
     chapters:
