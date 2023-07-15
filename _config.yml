@@ -8,6 +8,7 @@ description: >-
 
 execute:
   execute_notebooks: cache
+  timeout: 180
 
 # HTML-specific settings
 html:
@@ -29,6 +30,8 @@ sphinx:
 parse:
   myst_enable_extensions:
     - amsmath
+    - colon_fence
+    - dollarmath
 # binder:
 #   binderhub_url               : "https://mybinder.org"
 #   text                        : "Launch binder"

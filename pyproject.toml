@@ -17,7 +17,6 @@ seaborn = "^0.12.2"
 opencv-python = "^4.8.0.74"
 networkx = "^3.1"
 
-
 [tool.poetry.group.dev.dependencies]
 pyproject-flake8 = "^6.0.0"
 mypy = "^1.4.1"
