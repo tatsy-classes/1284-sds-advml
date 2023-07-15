@@ -4,25 +4,25 @@ parts:
   - caption: 第1部 画像読み取り式数独ソルバの実装
     numbered: True
     chapters:
-      - file: contents/sec1/01-setup
-      - file: contents/sec1/02-numpy
-      - file: contents/sec1/03-matplotlib
-      - file: contents/sec1/04-opencv
-      - file: contents/sec1/05-scikit-learn
-      - file: contents/sec1/06-dimensionality-reduction
-      - file: contents/sec1/07-solve-sudoku
-      - file: contents/sec1/08-figure-detection
-      - file: contents/sec1/09-exercise
+      - file: contents/sec1/setup-python
+      - file: contents/sec1/numpy
+      - file: contents/sec1/matplotlib
+      - file: contents/sec1/opencv
+      - file: contents/sec1/scikit-learn
+      - file: contents/sec1/dimensionality-reduction
+      - file: contents/sec1/solve-sudoku
+      - file: contents/sec1/figure-detection
+      - file: contents/sec1/exercise-sudoku
   - caption: 第2部 ひらがなOCRソフトと百人一首エージェントの実装
     numbered: True
     chapters:
-      - file: contents/sec2/01-setup
-      - file: contents/sec2/02-mlp
-      - file: contents/sec2/03-cnn
-      - file: contents/sec2/04-mnist-recog-dnn
-      - file: contents/sec2/05-data-augmentation
-      - file: contents/sec2/06-boxing-characters
-      - file: contents/sec2/06-exercise
+      - file: contents/sec2/setup-colab
+      - file: contents/sec2/mlp
+      - file: contents/sec2/cnn
+      - file: contents/sec2/mnist-recog-dnn
+      - file: contents/sec2/data-augmentation
+      - file: contents/sec2/boxing-characters
+      - file: contents/sec2/exercise-ocr
   - caption: 第3部 強化学習の基礎とリバーシエージェントの実装
     numbered: True
     chapters:
@@ -32,3 +32,8 @@ parts:
       - file: contents/sec3/04-mc-tree-search
       - file: contents/sec3/05-reversi-agent
       - file: contents/sec3/06-exercise
+  - caption: Appendix
+    numbered: True
+    chapters:
+      - file: contents/appendix/check-python
+      - file: contents/appendix/notation

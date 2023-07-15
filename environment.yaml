@@ -1,11 +1,17 @@
-name: sds-ml-adv
+name: advml
 channels:
   - defaults
 dependencies:
   - python=3.9
   - numpy
+  - scipy
   - opencv
   - matplotlib
+  - seaborn
   - scikit-learn
   - pandas
-  - ipython
+  - tqdm
+  - networkx
+  - pip
+  - pip:
+    - jupyterlab
