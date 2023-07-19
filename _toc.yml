@@ -7,6 +7,7 @@ parts:
       - file: contents/sec1/setup-python
       - file: contents/sec1/numpy
       - file: contents/sec1/matplotlib
+      - file: contents/sec1/pandas
       - file: contents/sec1/opencv
       - file: contents/sec1/scikit-learn
       - file: contents/sec1/dimensionality-reduction

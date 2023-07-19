@@ -13,6 +13,7 @@ execute:
 # HTML-specific settings
 html:
   home_page_in_navbar: false
+  use_multitoc_numbering: false
 
 # Interact link settings
 notebook_interface: "notebook"
@@ -28,6 +29,7 @@ sphinx:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 parse:
+  myst_footnote_transition: False
   myst_enable_extensions:
     - amsmath
     - colon_fence
