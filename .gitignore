@@ -3,6 +3,8 @@ __pycache__
 poetry.lock
 .ipynb_checkpoints
 
+.DS_Store
+
 .vscode/*
 _build/*
 data/*
