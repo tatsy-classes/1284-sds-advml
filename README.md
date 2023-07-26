@@ -28,6 +28,25 @@
 - 実施時限: 秋冬学期 第x限
 - 教室: xx棟xx教室
 
+## 講義日程
+
+- 第1回
+  - NumPyの基本
+  - Matplotlibの基本
+  - Pandasの基本
+  - OpenCVの基本
+- 第2回
+  - scikit-learnによる機械分類の基本
+  - 次元圧縮によるデータ可視化
+- 第3回
+  - 探索問題の基本
+  - 図形の検出
+- 第4回
+  - 特徴量の抽出
+  - 深層学習の基本
+  - データの作成・データ拡張
+
+
 ## License
 
 [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/), 2023 (c) Tatsuya Yatagawa
