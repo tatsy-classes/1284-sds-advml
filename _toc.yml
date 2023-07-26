@@ -10,14 +10,13 @@ parts:
       - file: contents/sec1/pandas
       - file: contents/sec1/opencv
       - file: contents/sec1/scikit-learn
-      - file: contents/sec1/dimensionality-reduction
-      - file: contents/sec1/solve-sudoku
       - file: contents/sec1/figure-detection
       - file: contents/sec1/exercise-sudoku
   - caption: 第2部 ひらがなOCRソフトと百人一首エージェントの実装
     numbered: True
     chapters:
       - file: contents/sec2/setup-colab
+      - file: contents/sec2/dimensionality-reduction
       - file: contents/sec2/mlp
       - file: contents/sec2/cnn
       - file: contents/sec2/mnist-recog-dnn
