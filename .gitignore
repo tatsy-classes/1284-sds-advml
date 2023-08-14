@@ -7,5 +7,4 @@ poetry.lock
 
 .vscode/*
 _build/*
-data/*
 openml/
