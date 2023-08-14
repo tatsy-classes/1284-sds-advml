@@ -1,0 +1,3 @@
+[submodule "templates/sudoku-solver"]
+	path = templates/sudoku-solver
+	url = github:tatsy-classes/sudoku-solver-template
