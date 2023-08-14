@@ -18,17 +18,15 @@
 - A. Geron著『scikit-learn、Keras、TensorFlowによる実践機械学習』、オライリー社
 - M. Beyeler著『OpenCVとPythonによる機械学習プログラミング』、マイナビ
 
-## 資料の読み方
-
 ---
 
 以下、一橋大生向け情報
 
 ## 講義について
+
+## 日程・教室
 - 実施時限: 秋冬学期 第x限
 - 教室: xx棟xx教室
-
-## 講義日程
 
 ### 第1回
 - [Python環境の設定](setup-python)
