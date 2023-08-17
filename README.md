@@ -43,11 +43,11 @@
 - [課題1 画像入力式数独ソルバーを作る](exercise-sudoku)
 
 ### 第4回
-- 課題1 コンピュータ・数独大会
+- [課題1 コンピュータ・数独大会](exercise-sudoku)
 
 ### 第5回
-- 次元圧縮によるデータ可視化
-- 特徴量の抽出
+- [データ可視化と次元圧縮](data-visualization)
+- [特徴量抽出](feature-extraction)
 - 物体検出
 
 ### 第6回
@@ -81,3 +81,8 @@
 ## License
 
 [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/), 2023 (c) Tatsuya Yatagawa
+
+## Status
+
+```{nb-exec-table}
+```

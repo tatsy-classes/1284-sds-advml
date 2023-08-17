@@ -11,6 +11,8 @@ exclude_patterns:
   - templates
   - Thumbs.db
   - .DS_Store
+  - .pytest_cache
+  - .mypy_cache
   - "**.ipynb_checkpoints"
 
 only_build_toc_files: true
@@ -36,6 +38,10 @@ repository:
 sphinx:
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    bibtex_reference_style: author_year
+
+bibtex_bibfiles:
+  - "references.bib"
 
 # MyST options
 parse:
