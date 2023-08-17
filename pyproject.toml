@@ -31,6 +31,7 @@ pytest = "^7.4.0"
 ipywidgets = "^8.1.0"
 jupyterlab-widgets = "^3.0.8"
 nodejs = "^0.1.1"
+lxml = "^4.9.3"
 
 [build-system]
 requires = ["poetry-core"]
