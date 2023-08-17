@@ -1,7 +1,11 @@
 __pycache__
 *.pyc
-poetry.lock
+*.pickle
 .ipynb_checkpoints
+
+poetry.lock
+
+*.zip
 
 .DS_Store
 

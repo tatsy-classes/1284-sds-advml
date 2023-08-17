@@ -16,12 +16,12 @@ parts:
     numbered: True
     chapters:
       - file: contents/sec2/setup-colab
-      - file: contents/sec2/dimensionality-reduction
-      - file: contents/sec2/mlp
-      - file: contents/sec2/cnn
-      - file: contents/sec2/mnist-recog-dnn
-      - file: contents/sec2/data-augmentation
-      - file: contents/sec2/boxing-characters
+      - file: contents/sec2/data-visualization
+      - file: contents/sec2/feature-extraction
+      # - file: contents/sec2/cnn
+      # - file: contents/sec2/mnist-recog-dnn
+      # - file: contents/sec2/data-augmentation
+      # - file: contents/sec2/boxing-characters
       - file: contents/sec2/exercise-ocr
   - caption: 第3部 強化学習の基礎とリバーシエージェントの実装
     numbered: True
@@ -37,3 +37,4 @@ parts:
     chapters:
       - file: contents/appendix/check-python
       - file: contents/appendix/notation
+      - file: contents/appendix/references
