@@ -15,13 +15,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
-      - name: SSH Setting
-        env:
-          TOKEN: ${{ secrets.SUBMODULE_ACCESS_KEY }}
-        run: |
-          mkdir -p /home/runner/.ssh/
-          echo -e "$TOKEN" > /home/runner/.ssh/id_rsa
-          chmod 600 /home/runner/.ssh/id_rsa
       - name: Checkout submodules
         shell: bash
         run: git submodule update --init --recursive
