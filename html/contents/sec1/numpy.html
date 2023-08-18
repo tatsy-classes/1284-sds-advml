@@ -1,0 +1,1443 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. NumPyの基本 &#8212; 機械学習発展 (実践)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/numpy';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="3. Matplotlibの基本" href="matplotlib.html" />
+    <link rel="prev" title="1. Python環境の設定" href="setup-python.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">機械学習発展 (実践)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup-python.html">1. Python環境の設定</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. NumPyの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">5. OpenCVの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scikit-learn.html">6. scikit-learnによる機械分類の基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="figure-detection.html">7. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise-sudoku.html">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sec2/data-visualization.html">1. データ可視化と次元圧縮</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/feature-extraction.html">2. 特徴量抽出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/deep-learning.html">3. 深層学習による物体認識</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/exercise-ogura.html">4. 演習2 - 百人一首エージェントを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第3部 強化学習の基礎とリバーシエージェントの実装</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sec3/reinforcement-learning.html">1. 強化学習の基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/q-learning.html">2. Q学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/othello-agent.html">3. オセロAIの作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/deep-reinforcement-learning.html">4. 深層強化学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/exercise-othello.html">5. 演習3 - オセロエージェントを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/notation.html">1. 資料中の記号について</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/tatsy/1284-sds-ml-advanced/blob/master/contents/contents/sec1/numpy.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/contents/sec1/numpy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>NumPyの基本</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. NumPyの配列操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.1. 多次元配列を作る</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.2. 特殊な配列の初期化</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.3. 配列の情報</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.4. 配列要素へのアクセス</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.5. 配列の変形</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2. NumPyを用いた線形代数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.2.1. スカラに対する演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.2.2. 要素ごとの四則演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2.3. 各要素への関数適用</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.2.4. ベクトルの内積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2.5. ベクトルの外積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.2.6. 行列の転置</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.2.7. 逆行列・疑似逆行列</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.2.8. 線形方程式を解く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.2.9. 行列の固有値・固有ベクトル</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.3. 練習問題</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="numpy">
+<span id="id1"></span><h1><span class="section-number">2. </span>NumPyの基本<a class="headerlink" href="#numpy" title="Permalink to this heading">#</a></h1>
+<p>NumPyは一口に言えば、多次元の配列で表わされるデータ (例えば音声なら1次元の配列、画像なら2次元の配列)を様々な線形代数的な演算によって扱いやすくするためのライブラリといえる。まずは、Pythonの配列とNumPyの配列の違いについて見てみたい。</p>
+<p>Pythonで配列を作成するには<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>で数字をコンマ区切りにすれば良く、</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>と書く。この時、aの各要素を2倍にしたいとすると、直感的には</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>とすれば良さそうだが、これは</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">numbers</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 1, 2, 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>のように配列が2回繰り返されたものとなってしまう。Pythonの配列でこれを実現するには<em>リスト内包表記</em>と呼ばれる記法を使って</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 4, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<p>と書く必要がある。もちろん、これでも必要十分ではあるのだが、気持ちとしては、より直感的な記述で書きたいと思うのが人情という物だ。そこでNumPyの登場である。</p>
+<p>NumPyはPythonの配列を引数にとる関数<code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>を用いて、</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>と書くことで作成できる。NumPyの配列であれば、下記のように要素を2倍にする計算を、より直感的に行うことができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 4, 6])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id2">
+<h2><span class="section-number">2.1. </span>NumPyの配列操作<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="id3">
+<h3><span class="section-number">2.1.1. </span>多次元配列を作る<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Pythonの配列で多次元配列を作るには、</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>のように<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>を二重にすれば良かった。また、全ての要素が1の10x10の二次元配列を作りたい場合には、リスト内包表記を用いて</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ones</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>のように書く必要がある。NumPyで同様の配列を作る場合、先ほど紹介した方法で<code class="docutils literal notranslate"><span class="pre">numpy.array</span></code>の引数にPythonの多次元配列を代入すれば良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">numbers_np</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、NumPyにはいくつかの特殊な配列を作る関数が用意されていて、全ての要素が0や全ての要素が1、または特定の要素を持つ配列は次のように作成できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># 全ての要素が0の10x10の二次元配列</span>
+<span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># 全ての要素が1の10x10の二次元配列</span>
+<span class="n">twos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 全ての要素が2の10x10の二次元配列</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>上記の関数を使う場合、関数の引数がPythonの配列ではなく、多次元配列の大きさを表す<strong>タプル</strong>になるので注意すること。</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">2.1.2. </span>特殊な配列の初期化<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>NumPyでは直接、PythonのListを指定して配列を初期化する以外に、いくつかの便利な配列初期化方法が用意されている。ここでは、特によく用いるものをいくつか紹介する。</p>
+<p><strong>同じ値での初期化</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">)))</span>  <span class="c1"># 全て0で初期化</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">)))</span>  <span class="c1"># 全て1で初期化</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">3</span><span class="p">),</span> <span class="mf">10.0</span><span class="p">))</span>  <span class="c1"># 全て同じ値 (10.0)で初期化</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0. 0. 0.]
+[1. 1. 1.]
+[10. 10. 10.]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>等差数列・等比数列による初期化</strong></p>
+<p>Pythonに標準で用意されている<code class="docutils literal notranslate"><span class="pre">range(10)</span></code>などと同様の文法で<code class="docutils literal notranslate"><span class="pre">np.arange</span></code>を使うことができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># [0, 10)について1刻み</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># [5, 10)について1刻み</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># [0, 10)について2刻み</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># 9以下かつ-1より大きい整数を列挙</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 2 3 4 5 6 7 8 9]
+[5 6 7 8 9]
+[0 2 4 6 8]
+[9 8 7 6 5 4 3 2 1 0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、np.linspaceを使うことで、上限と下限の間を固定の数で分割した等差数列を得ることもできる。このとき、上端を含むか、含まないかを<code class="docutils literal notranslate"><span class="pre">endpoint</span></code>引数により指定することもできる(初期値は<code class="docutils literal notranslate"><span class="pre">True</span></code>)。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># 両端点を含み0.0と10.0の間を5分割</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="c1"># 上端を含まず、0.0と10.0の間を5分割</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.   2.5  5.   7.5 10. ]
+[0. 2. 4. 6. 8.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>同様にして、<code class="docutils literal notranslate"><span class="pre">np.geomspace</span></code>を用いると、上限と下限を指定した上で、固定の項数を持つ等比数列を得ることもできる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">geomspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># を初項とし、10で終わる5項の等比数列</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>  <span class="c1"># 対数を取ると等差数列になっている</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.          2.15443469  4.64158883 10.        ]
+[0.         0.76752836 1.53505673 2.30258509]
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.geomspace</span></code>と類似した物として<code class="docutils literal notranslate"><span class="pre">np.logspace</span></code>もあり、<code class="docutils literal notranslate"><span class="pre">base</span></code>を基数とするべき乗の上付き添え字が等差数列になるような、等比数列を作成する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 2^1から2^10までを4項で結ぶ等比数列</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>  <span class="c1"># log2を取ると、等差数列になっている</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   2.   16.  128. 1024.]
+[ 1.  4.  7. 10.]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>二次元座標系の作成</strong></p>
+<p>特に画像を取り扱う場合など、画素の次元を取得するために、二次元の離散的な座標系を作成したいことがよくある。例えば<code class="docutils literal notranslate"><span class="pre">ix</span></code>は<code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2,</span> <span class="pre">...,</span> <span class="pre">10],</span> <span class="pre">...,</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">...,</span> <span class="pre">10]]</span></code>、<code class="docutils literal notranslate"><span class="pre">iy</span></code>は<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">1],</span> <span class="pre">[2,</span> <span class="pre">2,</span> <span class="pre">....,</span> <span class="pre">2],</span> <span class="pre">...,</span> <span class="pre">[10,</span> <span class="pre">10,</span> <span class="pre">...,</span> <span class="pre">10]]</span></code>といった形だ。このような場合には<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">...,</span> <span class="pre">10]</span></code>という配列を作成した上で<code class="docutils literal notranslate"><span class="pre">np.meshgrid</span></code>を用いると良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">iy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">ix</span><span class="p">,</span> <span class="n">iy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="n">iy</span><span class="p">)</span>  <span class="c1"># ix, iyの順序に注意</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 1 2]
+ [0 1 2]
+ [0 1 2]
+ [0 1 2]
+ [0 1 2]]
+[[0 0 0]
+ [1 1 1]
+ [2 2 2]
+ [3 3 3]
+ [4 4 4]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、NumPyには<code class="docutils literal notranslate"><span class="pre">np.mgrid</span></code>という変数が用意されていて、これはすでに全ての整数において<code class="docutils literal notranslate"><span class="pre">meshgrid</span></code>を用いたような二次元配列(のようなオブジェクト)となっていて、配列の範囲を指定することで<code class="docutils literal notranslate"><span class="pre">np.arange</span></code>を用いることなく二次元座標系を作成することができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ix</span><span class="p">,</span> <span class="n">iy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[:</span><span class="mi">5</span><span class="p">,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># 軸の順序に注意</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ix</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 0 0]
+ [1 1 1]
+ [2 2 2]
+ [3 3 3]
+ [4 4 4]]
+[[0 1 2]
+ [0 1 2]
+ [0 1 2]
+ [0 1 2]
+ [0 1 2]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h3><span class="section-number">2.1.3. </span>配列の情報<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>上記のNumPyの配列をIPython上で表示すると</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>のように表示されるが、この実態は<code class="docutils literal notranslate"><span class="pre">int32</span></code>型すなわち32bit符号付き整数となっている。これを調べるには，配列の<code class="docutils literal notranslate"><span class="pre">dtype</span></code>フィールドにアクセスすれば良く</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;int64&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>のような出力が得られる。</p>
+<p>また、配列の大きさは<code class="docutils literal notranslate"><span class="pre">shape</span></code>フィールドに、何次元の多次元配列なのかは<code class="docutils literal notranslate"><span class="pre">ndim</span></code>フィールドにアクセスすることで調べることができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ones</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 5, 6)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ones</span><span class="o">.</span><span class="n">ndim</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、始めから配列要素の型を指定して、</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>のようにすることもできる。上記の例では、配列内の各要素が<code class="docutils literal notranslate"><span class="pre">float32</span></code>型、すなわち32bitの単精度浮動小数で表わされる。NumPyで使える配列の型には、この他にも<code class="docutils literal notranslate"><span class="pre">int8</span></code> / <code class="docutils literal notranslate"><span class="pre">uint8</span></code> (それぞれ8bit符号あり、符号なし整数)以下、<code class="docutils literal notranslate"><span class="pre">int16</span></code>、<code class="docutils literal notranslate"><span class="pre">int32</span></code>、<code class="docutils literal notranslate"><span class="pre">int64</span></code>が符号付き整数 (それぞれに符号なし整数である<code class="docutils literal notranslate"><span class="pre">uint..</span></code>が存在)の他、64bit倍精度浮動小数として<code class="docutils literal notranslate"><span class="pre">double</span></code>、また複素数を表わす<code class="docutils literal notranslate"><span class="pre">complex64</span></code> (実部と虚部がそれぞれ32bit単精度浮動小数)や<code class="docutils literal notranslate"><span class="pre">complex128</span></code> (実部と虚部がそれぞれ64bit浮動小数)などがある。</p>
+<p>最初に異なる型で宣言した配列を途中から別の型に変更したい場合には<code class="docutils literal notranslate"><span class="pre">astype</span></code>メソッドを使って、</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>  <span class="c1"># int32型</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>  <span class="c1"># 型をfloat32に変更</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>のようにすることで実現できる。</p>
+<div class="note admonition">
+<p class="admonition-title">オブジェクト指向型言語の用語</p>
+<p>Pythonはプログラミング言語の中ではオブジェクト指向型の言語に分類される (他には手続き型や関数型などがある)。オブジェクト指向型言語では、実世界のモノをプログラムにより表現するための仕組みとしてモノ(= オブジェクト)を「クラス」という概念で表わす。ここでは、詳しい明言を避けるが、Pythonのクラスとは以下のようなものだ。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Human</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+
+  <span class="k">def</span> <span class="nf">intro</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hi, my name is </span><span class="si">%s</span><span class="s1">. I</span><span class="se">\&#39;</span><span class="s1">m </span><span class="si">%d</span><span class="s1"> years old.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">age</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>このようなクラスにおいて、クラスが保持する変数 (= <code class="docutils literal notranslate"><span class="pre">self.name</span></code>や<code class="docutils literal notranslate"><span class="pre">self.age</span></code>)のことを<strong>パラメータ</strong>や<strong>フィールド</strong>と呼び、クラスが備える関数(= <code class="docutils literal notranslate"><span class="pre">intro</span></code>)のことを<strong>メソッド</strong>と呼ぶ。</p>
+<p>また、上記のクラスを用いて、実際の<code class="docutils literal notranslate"><span class="pre">Human</span></code>を作ること、すなわち</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">taro</span> <span class="o">=</span> <span class="n">Human</span><span class="p">(</span><span class="s1">&#39;Taro&#39;</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>という処理を<strong>インスタンス化</strong>と呼ぶ。これらの用語はPythonに限らず、オブジェクト指向型言語の基本用語なので覚えておくこと。</p>
+</div>
+</section>
+<section id="id6">
+<h3><span class="section-number">2.1.4. </span>配列要素へのアクセス<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>通常、Pythonで一次元配列、二次元配列の要素にアクセスするには</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1d</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr2d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>のように要素を指定する。特に二次元配列に要素を指定するときには<code class="docutils literal notranslate"><span class="pre">[i][j]</span></code>のように<code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>を2つ使用して要素のインデックスを指定する。</p>
+<p>一方で、NumPyを使う場合、一次元配列、二次元配列の要素へのアクセス方法は</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1d</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr2d</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>のようになり、特に二次元配列において、より簡素な表記で要素へのアクセスが可能となっている。</p>
+<p>また、通常のPythonと同様に<code class="docutils literal notranslate"><span class="pre">[:]</span></code>を指定することで、その次元の全ての要素を配列として取り出すことができる。例えば、以下のような使い方ができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;0th column:&quot;</span><span class="p">,</span> <span class="n">arr2d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1st row:&quot;</span><span class="p">,</span> <span class="n">arr2d</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0th column: [1 3]
+1st row: [3 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>配列要素の書き換えも、同様に可能で、特に<code class="docutils literal notranslate"><span class="pre">[:]</span></code>を指定した場合には、その部分配列の全ての要素を書き換えることができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例1: 単一要素の書き換え</span>
+<span class="n">arr2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">arr2d</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr2d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2 2]
+ [3 4]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例2: 部分配列の書き換え</span>
+<span class="n">arr2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">arr2d</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr2d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[10 10]
+ [ 3  4]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h3><span class="section-number">2.1.5. </span>配列の変形<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>NumPyでは<code class="docutils literal notranslate"><span class="pre">reshape</span></code>を用いることで、配列の形を変更することもできる。例えば2x2の二次元配列を4要素の一次元配列に変形する場合、以下のように<code class="docutils literal notranslate"><span class="pre">reshape</span></code>を利用する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">arr1d</span> <span class="o">=</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">arr1d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3 4]
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、変形後の大きさに<code class="docutils literal notranslate"><span class="pre">-1</span></code>を指定すると、その次元に限り、他の次元から自動的に要素数を計算してくれる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arr2x3</span><span class="p">)</span>
+<span class="n">arr3x2</span> <span class="o">=</span> <span class="n">arr2x3</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">arr3x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before:
+ [[1 2 3]
+ [4 5 6]]
+After:
+ [[1 2]
+ [3 4]
+ [5 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>これを用いると、一次元配列への変換も、より容易に書くことができる。なお、一次元配列に変換する操作に限っては、<code class="docutils literal notranslate"><span class="pre">flatten</span></code>や<code class="docutils literal notranslate"><span class="pre">ravel</span></code>といった関数を使用する方法もある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reshape:&quot;</span><span class="p">,</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;flatten:&quot;</span><span class="p">,</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ravel:&quot;</span><span class="p">,</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reshape: [1 2 3 4]
+flatten: [1 2 3 4]
+ravel: [1 2 3 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">flattenとravelの違い</p>
+<p>上記の通り、flattenとravelはほとんど同じ機能を提供するが、得られる戻り値が、元の配列をコピーした「別の実態」なのか、それとも、単に元の配列の要素へのアクセスを一次元配列的にできるようにした「同じ実態」なのかが異なる。</p>
+<p>結論から言えば、<code class="docutils literal notranslate"><span class="pre">flatten</span></code>は別の実態を、reshapeとravelは「可能な限り」同じ実態を返す。従って、要素の書き換えを行う場合には、注意が必要だ。以下のコードで違いを確認してほしい。</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">arr1d_rs</span> <span class="o">=</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">arr1d_fl</span> <span class="o">=</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">arr1d_rv</span> <span class="o">=</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">arr2d</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reshape:&quot;</span><span class="p">,</span> <span class="n">arr1d_rs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;flatten:&quot;</span><span class="p">,</span> <span class="n">arr1d_fl</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ravel:&quot;</span><span class="p">,</span> <span class="n">arr1d_rv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reshape: [2 2 3 4]
+flatten: [1 2 3 4]
+ravel: [2 2 3 4]
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>また、NumPyの配列は、次元を増やすことも可能で、例えば2x2の二次元配列を2x1x2の三次元配列にしたりできる。これには<code class="docutils literal notranslate"><span class="pre">reshape</span></code>を使うことができるほか、新しく追加する次元に対応する箇所に<code class="docutils literal notranslate"><span class="pre">None</span></code>あるには<code class="docutils literal notranslate"><span class="pre">np.newaxis</span></code>と書くことで次元を追加できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reshape:&quot;</span><span class="p">,</span> <span class="n">arr2d</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;None:&quot;</span><span class="p">,</span> <span class="n">arr2d</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;newaxis&quot;</span><span class="p">,</span> <span class="n">arr2d</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reshape: (2, 1, 2)
+None: (2, 1, 2)
+newaxis (2, 1, 2)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">2.2. </span>NumPyを用いた線形代数<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<section id="id9">
+<h3><span class="section-number">2.2.1. </span>スカラに対する演算<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<p>ベクトルや行列に対して、スカラを四則演算すると、要素ごとに同じ計算が行われる。例えば、</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># array([2, 3])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>の例では、aの各要素に1が足し算されていることが分かる。これは、他の四則演算に対しても同様である。</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">2.2.2. </span>要素ごとの四則演算<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>同じ要素数を持つベクトル同士や行列同士を四則演算すると、要素ごとの演算が行われる。例えば、</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>  <span class="c1"># array([4, 6])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4 6]
+</pre></div>
+</div>
+</div>
+</div>
+<p>の例では、aとbの各要素に対して、和が取られていることが分かる。これは、他の四則演算に対しても同様である。</p>
+</section>
+<section id="id11">
+<h3><span class="section-number">2.2.3. </span>各要素への関数適用<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<p>NumPyには<code class="docutils literal notranslate"><span class="pre">numpy.exp</span></code>などのように、ベクトル・行列の各要素に対して、特定のスカラに対する演算を行う関数が用意されている。一例として、<code class="docutils literal notranslate"><span class="pre">numpy.sin</span></code>、<code class="docutils literal notranslate"><span class="pre">numpy.cos</span></code>、<code class="docutils literal notranslate"><span class="pre">numpy.exp</span></code>、<code class="docutils literal notranslate"><span class="pre">numpy.log</span></code>などがあり、高校レベルで思いつくものであれば大抵は用意されている。</p>
+</section>
+<section id="id12">
+<h3><span class="section-number">2.2.4. </span>ベクトルの内積<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<p>内積の計算には二つのベクトルに対して<code class="docutils literal notranslate"><span class="pre">numpy.dot</span></code>を用いれば良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、<code class="docutils literal notranslate"><span class="pre">numpy.dot</span></code>と同じ効果を現す演算子として<code class="docutils literal notranslate"><span class="pre">&#64;</span></code>が用意されており、上と同様のコードは<code class="docutils literal notranslate"><span class="pre">&#64;</span></code>を使って以下のように書ける。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">@</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id13">
+<h3><span class="section-number">2.2.5. </span>ベクトルの外積<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<p>外積の計算には二つのベクトルに対して<code class="docutils literal notranslate"><span class="pre">numpy.cross</span></code>を用いれば良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-3  6 -3]
+</pre></div>
+</div>
+</div>
+</div>
+<p>なお、この<code class="docutils literal notranslate"><span class="pre">numpy.cross</span></code>は二次元ベクトルに対しても計算が可能で、その場合は二次元ベクトルを並べて作られる2x2行列の行列式が計算される。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2
+</pre></div>
+</div>
+</div>
+</div>
+<p>この計算は二次元平面においてa → bというベクトルの移動が時計回りの回転(負の値になる)なのか、反時計回りの回転(正の値になる)なのかを調べる時などに役に立つ。</p>
+</section>
+<section id="id14">
+<h3><span class="section-number">2.2.6. </span>行列の転置<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="id15">
+<h3><span class="section-number">2.2.7. </span>逆行列・疑似逆行列<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<p>とある行列が正則行列 (逆行列を持つ = 行列式が0でない)ときには<code class="docutils literal notranslate"><span class="pre">numpy.linalg.inv</span></code>を用いて逆行列が計算できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
+<span class="n">invA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">invA</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.   1. ]
+ [ 1.5 -0.5]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>なお、その行列が正則行列かどうかを調べるには、行列のランクや行列式が0でないかを調べれば良いだろう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 行列のランク</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matrix_rank</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>  <span class="c1"># 2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 行列式</span>
+<span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2.0000000000000004
+</pre></div>
+</div>
+</div>
+</div>
+<p>では、次に、正則でない行列 (= 特異行列という)の場合に逆行列を求めようとするとどうなるかを見てみる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exception: </span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Message: </span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception: LinAlgError
+Message: Singular matrix
+</pre></div>
+</div>
+</div>
+</div>
+<p>上記の例では、例外処理をしており、<strong>LinAlgError</strong>が発生して、その例外メッセージが<strong>Singular matrix</strong>となることが確認できる。実際、上記の行列のランクは1で行列式は0.0になるので、各自で調べて見てほしい。</p>
+<p>さて、このようは特異行列に対して、逆行列を求めるにはどうすれば良いのだろうか？特異行列に対して、逆行列を求めたい場面というのは実用上はそれなりに多く、その一番身近な例が、以下のような最小二乗問題を解きたい場合だろう。</p>
+<div class="math notranslate nohighlight">
+\[
+\min_{\mathbf{x}} \frac{1}{2} \| \mathbf{Ax} - \mathbf{b} \|^2
+\]</div>
+<p>この場合、 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> について被最小化関数を微分したものがゼロベクトルになる箇所を探せば、それが求める <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> だが、この際、被最小化関数の <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> についての微分によって得られる</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A}^\top \mathbf{Ax} = \mathbf{A}^\top \mathbf{b}
+\]</div>
+<p>という方程式において <span class="math notranslate nohighlight">\(\mathbf{A}^\top \mathbf{A}\)</span> が特異行列になることは実問題においては頻繁に起こる問題である。</p>
+<p>このような場合、上記の最小化問題の解は、特異行列に対して逆行列と似た性質を持つ疑似逆行列 (正しくはMoore-Penroseの疑似逆行列と呼ぶ)を右辺に乗ずることで求められる。</p>
+<p>すなわち、疑似逆行列を <span class="math notranslate nohighlight">\((\mathbf{A}^\top \mathbf{A})^\dagger\)</span> のように表わす時、最小化を実現する <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> は次の式のように定まる。</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x} = (\mathbf{A}^\top \mathbf{A})^\dagger (\mathbf{A}^\top \mathbf{b})
+\]</div>
+<p>では、疑似逆行列とは、一体どういう性質を持った行列なのだろうか？これを説明するには特異値分解について説明をする必要があるため、詳しくは触れないが、ぜひNumPyで疑似逆行列を求める<code class="docutils literal notranslate"><span class="pre">numpy.linalg.pinv</span></code>を用いて、以下の計算を試してみてほしい。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># この行列は特異行列</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
+<span class="n">pinvA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- pinv(A) @ A&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pinvA</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;- A @ pinv(A) @ A&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">pinvA</span> <span class="o">@</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- pinv(A) @ A
+[[0.2 0.4]
+ [0.4 0.8]]
+
+- A @ pinv(A) @ A
+[[1. 2.]
+ [2. 4.]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">数値誤差</p>
+<p>上記の例ではNumPyの関数を用いて行列式や逆行列を求める方法について紹介してきた。前述の通り、行列が正則であれば、<code class="docutils literal notranslate"><span class="pre">numpy.linalg.inv</span></code>で逆行列が求められ、そうでなければ特異行列である旨のエラーメッセージが表示されることを確認したが、実際の数値計算で、入力された行列が正則か特異かを判断するのには若干の問題がある。</p>
+<p>例えば、以下の行列の行列式を計算してみてほしい。</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\begin{pmatrix}
+  1 &amp; 2 &amp; 3 \\
+  100 &amp; 200 &amp; 300 \\
+  10000 &amp; 20000 &amp; 30000
+\end{pmatrix}
+\end{equation*}\]</div>
+<p>説明するまでもなく、上記の行列のランクは1だから、行列式は0になるはずだが…各自で結果を確認してみてほしい。</p>
+<p>このように実際の数値計算では数学的には特異であるような行列が正則と判断されてしまうことなどがあり、実際の問題で逆行列を計算するときには、注意が必要である。多くの場合は、逆行列の代わりに疑似逆行列を用いることで上記の問題を回避できるが、その場合には疑似逆行列を用いて得られる解が、どのような性質を持つかに留意する必要がある。</p>
+<p>疑似逆行列を用いる、ということは行列が特異、すなわちランク落ちしている場合であるから、実際の線形方程式を満たす解は無数に存在することになる。疑似逆行列を用いて得られる解は、そのうち、ノルムの大きさ (より正確にはl2ノルムの大きさ)が最小になるものになるので、自身が求めたい解がその解で良いのかは、実際の問題を扱う上では重要だろう。</p>
+</div>
+</section>
+<section id="id16">
+<h3><span class="section-number">2.2.8. </span>線形方程式を解く<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<p>先ほどの説明では、 <span class="math notranslate nohighlight">\(\mathbf{Ax} = \mathbf{b}\)</span> という線形方程式に対して、逆行列を計算して解 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> を求める方法について述べた。</p>
+<p>一方で、この方法は数値計算の側面からは、常に最良のやり方であるとは言い難い。通常、行列のサイズが <span class="math notranslate nohighlight">\(N \times N\)</span> の時に、逆行列を求めるためのアルゴリズムには<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A6%E3%82%B9%E3%81%AE%E6%B6%88%E5%8E%BB%E6%B3%95">Gaussの消去法</a>などがあり、これらのアルゴリズムの計算量は <span class="math notranslate nohighlight">\(O(N^3)\)</span> である。それに加え、逆行列をベクトル <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> に乗ずる操作 (計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> ) が必要となる。</p>
+<p>一方で、同様にGaussの消去法を使うにしても、逆行列を求めるのではなく、線形方程式を直接解くように用いることもできる。この場合も計算量は変わらず <span class="math notranslate nohighlight">\(O(N^3)\)</span> なのだが、この場合は、直接的に解となる <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> が得られるため、逆行列をベクトル <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> に乗ずる計算が不要な分、効率が良い。加えて、このような余計な行列計算を減らすことで、一般には浮動少数の計算による計算誤差を防ぐことができるため、より高精度に解が求められる。したがって、逆行列それ自体が不要であるならば、行列分解を用いて効率的に線形問題を解く<code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>を使う方がより適切である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.  1.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、実用的には <span class="math notranslate nohighlight">\(\mathbf{Ax} = \mathbf{b}\)</span> という線形方程式で、 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> は変わらないけれども <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> が異なるような問題を繰り返し解きたい場合というのが多くある。このような場合<code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>は内部的には <span class="math notranslate nohighlight">\(O(N^3)\)</span> の計算量をかけて行列を<a class="reference external" href="https://ja.wikipedia.org/wiki/LU%E5%88%86%E8%A7%A3">LU分解</a>した後、分解によって得られた下三角行列と上三角行列に対して線形問題を解く。この際、三角行列を係数に持つ線形方程式を解くための計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> であることに注意してほしい。であるなら、何度も <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>の内部で同じ行列をLU分解する (しかも、その計算量が <span class="math notranslate nohighlight">\(O(N^3)\)</span> )のは非効率に感じられる。</p>
+<p>このような場合、一度LU分解を計算してしまって、三角行列に対する線形問題を解く、という方法が考えられる。残念ながら、この方法はNumPyには実装されていないが類似ライブラリであるSciPyを用いると、以下の形で実現できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">lu</span><span class="p">,</span> <span class="n">piv</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lu_factor</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lu_solve</span><span class="p">((</span><span class="n">lu</span><span class="p">,</span> <span class="n">piv</span><span class="p">),</span> <span class="n">b1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.  1.]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lu_solve</span><span class="p">((</span><span class="n">lu</span><span class="p">,</span> <span class="n">piv</span><span class="p">),</span> <span class="n">b2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-2.  2.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>なお、上記のコードで<code class="docutils literal notranslate"><span class="pre">scipy.linalg.lu_factor</span></code>には2つの戻り値<code class="docutils literal notranslate"><span class="pre">lu</span></code>と、<code class="docutils literal notranslate"><span class="pre">piv</span></code>が帰ってくるが、通常、LU分解を上手く計算すると、上三角行列と下三角行列のうちのどちらかは対角成分が全て1になるようにできるので、その1となる対角成分を省略して1つの行列にまとめたものが<code class="docutils literal notranslate"><span class="pre">lu</span></code>である。</p>
+<p>一方、<code class="docutils literal notranslate"><span class="pre">piv</span></code>はガウスの消去法などを用いて行列分解を行う際に、数値計算の誤差を減らすために行列の行や列の順序を入れ替える操作をすることがあるのだが、入れ替え前後の行、列の対応を表わす行列が<code class="docutils literal notranslate"><span class="pre">piv</span></code>である。このあたりの説明は数値計算の初等的な教科書にも書かれている内容なので、各自、教科書を読むなどして勉強してみてほしい。</p>
+<div class="note admonition">
+<p class="admonition-title">線形方程式の解法における直接法と反復法</p>
+<p>先ほど紹介した<code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>はLU分解を用いて線形問題を解いていると説明した。このように行列分解などを用いて、線形問題の解を行列のサイズのみに依存する計算量で得るような解法を<strong>直接法</strong>と呼ぶ。直接法にはLU分解を用いる方法の他、<a class="reference external" href="https://ja.wikipedia.org/wiki/QR%E5%88%86%E8%A7%A3">QR分解</a>など、別の行列分解を用いる方法がある。</p>
+<p>一方、ここでは紹介しなかったが、線形問題の両辺に特定の線形代数的操作を施すことで、適当な <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> の初期値を徐々に線形問題の解に反復計算によって近づける方法を<strong>反復法</strong>と呼ぶ。反復法の中で最も単純なものは<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%A4%E3%82%B3%E3%83%93%E6%B3%95">Jacobi法</a>がある (Jacobi法には固有値を求める手法などもありややこしい…)。Jacobi法は係数行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> の対角成分だけを取りだした対角行列 <span class="math notranslate nohighlight">\(\mathbf{D}\)</span>を用いて、 <span class="math notranslate nohighlight">\(k\)</span> 回反復時に得られている <span class="math notranslate nohighlight">\(\mathbf{x}^k\)</span> を次の式で <span class="math notranslate nohighlight">\(\mathbf{x}^{k+1}\)</span> に更新する。</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}^{k+1} = \mathbf{D}^{-1} \left( \mathbf{b} - (\mathbf{A} - \mathbf{D}) \mathbf{x}^k \right)
+\]</div>
+<p>これ以外にも、Jacobi法を改良したGauss-Seidel法やSOR法がある他、実用的には<a class="reference external" href="https://ja.wikipedia.org/wiki/%E5%85%B1%E5%BD%B9%E5%8B%BE%E9%85%8D%E6%B3%95">共役勾配法</a> (CG法)と呼ばれる、より収束の早いアルゴリズムが用いられる。最も一般的な共役勾配法は対称正定値行列 (正定値 = 全ての固有値が0より大きい)にしか用いることができないが、これを非対称行列に拡張した双共役勾配法 (BiCG法)など、多くの発展的な手法が存在する。</p>
+</div>
+</section>
+<section id="id17">
+<h3><span class="section-number">2.2.9. </span>行列の固有値・固有ベクトル<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<p>行列の固有値および固有ベクトルは、<a class="reference external" href="https://ja.wikipedia.org/wiki/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90">主成分分析</a>のような多次元データの分析の他、様々なデータの性質を分析する上で欠かせない情報である。</p>
+<p>NumPyで行列の固有値ならびに固有ベクトルを求めるには<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eig</span></code>を用いれば良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
+<span class="n">eigval</span><span class="p">,</span> <span class="n">eigvec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigval</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eigvec</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 3. -1.]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.70710678 -0.70710678]
+ [ 0.70710678  0.70710678]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>なお、通常、固有値に加えて、固有ベクトルを求めるには追加の計算が必要になるため、固有値だけが必要になる場合には、より高速に動作する関数として<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvals</span></code>を使うのが良い。</p>
+<p>また、上記の例では、あえて実数が固有値、固有ベクトルとなるように実対称行列の固有値・固有ベクトルを求めたが、通常、対称行列、ないしHermite行列の固有値・固有ベクトルの計算は非対称、ないし非Hermite行列の固有値よりも計算が簡単である。そのため、固有値の計算を行いたい対称が対称行列やHermite行列であることが分かっている場合には<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigh</span></code>や<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvalsh</span></code>のように末尾に”h”のついている関数を使うと、より効率的である (とは言っても、効果を実感できるのは少なくとも1000x1000程度の行列からだろう)。</p>
+<div class="note admonition">
+<p class="admonition-title">固有値を求めるアルゴリズム</p>
+<p>固有値を求めるという問題は、実用的に非常に広い応用を持つため、固有値を求める対象の行列の性質 (対称行列か、密行列か、疎行列かetc.)に応じて、様々なアルゴリズムが提案されている。ここでは、比較的単純なアルゴリズムとしてJacobi法 (先ほどの線形問題を解く方法とは異なる)とQR法について紹介する。</p>
+<p><strong>Jacobi法</strong>は<strong>対称行列</strong>に対するアルゴリズムで、Givens回転と呼ばれる行列の一部要素だけを変換するような下記の行列 <span class="math notranslate nohighlight">\(\mathbf{G}\)</span> を用いる (値の入っていない箇所の要素は全て0)。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{G} = \begin{pmatrix}
+  1 &amp;        &amp;             &amp;        &amp;              &amp;        &amp;   \\
+    &amp; \ddots &amp;             &amp;        &amp;              &amp;        &amp;   \\
+    &amp;        &amp; \cos \theta &amp; \cdots &amp; -\sin \theta &amp;        &amp;   \\
+    &amp;        &amp; \vdots      &amp; \ddots &amp; \vdots       &amp;        &amp;   \\
+    &amp;        &amp; \sin \theta &amp; \cdots &amp;  \cos \theta &amp;        &amp;   \\
+    &amp;        &amp;             &amp;        &amp;              &amp; \ddots &amp;   \\
+    &amp;        &amp;             &amp;        &amp;              &amp;        &amp; 1 \\
+\end{pmatrix}
+\end{split}\]</div>
+<p>このとき、固有値を求めたい行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> の <span class="math notranslate nohighlight">\(i\)</span> 行 <span class="math notranslate nohighlight">\(j\)</span> 列の要素を <span class="math notranslate nohighlight">\(a_{ij}\)</span> と記すことにすると、上記のGivens回転の回転量 <span class="math notranslate nohighlight">\(\theta\)</span> を</p>
+<div class="math notranslate nohighlight">
+\[
+\tan 2\theta = \frac{-2a_{ij}}{a_{ii} - a_{jj}}
+\]</div>
+<p>となるように設定すると、</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A}' = \mathbf{G} \mathbf{A} \mathbf{G}^\top
+\]</div>
+<p>という変換を施すことで、 <span class="math notranslate nohighlight">\(a_{ij} = a_{ji}\)</span> の要素を0にすることができる。この操作を行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> の非対角成分のうち最も絶対値が大きい物が十分小さくなるまで繰り返すことで、固有値を対角行列とする行列 <span class="math notranslate nohighlight">\(\pmb{\Lambda}\)</span> へと <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> を変換することができる。</p>
+<p>また、Givens回転行列は直交行列であるため、元の行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> を <span class="math notranslate nohighlight">\(\pmb{\Lambda}\)</span> に変換する過程で用いた全てのGivens回転の積として得られる行列の各列が固有ベクトルとなる。</p>
+<p><strong>QR法</strong>はQR分解を用いて一般的な行列 (= 非対称行列でもよい)の固有値・固有ベクトルを求めるアルゴリズムで、対象の行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> が、QR分解によって <span class="math notranslate nohighlight">\(\mathbf{A} = \mathbf{QR}\)</span> (ただし、Qは直交行列、Rは上三角行列)と分解されるとすると、</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A}' = \mathbf{Q}^\top \mathbf{A} \mathbf{Q} = \mathbf{Q}^\top \mathbf{Q} \mathbf{RQ} = \mathbf{RQ}
+\]</div>
+<p>のように行列 <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> と <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>の順序を入れ替えるような操作を繰り返すと、 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> が徐々に固有値を対角成分に持つような対角行列 <span class="math notranslate nohighlight">\(\pmb{\Lambda}\)</span> に近づいていく。この際、QR分解の性質から行列 <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> は直交行列であるから、上記の変換の過程で得られる全ての直交行列 <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> の積を取ることで、固有ベクトルを各列に持つような直交行列を得ることができる。</p>
+</div>
+</section>
+</section>
+<section id="id18">
+<h2><span class="section-number">2.3. </span>練習問題<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>今回の講義で紹介したサンプルコードを踏まえて、正則行列に対する逆行列と、特異行列に対する疑似逆行列の違いと共通点について述べよ。</p></li>
+<li><p>逆行列を<code class="docutils literal notranslate"><span class="pre">numpy.linalg.inv</span></code>によって求めることで線形問題を解く方法と、<code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>を用いてLU分解により解を求める方法で計算精度がどの程度変化するかを確かめてみよ。なお、より結果を分かりやすくするために<code class="docutils literal notranslate"><span class="pre">numpy.random.random</span></code>を用いて100x100および100x1程度の大きめのサイズで <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> を作成し、精度については <span class="math notranslate nohighlight">\(\| \mathbf{A} \mathbf{x} - \mathbf{b} \|^2\)</span> の大きさを使って調べれば良い。</p></li>
+<li><p>前述のヤコビ法により、正しく線形問題が解ける(= <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>と解が一致)ことを調べよ。なお、ヤコビ法は優対角行列と呼ばれる対角成分が、各列の対角成分以外の成分の総和より大きい行列にしか用いることができないので、そのような行列を各自適当に設定すること。</p></li>
+<li><p>NumPyには多項方程式を解くための関数として<code class="docutils literal notranslate"><span class="pre">numpy.roots</span></code>という関数が用意されている (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.roots.html">参考</a>、特性方程式の係数は手計算で求めること)。この関数を用いて、以下の行列について、特性方程式を解くことで得られる固有値と、<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eig</span></code>を解くことで得られる固有値が一致することを調べよ。</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{A} = \begin{pmatrix}
+  1 &amp; 2 &amp; 3 \\
+  2 &amp; 2 &amp; 3 \\
+  3 &amp; 3 &amp; 3
+\end{pmatrix}
+\end{split}\]</div>
+<ol class="arabic simple" start="5">
+<li><p>上記の3x3行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> に対してJacobi法ならびにQR法を用いて正しく固有値が求まる (= <code class="docutils literal notranslate"><span class="pre">numpy.linalg.eig</span></code>と同じ結果が得られる)ことを確かめよ。</p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents/sec1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="setup-python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Python環境の設定</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="matplotlib.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Matplotlibの基本</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. NumPyの配列操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.1. 多次元配列を作る</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.2. 特殊な配列の初期化</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.3. 配列の情報</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.4. 配列要素へのアクセス</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.5. 配列の変形</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2. NumPyを用いた線形代数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.2.1. スカラに対する演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.2.2. 要素ごとの四則演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2.3. 各要素への関数適用</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.2.4. ベクトルの内積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2.5. ベクトルの外積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.2.6. 行列の転置</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.2.7. 逆行列・疑似逆行列</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.2.8. 線形方程式を解く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.2.9. 行列の固有値・固有ベクトル</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.3. 練習問題</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tatsuya Yatagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright CC BY-NC-SA 4.0, 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

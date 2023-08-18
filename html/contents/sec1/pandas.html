@@ -1,0 +1,2187 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Pandasの基本 &#8212; 機械学習発展 (実践)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/pandas';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="5. OpenCVの基本" href="opencv.html" />
+    <link rel="prev" title="3. Matplotlibの基本" href="matplotlib.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">機械学習発展 (実践)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup-python.html">1. Python環境の設定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">2. NumPyの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">5. OpenCVの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scikit-learn.html">6. scikit-learnによる機械分類の基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="figure-detection.html">7. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise-sudoku.html">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sec2/data-visualization.html">1. データ可視化と次元圧縮</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/feature-extraction.html">2. 特徴量抽出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/deep-learning.html">3. 深層学習による物体認識</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/exercise-ogura.html">4. 演習2 - 百人一首エージェントを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第3部 強化学習の基礎とリバーシエージェントの実装</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sec3/reinforcement-learning.html">1. 強化学習の基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/q-learning.html">2. Q学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/othello-agent.html">3. オセロAIの作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/deep-reinforcement-learning.html">4. 深層強化学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/exercise-othello.html">5. 演習3 - オセロエージェントを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/notation.html">1. 資料中の記号について</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/tatsy/1284-sds-ml-advanced/blob/master/contents/contents/sec1/pandas.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/contents/sec1/pandas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pandasの基本</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">4.1. DataFrameの操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1.1. 行と列の取り出し</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.2. 行と列の追加</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.1.3. 行と列の削除</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.1.4. 要素へのアクセス</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.2. 数値計算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.3. データの入出力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.4. グラフの作成</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas">
+<span id="id1"></span><h1><span class="section-number">4. </span>Pandasの基本<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h1>
+<p>Pandas (panel-data-sの略)は、Python向けのデータ分析ライブラリで、主にスプレッドシート状のデータを扱うことができる。Pandasでは以下に説明する<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を使って、データの操作やファイル入出力、グラフの作成等を行うことができる。</p>
+<section id="dataframe">
+<h2><span class="section-number">4.1. </span>DataFrameの操作<a class="headerlink" href="#dataframe" title="Permalink to this heading">#</a></h2>
+<p>Pandasの中核をなすデータ構造に<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>がある。DataFrameとは、スプレッドシート状のデータを扱うデータ構造で、Excelのように数値を縦横に配置したデータを作ることができる。</p>
+<a class="reference internal image-reference" href="https://pandas.pydata.org/docs/_images/01_table_dataframe.svg"><img alt="https://pandas.pydata.org/docs/_images/01_table_dataframe.svg" class="align-center" src="https://pandas.pydata.org/docs/_images/01_table_dataframe.svg" width="80%" /></a>
+<div align="center">
+<p>(Pandasの<a class="reference external" href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/01_table_oriented.html">チュートリアル</a>より引用)</p>
+</div><p>例えば、テストの点数を集計したようなデータを考えてみる。以下、三人の学生について、数学と英語の点数を集計した物である (性別と点数の間には特別な意味はない)。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Taro&quot;</span><span class="p">,</span> <span class="s2">&quot;Jiro&quot;</span><span class="p">,</span> <span class="s2">&quot;Hanako&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Math&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">85</span><span class="p">],</span>
+        <span class="s2">&quot;English&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     Name  Math  English
+0    Taro   100       85
+1    Jiro    90       90
+2  Hanako    85      100
+</pre></div>
+</div>
+</div>
+</div>
+<p>上記の通り、<code class="docutils literal notranslate"><span class="pre">print</span></code>で<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を出力すると、表のように整理された文字列が出力される。また、Jupyter環境であれば、単に<code class="docutils literal notranslate"><span class="pre">df</span></code>と書くか、IPythonモジュールの<code class="docutils literal notranslate"><span class="pre">display</span></code>を用いることでHTMLにより整形された表を出力することができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 単にdfと書く</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Taro</td>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jiro</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hanako</td>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># displayの使用</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Taro</td>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jiro</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hanako</td>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>なお、<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>においては、各行にデフォルトで数字のインデックスが振られるが、これ自体は必要なく、例えばNameの列で各行を代表させれ十分であることも多い。このような場合には、DataFrameに対して<code class="docutils literal notranslate"><span class="pre">index</span></code>を指定して初期化する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_label</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Math&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">85</span><span class="p">],</span>
+        <span class="s2">&quot;English&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Taro&quot;</span><span class="p">,</span> <span class="s2">&quot;Jiro&quot;</span><span class="p">,</span> <span class="s2">&quot;Hanako&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>Jiro</th>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">index</span></code>を指定しない場合は、<code class="docutils literal notranslate"><span class="pre">index</span></code>に当たる0, 1, 2, …がラベルであると見なされる。特に行お操作を行うときに、ラベルがインデックスなのか、その他の文字列等なのかを意識しておくことが大事になる。</p>
+</div>
+<section id="id2">
+<h3><span class="section-number">4.1.1. </span>行と列の取り出し<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Pandasでは行と列の意味合いが微妙に異なっており、それぞれを取り扱う場合に異なる操作が必要となる。</p>
+<p><strong>列の取り出し</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>の各列は<code class="docutils literal notranslate"><span class="pre">Series</span></code>という型で表わされていて、dfに各列のラベルを与えることで取り出すことができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;type is &quot;</span><span class="si">{:s}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">col</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>type is &quot;Series&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    100
+1     90
+2     85
+Name: Math, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、複数のラベルを指定して、以下のように複数列を一度に取り出すこともできる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cols</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Math&quot;</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">]]</span>
+<span class="n">cols</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>行の取り出し</strong></p>
+<p>一方で、行を取り出す場合には<code class="docutils literal notranslate"><span class="pre">loc</span></code>あるいは<code class="docutils literal notranslate"><span class="pre">iloc</span></code>を用いる。<code class="docutils literal notranslate"><span class="pre">loc</span></code>は各行にラベルがついている場合に使用し、<code class="docutils literal notranslate"><span class="pre">iloc</span></code>は単純に行のインデックスを指定して使用する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name       Taro
+Math        100
+English      85
+Name: 0, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_label</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Taro&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Math       100
+English     85
+Name: Taro, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">4.1.2. </span>行と列の追加<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p><strong>列の追加</strong></p>
+<p>列を追加する方法はいくつかあるが、行と列でできるだけ似た操作を使うのなら<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を辞書型のように扱って、データ列を代入する方法と<code class="docutils literal notranslate"><span class="pre">concat</span></code>を使う方法の2つがある。この2つなら辞書型として扱う方法の方が簡単で、行ラベルがインデックスなのか文字列等七日によって区別する必要がない。</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Math</th>
+      <th>English</th>
+      <th>Physics</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Taro</td>
+      <td>100</td>
+      <td>85</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jiro</td>
+      <td>90</td>
+      <td>90</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hanako</td>
+      <td>85</td>
+      <td>100</td>
+      <td>80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatを用いる方法 (行ラベルがインデックス)</span>
+<span class="n">new_col</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">80</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Physics&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">new_col</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Math</th>
+      <th>English</th>
+      <th>Physics</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Taro</td>
+      <td>100</td>
+      <td>85</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jiro</td>
+      <td>90</td>
+      <td>90</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hanako</td>
+      <td>85</td>
+      <td>100</td>
+      <td>80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">concat</span></code>を用いる場合、パラメータに<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>を指定する (初期値は<code class="docutils literal notranslate"><span class="pre">axis=0</span></code> (行)に対応するので、明示的に<code class="docutils literal notranslate"><span class="pre">axis=1</span></code> (列)を指定する)。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatを用いる方法 (行ラベルが文字列)</span>
+<span class="n">new_col</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s2">&quot;Taro&quot;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span> <span class="s2">&quot;Jiro&quot;</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span> <span class="s2">&quot;Hanako&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Physics&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_label</span><span class="p">,</span> <span class="n">new_col</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+      <th>Physics</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>100</td>
+      <td>85</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>Jiro</th>
+      <td>90</td>
+      <td>90</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>85</td>
+      <td>100</td>
+      <td>80</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>行の追加</strong></p>
+<p>行を追加する場合も、上記の列の追加と同様に<code class="docutils literal notranslate"><span class="pre">df.loc</span></code>を辞書型と考えてデータ列を代入する方法 (こちらの方がシンプル)と、<code class="docutils literal notranslate"><span class="pre">concat</span></code>を用いてデータ行を結合する方法の2つがある。</p>
+<p>行の場合は、行ラベルがインデックスなのか、文字列等なのかによって、書き方が異なる。特に、行を取り出す場合と異なり、<code class="docutils literal notranslate"><span class="pre">iloc</span></code>を用いるて行を追加することはできないので注意すること。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># locを用いる場合 (ラベルがインデックス)</span>
+<span class="n">df_copy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Kikue&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">df_copy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Taro</td>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jiro</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hanako</td>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Kikue</td>
+      <td>100</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># locを用いる (ラベルが文字列他)</span>
+<span class="n">df_copy</span> <span class="o">=</span> <span class="n">df_label</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Kikue&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="n">df_copy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>Jiro</th>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>Kikue</th>
+      <td>100</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">concat</span></code>を使って「行」を追加する場合には、一度、行を含む<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を作成して、それを<code class="docutils literal notranslate"><span class="pre">concat</span></code>で結合する必要がある。一行分のデータであれば、</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatを用いる (ラベルがインデックス)</span>
+<span class="n">new_row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Kikue&quot;</span><span class="p">,</span> <span class="s2">&quot;Math&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">new_row</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Taro</td>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jiro</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hanako</td>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Kikue</td>
+      <td>100</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># concatを用いる (ラベルが文字列)</span>
+<span class="n">new_row</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">({</span><span class="s2">&quot;Math&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Kikue&quot;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_label</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">new_row</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>Jiro</th>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>Kikue</th>
+      <td>100</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">4.1.3. </span>行と列の削除<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>行や列の削除には共通で<code class="docutils literal notranslate"><span class="pre">drop</span></code>を用いる。この関数の引数には<code class="docutils literal notranslate"><span class="pre">index=...</span></code>(行ラベルを指定)と<code class="docutils literal notranslate"><span class="pre">columns=...</span></code>(列ラベルを指定)という引数があり、これらを用いて削除すべき行や列を指定する。なお、<code class="docutils literal notranslate"><span class="pre">drop</span></code>は<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>自体を<strong>更新しない</strong>ので、もし<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>自体を更新したい場合には引数に<code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>を与える。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_copy</span> <span class="o">=</span> <span class="n">df_label</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Jiro&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_copy</span> <span class="o">=</span> <span class="n">df_label</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>Jiro</th>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>また、<code class="docutils literal notranslate"><span class="pre">labels=...</span></code>と<code class="docutils literal notranslate"><span class="pre">axis=...</span></code>を指定することで、行(<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>)と列(<code class="docutils literal notranslate"><span class="pre">axis=1</span></code>)の何番目かを指定して削除することもできる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_copy</span> <span class="o">=</span> <span class="n">df_label</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Taro&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 行を削除</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Jiro</th>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_copy</span> <span class="o">=</span> <span class="n">df_label</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 列を削除</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>Jiro</th>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id5">
+<h3><span class="section-number">4.1.4. </span>要素へのアクセス<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>要素へのアクセスには、これまでにも登場した<code class="docutils literal notranslate"><span class="pre">loc</span></code>や<code class="docutils literal notranslate"><span class="pre">iloc</span></code>を用いる。これらに行、列のラベルやインデックスを指定することで要素へのアクセスができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ラベルを用いてアクセスする場合</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_label</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Taro&quot;</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>85
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># インデックスを用いてアクセスする場合 (0行: Taro, 1列: English)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_label</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>85
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、要素のアクセス時は、通常の配列と同様に範囲を<code class="docutils literal notranslate"><span class="pre">:</span></code>を用いて指定することもできる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ラベルを用いて範囲指定</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_label</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Taro&quot;</span><span class="p">:</span><span class="s2">&quot;Hanako&quot;</span><span class="p">,</span> <span class="s2">&quot;Math&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Taro      100
+Jiro       90
+Hanako     85
+Name: Math, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># インデックスを用いて範囲指定</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_label</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Taro      100
+Jiro       90
+Hanako     85
+Name: Math, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>また、NumPyなどと同様に、取り出したいインデックスやラベルを配列としても指定できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ラベルを用いて指定</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_label</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;Taro&quot;</span><span class="p">,</span> <span class="s2">&quot;Jiro&quot;</span><span class="p">],</span> <span class="s2">&quot;Math&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Taro    100
+Jiro     90
+Name: Math, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># インデックスを用いて指定</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_label</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Taro    100
+Jiro     90
+Name: Math, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>当然ながら、これらのアクセス方法を用いれば、<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>の値を書き換えることもできる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_copy</span> <span class="o">=</span> <span class="n">df_label</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Taro&quot;</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Taroの全科目を100点に修正</span>
+<span class="n">df_copy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>100</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>Jiro</th>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">4.2. </span>数値計算<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>Pandasでは、<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>の各行や各列、データ全体に対して統計量を簡単に取ることができる。統計量には平均(<code class="docutils literal notranslate"><span class="pre">mean</span></code>)や標準偏差(<code class="docutils literal notranslate"><span class="pre">std</span></code>)などが用意されており、以下のように計算できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Taroの平均点を計算</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Taro&#39;s avg: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df_label</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Taro&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+<span class="c1"># Englishの平均点を計算</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;English avg: </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df_label</span><span class="p">[</span><span class="s2">&quot;English&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Taro&#39;s avg: 92.500
+English avg: 91.667
+</pre></div>
+</div>
+</div>
+</div>
+<p>これらを使うと、偏差値なども簡単に計算できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 数学の偏差値を計算</span>
+<span class="n">math_dev</span> <span class="o">=</span> <span class="mf">50.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="mf">10.0</span>
+<span class="n">math_dev</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Math dev.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math_dev</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    60.910895
+1    47.817821
+2    41.271284
+Name: Math dev., dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 英語の偏差値を計算</span>
+<span class="n">eng_dev</span> <span class="o">=</span> <span class="mf">50.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;English&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;English&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;English&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="mf">10.0</span>
+<span class="n">eng_dev</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Eng. dev.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eng_dev</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    41.271284
+1    47.817821
+2    60.910895
+Name: Eng. dev., dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>このようにして計算した結果を表に挿入することで、より多くの情報を含んだ<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を作り上げていくことができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_copy</span> <span class="o">=</span> <span class="n">df_label</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">math_dev</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">math_dev</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">eng_dev</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">eng_dev</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df_copy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+      <th>Math dev.</th>
+      <th>Eng. dev.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>100</td>
+      <td>85</td>
+      <td>60.910895</td>
+      <td>41.271284</td>
+    </tr>
+    <tr>
+      <th>Jiro</th>
+      <td>90</td>
+      <td>90</td>
+      <td>47.817821</td>
+      <td>47.817821</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>85</td>
+      <td>100</td>
+      <td>41.271284</td>
+      <td>60.910895</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>行や列の順序を入れ替えたい場合には<code class="docutils literal notranslate"><span class="pre">loc</span></code>や<code class="docutils literal notranslate"><span class="pre">iloc</span></code>に入れ替え後のラベルやインデックスの配列を指定すれば良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_copy</span> <span class="o">=</span> <span class="n">df_copy</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">,</span> <span class="s2">&quot;Math dev.&quot;</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">,</span> <span class="s2">&quot;Eng. dev.&quot;</span><span class="p">]]</span>
+<span class="n">df_copy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>Math dev.</th>
+      <th>English</th>
+      <th>Eng. dev.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>100</td>
+      <td>60.910895</td>
+      <td>85</td>
+      <td>41.271284</td>
+    </tr>
+    <tr>
+      <th>Jiro</th>
+      <td>90</td>
+      <td>47.817821</td>
+      <td>90</td>
+      <td>47.817821</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>85</td>
+      <td>41.271284</td>
+      <td>100</td>
+      <td>60.910895</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>最後にMathとEnglishのそれぞれについて平均点を追加してみる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math_avg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">eng_avg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Avg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">math_avg</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">,</span> <span class="n">eng_avg</span><span class="p">,</span> <span class="s2">&quot;N/A&quot;</span><span class="p">]</span>
+<span class="n">df_copy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>Math dev.</th>
+      <th>English</th>
+      <th>Eng. dev.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Taro</th>
+      <td>100.000000</td>
+      <td>60.910895</td>
+      <td>85.000000</td>
+      <td>41.271284</td>
+    </tr>
+    <tr>
+      <th>Jiro</th>
+      <td>90.000000</td>
+      <td>47.817821</td>
+      <td>90.000000</td>
+      <td>47.817821</td>
+    </tr>
+    <tr>
+      <th>Hanako</th>
+      <td>85.000000</td>
+      <td>41.271284</td>
+      <td>100.000000</td>
+      <td>60.910895</td>
+    </tr>
+    <tr>
+      <th>Avg</th>
+      <td>91.666667</td>
+      <td>N/A</td>
+      <td>91.666667</td>
+      <td>N/A</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id7">
+<h2><span class="section-number">4.3. </span>データの入出力<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p>次に、先ほど作成した<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>をファイルに出力してみよう。出力できるファイル形式は様々だが、CSVとExcel形式のファイルをここでは試してみる。</p>
+<p><strong>ファイルへの出力</strong></p>
+<p>CSVを出力する場合には<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>の<code class="docutils literal notranslate"><span class="pre">to_csv</span></code>を用いれば良く、第1引数に出力先のファイル名を指定する。加えて<strong>日本語を出力する場合には<code class="docutils literal notranslate"><span class="pre">encoding=&quot;utf_8_sig&quot;</span></code>あるいは<code class="docutils literal notranslate"><span class="pre">encoding=&quot;shift_jis&quot;</span></code>を指定</strong>しておく。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 最初の列の表記を変更</span>
+<span class="n">df_copy</span> <span class="o">=</span> <span class="n">df_label</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Taro&quot;</span><span class="p">:</span> <span class="s2">&quot;太郎&quot;</span><span class="p">,</span> <span class="s2">&quot;Jiro&quot;</span><span class="p">:</span> <span class="s2">&quot;次郎&quot;</span><span class="p">,</span> <span class="s2">&quot;Hanako&quot;</span><span class="p">:</span> <span class="s2">&quot;花子&quot;</span><span class="p">})</span>
+<span class="n">df_copy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>太郎</th>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>次郎</th>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>花子</th>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CSVに出力</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;pandas.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf_8_sig&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Excelファイルを出力する場合は、<code class="docutils literal notranslate"><span class="pre">to_excel</span></code>に対して、出力ファイル名を含むいくつかの引数を指定する。Excelの場合は、エンコーディングを指定する必要はない (指定できない)。なお、Excelファイルの操作を行う場合には、Pandas以外に<code class="docutils literal notranslate"><span class="pre">openpyxl</span></code>をインストールしておく必要がある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Excelファイルに出力</span>
+<span class="n">df_copy</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="s2">&quot;pandas.xlsx&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>正しく出力されると、Excel上で以下のように表の内容が確認できる。</p>
+<a class="reference internal image-reference" href="../../_images/pandas_to_excel.jpg"><img alt="../../_images/pandas_to_excel.jpg" class="align-center" src="../../_images/pandas_to_excel.jpg" style="width: 90%;" /></a>
+<p><strong>ファイルの読み取り</strong></p>
+<p>ファイルからの読み取りには<code class="docutils literal notranslate"><span class="pre">read_csv</span></code>や<code class="docutils literal notranslate"><span class="pre">read_exel</span></code>といった関数を代わりに用いる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;pandas.csv&quot;</span><span class="p">)</span>
+<span class="n">df_csv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>太郎</td>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>次郎</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>花子</td>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_excel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;pandas.xlsx&quot;</span><span class="p">)</span>
+<span class="n">df_excel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>太郎</td>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>次郎</td>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>花子</td>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>ただし、上記の例ではファイル保存時にindexが文字列となっているファイルを保存しているため、そのまま読み込むと、自動的にindexが数字となっている列が追加されてしまう。これを防ぐためにはindexに相当する列が何列目なのかを<code class="docutils literal notranslate"><span class="pre">index_col=...</span></code>で指定すれば良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;pandas.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_csv</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>太郎</th>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>次郎</th>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>花子</th>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_excel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s2">&quot;pandas.xlsx&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">df_excel</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Math</th>
+      <th>English</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>太郎</th>
+      <td>100</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>次郎</th>
+      <td>90</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>花子</th>
+      <td>85</td>
+      <td>100</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id8">
+<h2><span class="section-number">4.4. </span>グラフの作成<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>は<code class="docutils literal notranslate"><span class="pre">plot</span></code>というメンバを持ち、さらに<code class="docutils literal notranslate"><span class="pre">plot</span></code>に対してグラフの種類に対応するメソッドを呼び出すことで簡単にグラフを作成することができる。以下は棒グラフと散布図を作る例である。また、同様の出力は<code class="docutils literal notranslate"><span class="pre">plot</span></code>をメソッドとして呼び出して<code class="docutils literal notranslate"><span class="pre">kind</span></code>パラメータにグラフの種類を指定することでも実現できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 再度DataFrameを作成</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Taro&quot;</span><span class="p">,</span> <span class="s2">&quot;Jiro&quot;</span><span class="p">,</span> <span class="s2">&quot;Hanako&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Math&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">85</span><span class="p">],</span>
+        <span class="s2">&quot;English&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 棒グラフの作成</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2928d956684feda9f9b094c74659348323c9aef1af89a202e0681710d9240154.png" src="../../_images/2928d956684feda9f9b094c74659348323c9aef1af89a202e0681710d9240154.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot(..., kind=...)を使う場合</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2928d956684feda9f9b094c74659348323c9aef1af89a202e0681710d9240154.png" src="../../_images/2928d956684feda9f9b094c74659348323c9aef1af89a202e0681710d9240154.png" />
+</div>
+</div>
+<p>なお、グラフの見た目を調整したい場合には、<code class="docutils literal notranslate"><span class="pre">plt.title</span></code>等のメソッドを順次呼び出せば良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Math&quot;</span><span class="p">,</span> <span class="s2">&quot;English&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Exam scores&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Student&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Score&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e6355dd1df720644d2ba4e2b291cf3245c223e109c014df5312dd638688744ad.png" src="../../_images/e6355dd1df720644d2ba4e2b291cf3245c223e109c014df5312dd638688744ad.png" />
+</div>
+</div>
+<p>また、複数のグラフを並べたい場合には<code class="docutils literal notranslate"><span class="pre">plot</span></code>の<code class="docutils literal notranslate"><span class="pre">ax</span></code>パラメータに対してMatplotlibの<code class="docutils literal notranslate"><span class="pre">SubplotAxis</span></code>を指定すれば良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Math&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Math&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Name&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;English&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;English&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b903c7b2532bdfd0ab3da51d4d3d0b7151e070b1cbae8ea4e322b3600b2cc349.png" src="../../_images/b903c7b2532bdfd0ab3da51d4d3d0b7151e070b1cbae8ea4e322b3600b2cc349.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents/sec1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="matplotlib.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Matplotlibの基本</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="opencv.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>OpenCVの基本</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">4.1. DataFrameの操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1.1. 行と列の取り出し</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.2. 行と列の追加</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.1.3. 行と列の削除</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.1.4. 要素へのアクセス</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.2. 数値計算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.3. データの入出力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.4. グラフの作成</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tatsuya Yatagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright CC BY-NC-SA 4.0, 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

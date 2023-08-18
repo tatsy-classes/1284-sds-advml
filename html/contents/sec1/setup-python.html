@@ -1,0 +1,858 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1. Python環境の設定 &#8212; 機械学習発展 (実践)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/setup-python';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2. NumPyの基本" href="numpy.html" />
+    <link rel="prev" title="機械学習発展 (実践)" href="../../README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">機械学習発展 (実践)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Python環境の設定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">2. NumPyの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">5. OpenCVの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scikit-learn.html">6. scikit-learnによる機械分類の基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="figure-detection.html">7. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise-sudoku.html">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sec2/data-visualization.html">1. データ可視化と次元圧縮</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/feature-extraction.html">2. 特徴量抽出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/deep-learning.html">3. 深層学習による物体認識</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/exercise-ogura.html">4. 演習2 - 百人一首エージェントを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第3部 強化学習の基礎とリバーシエージェントの実装</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sec3/reinforcement-learning.html">1. 強化学習の基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/q-learning.html">2. Q学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/othello-agent.html">3. オセロAIの作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/deep-reinforcement-learning.html">4. 深層強化学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/exercise-othello.html">5. 演習3 - オセロエージェントを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/notation.html">1. 資料中の記号について</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/tatsy/1284-sds-ml-advanced/blob/master/contents/contents/sec1/setup-python.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/contents/sec1/setup-python.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Python環境の設定</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1. 仮想開発環境とパッケージ管理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anacondaminiconda">1.2. AnacondaとMiniconda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda">1.2.1. Minicondaの導入</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.2. パッケージのインストール・アンインストール</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.3. 仮想環境の作成・削除</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.4. 仮想環境の切り替え</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-yaml">1.2.5. environment.yamlの利用</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab">1.3. Jupyter Labの利用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.3.1. 覚えておくと便利なショートカット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3.2. ファイルのエクスポート</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="python">
+<span id="setup-python"></span><h1><span class="section-number">1. </span>Python環境の設定<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h1>
+<p>Pythonのプログラミング環境を整えるには、いくつかの方法があり、一口にどれが正解とは言いづらい。当然ながら、最も単純な方法はPythonをインタプリタを直接OSにインストールしてしまう方法になる。この場合、Pythonの公式ページからインストーラをダウンロードしてきて、インストーラの指示に従ってインストールをすることになる。</p>
+<p><strong>Pythonの公式ページ (英語):</strong> <a class="reference external" href="https://www.python.org/">https://www.python.org/</a></p>
+<p>また、MacやLinux (UbuntuやCentOS)等を使っていれば、特に上記のウェブページからインストールをしなくても、ターミナル環境から</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python
+</pre></div>
+</div>
+<p>と入力をすることで、Pythonのインタプリタが立ち上がる。すると、ターミナル上に、</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;
+</pre></div>
+</div>
+<p>のような、入力受付の記号が現れる。試しに、簡単な計算をしてみよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例1: 足し算</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例2: 平方根</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4142135623730951
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例3: 文字列の処理</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>  <span class="c1"># 小文字に変更</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>  <span class="c1"># 大文字に変更</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello, world!
+HELLO, WORLD!
+</pre></div>
+</div>
+</div>
+</div>
+<p>このように、Pythonのインタプリタ上では簡単な電卓のような機能を使うことができる。多少の使いづらさはあるものの、通常のプログラミング言語にある<strong>if文</strong>や<strong>for文</strong>なども実行できる。</p>
+<div class="note admonition">
+<p class="admonition-title">コンパイラとインタプリタ</p>
+<p>情報科学を体系的に勉強したことがあれば、それほど戸惑わないかもしれないが、ここではインタプリタとコンパイラの違いについて、少し述べておく。</p>
+<p><strong>コンパイラ</strong>というのは人間が理解できるプログラムのソースコードを機械語に翻訳して、コンピュータ上で実行できるようにするためのソフトウェアを指す。例えばC言語であれば、GNU GCCやLLVM Clangなどのコンパイラを用いて、ソースコードを機械語に翻訳する。C言語以外にも、JavaやC#, Go, Rustなどの言語がコンパイラを用いる言語で、これらの言語は一度機械語に翻訳してしまえば、コンピュータが機械語の内容を読み取って次々に処理を実行していくので、一般的に言って計算速度が速い、という特徴がある。</p>
+<p><strong>インタプリタ</strong>は、プログラムのソースコードを1行ずつ読み取って、機械語に変換する。こうすることで、ソースコードを完璧に作り込んでから実行する、という使用法に加え、プログラマがコードを入力しては結果を確認するというインタラクティブな使用が可能となり、簡単なプロトタイプのプログラムを作りたい場合などには、こちらの方が好まれることが多い。最近は、インタプリタを用いる言語 (Pythonの他、RubyやJavaScript)なども、様々な工夫によって実行速度が改善してきてはいるが、それでも、コンパイラを用いる言語と比べて、実行速度は劣る。</p>
+<p>それぞれの特徴を理解した上で使い分けることが重要だ。</p>
+</div>
+<section id="id1">
+<h2><span class="section-number">1.1. </span>仮想開発環境とパッケージ管理<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Pythonを単に使ってみたいというだけなら、OSに直接インタプリタをインストールしてしまうのが一番簡単だ。ただ、Python (に限らず他のプログラミング言語でも)には、いくつかのバージョンがあり、<strong>バージョンによって使えるライブラリが異なる</strong>ことがある。</p>
+<p>そんな時、Pythonの実行環境をOSに直接作ってしまうと、あるプロジェクトAで使うライブラリはPython 3.6で使えていたのに、別のプロジェクトBではPython 3.10でないと動かないライブラリを使いたい、というような状況が発生する。そんな時、Python 3.6が使える環境と、Python 3.10が使える環境を別々に用意することができれば便利だろう。</p>
+<p>このようにOSの上で、複数の異なるバーションのPythonを備えた開発環境を管理する仕組みを<strong>仮想開発環境</strong>と呼ぶ。Python用の仮想開発環境を作るソフトウェアは複数あり、代表的な物では、</p>
+<ul class="simple">
+<li><p>virtualenv: <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">https://virtualenv.pypa.io/en/latest/</a></p></li>
+<li><p>Anaconda (Miniconda): <a class="reference external" href="https://www.anaconda.com/products/distribution">https://www.anaconda.com/products/distribution</a></p></li>
+<li><p>Pipenv: <a class="reference external" href="https://pipenv.pypa.io/en/latest/">https://pipenv.pypa.io/en/latest/</a></p></li>
+<li><p>Poetry: <a class="reference external" href="https://python-poetry.org/">https://python-poetry.org/</a></p></li>
+</ul>
+<p>などがある。なお、この講義資料は<a class="reference external" href="https://python-poetry.org/">Poetry</a>を用いて環境構築を行っている。</p>
+<p>ここで注意しないといけないのは、上記の4つの中でvirtualenvは複数の異なるPythonのバージョンを管理するための仕組みであるのに対して、Anaconda, Pipenv, Poetryは仮想開発環境の管理とは別に<strong>パッケージ管理ツール</strong>としての役割も持っている。仮想開発環境とは別にして、Python向けのパッケージ管理ツールとして最も著名な物は<strong>Pip</strong>があるが、上記の4つの中ではPipenvとPoetryはvirtualenvによる仮想開発環境の管理とPipによるパッケージ管理を同時に行うソフトウェアである。</p>
+<p>2023年現在、多くの研究プロジェクトで使われており、またPyTorchやTensorFlowといった深層学習用のライブラリの導入を管理しやすいという理由から<strong>本講義では、Anaconda (Miniconda)を用いる</strong>。</p>
+</section>
+<section id="anacondaminiconda">
+<h2><span class="section-number">1.2. </span>AnacondaとMiniconda<a class="headerlink" href="#anacondaminiconda" title="Permalink to this heading">#</a></h2>
+<p>Anacondaは前述の通り、仮想環境とパッケージの管理を行うソフトウェアだが、類似したソフトウェアに<a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a>がある。</p>
+<p><strong>Anaconda</strong>はPythonのインタプリタの他に、科学技術計算等に一般的に用いられるNumPyをはじめとする大量のライブラリを一緒にインストールしてくれるという点で、<strong>自分で必要なライブラリをチェックしなくても、大体のプロジェクトにおいて使える</strong>という点では優れている。</p>
+<p>その一方で、Anacondaの仮想環境を一つ用意すると、それなりに<strong>ストレージ (HDDやSSDのこと)の容量を圧迫</strong>するため、自分で必要なライブラリのチェックができるようになってしまえば、Minicondaの方が使い勝手が良い。MinicondaはPython
+のインタプリタさえインストールしないことも可能 (だが、そういう使い方をすることは希)で、必要なライブラリと、そのライブラリと依存関係を持つライブラリだけを最小設定でインストールするため、ストレージの無駄遣いが防げる。</p>
+<p>特に、受講者は自分のノートPCで作業をしていることを想定すると、ストレージの容量はそれほど多くないだろうから、Minicondaの方が、その点からも好ましい。</p>
+<section id="miniconda">
+<h3><span class="section-number">1.2.1. </span>Minicondaの導入<a class="headerlink" href="#miniconda" title="Permalink to this heading">#</a></h3>
+<p>Minicondaを導入するには<a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>にアクセスし、自分のOSにあったインストーラをダウンロードしてくる。どのインストーラをダウンロードすれば良いか分からない場合は、以下のTipを参考にしてほしい。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Windowsを使っている場合は、よほど古いPCを使っていない限り「Windows 64bit」を選択すれば良い。macOSの場合は、最近のM1/M2 Macを使っている場合は「macOS Apple M1 64bit bash」を選ぶ。Linuxの場合には、通常のデスクトップPCであれば「Linux 64bit」を選べば良い。</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/miniconda_versions.jpg"><img alt="../../_images/miniconda_versions.jpg" class="align-center" src="../../_images/miniconda_versions.jpg" style="width: 75%;" /></a>
+<hr class="docutils" />
+<p><strong>Windows</strong>であれば、インストーラの指示に従っていくとダウンロードが完了するが、途中、以下の画面になったら、二番目の「Add Miniconda3 to my PATH environment variable」という項目にチェックを入れること。この項目にチェックを入れると、コマンドプロンプトやPowerShellから<code class="docutils literal notranslate"><span class="pre">conda</span></code>コマンドが使えるようになる。</p>
+<a class="reference internal image-reference" href="../../_images/windows_add_to_path.jpg"><img alt="../../_images/windows_add_to_path.jpg" class="align-center" src="../../_images/windows_add_to_path.jpg" style="width: 75%;" /></a>
+<p>インストールが完了したら、コマンドプロンプトないしPowerShellを起動し、以下のコマンドを実行する。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>init
+</pre></div>
+</div>
+<p>こうすることで、<code class="docutils literal notranslate"><span class="pre">conda</span></code>コマンドの各シェルソフトでの利用が可能になる。</p>
+<hr class="docutils" />
+<p><strong>Mac</strong>や<strong>Linux</strong>の場合はターミナル環境を立ち上げた後、インストールしてきた<code class="docutils literal notranslate"><span class="pre">*.sh</span></code>ファイルをBashで実行する。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># インストーラのパスは適宜読み替えること</span>
+bash<span class="w"> </span>~/Downloads/Miconda3-xxxx-xxxxx.sh
+</pre></div>
+</div>
+<p>インストール中、いくつかの質問がなされるが、特別な設定をしたい場合を除き、初期設定のままで問題ない。インストールが完了したら、自分が使っているシェルソフトウェアに合わせて、</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bashを使っている場合</span>
+conda<span class="w"> </span>init<span class="w"> </span>bash
+<span class="c1"># Zshを使っている場合</span>
+conda<span class="w"> </span>init<span class="w"> </span>zsh
+</pre></div>
+</div>
+<p>等を実行する。なお、自分が使っているシェルソフトが分からない場合には、</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="nv">$SHELL</span>
+</pre></div>
+</div>
+<p>とすると、何を使っているかを調べることができる (特に設定を変えていなければBashのはず)。</p>
+<div class="note admonition">
+<p class="admonition-title">シェル設定のすすめ</p>
+<p>自分でプログラムを書いて実行する場合など、シェルを使うと便利な場合が多い。一方で、シェルを便利に使いこなすには、各自で設定をする必要があり、初学者にはハードルが高いのも事実である。</p>
+<p>Windowsを使っている場合には、オープンソースの<a class="reference external" href="https://github.com/PowerShell/PowerShell">PowerShell</a>を使うと<a class="reference external" href="https://ohmyposh.dev/">Oh My Posh</a>というソフトを使うことで比較的簡単に設定ができる。</p>
+<p>MacやLinuxの場合には、BashやZshに対して<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>や<code class="docutils literal notranslate"><span class="pre">.zshrc</span></code>といった設定ファイルを書けば良いが、手っ取り早く初期設定がなされたシェルを使いたいのなら<a class="reference external" href="https://fishshell.com/">Fish</a>がおすすめだ。Fishはインストールした段階で、コマンドの補間等の最低限の機能が揃っているため、設定の敷居が低い。こちらも<a class="reference external" href="https://github.com/oh-my-fish/oh-my-fish">Oh My Fish</a>というソフトウェアを使うことで、もう少し気の利いた設定ができる。</p>
+<p>シェルの使いやすさは開発効率にも直結するので、ぜひ上記の設定にもトライしてみてほしい。</p>
+</div>
+</section>
+<section id="id2">
+<h3><span class="section-number">1.2.2. </span>パッケージのインストール・アンインストール<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Minicondaをインストールすると、最初から<code class="docutils literal notranslate"><span class="pre">base</span></code>という名前の仮想環境が用意されている。試しに、この環境にNumPyをインストールしてみよう。パッケージのインストールには<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code>コマンドを用いる。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>numpy
+</pre></div>
+</div>
+<p>すると、Minicondaがインストール済みのパッケージと、新しくインストールするパッケージの依存関係をチェックした後に、インストールをして良いかどうかを聞いてくるので「y」を入力してインストールを実行する。</p>
+<p>インストールが完了したら</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python
+</pre></div>
+</div>
+<p>でPythonのインタプリタを起動して、</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+</pre></div>
+</div>
+<p>としたときにエラーが起こらないことを確認する。また、現在インストールされているパッケージのリストは</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>list
+</pre></div>
+</div>
+<p>とすることで確認することができる。このリストの中にNumPyが含まれていることも確認しておこう。</p>
+<p>予め、パッケージが存在するかどうかを確認したい場合には<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">search</span></code>を使って</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">search</span> <span class="n">numpy</span>
+</pre></div>
+</div>
+<p>のようにすれば良い。</p>
+<p>また、Minicondaには<strong>チャネル</strong>という仕組みが用意されており、公式にインストールできるパッケージの他に、有志のユーザが作成したリポジトリからパッケージをインストールすることができる。例えばPyTorchをインストールするためには、<code class="docutils literal notranslate"><span class="pre">pytorch</span></code>という名前のチャネルを指定して、</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>pytorch<span class="w"> </span>pytorch
+</pre></div>
+</div>
+<p>のようにすれば良い。よく用いられるチャネルには<a class="reference external" href="https://conda-forge.org/">conda-forge</a>があり、ここには、公式には用意されていない多くのパッケージが登録されている。単なる<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code>で見つからないときには、conda-forgeから探してみると見つかることが多い。</p>
+<p>反対に、インストール済みのパッケージをアンインストールしたい場合には<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">uninstall</span></code>コマンドを用いる。試しに、今インストールしたNumPyをアンインストールしてみる。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>uninstall<span class="w"> </span>numpy
+</pre></div>
+</div>
+<p>アンインストールが完了すると <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span></code> がエラーになり、<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code>で表示されるリストからNumPyが消えるので確認してみてほしい。</p>
+<div class="warning admonition">
+<p class="admonition-title">conda-forge利用時の注意</p>
+<p>conda-forgeは大半のパッケージが見つかるという意味で大変便利なのだが、仮想環境の構築時に依存関係を解決するのにかかる時間が大幅に増大する。従って、特別 conda-forgeにしかないパッケージを入れる、という目的以外では、なるべくconda-forgeを使うことは避け、別途Pipなどを用いてパッケージをインストールする方が良い。</p>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">1.2.3. </span>仮想環境の作成・削除<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>Minicondaで新しく仮想環境を構築するには<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span></code>コマンドを用いる。仮想環境の名前を「advml」のようにする場合には、以下のようにコマンドを実行する。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>advml
+</pre></div>
+</div>
+<p>このように実行した場合には、Minicondaインストール時の<code class="docutils literal notranslate"><span class="pre">base</span></code>のPythonと同じバージョンのPythonインタプリタがインストールされる。インタプリタのバージョンを指定したい場合には</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>advml<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9
+</pre></div>
+</div>
+<p>のようにバージョンを指定することもできる。また、予めインストールするパッケージの一部が決まっている場合には、</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>advml<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.9<span class="w"> </span>numpy<span class="w"> </span>matplotlib
+</pre></div>
+</div>
+<p>のようにパッケージを指定することもできる。</p>
+<p>このようにして仮想環境が作成できたら<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code>で仮想環境のリストが確認できるので、そこに<code class="docutils literal notranslate"><span class="pre">advml</span></code>が含まれていることを確認しよう。</p>
+<p>また、すでにある仮想環境を削除したい場合には</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>remove<span class="w"> </span>-n<span class="w"> </span>advml
+</pre></div>
+</div>
+<p>を実行すれば良い。</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">1.2.4. </span>仮想環境の切り替え<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>一度環境が構築できたら、</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>advml
+</pre></div>
+</div>
+<p>とすることで、仮想環境が切り替わる。また、元の環境(<code class="docutils literal notranslate"><span class="pre">base</span></code>環境やOSに直接インストールされたPython)に戻りたい場合には</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
+</pre></div>
+</div>
+<p>を実行すれば良い。</p>
+</section>
+<section id="environment-yaml">
+<h3><span class="section-number">1.2.5. </span>environment.yamlの利用<a class="headerlink" href="#environment-yaml" title="Permalink to this heading">#</a></h3>
+<p>仮想環境を作る際、逐一、必要なパッケージを指定してインストールすると、別のPCに同じ環境を構築したいときに不便である。こんな時、Minicondaでは**environment.yaml`というファイルを利用して、仮想環境の設定をファイルを通じて行うことができる。</p>
+<p>一例として、</p>
+<ul class="simple">
+<li><p>名前: advml</p></li>
+<li><p>必要なパッケージ:</p>
+<ul>
+<li><p>NumPy</p></li>
+<li><p>Matplotlib</p></li>
+</ul>
+</li>
+</ul>
+<p>といった設定には、以下のようなYAMLファイルを作成すれば良い。</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">advml</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">numpy</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matplotlib</span>
+</pre></div>
+</div>
+<p>environment.yamlから仮想環境を作成するには<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span></code> (<code class="docutils literal notranslate"><span class="pre">env</span></code>が入ることに注意)に、以下のようにYAMLファイルを指定すれば良い。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yaml
+</pre></div>
+</div>
+<p>また <code class="docutils literal notranslate"><span class="pre">environment.yaml</span></code>に予め用意されている名前を上書きする形で、</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>myadvml<span class="w"> </span>-f<span class="w"> </span>environment.yaml
+</pre></div>
+</div>
+<p>とすることもできる。</p>
+<p>environment.yamlを使用する際、公式のパッケージが見つからない時には、チャネルを指定することもできる。この場合には、ファイルを以下のように書き換える。</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">advml</span>
+<span class="nt">channels</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">numpy</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matplotlib</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch</span>
+</pre></div>
+</div>
+<p>加えて、Minicondaのパッケージとは別にPipを用いてパッケージをインストールすることもでき、そのためには以下のように<code class="docutils literal notranslate"><span class="pre">-</span> <span class="pre">pip</span></code>セクションを追加する。</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">advml</span>
+<span class="nt">channels</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">numpy</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matplotlib</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytorch</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pip</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jupyterlab</span>
+</pre></div>
+</div>
+<p>なお、本講義で用いるパッケージを列挙した<a class="reference external" href="https://github.com/tatsy/1284-sds-ml-advanced/blob/master/environment.yaml">environment.yaml</a>は、講義のGitHubからダウンロードできるので、こちらを利用すると良い。</p>
+<p><a class="github reference external" href="https://github.com/tatsy/1284-sds-ml-advanced/blob/master/environment.yaml">tatsy/1284-sds-ml-advanced</a></p>
+</section>
+</section>
+<section id="jupyter-lab">
+<h2><span class="section-number">1.3. </span>Jupyter Labの利用<a class="headerlink" href="#jupyter-lab" title="Permalink to this heading">#</a></h2>
+<p>Jupyterとは、ウェブブラウザ上でインタラクティブにPythonを実行するための開発環境である。Jupyterには以前からある<strong>Jupyter Notebook</strong>の他に、より新しい<strong>Jupyter Lab</strong>があり、後者の方が機能が充実している。</p>
+<p>どちらも起動するには、ターミナルから起動コマンドを呼び出す。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Jupyter Notebookの場合</span>
+jupyter<span class="w"> </span>notebook
+<span class="c1"># Jupyter Labの場合</span>
+jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p>本資料では、利便性の関係からJupyter Labを使うことをおすすめする。Jupyter Labを立ち上げると、以下のような画面が表示される。</p>
+<a class="reference internal image-reference" href="../../_images/jupyterlab.jpg"><img alt="../../_images/jupyterlab.jpg" class="align-center" src="../../_images/jupyterlab.jpg" style="width: 80%;" /></a>
+<p>ここで、画面左上の「＋」ボタンを押すか、既存の<code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code>ファイルを左側にあるファイルエクスプローラからダブルクリックすると、コードの入力画面に切り替わる。</p>
+<a class="reference internal image-reference" href="../../_images/jupyter_notebook.jpg"><img alt="../../_images/jupyter_notebook.jpg" class="align-center" src="../../_images/jupyter_notebook.jpg" style="width: 90%;" /></a>
+<p>Jupyter環境では、標準でPythonとMarkdownが使えるほか、環境設定を行うことで<strong>R言語</strong>等も使うことができる(余談だが、JupyterとはJulia, Python, Rから来ている造語)。ここでは環境設定の方法は特に紹介しないが、興味のある読者は各自調べて見てほしい。</p>
+<section id="id5">
+<h3><span class="section-number">1.3.1. </span>覚えておくと便利なショートカット<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>Jupyter環境では、いくつかのショートカットキーが用意されており、逐一、セルをマウス等で選択することなく編集を進めるために、これらを覚えておくと良い。なお、現在、セルにコードを入力中なのか、セルが選択されているのかでショートカットキーの挙動が異なるので注意すること。</p>
+<p><strong>セルを選択中</strong></p>
+<ul class="simple">
+<li><p>新しいセルを上に作成: 「a」 (aboveのa)</p></li>
+<li><p>新しいセルを下に作成: 「b」 (below, bottomのb)</p></li>
+<li><p>選択中のセルを削除: 「d」を2回 (deleteのd)</p></li>
+<li><p>セルの入力モードに入る: 「Enter」</p></li>
+</ul>
+<p><strong>セルに入力中</strong></p>
+<ul class="simple">
+<li><p>コードの補間: 「Tab」 <strong>(絶対に覚える！)</strong></p></li>
+<li><p>セルの入力モードから抜ける: 「Esc」</p></li>
+<li><p>現在の箇所でセルを分割: 「Ctrl」+「Shift」+「-」 (推す順番も関係あり)</p></li>
+</ul>
+<p>この他、Jupyter Lab環境では、メニューの「File」や「Edit」等を開くと、右側に各操作のショートカットキーが書かれているので、こちらを参考にすると良い。</p>
+</section>
+<section id="id6">
+<h3><span class="section-number">1.3.2. </span>ファイルのエクスポート<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>Jupyter環境で作成した<code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code>ファイルはいくつかのファイル形式でエクスポートすることができる。例えば、現在のコードを通常のPythonスクリプトとして出力したり、HTMLやPDFとして出力することもできる。</p>
+<p>エクスポートのメニューは「File」→「Save and Export Notebook As…」にあるので、ここから、適宜、エクスポートしたいファイル形式を選ぶ。なお、PDFは<strong>LaTeX</strong>環境がインストールされていないと使えない他、日本語を上手く出力できないケースがある。</p>
+<p>PDFファイルのエクスポート時に日本語を使うためには、以下のようなテンプレートファイル (<code class="docutils literal notranslate"><span class="pre">jp_template.tpl</span></code>とする)を用意する。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>((=- Default to the notebook output style -=))
+((*- if not cell_style is defined -*))
+    ((* set cell_style = &#39;style_jupyter.tex.j2&#39; *))
+((*- endif -*))
+
+((=- Inherit from the specified cell style. -=))
+((* extends cell_style *))
+
+%===============================================================================
+% Latex Article
+%===============================================================================
+
+((*- block docclass -*))
+\documentclass[xelatex,ja=standard]{bxjsarticle}
+((*- endblock docclass -*))
+</pre></div>
+</div>
+<p>このファイルをJupyterのテンプレートが格納されているディレクトリに保存する。ディレクトリのパスを確認するには、</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>--paths
+</pre></div>
+</div>
+<p>を実行する。一例として、以下のような出力が得られる。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>config:
+    /Users/tatsuya/.jupyter
+    /Users/tatsuya/.local/etc/jupyter
+    /Users/tatsuya/miniconda3/envs/advml/etc/jupyter
+    /usr/local/etc/jupyter
+    /etc/jupyter
+data:
+    /Users/tatsuya/Library/Jupyter
+    /Users/tatsuya/.local/share/jupyter
+    /Users/tatsuya/miniconda3/envs/advml/share/jupyter
+    /usr/local/share/jupyter
+    /usr/share/jupyter
+runtime:
+    /Users/tatsuya/Library/Jupyter/runtime
+</pre></div>
+</div>
+<p>このリストの中でMiniconda3のパスの中にある<code class="docutils literal notranslate"><span class="pre">/.../miniconda3/envs/advml/share/jupyter</span></code>を開き、このディレクトリ内にある<code class="docutils literal notranslate"><span class="pre">nbconvert/templates/latex</span></code>を開き、上記の<code class="docutils literal notranslate"><span class="pre">jp_template.tpl</span></code>を保存する。</p>
+<p>上記の設定が完了したら、ターミナルから、以下のコマンドを直接実行する。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>--to<span class="w"> </span>pdf<span class="w"> </span>--template<span class="w"> </span><span class="s2">&quot;latex/jp_template.tpl&quot;</span><span class="w"> </span>notebook.ipynb
+</pre></div>
+</div>
+<p>すると、以下のように日本語が正しく表示されたPDFが作成できる。</p>
+<a class="reference internal image-reference" href="../../_images/jupyter_pdf.jpg"><img alt="../../_images/jupyter_pdf.jpg" class="align-center" src="../../_images/jupyter_pdf.jpg" style="width: 90%;" /></a>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents/sec1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">機械学習発展 (実践)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="numpy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>NumPyの基本</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1. 仮想開発環境とパッケージ管理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anacondaminiconda">1.2. AnacondaとMiniconda</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda">1.2.1. Minicondaの導入</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.2. パッケージのインストール・アンインストール</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.3. 仮想環境の作成・削除</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.4. 仮想環境の切り替え</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-yaml">1.2.5. environment.yamlの利用</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab">1.3. Jupyter Labの利用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.3.1. 覚えておくと便利なショートカット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3.2. ファイルのエクスポート</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tatsuya Yatagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright CC BY-NC-SA 4.0, 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

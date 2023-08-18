@@ -1,0 +1,2882 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>8. 演習1 - 画像入力式数独ソルバーを作る &#8212; 機械学習発展 (実践)</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/exercise-sudoku';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1. データ可視化と次元圧縮" href="../sec2/data-visualization.html" />
+    <link rel="prev" title="7. 図形の検出" href="figure-detection.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">機械学習発展 (実践)</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup-python.html">1. Python環境の設定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">2. NumPyの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">5. OpenCVの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scikit-learn.html">6. scikit-learnによる機械分類の基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="figure-detection.html">7. 図形の検出</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sec2/data-visualization.html">1. データ可視化と次元圧縮</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/feature-extraction.html">2. 特徴量抽出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/deep-learning.html">3. 深層学習による物体認識</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec2/exercise-ogura.html">4. 演習2 - 百人一首エージェントを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第3部 強化学習の基礎とリバーシエージェントの実装</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sec3/reinforcement-learning.html">1. 強化学習の基礎</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/q-learning.html">2. Q学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/othello-agent.html">3. オセロAIの作成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/deep-reinforcement-learning.html">4. 深層強化学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec3/exercise-othello.html">5. 演習3 - オセロエージェントを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendix/notation.html">1. 資料中の記号について</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/tatsy/1284-sds-ml-advanced/blob/master/contents/contents/sec1/exercise-sudoku.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/contents/sec1/exercise-sudoku.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>演習1 - 画像入力式数独ソルバーを作る</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.1. 数独を解く</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.1.1. 使用済みの数字を調べる</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.1.2. バックトラック法による解法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.1.3. 処理の効率化</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exact-cover">8.1.4. 発展: Exact Coverによる高速な解法</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.2. 演習: コンピュータ数独大会</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-sudoku">
+<span id="id1"></span><h1><span class="section-number">8. </span>演習1 - 画像入力式数独ソルバーを作る<a class="headerlink" href="#exercise-sudoku" title="Permalink to this heading">#</a></h1>
+<p>ご存知の通り、数独というのは9x9のマスの中に1-9の数字を一定のルールのもとで入れていくパズルである。このルールとはすなわち、</p>
+<ul class="simple">
+<li><p>同じ行に同じ数字が存在しない</p></li>
+<li><p>同じ列に同じ数字が存在しない</p></li>
+<li><p>3x3の9領域に同じ数字が存在しない</p></li>
+</ul>
+<p>の3つである。数独の解き方にはいろいろなやり方があり、</p>
+<ul class="simple">
+<li><p>バックトラック法</p></li>
+<li><p>整数計画問題として解く</p></li>
+<li><p>Exact Cover問題として解く</p></li>
+</ul>
+<p>等のやり方がある。9x9の問題であれば、最も単純なバックトラック法でも十分高速に解くことができる(一般的なパズル本の最難問ならPython実装でも1秒以下で解ける)。</p>
+<p>以下では、数独の問題を写真で撮って、その画像の中から問題を抜き出し、自動的に問題を解くプログラムを作成してみよう。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>「数独」という呼び名はパズル製作会社のニコリによって商標登録されている呼び名であり、別の呼び名として「ナンバープレイス」あるいは「ナンプレ」と呼ばれることもある。本資料では、一般的に最も浸透していると思われる呼び名である「数独」を用いる。</p>
+</div>
+<section id="id2">
+<h2><span class="section-number">8.1. </span>数独を解く<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>まずは数独の問題がテキストで与えられている場合について、解き方を見ていこう。</p>
+<p>今回は数独の問題が以下の形式のテキストとして与えられることとする。Pythonは複数行のテキストを以下のように定義することができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">-35-9--48</span>
+<span class="s2">--9--8--3</span>
+<span class="s2">-4-6-5--1</span>
+<span class="s2">----74---</span>
+<span class="s2">-2-----6-</span>
+<span class="s2">---15----</span>
+<span class="s2">8--9-2-7-</span>
+<span class="s2">9--5--2--</span>
+<span class="s2">61--4-53-</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>これを扱いやすくするためにNumPyの配列に直してみる。まずはテキストを行ごとの配列に変換する。各行は一般には改行文字である <code class="docutils literal notranslate"><span class="pre">\n</span></code>で区切られているが、実行する環境によっては、Windowsで<code class="docutils literal notranslate"><span class="pre">\r\n</span></code>、Macで<code class="docutils literal notranslate"><span class="pre">\r</span></code>など使われている文字が異なる可能性がある。</p>
+<p>そこで、以下では、正規表現を用いて、<code class="docutils literal notranslate"><span class="pre">\n</span></code>あるいは<code class="docutils literal notranslate"><span class="pre">\r</span></code>が1個あるいは2個並んでいる場所で改行することにする。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[\r\n]{1,2}&quot;</span><span class="p">,</span> <span class="n">problem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>ただし、このやり方だと空行が入る可能性があるので、以下のリスト内包表記を用いて取り除く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">problem</span> <span class="k">if</span> <span class="n">line</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;-35-9--48&#39;, &#39;--9--8--3&#39;, &#39;-4-6-5--1&#39;, &#39;----74---&#39;, &#39;-2-----6-&#39;, &#39;---15----&#39;, &#39;8--9-2-7-&#39;, &#39;9--5--2--&#39;, &#39;61--4-53-&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>するとproblemの長さは9となるはずだ。各行を文字ごとに分割するには、同じようにリスト内包表記を用いると簡単だ。以下は二重ループを用いたリスト内包表記の例だ。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">problem</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">line</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;-&#39;, &#39;3&#39;, &#39;5&#39;, &#39;-&#39;, &#39;9&#39;, &#39;-&#39;, &#39;-&#39;, &#39;4&#39;, &#39;8&#39;, &#39;-&#39;, &#39;-&#39;, &#39;9&#39;, &#39;-&#39;, &#39;-&#39;, &#39;8&#39;, &#39;-&#39;, &#39;-&#39;, &#39;3&#39;, &#39;-&#39;, &#39;4&#39;, &#39;-&#39;, &#39;6&#39;, &#39;-&#39;, &#39;5&#39;, &#39;-&#39;, &#39;-&#39;, &#39;1&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;7&#39;, &#39;4&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;2&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;6&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;1&#39;, &#39;5&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;-&#39;, &#39;8&#39;, &#39;-&#39;, &#39;-&#39;, &#39;9&#39;, &#39;-&#39;, &#39;2&#39;, &#39;-&#39;, &#39;7&#39;, &#39;-&#39;, &#39;9&#39;, &#39;-&#39;, &#39;-&#39;, &#39;5&#39;, &#39;-&#39;, &#39;-&#39;, &#39;2&#39;, &#39;-&#39;, &#39;-&#39;, &#39;6&#39;, &#39;1&#39;, &#39;-&#39;, &#39;-&#39;, &#39;4&#39;, &#39;-&#39;, &#39;5&#39;, &#39;3&#39;, &#39;-&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>すると今度はproblemが9x9=81個の要素を持つ一次元配列になる。現在、各数字は文字であり、数字ではないので、各文字を数字に置き換える。また、まだ埋まっていないセルを表す<code class="docutils literal notranslate"><span class="pre">-</span></code>は0に置き替える。以下のようにハッシュ(Pythonの用語ではdict)を使うと簡単に書ける。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;-&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">numbers</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;-&#39;: 0, &#39;1&#39;: 1, &#39;2&#39;: 2, &#39;3&#39;: 3, &#39;4&#39;: 4, &#39;5&#39;: 5, &#39;6&#39;: 6, &#39;7&#39;: 7, &#39;8&#39;: 8, &#39;9&#39;: 9}
+</pre></div>
+</div>
+</div>
+</div>
+<p>あとはこれを使って文字を数字に置き換える。ここでもリスト内包表記を用いて処理をして、その後、NumPyの配列に直しておく。ここまで一次元配列で作業をしてきたが、9x9の二次元配列の方が以後の作業がやりやすいので、配列の形も直しておく。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">numbers</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">problem</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;uint8&quot;</span><span class="p">)</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 3 5 0 9 0 0 4 8]
+ [0 0 9 0 0 8 0 0 3]
+ [0 4 0 6 0 5 0 0 1]
+ [0 0 0 0 7 4 0 0 0]
+ [0 2 0 0 0 0 0 6 0]
+ [0 0 0 1 5 0 0 0 0]
+ [8 0 0 9 0 2 0 7 0]
+ [9 0 0 5 0 0 2 0 0]
+ [6 1 0 0 4 0 5 3 0]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>とすると、先ほどまでの文字が数字に置き換わるはずだ。なお、ここまで繰り返しリスト内包表記も用いたが、これらをまとめて1行で書くこともできる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">-35-9--48</span>
+<span class="s2">--9--8--3</span>
+<span class="s2">-4-6-5--1</span>
+<span class="s2">----74---</span>
+<span class="s2">-2-----6-</span>
+<span class="s2">---15----</span>
+<span class="s2">8--9-2-7-</span>
+<span class="s2">9--5--2--</span>
+<span class="s2">61--4-53-</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">numbers</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;[</span><span class="se">\r\n</span><span class="s2">]{1,2}&quot;</span><span class="p">,</span> <span class="n">problem</span><span class="p">)</span> <span class="k">if</span> <span class="n">line</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">line</span><span class="p">],</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;uint8&quot;</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 3 5 0 9 0 0 4 8]
+ [0 0 9 0 0 8 0 0 3]
+ [0 4 0 6 0 5 0 0 1]
+ [0 0 0 0 7 4 0 0 0]
+ [0 2 0 0 0 0 0 6 0]
+ [0 0 0 1 5 0 0 0 0]
+ [8 0 0 9 0 2 0 7 0]
+ [9 0 0 5 0 0 2 0 0]
+ [6 1 0 0 4 0 5 3 0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">改行文字</p>
+<p>改行文字はOSによってデフォルトで使われているものが異なり、Windowsは<code class="docutils literal notranslate"><span class="pre">\r\n</span></code>、Macは<code class="docutils literal notranslate"><span class="pre">\r</span></code>、Linuxは<code class="docutils literal notranslate"><span class="pre">\n</span></code>が用いられている。これらの改行文字は<code class="docutils literal notranslate"><span class="pre">\r</span></code>がcarriage return (CR)と呼ばれ、<code class="docutils literal notranslate"><span class="pre">\n</span></code>がline feed (LF)と呼ばれることから、Windows、Mac、Linuxで用いられる改行をそれぞれCRLF、CR、LF改行とも呼ぶ。</p>
+<p>プログラミングにおいては、改行文字の違いが問題となることも多いので、LFに統一する、あるいはCRLFに統一する、など自分でルールを決めてエディタ(VSCodeなど)を設定しておくと良い。</p>
+</div>
+<section id="id3">
+<h3><span class="section-number">8.1.1. </span>使用済みの数字を調べる<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>問題が数字の配列として表せたところで、使用済みの数字を調べる方法を見ていく。今<code class="docutils literal notranslate"><span class="pre">i</span></code>行<code class="docutils literal notranslate"><span class="pre">j</span></code>列にある数字の候補にどの数字が残っているのかを調べたいとする。</p>
+<p>NumPyを用いると、<code class="docutils literal notranslate"><span class="pre">i</span></code>行目にある数字は<code class="docutils literal notranslate"><span class="pre">problem[i,</span> <span class="pre">:]</span></code>という配列で、<code class="docutils literal notranslate"><span class="pre">j</span></code>列目にある数字は<code class="docutils literal notranslate"><span class="pre">problem[:,</span> <span class="pre">j]</span></code>という配列で表せる。また3x3のブロックについては、ブロックの右上の座標が<code class="docutils literal notranslate"><span class="pre">(3</span> <span class="pre">*</span> <span class="pre">(i</span> <span class="pre">//</span> <span class="pre">3),</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">(j</span> <span class="pre">//</span> <span class="pre">3))</span></code>と表せることに注目すれば、以下でブロック内の数字が得られる。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">j</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">blk_nums</span> <span class="o">=</span> <span class="n">problem</span><span class="p">[</span><span class="n">k</span><span class="p">:</span><span class="n">k</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">l</span><span class="p">:</span><span class="n">l</span><span class="o">+</span><span class="mf">3.</span><span class="n">flatten</span><span class="p">()</span>  <span class="c1"># 一次元配列として取り出す</span>
+</pre></div>
+</div>
+<p>一例として1行1列の空マスに何が入るのかを調べて見る。行、列、ブロックに使われている数字は、それぞれ以下のようになっている。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row_nums</span> <span class="o">=</span> <span class="n">problem</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Row #1:&quot;</span><span class="p">,</span> <span class="n">row_nums</span><span class="p">)</span>
+<span class="n">col_nums</span> <span class="o">=</span> <span class="n">problem</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;    Col #1:&quot;</span><span class="p">,</span> <span class="n">col_nums</span><span class="p">)</span>
+<span class="n">blk_nums</span> <span class="o">=</span> <span class="n">problem</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Block #1-1:&quot;</span><span class="p">,</span> <span class="n">blk_nums</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Row #1: [0 3 5 0 9 0 0 4 8]
+    Col #1: [0 0 0 0 0 0 8 9 6]
+Block #1-1: [0 3 5 0 0 9 0 4 0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>まだ使える数字は1-9の数字の中で、これらの配列に現れていない数字である。配列中に数字があるかどうかは<code class="docutils literal notranslate"><span class="pre">in</span></code>を使うと調べられるので、リスト内包表記を使えば、未使用の数字が簡単に調べられる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">used_nums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">row_nums</span><span class="p">,</span> <span class="n">col_nums</span><span class="p">,</span> <span class="n">blk_nums</span><span class="p">])</span>
+<span class="n">unused_nums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">used_nums</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;uint8&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unused numbers:&quot;</span><span class="p">,</span> <span class="n">unused_nums</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unused numbers: [1 2 7]
+</pre></div>
+</div>
+</div>
+</div>
+<p>このように、<code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>の空マスに入りうる候補の数字は<code class="docutils literal notranslate"><span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">7}</span></code>の3つであることが分かる。</p>
+</section>
+<section id="id4">
+<h3><span class="section-number">8.1.2. </span>バックトラック法による解法<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>最初に、数独をコンピュータに解かせる最も単純な方法を考えてみよう。</p>
+<p>上記の使用済みの数字を調べる方法を少し変更すれば、各行、各列、各ブロックで数字が正しく1度だけ使われているかどうかを調べることができそうだ。とすれば、全ての空きマスに適当に数字を入れて、その結果が正しいかどうかを順に試せば良さそうに思える。</p>
+<p>ただ、これでは正しい解が見つかる確率が低すぎるため、計算に時間がかかりすぎる。各マスに入れられる数字の候補は9通りでマスが81マスあるので、最悪の場合には<span class="math notranslate nohighlight">\(9^{81} \approx 2.0 \times 10^{77}\)</span>個の候補について調べる必要がある。</p>
+<p>一方で、実際にはいくつかのマスにはすでに数字が入っており、上記のように何も考えずに全てのパターンを試すのは非常に効率が悪いことが分かる。そこで、可能な候補についてだけ、しらみ潰しに調べることを考える。これを実現するのがバックトラック法である。</p>
+<p>これでも効率がとても良いとは言えないが、実際には最初の方の数字がある程度決まると、後の方の数字は急速に候補が少なくなるため、実用的にはそれなりに高速に動作する。少なくとも9x9の問題であれば、十分に速い(16x16の問題になるとそうはいかない！)</p>
+<p>バックトラック法は<strong>深さ優先探索</strong>の一種で、数独の例で言えば、<strong>候補となる数字を仮に入れる操作をできる限り繰り返し、もし最後のマスまで数字が入れば成功、途中で数字が入れられなくなったら失敗</strong>として違う候補を試す、というものである。</p>
+<p>深さ優先探索の実装方法は<strong>再帰関数を使う方法</strong>とFILO (first in last out, 最初に入れたものが最後に取り出されるということ) <strong>データ構造 (一般にはスタックと呼ぶ) を用いる方法</strong>の2つがある。</p>
+<p>どちらの方法にも一長一短があるが、今回はスタックを用いる方法で実装を進める。</p>
+<p>バックトラック法による数独の解法の流れは次のようになる。</p>
+<ol class="arabic simple">
+<li><p><strong>初期化:</strong> スタックに入力の問題を追加</p></li>
+<li><p><strong>深さ優先探索:</strong></p>
+<ol class="arabic simple">
+<li><p>スタックに積まれた問題の途中経過を取り出す</p></li>
+<li><p>マスの中で、まだ空マスになっている最初のマスの候補を割り出す</p></li>
+<li><p>その空マスに各候補を入れたものをスタックに追加</p></li>
+<li><p>この際、もしマスが全て埋まっていたら、成功と見なし処理を終了</p></li>
+</ol>
+</li>
+</ol>
+<p>この部分の実装は演習課題とするが、上手く問題が解ければ、以下のような解答が得られるはずである。</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">problem</span><span class="p">):</span>
+    <span class="n">stk</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">stk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+    <span class="n">solution</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">stk</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">stk</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">range</span><span class="p">(</span><span class="n">P</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])):</span>
+            <span class="k">if</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">row_nums</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+                <span class="n">col_nums</span> <span class="o">=</span> <span class="n">P</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span>
+                <span class="n">k</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>
+                <span class="n">l</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">j</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>
+                <span class="n">blk_nums</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="n">k</span> <span class="p">:</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">3</span><span class="p">,</span> <span class="n">l</span> <span class="p">:</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+                <span class="n">used_nums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">row_nums</span><span class="p">,</span> <span class="n">col_nums</span><span class="p">,</span> <span class="n">blk_nums</span><span class="p">])</span>
+                <span class="n">unused_nums</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">used_nums</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">unused_nums</span><span class="p">:</span>
+                    <span class="n">new_P</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                    <span class="n">new_P</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
+                    <span class="n">stk</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_P</span><span class="p">)</span>
+
+                <span class="c1"># if the first empty cell is found, then,</span>
+                <span class="c1"># we don&#39;t need to see the following cells anymore.</span>
+                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+            <span class="n">solution</span> <span class="o">=</span> <span class="n">P</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">solution</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="k">def</span> <span class="nf">draw_frame</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">problem</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Sudoku solving animation&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">ims</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask</span> <span class="o">*</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">frame</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ims</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">ndenumerate</span><span class="p">(</span><span class="n">problem</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">z</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">txt</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">z</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+            <span class="n">frame</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">txt</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s2">&quot;minor&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s2">&quot;major&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">42</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>         <span class="k">break</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span> <span class="n">ani</span> <span class="o">=</span> <span class="n">ArtistAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">frames</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">42</span> <span class="n">html</span> <span class="o">=</span> <span class="n">display</span><span class="o">.</span><span class="n">HTML</span><span class="p">(</span><span class="n">ani</span><span class="o">.</span><span class="n">to_html5_video</span><span class="p">())</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/matplotlib/animation.py:1284,</span> in <span class="ni">Animation.to_html5_video</span><span class="nt">(self, embed_limit)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1281</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s2">&quot;temp.m4v&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1282</span> <span class="c1"># We create a writer manually so that we can get the</span>
+<span class="g g-Whitespace">   </span><span class="mi">1283</span> <span class="c1"># appropriate size for the tag</span>
+<span class="ne">-&gt; </span><span class="mi">1284</span> <span class="n">Writer</span> <span class="o">=</span> <span class="n">writers</span><span class="p">[</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.writer&#39;</span><span class="p">]]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1285</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">Writer</span><span class="p">(</span><span class="n">codec</span><span class="o">=</span><span class="s1">&#39;h264&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1286</span>                 <span class="n">bitrate</span><span class="o">=</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.bitrate&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1287</span>                 <span class="n">fps</span><span class="o">=</span><span class="mf">1000.</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">_interval</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1288</span> <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
+
+<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/matplotlib/animation.py:148,</span> in <span class="ni">MovieWriterRegistry.__getitem__</span><span class="nt">(self, name)</span>
+<span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_available</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">147</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registered</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">148</span> <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Requested MovieWriter (</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">) not available&quot;</span><span class="p">)</span>
+
+<span class="ne">RuntimeError</span>: Requested MovieWriter (ffmpeg) not available
+</pre></div>
+</div>
+<img alt="../../_images/80724e77bf4ff268f9e7715e80b6d7242305889e73cf725d8ecee2e1e6b9b4aa.png" src="../../_images/80724e77bf4ff268f9e7715e80b6d7242305889e73cf725d8ecee2e1e6b9b4aa.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution is:
+[[2 3 5 7 9 1 6 4 8]
+ [1 6 9 4 2 8 7 5 3]
+ [7 4 8 6 3 5 9 2 1]
+ [3 9 6 2 7 4 8 1 5]
+ [5 2 1 3 8 9 4 6 7]
+ [4 8 7 1 5 6 3 9 2]
+ [8 5 3 9 6 2 1 7 4]
+ [9 7 4 5 1 3 2 8 6]
+ [6 1 2 8 4 7 5 3 9]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time:
+22.7 ms +- 687 us per loop (mean +- std. dev. of 10 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p>上記は、素直にバックトラック法を実装した場合の実行時間であるが、一回の問題を解くのに平均22.7 msとなっており、十分高速であることが分かる</p>
+</div>
+</div>
+</section>
+<section id="id5">
+<h3><span class="section-number">8.1.3. </span>処理の効率化<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>上記の方法でも、最初に示した数独の問題であれば数十ミリ秒で解くことができる。だが、次の問題はどうだろう？</p>
+<p>参照: <a class="reference external" href="https://www.j-cast.com/premium/2018/10/19341452.html?p=all">https://www.j-cast.com/premium/2018/10/19341452.html?p=all</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">---------</span>
+<span class="s2">3--2-9--7</span>
+<span class="s2">94--1--82</span>
+<span class="s2">-5-6-2-3-</span>
+<span class="s2">--63-74--</span>
+<span class="s2">---------</span>
+<span class="s2">---------</span>
+<span class="s2">-82-3-59-</span>
+<span class="s2">1--9-4--6</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution is:
+[[5 2 1 7 6 8 3 4 9]
+ [3 6 8 2 4 9 1 5 7]
+ [9 4 7 5 1 3 6 8 2]
+ [4 5 9 6 8 2 7 3 1]
+ [8 1 6 3 9 7 4 2 5]
+ [2 7 3 4 5 1 9 6 8]
+ [6 9 4 8 7 5 2 1 3]
+ [7 8 2 1 3 6 5 9 4]
+ [1 3 5 9 2 4 8 7 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time:
+1.46 s +- 12.6 ms per loop (mean +- std. dev. of 10 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>この問題だと、上記の通り1秒以上は時間がかかるはずだ。</p>
+<p>実は、上記のコードは次の0のマスを探すまでの処理の効率が非常に悪い。0のマスは左上から右下に向かって探しているのだから、今新しく<code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j)</span></code>というマスに数字を入れたら<code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j+1)</span></code>以降の数字だけを調べれば良いのである。</p>
+<p>その他にも、バックトラック法を高速化するために、候補の数が少ないものから埋めていくなどの方法も考えられる。ぜひ、自分でプログラムを書いて試してみてほしい。確認用に難易度の異なる4問を示しておく。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># レベル1</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">-35-9--48</span>
+<span class="s2">--9--8--3</span>
+<span class="s2">-4-6-5--1</span>
+<span class="s2">----74---</span>
+<span class="s2">-2-----6-</span>
+<span class="s2">---15----</span>
+<span class="s2">8--9-2-7-</span>
+<span class="s2">9--5--2--</span>
+<span class="s2">61--4-53-</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># レベル2</span>
+<span class="c1"># https://si-coding.net/sudoku10.html</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">------1-4</span>
+<span class="s2">4---78---</span>
+<span class="s2">-3------2</span>
+<span class="s2">5--4-7-3-</span>
+<span class="s2">2------5-</span>
+<span class="s2">9---264--</span>
+<span class="s2">-27------</span>
+<span class="s2">--56----7</span>
+<span class="s2">-6--13---</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># レベル3</span>
+<span class="c1"># https://www.j-cast.com/premium/2018/10/19341452.html?p=all</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">---------</span>
+<span class="s2">3--2-9--7</span>
+<span class="s2">94--1--82</span>
+<span class="s2">-5-6-2-3-</span>
+<span class="s2">--63-74--</span>
+<span class="s2">---------</span>
+<span class="s2">---------</span>
+<span class="s2">-82-3-59-</span>
+<span class="s2">1--9-4--6</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 世界一難しい？</span>
+<span class="c1"># https://www.conceptispuzzles.com/ja/index.aspx?uri=info/article/424</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">8--------</span>
+<span class="s2">--36-----</span>
+<span class="s2">-7--9-2--</span>
+<span class="s2">-5---7---</span>
+<span class="s2">----457--</span>
+<span class="s2">---1---3-</span>
+<span class="s2">--1----68</span>
+<span class="s2">--85---1-</span>
+<span class="s2">-9----4--</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exact-cover">
+<h3><span class="section-number">8.1.4. </span>発展: Exact Coverによる高速な解法<a class="headerlink" href="#exact-cover" title="Permalink to this heading">#</a></h3>
+<p>バックトラック法よりも遙かに高速な解法として、数独の問題をExact Coverの問題として定式化する方法がある。</p>
+<p>Exact Cover問題とは、とある集合<span class="math notranslate nohighlight">\(\mathcal{S}\)</span>と、その部分集合<span class="math notranslate nohighlight">\(s_1, \ldots, s_n\)</span>がいくつか与えられた時に、以下の2つの条件を満たすように部分集合を選ぶ問題である。</p>
+<p><strong>条件1:</strong> 選ばれた部分集合<span class="math notranslate nohighlight">\(s_{i_1}, \ldots, s_{i_M}\)</span>の和集合が集合<span class="math notranslate nohighlight">\(\mathcal{S}\)</span>と同じになる</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{S} = \bigcap_{m=1}^M s_{i_m}\)</span></p></li>
+</ul>
+<p><strong>条件2:</strong> 選ばれた部分集合<span class="math notranslate nohighlight">\(s_{i_1}, \ldots, s_{i_M}\)</span>から任意の2つを選び出したとき、それらの積集合が空</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(s_{i_n} \cup s_{i_m} = \phi, \quad \forall n \neq m\)</span></p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Exact Coverの例</p>
+<p>一例として<span class="math notranslate nohighlight">\(\mathcal{S} = \{1, 2, 3, 4, 5\}\)</span>を考える。このとき、</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(s_1 = \{1, 2\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s_2 = \{2, 3\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s_3 = \{4, 5\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s_4 = \{ 3 \}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(s_5 = \{1, 3, 5\}\)</span></p></li>
+</ul>
+<p>であるなら、<span class="math notranslate nohighlight">\(s_1, s_3, s_4\)</span>の組み合わせは<span class="math notranslate nohighlight">\(\mathcal{S}\)</span>のExact Coverである。</p>
+</div>
+<hr class="docutils" />
+<p>Exact Coverにはいくつかの解法があり、Donald Knuthが提案したAlgorithm Xと呼ばれる解法が広く知られている。この解法には、通常、Dancing Linksという、二次元配列を上下左右に双方向連結リストで表現したようなデータ形式を用いる。Dancing Linksには、配列の行や列の消去が効率的に行えるが、やや実装の難易度が高い。</p>
+<p>今回はDancing Linksの代わりにPandasの<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を用いて、Exact CoverをAlgorithm Xによって解いてみる。まずは、単純な例として、上記の「Exact Coverの例」について、Algorithm Xでの解法を見てみる。</p>
+<p>このデータを表で表わすと以下のようになる。</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="c1"># DataFrameを作成し、データを0で初期化</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;s_1&quot;</span><span class="p">,</span> <span class="s2">&quot;s_2&quot;</span><span class="p">,</span> <span class="s2">&quot;s_3&quot;</span><span class="p">,</span> <span class="s2">&quot;s_4&quot;</span><span class="p">,</span> <span class="s2">&quot;s_5&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># 部分集合の情報を入力</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;s_1&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;s_2&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;s_3&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;s_4&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;s_5&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># 表の表示</span>
+<span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>s_1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>s_2</th>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>s_3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>s_4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>s_5</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>この表では、各部分集合について、値を持っている部分に1が、持っていない部分に0が入っている。Exact Coverが解くべき問題を表を用いて言い換えれば、「表の行のうちのいくつかを取り出して表を作ったときに、各列に必ず1つだけ1が存在する」ようにすること、となる。</p>
+<p>これを実現するために、Algorithm Xでは、各列を見たときに、最も1が少ない列に注目する。この表では、「4」の列が最も1の数が少ない列である。なお、この操作の時に最も1が少ない列がもつ1の数が0である (つまる列の要素が全て0の列が存在する)場合には、Exact Coverは不可能なので処理を終了する。</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_style</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">styles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">columns</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;background-color: pink; font-weight: bold;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">styles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">styles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+
+
+<span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">custom_style</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+#T_d60cd_row0_col3, #T_d60cd_row1_col3, #T_d60cd_row2_col3, #T_d60cd_row3_col3, #T_d60cd_row4_col3 {
+  background-color: pink;
+  font-weight: bold;
+}
+</style>
+<table id="T_d60cd">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_d60cd_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_d60cd_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_d60cd_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_d60cd_level0_col3" class="col_heading level0 col3" >4</th>
+      <th id="T_d60cd_level0_col4" class="col_heading level0 col4" >5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_d60cd_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_d60cd_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_d60cd_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_d60cd_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_d60cd_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_d60cd_row0_col4" class="data row0 col4" >0</td>
+    </tr>
+    <tr>
+      <th id="T_d60cd_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_d60cd_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_d60cd_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_d60cd_row1_col2" class="data row1 col2" >1</td>
+      <td id="T_d60cd_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_d60cd_row1_col4" class="data row1 col4" >0</td>
+    </tr>
+    <tr>
+      <th id="T_d60cd_level0_row2" class="row_heading level0 row2" >s_3</th>
+      <td id="T_d60cd_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_d60cd_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_d60cd_row2_col2" class="data row2 col2" >0</td>
+      <td id="T_d60cd_row2_col3" class="data row2 col3" >1</td>
+      <td id="T_d60cd_row2_col4" class="data row2 col4" >1</td>
+    </tr>
+    <tr>
+      <th id="T_d60cd_level0_row3" class="row_heading level0 row3" >s_4</th>
+      <td id="T_d60cd_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_d60cd_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_d60cd_row3_col2" class="data row3 col2" >1</td>
+      <td id="T_d60cd_row3_col3" class="data row3 col3" >0</td>
+      <td id="T_d60cd_row3_col4" class="data row3 col4" >0</td>
+    </tr>
+    <tr>
+      <th id="T_d60cd_level0_row4" class="row_heading level0 row4" >s_5</th>
+      <td id="T_d60cd_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_d60cd_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_d60cd_row4_col2" class="data row4 col2" >1</td>
+      <td id="T_d60cd_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_d60cd_row4_col4" class="data row4 col4" >1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>このとき、仮に複数の列が同じ数の1を持っていたとしても、その操作のうち任意の一つだけを選択すれば良く、<strong>それらを順々に処理する必要はない</strong>。なぜなら、仮にここでその列を選択しなかったとしても、以後の処理でExact Coverを実現するために、<strong>いずれ残りの列も選択される</strong>ためだ。</p>
+<p>今回は、1の数が一つだけの列は4列目だけなので、これを選んで処理を進める。選ばれた列に対して、値が1となっている「行」を順々に見ていく。今回は<strong>s_3</strong>の行だけが1を持っているので、この行を選択する。</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_style</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">styles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;s_3&quot;</span> <span class="ow">and</span> <span class="n">columns</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;background-color: plum; font-weight: bold;&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;s_3&quot;</span><span class="p">:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;background-color: powderblue; font-weight: bold;&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">columns</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;background-color: pink; font-weight: bold;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">styles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">styles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+
+
+<span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">custom_style</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+#T_3da26_row0_col3, #T_3da26_row1_col3, #T_3da26_row3_col3, #T_3da26_row4_col3 {
+  background-color: pink;
+  font-weight: bold;
+}
+#T_3da26_row2_col0, #T_3da26_row2_col1, #T_3da26_row2_col2, #T_3da26_row2_col4 {
+  background-color: powderblue;
+  font-weight: bold;
+}
+#T_3da26_row2_col3 {
+  background-color: plum;
+  font-weight: bold;
+}
+</style>
+<table id="T_3da26">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_3da26_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_3da26_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_3da26_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_3da26_level0_col3" class="col_heading level0 col3" >4</th>
+      <th id="T_3da26_level0_col4" class="col_heading level0 col4" >5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_3da26_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_3da26_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_3da26_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_3da26_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_3da26_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_3da26_row0_col4" class="data row0 col4" >0</td>
+    </tr>
+    <tr>
+      <th id="T_3da26_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_3da26_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_3da26_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_3da26_row1_col2" class="data row1 col2" >1</td>
+      <td id="T_3da26_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_3da26_row1_col4" class="data row1 col4" >0</td>
+    </tr>
+    <tr>
+      <th id="T_3da26_level0_row2" class="row_heading level0 row2" >s_3</th>
+      <td id="T_3da26_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_3da26_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_3da26_row2_col2" class="data row2 col2" >0</td>
+      <td id="T_3da26_row2_col3" class="data row2 col3" >1</td>
+      <td id="T_3da26_row2_col4" class="data row2 col4" >1</td>
+    </tr>
+    <tr>
+      <th id="T_3da26_level0_row3" class="row_heading level0 row3" >s_4</th>
+      <td id="T_3da26_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_3da26_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_3da26_row3_col2" class="data row3 col2" >1</td>
+      <td id="T_3da26_row3_col3" class="data row3 col3" >0</td>
+      <td id="T_3da26_row3_col4" class="data row3 col4" >0</td>
+    </tr>
+    <tr>
+      <th id="T_3da26_level0_row4" class="row_heading level0 row4" >s_5</th>
+      <td id="T_3da26_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_3da26_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_3da26_row4_col2" class="data row4 col2" >1</td>
+      <td id="T_3da26_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_3da26_row4_col4" class="data row4 col4" >1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>選択された行の要素のうち、1を持っている「列」に次は注目する。今回の例では、4, 5行目が1の値を持っている。これらの列で、1の要素を持っている「行」を洗い出す。すると、<strong>s_3</strong>, <strong>s_5</strong>の行が1の要素を4, 5列目の少なくともいずれかに1の値を持っている。</p>
+<p>今、<strong>s_3</strong>の行を選択したということは、それが満たす条件である<strong>4</strong>, <strong>5</strong>の列は不要であり、また同じ条件を満たす<strong>s_5</strong>はExact Coverを達成する上で選ばれてはいけないから、これらの行、列を削除して良いことが分かる。</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_style</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">styles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;s_3&quot;</span><span class="p">,</span> <span class="s2">&quot;s_5&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">columns</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;background-color: plum; font-weight: bold;&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;s_3&quot;</span><span class="p">,</span> <span class="s2">&quot;s_5&quot;</span><span class="p">]:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;background-color: powderblue; font-weight: bold;&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">columns</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;background-color: pink; font-weight: bold;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">styles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">styles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+
+
+<span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">custom_style</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+#T_f7bc1_row0_col3, #T_f7bc1_row0_col4, #T_f7bc1_row1_col3, #T_f7bc1_row1_col4, #T_f7bc1_row3_col3, #T_f7bc1_row3_col4 {
+  background-color: pink;
+  font-weight: bold;
+}
+#T_f7bc1_row2_col0, #T_f7bc1_row2_col1, #T_f7bc1_row2_col2, #T_f7bc1_row4_col0, #T_f7bc1_row4_col1, #T_f7bc1_row4_col2 {
+  background-color: powderblue;
+  font-weight: bold;
+}
+#T_f7bc1_row2_col3, #T_f7bc1_row2_col4, #T_f7bc1_row4_col3, #T_f7bc1_row4_col4 {
+  background-color: plum;
+  font-weight: bold;
+}
+</style>
+<table id="T_f7bc1">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_f7bc1_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_f7bc1_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_f7bc1_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_f7bc1_level0_col3" class="col_heading level0 col3" >4</th>
+      <th id="T_f7bc1_level0_col4" class="col_heading level0 col4" >5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_f7bc1_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_f7bc1_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_f7bc1_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_f7bc1_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_f7bc1_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_f7bc1_row0_col4" class="data row0 col4" >0</td>
+    </tr>
+    <tr>
+      <th id="T_f7bc1_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_f7bc1_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_f7bc1_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_f7bc1_row1_col2" class="data row1 col2" >1</td>
+      <td id="T_f7bc1_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_f7bc1_row1_col4" class="data row1 col4" >0</td>
+    </tr>
+    <tr>
+      <th id="T_f7bc1_level0_row2" class="row_heading level0 row2" >s_3</th>
+      <td id="T_f7bc1_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_f7bc1_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_f7bc1_row2_col2" class="data row2 col2" >0</td>
+      <td id="T_f7bc1_row2_col3" class="data row2 col3" >1</td>
+      <td id="T_f7bc1_row2_col4" class="data row2 col4" >1</td>
+    </tr>
+    <tr>
+      <th id="T_f7bc1_level0_row3" class="row_heading level0 row3" >s_4</th>
+      <td id="T_f7bc1_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_f7bc1_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_f7bc1_row3_col2" class="data row3 col2" >1</td>
+      <td id="T_f7bc1_row3_col3" class="data row3 col3" >0</td>
+      <td id="T_f7bc1_row3_col4" class="data row3 col4" >0</td>
+    </tr>
+    <tr>
+      <th id="T_f7bc1_level0_row4" class="row_heading level0 row4" >s_5</th>
+      <td id="T_f7bc1_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_f7bc1_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_f7bc1_row4_col2" class="data row4 col2" >1</td>
+      <td id="T_f7bc1_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_f7bc1_row4_col4" class="data row4 col4" >1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>ここまでの処理をまとめると、以下の手順になる。</p>
+<ol class="arabic simple">
+<li><p>各<strong>列</strong>が持つ1の数を数えて、最も少ない1を持つ列の中の1つ(<strong>列X</strong>とする)を選ぶ</p></li>
+<li><p>列Xの要素の中で1を持つ行を1つ(<strong>行A</strong>とする)を選ぶ</p></li>
+<li><p>行Aの中で1の要素を持つ列 (<strong>列x, 列y, …</strong> とする)を選ぶ</p></li>
+<li><p>列x, 列y, …の各列において、少なくとも一つの1を持つ行 (<strong>行a, 行b, …</strong> とする)を選ぶ</p></li>
+</ol>
+<p>選ばれた <strong>列x, 列y, …</strong> ならびに <strong>行a, 行b, …</strong> を元の表から削除すると、小さな表が得られる。上記の例を用いると、色がついていないセルだけが残り、以下のような表が得られる。</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;s_1&quot;</span><span class="p">,</span> <span class="s2">&quot;s_2&quot;</span><span class="p">,</span> <span class="s2">&quot;s_4&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<span class="n">new_df</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>s_1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>s_2</th>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>s_4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>このようにして、小さな表が得られたら、上記の手順1-4をこの表に対しても繰り返す。この表は、1列目が、最も少ない1を持つので、選ばれる <strong>列x, 列y, …</strong> ならびに <strong>行a, 行b, …</strong> に色をつけると以下のようになる。</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">custom_style</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">styles</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">columns</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;s_1&quot;</span><span class="p">,</span> <span class="s2">&quot;s_2&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">columns</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;background-color: plum; font-weight: bold;&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">index</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;s_1&quot;</span><span class="p">,</span> <span class="s2">&quot;s_2&quot;</span><span class="p">]:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;background-color: powderblue; font-weight: bold;&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">columns</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;background-color: pink; font-weight: bold;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">s</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">styles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">styles</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;object&quot;</span><span class="p">)</span>
+
+
+<span class="n">new_df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">custom_style</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+#T_bfc0c_row0_col0, #T_bfc0c_row0_col1, #T_bfc0c_row1_col0, #T_bfc0c_row1_col1 {
+  background-color: plum;
+  font-weight: bold;
+}
+#T_bfc0c_row0_col2, #T_bfc0c_row1_col2 {
+  background-color: powderblue;
+  font-weight: bold;
+}
+#T_bfc0c_row2_col0, #T_bfc0c_row2_col1 {
+  background-color: pink;
+  font-weight: bold;
+}
+</style>
+<table id="T_bfc0c">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_bfc0c_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_bfc0c_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_bfc0c_level0_col2" class="col_heading level0 col2" >3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_bfc0c_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_bfc0c_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_bfc0c_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_bfc0c_row0_col2" class="data row0 col2" >0</td>
+    </tr>
+    <tr>
+      <th id="T_bfc0c_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_bfc0c_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_bfc0c_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_bfc0c_row1_col2" class="data row1 col2" >1</td>
+    </tr>
+    <tr>
+      <th id="T_bfc0c_level0_row2" class="row_heading level0 row2" >s_4</th>
+      <td id="T_bfc0c_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_bfc0c_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_bfc0c_row2_col2" class="data row2 col2" >1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>ここで、再度選ばれた行、列を削除すると、次は、以下のような表が得られる。</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_df2</span> <span class="o">=</span> <span class="n">new_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;s_4&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]]</span>
+<span class="n">new_df2</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>s_4</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>このように表に対して、再度上記の操作を繰り返すと、<strong>表全体が選択されて、空の表になる</strong>ことが分かる (このとき、表の値が全て1であるとは限らないが、少なくとも1行は全ての列が1となる行が存在する)。このような空の表が現れたら処理を終了し、これまでに選択した列のインデックスの列を返すと、Exact Coverとなる部分集合の列が得られる。</p>
+<p>ここまでの処理で、手順2で選ばれた行を列挙すると、最初に<strong>s_3</strong>が、次に<strong>s_1</strong>が、そして最後に<strong>s_4</strong>が選ばれた。この三つの部分集合は元の集合<span class="math notranslate nohighlight">\(\mathcal{S}\)</span>のExact Coverとなっており、Algorithm Xにより問題が正しく解けていることが確認できた。</p>
+<p>なお、Pandasの<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を用いた実装は以下のようになる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Knuth&#39;s Algorithm X</span>
+<span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+    <span class="c1"># 使い勝手のためにNumPy配列に変換</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="c1"># 1の数が最小の行を探す</span>
+    <span class="n">sums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">sums</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sums</span><span class="p">[</span><span class="n">sc</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">sel_rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">m</span><span class="p">[:,</span> <span class="n">sc</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">sr</span> <span class="ow">in</span> <span class="n">sel_rows</span><span class="p">:</span>
+        <span class="n">mask_cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="n">sr</span><span class="p">,</span> <span class="p">:])[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">mask_rows</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">m</span><span class="p">[:,</span> <span class="n">c</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">mask_cols</span><span class="p">]</span>
+        <span class="n">mask_rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">mask_rows</span><span class="p">))</span>
+
+        <span class="n">new_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">mask_rows</span><span class="p">])</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">mask_cols</span><span class="p">])</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">new_df</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ret</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ret</span> <span class="o">+</span> <span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">sr</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solution</span> <span class="o">=</span> <span class="n">dfs</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">solution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The solution for exact cover is:&quot;</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">solution</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution not found!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The solution for exact cover is: [&#39;s_1&#39;, &#39;s_3&#39;, &#39;s_4&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>数独のExact Coverによる定式化</strong></p>
+<p>では、数独の問題をExact Coverの問題として定式化してみよう。これには、数独の問題を少し違った見方から捕らえる必要がある。</p>
+<p>まず、各セルに何らかの値が入った場合に何が起こるのかを考えてみる。とあるA行X列のセルAXに1が入ることは、</p>
+<ul class="simple">
+<li><p>セルAXには1-9のうち1が入るという<strong>操作</strong>がなされた</p></li>
+<li><p>セルAXに数字が入るという<strong>条件</strong>が満たされた</p></li>
+<li><p>A行目に1が入るという<strong>条件</strong>が満たされた</p></li>
+<li><p>X列目に1が入るという<strong>条件</strong>が満たされた</p></li>
+<li><p>セルAXが属するブロックに1が入るという<strong>条件</strong>が満たされた</p></li>
+</ul>
+<p>という操作とそれによって充足される条件を意味する。これを集合の表記で書くとすれば、</p>
+<div class="math notranslate nohighlight">
+\[
+s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{\text{1, Col-X}} c_{\text{1, Blk-N}} \}
+\]</div>
+<p>のようになり、<span class="math notranslate nohighlight">\(c_{\text{Fill,Row-A,Col-X}}\)</span>はA行X列に数字が入ることを、<span class="math notranslate nohighlight">\(c_{\text{1,Row-A}}\)</span>は行Aに1が入ることを、<span class="math notranslate nohighlight">\( c_{\text{1, Col-X}}\)</span>はX列に1が入ることを、<span class="math notranslate nohighlight">\(c_{\text{1, Blk-N}}\)</span>はブロックNに1が入ることをそれぞれ表わす。</p>
+<p>このように数独の問題を捕らえ直すと、セルに数字を入れるという操作は、とある条件の全体集合の部分集合になっていることが分かる。</p>
+<p>この際、操作の数は数字を入れるセルが9×9=81個あり、そこに1-9の9種類の数字が入りうるので、<strong>729個の操作があり得る</strong>ことが分かる。</p>
+<p>また、満たすべき条件としては、9×9個のセルに数字が入る (81通り)、9個の各行に1-9の数字が入る (9×9=81通り)、9個の各列に1-9の数字が入る (9x9=81通り)、9個のブロックに1-9の数字が入る(9×9=81通り)の合計<strong>324通りの条件がある</strong>ことが分かる。</p>
+<p>さらに、各条件は1つの操作によってしか満たされない (例: とある列に二つの2が入ることはあり得ない)ので、数独の問題が、729個ある操作からいくつか (実際には81個)を選んで、324個の条件をちょうど1度ずつ満たす問題、すなわち、Exact Coverの問題であることが分かる。</p>
+<p>以上の議論より、数独をExact Coverの問題として解くには729×324の大きさの表を作り、数字が既知のセルに対応する条件に1を入れる。この表に対してAlgorithm Xを適用すれば、必要な操作(=どのセルにどの数字を入れるか)を決定することができる。</p>
+<p>以下では、各セルに数字を入れる操作を<strong>R1C1#1</strong>のように表わすこととし、セルに数字が入るという条件を<strong>R1C1</strong>、行に数字が入るという条件を<strong>R1#1</strong>、列に数字が入るという条件を<strong>C1#1</strong>、ブロックに数字が入るという操作を<strong>B1#1</strong>のように表わすことにする。</p>
+<p>このルールに従うと、Algorithm Xで処理すべきPandasの<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>は以下のように作成できる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;R</span><span class="si">{:d}</span><span class="s2">C</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">cond1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;R</span><span class="si">{:d}</span><span class="s2">C</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">cond2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;R</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">cond3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">cond4</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;B</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">conds</span> <span class="o">=</span> <span class="n">cond1</span> <span class="o">+</span> <span class="n">cond2</span> <span class="o">+</span> <span class="n">cond3</span> <span class="o">+</span> <span class="n">cond4</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">conds</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;bool&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>R1C1</th>
+      <th>R1C2</th>
+      <th>R1C3</th>
+      <th>R1C4</th>
+      <th>R1C5</th>
+      <th>R1C6</th>
+      <th>R1C7</th>
+      <th>R1C8</th>
+      <th>R1C9</th>
+      <th>R2C1</th>
+      <th>...</th>
+      <th>B8#9</th>
+      <th>B9#1</th>
+      <th>B9#2</th>
+      <th>B9#3</th>
+      <th>B9#4</th>
+      <th>B9#5</th>
+      <th>B9#6</th>
+      <th>B9#7</th>
+      <th>B9#8</th>
+      <th>B9#9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>R1C1#1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>R9C9#5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C9#6</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C9#7</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C9#8</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C9#9</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>729 rows × 324 columns</p>
+</div></div></div>
+</div>
+<p>この表に対して、数独の問題が全て空マスの場合の条件を代入していく。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">(</span><span class="n">j</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">op</span> <span class="o">=</span> <span class="s2">&quot;R</span><span class="si">{:d}</span><span class="s2">C</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">cd1</span> <span class="o">=</span> <span class="s2">&quot;R</span><span class="si">{:d}</span><span class="s2">C</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+            <span class="n">cd2</span> <span class="o">=</span> <span class="s2">&quot;R</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">cd3</span> <span class="o">=</span> <span class="s2">&quot;C</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">cd4</span> <span class="o">=</span> <span class="s2">&quot;B</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">op</span><span class="p">,</span> <span class="p">[</span><span class="n">cd1</span><span class="p">,</span> <span class="n">cd2</span><span class="p">,</span> <span class="n">cd3</span><span class="p">,</span> <span class="n">cd4</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>R1C1</th>
+      <th>R1C2</th>
+      <th>R1C3</th>
+      <th>R1C4</th>
+      <th>R1C5</th>
+      <th>R1C6</th>
+      <th>R1C7</th>
+      <th>R1C8</th>
+      <th>R1C9</th>
+      <th>R2C1</th>
+      <th>...</th>
+      <th>B8#9</th>
+      <th>B9#1</th>
+      <th>B9#2</th>
+      <th>B9#3</th>
+      <th>B9#4</th>
+      <th>B9#5</th>
+      <th>B9#6</th>
+      <th>B9#7</th>
+      <th>B9#8</th>
+      <th>B9#9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>R1C1#1</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#2</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#3</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#4</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#5</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>R9C9#5</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C9#6</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C9#7</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C9#8</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C9#9</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>729 rows × 324 columns</p>
+</div></div></div>
+</div>
+<p>続いては、問題に既に入っている数字を元に表の操作と条件を書き換える。一例として、1行2列に3という数字が入っていたとする。この場合、1行2列に3以外の数字が入る、という条件、即ち<strong>R1C2#1</strong>や<strong>R1C2#8</strong>などは起こりえないので、これらを表の行から除去して良い。</p>
+<p>また、1行2列に3が入るということは、他の操作により1行目に3が入ったり、2列目に3が入ったりすることはない、ということを意味する。従って、同様の条件を満たす可能性のある操作、即ち<strong>R1C5#3</strong>や<strong>R4C2#3</strong>なども表から消去して良いことが分かる。</p>
+<p>今回は、先ほど1秒以上時間のかかった問題を例に、ルールに従って表を変形してみる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">---------</span>
+<span class="s2">3--2-9--7</span>
+<span class="s2">94--1--82</span>
+<span class="s2">-5-6-2-3-</span>
+<span class="s2">--63-74--</span>
+<span class="s2">---------</span>
+<span class="s2">---------</span>
+<span class="s2">-82-3-59-</span>
+<span class="s2">1--9-4--6</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">numbers</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[\r\n]{1,2}&quot;</span><span class="p">,</span> <span class="n">problem</span><span class="p">)</span> <span class="k">if</span> <span class="n">line</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">line</span><span class="p">],</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;uint8&quot;</span><span class="p">,</span>
+<span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 0 0 0 0 0 0 0 0]
+ [3 0 0 2 0 9 0 0 7]
+ [9 4 0 0 1 0 0 8 2]
+ [0 5 0 6 0 2 0 3 0]
+ [0 0 6 3 0 7 4 0 0]
+ [0 0 0 0 0 0 0 0 0]
+ [0 0 0 0 0 0 0 0 0]
+ [0 8 2 0 3 0 5 9 0]
+ [1 0 0 9 0 4 0 0 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">problem</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="p">(</span><span class="n">j</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="n">problem</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="n">del_op1</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;R</span><span class="si">{:d}</span><span class="s2">C</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">n_</span><span class="p">)</span> <span class="k">for</span> <span class="n">n_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="n">n_</span><span class="p">]</span>
+            <span class="n">del_op2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;R</span><span class="si">{:d}</span><span class="s2">C</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r_</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">r_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">r</span> <span class="o">!=</span> <span class="n">r_</span><span class="p">]</span>
+            <span class="n">del_op3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;R</span><span class="si">{:d}</span><span class="s2">C</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c_</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">c_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">c_</span><span class="p">]</span>
+            <span class="n">del_op4</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="s2">&quot;R</span><span class="si">{:d}</span><span class="s2">C</span><span class="si">{:d}</span><span class="s2">#</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r_</span><span class="p">,</span> <span class="n">c_</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">r_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">//</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">c_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span> <span class="o">//</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span> <span class="o">//</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">r</span> <span class="o">!=</span> <span class="n">r_</span> <span class="ow">or</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">c_</span>
+            <span class="p">]</span>
+
+            <span class="n">del_op</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">del_op1</span> <span class="o">+</span> <span class="n">del_op2</span> <span class="o">+</span> <span class="n">del_op3</span> <span class="o">+</span> <span class="n">del_op4</span><span class="p">))</span>
+            <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="nb">id</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">del_op</span> <span class="k">if</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">display</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>R1C1</th>
+      <th>R1C2</th>
+      <th>R1C3</th>
+      <th>R1C4</th>
+      <th>R1C5</th>
+      <th>R1C6</th>
+      <th>R1C7</th>
+      <th>R1C8</th>
+      <th>R1C9</th>
+      <th>R2C1</th>
+      <th>...</th>
+      <th>B8#9</th>
+      <th>B9#1</th>
+      <th>B9#2</th>
+      <th>B9#3</th>
+      <th>B9#4</th>
+      <th>B9#5</th>
+      <th>B9#6</th>
+      <th>B9#7</th>
+      <th>B9#8</th>
+      <th>B9#9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>R1C1#2</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#5</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#6</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#7</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R1C1#8</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>R9C7#7</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C7#8</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C8#2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C8#7</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>R9C9#6</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>226 rows × 324 columns</p>
+</div></div></div>
+</div>
+<p>この表を元にExact Cover問題の解法をDancing Links(と類似したデータ構造)を用いて実装すると、正しい答えが、バックトラック法よりも数段高速に求まる。以下、ソースコードは示さないが、実行結果と、その際の実行時間を示す。プログラミングに自信のある読者は、ぜひ前述の<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を使った例を参考に、より高速な実装に取り組んでほしい。</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="n">rows</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">ops</span><span class="p">)</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">cds</span><span class="p">)</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">exact_cover</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">answer</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">solution</span><span class="p">:</span>
+    <span class="n">pat</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;R([1-9]</span><span class="si">{1}</span><span class="s2">)C([1-9]</span><span class="si">{1}</span><span class="s2">)#([1-9]</span><span class="si">{1}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">pat</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mat</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">answer</span><span class="p">[</span><span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[5 2 1 7 6 8 3 4 9]
+ [3 6 8 2 4 9 1 5 7]
+ [9 4 7 5 1 3 6 8 2]
+ [4 5 9 6 8 2 7 3 1]
+ [8 1 6 3 9 7 4 2 5]
+ [2 7 3 4 5 1 9 6 8]
+ [6 9 4 8 7 5 2 1 3]
+ [7 8 2 1 3 6 5 9 4]
+ [1 3 5 9 2 4 8 7 6]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time:
+5.44 ms +- 150 us per loop (mean +- std. dev. of 10 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<p>すると先ほど1秒以上かかっていた問題が、<strong>たったの5.44 msで解けている</strong>ことが分かる。このように、数独の問題をExact Coverの問題と捉えることが、通常のバックトラック法よりも遙かに高速に問題を解けることが確認できた。</p>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">なぜ速く解けるのか？</p>
+<p>今紹介したExact Coverを解くAlgorithm Xでは、表の列の中で<strong>最も1の数が少ない列</strong>を選んでいる。この操作が何を意味するかを考えてみよう。</p>
+<p>表の列に1が入っている行というのは、その列に対応する操作を行うことで、列が表わす条件が満たされることを意味する。従って「最も1の数が少ない列」というのは「その列が表わす条件を満たすために選択しうる【セルへの数字の代入操作】の候補数が最も少ない」ということを意味する。</p>
+<p>Algorithm Xは、ある意味では深さ優先探索を用いたバックトラック法の一種と考えることができるが、このように候補の数が最も少ない物から順に処理することで、深さが下がるごとに急速に表のサイズが小さくなるため、処理の効率が良い。これがExact Coverによる定式化をAlgorithm Xで解くと高速に動作する理由である。</p>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">8.2. </span>演習: コンピュータ数独大会<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>ここまでの内容を利用して、写真から数独の問題を読み取り、答えを返すプログラムを作成してみよう。</p>
+<p>本番では、以下のレベル1-3の内容で10問ずつ画像を与える。レベル1が1点、レベル2が2点、レベル3が3点の合計60点のうち何点を取れるかを競う。各レベルの画像は以下のような性質を持つ。</p>
+<ul class="simple">
+<li><p><strong>レベル1:</strong> 問題が白い背景の上に写っている</p></li>
+<li><p><strong>レベル2:</strong> 問題が平面の上に写っているが、問題が斜めから撮影されている</p></li>
+<li><p><strong>レベル3:</strong> 問題が書籍のような湾曲した面に印刷されている</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p><strong>入力の形式</strong></p>
+<p>入力としては、NumPyの配列として<code class="docutils literal notranslate"><span class="pre">(H,</span> <span class="pre">W,</span> <span class="pre">3)</span></code>の大きさ(Hは画像の高さ、Wは画像の幅)のカラー画像。また、写真に写り込む問題には以下のような制約がある。</p>
+<ul class="simple">
+<li><p>画像中には「数独の問題」が1問だけ写っている</p></li>
+<li><p>問題以外に余計な物が写っている可能性はあるが、問題が2問以上写っていることはない</p></li>
+<li><p>問題は入力された画像の向きとおおよそ揃っており、問題が横を向いていたり、上下が逆であることはない</p></li>
+<li><p>問題中の数字は必ず何らかの印刷用フォントを使って書かれており、手書きであることはない</p></li>
+<li><p>画像中に映り込んでいる問題は必ず解が1つに定まる</p></li>
+</ul>
+<p><strong>出力の形式</strong></p>
+<p>数独の答えを表わす<code class="docutils literal notranslate"><span class="pre">(9,</span> <span class="pre">9)</span></code>の大きさを持つNumPyの配列。</p>
+<p><strong>プログラムの作成方法</strong></p>
+<p>これを入力とするような関数 <code class="docutils literal notranslate"><span class="pre">solve(image)</span></code> を作成し、テストサーバーにプログラムをアップロードすると、自動で点数が計算される。ただし、全体の実行時間が3秒を超えると、自動的にプログラムが終了し、0点であると見なされる。</p>
+<p><strong>プログラムの例 (スケルトン)</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+
+<span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+    <span class="n">gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2GRAY</span><span class="p">)</span>
+    <span class="c1"># 以下、数独の問題を解く処理</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">9</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>使用可能なライブラリ</strong></p>
+<p>今回の実行環境では、以下のライブラリが使用可能となっている (Pipを使ってインストールされる)。これ以外のライブラリは使用できないので注意すること。</p>
+<ul class="simple">
+<li><p>NumPy</p></li>
+<li><p>scikit-learn</p></li>
+<li><p>matplotlib</p></li>
+<li><p>pandas</p></li>
+<li><p>opencv-python</p></li>
+</ul>
+<p><strong>テスト方法</strong></p>
+<p>GitHub Classroomを使ってテストを行う。講義中で課題用のClassroomのURLを指示するので、そのURLをブラウザで開き、テンプレートレポジトリを自分のGitHubアカウントと紐付ける。以後、課題用のレポジトリにコードをpushする度にテストが走る。</p>
+<p>本講義では、実際の問題として与えている画像を公開することはしないが、どの程度の画像に対してプログラムが正しく動いているかは、Github Actionsのログを見ることで確認できる。</p>
+<div class="tips admonition">
+<p class="admonition-title">より高度な問題を解くためのヒント</p>
+<p>今回の演習では</p>
+<ul class="simple">
+<li><p>問題を画像から読み取る、</p></li>
+<li><p>読み取った問題から数独の解法を得る</p></li>
+</ul>
+<p>という二つのタスクを解く必要がある。</p>
+<p>問題の読み取りについては、 <a class="reference internal" href="figure-detection.html#sec-figure-detection"><span class="std std-ref">図形の検出</span></a> の項で学んだ内容を参考に、数独問題の枠を検出し、セルの中の数字を切り離した画像を81枚得るようにするのが良い。ただし、レベル3のように問題が湾曲している場合には、問題全体に対して射影変換を考えても、問題を平面化することが難しいので、セルごとに射影変換を考える必要があるだろう。また、最初から問題を平面化することを放棄して、画像中から「数字がどこにあるか」、「その数字が何か」を直接検出して、数独の問題を復元する方法もあるかもしれない。</p>
+<p>次に数独の問題を解く際のポイントだが、今回は画像から問題を読み取っているために、読み取った数字が間違っている可能性がある。そのような誤りを許容するように解法のプログラムを書くと良い。具体的には「解が存在しない問題」や「解が複数ある問題」を上手く取り扱う方法を検討したり、数字を読み取った時に間違いを起こしそうなもの(例えば1と7など)を入れ替えて問題を何度か解いてみる、などの工夫が考えられるだろう。当然ながら、このような工夫を行うためには、一回の解法にかかる時間はできる限り少ない方が良い。</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./contents/sec1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="figure-detection.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>図形の検出</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../sec2/data-visualization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>データ可視化と次元圧縮</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.1. 数独を解く</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.1.1. 使用済みの数字を調べる</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.1.2. バックトラック法による解法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.1.3. 処理の効率化</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exact-cover">8.1.4. 発展: Exact Coverによる高速な解法</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.2. 演習: コンピュータ数独大会</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tatsuya Yatagawa
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright CC BY-NC-SA 4.0, 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
