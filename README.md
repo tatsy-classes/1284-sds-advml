@@ -36,47 +36,44 @@
 - [OpenCVの基本](opencv)
 
 ### 第2回
-- [図形の検出](figure-detection)
+- [図形の検出](sec:figure-detection)
 - [scikit-learnによる機械分類の基本](scikit-learn)
 
 ### 第3回
-- [課題1 画像入力式数独ソルバーを作る](exercise-sudoku)
+- [演習1 画像入力式数独ソルバーを作る](exercise-sudoku)
 
 ### 第4回
-- [課題1 コンピュータ・数独大会](exercise-sudoku)
+- [演習1 コンピュータ・数独大会](exercise-sudoku)
 
 ### 第5回
-- [データ可視化と次元圧縮](data-visualization)
-- [特徴量抽出](feature-extraction)
-- 物体検出
+- [データ可視化と次元圧縮](sec:data-visualization)
+- [特徴量抽出](sec:feature-extraction)
 
 ### 第6回
-- 深層学習の基本
-- データの作成・データ拡張
+- [深層学習による物体認識](sec:deep-learning)
 
 ### 第7回
-- 課題2 準備
+- [演習2 百人一首エージェントを作る](sec:exercise-ogura)
 
 ### 第8回
-- 課題2 コンピュータ・百人一首大会
+- [演習2 コンピュータ・百人一首大会](sec:exercise-ogura)
 
 ### 第9回
-- 強化学習の基礎
-- 多腕バンディット問題
-- 倒立振子の制御
+- [強化学習の基礎](sec:reinforcement-learning)
+- [Q学習](sec:q-learning)
 
 ### 第10回
-- ゲームAI
-- AlphaGoのアルゴリズム
+- [基本のオセロAI](sec:othello-agent)
+- [深層強化学習](sec:deep-reinforcement-learning)
 
 ### 第11回
-- 課題3 準備
+- [演習3 オセロエージェントを作る](sec:exercise-othello)
 
 ### 第12回
-- 課題3 準備
+- [演習3 オセロエージェントを作る](sec:exercise-othello)
 
 ### 第13回
-- 課題3 コンピュータ・オセロ大会
+- [演習3 コンピュータ・オセロ大会](sec:exercise-othello)
 
 ## License
 

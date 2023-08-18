@@ -15,26 +15,19 @@ parts:
   - caption: 第2部 ひらがなOCRソフトと百人一首エージェントの実装
     numbered: True
     chapters:
-      - file: contents/sec2/setup-colab
       - file: contents/sec2/data-visualization
       - file: contents/sec2/feature-extraction
-      # - file: contents/sec2/cnn
-      # - file: contents/sec2/mnist-recog-dnn
-      # - file: contents/sec2/data-augmentation
-      # - file: contents/sec2/boxing-characters
-      - file: contents/sec2/exercise-ocr
+      - file: contents/sec2/deep-learning
+      - file: contents/sec2/exercise-ogura
   - caption: 第3部 強化学習の基礎とリバーシエージェントの実装
     numbered: True
     chapters:
-      - file: contents/sec3/01-history
-      - file: contents/sec3/02-reinforcement-learning
-      - file: contents/sec3/03-min-max-search
-      - file: contents/sec3/04-mc-tree-search
-      - file: contents/sec3/05-reversi-agent
-      - file: contents/sec3/06-exercise
+      - file: contents/sec3/reinforcement-learning
+      - file: contents/sec3/q-learning
+      - file: contents/sec3/othello-agent
+      - file: contents/sec3/deep-reinforcement-learning
+      - file: contents/sec3/exercise-othello
   - caption: Appendix
     numbered: True
     chapters:
-      - file: contents/appendix/check-python
       - file: contents/appendix/notation
-      - file: contents/appendix/references
