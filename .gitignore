@@ -2,6 +2,7 @@ __pycache__
 *.pyc
 *.pickle
 .ipynb_checkpoints
+.jupyter_cache
 
 poetry.lock
 

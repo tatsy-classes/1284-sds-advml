@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - dev
 
 jobs:
   deploy:
@@ -19,10 +20,18 @@ jobs:
         shell: bash
         run: git submodule update --init --recursive
 
+      - name: Cache Jupyter execution
+        uses: actions/cache@v3
+        with:
+          path: .jupyter_cache
+          key: ${{ matrix.os }}-jupyter-${{ hashFiles('**/*.ipynb') }}
+          restore-keys: |
+            ${{ matrix.os }}-jupyter-
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "16"
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -45,8 +54,9 @@ jobs:
         run: poetry run jb build --all .
 
       - name: Deploy
+        if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_build
+          publish_dir: ./_build/html/
           publish_branch: gh-pages
