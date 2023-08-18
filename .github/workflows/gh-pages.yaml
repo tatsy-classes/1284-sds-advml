@@ -26,12 +26,13 @@ jobs:
         shell: bash
         run: git submodule update --init --recursive
 
-      - uses: actions/setup-node@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: "14"
 
       - name: Setup Python
-        uses: actions/python@v4
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
 
