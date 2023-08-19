@@ -1109,7 +1109,9 @@ Message: Singular matrix
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- pinv(A) @ A
-[[0.2 0.4]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.2 0.4]
  [0.4 0.8]]
 
 - A @ pinv(A) @ A
@@ -1154,6 +1156,9 @@ Message: Singular matrix
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.  1.]
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <p>また、実用的には <span class="math notranslate nohighlight">\(\mathbf{Ax} = \mathbf{b}\)</span> という線形方程式で、 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> は変わらないけれども <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> が異なるような問題を繰り返し解きたい場合というのが多くある。このような場合<code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>は内部的には <span class="math notranslate nohighlight">\(O(N^3)\)</span> の計算量をかけて行列を<a class="reference external" href="https://ja.wikipedia.org/wiki/LU%E5%88%86%E8%A7%A3">LU分解</a>した後、分解によって得られた下三角行列と上三角行列に対して線形問題を解く。この際、三角行列を係数に持つ線形方程式を解くための計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> であることに注意してほしい。であるなら、何度も <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>の内部で同じ行列をLU分解する (しかも、その計算量が <span class="math notranslate nohighlight">\(O(N^3)\)</span> )のは非効率に感じられる。</p>
@@ -1184,9 +1189,6 @@ Message: Singular matrix
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.  1.]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1233,9 +1235,7 @@ Message: Singular matrix
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 3. -1.]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.70710678 -0.70710678]
+[[ 0.70710678 -0.70710678]
  [ 0.70710678  0.70710678]]
 </pre></div>
 </div>
