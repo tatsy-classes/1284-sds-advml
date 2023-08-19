@@ -19,10 +19,19 @@ jobs:
         shell: bash
         run: git submodule update --init --recursive
 
+      - name: Cache Jupyter execution
+        uses: actions/cache@v3
+        with:
+          # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.jupyter_cache
+          key: ${{ runner.os }}-jupyter-${{ hashFiles('**/*.ipynb') }}
+          restore-keys: |
+            ${{ runner.os }}-jupyter-
+
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "16"
 
       - name: Setup Python
         uses: actions/setup-python@v4
