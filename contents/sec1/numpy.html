@@ -1070,7 +1070,9 @@ newaxis (2, 1, 2)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Exception: LinAlgError
-Message: Singular matrix
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Message: Singular matrix
 </pre></div>
 </div>
 </div>
@@ -1200,6 +1202,9 @@ Message: Singular matrix
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-2.  2.]
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 <p>なお、上記のコードで<code class="docutils literal notranslate"><span class="pre">scipy.linalg.lu_factor</span></code>には2つの戻り値<code class="docutils literal notranslate"><span class="pre">lu</span></code>と、<code class="docutils literal notranslate"><span class="pre">piv</span></code>が帰ってくるが、通常、LU分解を上手く計算すると、上三角行列と下三角行列のうちのどちらかは対角成分が全て1になるようにできるので、その1となる対角成分を省略して1つの行列にまとめたものが<code class="docutils literal notranslate"><span class="pre">lu</span></code>である。</p>
@@ -1230,7 +1235,9 @@ Message: Singular matrix
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 3. -1.]
-[[ 0.70710678 -0.70710678]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.70710678 -0.70710678]
  [ 0.70710678  0.70710678]]
 </pre></div>
 </div>
