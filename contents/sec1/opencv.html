@@ -133,7 +133,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../../README.html">
+<a class="navbar-brand logo" href="../../index.html">
   
   
   
@@ -399,12 +399,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
 
-<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../Images/sunflower.jpg&quot;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ WARN:0@0.011] global loadsave.cpp:248 findDecoder imread_(&#39;../../Images/sunflower.jpg&#39;): can&#39;t open/read file: check file path/integrity
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/sunflower.jpg&quot;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -414,17 +409,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Failed to load image!&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">Exception</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Failed to load image!&quot;</span><span class="p">)</span>
-
-<span class="ne">Exception</span>: Failed to load image!
 </pre></div>
 </div>
 </div>
@@ -762,6 +746,9 @@ M_3 = \begin{pmatrix}
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="../../_images/bc0b9cf512824a7f02636e39b1c741b7e8f6139d1166b7abc3efae0f5dc35d55.png" src="../../_images/bc0b9cf512824a7f02636e39b1c741b7e8f6139d1166b7abc3efae0f5dc35d55.png" />
+</div>
 </div>
 <p>また、最後に <code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code> を用いる方法についてだが、こちらは、X軸対称、Y軸対称、X-Y両軸対称の反転を意味する行列 <span class="math notranslate nohighlight">\(M_1\)</span>、<span class="math notranslate nohighlight">\(M_2\)</span>、<span class="math notranslate nohighlight">\(M_3\)</span> がそれぞれ</p>
 <div class="math notranslate nohighlight">
@@ -825,6 +812,9 @@ M_3= \begin{pmatrix}
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<img alt="../../_images/fbd96752c9f78d006f0c9b08a9bbb3647659262673a6ef3f36befebba685e564.png" src="../../_images/fbd96752c9f78d006f0c9b08a9bbb3647659262673a6ef3f36befebba685e564.png" />
+</div>
 </div>
 </section>
 </section>
