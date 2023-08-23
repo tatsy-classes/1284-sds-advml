@@ -46,6 +46,7 @@ jupyterlab-widgets = "^3.0.8"
 nodejs = "^0.1.1"
 lxml = "^4.9.3"
 docutils = "0.17.1"
+ffmpeg = "^1.4"
 
 [[tool.poetry.source]]
 name = "PyPI"
