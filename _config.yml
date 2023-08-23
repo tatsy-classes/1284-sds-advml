@@ -23,6 +23,7 @@ execute:
   execute_notebooks: cache
   cache: ./.jupyter_cache
   timeout: 180
+  allow_errors: false
 
 # HTML-specific settings
 html:
