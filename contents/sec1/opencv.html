@@ -350,14 +350,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 画像の読み書き</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.2.1. 画像の拡大・縮小</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2.2. 画像の回転</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2.3. 画像の反転</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1. 画像の読み書き</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2.1. 画像の拡大・縮小</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.2.2. 画像の回転</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2.3. 画像の反転</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.3. 画像フィルタ</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.3. 画像フィルタ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">5.3.1. エッジ抽出フィルタ</a></li>
 </ul>
 </li>
@@ -373,10 +373,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="opencv">
-<span id="id1"></span><h1><span class="section-number">5. </span>OpenCVの基本<a class="headerlink" href="#opencv" title="Permalink to this heading">#</a></h1>
+<span id="sec-opencv"></span><h1><span class="section-number">5. </span>OpenCVの基本<a class="headerlink" href="#opencv" title="Permalink to this heading">#</a></h1>
 <p>OpenCVとは元々Intel社が1999年から開発を開始した画像処理およびコンピュータビジョン用のライブラリでバージョン1.0が2006年に公開された当初はC言語で書かれていた。その後、開発が進められ、現在の最新バージョンである4.x系はPythonを含む非常に多くの言語でラッパーが公開されている。OpenCVで行える計算は画像の読み書きや、単純な画像フィルタの他、画像からの三次元復元や機械学習など幅広いが、ここでは基本的な機能に絞って解説する。</p>
-<section id="id2">
-<h2><span class="section-number">5.1. </span>画像の読み書き<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2><span class="section-number">5.1. </span>画像の読み書き<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>まずは講義の<a class="reference external" href="https://github.com/tatsy/sds-1284-ml/tree/master/Images">GitHub</a>にアクセスして、3枚ある画像から好きなものを一つダウンロードしよう。その画像 (以下は<code class="docutils literal notranslate"><span class="pre">sunflower.jpg</span></code>とする)をIPythonを起動しているディレクトリと同じディレクトリに配置して、画像を読み込んでみよう。</p>
 <p>なお、IPythonでどこのディレクトリを開いているか分からなくなった場合には、</p>
 <div class="cell docutils container">
@@ -469,10 +469,10 @@ document.write(`
 <p>デジタル画像の保存にRGB形式が広く用いられる一方で、実際の応用に画像(や動画)を用いる際には、別の表色系が好まれることがある。例えば、テレビ映像を伝送する際には、帯域を削減する目的でYUVやYCbCrといった異なる表色が用いられる。また、プリンタに対して色情報を送るときには加法混色に従うRGB表色系ではなく、プリンタのインクが従う減法混色系の一種であるCMYK表色系 (C=シアン、M=マゼンタ、Y=イエロー、K=キープレート=黒)が用いられるのが一般的である。</p>
 </div>
 </section>
+<section id="id2">
+<h2><span class="section-number">5.2. </span>画像に対する幾何学的操作<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <section id="id3">
-<h2><span class="section-number">5.2. </span>画像に対する幾何学的操作<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
-<section id="id4">
-<h3><span class="section-number">5.2.1. </span>画像の拡大・縮小<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.2.1. </span>画像の拡大・縮小<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>画像の拡大・縮小には<code class="docutils literal notranslate"><span class="pre">cv2.resize</span></code>関数を使う。この関数は</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -544,8 +544,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="id5">
-<h3><span class="section-number">5.2.2. </span>画像の回転<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id4">
+<h3><span class="section-number">5.2.2. </span>画像の回転<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>画像を回転される方法は90度刻みでの回転に使える<code class="docutils literal notranslate"><span class="pre">cv2.rotate</span></code>と、より細かな回転(+幾何的な変形)に対応できる<code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code>を使う方法の二通りがある。</p>
 <p>まず<code class="docutils literal notranslate"><span class="pre">cv2.rotate</span></code>を使う場合だが、この関数は第一引数に回転させる画像を、第2引数に回転の量を表わすフラグとして以下のいずれかを取る。</p>
 <ul class="simple">
@@ -658,8 +658,8 @@ M_3 = \begin{pmatrix}
 </div>
 </div>
 </section>
-<section id="id6">
-<h3><span class="section-number">5.2.3. </span>画像の反転<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h3><span class="section-number">5.2.3. </span>画像の反転<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>画像の反転を行う方法にも <code class="docutils literal notranslate"><span class="pre">cv2.flip</span></code> を用いる方法と <code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code> を用いる方法の二種類がある。それぞれ見ていこう。</p>
 <p><code class="docutils literal notranslate"><span class="pre">cv2.flip</span></code>を用いる場合は、第1引数に画像を、第2引数に反転の種類を表わす数字を入力する。この数字(<code class="docutils literal notranslate"><span class="pre">flipcode</span></code>)は0、正、負の三種類で挙動が変わるようになっており、</p>
 <ul class="simple">
@@ -818,8 +818,8 @@ M_3= \begin{pmatrix}
 </div>
 </section>
 </section>
-<section id="id7">
-<h2><span class="section-number">5.3. </span>画像フィルタ<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h2><span class="section-number">5.3. </span>画像フィルタ<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>画像のフィルタ処理は</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -860,7 +860,7 @@ M_3= \begin{pmatrix}
 </div>
 </div>
 <section id="edge-detection">
-<span id="id8"></span><h3><span class="section-number">5.3.1. </span>エッジ抽出フィルタ<a class="headerlink" href="#edge-detection" title="Permalink to this heading">#</a></h3>
+<span id="id7"></span><h3><span class="section-number">5.3.1. </span>エッジ抽出フィルタ<a class="headerlink" href="#edge-detection" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_canny</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -988,14 +988,14 @@ M_3= \begin{pmatrix}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 画像の読み書き</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.2.1. 画像の拡大・縮小</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2.2. 画像の回転</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2.3. 画像の反転</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1. 画像の読み書き</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2.1. 画像の拡大・縮小</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.2.2. 画像の回転</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2.3. 画像の反転</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.3. 画像フィルタ</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.3. 画像フィルタ</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">5.3.1. エッジ抽出フィルタ</a></li>
 </ul>
 </li>
