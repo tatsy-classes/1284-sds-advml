@@ -31,21 +31,21 @@
 ### 講義日程
 
 - **第1回**
-  - [Python環境の設定](setup-python)
-  - [NumPyの基本](numpy)
-  - [Matplotlibの基本](matplotlib)
-  - [Pandasの基本](pandas)
-  - [OpenCVの基本](opencv)
+  - [Python環境の設定](sec:setup-python)
+  - [NumPyの基本](sec:numpy)
+  - [Matplotlibの基本](sec:matplotlib)
+  - [Pandasの基本](sec:pandas)
+  - [OpenCVの基本](sec:opencv)
 
 - **第2回**
   - [図形の検出](sec:figure-detection)
-  - [scikit-learnによる機械分類の基本](scikit-learn)
+  - [scikit-learnによる機械分類の基本](sec:scikit-learn)
 
 - **第3回**
-  - [演習1 画像入力式数独ソルバーを作る](exercise-sudoku)
+  - [演習1 画像入力式数独ソルバーを作る](sec:exercise-sudoku)
 
 - **第4回**
-  - [演習1 コンピュータ・数独大会](exercise-sudoku)
+  - [演習1 コンピュータ・数独大会](sec:exercise-sudoku)
 
 - **第5回**
   - [データ可視化と次元圧縮](sec:data-visualization)

@@ -54,8 +54,8 @@ parse:
   myst_footnote_transition: False
   myst_enable_extensions:
     - amsmath
-    - colon_fence
     - dollarmath
+    - colon_fence
 
 # LaTeX
 latex:
