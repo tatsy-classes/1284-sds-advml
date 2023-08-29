@@ -43,6 +43,7 @@ repository:
 # Sphinx
 sphinx:
   config:
+    language: ja
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     bibtex_reference_style: author_year
 
