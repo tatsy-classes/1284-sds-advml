@@ -16,8 +16,9 @@
 - 深層学習だけでなく、画像認識・機械学習技術の背景にある理論を学びたい人
 
 ### 参考図書
-- A. Geron著『scikit-learn、Keras、TensorFlowによる実践機械学習』、オライリー社
 - M. Beyeler著『OpenCVとPythonによる機械学習プログラミング』、マイナビ
+- A. Geron著『scikit-learn、Keras、TensorFlowによる実践機械学習』、オライリー社
+- R. S. Sutton, A. G. Barto著、三上、皆川 訳『強化学習』、森北出版
 
 ---
 

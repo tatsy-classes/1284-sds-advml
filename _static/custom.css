@@ -1,0 +1,8 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap";
+@import "https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap";
+
+body {
+  font-family: "roboto", "m plus 1p", sans-serif;
+  font-size: 18px;
+  line-height: 1.3;
+}
