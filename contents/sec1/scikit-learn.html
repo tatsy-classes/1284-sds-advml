@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="ja" >
 
   <head>
     <meta charset="utf-8" />
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,6 +54,8 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script src="../../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -64,12 +67,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/scikit-learn';</script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="7. 図形の検出" href="figure-detection.html" />
     <link rel="prev" title="5. OpenCVの基本" href="opencv.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ja"/>
   </head>
   
   
@@ -251,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -260,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../../_sources/contents/sec1/scikit-learn.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -278,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="PDFに印刷"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -298,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全画面モード"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -322,7 +325,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
@@ -346,7 +349,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> 目次 </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -358,7 +361,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.4. ランダム・フォレストによる分類</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">6.2.5. AdaBoostによる分類</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.6. 勾配ブースティングによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.2.7. サポートベクトルマシンによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-support-vector-machine">6.2.7. サポートベクトルマシンによる分類</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.2.8. カーネル法を用いたサポートベクトルマシン</a></li>
 </ul>
 </li>
@@ -513,7 +516,7 @@ document.write(`
 </div>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">警告</p>
 <p>データのスケーリングを行う場合、<strong>スケールを決定するのに使えるデータは訓練データのみ</strong>であることに注意する (テストデータがどんなデータなのかは事前に分からないため)。また、テストをする際にスケーリングをするのを忘れないようにすること。</p>
 </div>
 <section id="id2">
@@ -566,7 +569,7 @@ document.write(`
 </section>
 <section id="id3">
 <h3><span class="section-number">6.2.2. </span>ロジスティック回帰による分類<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
-<p>続いては入力を線形変換することで出力を予測する線形モデルの一種であるロジスティック回帰 (`LogisticRegression’)を使ってみる。</p>
+<p>続いては入力を線形変換することで出力を予測する線形モデルの一種であるロジスティック回帰 (`LogisticRegression')を使ってみる。</p>
 <p>ロジスティック回帰のパラメータは行列<span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span>とバイアス項<span class="math notranslate nohighlight">\(\mathbf{b} \in \mathbb{R}^{m}\)</span>で多クラスの分類問題の場合には、入力<span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{n}\)</span>に対して、ソフトマックス関数<span class="math notranslate nohighlight">\(\sigma(\cdot)\)</span>を用いて出力である分類ラベル<span class="math notranslate nohighlight">\(\mathbf{y} \in \mathbb{R}^{m}\)</span>を予測する。</p>
 <div class="math notranslate nohighlight">
 \[
@@ -892,7 +895,7 @@ y = \sum_{i=1}^{n_{\rm weak}} \alpha_i f_i(\mathbf{x})
 </div>
 </div>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">警告</p>
 <p>上記の例では弱識別器にロジスティック回帰を用いているが、それにも関わらず、<strong>ロジスティック回帰を単体で用いる場合に比べて精度が落ちている</strong>ことが分かる。これは、AdaBoostにおいて、</p>
 <ol class="arabic simple">
 <li><p>弱分類器の学習は、単体の分類器の学習よりも甘めに行われる (最適化問題を最後まで収束させない)</p></li>
@@ -964,11 +967,11 @@ r_i^{(1)} = -\frac{\partial L(y_i)}{\partial y_i}
 </div>
 <div class="note admonition">
 <p class="admonition-title">最新の勾配ブースティング</p>
-<p>現在、深層学習を用いない機械分類のアルゴリズムの中では勾配ブースティングの発展形が大きな成果を挙げている。その中には<strong>XGBoost</strong> <span id="id7">[<a class="reference internal" href="#id22" title="Tianqi Chen and Carlos Guestrin. Xgboost: a scalable tree boosting system. In Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining, 785–794. 2016.">Chen and Guestrin, 2016</a>]</span> や<strong>LightGBM</strong> <span id="id8">[<a class="reference internal" href="#id23" title="Guolin Ke, Qi Meng, Thomas Finley, Taifeng Wang, Wei Chen, Weidong Ma, Qiwei Ye, and Tie-Yan Liu. Lightgbm: a highly efficient gradient boosting decision tree. Advances in neural information processing systems, 2017.">Ke <em>et al.</em>, 2017</a>]</span>などがあり、いずれもscikit-learnと類似したインターフェースで利用が可能なので、興味がある読者はこれらのライブラリを試してみとともに、原著の論文についても、ぜひ目を通してほしい。</p>
+<p>現在、深層学習を用いない機械分類のアルゴリズムの中では勾配ブースティングの発展形が大きな成果を挙げている。その中には<strong>XGBoost</strong> <span id="id7">[<a class="reference internal" href="#id22" title="Tianqi Chen and Carlos Guestrin. XGBoost: a scalable tree boosting system. In Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 785–794. ACM, aug 2016. doi:10.1145/2939672.2939785.">Chen and Guestrin, 2016</a>]</span> や<strong>LightGBM</strong> <span id="id8">[<a class="reference internal" href="#id23" title="Guolin Ke, Qi Meng, Thomas Finley, Taifeng Wang, Wei Chen, Weidong Ma, Qiwei Ye, and Tie-Yan Liu. Lightgbm: a highly efficient gradient boosting decision tree. Advances in Neural Information Processing Systems, 2017. URL: https://proceedings.neurips.cc/paper_files/paper/2017/file/6449f44a102fde848669bdd9eb6b76fa-Paper.pdf.">Ke <em>et al.</em>, 2017</a>]</span>などがあり、いずれもscikit-learnと類似したインターフェースで利用が可能なので、興味がある読者はこれらのライブラリを試してみとともに、原著の論文についても、ぜひ目を通してほしい。</p>
 </div>
 </section>
-<section id="id9">
-<h3><span class="section-number">6.2.7. </span>サポートベクトルマシンによる分類<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="ssec-support-vector-machine">
+<span id="id9"></span><h3><span class="section-number">6.2.7. </span>サポートベクトルマシンによる分類<a class="headerlink" href="#ssec-support-vector-machine" title="Permalink to this heading">#</a></h3>
 <p>サポートベクトルマシンは元々、2クラス分類に対して提案された手法で、<strong>サポートベクトル</strong>という境界線(より厳密には超平面)を2つのクラスに属するデータ集合から求める問題を解く。具体的には、データ空間の中で定義される超平面<span class="math notranslate nohighlight">\(\mathbf{a} \cdot \mathbf{x} + b=0\)</span>について、2つのクラスが<span class="math notranslate nohighlight">\(y_i \in \{ +1, -1 \}\)</span>のラベルを持つとして、以下の距離を最大化するような超平面のパラメータ<span class="math notranslate nohighlight">\((\mathbf{a}, b)\)</span>を求める。</p>
 <p>点と超平面との距離<span class="math notranslate nohighlight">\(d(\mathbf{x}_i)\)</span>は、<span class="math notranslate nohighlight">\(y_i\)</span>の符号を考慮すると、</p>
 <div class="math notranslate nohighlight">
@@ -1114,7 +1117,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 <p>この通り、正しくサポートベクトルが求められていることが確認できる。なお、上記は二つのクラスラベルを持つサンプルがサポートベクトルの両側に分かれて存在することを仮定した最適化を行っている。</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">注釈</p>
 <p>実際のサンプルは、必ずしもサポートベクトルの両側にサンプルが分かれて存在する物ばかりではなく、分布が重なっている場合もあるので、その場合には、より複雑な最適化問題を解く必要がある。</p>
 </div>
 <hr class="docutils" />
@@ -1339,7 +1342,7 @@ K = \Phi \Lambda \Phi^T
 <p>すると、任意の<span class="math notranslate nohighlight">\(\sqrt{\lambda_i} \phi(\mathbf{x}_i)\)</span>、<span class="math notranslate nohighlight">\(\sqrt{\lambda_j} \phi(\mathbf{x}_j)\)</span>の組み合わせについて、カーネル関数により内積が定義できることになる。ここで内積が定義できるためには、固有値の平方根が実数である必要があるため、カーネル関数の半正定値性が必要だったのである。</p>
 <p>この関数<span class="math notranslate nohighlight">\(\phi\)</span>こそが、前述の例で示した高次元空間への写像<span class="math notranslate nohighlight">\((x, y) \mapsto (1, \sqrt{2} x, \sqrt{2}y, x^2, y^2, \sqrt{2} xy)\)</span>等に対応しており、カーネル法を用いたサポートベクトルマシンでは、元々<span class="math notranslate nohighlight">\(\mathbf{a}^T \mathbf{x} + b = 0\)</span>としていた直線の方程式をカーネル関数を用いて<span class="math notranslate nohighlight">\(k(\mathbf{a}, \mathbf{x}) + b = 0\)</span>と置き換えれば良い。</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">警告</p>
 <p>上記は、数学的には厳密な議論ではなく、あくまで限られた<span class="math notranslate nohighlight">\(n\)</span>個のベクトル集合<span class="math notranslate nohighlight">\(\mathbf{x}_1, \ldots, \mathbf{x}_n\)</span>について、カーネル関数が内積を定義するような高次元空間への写像<span class="math notranslate nohighlight">\(\phi\)</span>が存在することを直感的に分かるように説明した。</p>
 <p>より厳密な議論のためには、カーネル関数の連続性や二乗可積分性などの性質が必要になるが、これらの議論は別の専門書に譲ることとする。一例として、以下の教科書が詳しい。</p>
 <p>赤穂 昭太郎 著、『カーネル多変量解析 -非線形データ解析の新しい展開-』、岩波書店、2008年</p>
@@ -1958,7 +1961,7 @@ acc(val)=71.40%
 \]</div>
 <p>この指標は適合率と再現率の両方が1に近い時に、より1に近い値を取るような指標で、適合率のみ、再現率のみを用いた評価の問題点を上手く解決している。</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">注釈</p>
 <p>F1値の名前にある「1」は適合率と再現率を等しい重要度として評価していることを示している。F1値を適合率の重要度を係数<span class="math notranslate nohighlight">\(\beta^2\)</span>で重み付けして、調和平均を取った指標に<span class="math notranslate nohighlight">\(F_\beta\)</span>値がある。<span class="math notranslate nohighlight">\(F_\beta\)</span>値は次の式で表せる。</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2076,10 +2079,10 @@ macro-F=0.81712
 <div class="docutils container" id="id20">
 <dl class="citation">
 <dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id7">CG16</a></span></dt>
-<dd><p>Tianqi Chen and Carlos Guestrin. Xgboost: a scalable tree boosting system. In <em>Proceedings of the 22nd acm sigkdd international conference on knowledge discovery and data mining</em>, 785–794. 2016.</p>
+<dd><p>Tianqi Chen and Carlos Guestrin. XGBoost: a scalable tree boosting system. In <em>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, 785–794. ACM, aug 2016. <a class="reference external" href="https://doi.org/10.1145/2939672.2939785">doi:10.1145/2939672.2939785</a>.</p>
 </dd>
 <dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id8">KMF+17</a></span></dt>
-<dd><p>Guolin Ke, Qi Meng, Thomas Finley, Taifeng Wang, Wei Chen, Weidong Ma, Qiwei Ye, and Tie-Yan Liu. Lightgbm: a highly efficient gradient boosting decision tree. <em>Advances in neural information processing systems</em>, 2017.</p>
+<dd><p>Guolin Ke, Qi Meng, Thomas Finley, Taifeng Wang, Wei Chen, Weidong Ma, Qiwei Ye, and Tie-Yan Liu. Lightgbm: a highly efficient gradient boosting decision tree. <em>Advances in Neural Information Processing Systems</em>, 2017. URL: <a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2017/file/6449f44a102fde848669bdd9eb6b76fa-Paper.pdf">https://proceedings.neurips.cc/paper_files/paper/2017/file/6449f44a102fde848669bdd9eb6b76fa-Paper.pdf</a>.</p>
 </dd>
 </dl>
 </div>
@@ -2122,7 +2125,7 @@ macro-F=0.81712
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">前へ</p>
         <p class="prev-next-title"><span class="section-number">5. </span>OpenCVの基本</p>
       </div>
     </a>
@@ -2130,7 +2133,7 @@ macro-F=0.81712
        href="figure-detection.html"
        title="next page">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">次へ</p>
         <p class="prev-next-title"><span class="section-number">7. </span>図形の検出</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -2149,7 +2152,7 @@ macro-F=0.81712
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> 目次
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -2161,7 +2164,7 @@ macro-F=0.81712
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.4. ランダム・フォレストによる分類</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">6.2.5. AdaBoostによる分類</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.6. 勾配ブースティングによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6.2.7. サポートベクトルマシンによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-support-vector-machine">6.2.7. サポートベクトルマシンによる分類</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.2.8. カーネル法を用いたサポートベクトルマシン</a></li>
 </ul>
 </li>
@@ -2192,7 +2195,7 @@ macro-F=0.81712
   <div class="footer-item">
     
 <p class="component-author">
-By Tatsuya Yatagawa
+著者 Tatsuya Yatagawa
 </p>
 
   </div>

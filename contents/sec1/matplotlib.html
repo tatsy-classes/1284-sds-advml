@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="ja" >
 
   <head>
     <meta charset="utf-8" />
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,6 +54,8 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script src="../../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -64,12 +67,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/matplotlib';</script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="4. Pandasの基本" href="pandas.html" />
     <link rel="prev" title="2. NumPyの基本" href="numpy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ja"/>
   </head>
   
   
@@ -251,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -260,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../../_sources/contents/sec1/matplotlib.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -278,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="PDFに印刷"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -298,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全画面モード"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -322,7 +325,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
@@ -346,7 +349,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> 目次 </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -391,7 +394,7 @@ document.write(`
 <span id="sec-matplotlib"></span><h1><span class="section-number">3. </span>Matplotlibの基本<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h1>
 <section id="id1">
 <h2><span class="section-number">3.1. </span>Matplotlibとは？<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Matplotlibはデータ可視化のためのPythonのライブラリで、様々なグラフを細かく調整を入れて作成することができる。また、今日は類似するライブラリとして<a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a>や<a class="reference external" href="https://plotly.com/python/">Plotly</a>, <a class="reference external" href="https://bokeh.org/">Bokeh</a>などがあるが、この中でMatplotlibは比較的単純 (がゆえに綺麗な可視化をしようとすると手間がかかる…)で、それ故、現在でも広く用いられているライブラリである。特に、Matplotlibは文法がMATLABと類似しているため、MATLABを使い慣れている読者には親しみやすいかもしれない。</p>
+<p>Matplotlibはデータ可視化のためのPythonのライブラリで、様々なグラフを細かく調整を入れて作成することができる。また、今日は類似するライブラリとして<a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a>や<a class="reference external" href="https://plotly.com/python/">Plotly</a>, <a class="reference external" href="https://bokeh.org/">Bokeh</a>などがあるが、この中でMatplotlibは比較的単純 (がゆえに綺麗な可視化をしようとすると手間がかかる...)で、それ故、現在でも広く用いられているライブラリである。特に、Matplotlibは文法がMATLABと類似しているため、MATLABを使い慣れている読者には親しみやすいかもしれない。</p>
 <p>本講義では、その単純さからMatplotlibを用いるが、必要に応じて、Seaborn, Plotly, Bokehのギャラリーなどを見て、自分の好みのライブラリを使うのが良いだろう。</p>
 </section>
 <section id="id2">
@@ -549,7 +552,7 @@ document.write(`
 <p class="admonition-title">ラスタ画像</p>
 <p>ラスタ形式とは、画像が画素の集合で表わされており、例えば4K画像、といったときには、3840×2160ピクセルのように一辺に並ぶ画素数がおよそ4K(=4000)画素である物を指す。この各画素には、赤、緑、青の各成分の色の強さがどのくらいかを記録する情報が保存されている。このような色の表し方をRGB表色と呼び、R, G, Bの各要素はJPEGやPNGなどの「普通の」画像においては0-255の値(=8ビット符号なし整数)で表現されている。このような各色要素を表わすビットの数を「ビット深度」と呼び、JPEG等の画像は8ビットがR, G, Bの各要素に使われているので、24bit深度の画像、ということになる。</p>
 <p>その一方で、近年では、スマートフォンのカメラにもHDR撮影モードが搭載されていることが多い。このHDRというのはHigh Dynamic Rangeの略で、各画素の表せる明るさの範囲が上記の8ビット深度よりも大きな物を指す。反対に8ビット深度の画像のことをLDR (= Low Dynamic Range)画像と呼ぶ。HDR画像を表わすフォーマットはキヤノンやニコンといったカメラメーカーの独自フォーマットの他に、<code class="docutils literal notranslate"><span class="pre">*.hdr</span></code>形式や<code class="docutils literal notranslate"><span class="pre">*.exr</span></code>形式などのデータ形式がある。多くの場合、R, G, Bの各色要素が16ビット浮動小数(half float)などの小数によって記録されている。</p>
-<p>なお余談にはなるがラスタ画像のラスタ (raster)とは元はラテン語の”rastrum” (英語ではrake, 日本語では熊手のこと)から来ており、画素が「くまなく」画像平面を埋め尽くしている様子を表わしている。</p>
+<p>なお余談にはなるがラスタ画像のラスタ (raster)とは元はラテン語の&quot;rastrum&quot; (英語ではrake, 日本語では熊手のこと)から来ており、画素が「くまなく」画像平面を埋め尽くしている様子を表わしている。</p>
 </div>
 <div class="tips admonition">
 <p class="admonition-title">ベクタ画像</p>
@@ -1162,7 +1165,7 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">前へ</p>
         <p class="prev-next-title"><span class="section-number">2. </span>NumPyの基本</p>
       </div>
     </a>
@@ -1170,7 +1173,7 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
        href="pandas.html"
        title="next page">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">次へ</p>
         <p class="prev-next-title"><span class="section-number">4. </span>Pandasの基本</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -1189,7 +1192,7 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> 目次
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1233,7 +1236,7 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
   <div class="footer-item">
     
 <p class="component-author">
-By Tatsuya Yatagawa
+著者 Tatsuya Yatagawa
 </p>
 
   </div>

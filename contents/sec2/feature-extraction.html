@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="ja" >
 
   <head>
     <meta charset="utf-8" />
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,6 +54,8 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script src="../../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -67,12 +70,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec2/feature-extraction';</script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="3. 深層学習による物体認識" href="deep-learning.html" />
     <link rel="prev" title="1. データ可視化と次元圧縮" href="data-visualization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ja"/>
   </head>
   
   
@@ -254,7 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -263,7 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../../_sources/contents/sec2/feature-extraction.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -281,7 +284,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="PDFに印刷"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -301,7 +304,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全画面モード"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -325,7 +328,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
@@ -349,7 +352,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> 目次 </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -880,7 +883,7 @@ document.write(`
 </section>
 <section id="svm">
 <h3><span class="section-number">2.1.2. </span>実験: SVMによる分類<a class="headerlink" href="#svm" title="Permalink to this heading">#</a></h3>
-<p>まずは、MNISTの時と同様にscikit-learnによる分類を試してみる。この時、<span class="xref myst">scikit-learnの節</span>で紹介したように、予め入力データを正規化しておく処理である<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>を使用する。</p>
+<p>まずは、MNISTの時と同様にscikit-learnによる分類を試してみる。この時、<a class="reference internal" href="../sec1/scikit-learn.html#sec-scikit-learn"><span class="std std-ref">scikit-learnの節</span></a>で紹介したように、予め入力データを正規化しておく処理である<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>を使用する。</p>
 <p>scikit-learnには<code class="docutils literal notranslate"><span class="pre">make_pipline</span></code>というメソッドが用意されており、このメソッドに入力データに対して行う処理を順に入れておくと、自動的に、それらを実行してくれる。今回はこれを利用する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1050,7 +1053,7 @@ document.write(`
 </section>
 <section id="local-binary-pattern">
 <h3><span class="section-number">2.1.4. </span>Local Binary Pattern<a class="headerlink" href="#local-binary-pattern" title="Permalink to this heading">#</a></h3>
-<p>Local Binary Pattern (LBP)は、とある画素を中心とした3x3の領域について、中心画素と周りの画素の輝度の大小を数値化する手法である <span id="id5">[<a class="reference internal" href="#id12" title="Timo Ojala, Matti Pietikäinen, and David Harwood. A comparative study of texture measures with classification based on featured distributions. Pattern recognition, 29(1):51–59, 1996.">Ojala <em>et al.</em>, 1996</a>]</span>。</p>
+<p>Local Binary Pattern (LBP)は、とある画素を中心とした3x3の領域について、中心画素と周りの画素の輝度の大小を数値化する手法である <span id="id5">[<a class="reference internal" href="#id12" title="Timo Ojala, Matti Pietikäinen, and David Harwood. A comparative study of texture measures with classification based on featured distributions. Pattern recognition, 29(1):51–59, 1996. doi:10.1016/0031-3203(95)00067-4.">Ojala <em>et al.</em>, 1996</a>]</span>。</p>
 <p>一例として、とある中心画素周辺の画素値が以下のようになっている場合を考えよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1280,7 +1283,7 @@ document.write(`
 </section>
 <section id="uniform-lbp">
 <h3><span class="section-number">2.1.5. </span>Uniform LBP<a class="headerlink" href="#uniform-lbp" title="Permalink to this heading">#</a></h3>
-<p>元々のLBPが持つ回転に対して変化してしまう問題を解決した手法の一つに<strong>Uniform LBP</strong> <span id="id6">[<a class="reference internal" href="#id15" title="Timo Ojala, Matti Pietikäinen, and Topi Maenpaa. Multiresolution gray-scale and rotation invariant texture classification with local binary patterns. IEEE Transactions on pattern analysis and machine intelligence, 24(7):971–987, 2002.">Ojala <em>et al.</em>, 2002</a>]</span> がある。</p>
+<p>元々のLBPが持つ回転に対して変化してしまう問題を解決した手法の一つに<strong>Uniform LBP</strong> <span id="id6">[<a class="reference internal" href="#id15" title="Timo Ojala, Matti Pietikäinen, and Topi Maenpaa. Multiresolution gray-scale and rotation invariant texture classification with local binary patterns. IEEE Transactions on pattern analysis and machine intelligence, 24(7):971–987, 2002. doi:10.1109/tpami.2002.1017623.">Ojala <em>et al.</em>, 2002</a>]</span> がある。</p>
 <p>Uniform LBPの基本的なアイディアは、注目画素を中心に<strong>円状に配置された点の輝度</strong>を調べて、その輝度の大小関係のパターン (つまり, 0, 1の列)が回転したときに一致するものを同じ物であると見なすという部分にある。</p>
 <p>より具体的には、円状に配置された0, 1の列を1周する間に何回0から1あるいは1から0への変化が起こるかを考える。例えば、12時方向を視点として反時計回りに <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> というパターンが現れたとすると、0→1 / 1→0の遷移回数は4回である。</p>
 <p>Uniform LBPでは、この遷移回数が0回のものと2回のものを特別視する。遷移の回数が0回、ということは、全ての要素が0か1かのいずれかで2通りが考えられる。また、遷移の回数が2回、ということは、0と1が両方含まれているものの、0と1が連続して現れているようなパターンで、これは要素の数が<span class="math notranslate nohighlight">\(N\)</span>個であれば、<span class="math notranslate nohighlight">\(N-1\)</span>通りのパターンが考えられる。</p>
@@ -1403,7 +1406,7 @@ document.write(`
 </section>
 <section id="histogram-of-oriented-gradient-hog">
 <h2><span class="section-number">2.2. </span>Histogram of Oriented Gradient (HOG)<a class="headerlink" href="#histogram-of-oriented-gradient-hog" title="Permalink to this heading">#</a></h2>
-<p>Histogram of Oriented Gradient (HOG)が広く知られるようになったのは2005年のことで、コンピュータ・ビジョンの国際会議であるCVPRで発表された論文<span id="id7">[<a class="reference internal" href="#id16" title="Navneet Dalal and Bill Triggs. Histograms of oriented gradients for human detection. In 2005 IEEE computer society conference on computer vision and pattern recognition (CVPR'05), volume 1, 886–893. Ieee, 2005.">Dalal and Triggs, 2005</a>]</span>がきっかけとなっている。</p>
+<p>Histogram of Oriented Gradient (HOG)が広く知られるようになったのは2005年のことで、コンピュータ・ビジョンの国際会議であるCVPRで発表された論文<span id="id7">[<a class="reference internal" href="#id16" title="N. Dalal and B. Triggs. Histograms of oriented gradients for human detection. In 2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR\textquotesingle 05), volume 1, 886–893. IEEE, IEEE, 2005. doi:10.1109/cvpr.2005.177.">Dalal and Triggs, 2005</a>]</span>がきっかけとなっている。</p>
 <p>特にHOGは人物の全身といった特定の物体を見つける性能に優れており、一般物体認識や物体追跡等の多数の応用が生まれた。</p>
 <p>HOGは画像を、互いに重ならない小さなパッチに分割して計算を行う。今回用いるひらがな画像は48×48の大きさなので、これを8×8のパッチに区切ってみる。</p>
 <div class="cell docutils container">
@@ -1600,7 +1603,7 @@ document.write(`
 </section>
 <section id="scale-invariant-feature-transform-sift">
 <h2><span class="section-number">2.3. </span>Scale-Invariant Feature Transform (SIFT)<a class="headerlink" href="#scale-invariant-feature-transform-sift" title="Permalink to this heading">#</a></h2>
-<p>Scale-Invariant Feature Transform (SIFT)は、深層学習以前の画像認識における金字塔的な技術で、2000年前後にRoweらによって提案された<span id="id8">[<a class="reference internal" href="#id17" title="David G Lowe. Object recognition from local scale-invariant features. In Proceedings of the seventh IEEE international conference on computer vision, volume 2, 1150–1157. Ieee, 1999.">Lowe, 1999</a>]</span>, <span id="id9">[<a class="reference internal" href="#id18" title="David G Lowe. Distinctive image features from scale-invariant keypoints. International journal of computer vision, 60:91–110, 2004.">Lowe, 2004</a>]</span>。SIFTは画像の中に映り込む物体のスケールや回転に対して不変な特徴量を与えることができる。</p>
+<p>Scale-Invariant Feature Transform (SIFT)は、深層学習以前の画像認識における金字塔的な技術で、2000年前後にRoweらによって提案された<span id="id8">[<a class="reference internal" href="#id17" title="David G Lowe. Object recognition from local scale-invariant features. In Proceedings of the seventh IEEE international conference on computer vision, volume 2, 1150–1157. Ieee, 1999. doi:10.1109/iccv.1999.790410.">Lowe, 1999</a>]</span>, <span id="id9">[<a class="reference internal" href="#id18" title="David G Lowe. Distinctive image features from scale-invariant keypoints. International journal of computer vision, 60:91–110, 2004. doi:10.1023/b:visi.0000029664.99615.94.">Lowe, 2004</a>]</span>。SIFTは画像の中に映り込む物体のスケールや回転に対して不変な特徴量を与えることができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sift</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">SIFT_create</span><span class="p">()</span>
@@ -1665,19 +1668,19 @@ document.write(`
 <div class="docutils container" id="id11">
 <dl class="citation">
 <dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id7">DT05</a></span></dt>
-<dd><p>Navneet Dalal and Bill Triggs. Histograms of oriented gradients for human detection. In <em>2005 IEEE computer society conference on computer vision and pattern recognition (CVPR'05)</em>, volume 1, 886–893. Ieee, 2005.</p>
+<dd><p>N. Dalal and B. Triggs. Histograms of oriented gradients for human detection. In <em>2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR\textquotesingle 05)</em>, volume 1, 886–893. IEEE, IEEE, 2005. <a class="reference external" href="https://doi.org/10.1109/cvpr.2005.177">doi:10.1109/cvpr.2005.177</a>.</p>
 </dd>
 <dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id8">Low99</a></span></dt>
-<dd><p>David G Lowe. Object recognition from local scale-invariant features. In <em>Proceedings of the seventh IEEE international conference on computer vision</em>, volume 2, 1150–1157. Ieee, 1999.</p>
+<dd><p>David G Lowe. Object recognition from local scale-invariant features. In <em>Proceedings of the seventh IEEE international conference on computer vision</em>, volume 2, 1150–1157. Ieee, 1999. <a class="reference external" href="https://doi.org/10.1109/iccv.1999.790410">doi:10.1109/iccv.1999.790410</a>.</p>
 </dd>
 <dt class="label" id="id18"><span class="brackets"><a class="fn-backref" href="#id9">Low04</a></span></dt>
-<dd><p>David G Lowe. Distinctive image features from scale-invariant keypoints. <em>International journal of computer vision</em>, 60:91–110, 2004.</p>
+<dd><p>David G Lowe. Distinctive image features from scale-invariant keypoints. <em>International journal of computer vision</em>, 60:91–110, 2004. <a class="reference external" href="https://doi.org/10.1023/b:visi.0000029664.99615.94">doi:10.1023/b:visi.0000029664.99615.94</a>.</p>
 </dd>
 <dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id5">OPH96</a></span></dt>
-<dd><p>Timo Ojala, Matti Pietikäinen, and David Harwood. A comparative study of texture measures with classification based on featured distributions. <em>Pattern recognition</em>, 29(1):51–59, 1996.</p>
+<dd><p>Timo Ojala, Matti Pietikäinen, and David Harwood. A comparative study of texture measures with classification based on featured distributions. <em>Pattern recognition</em>, 29(1):51–59, 1996. <a class="reference external" href="https://doi.org/10.1016/0031-3203(95)00067-4">doi:10.1016/0031-3203(95)00067-4</a>.</p>
 </dd>
 <dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id6">OPM02</a></span></dt>
-<dd><p>Timo Ojala, Matti Pietikäinen, and Topi Maenpaa. Multiresolution gray-scale and rotation invariant texture classification with local binary patterns. <em>IEEE Transactions on pattern analysis and machine intelligence</em>, 24(7):971–987, 2002.</p>
+<dd><p>Timo Ojala, Matti Pietikäinen, and Topi Maenpaa. Multiresolution gray-scale and rotation invariant texture classification with local binary patterns. <em>IEEE Transactions on pattern analysis and machine intelligence</em>, 24(7):971–987, 2002. <a class="reference external" href="https://doi.org/10.1109/tpami.2002.1017623">doi:10.1109/tpami.2002.1017623</a>.</p>
 </dd>
 </dl>
 </div>
@@ -1720,7 +1723,7 @@ document.write(`
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">前へ</p>
         <p class="prev-next-title"><span class="section-number">1. </span>データ可視化と次元圧縮</p>
       </div>
     </a>
@@ -1728,7 +1731,7 @@ document.write(`
        href="deep-learning.html"
        title="next page">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">次へ</p>
         <p class="prev-next-title"><span class="section-number">3. </span>深層学習による物体認識</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -1747,7 +1750,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> 目次
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1779,7 +1782,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Tatsuya Yatagawa
+著者 Tatsuya Yatagawa
 </p>
 
   </div>

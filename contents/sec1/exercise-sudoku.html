@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="ja" >
 
   <head>
     <meta charset="utf-8" />
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,6 +54,8 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script src="../../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -64,12 +67,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/exercise-sudoku';</script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="1. データ可視化と次元圧縮" href="../sec2/data-visualization.html" />
     <link rel="prev" title="7. 図形の検出" href="figure-detection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ja"/>
   </head>
   
   
@@ -251,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -260,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../../_sources/contents/sec1/exercise-sudoku.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -278,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="PDFに印刷"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -298,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全画面モード"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -322,7 +325,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
@@ -346,7 +349,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> 目次 </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -386,7 +389,7 @@ document.write(`
 <p>等のやり方がある。9x9の問題であれば、最も単純なバックトラック法でも十分高速に解くことができる(一般的なパズル本の最難問ならPython実装でも1秒以下で解ける)。</p>
 <p>以下では、数独の問題を写真で撮って、その画像の中から問題を抜き出し、自動的に問題を解くプログラムを作成してみよう。</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">警告</p>
 <p>「数独」という呼び名はパズル製作会社のニコリによって商標登録されている呼び名であり、別の呼び名として「ナンバープレイス」あるいは「ナンプレ」と呼ばれることもある。本資料では、一般的に最も浸透していると思われる呼び名である「数独」を用いる。</p>
 </div>
 <section id="id2">
@@ -2348,10 +2351,10 @@ AAAdZGF0YQAAAAEAAAAATGF2ZjU4Ljc2LjEwMA==
 <ol class="arabic simple">
 <li><p>各<strong>列</strong>が持つ1の数を数えて、最も少ない1を持つ列の中の1つ(<strong>列X</strong>とする)を選ぶ</p></li>
 <li><p>列Xの要素の中で1を持つ行を1つ(<strong>行A</strong>とする)を選ぶ</p></li>
-<li><p>行Aの中で1の要素を持つ列 (<strong>列x, 列y, …</strong> とする)を選ぶ</p></li>
-<li><p>列x, 列y, …の各列において、少なくとも一つの1を持つ行 (<strong>行a, 行b, …</strong> とする)を選ぶ</p></li>
+<li><p>行Aの中で1の要素を持つ列 (<strong>列x, 列y, ...</strong> とする)を選ぶ</p></li>
+<li><p>列x, 列y, ...の各列において、少なくとも一つの1を持つ行 (<strong>行a, 行b, ...</strong> とする)を選ぶ</p></li>
 </ol>
-<p>選ばれた <strong>列x, 列y, …</strong> ならびに <strong>行a, 行b, …</strong> を元の表から削除すると、小さな表が得られる。上記の例を用いると、色がついていないセルだけが残り、以下のような表が得られる。</p>
+<p>選ばれた <strong>列x, 列y, ...</strong> ならびに <strong>行a, 行b, ...</strong> を元の表から削除すると、小さな表が得られる。上記の例を用いると、色がついていないセルだけが残り、以下のような表が得られる。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -2412,7 +2415,7 @@ AAAdZGF0YQAAAAEAAAAATGF2ZjU4Ljc2LjEwMA==
 </table>
 </div></div></div>
 </div>
-<p>このようにして、小さな表が得られたら、上記の手順1-4をこの表に対しても繰り返す。この表は、1列目が、最も少ない1を持つので、選ばれる <strong>列x, 列y, …</strong> ならびに <strong>行a, 行b, …</strong> に色をつけると以下のようになる。</p>
+<p>このようにして、小さな表が得られたら、上記の手順1-4をこの表に対しても繰り返す。この表は、1列目が、最も少ない1を持つので、選ばれる <strong>列x, 列y, ...</strong> ならびに <strong>行a, 行b, ...</strong> に色をつけると以下のようになる。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -3824,7 +3827,7 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">前へ</p>
         <p class="prev-next-title"><span class="section-number">7. </span>図形の検出</p>
       </div>
     </a>
@@ -3832,7 +3835,7 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
        href="../sec2/data-visualization.html"
        title="next page">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">次へ</p>
         <p class="prev-next-title"><span class="section-number">1. </span>データ可視化と次元圧縮</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -3851,7 +3854,7 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> 目次
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -3877,7 +3880,7 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
   <div class="footer-item">
     
 <p class="component-author">
-By Tatsuya Yatagawa
+著者 Tatsuya Yatagawa
 </p>
 
   </div>

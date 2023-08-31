@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="ja" >
 
   <head>
     <meta charset="utf-8" />
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,6 +54,8 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/custom.js"></script>
+    <script src="../../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -64,12 +67,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/numpy';</script>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="3. Matplotlibの基本" href="matplotlib.html" />
     <link rel="prev" title="1. Python環境の設定" href="setup-python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ja"/>
   </head>
   
   
@@ -251,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -260,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../../_sources/contents/sec1/numpy.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="ソースファイルをダウンロード"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -278,7 +281,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="PDFに印刷"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -298,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全画面モード"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -322,7 +325,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
@@ -346,7 +349,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> 目次 </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -1131,7 +1134,7 @@ Message: Singular matrix
   10000 &amp; 20000 &amp; 30000
 \end{pmatrix}
 \end{equation*}\]</div>
-<p>説明するまでもなく、上記の行列のランクは1だから、行列式は0になるはずだが…各自で結果を確認してみてほしい。</p>
+<p>説明するまでもなく、上記の行列のランクは1だから、行列式は0になるはずだが...各自で結果を確認してみてほしい。</p>
 <p>このように実際の数値計算では数学的には特異であるような行列が正則と判断されてしまうことなどがあり、実際の問題で逆行列を計算するときには、注意が必要である。多くの場合は、逆行列の代わりに疑似逆行列を用いることで上記の問題を回避できるが、その場合には疑似逆行列を用いて得られる解が、どのような性質を持つかに留意する必要がある。</p>
 <p>疑似逆行列を用いる、ということは行列が特異、すなわちランク落ちしている場合であるから、実際の線形方程式を満たす解は無数に存在することになる。疑似逆行列を用いて得られる解は、そのうち、ノルムの大きさ (より正確にはl2ノルムの大きさ)が最小になるものになるので、自身が求めたい解がその解で良いのかは、実際の問題を扱う上では重要だろう。</p>
 </div>
@@ -1210,7 +1213,7 @@ Message: Singular matrix
 <div class="note admonition">
 <p class="admonition-title">線形方程式の解法における直接法と反復法</p>
 <p>先ほど紹介した<code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>はLU分解を用いて線形問題を解いていると説明した。このように行列分解などを用いて、線形問題の解を行列のサイズのみに依存する計算量で得るような解法を<strong>直接法</strong>と呼ぶ。直接法にはLU分解を用いる方法の他、<a class="reference external" href="https://ja.wikipedia.org/wiki/QR%E5%88%86%E8%A7%A3">QR分解</a>など、別の行列分解を用いる方法がある。</p>
-<p>一方、ここでは紹介しなかったが、線形問題の両辺に特定の線形代数的操作を施すことで、適当な <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> の初期値を徐々に線形問題の解に反復計算によって近づける方法を<strong>反復法</strong>と呼ぶ。反復法の中で最も単純なものは<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%A4%E3%82%B3%E3%83%93%E6%B3%95">Jacobi法</a>がある (Jacobi法には固有値を求める手法などもありややこしい…)。Jacobi法は係数行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> の対角成分だけを取りだした対角行列 <span class="math notranslate nohighlight">\(\mathbf{D}\)</span>を用いて、 <span class="math notranslate nohighlight">\(k\)</span> 回反復時に得られている <span class="math notranslate nohighlight">\(\mathbf{x}^k\)</span> を次の式で <span class="math notranslate nohighlight">\(\mathbf{x}^{k+1}\)</span> に更新する。</p>
+<p>一方、ここでは紹介しなかったが、線形問題の両辺に特定の線形代数的操作を施すことで、適当な <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> の初期値を徐々に線形問題の解に反復計算によって近づける方法を<strong>反復法</strong>と呼ぶ。反復法の中で最も単純なものは<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%83%A4%E3%82%B3%E3%83%93%E6%B3%95">Jacobi法</a>がある (Jacobi法には固有値を求める手法などもありややこしい...)。Jacobi法は係数行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> の対角成分だけを取りだした対角行列 <span class="math notranslate nohighlight">\(\mathbf{D}\)</span>を用いて、 <span class="math notranslate nohighlight">\(k\)</span> 回反復時に得られている <span class="math notranslate nohighlight">\(\mathbf{x}^k\)</span> を次の式で <span class="math notranslate nohighlight">\(\mathbf{x}^{k+1}\)</span> に更新する。</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x}^{k+1} = \mathbf{D}^{-1} \left( \mathbf{b} - (\mathbf{A} - \mathbf{D}) \mathbf{x}^k \right)
@@ -1240,7 +1243,7 @@ Message: Singular matrix
 </div>
 </div>
 <p>なお、通常、固有値に加えて、固有ベクトルを求めるには追加の計算が必要になるため、固有値だけが必要になる場合には、より高速に動作する関数として<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvals</span></code>を使うのが良い。</p>
-<p>また、上記の例では、あえて実数が固有値、固有ベクトルとなるように実対称行列の固有値・固有ベクトルを求めたが、通常、対称行列、ないしHermite行列の固有値・固有ベクトルの計算は非対称、ないし非Hermite行列の固有値よりも計算が簡単である。そのため、固有値の計算を行いたい対称が対称行列やHermite行列であることが分かっている場合には<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigh</span></code>や<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvalsh</span></code>のように末尾に”h”のついている関数を使うと、より効率的である (とは言っても、効果を実感できるのは少なくとも1000x1000程度の行列からだろう)。</p>
+<p>また、上記の例では、あえて実数が固有値、固有ベクトルとなるように実対称行列の固有値・固有ベクトルを求めたが、通常、対称行列、ないしHermite行列の固有値・固有ベクトルの計算は非対称、ないし非Hermite行列の固有値よりも計算が簡単である。そのため、固有値の計算を行いたい対称が対称行列やHermite行列であることが分かっている場合には<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigh</span></code>や<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvalsh</span></code>のように末尾に&quot;h&quot;のついている関数を使うと、より効率的である (とは言っても、効果を実感できるのは少なくとも1000x1000程度の行列からだろう)。</p>
 <div class="note admonition">
 <p class="admonition-title">固有値を求めるアルゴリズム</p>
 <p>固有値を求めるという問題は、実用的に非常に広い応用を持つため、固有値を求める対象の行列の性質 (対称行列か、密行列か、疎行列かetc.)に応じて、様々なアルゴリズムが提案されている。ここでは、比較的単純なアルゴリズムとしてJacobi法 (先ほどの線形問題を解く方法とは異なる)とQR法について紹介する。</p>
@@ -1336,7 +1339,7 @@ Message: Singular matrix
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">前へ</p>
         <p class="prev-next-title"><span class="section-number">1. </span>Python環境の設定</p>
       </div>
     </a>
@@ -1344,7 +1347,7 @@ Message: Singular matrix
        href="matplotlib.html"
        title="next page">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">次へ</p>
         <p class="prev-next-title"><span class="section-number">3. </span>Matplotlibの基本</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -1363,7 +1366,7 @@ Message: Singular matrix
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> 目次
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1402,7 +1405,7 @@ Message: Singular matrix
   <div class="footer-item">
     
 <p class="component-author">
-By Tatsuya Yatagawa
+著者 Tatsuya Yatagawa
 </p>
 
   </div>
