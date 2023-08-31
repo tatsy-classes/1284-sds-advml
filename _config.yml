@@ -28,7 +28,9 @@ execute:
 # HTML-specific settings
 html:
   home_page_in_navbar: false
-  use_multitoc_numbering: false
+  use_multitoc_numbering: true
+  use_repository_button: true
+  use_issues_button: true
 
 # Interact link settings
 launch_buttons:
@@ -38,7 +40,8 @@ launch_buttons:
 # Launch button settings
 repository:
   url: https://github.com/tatsy/1284-sds-ml-advanced
-  path_to_book: "contents"
+  path_to_book: contents
+  branch: master
 
 # Sphinx
 sphinx:
@@ -65,7 +68,7 @@ bibtex_bibfiles:
 
 # MyST options
 parse:
-  myst_footnote_transition: False
+  myst_footnote_transition: false
   myst_enable_extensions:
     - amsmath
     - dollarmath

@@ -40,6 +40,7 @@ torchvision = [
   { markers = "sys_platform == 'darwin'", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp39-cp39-macosx_11_0_arm64.whl" },
 ]
 gymnasium = {extras = ["classic-control"], version = "^0.29.1"}
+opencv-contrib-python = "^4.8.0.76"
 
 [tool.poetry.group.dev.dependencies]
 pyproject-flake8 = "^6.0.0"

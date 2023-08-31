@@ -2,7 +2,7 @@ format: jb-book
 root: index
 parts:
   - caption: 第1部 画像読み取り式数独ソルバの実装
-    numbered: True
+    numbered: 3
     chapters:
       - file: contents/sec1/setup-python
       - file: contents/sec1/numpy
@@ -13,14 +13,14 @@ parts:
       - file: contents/sec1/figure-detection
       - file: contents/sec1/exercise-sudoku
   - caption: 第2部 ひらがなOCRソフトと百人一首エージェントの実装
-    numbered: True
+    numbered: 3
     chapters:
       - file: contents/sec2/data-visualization
       - file: contents/sec2/feature-extraction
       - file: contents/sec2/deep-learning
       - file: contents/sec2/exercise-ogura
   - caption: 第3部 強化学習の基礎とリバーシエージェントの実装
-    numbered: True
+    numbered: 3
     chapters:
       - file: contents/sec3/reinforcement-learning
       - file: contents/sec3/q-learning
@@ -28,6 +28,6 @@ parts:
       - file: contents/sec3/deep-reinforcement-learning
       - file: contents/sec3/exercise-othello
   - caption: Appendix
-    numbered: True
+    numbered: 3
     chapters:
       - file: contents/appendix/notation
