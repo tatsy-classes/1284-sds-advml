@@ -253,6 +253,53 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tatsy/1284-sds-ml-advanced" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="ソースリポジトリ"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tatsy/1284-sds-ml-advanced/issues/new?title=Issue%20on%20page%20%2Fcontents/sec1/opencv.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="問題を報告"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
     <i class="fas fa-download"></i>
@@ -353,17 +400,37 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1. 画像の読み書き</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2.1. 画像の拡大・縮小</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.2.2. 画像の回転</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2.3. 画像の反転</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1. 画像の読み書き</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1.1. 画像の読み込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.1.2. 画像の保存</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.1.3. 画像の色表現</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.3. 画像フィルタ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">5.3.1. エッジ抽出フィルタ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2.1. 画像の拡大・縮小</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2.2. 画像の回転</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.2.3. 画像の反転</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5.3. 画像フィルタ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">5.3.1. ぼかしフィルタ</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian">Gaussianフィルタ</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">バイラテラルフィルタ</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">メディアンフィルタ</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">5.3.2. エッジ検出フィルタ</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sobel">Sobelフィルタ</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#canny">Cannyフィルタ</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Sobelフィルタによる勾配強度の計算</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">勾配が極大の画素の検出</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">ヒステリシス閾値処理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">5.4. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">5.5. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -377,32 +444,30 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="opencv">
 <span id="sec-opencv"></span><h1><span class="section-number">5. </span>OpenCVの基本<a class="headerlink" href="#opencv" title="Permalink to this heading">#</a></h1>
-<p>OpenCVとは元々Intel社が1999年から開発を開始した画像処理およびコンピュータビジョン用のライブラリでバージョン1.0が2006年に公開された当初はC言語で書かれていた。その後、開発が進められ、現在の最新バージョンである4.x系はPythonを含む非常に多くの言語でラッパーが公開されている。OpenCVで行える計算は画像の読み書きや、単純な画像フィルタの他、画像からの三次元復元や機械学習など幅広いが、ここでは基本的な機能に絞って解説する。</p>
+<p>OpenCVとは元々Intel社が1999年から開発を開始した画像処理およびコンピュータビジョン用のライブラリで、2006年にバージョン1.0が公開された。</p>
+<p>OpenCVは元々C/C++で開発されていたが、現在の最新バージョンである4.x系はPythonを含む非常に多くの言語でラッパーが公開されている。OpenCVで行える計算は画像の読み書きや、単純な画像フィルタの他、画像からの三次元復元や機械学習など幅広いが、ここでは基本的な機能に絞って解説する。</p>
+<div class="cell tag_remove-input docutils container">
+</div>
 <section id="id1">
 <h2><span class="section-number">5.1. </span>画像の読み書き<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>まずは講義の<a class="reference external" href="https://github.com/tatsy/sds-1284-ml/tree/master/Images">GitHub</a>にアクセスして、3枚ある画像から好きなものを一つダウンロードしよう。その画像 (以下は<code class="docutils literal notranslate"><span class="pre">sunflower.jpg</span></code>とする)をIPythonを起動しているディレクトリと同じディレクトリに配置して、画像を読み込んでみよう。</p>
-<p>なお、IPythonでどこのディレクトリを開いているか分からなくなった場合には、</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
-<span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+<p>なお、Jupyter Lab等で現在の作業ディレクトリが分からなくなった場合には、</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">og</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/home/runner/work/1284-sds-ml-advanced/1284-sds-ml-advanced/contents/sec1&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>とすることで、現在IPythonが実行されているディレクトリを調べることができる。ただ、このようなことが起こらないように、<strong>講義用の作業用ディレクトリを作っておくのが一番おすすめ</strong>である。</p>
-<p>さて、画像の用意ができたら、以下のコードをタイプして、画像を読み込んでみる。</p>
+<p>で現在のパスを調べることができるので、そこからの画像の相対パスを指定しよう。</p>
+<p>ただ、このような混乱が起こらないように、<strong>講義用の作業用ディレクトリを作っておくのが一番おすすめ</strong>である。</p>
+<section id="id2">
+<h3><span class="section-number">5.1.1. </span>画像の読み込み<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>さて、画像の用意ができたら、以下のコードを実行して、画像を読み込んでみる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/sunflower.jpg&quot;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;../../data/sunflower.jpg&quot;</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -411,12 +476,13 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">img</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Failed to load image!&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Failed to load image: </span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>画像が読み込めたら<code class="docutils literal notranslate"><span class="pre">shape</span></code>メソッドで大きさを確認してみましょう。正しく読み込めていれば、サイズは2048x1360となっているはずだ。ただし、OpenCVは画像の大きさを「高さ」×「幅」で表現しているため、幅が最初に来ること、そしてカラー画像として読み込んでいるので、赤・緑・青の色の強さを表わすチャネル数である3が末尾に追加されて以下のように出力される。</p>
+<p>画像が読み込めたら<code class="docutils literal notranslate"><span class="pre">shape</span></code>メソッドで大きさを確認してみましょう。正しく読み込めていれば、サイズは2048x1360となっているはずだ。</p>
+<p>ただし、<strong>OpenCVは画像の大きさを「高さ」×「幅」で表現している</strong>ため、高さが最初に来ること、そしてカラー画像として読み込んでいるので、赤・緑・青の色の強さを表わすチャネル数である3が末尾に追加されて以下のように出力される。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -440,7 +506,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c476fc074d5eecf5a977ae1bf25f9bf3be67d231d2fd01183a7616c16fb98d99.png" src="../../_images/c476fc074d5eecf5a977ae1bf25f9bf3be67d231d2fd01183a7616c16fb98d99.png" />
+<img alt="../../_images/df034ba132b4ba5d6104b2baa9c05601891e65b77055d45ab25703140a18e9b3.png" src="../../_images/df034ba132b4ba5d6104b2baa9c05601891e65b77055d45ab25703140a18e9b3.png" />
 </div>
 </div>
 <p>ご覧の通り、色合いがおかしな画像になっていることが分かる。これは、OpenCVでカラー画像を読み込むと色を表わす3チャネルが赤・緑・青 (RGB)の順番ではなく青・緑・赤 (BGR)の逆順になっているためで、これを直すには以下のように色表現を変更する必要がある。</p>
@@ -462,20 +528,39 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9c9c285ebce2d517d114fee5ab8f07eb4ff36cf005119c9676b734392c84773d.png" src="../../_images/9c9c285ebce2d517d114fee5ab8f07eb4ff36cf005119c9676b734392c84773d.png" />
+<img alt="../../_images/9a869ca644ecfb1aa8d44b535bc8fd33dc1272440991b556ff1f26a687d076d0.png" src="../../_images/9a869ca644ecfb1aa8d44b535bc8fd33dc1272440991b556ff1f26a687d076d0.png" />
 </div>
-</div>
-<div class="note admonition">
-<p class="admonition-title">画像の色表現</p>
-<p>上記のプログラムではOpenCVを用いてカラー画像を読み込みましたが、各画素の色は赤・緑・青の三要素を用いて表わされていた。これは、光の三原色と呼ばれる色で、人間の目が捉える様々な波長の光のうち、特徴的な三つの成分を取りだして表現しているものと考えられる (厳密には各波長の感度には幅がある)。デジタル画像の表現形式は、この光の三原色を基本としたRGB表色に従っていることが一般的である (例えばJPEGやPNGなど)。</p>
-<p>光の三原色は色を混ぜると白に近づくことで、例えばRGBの各値が一般的なデジタル画像における最大値である(255, 255, 255)を取ると、それは白色に対応する。このような重ね合わせることで明るくなっていく表色系のことを加法混色という。逆に、絵の具を混ぜた時のように、色を重ねるごとに黒に近づいていく表色系のことを減法混色という。</p>
-<p>デジタル画像の保存にRGB形式が広く用いられる一方で、実際の応用に画像(や動画)を用いる際には、別の表色系が好まれることがある。例えば、テレビ映像を伝送する際には、帯域を削減する目的でYUVやYCbCrといった異なる表色が用いられる。また、プリンタに対して色情報を送るときには加法混色に従うRGB表色系ではなく、プリンタのインクが従う減法混色系の一種であるCMYK表色系 (C=シアン、M=マゼンタ、Y=イエロー、K=キープレート=黒)が用いられるのが一般的である。</p>
 </div>
 </section>
-<section id="id2">
-<h2><span class="section-number">5.2. </span>画像に対する幾何学的操作<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <section id="id3">
-<h3><span class="section-number">5.2.1. </span>画像の拡大・縮小<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.2. </span>画像の保存<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>画像の保存には<code class="docutils literal notranslate"><span class="pre">cv2.imwrite</span></code>関数を用いる。この関数は第1引数に画像を保存する先のパスを、第2引数に画像を表わすNumPyの多次元配列を取る。</p>
+<p>画像の保存に成功すると<code class="docutils literal notranslate"><span class="pre">True</span></code>が、失敗すると<code class="docutils literal notranslate"><span class="pre">False</span></code>が返ってくるので、保存に失敗したときにエラーメッセージを表示するようにしておくと良い。</p>
+<p>保存をする際の注意点として、<code class="docutils literal notranslate"><span class="pre">cv2.imwrite</span></code>はJPEGやPNG等の8bit長の色表現を用いる画像形式を保存する際には、<strong>画素の値が0-255で表わされている必要</strong>がある。画像処理のために、画素の形式を<code class="docutils literal notranslate"><span class="pre">float</span></code>等に変換する場合には注意すること。</p>
+<p>また、カラー画像の場合には読み込み時と同様に<strong>B, G, Rの順で色成分が保存されている必要がある</strong>ので、この点にも注意すること。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outname</span> <span class="o">=</span> <span class="s2">&quot;copy.jpg&quot;</span>
+<span class="n">img_rgb</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2BGR</span><span class="p">)</span>
+<span class="n">succ</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="n">outname</span><span class="p">,</span> <span class="n">img_rgb</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">succ</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Failed to save image file: </span><span class="si">{:s}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">outname</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">5.1.3. </span>画像の色表現<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>上記のプログラムではOpenCVを用いてカラー画像を読み込んだが、各画素の色は赤・緑・青の三要素を用いて表わされていた。これは、<strong>光の三原色と呼ばれる色で、人間の目が捉える様々な波長の光のうち、特徴的な三つの成分を取りだして表現している</strong> (厳密には各波長の感度には幅がある)。デジタル画像の表現形式は、この光の三原色を基本としたRGB表色に従っていることが一般的である (例えばJPEGやPNGなど)。</p>
+<p>光の三原色は色を混ぜると白に近づくことで、例えばRGBの各値が一般的なデジタル画像における最大値である(255, 255, 255)を取ると、それは白色に対応する。このような<strong>色の重ね合わせで明るくなっていく表色系のことを加法混色系</strong>という。逆に、絵の具を混ぜた時のように、<strong>色を重ねるごとに黒に近づいていく表色系のことを減法混色系</strong>という。</p>
+<p>デジタル画像の保存にRGB形式が広く用いられる一方で、実際の応用に画像(や動画)を用いる際には、別の表色系が好まれることがある。例えば、<strong>テレビ映像を伝送する際には、帯域を削減する目的でYUVやYCbCrといった異なる表色が用いられる</strong>。また、プリンタに対して色情報を送るときには加法混色に従うRGB表色系ではなく、<strong>プリンタのインクが従う減法混色系の一種であるCMYK表色系</strong> (C=シアン、M=マゼンタ、Y=イエロー、K=キープレート=黒)が用いられるのが一般的である。</p>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">5.2. </span>画像に対する幾何学的操作<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h3><span class="section-number">5.2.1. </span>画像の拡大・縮小<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>画像の拡大・縮小には<code class="docutils literal notranslate"><span class="pre">cv2.resize</span></code>関数を使う。この関数は</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -521,34 +606,36 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_bilinear</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Bilinear&quot;</span><span class="p">)</span>
 
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_bicubic</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Bicubic&quot;</span><span class="p">)</span>
 
-<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_area</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Area&quot;</span><span class="p">)</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/92801ff3cad38fc01b5804b6a96321eb66bcf662da0a925e2175cd4363f36f01.png" src="../../_images/92801ff3cad38fc01b5804b6a96321eb66bcf662da0a925e2175cd4363f36f01.png" />
+<img alt="../../_images/d4eb955af93b61dc51f578e99fa922d12f66bd374b20f43385c8aa888ed9c751.png" src="../../_images/d4eb955af93b61dc51f578e99fa922d12f66bd374b20f43385c8aa888ed9c751.png" />
 </div>
 </div>
 </section>
-<section id="id4">
-<h3><span class="section-number">5.2.2. </span>画像の回転<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="id7">
+<h3><span class="section-number">5.2.2. </span>画像の回転<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>画像を回転される方法は90度刻みでの回転に使える<code class="docutils literal notranslate"><span class="pre">cv2.rotate</span></code>と、より細かな回転(+幾何的な変形)に対応できる<code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code>を使う方法の二通りがある。</p>
 <p>まず<code class="docutils literal notranslate"><span class="pre">cv2.rotate</span></code>を使う場合だが、この関数は第一引数に回転させる画像を、第2引数に回転の量を表わすフラグとして以下のいずれかを取る。</p>
 <ul class="simple">
@@ -572,14 +659,16 @@ document.write(`
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rot</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rot</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/c5345c4b7e68edc225e80373b6f07db40fc02198b337cb5f756d4fd5d714f30c.png" src="../../_images/c5345c4b7e68edc225e80373b6f07db40fc02198b337cb5f756d4fd5d714f30c.png" />
+<img alt="../../_images/3f44ca8f40afd55da0498e6dc42830f883df2b3fe65526d5b60d168f91beec93.png" src="../../_images/3f44ca8f40afd55da0498e6dc42830f883df2b3fe65526d5b60d168f91beec93.png" />
 </div>
 </div>
 <p>続いて<code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code>を用いる方法だが、この関数は名前の通り、アフィン変換に基づいて画像を変形する関数だ。ここでは、アフィン変換について詳細に解説することは避けるが、アフィン変換は2x3の行列を使って、画素の座標を変換することで画像のリサンプリングを行う。</p>
@@ -600,28 +689,28 @@ d &amp; e &amp; f
 という3つの基本操作を組み合わせる必要がある。</p></li>
 </ol>
 <p>ここでは、上記の三つの操作に対応する行列をそれぞれ<span class="math notranslate nohighlight">\(M_1\)</span>, <span class="math notranslate nohighlight">\(M_2\)</span>, <span class="math notranslate nohighlight">\(M_3\)</span>とすることにしよう。すると、そのそれぞれは以下のように表せる。</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-M_1 = \begin{pmatrix}
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+M_1 &amp;= \begin{pmatrix}
   1 &amp; 0 &amp; - W / 2 \\
   0 &amp; 1 &amp; - H / 2
-\end{pmatrix}, \quad
-M_2 = \begin{pmatrix}
+\end{pmatrix}, \\
+M_2 &amp;= \begin{pmatrix}
   \cos (-90^\circ) &amp; -\sin (-90^\circ) &amp; 0 \\
   \sin (-90^\circ) &amp; \cos (-90^\circ) &amp; 0
-\end{pmatrix}, \quad
-M_3 = \begin{pmatrix}
+\end{pmatrix}, \\
+M_3 &amp;= \begin{pmatrix}
   1 &amp; 0 &amp; W / 2 \\
   0 &amp; 1 &amp; H / 2
 \end{pmatrix}
-\end{equation*}\]</div>
+\end{align}
+\end{split}\]</div>
 <p>のようになる。一般に上記のような回転行列の表現はx軸が右向き正、y軸が上向き正の時には反時計回りの回転を表わすのだが、<strong>画像の座標系はy軸下向きが正に取られている</strong>ため、時計回りが回転方向正になることに注意してほしい。</p>
 <p>そこで、これらの行列と<code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code>を使って画像を回転してみる。なお、上記のアフィン変換(2x3行列)の合成変換を求めるために、各変換を3x3の行列として定義していることに注意すること。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
 <span class="n">M1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="n">W</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="n">H</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]])</span>
 <span class="n">M2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
     <span class="p">[</span>
@@ -634,14 +723,27 @@ M_3 = \begin{pmatrix}
 
 <span class="n">M</span> <span class="o">=</span> <span class="n">M3</span> <span class="o">@</span> <span class="n">M2</span> <span class="o">@</span> <span class="n">M1</span>
 <span class="n">img_rot</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">warpAffine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">M</span><span class="p">[:</span><span class="mi">2</span><span class="p">,</span> <span class="p">:],</span> <span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">))</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rot</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/30643c9957976e4532d05c5f124e1a294315108455a18038fb2a716440c2099b.png" src="../../_images/30643c9957976e4532d05c5f124e1a294315108455a18038fb2a716440c2099b.png" />
+<img alt="../../_images/79fc25af07f973437e0f6cfba479684bb59026a7fe4df42a15087ffa08b884dd.png" src="../../_images/79fc25af07f973437e0f6cfba479684bb59026a7fe4df42a15087ffa08b884dd.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code>は画像領域自体は変形しないため、<code class="docutils literal notranslate"><span class="pre">cv2.rotate</span></code>とは違い両端に黒い領域が現れてしまっているが、回転のされ方としては正しい回転となっていることが分かる。</p>
@@ -651,18 +753,26 @@ M_3 = \begin{pmatrix}
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
 <span class="n">M</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getRotationMatrix2D</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="n">W</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">H</span> <span class="o">/</span> <span class="mi">2</span><span class="p">),</span> <span class="n">angle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="n">img_rot</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">warpAffine</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">H</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_rot</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/30643c9957976e4532d05c5f124e1a294315108455a18038fb2a716440c2099b.png" src="../../_images/30643c9957976e4532d05c5f124e1a294315108455a18038fb2a716440c2099b.png" />
+<img alt="../../_images/79fc25af07f973437e0f6cfba479684bb59026a7fe4df42a15087ffa08b884dd.png" src="../../_images/79fc25af07f973437e0f6cfba479684bb59026a7fe4df42a15087ffa08b884dd.png" />
 </div>
 </div>
 </section>
-<section id="id5">
-<h3><span class="section-number">5.2.3. </span>画像の反転<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3><span class="section-number">5.2.3. </span>画像の反転<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>画像の反転を行う方法にも <code class="docutils literal notranslate"><span class="pre">cv2.flip</span></code> を用いる方法と <code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code> を用いる方法の二種類がある。それぞれ見ていこう。</p>
 <p><code class="docutils literal notranslate"><span class="pre">cv2.flip</span></code>を用いる場合は、第1引数に画像を、第2引数に反転の種類を表わす数字を入力する。この数字(<code class="docutils literal notranslate"><span class="pre">flipcode</span></code>)は0、正、負の三種類で挙動が変わるようになっており、</p>
 <ul class="simple">
@@ -687,30 +797,34 @@ M_3 = \begin{pmatrix}
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># 上下反転</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip_x</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;vertical flip&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 
 <span class="c1"># 左右反転</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip_y</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;horizontal flip&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 
 <span class="c1"># 上下左右反転</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip_both</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;both-side flip&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/bc0b9cf512824a7f02636e39b1c741b7e8f6139d1166b7abc3efae0f5dc35d55.png" src="../../_images/bc0b9cf512824a7f02636e39b1c741b7e8f6139d1166b7abc3efae0f5dc35d55.png" />
+<img alt="../../_images/0e6a01b715dce8c28f420e7237a067e46cbb080afbef75ece94d189cc8dc6105.png" src="../../_images/0e6a01b715dce8c28f420e7237a067e46cbb080afbef75ece94d189cc8dc6105.png" />
 </div>
 </div>
 <p>また、余談にはなるが、NumPyにも配列の上下左右を入れ替えるメソッドが用意されており、上下反転なら<code class="docutils literal notranslate"><span class="pre">np.flipud</span></code>、左右反転なら <code class="docutils literal notranslate"><span class="pre">np.fliplr</span></code>、左右両方に回転させたい場合には <code class="docutils literal notranslate"><span class="pre">np.flip</span></code> の第2引数に縦を縦軸を表わす0, 横軸を表わす1という軸のインデックスを配列として指定すれば良い。</p>
@@ -730,27 +844,34 @@ M_3 = \begin{pmatrix}
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="c1"># 上下反転</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip_x</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;vertical flip&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="c1"># 左右反転</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip_y</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;horizontal flip&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="c1"># 上下左右反転</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip_both</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;both-side flip&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/bc0b9cf512824a7f02636e39b1c741b7e8f6139d1166b7abc3efae0f5dc35d55.png" src="../../_images/bc0b9cf512824a7f02636e39b1c741b7e8f6139d1166b7abc3efae0f5dc35d55.png" />
+<img alt="../../_images/0e6a01b715dce8c28f420e7237a067e46cbb080afbef75ece94d189cc8dc6105.png" src="../../_images/0e6a01b715dce8c28f420e7237a067e46cbb080afbef75ece94d189cc8dc6105.png" />
 </div>
 </div>
 <p>また、最後に <code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code> を用いる方法についてだが、こちらは、X軸対称、Y軸対称、X-Y両軸対称の反転を意味する行列 <span class="math notranslate nohighlight">\(M_1\)</span>、<span class="math notranslate nohighlight">\(M_2\)</span>、<span class="math notranslate nohighlight">\(M_3\)</span> がそれぞれ</p>
@@ -796,131 +917,524 @@ M_3= \begin{pmatrix}
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="c1"># 上下反転</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip_x</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;vertical flip&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="c1"># 左右反転</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip_y</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;horizontal flip&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="c1"># 上下左右反転</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_flip_both</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;both-side flip&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/fbd96752c9f78d006f0c9b08a9bbb3647659262673a6ef3f36befebba685e564.png" src="../../_images/fbd96752c9f78d006f0c9b08a9bbb3647659262673a6ef3f36befebba685e564.png" />
+<img alt="../../_images/c9ae72606dc3c8ff73f86f504708594b308758bd42bdc0dfa328053c88d9cab8.png" src="../../_images/c9ae72606dc3c8ff73f86f504708594b308758bd42bdc0dfa328053c88d9cab8.png" />
 </div>
 </div>
 </section>
 </section>
-<section id="id6">
-<h2><span class="section-number">5.3. </span>画像フィルタ<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
-<p>画像のフィルタ処理は</p>
+<section id="id9">
+<h2><span class="section-number">5.3. </span>画像フィルタ<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<p>画像のフィルタ処理には、目的に応じて多くの種類があるが、ここでは、<strong>ぼかしフィルタ</strong> (ノイズ除去フィルタ)と、<strong>エッジ検出フィルタ</strong>について紹介する。</p>
+<p>この際、「フィルタ」というのは、とある「フィルタカーネル」関数と、二次元画像の畳み込み演算であることに留意してほしい。具体的には、画像を位置 <span class="math notranslate nohighlight">\((x, y)\)</span>の関数として <span class="math notranslate nohighlight">\(I(x, y)\)</span>と表わし、フィルタカーネルを<span class="math notranslate nohighlight">\(f(x, y)\)</span>のように表わすとすれば、フィルタ処理は、畳み込み演算として</p>
+<div class="math notranslate nohighlight" id="equation-eq-filter-convolution">
+<span class="eqno">(5.1)<a class="headerlink" href="#equation-eq-filter-convolution" title="この数式へのパーマリンク">#</a></span>\[
+\iint I(x + \xi, y + \eta) f(\xi, \eta) {\rm d}\xi {\rm d}\eta
+\]</div>
+<p>のように書けることを覚えておいてほしい。</p>
+<section id="id10">
+<h3><span class="section-number">5.3.1. </span>ぼかしフィルタ<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>ぼかしフィルタの目的は、画像に含まれている高周波のノイズを除去することにある。最初に、先ほど読み込んだ画像に対して、正規分布に従うノイズを付与してみる。</p>
+<p>なお、以下のコードでは、輝度成分だけにノイズがのるように、RGBの各要素に対して同じ量のノイズを付加していることに注意せよ。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_gauss</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span> <span class="mf">15.0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_gauss</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_noisy</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fx</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">fy</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">INTER_AREA</span><span class="p">)</span>
+<span class="n">img_noisy</span> <span class="o">=</span> <span class="p">(</span><span class="n">img</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.2</span>
+<span class="n">img_noisy</span> <span class="o">+=</span> <span class="n">noise</span><span class="p">[:,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span>
+<span class="n">img_noisy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">img_noisy</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_noisy</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/b256dea0257d5d26c0fc4a789c08c9b4654dd4cfbe665338d1022bb40135df49.png" src="../../_images/b256dea0257d5d26c0fc4a789c08c9b4654dd4cfbe665338d1022bb40135df49.png" />
+</div>
+</div>
+<p>ノイズを付与すると、上記のように、元の画像が見分けづらくなる。このようなノイズは、写真を撮るときに被写体が暗い場合に多く生じる。また、ノイズの種類は異なるが、JPEG等の不可逆圧縮をかけることによっても、ノイズが生じる。</p>
+<section id="gaussian">
+<h4>Gaussianフィルタ<a class="headerlink" href="#gaussian" title="Permalink to this heading">#</a></h4>
+<p><strong>Gaussianフィルタ</strong>は、その名前の通り、二次元のGauss分布 (正規分布)を画像に畳み込むことで実現される。すなわち、フィルタカーネル<span class="math notranslate nohighlight">\(f(x, y)\)</span>を次のように定義する。</p>
+<div class="math notranslate nohighlight">
+\[
+f(x, y) = \frac{1}{K} \exp\left( -\frac{x^2 + y^2}{2 \sigma^2} \right)
+\]</div>
+<p>ただし、<span class="math notranslate nohighlight">\(K\)</span>は、カーネル関数の定義域全体での積分が1となるような規格化定数であるとする。定義の通り、Gaussianフィルタのフィルタカーネルは定義域が二次元の実平面全体であるため、これをコンピュータに計算させることはできない。</p>
+<p>しかし、Gauss関数は、原点から遠い<span class="math notranslate nohighlight">\((x, y)\)</span>には、ほとんど0と見なせる値を取るので、実用的には、有限の範囲についての積分だけを考えれば十分である。そこで、<a class="reference internal" href="#equation-eq-filter-convolution">(5.1)</a>を以下のように離散化する。</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{K} \sum_{\xi = -H}^{+H} \sum_{\eta = -H}^H I(x + \xi, y + \eta) f(\xi, \eta)
+\]</div>
+<p>ただし、<span class="math notranslate nohighlight">\(H\)</span>は、積分を行う矩形窓の半径を表わしており、規格化定数<span class="math notranslate nohighlight">\(K\)</span>は、</p>
+<div class="math notranslate nohighlight">
+\[
+K = \sum_{\xi = -H}^{+H} \sum_{\eta = -H}^H f(\xi, \eta)
+\]</div>
+<p>のように定義する。</p>
+<p>OpenCVでGaussianフィルタを実行するには<code class="docutils literal notranslate"><span class="pre">cv2.GaussianBlur</span></code>関数を用いる。この関数は第1引数に画像をとり、第2引数に積分窓の直径 <span class="math notranslate nohighlight">\(2H + 1\)</span>を取る。さらに、最後の引数にGauss関数のパラメータ<span class="math notranslate nohighlight">\(\sigma\)</span>を取る。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_gauss</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">img_noisy</span><span class="p">,</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="mf">5.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_gauss</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Gaussian filter&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/e23c979e045d07d7a40b9722dc4db004299e86863185d51f3681827b9b5d67be.png" src="../../_images/e23c979e045d07d7a40b9722dc4db004299e86863185d51f3681827b9b5d67be.png" />
+</div>
+</div>
+<p>このように、Gaussianフィルタにより、高周波のノイズは除けているものの、画像には斑点状ノイズが残ってしまっている。さらに、元のひまわりの画像信号にもぼけが生じており、元の画像を復元できているとは言いがたい。</p>
+</section>
+<section id="id11">
+<h4>バイラテラルフィルタ<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<p><strong>バイラテラルフィルタ</strong> (bilateral filter)はTomasiとManduchiによって1998年に提案されたフィルタ<span id="id12">[<a class="reference internal" href="#id39" title="C. Tomasi and R. Manduchi. Bilateral filtering for gray and color images. In Sixth International Conference on Computer Vision (IEEE Cat. No.98CH36271). Narosa Publishing House, 1998. doi:10.1109/iccv.1998.710815.">Tomasi and Manduchi, 1998</a>]</span>で、Gaussianフィルタが元画像の信号までぼかしてしまう問題を緩和したものである。</p>
+<p>具体的には、<strong>色が近い画素同士の間でだけぼかしがかかる</strong>ようにGauss関数に色を考慮する項を追加している。バイラテラルフィルタのフィルタカーネルは以下のように定義される。</p>
+<div class="math notranslate nohighlight">
+\[
+f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^2} \right) \exp\left( -\frac{\| I(x, y) - I(x + \xi, y + \eta)\|^2}{2 \sigma_r^2} \right)
+\]</div>
+<p>ただし、<span class="math notranslate nohighlight">\(\sigma_s\)</span>は画素の位置情報に関するぼかしの強さを調整するパラメータ (sはspatialのs)、<span class="math notranslate nohighlight">\(\sigma_r\)</span>は画像の輝度に関するぼかしの強さを調整するパラメータ (rはrangeのr)である。このとき、フィルタカーネルは画像の輝度値を参照するため、原点からのずれ <span class="math notranslate nohighlight">\((\xi, \eta)\)</span>以外にフィルタ対象の画素の座標 <span class="math notranslate nohighlight">\((x, y)\)</span>も取っていることに注意すること。</p>
+<p>OpenCVでバイラテラルフィルタを適用するには<code class="docutils literal notranslate"><span class="pre">cv2.bilateralFilter</span></code>を用いる。この関数は第1引数に画像、第2引数に離散的な積分範囲を表わす矩形窓の直径を取り、<code class="docutils literal notranslate"><span class="pre">sigmaColor</span></code>のパラメータが<span class="math notranslate nohighlight">\(\sigma_r\)</span>に、<code class="docutils literal notranslate"><span class="pre">sigmaSpace</span></code>のパラメータが<span class="math notranslate nohighlight">\(\sigma_s\)</span>に対応している。以下にサンプルコードを示す。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_bf</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">img_noisy</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="n">sigmaColor</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">sigmaSpace</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_bf</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bilateral filter&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/738145f1ebd10590b417c05cb4e250b3573a3102e34322cf226507c7b6cc3517.png" src="../../_images/738145f1ebd10590b417c05cb4e250b3573a3102e34322cf226507c7b6cc3517.png" />
+</div>
+</div>
+<p>このように、Gaussianフィルタと比べると、元の信号のぼけが少なく、また高周波のノイズも低減できていることが分かる。バイラテラルフィルタは繰り返し書けることで、その効果を調整することができる。一例として弱いバイラテラルフィルタを10回程度適用すると、以下のような画像が得られる。</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_bf_rep</span> <span class="o">=</span> <span class="n">img_noisy</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">img_bf_rep</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">img_bf_rep</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="n">sigmaColor</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">sigmaSpace</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_bf_rep</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Bilateral filter, repeated&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/772bcac0d318ed7e7a1f054d74606a263f5e3b8b3806b73624393f4d788597f9.png" src="../../_images/772bcac0d318ed7e7a1f054d74606a263f5e3b8b3806b73624393f4d788597f9.png" />
+</div>
+</div>
+<p>このように、若干ではあるが、ノイズが低減され、元の画像に近い信号が得られているように見える。</p>
+</section>
+<section id="id13">
+<h4>メディアンフィルタ<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<p>メディアンフィルタはGaussianフィルタやバイラテラルフィルタとは違い、フィルタカーネルに依らないフィルタである。具体的には、とある画素 <span class="math notranslate nohighlight">\((x, y)\)</span>の近傍にある画素を集めてきて、その画素の中間値をフィルタ後の画素値とする、というものである。メディアンフィルタは、ソルトノイズと呼ばれる、所々に外れた輝度値が現れるような画像に高い効果を発揮することが知られている。</p>
+<p>OpenCVの<code class="docutils literal notranslate"><span class="pre">cv2.medianBlur</span></code>は8bit符号なし整数の画像にしか適用できないので、画像の<code class="docutils literal notranslate"><span class="pre">dtype</span></code>を変更後に適用すること。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_med</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">medianBlur</span><span class="p">((</span><span class="n">img_noisy</span> <span class="o">*</span> <span class="mf">255.0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint8&quot;</span><span class="p">),</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_med</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Median filter&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/aa29264956ebb3b181635ccac0e274c442e1ae94f51b583843c1fb725037aee4.png" src="../../_images/aa29264956ebb3b181635ccac0e274c442e1ae94f51b583843c1fb725037aee4.png" />
+<img alt="../../_images/491dea98c16090d4fe7fe6b3d0facad6304e0760b65c42befd3edbae17b7dceb.png" src="../../_images/491dea98c16090d4fe7fe6b3d0facad6304e0760b65c42befd3edbae17b7dceb.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_bilat</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="n">sigmaColor</span><span class="o">=</span><span class="mf">50.0</span><span class="p">,</span> <span class="n">sigmaSpace</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_bilat</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
+<p>結果から分かる通り、メディアンフィルタは適度に元画像の信号を保ちつつ、目立ったノイズを低減できていることが分かる。さらに、Gaussianフィルタやバイラテラルフィルタは周辺画素との畳み込みによって、どうしても画素の値が灰色に近づいてしまい、コントラストが落ちるが、メディアンフィルタはノイズ画像に現れる輝度値を再利用しているだけなので、コントラストの落ち方が緩やかである。</p>
+<p>ただし、上記の例のように画像全体にくまなくノイズが存在するような場合には、どうしても斑点状のノイズが発生してしまうことは防げない。</p>
+<div class="note admonition">
+<p class="admonition-title">Futher Reading: ぼかしフィルタ</p>
+<p>上記の通り、単純なぼかしフィルタのノイズ除去性能には限界があり、ノイズレベルによっては、完全にノイズを取り去ることは難しい。ノイズ除去は、非常に古くから研究されているにも関わらず、現在でも多くの手法が提案されている。</p>
+<p>比較的性能が良い手法として広く知られている手法にはBM3D (Block Matching 3D) <span id="id14">[<a class="reference internal" href="#id40" title="Kostadin Dabov, Alessandro Foi, Vladimir Katkovnik, and Karen Egiazarian. Image denoising by sparse 3-d transform-domain collaborative filtering. IEEE Transactions on Image Processing, 16(8):2080–2095, aug 2007. doi:10.1109/tip.2007.901238.">Dabov <em>et al.</em>, 2007</a>]</span>があり、この手法は、注目画素の周辺を含む画像断片と類似した断片を画像全体から探してきて、その画像断片の集合を三次元的に処理することでフィルタを実現する手法である。</p>
+<p>また、画像フィルタを最適化問題として定式化する手法も多く提案されており、全変動 (total variation)を最小化する手法<span id="id15">[<a class="reference internal" href="#id42" title="Leonid I. Rudin, Stanley Osher, and Emad Fatemi. Nonlinear total variation based noise removal algorithms. Physica D: Nonlinear Phenomena, 60(1-4):259–268, nov 1992. doi:10.1016/0167-2789(92)90242-f.">Rudin <em>et al.</em>, 1992</a>]</span>や、画素の勾配の<span class="math notranslate nohighlight">\(L_0\)</span>ノルムを最小化する手法<span id="id16">[<a class="reference internal" href="#id41" title="Li Xu, Cewu Lu, Yi Xu, and Jiaya Jia. Image smoothing via L0 gradient minimization. In Proceedings of the 2011 SIGGRAPH Asia conference, volume 30, 1–12. Association for Computing Machinery (ACM), dec 2011. doi:10.1145/2070781.2024208.">Xu <em>et al.</em>, 2011</a>]</span>などがある。</p>
+<p>これ以外にも、近年、ノイズ付きの画像1枚「だけ」を深層学習することでノイズ除去を実現するDeep Image Prior法<span id="id17">[<a class="reference internal" href="#id44" title="Dmitry Ulyanov, Andrea Vedaldi, and Victor Lempitsky. Deep image prior. International Journal of Computer Vision, 128(7):1867–1888, mar 2020. doi:10.1007/s11263-020-01303-4.">Ulyanov <em>et al.</em>, 2020</a>]</span>や、ノイズ付き画像を大量に学習してノイズ除去を実現するNoise2Noise法<span id="id18">[<a class="reference internal" href="#id43" title="Jaakko Lehtinen, Jacob Munkberg, Jon Hasselgren, Samuli Laine, Tero Karras, Miika Aittala, and Timo Aila. Noise2Noise: learning image restoration without clean data. In Jennifer Dy and Andreas Krause, editors, Proceedings of the 35th International Conference on Machine Learning, volume 80 of Proceedings of Machine Learning Research, 2965–2974. PMLR, 10–15 Jul 2018. URL: https://proceedings.mlr.press/v80/lehtinen18a.html.">Lehtinen <em>et al.</em>, 2018</a>]</span>などが提案されている。</p>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/69b6570feefad66ab87b12a845700c42305dd4bad44b371c80c54d82ae3cd7c6.png" src="../../_images/69b6570feefad66ab87b12a845700c42305dd4bad44b371c80c54d82ae3cd7c6.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_bilat_rep</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
-    <span class="n">img_bilat_rep</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">img_bilat_rep</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="n">sigmaColor</span><span class="o">=</span><span class="mf">15.0</span><span class="p">,</span> <span class="n">sigmaSpace</span><span class="o">=</span><span class="mf">30.0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_bilat_rep</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/51aca54b75b795f7008d13f884cab689598342313a4ccca26dace1c4ce3d52b3.png" src="../../_images/51aca54b75b795f7008d13f884cab689598342313a4ccca26dace1c4ce3d52b3.png" />
-</div>
-</div>
+</section>
+</section>
 <section id="edge-detection">
-<span id="id7"></span><h3><span class="section-number">5.3.1. </span>エッジ抽出フィルタ<a class="headerlink" href="#edge-detection" title="Permalink to this heading">#</a></h3>
+<span id="id19"></span><h3><span class="section-number">5.3.2. </span>エッジ検出フィルタ<a class="headerlink" href="#edge-detection" title="Permalink to this heading">#</a></h3>
+<p>エッジは、画像に写っている物体の形を判別する上で重要な情報源である。実際、人間の視覚系においては、第一視覚野 (V1)と呼ばれる箇所において、目から入ってきた信号について、輪郭線の傾きに強く反応することが知られている。従って、エッジの情報は物体認識においても重要な役割を果たす (詳細は<a class="reference internal" href="../sec2/feature-extraction.html#sec-feature-extraction"><span class="std std-ref">特徴抽出</span></a>にて解説する)。</p>
+<p>ここでは、代表的なエッジ検出フィルタとしてSobelフィルタとCannyフィルタについて紹介する。</p>
+<section id="sobel">
+<h4>Sobelフィルタ<a class="headerlink" href="#sobel" title="Permalink to this heading">#</a></h4>
+<p>エッジ(= 輪郭線)とは、物体の境界に現れる曲線であり、通常、物体の境界においては、画像の輝度が大きく変化していると考えられる。その意味で、<strong>エッジとは単純には画像の勾配</strong>であり、その勾配をいかにして良いエッジ情報に変換するかが大事になる。</p>
+<p>Sobelフィルタはとある方向について、画像の勾配を取るときに、その垂直方向にぼかしのフィルタを同時にかけることで、ノイズの影響を減らしつつ、エッジを抽出することを目指している。最も単純な3x3のフィルタカーネルで表わされるSobelフィルタ (x方向の例を示す)は以下のようになる。</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/0fa54bd0ead5aa82b2a28a3a2ee026468c0d0bd028b93310a6887ded01b18194.png" src="../../_images/0fa54bd0ead5aa82b2a28a3a2ee026468c0d0bd028b93310a6887ded01b18194.png" />
+</div>
+</div>
+<p>このカーネルは横方向には画素値の中心差分を取っており、縦方向は、Gaussianフィルタのような中央に近い画素を強く重み付けるぼかしフィルタとなっていることが分かる。</p>
+<p>同様にして、5×5のSobelフィルタカーネルは以下のようなものである。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_canny</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_canny</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">getDerivKernels</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">))</span>
+<span class="n">draw_frame</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7add388dfe2f5fba6dfa0702be32069d28a76080d87700d9a4c14eb84ed26a14.png" src="../../_images/7add388dfe2f5fba6dfa0702be32069d28a76080d87700d9a4c14eb84ed26a14.png" />
+<img alt="../../_images/7ecc4da22ce786ff5e184c568797b2c83f033c14adf16b76d9fb4bf6f00e73d8.png" src="../../_images/7ecc4da22ce786ff5e184c568797b2c83f033c14adf16b76d9fb4bf6f00e73d8.png" />
 </div>
 </div>
+<p>OpenCVでSobelフィルタを適用するには <code class="docutils literal notranslate"><span class="pre">cv2.Sobel</span></code>を用いる。この関数はグレースケールの画像を第1引数にとり、第2引数に画像の輝度値を表わす数値型 (8bit符号なし整数なら<code class="docutils literal notranslate"><span class="pre">cv2.CV_8U</span></code>、32bit浮動小数なら<code class="docutils literal notranslate"><span class="pre">cv2.CV_32F</span></code>)を与える。第3引数と第4引数は、勾配を取る方向と強さを表わしていて、<code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">0</span></code>の順で引数が与えられればx方向に強さ1で、<code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1</span></code>の順で与えられればy方向に強さ1で勾配を取る。これに加えて<code class="docutils literal notranslate"><span class="pre">ksize=...</span></code>のパラメータに整数を指定することで、フィルタカーネルの大きさを指定する。</p>
+<p>以下のコードでは、勾配が負の値となる箇所も検出するために、画像の型を32bit浮動小数に変換して計算している。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_gray</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2GRAY</span><span class="p">)</span>
+<span class="n">img_gray</span> <span class="o">=</span> <span class="p">(</span><span class="n">img_gray</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+<span class="n">img_sobel_x</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">img_gray</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_32F</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">img_sobel_y</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">img_gray</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_32F</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">img_sobel_x</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">img_gray</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_8U</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">img_sobel_y</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">img_gray</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_8U</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_sobel_x</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;X gradient&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_sobel_x</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;X gradient&quot;</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_sobel_y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Y gradient&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_sobel_y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Y gradient&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e9c57a6ea0eca6c65a0e432b06caa35db7b08dababea2e3fe082d86727afa2a9.png" src="../../_images/e9c57a6ea0eca6c65a0e432b06caa35db7b08dababea2e3fe082d86727afa2a9.png" />
+<img alt="../../_images/9701901c8c8f61f1444ede0f849f09981eae83b198a242dad34c0abc0d984485.png" src="../../_images/9701901c8c8f61f1444ede0f849f09981eae83b198a242dad34c0abc0d984485.png" />
+</div>
+</div>
+<p>上記の画像では正の勾配を赤色で、負の勾配を青色で表現している。結果から、Sobelフィルタによって、画像のx, y各方向に対する勾配を元にしたエッジが求まっていることが確認できる。</p>
+<p>実用上はx方向の勾配の強さ<span class="math notranslate nohighlight">\(\nabla_x I\)</span>とy方向の勾配の強さ<span class="math notranslate nohighlight">\(\nabla_y I\)</span>を区別する必要がない場合も多いので、そのような場合には、<span class="math notranslate nohighlight">\(\| \nabla I \|\)</span>のように勾配のノルムを取ってエッジ画像とすることもある。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_sobel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">img_sobel_x</span><span class="o">**</span><span class="mf">2.0</span> <span class="o">+</span> <span class="n">img_sobel_y</span><span class="o">**</span><span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># エッジ強度のノルムを取る</span>
-<span class="n">img_sobel_mag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">img_sobel_x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">img_sobel_y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">img_sobel_mag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">img_sobel_mag</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint8&quot;</span><span class="p">)</span>
-
-<span class="c1"># エッジを二値化する</span>
-<span class="n">_</span><span class="p">,</span> <span class="n">edge_mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">img_sobel_mag</span><span class="p">,</span> <span class="mi">216</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_BINARY_INV</span><span class="p">)</span>
-
-<span class="c1"># バイラテラルフィルタのぼかし画像にエッジを適用</span>
-<span class="n">img_illust</span> <span class="o">=</span> <span class="n">img_bilat_rep</span> <span class="o">*</span> <span class="p">(</span><span class="n">edge_mask</span><span class="p">[:,</span> <span class="p">:,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">//</span> <span class="mi">255</span><span class="p">)</span>
-
-<span class="c1"># 表示</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_illust</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_sobel</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Sobel edge magnitude&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/78577a6b2d579bbf012bc34aa1b5bb56c90c4d08c634e95a1e597dc5b8793199.png" src="../../_images/78577a6b2d579bbf012bc34aa1b5bb56c90c4d08c634e95a1e597dc5b8793199.png" />
+<img alt="../../_images/9e0642112d578b7860012884883daaf84c9fd33e619e0aef033354d357b58ff0.png" src="../../_images/9e0642112d578b7860012884883daaf84c9fd33e619e0aef033354d357b58ff0.png" />
 </div>
 </div>
 </section>
+<section id="canny">
+<h4>Cannyフィルタ<a class="headerlink" href="#canny" title="Permalink to this heading">#</a></h4>
+<p>Sobelフィルタと並んで、よく用いられるエッジ検出フィルタにCannyフィルタがある。Sobelフィルタは、上記の結果を見ると分かる通り、「勾配がある場所」をエッジだと考えるが、エッジが物体の輪郭線であると考えると、その線幅は1ピクセル程度となっている方が尤もらしいとも考えられる。</p>
+<p>CannyフィルタはSobelフィルタの結果から、「物体の輪郭線としてのエッジ」をおよそ1ピクセル幅で検出するアルゴリズムである。</p>
+<p>Cannyフィルタは主につの処理からなる。</p>
+<ol class="arabic simple">
+<li><p>Sobelフィルタ (3x3のフィルタカーネル)による勾配強度の計算</p></li>
+<li><p>勾配が極大となる画素の検出</p></li>
+<li><p>ヒステリシス閾値処理</p></li>
+</ol>
+</section>
+<section id="id20">
+<h4>Sobelフィルタによる勾配強度の計算<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
+<p>まず、Sobelフィルタを用いて、x方向の勾配とy方向の勾配を計算する。これは先ほどと同様にx方向とy方向の各方向に対してSobelフィルタを書けて、その勾配のノルムを取ることで実現する。なお、Cannyフィルタの処理では、Sobelフィルタをかける前に一度Gaussianフィルタによってノイズが低減される。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
+
+<span class="c1"># ノイズの低減</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">GaussianBlur</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sigmaX</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sigmaY</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">dx</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_32F</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Sobel</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">CV_32F</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ksize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">dy</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/d964af3ff388da24eae3a4630865d9dec39e238a86e9ce96bf9bf1c82b4abdf4.png" src="../../_images/d964af3ff388da24eae3a4630865d9dec39e238a86e9ce96bf9bf1c82b4abdf4.png" />
+</div>
+</div>
+</section>
+<section id="id21">
+<h4>勾配が極大の画素の検出<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h4>
+<p>次に、各画素について、勾配方向を計算し、その勾配方向に沿った方向に中心画素の輝度値が極大になっている画素だけを取り出す。</p>
+<p>まずは、先ほどのx方向勾配とy方向勾配から、<code class="docutils literal notranslate"><span class="pre">arctan</span></code>を用いて勾配方向を計算する。その角度を、0°、45°、90°、135°のいずれかに分類する。今回は「向きを無視した方向」が分かれば良いので、<code class="docutils literal notranslate"><span class="pre">arctan</span></code>の戻り値が負の場合には<span class="math notranslate nohighlight">\(\pi\)</span>を足し算しておく。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mag_dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">mag_dy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dy</span><span class="o">**</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">mag_dy</span> <span class="o">/</span> <span class="p">(</span><span class="n">mag_dx</span> <span class="o">+</span> <span class="mf">1.0e-6</span><span class="p">))</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">angle</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">angle</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+<span class="n">angle</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">8.0</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">angle</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">angle</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">angle</span><span class="p">)</span>
+<span class="n">angle_type</span> <span class="o">=</span> <span class="p">(</span><span class="n">angle</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">4.0</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>
+<span class="n">angle_type</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">angle_type</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 0: 0°, 1: 45°, 2: 90°, 3: 135°</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>その3x3の近傍画素をみて、中心の画素が最大の勾配を持っている画素だけを抜き出す。3x3の近傍画素を取り出すために、以下では勾配画像の周囲に画素値0のマージンを1ピクセル幅で与え、その内部についてリスト内包表記によって各画素を中心とする3x3領域に対応する9画素を取り出している。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lmax_grad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">angle_type</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span>
+
+        <span class="c1"># 勾配方向に応じて調査する近傍画素を変更する</span>
+        <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># 0°の場合</span>
+            <span class="n">v0</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x0</span><span class="p">]</span>
+            <span class="n">v1</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># 45°の場合</span>
+            <span class="n">v0</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">x0</span><span class="p">]</span>
+            <span class="n">v1</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">x1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">t</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="c1"># 90°の場合</span>
+            <span class="n">v0</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span>
+            <span class="n">v1</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># 135°の場合            </span>
+            <span class="n">v0</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">]</span>
+            <span class="n">v1</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">x0</span><span class="p">]</span>
+
+        <span class="c1"># 近傍画素より勾配が大きければそれを残す</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="nb">max</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">v1</span><span class="p">):</span>
+            <span class="n">lmax_grad</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/b108134ed1288bb4d9123bf8c26f48dae2761f928bf55c184418634edb8ccc29.png" src="../../_images/b108134ed1288bb4d9123bf8c26f48dae2761f928bf55c184418634edb8ccc29.png" />
+</div>
+</div>
+<p>このように極大の部分だけを取り出すと、かなりエッジの線が細くなったことが分かる。</p>
+</section>
+<section id="id22">
+<h4>ヒステリシス閾値処理<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h4>
+<p>ヒステリシスというのは、元々、とある状態から変化を加えていったときに、変化の過程と、元に戻る過程で異なる状態経路を取るような現象のことを指す。Cannyフィルタで用いられる「ヒステリシス閾値処理」は、これに着想を得て、二段階の閾値処理をかける手法である。</p>
+<p>ヒステリシス閾値処理には二種類の閾値 <span class="math notranslate nohighlight">\(\tau_1\)</span>と<span class="math notranslate nohighlight">\(\tau_2\)</span>を使用する (ただし<span class="math notranslate nohighlight">\(\tau_1 &lt; \tau_2\)</span>)。もし上記の極大勾配の値が<span class="math notranslate nohighlight">\(\tau_2\)</span>を超えていたら、その画素は輪郭線であると見なす。また、反対に極大勾配の値が<span class="math notranslate nohighlight">\(\tau_1\)</span>を下回っていたら、その画素は輪郭線ではないと見なす。</p>
+<p>最後に残った極大勾配が<span class="math notranslate nohighlight">\([ \tau_1, \tau_2 ]\)</span>の区間に入る画素については、その周囲の8画素をみて、少なくとも1つの画素が<span class="math notranslate nohighlight">\(\tau_2\)</span>以上の極大勾配を持っているなら、その画素も輪郭線と見なす。</p>
+<p>ここでは、画素値が<span class="math notranslate nohighlight">\([0, 255]\)</span>の場合を基準として<span class="math notranslate nohighlight">\(\tau_1 = 50\)</span>, <span class="math notranslate nohighlight">\(\tau_2 = 100\)</span>としてヒステリシス閾値処理を実行する。なお、ここまでの処理では画像を32bit浮動小数で表わしているため、<span class="math notranslate nohighlight">\(\tau_1\)</span>と<span class="math notranslate nohighlight">\(\tau_2\)</span>はそのスケールに合うように大きさを調整する。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+
+<span class="n">tau_1</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">tau_2</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">edge1</span> <span class="o">=</span> <span class="p">(</span><span class="n">lmax_grad</span> <span class="o">&gt;</span> <span class="n">tau_1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>  <span class="c1"># エッジ候補</span>
+<span class="n">edge2</span> <span class="o">=</span> <span class="p">(</span><span class="n">lmax_grad</span> <span class="o">&gt;</span> <span class="n">tau_2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>  <span class="c1"># 確定エッジ</span>
+
+<span class="n">visited</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">edge1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="n">edge2</span><span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># 幅優先探索で確定エッジの画素に接続したエッジ候補画素を洗い出す</span>
+            <span class="n">que</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+            <span class="n">que</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="n">que</span><span class="o">.</span><span class="n">empty</span><span class="p">():</span>
+                <span class="n">qx</span><span class="p">,</span> <span class="n">qy</span> <span class="o">=</span> <span class="n">que</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">visited</span><span class="p">[</span><span class="n">qy</span><span class="p">,</span> <span class="n">qx</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">visited</span><span class="p">[</span><span class="n">qy</span><span class="p">,</span> <span class="n">qx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">off_x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">off_y</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">ox</span><span class="p">,</span> <span class="n">oy</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">off_x</span><span class="p">,</span> <span class="n">off_y</span><span class="p">):</span>
+                    <span class="n">nx</span> <span class="o">=</span> <span class="n">qx</span> <span class="o">+</span> <span class="n">ox</span>
+                    <span class="n">ny</span> <span class="o">=</span> <span class="n">qy</span> <span class="o">+</span> <span class="n">oy</span>
+                    <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">nx</span> <span class="o">&lt;</span> <span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="n">grad</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                        <span class="k">if</span> <span class="n">edge1</span><span class="p">[</span><span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">edge2</span><span class="p">[</span><span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="n">que</span><span class="o">.</span><span class="n">put</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">))</span>
+
+<span class="n">img_canny</span> <span class="o">=</span> <span class="p">(</span><span class="n">visited</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;uint8&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/434e6742c92ed9750481632a3d6220f5f1f60e7a0f261a71d41b3c5e4d9f8b2a.png" src="../../_images/434e6742c92ed9750481632a3d6220f5f1f60e7a0f261a71d41b3c5e4d9f8b2a.png" />
+</div>
+</div>
+<p>OpenCVの<code class="docutils literal notranslate"><span class="pre">cv2.Canny</span></code>には上記と同様のコードが、以下のようなパラメータによって得られる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img_canny</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">Canny</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">apertureSize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">L2gradient</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_canny</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Canny filter&quot;</span><span class="p">,</span> <span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/bcbc4ceba1d7b6bdc545e452c94535801c20806b0d98a39301936d3d0c6de55d.png" src="../../_images/bcbc4ceba1d7b6bdc545e452c94535801c20806b0d98a39301936d3d0c6de55d.png" />
+</div>
+</div>
+<p>二つの画像を比べてみると、概ね同じ画像が得られていることが分かる。</p>
+</section>
+</section>
+</section>
+<section id="id23">
+<h2><span class="section-number">5.4. </span>練習問題<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Gaussianフィルタは画像の高周波信号を取り除く「ローパスフィルタ」であると考えられる。フィルタカーネルの畳み込みの式をフーリエ変換することによって、この性質を調べよ。</p></li>
+</ol>
+</section>
+<section id="id24">
+<h2><span class="section-number">5.5. </span>参考文献<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id25">
+<dl class="citation">
+<dt class="label" id="id40"><span class="brackets"><a class="fn-backref" href="#id14">DFKE07</a></span></dt>
+<dd><p>Kostadin Dabov, Alessandro Foi, Vladimir Katkovnik, and Karen Egiazarian. Image denoising by sparse 3-d transform-domain collaborative filtering. <em>IEEE Transactions on Image Processing</em>, 16(8):2080–2095, aug 2007. <a class="reference external" href="https://doi.org/10.1109/tip.2007.901238">doi:10.1109/tip.2007.901238</a>.</p>
+</dd>
+<dt class="label" id="id43"><span class="brackets"><a class="fn-backref" href="#id18">LMH+18</a></span></dt>
+<dd><p>Jaakko Lehtinen, Jacob Munkberg, Jon Hasselgren, Samuli Laine, Tero Karras, Miika Aittala, and Timo Aila. Noise2Noise: learning image restoration without clean data. In Jennifer Dy and Andreas Krause, editors, <em>Proceedings of the 35th International Conference on Machine Learning</em>, volume 80 of Proceedings of Machine Learning Research, 2965–2974. PMLR, 10–15 Jul 2018. URL: <a class="reference external" href="https://proceedings.mlr.press/v80/lehtinen18a.html">https://proceedings.mlr.press/v80/lehtinen18a.html</a>.</p>
+</dd>
+<dt class="label" id="id42"><span class="brackets"><a class="fn-backref" href="#id15">ROF92</a></span></dt>
+<dd><p>Leonid I. Rudin, Stanley Osher, and Emad Fatemi. Nonlinear total variation based noise removal algorithms. <em>Physica D: Nonlinear Phenomena</em>, 60(1-4):259–268, nov 1992. <a class="reference external" href="https://doi.org/10.1016/0167-2789(92)90242-f">doi:10.1016/0167-2789(92)90242-f</a>.</p>
+</dd>
+<dt class="label" id="id39"><span class="brackets"><a class="fn-backref" href="#id12">TM98</a></span></dt>
+<dd><p>C. Tomasi and R. Manduchi. Bilateral filtering for gray and color images. In <em>Sixth International Conference on Computer Vision (IEEE Cat. No.98CH36271)</em>. Narosa Publishing House, 1998. <a class="reference external" href="https://doi.org/10.1109/iccv.1998.710815">doi:10.1109/iccv.1998.710815</a>.</p>
+</dd>
+<dt class="label" id="id44"><span class="brackets"><a class="fn-backref" href="#id17">UVL20</a></span></dt>
+<dd><p>Dmitry Ulyanov, Andrea Vedaldi, and Victor Lempitsky. Deep image prior. <em>International Journal of Computer Vision</em>, 128(7):1867–1888, mar 2020. <a class="reference external" href="https://doi.org/10.1007/s11263-020-01303-4">doi:10.1007/s11263-020-01303-4</a>.</p>
+</dd>
+<dt class="label" id="id41"><span class="brackets"><a class="fn-backref" href="#id16">XLXJ11</a></span></dt>
+<dd><p>Li Xu, Cewu Lu, Yi Xu, and Jiaya Jia. Image smoothing via L0 gradient minimization. In <em>Proceedings of the 2011 SIGGRAPH Asia conference</em>, volume 30, 1–12. Association for Computing Machinery (ACM), dec 2011. <a class="reference external" href="https://doi.org/10.1145/2070781.2024208">doi:10.1145/2070781.2024208</a>.</p>
+</dd>
+</dl>
+</div>
 </section>
 </section>
 
@@ -991,17 +1505,37 @@ M_3= \begin{pmatrix}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1. 画像の読み書き</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2.1. 画像の拡大・縮小</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.2.2. 画像の回転</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2.3. 画像の反転</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.1. 画像の読み書き</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1.1. 画像の読み込み</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.1.2. 画像の保存</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.1.3. 画像の色表現</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.3. 画像フィルタ</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">5.3.1. エッジ抽出フィルタ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2.1. 画像の拡大・縮小</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2.2. 画像の回転</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.2.3. 画像の反転</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5.3. 画像フィルタ</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">5.3.1. ぼかしフィルタ</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian">Gaussianフィルタ</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">バイラテラルフィルタ</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">メディアンフィルタ</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">5.3.2. エッジ検出フィルタ</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sobel">Sobelフィルタ</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#canny">Cannyフィルタ</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Sobelフィルタによる勾配強度の計算</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">勾配が極大の画素の検出</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">ヒステリシス閾値処理</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">5.4. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">5.5. 参考文献</a></li>
 </ul>
   </nav></div>
 

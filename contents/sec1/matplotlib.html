@@ -253,6 +253,53 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tatsy/1284-sds-ml-advanced" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="ソースリポジトリ"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tatsy/1284-sds-ml-advanced/issues/new?title=Issue%20on%20page%20%2Fcontents/sec1/matplotlib.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="問題を報告"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
     <i class="fas fa-download"></i>
@@ -361,24 +408,30 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2.4. 棒グラフ</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2.5. 円グラフ</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.2.6. ヒストグラム</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.2.7. グラフを保存する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.2.7. グラフを保存する</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">画像の種類について</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.3. グラフの調整</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.3.1. グラフのタイトル、軸ラベル</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.3.2. グラフの色、スタイルの設定</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3.3. 軸の刻み幅、表示形式の調整</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.3.4. 凡例の表示</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3.3.5. グリッド線を引く</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">3.3.6. 方対数グラフ、両対数グラフ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">3.3.7. エラーバーの表示</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">3.3.8. その他の機能</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">3.3.9. 複数のグラフを並べる</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">3.4. 三次元データのプロット</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.3. グラフの調整</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.3.1. グラフのタイトル、軸ラベル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3.2. グラフの色、スタイルの設定</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.3.3. 軸の刻み幅、表示形式の調整</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3.3.4. 凡例の表示</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">3.3.5. グリッド線を引く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">3.3.6. 片対数グラフ、両対数グラフ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">3.3.7. エラーバーの表示</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">3.3.8. その他の機能</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">背景色の設定</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">注釈を入れる</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">複数のグラフを並べる</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">3.4. 三次元データのプロット</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">3.5. Seabornの併用</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">3.6. 練習問題</a></li>
 </ul>
             </nav>
         </div>
@@ -396,6 +449,8 @@ document.write(`
 <h2><span class="section-number">3.1. </span>Matplotlibとは？<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Matplotlibはデータ可視化のためのPythonのライブラリで、様々なグラフを細かく調整を入れて作成することができる。また、今日は類似するライブラリとして<a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a>や<a class="reference external" href="https://plotly.com/python/">Plotly</a>, <a class="reference external" href="https://bokeh.org/">Bokeh</a>などがあるが、この中でMatplotlibは比較的単純 (がゆえに綺麗な可視化をしようとすると手間がかかる...)で、それ故、現在でも広く用いられているライブラリである。特に、Matplotlibは文法がMATLABと類似しているため、MATLABを使い慣れている読者には親しみやすいかもしれない。</p>
 <p>本講義では、その単純さからMatplotlibを用いるが、必要に応じて、Seaborn, Plotly, Bokehのギャラリーなどを見て、自分の好みのライブラリを使うのが良いだろう。</p>
+<div class="cell tag_remove-input docutils container">
+</div>
 </section>
 <section id="id2">
 <h2><span class="section-number">3.2. </span>基本的なグラフの作成<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
@@ -412,7 +467,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 960x720 with 0 Axes&gt;
 </pre></div>
 </div>
 </div>
@@ -433,7 +488,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bd3adac8acf8b795c0c54fa862533ec7147454d0e846f9dceb60224c0f4b471a.png" src="../../_images/bd3adac8acf8b795c0c54fa862533ec7147454d0e846f9dceb60224c0f4b471a.png" />
+<img alt="../../_images/8b28bf38113e4f16986e5a8d6e00049a80e50d7c0e264b6de9c2f1bfda7d7ca4.png" src="../../_images/8b28bf38113e4f16986e5a8d6e00049a80e50d7c0e264b6de9c2f1bfda7d7ca4.png" />
 </div>
 </div>
 </section>
@@ -452,7 +507,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/60a585038919d269a290343bb190d19f4021dd3a6f5131339e1ed2e72e5b0962.png" src="../../_images/60a585038919d269a290343bb190d19f4021dd3a6f5131339e1ed2e72e5b0962.png" />
+<img alt="../../_images/ab9f86c6b783a0eb11d86ca516c5063a3c873e3ebf03de7606c61aa170f23c8a.png" src="../../_images/ab9f86c6b783a0eb11d86ca516c5063a3c873e3ebf03de7606c61aa170f23c8a.png" />
 </div>
 </div>
 </section>
@@ -470,7 +525,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0d87a37682f04c6f692b1be8772e8fe352ec4ebdf1a53e28f4c470ef99dc1c8d.png" src="../../_images/0d87a37682f04c6f692b1be8772e8fe352ec4ebdf1a53e28f4c470ef99dc1c8d.png" />
+<img alt="../../_images/0c40e0e1e747ff055ef4641139a899788eafad50e3de215e331403e561a86d78.png" src="../../_images/0c40e0e1e747ff055ef4641139a899788eafad50e3de215e331403e561a86d78.png" />
 </div>
 </div>
 </section>
@@ -488,7 +543,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/414127fad99df7eafd2198ea8b3ba4af0f9364cb26c6528d394b38b852ffed0c.png" src="../../_images/414127fad99df7eafd2198ea8b3ba4af0f9364cb26c6528d394b38b852ffed0c.png" />
+<img alt="../../_images/495247f076c7ff420481293c531785059e3ca2763737a33082524f374b157344.png" src="../../_images/495247f076c7ff420481293c531785059e3ca2763737a33082524f374b157344.png" />
 </div>
 </div>
 </section>
@@ -504,7 +559,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/408cd32319c4c93d67f91986c66422d9aadea3b45ba17ef9e7ab5506b0cd7f14.png" src="../../_images/408cd32319c4c93d67f91986c66422d9aadea3b45ba17ef9e7ab5506b0cd7f14.png" />
+<img alt="../../_images/fe589dc7583bfb5f9cb45488372ab9496c159b52bf54f58305271a6c848f42cd.png" src="../../_images/fe589dc7583bfb5f9cb45488372ab9496c159b52bf54f58305271a6c848f42cd.png" />
 </div>
 </div>
 <p>また、 ヒストグラムを描画する際には、その合計が1になるように正規化することも多い。そのようにしたい場合には <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code> の引数に <code class="docutils literal notranslate"><span class="pre">density=True</span></code> を指定する</p>
@@ -524,7 +579,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/88478780af73dd123fee023aa0164f29a6586b468d8646f582be3acc24e94e83.png" src="../../_images/88478780af73dd123fee023aa0164f29a6586b468d8646f582be3acc24e94e83.png" />
+<img alt="../../_images/b41cb0d9bdbc0b4af7a25bcf50ca60652e842985f16267c5f017e70cff202f6c.png" src="../../_images/b41cb0d9bdbc0b4af7a25bcf50ca60652e842985f16267c5f017e70cff202f6c.png" />
 </div>
 </div>
 </section>
@@ -544,29 +599,29 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bd3adac8acf8b795c0c54fa862533ec7147454d0e846f9dceb60224c0f4b471a.png" src="../../_images/bd3adac8acf8b795c0c54fa862533ec7147454d0e846f9dceb60224c0f4b471a.png" />
+<img alt="../../_images/8b28bf38113e4f16986e5a8d6e00049a80e50d7c0e264b6de9c2f1bfda7d7ca4.png" src="../../_images/8b28bf38113e4f16986e5a8d6e00049a80e50d7c0e264b6de9c2f1bfda7d7ca4.png" />
 </div>
 </div>
 <p>画像の計算機上での表現方法には大きく分けてラスタ画像(ピクセル形式とも呼ぶ)とベクタ画像(ドロー形式とも呼ぶ)があり、JPEG形式等、一般的なカメラで撮影される画像は通常、ラスタ形式で表わされている。詳細については、以下のTipsを見てほしい。</p>
-<div class="tips admonition">
-<p class="admonition-title">ラスタ画像</p>
+<section id="id10">
+<h4>画像の種類について<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
+<p><strong>ラスタ形式</strong></p>
 <p>ラスタ形式とは、画像が画素の集合で表わされており、例えば4K画像、といったときには、3840×2160ピクセルのように一辺に並ぶ画素数がおよそ4K(=4000)画素である物を指す。この各画素には、赤、緑、青の各成分の色の強さがどのくらいかを記録する情報が保存されている。このような色の表し方をRGB表色と呼び、R, G, Bの各要素はJPEGやPNGなどの「普通の」画像においては0-255の値(=8ビット符号なし整数)で表現されている。このような各色要素を表わすビットの数を「ビット深度」と呼び、JPEG等の画像は8ビットがR, G, Bの各要素に使われているので、24bit深度の画像、ということになる。</p>
 <p>その一方で、近年では、スマートフォンのカメラにもHDR撮影モードが搭載されていることが多い。このHDRというのはHigh Dynamic Rangeの略で、各画素の表せる明るさの範囲が上記の8ビット深度よりも大きな物を指す。反対に8ビット深度の画像のことをLDR (= Low Dynamic Range)画像と呼ぶ。HDR画像を表わすフォーマットはキヤノンやニコンといったカメラメーカーの独自フォーマットの他に、<code class="docutils literal notranslate"><span class="pre">*.hdr</span></code>形式や<code class="docutils literal notranslate"><span class="pre">*.exr</span></code>形式などのデータ形式がある。多くの場合、R, G, Bの各色要素が16ビット浮動小数(half float)などの小数によって記録されている。</p>
 <p>なお余談にはなるがラスタ画像のラスタ (raster)とは元はラテン語の&quot;rastrum&quot; (英語ではrake, 日本語では熊手のこと)から来ており、画素が「くまなく」画像平面を埋め尽くしている様子を表わしている。</p>
-</div>
-<div class="tips admonition">
-<p class="admonition-title">ベクタ画像</p>
+<p><strong>ベクタ形式</strong></p>
 <p>一方で、PDF等のデータ形式ではベクタ形式が標準となっている。あまり意識することはないかもしれないが、PDFの文書は、ある意味で文字が映った「画像」であり、この画像がベクタ形式で表現されている。ベクタ形式の画像では、各色領域が曲線で囲まれており、その曲線で囲まれた領域の組み合わせによって画像が表現されている。この際、境界の曲線の表現方法がいわゆる「ベクタ」に基づいていることから、このような画像表現法を「ベクタ形式」と呼ぶ。</p>
 <p>境界の曲線の表し方には複数の方法があるが、最も広く用いられているのは三次多項式によって部分曲線を表す三次Bezier曲線であり、そのつなぎ合わせで複雑な曲線を表わす。この他にも、Catmull-RomスプラインやB-スプラインといった複数の曲線の表現方がある。なお、ここでいうスプラインとは、一定の弾性を持ち、変形させることで自由な曲線を引くことができる定規のことである。</p>
-</div>
 </section>
 </section>
-<section id="id10">
-<h2><span class="section-number">3.3. </span>グラフの調整<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
-<p>以下では、sin関数とcos関数を描画したものを例にして、グラフの見た目を調整していく。</p>
+</section>
 <section id="id11">
-<h3><span class="section-number">3.3.1. </span>グラフのタイトル、軸ラベル<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
-<p>Matplotlibでグラフにタイトルをつけるには<code class="docutils literal notranslate"><span class="pre">plt.title</span></code>を用いる。また、軸のラベルを設定するには横軸には<code class="docutils literal notranslate"><span class="pre">plt.xlabel</span></code>、縦軸には<code class="docutils literal notranslate"><span class="pre">plt.ylabel</span></code>を用いる。なお、この際、グラフのタイトル等の文字列中に<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">...</span> <span class="pre">$</span></code>のようにドルマークで囲んだ領域を設けると、ここにLaTeXで用いるような数式を入れることができる。</p>
+<h2><span class="section-number">3.3. </span>グラフの調整<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<p>以下では、sin関数とcos関数を描画したものを例にして、グラフの見た目を調整していく。</p>
+<section id="id12">
+<h3><span class="section-number">3.3.1. </span>グラフのタイトル、軸ラベル<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<p>Matplotlibでグラフにタイトルをつけるには<code class="docutils literal notranslate"><span class="pre">plt.title</span></code>を用いる。また、軸のラベルを設定するには横軸には<code class="docutils literal notranslate"><span class="pre">plt.xlabel</span></code>、縦軸には<code class="docutils literal notranslate"><span class="pre">plt.ylabel</span></code>を用いる。</p>
+<p>なお、この際、グラフのタイトル等の文字列中に<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">...</span> <span class="pre">$</span></code>のようにドルマークで囲んだ領域を設けると、ここにLaTeXで用いるような数式を入れることができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの用意</span>
@@ -585,29 +640,35 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e94dcca94cb844b3138d81a824e83dd7c94770a6289d1fb2ea088228a33568c5.png" src="../../_images/e94dcca94cb844b3138d81a824e83dd7c94770a6289d1fb2ea088228a33568c5.png" />
+<img alt="../../_images/2a290ea157ad7c318cd6b533335b36d57178dd3dc72acf126b85706ab3f9ed7a.png" src="../../_images/2a290ea157ad7c318cd6b533335b36d57178dd3dc72acf126b85706ab3f9ed7a.png" />
 </div>
 </div>
 </section>
-<section id="id12">
-<h3><span class="section-number">3.3.2. </span>グラフの色、スタイルの設定<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<section id="id13">
+<h3><span class="section-number">3.3.2. </span>グラフの色、スタイルの設定<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <p>グラフの色を設定する方法はグラフの種類により微妙に異なるが、<code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>で描く曲線のグラフに関しては、曲線の太さを<code class="docutils literal notranslate"><span class="pre">linewidth</span></code>、曲線の色を<code class="docutils literal notranslate"><span class="pre">linecolor</span></code>、曲線のスタイルを<code class="docutils literal notranslate"><span class="pre">linestyle</span></code>でそれぞれ設定できる。</p>
 <p><strong>曲線の色</strong>
-色に関しては<code class="docutils literal notranslate"><span class="pre">&quot;red&quot;</span></code>や<code class="docutils literal notranslate"><span class="pre">&quot;blue&quot;</span></code>のような一般的な色以外にも多数の色が用意されている。詳細はMatplotlibの公式ページを参考にしてほしい。<br />
-List of named colors: <a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">https://matplotlib.org/stable/gallery/color/named_colors.html</a>
-また、色を名前で指定する以外にも、自分で赤、緑、青の色成分の0.0-1.0の間の値で与えることでも色をつけられる。</p>
+色に関しては<code class="docutils literal notranslate"><span class="pre">&quot;red&quot;</span></code>や<code class="docutils literal notranslate"><span class="pre">&quot;blue&quot;</span></code>のような一般的な色以外にも多数の色が用意されている。詳細はMatplotlibの公式ページを参考にしてほしい。</p>
+<ul class="simple">
+<li><p>List of named colors: <a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">https://matplotlib.org/stable/gallery/color/named_colors.html</a></p></li>
+</ul>
+<p>また、色を名前で指定する以外にも、自分で赤、緑、青の色成分の0.0-1.0の間の値で与えることでも色をつけられる。</p>
 <p><strong>曲線のスタイル</strong>
-曲線のスタイルには破線(<code class="docutils literal notranslate"><span class="pre">linestyle=&quot;--&quot;</span></code>)や一点鎖線(<code class="docutils literal notranslate"><span class="pre">linestyle=&quot;-.&quot;</span></code>)の他にもいくつかのスタイルが用意されている。こちらも、詳細はMatplotlibの公式ページを参考にしてほしい。<br />
-Linestyles: <a class="reference external" href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html">https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html</a></p>
+曲線のスタイルには破線(<code class="docutils literal notranslate"><span class="pre">linestyle=&quot;--&quot;</span></code>)や一点鎖線(<code class="docutils literal notranslate"><span class="pre">linestyle=&quot;-.&quot;</span></code>)の他にもいくつかのスタイルが用意されている。こちらも、詳細はMatplotlibの公式ページを参考にしてほしい。</p>
+<ul class="simple">
+<li><p>Linestyles: <a class="reference external" href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html">https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html</a></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの用意</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ys_sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">ys_cos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
 <span class="c1"># 折れ線グラフの描画</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_sin</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:green&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_cos</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-.&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
 <span class="c1"># タイトルの設定</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;trigonometric curves&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;radian&quot;</span><span class="p">)</span>
@@ -617,12 +678,12 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c46e730f432cce2a1b7edc7a139311d26d2698b3b73ff0a1ba44951fede3d3c0.png" src="../../_images/c46e730f432cce2a1b7edc7a139311d26d2698b3b73ff0a1ba44951fede3d3c0.png" />
+<img alt="../../_images/96b80be635b964d1d92ef1ba06c6e3f7ae465dfa67bc17c50fb1ae9c73731e40.png" src="../../_images/96b80be635b964d1d92ef1ba06c6e3f7ae465dfa67bc17c50fb1ae9c73731e40.png" />
 </div>
 </div>
 </section>
-<section id="id13">
-<h3><span class="section-number">3.3.3. </span>軸の刻み幅、表示形式の調整<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<section id="id14">
+<h3><span class="section-number">3.3.3. </span>軸の刻み幅、表示形式の調整<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <p>軸の刻み幅を変更するには、<code class="docutils literal notranslate"><span class="pre">plt.xticks</span></code>、<code class="docutils literal notranslate"><span class="pre">plt.yticks</span></code>を用いる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -630,13 +691,16 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ys_sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">ys_cos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
 <span class="c1"># 折れ線グラフの描画</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_sin</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_cos</span><span class="p">)</span>
+
 <span class="c1"># タイトルの設定</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;trigonometric curves&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;radian&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$f(x)$&quot;</span><span class="p">)</span>
+
 <span class="c1"># 軸の刻み幅の設定</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
@@ -645,7 +709,7 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/783fa9bdf11171ca661bc3090d85e3a69ad4f32da0f7af2ef23f084034e3d9a6.png" src="../../_images/783fa9bdf11171ca661bc3090d85e3a69ad4f32da0f7af2ef23f084034e3d9a6.png" />
+<img alt="../../_images/7f978de275b57bdb722198f3bc01f7a23498a442625af40be6032ba4c287e800.png" src="../../_images/7f978de275b57bdb722198f3bc01f7a23498a442625af40be6032ba4c287e800.png" />
 </div>
 </div>
 <p>なお、このままでも良いのだが、三角関数を描画するときには、<code class="docutils literal notranslate"><span class="pre">-3.14</span></code>や<code class="docutils literal notranslate"><span class="pre">3.14</span></code>の代わりに<span class="math notranslate nohighlight">\(-\pi\)</span>や<span class="math notranslate nohighlight">\(\pi\)</span>と描画したいと考えるだろう。このような場合には、<code class="docutils literal notranslate"><span class="pre">AxisSubplot</span></code>のメソッドである<code class="docutils literal notranslate"><span class="pre">set_major_formatter</span></code>ならびに<code class="docutils literal notranslate"><span class="pre">set_major_locator</span></code>を用いる。</p>
@@ -670,13 +734,16 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ys_sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">ys_cos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
 <span class="c1"># 折れ線グラフの描画</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_sin</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_cos</span><span class="p">)</span>
+
 <span class="c1"># タイトルの設定</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;trigonometric curves&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;radian&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$f(x)$&quot;</span><span class="p">)</span>
+
 <span class="c1"># 軸の表示方法の変更</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="n">unit_of_pi</span><span class="p">))</span>
@@ -686,13 +753,13 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3afb860d069c6b6d948eb01cc93d2895105d919ce7eaa8b98c228eb4b6dcff7f.png" src="../../_images/3afb860d069c6b6d948eb01cc93d2895105d919ce7eaa8b98c228eb4b6dcff7f.png" />
+<img alt="../../_images/ae7b5219b70c923c3148465e36b9791434533a49de6b4071abfe66b9c0afa7d3.png" src="../../_images/ae7b5219b70c923c3148465e36b9791434533a49de6b4071abfe66b9c0afa7d3.png" />
 </div>
 </div>
 <p>※ 上記コードの<code class="docutils literal notranslate"><span class="pre">plt.gca()</span></code>は、現在描画中のグラフオブジェクト(より厳密には<code class="docutils literal notranslate"><span class="pre">AxisSubplot</span></code>)を返す関数。</p>
 </section>
-<section id="id14">
-<h3><span class="section-number">3.3.4. </span>凡例の表示<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<section id="id15">
+<h3><span class="section-number">3.3.4. </span>凡例の表示<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
 <p>凡例を表示するには、各描画要素に<code class="docutils literal notranslate"><span class="pre">label=&quot;xxx&quot;</span></code>という引数を与えた上で、描画直前に<code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code>と書けば良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -700,13 +767,16 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ys_sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">ys_cos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
 <span class="c1"># 折れ線グラフの描画</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_sin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_cos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
+
 <span class="c1"># タイトルの設定</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;trigonometric curves&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;radian&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$f(x)$&quot;</span><span class="p">)</span>
+
 <span class="c1"># 凡例の表示</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -714,10 +784,18 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/636bae26ea7c1ab139b7e9044f14373ecd95389d5748749565a885fafa4ba781.png" src="../../_images/636bae26ea7c1ab139b7e9044f14373ecd95389d5748749565a885fafa4ba781.png" />
+<img alt="../../_images/4a2bfbc75f37e7f2e59d3f07091269ba18129225b26d5cbeb12b1760293b5e85.png" src="../../_images/4a2bfbc75f37e7f2e59d3f07091269ba18129225b26d5cbeb12b1760293b5e85.png" />
 </div>
 </div>
-<p>なお、凡例の位置は<code class="docutils literal notranslate"><span class="pre">plt.legend</span></code>に対して<code class="docutils literal notranslate"><span class="pre">loc={位置}</span></code>という引数を与えれば良く、位置は<code class="docutils literal notranslate"><span class="pre">&quot;upper</span> <span class="pre">right&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;upper</span> <span class="pre">left&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;lower</span> <span class="pre">right&quot;</span></code>、<code class="docutils literal notranslate"><span class="pre">&quot;lower</span> <span class="pre">left&quot;</span></code>などが指定できる。また<code class="docutils literal notranslate"><span class="pre">bbox_to_anchor</span></code>という引数を調整することで枠外に凡例を表示することもできる。この際、単純に<code class="docutils literal notranslate"><span class="pre">bbox_to_anchor</span></code>のみを設定すると、凡例が切れてしまうことがあるため、その場合は<code class="docutils literal notranslate"><span class="pre">plt.tight_layout</span></code>関数にグラフの矩形範囲を表わす<code class="docutils literal notranslate"><span class="pre">rect=...</span></code>という引数を渡してサイズを調整する。</p>
+<p>なお、凡例の位置は<code class="docutils literal notranslate"><span class="pre">plt.legend</span></code>に対して<code class="docutils literal notranslate"><span class="pre">loc={位置}</span></code>という引数を与えれば良く、位置には</p>
+<ul class="simple">
+<li><p>upper right</p></li>
+<li><p>upper left</p></li>
+<li><p>lower right</p></li>
+<li><p>lower left</p></li>
+<li><p>center</p></li>
+</ul>
+<p>などが指定できる。また<code class="docutils literal notranslate"><span class="pre">bbox_to_anchor</span></code>という引数を調整することで枠外に凡例を表示することもできる。この際、単純に<code class="docutils literal notranslate"><span class="pre">bbox_to_anchor</span></code>のみを設定すると、凡例が切れてしまうことがあるため、その場合は<code class="docutils literal notranslate"><span class="pre">plt.tight_layout</span></code>関数にグラフの矩形範囲を表わす<code class="docutils literal notranslate"><span class="pre">rect=...</span></code>という引数を渡してサイズを調整する。</p>
 <p>また、凡例の内側マージン (padding)は少々狭めに設定されているので<code class="docutils literal notranslate"><span class="pre">borderpad</span></code>引数を設定するとより見やすくなる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -725,13 +803,16 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ys_sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">ys_cos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
 <span class="c1"># 折れ線グラフの描画</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_sin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_cos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
+
 <span class="c1"># タイトルの設定</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;trigonometric curves&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;radian&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$f(x)$&quot;</span><span class="p">)</span>
+
 <span class="c1"># 凡例の表示</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">borderpad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">rect</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
@@ -740,12 +821,12 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8930faf4b37d1815df3301927d4c505236e4e9029ef56e717c86c7c3cfbaa897.png" src="../../_images/8930faf4b37d1815df3301927d4c505236e4e9029ef56e717c86c7c3cfbaa897.png" />
+<img alt="../../_images/3cc87f0e3ce2947cda02cd06e7bedc54a82e671991cc6dbd73d9aec8155f75d6.png" src="../../_images/3cc87f0e3ce2947cda02cd06e7bedc54a82e671991cc6dbd73d9aec8155f75d6.png" />
 </div>
 </div>
 </section>
-<section id="id15">
-<h3><span class="section-number">3.3.5. </span>グリッド線を引く<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<section id="id16">
+<h3><span class="section-number">3.3.5. </span>グリッド線を引く<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
 <p>グリッド線を引くには<code class="docutils literal notranslate"><span class="pre">plt.grid</span></code>を用いる。この関数に軸を表わす<code class="docutils literal notranslate"><span class="pre">axis</span></code>、色を表わす<code class="docutils literal notranslate"><span class="pre">color</span></code>、線のスタイルを表わす<code class="docutils literal notranslate"><span class="pre">linestyle</span></code>等を指定することで、グリッド線の表示をコントロールできる。なおグリッド線はtickの入っている箇所に引かれるので、本数を減らしたい場合は前述の<code class="docutils literal notranslate"><span class="pre">xticks</span></code>、<code class="docutils literal notranslate"><span class="pre">yticks</span></code>で調整をすると良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -753,13 +834,16 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ys_sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">ys_cos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
 <span class="c1"># 折れ線グラフの描画</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_sin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_cos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
+
 <span class="c1"># タイトルの設定</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;trigonometric curves&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;radian&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$f(x)$&quot;</span><span class="p">)</span>
+
 <span class="c1"># グリッド線の表示</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -768,26 +852,30 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d926cf71168fab7f7485d1b35546668dd7f78c2d0a91b4bf20235871bd7620cb.png" src="../../_images/d926cf71168fab7f7485d1b35546668dd7f78c2d0a91b4bf20235871bd7620cb.png" />
+<img alt="../../_images/349e0c7d38ecab7fe8c65ad92f6a18229998702dc58911e0e6b96c3a2ba9c4ed.png" src="../../_images/349e0c7d38ecab7fe8c65ad92f6a18229998702dc58911e0e6b96c3a2ba9c4ed.png" />
 </div>
 </div>
 </section>
-<section id="id16">
-<h3><span class="section-number">3.3.6. </span>方対数グラフ、両対数グラフ<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
-<p>x軸、y軸のそれぞれを対数目盛に変更することもできる。これには<code class="docutils literal notranslate"><span class="pre">plt.xscale('log')</span></code>、<code class="docutils literal notranslate"><span class="pre">plt.yscale('log')</span></code>を用いる。</p>
+<section id="id17">
+<h3><span class="section-number">3.3.6. </span>片対数グラフ、両対数グラフ<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<p>x軸、y軸のそれぞれを対数目盛に変更することもできる。これには<code class="docutils literal notranslate"><span class="pre">plt.xscale(&quot;log&quot;)</span></code>、<code class="docutils literal notranslate"><span class="pre">plt.yscale(&quot;log&quot;)</span></code>を用いる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの用意</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">xs</span><span class="p">)</span>
+
 <span class="c1"># 折れ線グラフの描画</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\log(x)$&quot;</span><span class="p">)</span>
+
 <span class="c1"># タイトルの設定</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;logarithmic curve&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$\log(x)$&quot;</span><span class="p">)</span>
+
 <span class="c1"># 軸のスケール設定</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+
 <span class="c1"># グリッド線の表示</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -797,13 +885,13 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/331ad38357687b70475becd7e6a0c65821b1f59a996e711e40762beeef01c23b.png" src="../../_images/331ad38357687b70475becd7e6a0c65821b1f59a996e711e40762beeef01c23b.png" />
+<img alt="../../_images/18cce42cf453e2e12685c334beb53758be1df261d7b3a1b4a5776437f2d9caa0.png" src="../../_images/18cce42cf453e2e12685c334beb53758be1df261d7b3a1b4a5776437f2d9caa0.png" />
 </div>
 </div>
 </section>
-<section id="id17">
-<h3><span class="section-number">3.3.7. </span>エラーバーの表示<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
-<p>以下の例では、リンゴ、バナナ、サクランボ、ドリアンの価格に対して、平均と標準偏差を求めて、エラーバーを表示してみる。使用するデータは以下の通り。 (Pandasの使い方については次節で詳しく紹介)</p>
+<section id="id18">
+<h3><span class="section-number">3.3.7. </span>エラーバーの表示<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<p>以下の例では、リンゴ、バナナ、サクランボ、ドリアンの価格に対して、平均と標準偏差を求めて、エラーバーを表示してみる。使用するデータは以下の通り。 (Pandasの使い方については<a class="reference internal" href="pandas.html#sec-pandas"><span class="std std-ref">次節</span></a>で詳しく紹介)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -912,13 +1000,14 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8211be882a9bc903db4e50ae9d5af87f5e82223b6e5386d372a30ecd93eaea15.png" src="../../_images/8211be882a9bc903db4e50ae9d5af87f5e82223b6e5386d372a30ecd93eaea15.png" />
+<img alt="../../_images/6220d588fb4749320c35e56b2a9202f0b8e0ca76c586156b26726552032d0697.png" src="../../_images/6220d588fb4749320c35e56b2a9202f0b8e0ca76c586156b26726552032d0697.png" />
 </div>
 </div>
 </section>
-<section id="id18">
-<h3><span class="section-number">3.3.8. </span>その他の機能<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
-<p><strong>背景色の設定</strong></p>
+<section id="id19">
+<h3><span class="section-number">3.3.8. </span>その他の機能<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
+<section id="id20">
+<h4>背景色の設定<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">plt.gca().set_facecolor</span></code>を用いる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -942,10 +1031,12 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6fcae9295769bc5477d564922a9b59f07a03211aed4947c44da1b5c096f2aab4.png" src="../../_images/6fcae9295769bc5477d564922a9b59f07a03211aed4947c44da1b5c096f2aab4.png" />
+<img alt="../../_images/0b204f1d5696a5b3481881aa6e2395df57ce42ece65b7e5ad673f0bafd01b8fc.png" src="../../_images/0b204f1d5696a5b3481881aa6e2395df57ce42ece65b7e5ad673f0bafd01b8fc.png" />
 </div>
 </div>
-<p><strong>注釈を入れる</strong></p>
+</section>
+<section id="id21">
+<h4>注釈を入れる<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">plt.gca().annotate</span></code>を用いる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -976,18 +1067,29 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8d39f2298a2d5b935b8455d53ab3cbc9cfea3201a41236fdd67fc095f766ab17.png" src="../../_images/8d39f2298a2d5b935b8455d53ab3cbc9cfea3201a41236fdd67fc095f766ab17.png" />
+<img alt="../../_images/b2cb4672cd1ecc8cbe85f084b4fdf71cb89a916153543f67253f33903554e0bb.png" src="../../_images/b2cb4672cd1ecc8cbe85f084b4fdf71cb89a916153543f67253f33903554e0bb.png" />
 </div>
 </div>
 </section>
-<section id="id19">
-<h3><span class="section-number">3.3.9. </span>複数のグラフを並べる<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
+<section id="id22">
+<h4>複数のグラフを並べる<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h4>
+<p>複数のグラフを並べるにはいくつの方法がある。</p>
+<p>一つ目は、<code class="docutils literal notranslate"><span class="pre">plt.figure</span></code>で<code class="docutils literal notranslate"><span class="pre">Figure</span></code>型の変数を取得した後に<code class="docutils literal notranslate"><span class="pre">fig.add_subplot(...)</span></code>を用いる方法で、<code class="docutils literal notranslate"><span class="pre">add_subplot</span></code>の引数に列数、行数、その何番目か、を表わす3つの数字を渡す。例えば、2行3列の要素のうち、1行3列の要素が欲しければ<code class="docutils literal notranslate"><span class="pre">add_subplot(233)</span></code>となり、2行2列の要素が欲しければ<code class="docutils literal notranslate"><span class="pre">add_subplot(235)</span></code>と言った具合だ。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの用意</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">ys_sin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 <span class="n">ys_cos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">add_subplotを使う場合</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
@@ -997,7 +1099,7 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">borderpad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 
 <span class="c1"># 2つ目のグラフ</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
@@ -1005,7 +1107,7 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">borderpad</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
 
 <span class="c1"># 複数のグラフを並べると、要素が重なることがあるのでplt.tight_layout()を呼ぶとよい</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -1014,14 +1116,50 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/efe3dbdd9f38e98ee801c2d3d1786e7053da35705eb82d427cd9a7d43083ee7d.png" src="../../_images/efe3dbdd9f38e98ee801c2d3d1786e7053da35705eb82d427cd9a7d43083ee7d.png" />
+<img alt="../../_images/9233f1aed9448a9d5832ba3e1ef369bd1a704ea9102ce56a7156fa08349d8537.png" src="../../_images/9233f1aed9448a9d5832ba3e1ef369bd1a704ea9102ce56a7156fa08349d8537.png" />
+</div>
+</div>
+<p>2つめは、<code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code>関数により、一度に全てのグラフ要素を作ってしまう方法で、2行3列の要素が作りたければ、<code class="docutils literal notranslate"><span class="pre">plt.subplots(2,</span> <span class="pre">3)</span></code>のようにする。すると、<code class="docutils literal notranslate"><span class="pre">Figure</span></code>と<code class="docutils literal notranslate"><span class="pre">Axes</span></code>の配列が返ってくるので、配列の要素に対して、グラフの描画命令を呼び出せば良い。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">plt.subplotsを使う場合</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># 1つ目のグラフ</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_sin</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2つ目のグラフ</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_cos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">)</span>
+
+<span class="c1"># 複数のグラフを並べると、要素が重なることがあるのでplt.tight_layout()を呼ぶとよい</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9233f1aed9448a9d5832ba3e1ef369bd1a704ea9102ce56a7156fa08349d8537.png" src="../../_images/9233f1aed9448a9d5832ba3e1ef369bd1a704ea9102ce56a7156fa08349d8537.png" />
 </div>
 </div>
 </section>
 </section>
-<section id="id20">
-<h2><span class="section-number">3.4. </span>三次元データのプロット<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id23">
+<h2><span class="section-number">3.4. </span>三次元データのプロット<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h2>
 <p>最後に、Matplotlibを用いた三次元プロットについてみてみる。今回は機械学習で広く用いられるSwiss Rollのデータを用いて可視化をしてみよう。</p>
+<p>3次元プロットを作成する場合には、単に <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code>等を呼び出すだけでは不十分で、3次元プロット用の<code class="docutils literal notranslate"><span class="pre">Axes</span></code>を作成する必要がある。具体的には<code class="docutils literal notranslate"><span class="pre">add_subplot</span></code>のパラメータに<code class="docutils literal notranslate"><span class="pre">projection=&quot;3d&quot;</span></code>を与える。</p>
+<p>あとは、これまでx座標とy座標だけを引数として渡していた<code class="docutils literal notranslate"><span class="pre">scatter</span></code>関数に対して、z座標を表わす値を合わせて指定すれば良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
@@ -1034,24 +1172,60 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">t</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">t</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
 
 <span class="c1"># 巻き込み方向の距離に応じて色をつける</span>
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">rainbow</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="n">c</span><span class="o">=</span><span class="n">t</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;rainbow&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Swiss Roll&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;$z$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+
+<span class="c1"># z軸のラベルが見切れるので、少し引きのカメラから見る</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_box_aspect</span><span class="p">(</span><span class="n">aspect</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/365145c5a14fcba3baceef4ea9047ed8df8ad323f2baebebb3b5ec5b54d7ee96.png" src="../../_images/365145c5a14fcba3baceef4ea9047ed8df8ad323f2baebebb3b5ec5b54d7ee96.png" />
+<img alt="../../_images/cd9360077fef196fba04ca23d9bba42bdde24346f679dd99fba7a03bb1327242.png" src="../../_images/cd9360077fef196fba04ca23d9bba42bdde24346f679dd99fba7a03bb1327242.png" />
 </div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">MatplotlibのFigureの画素数</p>
+<p>MatplotlibでFigureを作成する際、<code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(5,</span> <span class="pre">5))</span></code>のように縦横のサイズを指定することができる。このサイズは画像のインチ数を表わしていて、この例では5インチ×5インチの画像が作られる。</p>
+<p>これとは別に<code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(5,</span> <span class="pre">5),</span> <span class="pre">dpi=100)</span></code>のようにDPI (dots per inch)を指定することもでき、これは1インチに含まれる画素数を指定する。従って、この例では、500×500画素の画像が作られることになる。</p>
 </div>
 </section>
 <section id="seaborn">
 <h2><span class="section-number">3.5. </span>Seabornの併用<a class="headerlink" href="#seaborn" title="Permalink to this heading">#</a></h2>
 <p>SeabornはMatplotlibと同様にデータ可視化のためのライブラリで、より複雑なグラフをより洗練された見た目で表示することができる。データをPandasのDataFrameで準備する必要があるなど、少し覚えるのには段階を踏む必要があるが、慣れればより目的に沿った見た目のグラフを簡単に作成できる。</p>
+<p>なお、単にSeaborn風にテーマを変更したいだけで、描画はこれまで通りMatplotlibで行う、という場合には、単に</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>とするとMatplotlibで使用されるテーマが変わる。Seabornには多数のテーマが用意されており、必要に応じて、<code class="docutils literal notranslate"><span class="pre">set</span></code>関数に<code class="docutils literal notranslate"><span class="pre">style=...</span></code>と<code class="docutils literal notranslate"><span class="pre">palette=...</span></code>の2つのパラメータを指定すると良い。</p>
+<p>どのような、スタイルやパレットが使えるかについては、以下のウェブページを参考のこと。</p>
+<ul class="simple">
+<li><p>Controlling figure aesthetics: <a class="reference external" href="https://seaborn.pydata.org/tutorial/aesthetics.html">https://seaborn.pydata.org/tutorial/aesthetics.html</a></p></li>
+<li><p>Choosing color palettes: <a class="reference external" href="https://seaborn.pydata.org/tutorial/color_palettes.html">https://seaborn.pydata.org/tutorial/color_palettes.html</a></p></li>
+</ul>
 <p><strong>例1: ヒストグラムと近似曲線</strong></p>
 <p>冒頭ではMatplotlibで表示したヒストグラムと近似曲線の描画だが、Seabornを使うと、より簡単に作成することができる。ここでは、二種類の正規分布から抽出したデータを重ねてグラフに表示してみる。</p>
+<p>ヒストグラムを描画するSeabornの関数は<code class="docutils literal notranslate"><span class="pre">histplot</span></code>で、これに適当な引数を与える。この時、Matplotlibでは自分で計算する必要があった近似曲線が<code class="docutils literal notranslate"><span class="pre">kde=True</span></code> (kdeはkernel density estimationの略)を指定するだけで簡単に描画できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 準備</span>
@@ -1059,7 +1233,7 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="c1"># テーマの初期化</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;colorblind&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1080,21 +1254,42 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 </div>
 </div>
 </div>
-<div class="cell tag_remove-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># x=...に指定された値に対してヒストグラムを計算</span>
 <span class="c1"># hue=...に指定したラベルに応じて、ヒストグラムの色を変更</span>
 <span class="c1"># kde=Trueとすることで、近似曲線が描画される</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;values&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s2">&quot;density&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;values&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;labels&quot;</span><span class="p">,</span>
+    <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">stat</span><span class="o">=</span><span class="s2">&quot;density&quot;</span><span class="p">,</span>
+    <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Histogram&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="c1"># Seabornのテーマを元に戻しておく</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">reset_defaults</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+</pre></div>
+</div>
+<img alt="../../_images/2b6946effbf06e23b5f9fb2ee5dad8337d891de38d86d317854fa628c047fc38.png" src="../../_images/2b6946effbf06e23b5f9fb2ee5dad8337d891de38d86d317854fa628c047fc38.png" />
+</div>
 </div>
 <p><strong>例2: 二次元散布図と各軸における周辺分布の描画</strong></p>
+<p>Seabornの<code class="docutils literal notranslate"><span class="pre">joinplot</span></code>を使うと、二次元散布図を作成して、さらにそれぞれの分布を表わす近似曲線を同時に描画することもできる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># データの用意</span>
@@ -1110,22 +1305,68 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;y&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ys</span>
 <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;labels&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">labels</span>
 
-<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;labels&quot;</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;labels&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Join plot&quot;</span><span class="p">)</span>
+
+<span class="c1"># タイトルが重なってしまうので微調整</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.92</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">reset_defaults</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e94ee50f58d9748742d18ca84e8464c25a6be2ad2cccca4a6a17c74dad941192.png" src="../../_images/e94ee50f58d9748742d18ca84e8464c25a6be2ad2cccca4a6a17c74dad941192.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498: FutureWarning: is_categorical_dtype is deprecated and will be removed in a future version. Use isinstance(dtype, CategoricalDtype) instead
+  if pd.api.types.is_categorical_dtype(vector):
+/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1119: FutureWarning: use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+  with pd.option_context(&#39;mode.use_inf_as_na&#39;, True):
+</pre></div>
+</div>
+<img alt="../../_images/6ec210f5f09d8b628e37a5edabff9e7abe1180a30de0ae730e8ef48ba4282972.png" src="../../_images/6ec210f5f09d8b628e37a5edabff9e7abe1180a30de0ae730e8ef48ba4282972.png" />
 </div>
 </div>
 <p>Seabornでは、この他にも数え切れないほど、様々なグラフが作成できるので、より深く勉強したい人は、Seabornのギャラリーを見て、自分の作りたいグラフを探してみると良い。</p>
 <p>seaborn - Example gallery: <a class="reference external" href="https://seaborn.pydata.org/examples/">https://seaborn.pydata.org/examples/</a></p>
-</section>
-<section id="id21">
-<h2><span class="section-number">3.6. </span>練習問題<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h2>
+<div class="important admonition">
+<p class="admonition-title">色覚障がいを持つ方への配慮</p>
+<p>多くの人には見過ごされがちだが、グラフ等を作成に色を使う場合には、色覚障がいの方への配慮を検討してほしい。色覚障がいは、女性よりも男性に多いと言われており、実に日本人男性の20人に1人が何らかの色覚異常を持っていると言われている。</p>
+<p>上記のSeabornの例では、<code class="docutils literal notranslate"><span class="pre">colorblind</span></code>のパレットを使って、それを実現しており、同様の設定は、<code class="docutils literal notranslate"><span class="pre">sns.set(palette=&quot;colorblind&quot;)</span></code>とすることでMatplotlibにも適用できる。</p>
+</div>
 </section>
 </section>
 
@@ -1204,24 +1445,30 @@ Linestyles: <a class="reference external" href="https://matplotlib.org/stable/ga
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2.4. 棒グラフ</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2.5. 円グラフ</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.2.6. ヒストグラム</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.2.7. グラフを保存する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.2.7. グラフを保存する</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">画像の種類について</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.3. グラフの調整</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.3.1. グラフのタイトル、軸ラベル</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.3.2. グラフの色、スタイルの設定</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3.3. 軸の刻み幅、表示形式の調整</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.3.4. 凡例の表示</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3.3.5. グリッド線を引く</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">3.3.6. 方対数グラフ、両対数グラフ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">3.3.7. エラーバーの表示</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">3.3.8. その他の機能</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">3.3.9. 複数のグラフを並べる</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">3.4. 三次元データのプロット</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.3. グラフの調整</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.3.1. グラフのタイトル、軸ラベル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3.2. グラフの色、スタイルの設定</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.3.3. 軸の刻み幅、表示形式の調整</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3.3.4. 凡例の表示</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">3.3.5. グリッド線を引く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">3.3.6. 片対数グラフ、両対数グラフ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">3.3.7. エラーバーの表示</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">3.3.8. その他の機能</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">背景色の設定</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">注釈を入れる</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">複数のグラフを並べる</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">3.4. 三次元データのプロット</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">3.5. Seabornの併用</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">3.6. 練習問題</a></li>
 </ul>
   </nav></div>
 

@@ -64,6 +64,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/setup-python';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -251,6 +253,53 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/tatsy/1284-sds-ml-advanced" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="ソースリポジトリ"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/tatsy/1284-sds-ml-advanced/issues/new?title=Issue%20on%20page%20%2Fcontents/sec1/setup-python.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="問題を報告"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-download-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="このページをダウンロード">
     <i class="fas fa-download"></i>
@@ -360,11 +409,13 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-yaml">1.2.5. environment.yamlの利用</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab">1.3. Jupyter Labの利用</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.3.1. 覚えておくと便利なショートカット</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3.2. ファイルのエクスポート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.3. Pythonの実行</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab">1.4. Jupyter Labの利用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.4.1. 覚えておくと便利なショートカット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.4.2. ファイルのエクスポート</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.5. 練習問題</a></li>
 </ul>
             </nav>
         </div>
@@ -378,7 +429,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python">
 <span id="sec-setup-python"></span><h1><span class="section-number">1. </span>Python環境の設定<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h1>
-<p>Pythonのプログラミング環境を整えるには、いくつかの方法があり、一口にどれが正解とは言いづらい。当然ながら、最も単純な方法はPythonをインタプリタを直接OSにインストールしてしまう方法になる。この場合、Pythonの公式ページからインストーラをダウンロードしてきて、インストーラの指示に従ってインストールをすることになる。</p>
+<p>Pythonのプログラミング環境を整えるには、いくつかの方法があり、一口にどれが正解とは言いづらい。最も単純な方法はPythonをインタプリタを直接OSにインストールする方法になる。</p>
+<p>この場合は、Pythonの公式ページからインストーラをダウンロードしてきて、インストーラの指示に従ってインストールを実行すれば良い (<strong>だが、インストールは少し待ってほしい</strong>)。</p>
 <p><strong>Pythonの公式ページ (英語):</strong> <a class="reference external" href="https://www.python.org/">https://www.python.org/</a></p>
 <p>また、MacやLinux (UbuntuやCentOS)等を使っていれば、特に上記のウェブページからインストールをしなくても、ターミナル環境から</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python
@@ -388,75 +440,22 @@ document.write(`
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;
 </pre></div>
 </div>
-<p>のような、入力受付の記号が現れる。試しに、簡単な計算をしてみよう。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例1: 足し算</span>
-<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例2: 平方根</span>
-<span class="kn">import</span> <span class="nn">math</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4142135623730951
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例3: 文字列の処理</span>
-<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>  <span class="c1"># 小文字に変更</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>  <span class="c1"># 大文字に変更</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello, world!
-HELLO, WORLD!
-</pre></div>
-</div>
-</div>
-</div>
-<p>このように、Pythonのインタプリタ上では簡単な電卓のような機能を使うことができる。多少の使いづらさはあるものの、通常のプログラミング言語にある<strong>if文</strong>や<strong>for文</strong>なども実行できる。</p>
-<div class="note admonition">
-<p class="admonition-title">コンパイラとインタプリタ</p>
-<p>情報科学を体系的に勉強したことがあれば、それほど戸惑わないかもしれないが、ここではインタプリタとコンパイラの違いについて、少し述べておく。</p>
-<p><strong>コンパイラ</strong>というのは人間が理解できるプログラムのソースコードを機械語に翻訳して、コンピュータ上で実行できるようにするためのソフトウェアを指す。例えばC言語であれば、GNU GCCやLLVM Clangなどのコンパイラを用いて、ソースコードを機械語に翻訳する。C言語以外にも、JavaやC#, Go, Rustなどの言語がコンパイラを用いる言語で、これらの言語は一度機械語に翻訳してしまえば、コンピュータが機械語の内容を読み取って次々に処理を実行していくので、一般的に言って計算速度が速い、という特徴がある。</p>
-<p><strong>インタプリタ</strong>は、プログラムのソースコードを1行ずつ読み取って、機械語に変換する。こうすることで、ソースコードを完璧に作り込んでから実行する、という使用法に加え、プログラマがコードを入力しては結果を確認するというインタラクティブな使用が可能となり、簡単なプロトタイプのプログラムを作りたい場合などには、こちらの方が好まれることが多い。最近は、インタプリタを用いる言語 (Pythonの他、RubyやJavaScript)なども、様々な工夫によって実行速度が改善してきてはいるが、それでも、コンパイラを用いる言語と比べて、実行速度は劣る。</p>
-<p>それぞれの特徴を理解した上で使い分けることが重要だ。</p>
-</div>
+<p>のような、入力受付の記号が現れる。</p>
 <section id="id1">
 <h2><span class="section-number">1.1. </span>仮想開発環境とパッケージ管理<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Pythonを単に使ってみたいというだけなら、OSに直接インタプリタをインストールしてしまうのが一番簡単だ。ただ、Python (に限らず他のプログラミング言語でも)には、いくつかのバージョンがあり、<strong>バージョンによって使えるライブラリが異なる</strong>ことがある。</p>
-<p>そんな時、Pythonの実行環境をOSに直接作ってしまうと、あるプロジェクトAで使うライブラリはPython 3.6で使えていたのに、別のプロジェクトBではPython 3.10でないと動かないライブラリを使いたい、というような状況が発生する。そんな時、Python 3.6が使える環境と、Python 3.10が使える環境を別々に用意することができれば便利だろう。</p>
-<p>このようにOSの上で、複数の異なるバーションのPythonを備えた開発環境を管理する仕組みを<strong>仮想開発環境</strong>と呼ぶ。Python用の仮想開発環境を作るソフトウェアは複数あり、代表的な物では、</p>
+<p>Pythonを少し使うだけなら、OSに直接インストールするのが一番簡単である。ただ、Python (に限らず他のプログラミング言語でも)には、いくつかのバージョン(例えば、Python 3.6, 3.10)があり、<strong>バージョンによって使えるライブラリが異なる</strong>ことがある。</p>
+<p>そんな時、Pythonの実行環境をOSに直接作ってしまうと、あるプロジェクトAで使うライブラリはPython 3.6で使えていたのに、別のプロジェクトBではPython 3.10でないと動かないライブラリを使いたい、というような状況が発生する。そんな時、<strong>Python 3.6が使える環境と、Python 3.10が使える環境を別々に用意することができれば便利</strong>だろう。</p>
+<p>このように一つのOS上で、複数の異なるバーションのPython(や他のプログラミング言語)を備えた開発環境を管理する仕組みを<strong>仮想開発環境</strong>と呼ぶ。Python用の仮想開発環境を作るソフトウェアは複数あり、代表的な物には、</p>
 <ul class="simple">
 <li><p>virtualenv: <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">https://virtualenv.pypa.io/en/latest/</a></p></li>
 <li><p>Anaconda (Miniconda): <a class="reference external" href="https://www.anaconda.com/products/distribution">https://www.anaconda.com/products/distribution</a></p></li>
 <li><p>Pipenv: <a class="reference external" href="https://pipenv.pypa.io/en/latest/">https://pipenv.pypa.io/en/latest/</a></p></li>
 <li><p>Poetry: <a class="reference external" href="https://python-poetry.org/">https://python-poetry.org/</a></p></li>
 </ul>
-<p>などがある。なお、この講義資料は<a class="reference external" href="https://python-poetry.org/">Poetry</a>を用いて環境構築を行っている。</p>
-<p>ここで注意しないといけないのは、上記の4つの中でvirtualenvは複数の異なるPythonのバージョンを管理するための仕組みであるのに対して、Anaconda, Pipenv, Poetryは仮想開発環境の管理とは別に<strong>パッケージ管理ツール</strong>としての役割も持っている。仮想開発環境とは別にして、Python向けのパッケージ管理ツールとして最も著名な物は<strong>Pip</strong>があるが、上記の4つの中ではPipenvとPoetryはvirtualenvによる仮想開発環境の管理とPipによるパッケージ管理を同時に行うソフトウェアである。</p>
-<p>2023年現在、多くの研究プロジェクトで使われており、またPyTorchやTensorFlowといった深層学習用のライブラリの導入を管理しやすいという理由から<strong>本講義では、Anaconda (Miniconda)を用いる</strong>。</p>
+<p>等がある。余談だが、この講義資料の管理には<a class="reference external" href="https://python-poetry.org/">Poetry</a>を利用している。</p>
+<p>ここで注意しないといけないのは、上記の4つの中でvirtualenvは複数の異なる<strong>Pythonのバージョンを管理するための仕組み</strong>であるのに対して、Anaconda, Pipenv, Poetryは仮想開発環境の管理とは別に<strong>パッケージ管理ツール</strong>としての役割も持っている。</p>
+<p>仮想開発環境とは別に、Python向けのパッケージ管理ツールとしては<strong>Pip</strong>があるが、上記の4つの中ではPipenvとPoetryはvirtualenvによる仮想開発環境の管理とPipによるパッケージ管理を同時に行うソフトウェアである。</p>
+<p>本書では、多くの研究プロジェクトで使われており、またPyTorchやTensorFlowといった深層学習用のライブラリの導入を管理しやすいという理由から <strong>Anaconda (Miniconda)</strong> を用いる。</p>
 </section>
 <section id="anacondaminiconda">
 <h2><span class="section-number">1.2. </span>AnacondaとMiniconda<a class="headerlink" href="#anacondaminiconda" title="Permalink to this heading">#</a></h2>
@@ -467,22 +466,19 @@ HELLO, WORLD!
 <p>特に、受講者は自分のノートPCで作業をしていることを想定すると、ストレージの容量はそれほど多くないだろうから、Minicondaの方が、その点からも好ましい。</p>
 <section id="miniconda">
 <h3><span class="section-number">1.2.1. </span>Minicondaの導入<a class="headerlink" href="#miniconda" title="Permalink to this heading">#</a></h3>
-<p>Minicondaを導入するには<a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>にアクセスし、自分のOSにあったインストーラをダウンロードしてくる。どのインストーラをダウンロードすれば良いか分からない場合は、以下のTipを参考にしてほしい。</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Windowsを使っている場合は、よほど古いPCを使っていない限り「Windows 64bit」を選択すれば良い。macOSの場合は、最近のM1/M2 Macを使っている場合は「macOS Apple M1 64bit bash」を選ぶ。Linuxの場合には、通常のデスクトップPCであれば「Linux 64bit」を選べば良い。</p>
-</div>
+<p>Minicondaを導入するには<a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>にアクセスし、自分のOSにあったインストーラをダウンロードしてくる。</p>
+<p>インストーラの選択だが、よほど古いPCを使っていない限り、Windowsなら「Windows 64-bit」を選択すれば良い。macOSの場合は、最近のM1/M2 Macを使っている場合は「macOS Apple M1 64bit bash」を選び、そうでない場合には「macOS Intel x86 64-bit bash」。Linuxの場合には、通常のデスクトップPCであれば「Linux 64-bit」を選べば良い。</p>
 <a class="reference internal image-reference" href="../../_images/miniconda_versions.jpg"><img alt="../../_images/miniconda_versions.jpg" class="align-center" src="../../_images/miniconda_versions.jpg" style="width: 75%;" /></a>
 <hr class="docutils" />
-<p><strong>Windows</strong>であれば、インストーラの指示に従っていくとダウンロードが完了するが、途中、以下の画面になったら、二番目の「Add Miniconda3 to my PATH environment variable」という項目にチェックを入れること。この項目にチェックを入れると、コマンドプロンプトやPowerShellから<code class="docutils literal notranslate"><span class="pre">conda</span></code>コマンドが使えるようになる。</p>
+<p><strong>Windows</strong>であれば、インストーラの指示に従っていくとダウンロードが完了する。途中、以下の画面になったら、<strong>二番目の「Add Miniconda3 to my PATH environment variable」という項目にチェックを入れる</strong>こと。この項目にチェックを入れると、コマンドプロンプトやPowerShellから<code class="docutils literal notranslate"><span class="pre">conda</span></code>コマンドが使えるようになる。</p>
 <a class="reference internal image-reference" href="../../_images/windows_add_to_path.jpg"><img alt="../../_images/windows_add_to_path.jpg" class="align-center" src="../../_images/windows_add_to_path.jpg" style="width: 75%;" /></a>
 <p>インストールが完了したら、コマンドプロンプトないしPowerShellを起動し、以下のコマンドを実行する。</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>init
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>init<span class="w"> </span>powershell
 </pre></div>
 </div>
-<p>こうすることで、<code class="docutils literal notranslate"><span class="pre">conda</span></code>コマンドの各シェルソフトでの利用が可能になる。</p>
+<p>すると、<code class="docutils literal notranslate"><span class="pre">conda</span></code>コマンドの各シェルソフトでの利用が可能になる。時折、最初の設定時に<code class="docutils literal notranslate"><span class="pre">conda</span></code>がコマンドとして認識されていない場合があるが、その場合は <code class="docutils literal notranslate"><span class="pre">$HOME/miniconda3/Scritps/conda</span></code>など、フルパスを直接していして実行すれば良い。</p>
 <hr class="docutils" />
-<p><strong>Mac</strong>や<strong>Linux</strong>の場合はターミナル環境を立ち上げた後、インストールしてきた<code class="docutils literal notranslate"><span class="pre">*.sh</span></code>ファイルをBashで実行する。</p>
+<p><strong>Mac</strong>や<strong>Linux</strong>であればターミナル環境を立ち上げた後、インストールしてきた<code class="docutils literal notranslate"><span class="pre">*.sh</span></code>ファイルをBashで実行する。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># インストーラのパスは適宜読み替えること</span>
 bash<span class="w"> </span>~/Downloads/Miconda3-xxxx-xxxxx.sh
 </pre></div>
@@ -536,7 +532,8 @@ conda<span class="w"> </span>init<span class="w"> </span>zsh
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>pytorch<span class="w"> </span>pytorch
 </pre></div>
 </div>
-<p>のようにすれば良い。よく用いられるチャネルには<a class="reference external" href="https://conda-forge.org/">conda-forge</a>があり、ここには、公式には用意されていない多くのパッケージが登録されている。単なる<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code>で見つからないときには、conda-forgeから探してみると見つかることが多い。</p>
+<p>のようにすれば良い。</p>
+<p>よく用いられるチャネルには<a class="reference external" href="https://conda-forge.org/">conda-forge</a>があり、ここには、公式には用意されていない多くのパッケージが登録されている。単なる<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code>で見つからないときには、conda-forgeから探してみると見つかることが多い。</p>
 <p>反対に、インストール済みのパッケージをアンインストールしたい場合には<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">uninstall</span></code>コマンドを用いる。試しに、今インストールしたNumPyをアンインストールしてみる。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>uninstall<span class="w"> </span>numpy
 </pre></div>
@@ -564,7 +561,7 @@ conda<span class="w"> </span>init<span class="w"> </span>zsh
 <p>のようにパッケージを指定することもできる。</p>
 <p>このようにして仮想環境が作成できたら<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">list</span></code>で仮想環境のリストが確認できるので、そこに<code class="docutils literal notranslate"><span class="pre">advml</span></code>が含まれていることを確認しよう。</p>
 <p>また、すでにある仮想環境を削除したい場合には</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>remove<span class="w"> </span>-n<span class="w"> </span>advml
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>remove<span class="w"> </span>-n<span class="w"> </span>advml
 </pre></div>
 </div>
 <p>を実行すれば良い。</p>
@@ -637,8 +634,71 @@ conda<span class="w"> </span>init<span class="w"> </span>zsh
 <p><a class="github reference external" href="https://github.com/tatsy/1284-sds-ml-advanced/blob/master/environment.yaml">tatsy/1284-sds-ml-advanced</a></p>
 </section>
 </section>
+<section id="id5">
+<h2><span class="section-number">1.3. </span>Pythonの実行<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>ここまでで、Pythonを利用する準備が整ったので、早速ターミナル環境からPythonを使ってみる。WindowsならPowerShell、MacやLinuXならターミナル等を立ち上げて、<code class="docutils literal notranslate"><span class="pre">python</span></code>とコマンドを打つ。</p>
+<p>すると、Pythonのバージョン等の情報が表示されたあとで、Pythonインタプリタのコマンドの受け付けを表わす、</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt;
+</pre></div>
+</div>
+<p>が画面に現れる。試しに、以下のコマンドを打って、簡易的な電卓として使えることを確認しよう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例1: 足し算</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例2: 平方根</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">2.0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4142135623730951
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例3: 文字列の処理</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;Hello, world!&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>  <span class="c1"># 小文字に変更</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>  <span class="c1"># 大文字に変更</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello, world!
+HELLO, WORLD!
+</pre></div>
+</div>
+</div>
+</div>
+<p>このように、Pythonのインタプリタ上では簡単な電卓のような機能を使うことができる。多少の使いづらさはあるものの、通常のプログラミング言語にある<strong>if文</strong>や<strong>for文</strong>なども実行できる。</p>
+<div class="note admonition">
+<p class="admonition-title">コンパイラとインタプリタ</p>
+<p>情報科学を体系的に勉強したことがあれば、それほど戸惑わないかもしれないが、ここではインタプリタとコンパイラの違いについて、少し述べておく。</p>
+<p><strong>コンパイラ</strong>というのは人間が理解できるプログラムのソースコードを機械語に翻訳して、コンピュータ上で実行できるようにするためのソフトウェアを指す。例えばC言語であれば、GNU GCCやLLVM Clangなどのコンパイラを用いて、ソースコードを機械語に翻訳する。C言語以外にも、JavaやC#, Go, Rustなどの言語がコンパイラを用いる言語で、これらの言語は一度機械語に翻訳してしまえば、コンピュータが機械語の内容を読み取って次々に処理を実行していくので、一般的に言って計算速度が速い、という特徴がある。</p>
+<p><strong>インタプリタ</strong>は、プログラムのソースコードを1行ずつ読み取って、機械語に変換する。こうすることで、ソースコードを完璧に作り込んでから実行する、という使用法に加え、プログラマがコードを入力しては結果を確認するというインタラクティブな使用が可能となり、簡単なプロトタイプのプログラムを作りたい場合などには、こちらの方が好まれることが多い。最近は、インタプリタを用いる言語 (Pythonの他、RubyやJavaScript)なども、様々な工夫によって実行速度が改善してきてはいるが、それでも、コンパイラを用いる言語と比べて、実行速度は劣る。</p>
+<p>それぞれの特徴を理解した上で使い分けることが重要だ。</p>
+</div>
+</section>
 <section id="jupyter-lab">
-<h2><span class="section-number">1.3. </span>Jupyter Labの利用<a class="headerlink" href="#jupyter-lab" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.4. </span>Jupyter Labの利用<a class="headerlink" href="#jupyter-lab" title="Permalink to this heading">#</a></h2>
 <p>Jupyterとは、ウェブブラウザ上でインタラクティブにPythonを実行するための開発環境である。Jupyterには以前からある<strong>Jupyter Notebook</strong>の他に、より新しい<strong>Jupyter Lab</strong>があり、後者の方が機能が充実している。</p>
 <p>どちらも起動するには、ターミナルから起動コマンドを呼び出す。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Jupyter Notebookの場合</span>
@@ -652,8 +712,8 @@ jupyter<span class="w"> </span>lab
 <p>ここで、画面左上の「＋」ボタンを押すか、既存の<code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code>ファイルを左側にあるファイルエクスプローラからダブルクリックすると、コードの入力画面に切り替わる。</p>
 <a class="reference internal image-reference" href="../../_images/jupyter_notebook.jpg"><img alt="../../_images/jupyter_notebook.jpg" class="align-center" src="../../_images/jupyter_notebook.jpg" style="width: 90%;" /></a>
 <p>Jupyter環境では、標準でPythonとMarkdownが使えるほか、環境設定を行うことで<strong>R言語</strong>等も使うことができる(余談だが、JupyterとはJulia, Python, Rから来ている造語)。ここでは環境設定の方法は特に紹介しないが、興味のある読者は各自調べて見てほしい。</p>
-<section id="id5">
-<h3><span class="section-number">1.3.1. </span>覚えておくと便利なショートカット<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id6">
+<h3><span class="section-number">1.4.1. </span>覚えておくと便利なショートカット<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>Jupyter環境では、いくつかのショートカットキーが用意されており、逐一、セルをマウス等で選択することなく編集を進めるために、これらを覚えておくと良い。なお、現在、セルにコードを入力中なのか、セルが選択されているのかでショートカットキーの挙動が異なるので注意すること。</p>
 <p><strong>セルを選択中</strong></p>
 <ul class="simple">
@@ -661,6 +721,9 @@ jupyter<span class="w"> </span>lab
 <li><p>新しいセルを下に作成: 「b」 (below, bottomのb)</p></li>
 <li><p>選択中のセルを削除: 「d」を2回 (deleteのd)</p></li>
 <li><p>セルの入力モードに入る: 「Enter」</p></li>
+<li><p>セルを切り取る「x」</p></li>
+<li><p>セルを貼り付ける「v」</p></li>
+<li><p>セルの削除などの操作を取り消す「z」 <strong>(絶対に覚える！)</strong></p></li>
 </ul>
 <p><strong>セルに入力中</strong></p>
 <ul class="simple">
@@ -670,25 +733,25 @@ jupyter<span class="w"> </span>lab
 </ul>
 <p>この他、Jupyter Lab環境では、メニューの「File」や「Edit」等を開くと、右側に各操作のショートカットキーが書かれているので、こちらを参考にすると良い。</p>
 </section>
-<section id="id6">
-<h3><span class="section-number">1.3.2. </span>ファイルのエクスポート<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id7">
+<h3><span class="section-number">1.4.2. </span>ファイルのエクスポート<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>Jupyter環境で作成した<code class="docutils literal notranslate"><span class="pre">*.ipynb</span></code>ファイルはいくつかのファイル形式でエクスポートすることができる。例えば、現在のコードを通常のPythonスクリプトとして出力したり、HTMLやPDFとして出力することもできる。</p>
 <p>エクスポートのメニューは「File」→「Save and Export Notebook As...」にあるので、ここから、適宜、エクスポートしたいファイル形式を選ぶ。なお、PDFは<strong>LaTeX</strong>環境がインストールされていないと使えない他、日本語を上手く出力できないケースがある。</p>
 <p>PDFファイルのエクスポート時に日本語を使うためには、以下のようなテンプレートファイル (<code class="docutils literal notranslate"><span class="pre">jp_template.tpl</span></code>とする)を用意する。</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>((=- Default to the notebook output style -=))
-((*- if not cell_style is defined -*))
-    ((* set cell_style = &#39;style_jupyter.tex.j2&#39; *))
+<div class="highlight-latex notranslate"><div class="highlight"><pre><span></span>((=- Default to the notebook output style -=))
+((*- if not cell<span class="nb">_</span>style is defined -*))
+    ((* set cell<span class="nb">_</span>style = &#39;style<span class="nb">_</span>jupyter.tex.j2&#39; *))
 ((*- endif -*))
 
 ((=- Inherit from the specified cell style. -=))
-((* extends cell_style *))
+((* extends cell<span class="nb">_</span>style *))
 
-%===============================================================================
-% Latex Article
-%===============================================================================
+<span class="c">%===============================================================================</span>
+<span class="c">% Latex Article</span>
+<span class="c">%===============================================================================</span>
 
 ((*- block docclass -*))
-\documentclass[xelatex,ja=standard]{bxjsarticle}
+<span class="k">\documentclass</span><span class="na">[xelatex,ja=standard]</span><span class="nb">{</span>bxjsarticle<span class="nb">}</span>
 ((*- endblock docclass -*))
 </pre></div>
 </div>
@@ -721,6 +784,14 @@ runtime:
 <p>すると、以下のように日本語が正しく表示されたPDFが作成できる。</p>
 <a class="reference internal image-reference" href="../../_images/jupyter_pdf.jpg"><img alt="../../_images/jupyter_pdf.jpg" class="align-center" src="../../_images/jupyter_pdf.jpg" style="width: 90%;" /></a>
 </section>
+</section>
+<section id="id8">
+<h2><span class="section-number">1.5. </span>練習問題<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>自分の計算機にインストールされているターミナル環境を使いやすいように設定してみよう。Windowsなら<a class="reference external" href="https://github.com/PowerShell/PowerShell/releases/tag/v7.3.6">オープンソースのPowerShell</a>、Mac/LinuxならFishを導入して、それぞれ「Oh My Posh」や「Oh My Fish」などのサポートツールを使って設定すると良い。</p></li>
+<li><p>Pythonはインタプリタ型のプログラミング言語であると同時に「動的型付け」を行う言語でもある。C/C++等は静的型付け言語であるが、それぞれの利点と欠点は何だろうか？</p></li>
+<li><p>Pythonで2の100乗などを計算すると、その値が正しく計算される。通常、コンピュータで扱える値は64bit整数 (符号付き整数なら、最大で、<span class="math notranslate nohighlight">\(9 \times 10^{18}\)</span>程度)しか表せないが、なぜこのような計算ができるのだろうか？</p></li>
+</ol>
 </section>
 </section>
 
@@ -800,11 +871,13 @@ runtime:
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environment-yaml">1.2.5. environment.yamlの利用</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab">1.3. Jupyter Labの利用</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.3.1. 覚えておくと便利なショートカット</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3.2. ファイルのエクスポート</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.3. Pythonの実行</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyter-lab">1.4. Jupyter Labの利用</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.4.1. 覚えておくと便利なショートカット</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.4.2. ファイルのエクスポート</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.5. 練習問題</a></li>
 </ul>
   </nav></div>
 
