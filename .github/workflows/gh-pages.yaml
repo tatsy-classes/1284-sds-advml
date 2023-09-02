@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - dev
 
 jobs:
   deploy:
@@ -15,6 +16,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y ffmpeg
       - name: Checkout submodules
         shell: bash
         run: git submodule update --init --recursive
@@ -22,11 +27,18 @@ jobs:
       - name: Cache Jupyter execution
         uses: actions/cache@v3
         with:
+<<<<<<< HEAD
           # npm cache files are stored in `~/.npm` on Linux/macOS
           path: ~/.jupyter_cache
           key: ${{ runner.os }}-jupyter-${{ hashFiles('**/*.ipynb') }}
           restore-keys: |
             ${{ runner.os }}-jupyter-
+=======
+          path: .jupyter_cache
+          key: ${{ matrix.os }}-jupyter-${{ hashFiles('**/*.ipynb') }}
+          restore-keys: |
+            ${{ matrix.os }}-jupyter-
+>>>>>>> 26bf2162af9813deb60550815f12079febc6f6df
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -54,6 +66,7 @@ jobs:
         run: poetry run jb build --all .
 
       - name: Deploy
+        if: github.ref == 'refs/heads/master'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

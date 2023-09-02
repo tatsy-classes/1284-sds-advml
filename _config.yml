@@ -20,6 +20,7 @@ exclude_patterns:
 only_build_toc_files: true
 
 execute:
+  allow_errors: false
   execute_notebooks: cache
   cache: ./.jupyter_cache
   timeout: 180
@@ -27,7 +28,9 @@ execute:
 # HTML-specific settings
 html:
   home_page_in_navbar: false
-  use_multitoc_numbering: false
+  use_multitoc_numbering: true
+  use_repository_button: true
+  use_issues_button: true
 
 # Interact link settings
 launch_buttons:
@@ -37,24 +40,39 @@ launch_buttons:
 # Launch button settings
 repository:
   url: https://github.com/tatsy/1284-sds-ml-advanced
-  path_to_book: "contents"
+  path_to_book: contents
+  branch: master
 
 # Sphinx
 sphinx:
   config:
+    language: ja
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     bibtex_reference_style: author_year
+    nb_mime_priority_overrides: [
+      ['html', 'application/vnd.jupyter.widget-view+json', 10],
+      ['html', 'application/vnd.bokehjs_load.v0+json', 15],
+      ['html', 'application/javascript', 20],
+      ['html', 'text/html', 30],
+      ['html', 'image/svg+xml', 40],
+      ['html', 'image/png', 50],
+      ['html', 'image/gif', 60],
+      ['html', 'image/jpeg', 70],
+      ['html', 'text/markdown', 80],
+      ['html', 'text/latex', 90],
+      ['html', 'text/plain', 100]
+    ]
 
 bibtex_bibfiles:
   - "references.bib"
 
 # MyST options
 parse:
-  myst_footnote_transition: False
+  myst_footnote_transition: false
   myst_enable_extensions:
     - amsmath
-    - colon_fence
     - dollarmath
+    - colon_fence
 
 # LaTeX
 latex:

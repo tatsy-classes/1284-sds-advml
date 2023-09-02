@@ -10,6 +10,9 @@ poetry.lock
 
 .DS_Store
 
+*.bak
+*.sav.tmp
+
 .vscode/*
 _build/*
 openml/
