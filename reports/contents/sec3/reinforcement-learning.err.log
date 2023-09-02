@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig, ax = plt.subplots()
+
+ax.fill_between(
+    xs,
+    E_rand - S_rand * 3.0,
+    E_rand + S_rand * 3.0,
+    alpha=0.5,
+    linewidth=0,
+)
+ax.plot(xs, E_rand, label="random")
+
+ax.set_xlim([0, n_play])
+ax.set_ylim([0.0, 1.0])
+ax.set_xlabel("#play")
+ax.set_ylabel("hit ratio [%]")
+ax.set_title("Multi-Arm Bandit")
+
+plt.legend(loc="lower right", facecolor="white", framealpha=0.5)
+plt.tight_layout()
+plt.show()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[5], line 1[0m
+[0;32m----> 1[0m fig, ax [38;5;241m=[39m [43mplt[49m[38;5;241m.[39msubplots()
+[1;32m      3[0m ax[38;5;241m.[39mfill_between(
+[1;32m      4[0m     xs,
+[1;32m      5[0m     E_rand [38;5;241m-[39m S_rand [38;5;241m*[39m [38;5;241m3.0[39m,
+[0;32m   (...)[0m
+[1;32m      8[0m     linewidth[38;5;241m=[39m[38;5;241m0[39m,
+[1;32m      9[0m )
+[1;32m     10[0m ax[38;5;241m.[39mplot(xs, E_rand, label[38;5;241m=[39m[38;5;124m"[39m[38;5;124mrandom[39m[38;5;124m"[39m)
+
+[0;31mNameError[0m: name 'plt' is not defined
+

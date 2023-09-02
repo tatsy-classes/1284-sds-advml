@@ -422,6 +422,22 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="pandas">
 <span id="sec-pandas"></span><h1><span class="section-number">4. </span>Pandasの基本<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h1>
 <p>Pandas (panel-data-sの略)は、Python向けのデータ分析ライブラリで、主にスプレッドシート状のデータを扱うことができる。Pandasでは以下に説明する<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を使って、データの操作やファイル入出力、グラフの作成等を行うことができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">下準備のコード</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># グラフの設定</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;colorblind&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="dataframe">
 <h2><span class="section-number">4.1. </span>DataFrameの操作<a class="headerlink" href="#dataframe" title="Permalink to this heading">#</a></h2>
 <p>Pandasの中核をなすデータ構造に<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>がある。DataFrameとは、スプレッドシート状のデータを扱うデータ構造で、Excelのように数値を縦横に配置したデータを作ることができる。</p>
@@ -2047,7 +2063,7 @@ Name: Eng. dev., dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2928d956684feda9f9b094c74659348323c9aef1af89a202e0681710d9240154.png" src="../../_images/2928d956684feda9f9b094c74659348323c9aef1af89a202e0681710d9240154.png" />
+<img alt="../../_images/15c82dc53ddf49e626f869ce97cbede645a5603aa30651c51d4dc6c0def3068d.png" src="../../_images/15c82dc53ddf49e626f869ce97cbede645a5603aa30651c51d4dc6c0def3068d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2059,7 +2075,7 @@ Name: Eng. dev., dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2928d956684feda9f9b094c74659348323c9aef1af89a202e0681710d9240154.png" src="../../_images/2928d956684feda9f9b094c74659348323c9aef1af89a202e0681710d9240154.png" />
+<img alt="../../_images/15c82dc53ddf49e626f869ce97cbede645a5603aa30651c51d4dc6c0def3068d.png" src="../../_images/15c82dc53ddf49e626f869ce97cbede645a5603aa30651c51d4dc6c0def3068d.png" />
 </div>
 </div>
 <p>なお、グラフの見た目を調整したい場合には、<code class="docutils literal notranslate"><span class="pre">plt.title</span></code>等のメソッドを順次呼び出せば良い。</p>
@@ -2076,7 +2092,7 @@ Name: Eng. dev., dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e6355dd1df720644d2ba4e2b291cf3245c223e109c014df5312dd638688744ad.png" src="../../_images/e6355dd1df720644d2ba4e2b291cf3245c223e109c014df5312dd638688744ad.png" />
+<img alt="../../_images/de731019a8da2ff8e8f671f76c8a93a10ac8f40a15d31f4c4718c78e0e2cd66c.png" src="../../_images/de731019a8da2ff8e8f671f76c8a93a10ac8f40a15d31f4c4718c78e0e2cd66c.png" />
 </div>
 </div>
 <p>また、複数のグラフを並べたい場合には<code class="docutils literal notranslate"><span class="pre">plot</span></code>の<code class="docutils literal notranslate"><span class="pre">ax</span></code>パラメータに対してMatplotlibの<code class="docutils literal notranslate"><span class="pre">SubplotAxis</span></code>を指定すれば良い。</p>
@@ -2098,7 +2114,7 @@ Name: Eng. dev., dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b903c7b2532bdfd0ab3da51d4d3d0b7151e070b1cbae8ea4e322b3600b2cc349.png" src="../../_images/b903c7b2532bdfd0ab3da51d4d3d0b7151e070b1cbae8ea4e322b3600b2cc349.png" />
+<img alt="../../_images/bbf2cecbafdcbccd9aded5318ccea1a6d1e1868f8d3d761a66285491fc17f657.png" src="../../_images/bbf2cecbafdcbccd9aded5318ccea1a6d1e1868f8d3d761a66285491fc17f657.png" />
 </div>
 </div>
 </section>
