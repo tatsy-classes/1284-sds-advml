@@ -27,18 +27,10 @@ jobs:
       - name: Cache Jupyter execution
         uses: actions/cache@v3
         with:
-<<<<<<< HEAD
-          # npm cache files are stored in `~/.npm` on Linux/macOS
-          path: ~/.jupyter_cache
-          key: ${{ runner.os }}-jupyter-${{ hashFiles('**/*.ipynb') }}
-          restore-keys: |
-            ${{ runner.os }}-jupyter-
-=======
           path: .jupyter_cache
           key: ${{ matrix.os }}-jupyter-${{ hashFiles('**/*.ipynb') }}
           restore-keys: |
             ${{ matrix.os }}-jupyter-
->>>>>>> 26bf2162af9813deb60550815f12079febc6f6df
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
