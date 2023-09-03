@@ -441,6 +441,7 @@ document.write(`
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="c1"># グラフの設定</span>
@@ -518,7 +519,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.497
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.503
 </pre></div>
 </div>
 </div>
@@ -555,21 +556,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">xs</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">E_rand</span> <span class="o">-</span> <span class="n">S_rand</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">E_rand</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;random&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;plt&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/809a46d10198551c0411ddd0893e7f6d35300762fecf4a5346f8f9836c33a89c.png" src="../../_images/809a46d10198551c0411ddd0893e7f6d35300762fecf4a5346f8f9836c33a89c.png" />
 </div>
 </div>
 <p>この結果から分かる通り、ランダムに回す場合には、得られる報酬は、当たり確率の平均値である<span class="math notranslate nohighlight">\((0.3 + 0.8 + 0.4) / 3 = 0.5\)</span>程度に張り付いていることが分かる。回し方を工夫することで、この当たり確率を上げることをできるかがポイントとなる。</p>
@@ -610,7 +597,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.857
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.865
 </pre></div>
 </div>
 </div>
@@ -656,7 +643,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/f87ac6b011a544a31e453ca37db5fcd8412c9d53560ccc57e6b480e2ad964889.png" src="../../_images/f87ac6b011a544a31e453ca37db5fcd8412c9d53560ccc57e6b480e2ad964889.png" />
+<img alt="../../_images/dadcd4062058789c977375678b406a2a60fc6637e2bc3772e8d8c41c8e7e0e91.png" src="../../_images/dadcd4062058789c977375678b406a2a60fc6637e2bc3772e8d8c41c8e7e0e91.png" />
 </div>
 </div>
 <p>一番当たっている物を回す、という戦略はそれほど悪くはないように見える。実際、最終的な報酬は、最も当たりやすいスロットの当たり確率である0.65に近づいている。</p>
@@ -701,7 +688,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.857
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.865
 </pre></div>
 </div>
 </div>
@@ -750,7 +737,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5df35482e6aae4a22d5504f3ea3a94f8370177044f091a174479986fc6c6f397.png" src="../../_images/5df35482e6aae4a22d5504f3ea3a94f8370177044f091a174479986fc6c6f397.png" />
+<img alt="../../_images/82f84ada6e8fd4f24e430e46b8739828dc1da53530bc04cb44ec2079218ebc8c.png" src="../../_images/82f84ada6e8fd4f24e430e46b8739828dc1da53530bc04cb44ec2079218ebc8c.png" />
 </div>
 </div>
 <p>このように、ちょっとした工夫を加えるだけで、かなり早い段階から最大の当たり確率である0.65に近い当たり確率が得られていることが分かる。</p>
@@ -807,7 +794,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.857
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.865
 </pre></div>
 </div>
 </div>
@@ -871,7 +858,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/51f273b02e2a1a96de9ec82ed7dd47c8b3cfa417ac85926711b8d153769d1968.png" src="../../_images/51f273b02e2a1a96de9ec82ed7dd47c8b3cfa417ac85926711b8d153769d1968.png" />
+<img alt="../../_images/3f1fa02ccd74e739f82b00d7be7ca1612f04bcbd700b5999083d2c77ff6919a7.png" src="../../_images/3f1fa02ccd74e739f82b00d7be7ca1612f04bcbd700b5999083d2c77ff6919a7.png" />
 </div>
 </div>
 </section>
@@ -911,7 +898,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.857
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.865
 </pre></div>
 </div>
 </div>
@@ -984,7 +971,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/4611f459362c04ac0f0f585708a16beb3f54bc8146b8017a2c1e1d93df747579.png" src="../../_images/4611f459362c04ac0f0f585708a16beb3f54bc8146b8017a2c1e1d93df747579.png" />
+<img alt="../../_images/483b8f0e8184aab3dc7ae8e072918ca1655d77a71b01d8ad827d45615f72d59a.png" src="../../_images/483b8f0e8184aab3dc7ae8e072918ca1655d77a71b01d8ad827d45615f72d59a.png" />
 </div>
 </div>
 </section>
@@ -1007,7 +994,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a3119c36c301f01b7077da066ef8e206f9834678c9a51ea5df0b59c957349718.png" src="../../_images/a3119c36c301f01b7077da066ef8e206f9834678c9a51ea5df0b59c957349718.png" />
+<img alt="../../_images/e6e1cf2a78cc6db6fa1c3de30b9e0032cd891c326c6632fad7cedb70af6e5b95.png" src="../../_images/e6e1cf2a78cc6db6fa1c3de30b9e0032cd891c326c6632fad7cedb70af6e5b95.png" />
 </div>
 </div>
 <p>すると、このような台車 (cart)の上に振子 (pole)が取り付けられたものが写る。この倒立振子は、いくつかのパラメータを持っており、それが<code class="docutils literal notranslate"><span class="pre">observation</span></code>の中に格納されている。</p>
@@ -1018,7 +1005,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0.00740199, -0.02507112,  0.04618784, -0.01861479], dtype=float32), {})
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([-0.04964717, -0.00814265, -0.03220478, -0.01427529], dtype=float32), {})
 </pre></div>
 </div>
 </div>
