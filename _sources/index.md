@@ -36,41 +36,40 @@
   - [NumPyの基本](sec:numpy)
   - [Matplotlibの基本](sec:matplotlib)
   - [Pandasの基本](sec:pandas)
-  - [OpenCVの基本](sec:opencv)
 
 - **第2回**
+  - [OpenCVの基本](sec:opencv)
   - [図形の検出](sec:figure-detection)
-  - [scikit-learnによる機械分類の基本](sec:scikit-learn)
 
 - **第3回**
-  - [演習1 画像入力式数独ソルバーを作る](sec:exercise-sudoku)
+  - [scikit-learnによる機械分類の基本](sec:scikit-learn)
 
 - **第4回**
-  - [演習1 コンピュータ・数独大会](sec:exercise-sudoku)
+  - [演習1 画像入力式数独ソルバーを作る](sec:exercise-sudoku)
 
 - **第5回**
+  - [演習1 コンピュータ・数独大会](sec:exercise-sudoku)
+
+- **第6回**
   - [データ可視化と次元圧縮](sec:data-visualization)
   - [特徴量抽出](sec:feature-extraction)
 
-- **第6回**
+- **第7回**
   - [深層学習による物体認識](sec:deep-learning)
 
-- **第7回**
+- **第8回**
   - [演習2 百人一首エージェントを作る](sec:exercise-ogura)
 
-- **第8回**
+- **第9回**
   - [演習2 コンピュータ・百人一首大会](sec:exercise-ogura)
 
-- **第9回**
+- **第10回**
   - [強化学習の基礎](sec:reinforcement-learning)
   - [Q学習](sec:q-learning)
 
-- **第10回**
+- **第11回**
   - [基本のオセロAI](sec:othello-agent)
   - [深層強化学習](sec:deep-reinforcement-learning)
-
-- **第11回**
-  - [演習3 オセロエージェントを作る](sec:exercise-othello)
 
 - **第12回**
   - [演習3 オセロエージェントを作る](sec:exercise-othello)
