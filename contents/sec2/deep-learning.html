@@ -155,8 +155,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../sec1/matplotlib.html">3. Matplotlibの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sec1/pandas.html">4. Pandasの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sec1/opencv.html">5. OpenCVの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/scikit-learn.html">6. scikit-learnによる機械分類の基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/figure-detection.html">7. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/figure-detection.html">6. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/scikit-learn.html">7. scikit-learnによる機械分類の基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sec1/exercise-sudoku.html">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
@@ -640,7 +640,7 @@ The value of dy/dx is 12.0
 </div>
 </div>
 </div>
-<p>例のごとく、最初の個のデータだけを実験に用いる。</p>
+<p>例のごとく、最初の<span class="output text_plain">10000</span>個のデータだけを実験に用いる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_data</span><span class="p">,</span> <span class="n">dataset</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="p">[</span><span class="n">n_samples</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">n_samples</span><span class="p">])</span>

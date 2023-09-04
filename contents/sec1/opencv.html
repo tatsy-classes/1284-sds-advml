@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/opencv';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="6. scikit-learnによる機械分類の基本" href="scikit-learn.html" />
+    <link rel="next" title="6. 図形の検出" href="figure-detection.html" />
     <link rel="prev" title="4. Pandasの基本" href="pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
@@ -154,8 +154,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">5. OpenCVの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scikit-learn.html">6. scikit-learnによる機械分類の基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="figure-detection.html">7. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="figure-detection.html">6. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scikit-learn.html">7. scikit-learnによる機械分類の基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise-sudoku.html">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
@@ -406,7 +406,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.1.3. 画像の色表現</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-image-transformation">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2.1. 画像の拡大・縮小</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2.2. 画像の回転</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.2.3. 画像の反転</a></li>
@@ -421,10 +421,12 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">5.3.2. エッジ検出フィルタ</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sobel">Sobelフィルタ</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#canny">Cannyフィルタ</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Sobelフィルタによる勾配強度の計算</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">勾配が極大の画素の検出</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">ヒステリシス閾値処理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#canny">Cannyフィルタ</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Sobelフィルタによる勾配強度の計算</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">勾配が極大の画素の検出</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">ヒステリシス閾値処理</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -446,7 +448,26 @@ document.write(`
 <span id="sec-opencv"></span><h1><span class="section-number">5. </span>OpenCVの基本<a class="headerlink" href="#opencv" title="Permalink to this heading">#</a></h1>
 <p>OpenCVとは元々Intel社が1999年から開発を開始した画像処理およびコンピュータビジョン用のライブラリで、2006年にバージョン1.0が公開された。</p>
 <p>OpenCVは元々C/C++で開発されていたが、現在の最新バージョンである4.x系はPythonを含む非常に多くの言語でラッパーが公開されている。OpenCVで行える計算は画像の読み書きや、単純な画像フィルタの他、画像からの三次元復元や機械学習など幅広いが、ここでは基本的な機能に絞って解説する。</p>
-<div class="cell tag_remove-input docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">下準備のコード</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;colorblind&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 <section id="id1">
 <h2><span class="section-number">5.1. </span>画像の読み書き<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
@@ -557,8 +578,8 @@ document.write(`
 <p>デジタル画像の保存にRGB形式が広く用いられる一方で、実際の応用に画像(や動画)を用いる際には、別の表色系が好まれることがある。例えば、<strong>テレビ映像を伝送する際には、帯域を削減する目的でYUVやYCbCrといった異なる表色が用いられる</strong>。また、プリンタに対して色情報を送るときには加法混色に従うRGB表色系ではなく、<strong>プリンタのインクが従う減法混色系の一種であるCMYK表色系</strong> (C=シアン、M=マゼンタ、Y=イエロー、K=キープレート=黒)が用いられるのが一般的である。</p>
 </section>
 </section>
-<section id="id5">
-<h2><span class="section-number">5.2. </span>画像に対する幾何学的操作<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="ssec-image-transformation">
+<span id="id5"></span><h2><span class="section-number">5.2. </span>画像に対する幾何学的操作<a class="headerlink" href="#ssec-image-transformation" title="Permalink to this heading">#</a></h2>
 <section id="id6">
 <h3><span class="section-number">5.2.1. </span>画像の拡大・縮小<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>画像の拡大・縮小には<code class="docutils literal notranslate"><span class="pre">cv2.resize</span></code>関数を使う。この関数は</p>
@@ -989,7 +1010,7 @@ M_3= \begin{pmatrix}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/b256dea0257d5d26c0fc4a789c08c9b4654dd4cfbe665338d1022bb40135df49.png" src="../../_images/b256dea0257d5d26c0fc4a789c08c9b4654dd4cfbe665338d1022bb40135df49.png" />
+<img alt="../../_images/d402be2c7bf07d330624bdc6538274b42ffe6b0d950f9f018701a0fbda862568.png" src="../../_images/d402be2c7bf07d330624bdc6538274b42ffe6b0d950f9f018701a0fbda862568.png" />
 </div>
 </div>
 <p>ノイズを付与すると、上記のように、元の画像が見分けづらくなる。このようなノイズは、写真を撮るときに被写体が暗い場合に多く生じる。また、ノイズの種類は異なるが、JPEG等の不可逆圧縮をかけることによっても、ノイズが生じる。</p>
@@ -1036,7 +1057,7 @@ K = \sum_{\xi = -H}^{+H} \sum_{\eta = -H}^H f(\xi, \eta)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e23c979e045d07d7a40b9722dc4db004299e86863185d51f3681827b9b5d67be.png" src="../../_images/e23c979e045d07d7a40b9722dc4db004299e86863185d51f3681827b9b5d67be.png" />
+<img alt="../../_images/38e57919c88c992658d7ee8c7c432aebc4a36a092ac1be488a7ceec8723292ca.png" src="../../_images/38e57919c88c992658d7ee8c7c432aebc4a36a092ac1be488a7ceec8723292ca.png" />
 </div>
 </div>
 <p>このように、Gaussianフィルタにより、高周波のノイズは除けているものの、画像には斑点状ノイズが残ってしまっている。さらに、元のひまわりの画像信号にもぼけが生じており、元の画像を復元できているとは言いがたい。</p>
@@ -1074,7 +1095,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/738145f1ebd10590b417c05cb4e250b3573a3102e34322cf226507c7b6cc3517.png" src="../../_images/738145f1ebd10590b417c05cb4e250b3573a3102e34322cf226507c7b6cc3517.png" />
+<img alt="../../_images/28e816c1049806d01046187c1ce362cd7844b45c8b54b56c488679660841f52f.png" src="../../_images/28e816c1049806d01046187c1ce362cd7844b45c8b54b56c488679660841f52f.png" />
 </div>
 </div>
 <p>このように、Gaussianフィルタと比べると、元の信号のぼけが少なく、また高周波のノイズも低減できていることが分かる。バイラテラルフィルタは繰り返し書けることで、その効果を調整することができる。一例として弱いバイラテラルフィルタを10回程度適用すると、以下のような画像が得られる。</p>
@@ -1098,7 +1119,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/772bcac0d318ed7e7a1f054d74606a263f5e3b8b3806b73624393f4d788597f9.png" src="../../_images/772bcac0d318ed7e7a1f054d74606a263f5e3b8b3806b73624393f4d788597f9.png" />
+<img alt="../../_images/91f4c9845bd66618ccb86b13480ebd11cef726409015e8df04a47549b54f1281.png" src="../../_images/91f4c9845bd66618ccb86b13480ebd11cef726409015e8df04a47549b54f1281.png" />
 </div>
 </div>
 <p>このように、若干ではあるが、ノイズが低減され、元の画像に近い信号が得られているように見える。</p>
@@ -1124,7 +1145,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/491dea98c16090d4fe7fe6b3d0facad6304e0760b65c42befd3edbae17b7dceb.png" src="../../_images/491dea98c16090d4fe7fe6b3d0facad6304e0760b65c42befd3edbae17b7dceb.png" />
+<img alt="../../_images/c461586d52ab5f061976863d0efbb6232e812e1012980977e858c1cd77126c16.png" src="../../_images/c461586d52ab5f061976863d0efbb6232e812e1012980977e858c1cd77126c16.png" />
 </div>
 </div>
 <p>結果から分かる通り、メディアンフィルタは適度に元画像の信号を保ちつつ、目立ったノイズを低減できていることが分かる。さらに、Gaussianフィルタやバイラテラルフィルタは周辺画素との畳み込みによって、どうしても画素の値が灰色に近づいてしまい、コントラストが落ちるが、メディアンフィルタはノイズ画像に現れる輝度値を再利用しているだけなので、コントラストの落ち方が緩やかである。</p>
@@ -1241,9 +1262,8 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 <li><p>勾配が極大となる画素の検出</p></li>
 <li><p>ヒステリシス閾値処理</p></li>
 </ol>
-</section>
 <section id="id20">
-<h4>Sobelフィルタによる勾配強度の計算<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
+<h5>Sobelフィルタによる勾配強度の計算<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h5>
 <p>まず、Sobelフィルタを用いて、x方向の勾配とy方向の勾配を計算する。これは先ほどと同様にx方向とy方向の各方向に対してSobelフィルタを書けて、その勾配のノルムを取ることで実現する。なお、Cannyフィルタの処理では、Sobelフィルタをかける前に一度Gaussianフィルタによってノイズが低減される。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1266,7 +1286,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </section>
 <section id="id21">
-<h4>勾配が極大の画素の検出<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h4>
+<h5>勾配が極大の画素の検出<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h5>
 <p>次に、各画素について、勾配方向を計算し、その勾配方向に沿った方向に中心画素の輝度値が極大になっている画素だけを取り出す。</p>
 <p>まずは、先ほどのx方向勾配とy方向勾配から、<code class="docutils literal notranslate"><span class="pre">arctan</span></code>を用いて勾配方向を計算する。その角度を、0°、45°、90°、135°のいずれかに分類する。今回は「向きを無視した方向」が分かれば良いので、<code class="docutils literal notranslate"><span class="pre">arctan</span></code>の戻り値が負の場合には<span class="math notranslate nohighlight">\(\pi\)</span>を足し算しておく。</p>
 <div class="cell docutils container">
@@ -1309,7 +1329,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
             <span class="n">v0</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span>
             <span class="n">v1</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># 135°の場合            </span>
+            <span class="c1"># 135°の場合</span>
             <span class="n">v0</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">]</span>
             <span class="n">v1</span> <span class="o">=</span> <span class="n">grad</span><span class="p">[</span><span class="n">y1</span><span class="p">,</span> <span class="n">x0</span><span class="p">]</span>
 
@@ -1328,7 +1348,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 <p>このように極大の部分だけを取り出すと、かなりエッジの線が細くなったことが分かる。</p>
 </section>
 <section id="id22">
-<h4>ヒステリシス閾値処理<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h4>
+<h5>ヒステリシス閾値処理<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h5>
 <p>ヒステリシスというのは、元々、とある状態から変化を加えていったときに、変化の過程と、元に戻る過程で異なる状態経路を取るような現象のことを指す。Cannyフィルタで用いられる「ヒステリシス閾値処理」は、これに着想を得て、二段階の閾値処理をかける手法である。</p>
 <p>ヒステリシス閾値処理には二種類の閾値 <span class="math notranslate nohighlight">\(\tau_1\)</span>と<span class="math notranslate nohighlight">\(\tau_2\)</span>を使用する (ただし<span class="math notranslate nohighlight">\(\tau_1 &lt; \tau_2\)</span>)。もし上記の極大勾配の値が<span class="math notranslate nohighlight">\(\tau_2\)</span>を超えていたら、その画素は輪郭線であると見なす。また、反対に極大勾配の値が<span class="math notranslate nohighlight">\(\tau_1\)</span>を下回っていたら、その画素は輪郭線ではないと見なす。</p>
 <p>最後に残った極大勾配が<span class="math notranslate nohighlight">\([ \tau_1, \tau_2 ]\)</span>の区間に入る画素については、その周囲の8画素をみて、少なくとも1つの画素が<span class="math notranslate nohighlight">\(\tau_2\)</span>以上の極大勾配を持っているなら、その画素も輪郭線と見なす。</p>
@@ -1405,9 +1425,12 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </section>
 </section>
 </section>
+</section>
 <section id="id23">
 <h2><span class="section-number">5.4. </span>練習問題<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
+<li><p>画像の圧縮方式には様々なものがあり、JPEGやPNGなどが広く知られている。これらの圧縮方式について、非可逆圧縮と可逆圧縮の違いについて、JPEGとPNGに用いられる圧縮アルゴリズムを例にとって説明せよ。</p></li>
+<li><p><a class="reference internal" href="#ssec-image-transformation"><span class="std std-ref">画像の幾何変換</span></a>の項で述べた、画像補間の方式について、バイリニア補間、バイキュービック補間は、それぞれ1次式、3次式による画素値の補間である。これらの補間に用いられる1次式、3次式はどのようなものであるか。</p></li>
 <li><p>Gaussianフィルタは画像の高周波信号を取り除く「ローパスフィルタ」であると考えられる。フィルタカーネルの畳み込みの式をフーリエ変換することによって、この性質を調べよ。</p></li>
 </ol>
 </section>
@@ -1479,11 +1502,11 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
       </div>
     </a>
     <a class="right-next"
-       href="scikit-learn.html"
+       href="figure-detection.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>scikit-learnによる機械分類の基本</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>図形の検出</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1511,7 +1534,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.1.3. 画像の色表現</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-image-transformation">5.2. 画像に対する幾何学的操作</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2.1. 画像の拡大・縮小</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2.2. 画像の回転</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.2.3. 画像の反転</a></li>
@@ -1526,10 +1549,12 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#edge-detection">5.3.2. エッジ検出フィルタ</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sobel">Sobelフィルタ</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#canny">Cannyフィルタ</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Sobelフィルタによる勾配強度の計算</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">勾配が極大の画素の検出</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">ヒステリシス閾値処理</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#canny">Cannyフィルタ</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Sobelフィルタによる勾配強度の計算</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">勾配が極大の画素の検出</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">ヒステリシス閾値処理</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

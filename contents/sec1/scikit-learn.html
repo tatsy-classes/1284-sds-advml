@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6. scikit-learnによる機械分類の基本 &#8212; 機械学習発展 (実践)</title>
+    <title>7. scikit-learnによる機械分類の基本 &#8212; 機械学習発展 (実践)</title>
   
   
   
@@ -66,11 +66,14 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"ce53f9562968451e949d16d77abb0290": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "52105fe8047a41e1ab273ee28364f7ae": {"model_name": "ProgressStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "26c8b9a1c07c4500aface6bdb94745b1": {"model_name": "FloatProgressModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_ce53f9562968451e949d16d77abb0290", "max": 9.0, "min": 0.0, "orientation": "horizontal", "style": "IPY_MODEL_52105fe8047a41e1ab273ee28364f7ae", "tabbable": null, "tooltip": null, "value": 9.0}}, "fe7310ce2ae640d7866befa61ea9d1d7": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "cdc49a1cf8bf4a32be8f353f60078788": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "808ff52cb6304e76ad232949e97d7625": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_fe7310ce2ae640d7866befa61ea9d1d7", "placeholder": "\u200b", "style": "IPY_MODEL_cdc49a1cf8bf4a32be8f353f60078788", "tabbable": null, "tooltip": null, "value": "100%"}}, "54729a7adc2c40648a944a0072a78778": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "f3938604afd3478e9eaa1035207097b3": {"model_name": "HTMLStyleModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "abd62507551d4aca93e120ffdb738bf3": {"model_name": "HTMLModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_54729a7adc2c40648a944a0072a78778", "placeholder": "\u200b", "style": "IPY_MODEL_f3938604afd3478e9eaa1035207097b3", "tabbable": null, "tooltip": null, "value": " 9/9 [00:15&lt;00:00,  1.63s/it]"}}, "d6e2858edbe74e36890f027071e35850": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ab51710705c04ef78edd51897791c767": {"model_name": "HBoxModel", "model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_808ff52cb6304e76ad232949e97d7625", "IPY_MODEL_26c8b9a1c07c4500aface6bdb94745b1", "IPY_MODEL_abd62507551d4aca93e120ffdb738bf3"], "layout": "IPY_MODEL_d6e2858edbe74e36890f027071e35850", "tabbable": null, "tooltip": null}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/scikit-learn';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="7. 図形の検出" href="figure-detection.html" />
-    <link rel="prev" title="5. OpenCVの基本" href="opencv.html" />
+    <link rel="next" title="8. 演習1 - 画像入力式数独ソルバーを作る" href="exercise-sudoku.html" />
+    <link rel="prev" title="6. 図形の検出" href="figure-detection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   </head>
@@ -154,8 +157,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opencv.html">5. OpenCVの基本</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. scikit-learnによる機械分類の基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="figure-detection.html">7. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="figure-detection.html">6. 図形の検出</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. scikit-learnによる機械分類の基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise-sudoku.html">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
@@ -400,32 +403,32 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">6.1. 分類問題 (classification)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.2. データのスケーリング</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.2.1. 最近傍探索による分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2.2. ロジスティック回帰による分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.2.3. バギングによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.4. ランダム・フォレストによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">6.2.5. AdaBoostによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.6. 勾配ブースティングによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-support-vector-machine">6.2.7. サポートベクトルマシンによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.2.8. カーネル法を用いたサポートベクトルマシン</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.2.9. ここまでの手法の比較</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">7.1. 分類問題 (classification)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.2. データのスケーリング</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.2.1. 最近傍探索による分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.2.2. ロジスティック回帰による分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.2.3. バギングによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.2.4. ランダム・フォレストによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">7.2.5. AdaBoostによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.2.6. 勾配ブースティングによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-support-vector-machine">7.2.7. サポートベクトルマシンによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.2.8. カーネル法を用いたサポートベクトルマシン</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.2.9. ここまでの手法の比較</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.3. ハイパーパラメータの調整</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6.3.1. ホールドアウト検証</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">6.3.2. 交差検証 (クロス・バリデーション)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.3. ハイパーパラメータの調整</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.3.1. ホールドアウト検証</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7.3.2. 交差検証 (クロス・バリデーション)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">6.4. 学習済みデータの保存</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">6.5. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">6.5.1. 2クラス分類の場合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">6.5.2. 多クラス分類の場合</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.4. 学習済みデータの保存</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">7.5. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">7.5.1. 2クラス分類の場合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">7.5.2. 多クラス分類の場合</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">6.6. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">6.7. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">7.6. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">7.7. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -438,7 +441,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="scikit-learn">
-<span id="sec-scikit-learn"></span><h1><span class="section-number">6. </span>scikit-learnによる機械分類の基本<a class="headerlink" href="#scikit-learn" title="Permalink to this heading">#</a></h1>
+<span id="sec-scikit-learn"></span><h1><span class="section-number">7. </span>scikit-learnによる機械分類の基本<a class="headerlink" href="#scikit-learn" title="Permalink to this heading">#</a></h1>
 <p>この項では、scikit-learnを用いた機械学習の基礎と、得られた結果の評価方法について学ぶ。</p>
 <p>scikit-learnは様々な機械学習の手法が統一的なコードにより使用できるように整備されたライブラリである。例えば、機械学習器のパラメータをデータセットに合わせて調整するには<code class="docutils literal notranslate"><span class="pre">fit</span></code>という関数を用い、機械学習器を用いた予測には<code class="docutils literal notranslate"><span class="pre">predict</span></code>という関数を使う、といった具合である。</p>
 <div class="cell tag_hide-input docutils container">
@@ -479,7 +482,8 @@ document.write(`
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;n_samples&quot;</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># 一部の警告を無視</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">ConvergenceWarning</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">])</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">ConvergenceWarning</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">)</span>
 
 <span class="c1"># 結果を格納していくDataFrame</span>
 <span class="n">result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Method&quot;</span><span class="p">,</span> <span class="s2">&quot;Accuracy&quot;</span><span class="p">,</span> <span class="s2">&quot;Phase&quot;</span><span class="p">])</span>
@@ -489,7 +493,7 @@ document.write(`
 </details>
 </div>
 <section id="classification">
-<h2><span class="section-number">6.1. </span>分類問題 (classification)<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.1. </span>分類問題 (classification)<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h2>
 <p>まずは、scikit-learnのいくつかの機械学習器を用いて手書き文字のデータセットであるMNISTを分類してみる。</p>
 <p>scikit-learnには<code class="docutils literal notranslate"><span class="pre">datasets</span></code>というモジュールがあり、そこからMNISTをダウンロードできるので、それを利用する。</p>
 <div class="cell docutils container">
@@ -560,7 +564,7 @@ document.write(`
 </div>
 </section>
 <section id="id1">
-<h2><span class="section-number">6.2. </span>データのスケーリング<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.2. </span>データのスケーリング<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>機械学習器にデータを学習させる前にデータのスケールを揃えておくと精度が改善する場合が多い。最も良く用いられる方法は<strong>訓練データの平均と分散</strong>を計算して、データの各次元の平均が0、分散が1となるように変形する方法である。この方法は、scikit-learnの<code class="docutils literal notranslate"><span class="pre">StandardScalar</span></code>に実装されているので、今回はこれを使用する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -582,7 +586,7 @@ document.write(`
 <p>データのスケーリングを行う場合、<strong>スケールを決定するのに使えるデータは訓練データのみ</strong>であることに注意する (テストデータがどんなデータなのかは事前に分からないため)。また、テストをする際にスケーリングをするのを忘れないようにすること。</p>
 </div>
 <section id="id2">
-<h3><span class="section-number">6.2.1. </span>最近傍探索による分類<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.1. </span>最近傍探索による分類<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>識別を行う上で、最も単純な方法は手書き文字の画像を多次元ベクトルと見なして、多次元空間の近傍に多く存在するサンプルのラベルを、未知のデータのラベルとして採用するというものだろう。それを実現するのが<code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>である。</p>
 <p>以下は、未知のデータが与えられた時、近傍の15枚の画像を探索して、その画像の持つラベルの中で最も多いものを未知データに対するラベルとして採用する、というコードである。</p>
 <div class="cell docutils container">
@@ -630,7 +634,7 @@ document.write(`
 </ul>
 </section>
 <section id="id3">
-<h3><span class="section-number">6.2.2. </span>ロジスティック回帰による分類<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.2. </span>ロジスティック回帰による分類<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>続いては入力を線形変換することで出力を予測する線形モデルの一種であるロジスティック回帰 (`LogisticRegression')を使ってみる。</p>
 <p>ロジスティック回帰のパラメータは行列<span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span>とバイアス項<span class="math notranslate nohighlight">\(\mathbf{b} \in \mathbb{R}^{m}\)</span>で多クラスの分類問題の場合には、入力<span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{n}\)</span>に対して、ソフトマックス関数<span class="math notranslate nohighlight">\(\sigma(\cdot)\)</span>を用いて出力である分類ラベル<span class="math notranslate nohighlight">\(\mathbf{y} \in \mathbb{R}^{m}\)</span>を予測する。</p>
 <div class="math notranslate nohighlight">
@@ -683,7 +687,7 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 </ul>
 </section>
 <section id="id4">
-<h3><span class="section-number">6.2.3. </span>バギングによる分類<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.3. </span>バギングによる分類<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>バギング(bagging)とはBootstrap AGGregatINGから作られた造語であり、訓練データの部分集合にあたる<strong>ブートストラップ・サンプル</strong>を用いて学習した異なる分類器の多数決によって、最終的な分類予測を行う機械学習法である<strong>アンサンブル学習の一種</strong>である。</p>
 <p>例えば、訓練データが<span class="math notranslate nohighlight">\(N\)</span>個のサンプルからなる時、<span class="math notranslate nohighlight">\(M\)</span>個のサブサンプル (<span class="math notranslate nohighlight">\(M \leq N\)</span>)を取り出して、分類器を学習する。この操作を複数のサブサンプルと分類器に対して実行する。このようにブートストラップ・サンプルで訓練された分類器のことを<strong>弱分類器</strong>と呼ぶ。</p>
 <p>最終結果は、単純には、得られた分類器の予測の中で一番多数の票を集めたものが与えられる。以下に単純なバギングの実装例を与える。</p>
@@ -776,7 +780,7 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 <p>バギングは、部分データを用いて学習した複数の分類器を組み合わせているだけなので、弱分類に用いる分類器(上記の例では<code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>)と比べて、それほど精度が増加しないことが多い。これは、部分データ同士の相関が大きく、結果として、弱分類器の予測が似通ってしまうことに起因する。</p>
 </section>
 <section id="id5">
-<h3><span class="section-number">6.2.4. </span>ランダム・フォレストによる分類<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.4. </span>ランダム・フォレストによる分類<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>ランダム・フォレストはバギングの弱分類器による推論が似通ってしまう問題を解決する分類器の一つである。バギングにおいて、予測が偏ってしまう原因は、ブートストラップ・サンプルのサイズ<span class="math notranslate nohighlight">\(M\)</span>が十分<span class="math notranslate nohighlight">\(N\)</span>に近ければ、訓練データの分布が似通ってしまうためである。</p>
 <p>そこで、ランダム・フォレストでは、訓練データの特徴のうち、ランダムに数個だけを選んで弱分類器を学習する。このようにすることで十分に<span class="math notranslate nohighlight">\(N\)</span>に近い<span class="math notranslate nohighlight">\(M\)</span>であっても、分布の異なるサンプル集合を得ることができる。</p>
 <p>ランダム・フォレストには通常、弱分類器として決定木が用いられることが多いが、以下では、<code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>を用いた簡易実装を紹介する。</p>
@@ -876,7 +880,7 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 </ul>
 </section>
 <section id="adaboost">
-<h3><span class="section-number">6.2.5. </span>AdaBoostによる分類<a class="headerlink" href="#adaboost" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.5. </span>AdaBoostによる分類<a class="headerlink" href="#adaboost" title="Permalink to this heading">#</a></h3>
 <p>バギングを拡張したアンサンブル学習には、ランダム・フォレスト以外にも<strong>ブースティング</strong>という手法がある。ブースティングは、バギングのように独立した弱分類器を学習するのではなく、弱分類器の列を順に学習していく。この際、新しく列に追加される弱分類器は、<strong>それまでの学習結果で上手く分類できていないサンプルをより良く識別するように補正</strong>をいれて学習する。</p>
 <p>このようなブースティング法には多くのバリエーションがあるが、ここではその代表格である<strong>AdaBoost</strong>を紹介する。AdaBoostの大まかな学習手順は以下のようになる。</p>
 <ol class="arabic simple">
@@ -943,7 +947,7 @@ y = \sum_{i=1}^{n_{\rm weak}} \alpha_i f_i(\mathbf{x})
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">6.2.6. </span>勾配ブースティングによる分類<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.6. </span>勾配ブースティングによる分類<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>ブースティングの手法には勾配ブースティングと呼ばれる手法もある。AdaBoostでは、<span class="math notranslate nohighlight">\(f_{t-1}\)</span>で分類が上手くいっていないサンプルに<strong>重みを強くつける</strong>という方法で識別精度が上がるように補正を掛けていた。</p>
 <p>勾配ブースティングは、<span class="math notranslate nohighlight">\(f_{t-1}\)</span>までの<strong>識別誤差</strong>を補正するように次の弱分類器<span class="math notranslate nohighlight">\(f_{t}\)</span>を学習する。言い換えると、各弱分類器は分類問題を解くのではなく、分類の誤差を補正するような<strong>勾配を予測する問題</strong>を解く。従って、勾配ブースティングは各弱分類器の予測を多数決で採用するのではなく、全ての弱分類器を統合した分類器<span class="math notranslate nohighlight">\(F_t\)</span>が一つの予測を返す。</p>
 <p>勾配ブースティングの大まかな学習手順は以下のようになる。</p>
@@ -1003,7 +1007,7 @@ r_i^{(1)} = -\frac{\partial L(y_i)}{\partial y_i}
 </div>
 </section>
 <section id="ssec-support-vector-machine">
-<span id="id9"></span><h3><span class="section-number">6.2.7. </span>サポートベクトルマシンによる分類<a class="headerlink" href="#ssec-support-vector-machine" title="Permalink to this heading">#</a></h3>
+<span id="id9"></span><h3><span class="section-number">7.2.7. </span>サポートベクトルマシンによる分類<a class="headerlink" href="#ssec-support-vector-machine" title="Permalink to this heading">#</a></h3>
 <p>サポートベクトルマシンは元々、2クラス分類に対して提案された手法で、<strong>サポートベクトル</strong>という境界線(より厳密には超平面)を2つのクラスに属するデータ集合から求める問題を解く。具体的には、データ空間の中で定義される超平面<span class="math notranslate nohighlight">\(\mathbf{a} \cdot \mathbf{x} + b=0\)</span>について、2つのクラスが<span class="math notranslate nohighlight">\(y_i \in \{ +1, -1 \}\)</span>のラベルを持つとして、以下の距離を最大化するような超平面のパラメータ<span class="math notranslate nohighlight">\((\mathbf{a}, b)\)</span>を求める。</p>
 <p>点と超平面との距離<span class="math notranslate nohighlight">\(d(\mathbf{x}_i)\)</span>は、<span class="math notranslate nohighlight">\(y_i\)</span>の符号を考慮すると、</p>
 <div class="math notranslate nohighlight">
@@ -1205,7 +1209,7 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 </section>
 <section id="id10">
-<h3><span class="section-number">6.2.8. </span>カーネル法を用いたサポートベクトルマシン<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.8. </span>カーネル法を用いたサポートベクトルマシン<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <p>ここまでの例では、分類対象が超平面により分割されることを仮定してきたが、実際の分布においては、必ずしも超平面で区切られる物ばかりではない。以下の例を見てほしい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1472,7 +1476,7 @@ K = \Phi \Lambda \Phi^T
 <p>すると、カーネル法を用いたSVMが線形SVMよりも精度が劣っていることが分かる。特にRBFを用いることで訓練の精度は上がっているが、過学習が起こり、テストデータに対する精度が大幅に低下していることが分かるだろう。</p>
 </section>
 <section id="id11">
-<h3><span class="section-number">6.2.9. </span>ここまでの手法の比較<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.9. </span>ここまでの手法の比較<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <p>最後にここまでの手法をグラフで比較すると、以下のようになる。手法選びの参考にしてほしい。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1499,112 +1503,17 @@ K = \Phi \Lambda \Phi^T
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">40</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Method&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Phase&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">data</span><span class="o">=</span><span class="n">result_df</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">errwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">containers</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/categorical.py:2755,</span> in <span class="ni">barplot</span><span class="nt">(data, x, y, hue, order, hue_order, estimator, errorbar, n_boot, units, seed, orient, color, palette, saturation, width, errcolor, errwidth, capsize, dodge, ci, ax, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2752</span> <span class="k">if</span> <span class="n">estimator</span> <span class="ow">is</span> <span class="nb">len</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2753</span>     <span class="n">estimator</span> <span class="o">=</span> <span class="s2">&quot;size&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">2755</span> <span class="n">plotter</span> <span class="o">=</span> <span class="n">_BarPlotter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">hue_order</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2756</span>                       <span class="n">estimator</span><span class="p">,</span> <span class="n">errorbar</span><span class="p">,</span> <span class="n">n_boot</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2757</span>                       <span class="n">orient</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">palette</span><span class="p">,</span> <span class="n">saturation</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2758</span>                       <span class="n">width</span><span class="p">,</span> <span class="n">errcolor</span><span class="p">,</span> <span class="n">errwidth</span><span class="p">,</span> <span class="n">capsize</span><span class="p">,</span> <span class="n">dodge</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2760</span> <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2761</span>     <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/categorical.py:1530,</span> in <span class="ni">_BarPlotter.__init__</span><span class="nt">(self, x, y, hue, data, order, hue_order, estimator, errorbar, n_boot, units, seed, orient, color, palette, saturation, width, errcolor, errwidth, capsize, dodge)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1525</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">hue_order</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1526</span>              <span class="n">estimator</span><span class="p">,</span> <span class="n">errorbar</span><span class="p">,</span> <span class="n">n_boot</span><span class="p">,</span> <span class="n">units</span><span class="p">,</span> <span class="n">seed</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1527</span>              <span class="n">orient</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">palette</span><span class="p">,</span> <span class="n">saturation</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1528</span>              <span class="n">errcolor</span><span class="p">,</span> <span class="n">errwidth</span><span class="p">,</span> <span class="n">capsize</span><span class="p">,</span> <span class="n">dodge</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1529</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Initialize the plotter.&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1530</span>     <span class="bp">self</span><span class="o">.</span><span class="n">establish_variables</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">hue</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">orient</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1531</span>                              <span class="n">order</span><span class="p">,</span> <span class="n">hue_order</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1532</span>     <span class="bp">self</span><span class="o">.</span><span class="n">establish_colors</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">palette</span><span class="p">,</span> <span class="n">saturation</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1533</span>     <span class="bp">self</span><span class="o">.</span><span class="n">estimate_statistic</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="n">errorbar</span><span class="p">,</span> <span class="n">n_boot</span><span class="p">,</span> <span class="n">seed</span><span class="p">)</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/categorical.py:544,</span> in <span class="ni">_CategoricalPlotter.establish_variables</span><span class="nt">(self, x, y, hue, data, orient, order, hue_order, units)</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">543</span> <span class="c1"># Figure out the plotting orientation</span>
-<span class="ne">--&gt; </span><span class="mi">544</span> <span class="n">orient</span> <span class="o">=</span> <span class="n">infer_orient</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">545</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">orient</span><span class="p">,</span> <span class="n">require_numeric</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">require_numeric</span>
-<span class="g g-Whitespace">    </span><span class="mi">546</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">548</span> <span class="c1"># Option 2a:</span>
-<span class="g g-Whitespace">    </span><span class="mi">549</span> <span class="c1"># We are plotting a single set of data</span>
-<span class="g g-Whitespace">    </span><span class="mi">550</span> <span class="c1"># ------------------------------------</span>
-<span class="g g-Whitespace">    </span><span class="mi">551</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">552</span> 
-<span class="g g-Whitespace">    </span><span class="mi">553</span>     <span class="c1"># Determine where the data are</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1584,</span> in <span class="ni">infer_orient</span><span class="nt">(x, y, orient, require_numeric)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1556</span> <span class="k">def</span> <span class="nf">infer_orient</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">require_numeric</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1557</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Determine how the plot should be oriented based on the data.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1558</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1559</span><span class="sd">     For historical reasons, the convention is to call a plot &quot;horizontally&quot;</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1581</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1582</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1584</span>     <span class="n">x_type</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">variable_type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1585</span>     <span class="n">y_type</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">variable_type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1587</span>     <span class="n">nonnumeric_dv_error</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> orientation requires numeric `</span><span class="si">{}</span><span class="s2">` variable.&quot;</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/seaborn/_oldcore.py:1498,</span> in <span class="ni">variable_type</span><span class="nt">(vector, boolean_type)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1474</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1475</span><span class="sd"> Determine whether a vector contains numeric, categorical, or datetime data.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1476</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1494</span><span class="sd">     Name identifying the type of data in the vector.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1495</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1497</span> <span class="c1"># If a categorical dtype is set, infer categorical</span>
-<span class="ne">-&gt; </span><span class="mi">1498</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">is_categorical_dtype</span><span class="p">(</span><span class="n">vector</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1499</span>     <span class="k">return</span> <span class="n">VariableType</span><span class="p">(</span><span class="s2">&quot;categorical&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1501</span> <span class="c1"># Special-case all-na data, which is always &quot;numeric&quot;</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/pandas/core/dtypes/common.py:499,</span> in <span class="ni">is_categorical_dtype</span><span class="nt">(arr_or_dtype)</span>
-<span class="g g-Whitespace">    </span><span class="mi">470</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">471</span><span class="sd"> Check whether an array-like or dtype is of the Categorical dtype.</span>
-<span class="g g-Whitespace">    </span><span class="mi">472</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span><span class="sd"> True</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span> <span class="c1"># GH#52527</span>
-<span class="ne">--&gt; </span><span class="mi">499</span> <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span>     <span class="s2">&quot;is_categorical_dtype is deprecated and will be removed in a future &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="s2">&quot;version. Use isinstance(dtype, CategoricalDtype) instead&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">502</span>     <span class="ne">FutureWarning</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">503</span>     <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(),</span>
-<span class="g g-Whitespace">    </span><span class="mi">504</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">505</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arr_or_dtype</span><span class="p">,</span> <span class="n">ExtensionDtype</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">506</span>     <span class="c1"># GH#33400 fastpath for dtype object</span>
-<span class="g g-Whitespace">    </span><span class="mi">507</span>     <span class="k">return</span> <span class="n">arr_or_dtype</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;category&quot;</span>
-
-<span class="ne">TypeError</span>: issubclass() arg 2 must be a class or tuple of classes
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1800x1200 with 0 Axes&gt;
-</pre></div>
-</div>
+<img alt="../../_images/f85ac0e3679939b16423ecf79f40c41f9962a70fbdd8a5e231ad3bcffc6827b2.png" src="../../_images/f85ac0e3679939b16423ecf79f40c41f9962a70fbdd8a5e231ad3bcffc6827b2.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="id12">
-<h2><span class="section-number">6.3. </span>ハイパーパラメータの調整<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>ハイパーパラメータの調整<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
 <p>上記のサポートベクトルマシンの例では、おそらくテストデータに対する判別性能がそれほど高くならないはずである。カーネル法を用いたサポートベクトルマシンは強力で、線形SVMよりも高い性能を出すことが可能だが、ハイパーパラメータの設定によっては、訓練データに過剰適合するなどして、パフォーマンスが上がらないことがある。</p>
 <p>このような時には、何らかの方法で適切なハイパーパラメータ (SVMの例では<code class="docutils literal notranslate"><span class="pre">C</span></code>や<code class="docutils literal notranslate"><span class="pre">gamma</span></code>)を見つける必要がある。</p>
 <section id="id13">
-<h3><span class="section-number">6.3.1. </span>ホールドアウト検証<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.1. </span>ホールドアウト検証<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <p>広く用いられるハイパーパラメータの決定法はデータセットを訓練、検証、テストの三つのデータに分けて、検証用データに対するパフォーマンスが高くなるようなハイパーパラメータを設定する方法である。このような方法を<strong>ホールドアウト検証</strong>と呼ぶ。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1671,80 +1580,80 @@ K = \Phi \Lambda \Phi^T
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b89a59a09b274326904d22b579138ae0", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ab51710705c04ef78edd51897791c767"}</script></div>
 </details>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_4389d_row6_col0, #T_4389d_row6_col1, #T_4389d_row6_col2 {
+#T_da510_row6_col0, #T_da510_row6_col1, #T_da510_row6_col2 {
   background-color: pink;
   font-weight: bold;
 }
 </style>
-<table id="T_4389d">
+<table id="T_da510">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_4389d_level0_col0" class="col_heading level0 col0" >C</th>
-      <th id="T_4389d_level0_col1" class="col_heading level0 col1" >gamma</th>
-      <th id="T_4389d_level0_col2" class="col_heading level0 col2" >Accuracy</th>
+      <th id="T_da510_level0_col0" class="col_heading level0 col0" >C</th>
+      <th id="T_da510_level0_col1" class="col_heading level0 col1" >gamma</th>
+      <th id="T_da510_level0_col2" class="col_heading level0 col2" >Accuracy</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_4389d_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_4389d_row0_col0" class="data row0 col0" >0.010000</td>
-      <td id="T_4389d_row0_col1" class="data row0 col1" >0.100000</td>
-      <td id="T_4389d_row0_col2" class="data row0 col2" >89.950000</td>
+      <th id="T_da510_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_da510_row0_col0" class="data row0 col0" >0.010000</td>
+      <td id="T_da510_row0_col1" class="data row0 col1" >0.100000</td>
+      <td id="T_da510_row0_col2" class="data row0 col2" >89.950000</td>
     </tr>
     <tr>
-      <th id="T_4389d_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_4389d_row1_col0" class="data row1 col0" >0.010000</td>
-      <td id="T_4389d_row1_col1" class="data row1 col1" >1.000000</td>
-      <td id="T_4389d_row1_col2" class="data row1 col2" >84.600000</td>
+      <th id="T_da510_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_da510_row1_col0" class="data row1 col0" >0.010000</td>
+      <td id="T_da510_row1_col1" class="data row1 col1" >1.000000</td>
+      <td id="T_da510_row1_col2" class="data row1 col2" >84.600000</td>
     </tr>
     <tr>
-      <th id="T_4389d_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_4389d_row2_col0" class="data row2 col0" >0.010000</td>
-      <td id="T_4389d_row2_col1" class="data row2 col1" >10.000000</td>
-      <td id="T_4389d_row2_col2" class="data row2 col2" >83.350000</td>
+      <th id="T_da510_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_da510_row2_col0" class="data row2 col0" >0.010000</td>
+      <td id="T_da510_row2_col1" class="data row2 col1" >10.000000</td>
+      <td id="T_da510_row2_col2" class="data row2 col2" >83.350000</td>
     </tr>
     <tr>
-      <th id="T_4389d_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_4389d_row3_col0" class="data row3 col0" >1.000000</td>
-      <td id="T_4389d_row3_col1" class="data row3 col1" >0.100000</td>
-      <td id="T_4389d_row3_col2" class="data row3 col2" >91.700000</td>
+      <th id="T_da510_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_da510_row3_col0" class="data row3 col0" >1.000000</td>
+      <td id="T_da510_row3_col1" class="data row3 col1" >0.100000</td>
+      <td id="T_da510_row3_col2" class="data row3 col2" >91.700000</td>
     </tr>
     <tr>
-      <th id="T_4389d_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_4389d_row4_col0" class="data row4 col0" >1.000000</td>
-      <td id="T_4389d_row4_col1" class="data row4 col1" >1.000000</td>
-      <td id="T_4389d_row4_col2" class="data row4 col2" >84.600000</td>
+      <th id="T_da510_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_da510_row4_col0" class="data row4 col0" >1.000000</td>
+      <td id="T_da510_row4_col1" class="data row4 col1" >1.000000</td>
+      <td id="T_da510_row4_col2" class="data row4 col2" >84.600000</td>
     </tr>
     <tr>
-      <th id="T_4389d_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_4389d_row5_col0" class="data row5 col0" >1.000000</td>
-      <td id="T_4389d_row5_col1" class="data row5 col1" >10.000000</td>
-      <td id="T_4389d_row5_col2" class="data row5 col2" >83.400000</td>
+      <th id="T_da510_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_da510_row5_col0" class="data row5 col0" >1.000000</td>
+      <td id="T_da510_row5_col1" class="data row5 col1" >10.000000</td>
+      <td id="T_da510_row5_col2" class="data row5 col2" >83.400000</td>
     </tr>
     <tr>
-      <th id="T_4389d_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_4389d_row6_col0" class="data row6 col0" >100.000000</td>
-      <td id="T_4389d_row6_col1" class="data row6 col1" >0.100000</td>
-      <td id="T_4389d_row6_col2" class="data row6 col2" >91.850000</td>
+      <th id="T_da510_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_da510_row6_col0" class="data row6 col0" >100.000000</td>
+      <td id="T_da510_row6_col1" class="data row6 col1" >0.100000</td>
+      <td id="T_da510_row6_col2" class="data row6 col2" >91.850000</td>
     </tr>
     <tr>
-      <th id="T_4389d_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_4389d_row7_col0" class="data row7 col0" >100.000000</td>
-      <td id="T_4389d_row7_col1" class="data row7 col1" >1.000000</td>
-      <td id="T_4389d_row7_col2" class="data row7 col2" >50.200000</td>
+      <th id="T_da510_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_da510_row7_col0" class="data row7 col0" >100.000000</td>
+      <td id="T_da510_row7_col1" class="data row7 col1" >1.000000</td>
+      <td id="T_da510_row7_col2" class="data row7 col2" >50.200000</td>
     </tr>
     <tr>
-      <th id="T_4389d_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_4389d_row8_col0" class="data row8 col0" >100.000000</td>
-      <td id="T_4389d_row8_col1" class="data row8 col1" >10.000000</td>
-      <td id="T_4389d_row8_col2" class="data row8 col2" >71.400000</td>
+      <th id="T_da510_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_da510_row8_col0" class="data row8 col0" >100.000000</td>
+      <td id="T_da510_row8_col1" class="data row8 col1" >10.000000</td>
+      <td id="T_da510_row8_col2" class="data row8 col2" >71.400000</td>
     </tr>
   </tbody>
 </table>
@@ -1784,7 +1693,7 @@ K = \Phi \Lambda \Phi^T
 <p>この通り、ホールドアウト検証を実行したことで、より高い分類精度が得られていることが分かる。</p>
 </section>
 <section id="id14">
-<h3><span class="section-number">6.3.2. </span>交差検証 (クロス・バリデーション)<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.2. </span>交差検証 (クロス・バリデーション)<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <p>もう一つのよく用いられるハイパーパラメータの調整方法に交差検証(クロス・バリデーション)がある。交差検証は訓練データをいくつかのグループに分けて、そのグループのうち1つを除いたデータを訓練に用い、除いておいた1グループを検証に用いる、というものである。</p>
 <p>交差検証は、グループが<span class="math notranslate nohighlight">\(G\)</span>個あるとき、1つのパラメータセットについて<span class="math notranslate nohighlight">\(G\)</span>回の訓練と<span class="math notranslate nohighlight">\(G\)</span>回の検証が必要になるため、非常に計算量が大きい。</p>
 <p>ここでは、scikit-learnに用意されている<code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> (grid search cross validation)を用いて交差検証によるハイパーパラメータ調整を試してみる。</p>
@@ -1993,7 +1902,7 @@ K = \Phi \Lambda \Phi^T
 </section>
 </section>
 <section id="id15">
-<h2><span class="section-number">6.4. </span>学習済みデータの保存<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>学習済みデータの保存<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
 <p>ハイパーパラメータの調整が完了したら、学習済みのモデルをファイルに保存し、再学習なしで、テストに入れるようにしておこう。</p>
 <p>通常、モデルは複数のパラメータから構成されており、これらをファイルに保存できるような「文字列」や「バイト列」の集合に変換する操作を<strong>シリアライズ</strong>と呼ぶ。また、このようなシリアライズを行うプログラムを<strong>シリアライザ</strong>と呼ぶ。</p>
 <p>Pythonで標準使用できるシリアライザには<code class="docutils literal notranslate"><span class="pre">pickle</span></code>がある。<code class="docutils literal notranslate"><span class="pre">pickle</span></code>はPythonの標準的なオブジェクト (例えば<code class="docutils literal notranslate"><span class="pre">list</span></code>や<code class="docutils literal notranslate"><span class="pre">dict</span></code>や、その他のオブジェクト)をシリアライズしたバイトデータを作成してくれるので、それをファイルに保存すれば良い。</p>
@@ -2047,11 +1956,11 @@ K = \Phi \Lambda \Phi^T
 <p>このように、保存しておいたファイルから全く同じテスト精度が得られることが確認できた。</p>
 </section>
 <section id="id16">
-<h2><span class="section-number">6.5. </span>分類問題の評価方法<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.5. </span>分類問題の評価方法<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <p>ここまで、分類の精度を「どの程度正しく分類ができたか」について評価してきたが、この評価方法は必ずしも、分類器の性能を正しく評価するとは言い切れない。例えば、数字の識別問題において、データセットに含まれる数字の90%が0で、残りの10%が1-9であったとする。</p>
 <p>この場合、識別器がどんな画像が入力されても「0」だと認識するようになれば、90%の識別精度が得られることになるが、これは全ての数字を正しく識別しているとは言いがたい。</p>
 <section id="id17">
-<h3><span class="section-number">6.5.1. </span>2クラス分類の場合<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.5.1. </span>2クラス分類の場合<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
 <p>多クラス識別の問題について考える前に、2クラスの分類問題について考えてみる。例えば、とあるデータからある人が病気なのか、そうでないのかを識別するとしよう。</p>
 <p>この場合、以下の4つの場合が考えられる。</p>
 <ul class="simple">
@@ -2130,7 +2039,7 @@ K = \Phi \Lambda \Phi^T
 </div>
 </section>
 <section id="id18">
-<h3><span class="section-number">6.5.2. </span>多クラス分類の場合<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.5.2. </span>多クラス分類の場合<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
 <p>多クラス分類に対しても、精度(accuracy)、適合率(precision)、再現率(recall)、ならびにF1値と類似した指標を計算することができる。</p>
 <p>本題に入る前に、先ほど学習しておいたSVMの性能を、混合行列により可視化してみる。</p>
 <div class="cell docutils container">
@@ -2144,7 +2053,7 @@ K = \Phi \Lambda \Phi^T
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/02431302c60f7504ffdd9f19bd4bc36e5432609a12c87dca1832a428f032d644.png" src="../../_images/02431302c60f7504ffdd9f19bd4bc36e5432609a12c87dca1832a428f032d644.png" />
+<img alt="../../_images/0ee2f74e0d03306e5b4f0e6b90ec2d90b77ce7d6c46ab2c480c9250deba007fb.png" src="../../_images/0ee2f74e0d03306e5b4f0e6b90ec2d90b77ce7d6c46ab2c480c9250deba007fb.png" />
 </div>
 </div>
 <p>上記の混同行列は、2クラス分類の場合に示した2x2の表を拡張したものである。混同行列の各行を横に見ると、例えば0と判別したもののうち、実際に0で合ったものの割合が計算でき、これが再現率(recall)に対応する。反対に、混同行列の各列を縦に見ると正解が0であったもののうち、正しく0と分類した物の割合を計算でき、これが適合率(precision)に対応する。</p>
@@ -2226,14 +2135,14 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
 </section>
 </section>
 <section id="id19">
-<h2><span class="section-number">6.6. </span>練習問題<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.6. </span>練習問題<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>マクロ平均ならびにマイクロ平均を用いて、本節で紹介した分類手法の性能を比較せよ。</p></li>
 <li><p>scikit-learnの<code class="docutils literal notranslate"><span class="pre">SVC</span></code>には<code class="docutils literal notranslate"><span class="pre">kernel=...</span></code>の引数に直接カーネル関数を渡すことができる。これを用いて、コサイン・カーネルならびにカイ二乗カーネルについて性能を評価せよ。</p></li>
 </ol>
 </section>
 <section id="id20">
-<h2><span class="section-number">6.7. </span>参考文献<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.7. </span>参考文献<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id21">
 <dl class="citation">
 <dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id7">CG16</a></span></dt>
@@ -2279,20 +2188,20 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="opencv.html"
+       href="figure-detection.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>OpenCVの基本</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>図形の検出</p>
       </div>
     </a>
     <a class="right-next"
-       href="figure-detection.html"
+       href="exercise-sudoku.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>図形の検出</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>演習1 - 画像入力式数独ソルバーを作る</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2314,32 +2223,32 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">6.1. 分類問題 (classification)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">6.2. データのスケーリング</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.2.1. 最近傍探索による分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.2.2. ロジスティック回帰による分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.2.3. バギングによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.2.4. ランダム・フォレストによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">6.2.5. AdaBoostによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.2.6. 勾配ブースティングによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-support-vector-machine">6.2.7. サポートベクトルマシンによる分類</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.2.8. カーネル法を用いたサポートベクトルマシン</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.2.9. ここまでの手法の比較</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">7.1. 分類問題 (classification)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.2. データのスケーリング</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.2.1. 最近傍探索による分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.2.2. ロジスティック回帰による分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.2.3. バギングによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.2.4. ランダム・フォレストによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">7.2.5. AdaBoostによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.2.6. 勾配ブースティングによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-support-vector-machine">7.2.7. サポートベクトルマシンによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.2.8. カーネル法を用いたサポートベクトルマシン</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.2.9. ここまでの手法の比較</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.3. ハイパーパラメータの調整</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6.3.1. ホールドアウト検証</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">6.3.2. 交差検証 (クロス・バリデーション)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.3. ハイパーパラメータの調整</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.3.1. ホールドアウト検証</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7.3.2. 交差検証 (クロス・バリデーション)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">6.4. 学習済みデータの保存</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">6.5. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">6.5.1. 2クラス分類の場合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">6.5.2. 多クラス分類の場合</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.4. 学習済みデータの保存</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">7.5. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">7.5.1. 2クラス分類の場合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">7.5.2. 多クラス分類の場合</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">6.6. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">6.7. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">7.6. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">7.7. 参考文献</a></li>
 </ul>
   </nav></div>
 
