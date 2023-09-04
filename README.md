@@ -3,6 +3,8 @@
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br/>
 
+[![github pages](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/gh-pages.yaml/badge.svg)](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/gh-pages.yaml)
+
 ## 講義の概要
 
 この講義ではPythonを用いて、画像認識と機械学習の実践的な利用法について学ぶ。資料の中では、ライブラリを使った実装を用いる場合も、その背景にある理論とライブラリに頼らない簡易実装を与える。これにより、**ライブラリのユーザから卒業**し、自分の必要とする機械学習のメソッドを実装する力を養う。
