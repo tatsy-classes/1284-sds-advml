@@ -417,16 +417,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-visual-words">2.4. Bag of Visual Words</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-invariant-feature-transform-sift">2.4.1. Scale-Invariant Feature Transform (SIFT)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">特徴点の抽出</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">特徴量の計算</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">特徴量の計算</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.4.2. 特徴量のクラスタリング</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.4.2. 特徴量のクラスタリング</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gauss">2.4.3. Gauss混合モデルを用いた改良</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fisher">2.4.4. Fisherベクトルの利用</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.5. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.6. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.5. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.6. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -1130,7 +1130,7 @@ document.write(`
 </section>
 <section id="local-binary-pattern-lbp">
 <h2><span class="section-number">2.2. </span>Local Binary Pattern (LBP)<a class="headerlink" href="#local-binary-pattern-lbp" title="Permalink to this heading">#</a></h2>
-<p>Local Binary Pattern (LBP)は、とある画素を中心とした3x3の領域について、中心画素と周りの画素の輝度の大小を数値化する手法である <span id="id5">[<a class="reference internal" href="#id20" title="Timo Ojala, Matti Pietikäinen, and David Harwood. A comparative study of texture measures with classification based on featured distributions. Pattern recognition, 29(1):51–59, 1996. doi:10.1016/0031-3203(95)00067-4.">Ojala <em>et al.</em>, 1996</a>]</span>。</p>
+<p>Local Binary Pattern (LBP)は、とある画素を中心とした3x3の領域について、中心画素と周りの画素の輝度の大小を数値化する手法である <span id="id5">[<a class="reference internal" href="#id17" title="Timo Ojala, Matti Pietikäinen, and David Harwood. A comparative study of texture measures with classification based on featured distributions. Pattern recognition, 29(1):51–59, 1996. doi:10.1016/0031-3203(95)00067-4.">Ojala <em>et al.</em>, 1996</a>]</span>。</p>
 <p>一例として、とある中心画素周辺の画素値が以下のようになっている場合を考えよう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1359,7 +1359,7 @@ document.write(`
 <p>今、データセットに含まれるデータはひらがながランダムに回転したりスケールしたりしている。LBPは上記の計算方法からも分かるとおり、物体が回転してしまうと得られる値が変わってしまう性質がある。従って、今回のようにデータセット中でひらがながランダムに回転しているような場合には、もう少し工夫をする必要がある。</p>
 <section id="uniform-lbp">
 <h3><span class="section-number">2.2.1. </span>Uniform LBP<a class="headerlink" href="#uniform-lbp" title="Permalink to this heading">#</a></h3>
-<p>元々のLBPが持つ回転に対して変化してしまう問題を解決した手法の一つに<strong>Uniform LBP</strong> <span id="id6">[<a class="reference internal" href="#id23" title="Timo Ojala, Matti Pietikäinen, and Topi Maenpaa. Multiresolution gray-scale and rotation invariant texture classification with local binary patterns. IEEE Transactions on pattern analysis and machine intelligence, 24(7):971–987, 2002. doi:10.1109/tpami.2002.1017623.">Ojala <em>et al.</em>, 2002</a>]</span> がある。</p>
+<p>元々のLBPが持つ回転に対して変化してしまう問題を解決した手法の一つに<strong>Uniform LBP</strong> <span id="id6">[<a class="reference internal" href="#id20" title="Timo Ojala, Matti Pietikäinen, and Topi Maenpaa. Multiresolution gray-scale and rotation invariant texture classification with local binary patterns. IEEE Transactions on pattern analysis and machine intelligence, 24(7):971–987, 2002. doi:10.1109/tpami.2002.1017623.">Ojala <em>et al.</em>, 2002</a>]</span> がある。</p>
 <p>Uniform LBPの基本的なアイディアは、注目画素を中心に<strong>円状に配置された点の輝度</strong>を調べて、その輝度の大小関係のパターン (つまり, 0, 1の列)が回転したときに一致するものを同じ物であると見なすという部分にある。</p>
 <p>より具体的には、円状に配置された0, 1の列を1周する間に何回0から1あるいは1から0への変化が起こるかを考える。例えば、12時方向を視点として反時計回りに <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">0)</span></code> というパターンが現れたとすると、0→1 / 1→0の遷移回数は4回である。</p>
 <p>Uniform LBPでは、この遷移回数が0回のものと2回のものを特別視する。遷移の回数が0回、ということは、全ての要素が0か1かのいずれかで2通りが考えられる。また、遷移の回数が2回、ということは、0と1が両方含まれているものの、0と1が連続して現れているようなパターンで、これは要素の数が<span class="math notranslate nohighlight">\(N\)</span>個であれば、<span class="math notranslate nohighlight">\(N-1\)</span>通りのパターンが考えられる。</p>
@@ -1482,7 +1482,7 @@ document.write(`
 </section>
 <section id="histogram-of-oriented-gradient-hog">
 <h2><span class="section-number">2.3. </span>Histogram of Oriented Gradient (HOG)<a class="headerlink" href="#histogram-of-oriented-gradient-hog" title="Permalink to this heading">#</a></h2>
-<p>Histogram of Oriented Gradient (HOG)が広く知られるようになったのは2005年のことで、コンピュータ・ビジョンの国際会議であるCVPRで発表された論文<span id="id7">[<a class="reference internal" href="#id24" title="N. Dalal and B. Triggs. Histograms of oriented gradients for human detection. In 2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR\textquotesingle 05), volume 1, 886–893. IEEE, IEEE, 2005. doi:10.1109/cvpr.2005.177.">Dalal and Triggs, 2005</a>]</span>がきっかけとなっている。</p>
+<p>Histogram of Oriented Gradient (HOG)が広く知られるようになったのは2005年のことで、コンピュータ・ビジョンの国際会議であるCVPRで発表された論文<span id="id7">[<a class="reference internal" href="#id21" title="N. Dalal and B. Triggs. Histograms of oriented gradients for human detection. In 2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR\textquotesingle 05), volume 1, 886–893. IEEE, IEEE, 2005. doi:10.1109/cvpr.2005.177.">Dalal and Triggs, 2005</a>]</span>がきっかけとなっている。</p>
 <p>特にHOGは人物の全身といった特定の物体を見つける性能に優れており、一般物体認識や物体追跡等の多数の応用が生まれた。</p>
 <p>HOGは画像を、互いに重ならない小さなパッチに分割して計算を行う。今回用いるひらがな画像は48×48の大きさなので、これを8×8のパッチに区切ってみる。</p>
 <div class="cell docutils container">
@@ -1685,7 +1685,7 @@ document.write(`
 <p>以下では、画像に対する疎な特徴量の代表格である<strong>Scale-Invariant Feature Transform</strong> (SIFT)について、BoVWによる画像認識を試みる。</p>
 <section id="scale-invariant-feature-transform-sift">
 <h3><span class="section-number">2.4.1. </span>Scale-Invariant Feature Transform (SIFT)<a class="headerlink" href="#scale-invariant-feature-transform-sift" title="Permalink to this heading">#</a></h3>
-<p>Scale-Invariant Feature Transform (SIFT)は、深層学習以前の画像認識における金字塔的な技術で、2000年前後にRoweらによって提案された<span id="id8">[<a class="reference internal" href="#id25" title="David G Lowe. Object recognition from local scale-invariant features. In Proceedings of the seventh IEEE international conference on computer vision, volume 2, 1150–1157. Ieee, 1999. doi:10.1109/iccv.1999.790410.">Lowe, 1999</a>]</span>, <span id="id9">[<a class="reference internal" href="#id26" title="David G Lowe. Distinctive image features from scale-invariant keypoints. International journal of computer vision, 60:91–110, 2004. doi:10.1023/b:visi.0000029664.99615.94.">Lowe, 2004</a>]</span>。SIFTは画像の中に映り込む物体のスケールや回転に対して不変な特徴量を与えることができる。</p>
+<p>Scale-Invariant Feature Transform (SIFT)は、深層学習以前の画像認識における金字塔的な技術で、2000年前後にRoweらによって提案された<span id="id8">[<a class="reference internal" href="#id22" title="David G Lowe. Object recognition from local scale-invariant features. In Proceedings of the seventh IEEE international conference on computer vision, volume 2, 1150–1157. Ieee, 1999. doi:10.1109/iccv.1999.790410.">Lowe, 1999</a>]</span>, <span id="id9">[<a class="reference internal" href="#id23" title="David G Lowe. Distinctive image features from scale-invariant keypoints. International journal of computer vision, 60:91–110, 2004. doi:10.1023/b:visi.0000029664.99615.94.">Lowe, 2004</a>]</span>。SIFTは画像の中に映り込む物体のスケールや回転に対して不変な特徴量を与えることができる。</p>
 <p>SIFT特徴量の抽出処理は、少々複雑だが、大まかに分けて</p>
 <ul class="simple">
 <li><p>特徴点の抽出</p></li>
@@ -1745,7 +1745,7 @@ t = \frac{(r + 1)^2}{r}
 \]</div>
 <p>という式を用いており、実装においては<span class="math notranslate nohighlight">\(r = 10\)</span>が用いられている。</p>
 <p>以上の処理を、直感的に述べれば、前半のDoGの処理は画像中の勾配がある箇所を検出し、さらに、その勾配がどの程度の鮮鋭度を持つのかをスケールとして定量化しようとしている。</p>
-<p>後半の処理、勾配の強さ (鮮鋭度は盛り上がりの角度であり、強さとは異なる)を見ており、<span class="math notranslate nohighlight">\(r = 10\)</span>とした場合に<span id="id11">[]</span>が<span class="math notranslate nohighlight">\(t\)</span>より小さい、ということは、即ちヘッセ行列の2つの固有値の比が十分に大きい (10:1以上)であるかを検出している。</p>
+<p>後半の処理、勾配の強さ (鮮鋭度は盛り上がりの角度であり、強さとは異なる)を見ており、<span class="math notranslate nohighlight">\(r = 10\)</span>とした場合に<a class="reference internal" href="#equation-eq-ratio-tr-det">(2.1)</a>が<span class="math notranslate nohighlight">\(t\)</span>より小さい、ということは、即ちヘッセ行列の2つの固有値の比が十分に大きい (10:1以上)であるかを検出している。</p>
 <p>また、詳細は割愛するが、各特徴点には、勾配方向も同時に計算される。これは特徴点周りの画素に対して計算された勾配方向のヒストグラムの中で、いくつかの支配的な方向を特徴点に与えるものである。従って、各特徴点には2つ以上の勾配方向が割り当てられる可能性がある。</p>
 <hr class="docutils" />
 <p>では、実際にOpenCVを用いて画像からSIFT特徴点と特徴量を計算する。以下では、特徴量の抽出結果を分かりやすくするために、48×48画素の画像を256×256画素にリサイズして特徴量を計算している。</p>
@@ -1815,8 +1815,8 @@ t = \frac{(r + 1)^2}{r}
 </div>
 <p>画像中では、円の中心が特徴点の位置を、円の大きさが特徴点のスケールを、そして円の中心から弧に向かって伸びる線分が勾配方向をそれぞれ表わしている。この際、文字の輪郭線のぼけ具合と円の大きさに相関があり、なおかつ勾配方向が輪郭線とおよそ直交する方向となっていることに注目してほしい。また、特徴点の中には2つ以上の勾配方向を持つものが存在することにも注目してほしい。</p>
 </section>
-<section id="id12">
-<h4>特徴量の計算<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<section id="id11">
+<h4>特徴量の計算<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
 <p>特徴量の計算には、特徴点の計算で得られたスケールと方向を用いる。特徴量の計算には4×4のグリッドを用いるのだが、このグリッドの大きさを特徴点のスケールに応じて拡大縮小し、また勾配方向に応じてグリッドの向きを変更する。</p>
 <p>このグリッドは上記の特徴点の可視化に現れる特徴点のスケールを表わす円に外接するように配置される。この円の大きさは、より具体的には極大のDoG値が検出された時に用いたGauss関数の<span class="math notranslate nohighlight">\(\sigma\)</span>の大きさに対応している。</p>
 <p>グリッドの姿勢が計算できたら、4×4=16個のグリッドのそれぞれについて、特徴点の勾配方向ヒストグラムを45°刻みの8方向について計算する。この8個のビンの値を16個分連結することで、SIFT特徴量としての128次元ベクトルが得られる。</p>
@@ -1839,13 +1839,13 @@ t = \frac{(r + 1)^2}{r}
 <div class="note admonition">
 <p class="admonition-title">技術と特許</p>
 <p>新しい技術を開発して「特許」を取得すると、その技術の詳細を明細書として公開する代わりに、その技術に関わる権利を得ることができる。この特許は、一見、他の会社が当該の技術を使う障壁を上げており、技術の進歩にとってはマイナスな一面もある。</p>
-<p>その一方、特許が取られていたがために、その技術を回避する目的で技術が進歩することもある。先に紹介したSIFTは当初2000年に特許が取得されたが、それに変わる技術として、Speeded-Up Robust Features (SURF) <span id="id13">[<a class="reference internal" href="#id40" title="Herbert Bay, Tinne Tuytelaars, and Luc Van Gool. SURF: speeded up robust features. In Computer Vision – ECCV 2006, pages 404–417. Springer Berlin Heidelberg, 2006. doi:10.1007/11744023_32.">Bay <em>et al.</em>, 2006</a>]</span>などの多くの特徴量が提案された (SURFは2006年に特許が取得されており、こちらはまだ特許が切れていない)。</p>
+<p>その一方、特許が取られていたがために、その技術を回避する目的で技術が進歩することもある。先に紹介したSIFTは当初2000年に特許が取得されたが、それに変わる技術として、Speeded-Up Robust Features (SURF) <span id="id12">[<a class="reference internal" href="#id37" title="Herbert Bay, Tinne Tuytelaars, and Luc Van Gool. SURF: speeded up robust features. In Computer Vision – ECCV 2006, pages 404–417. Springer Berlin Heidelberg, 2006. doi:10.1007/11744023_32.">Bay <em>et al.</em>, 2006</a>]</span>などの多くの特徴量が提案された (SURFは2006年に特許が取得されており、こちらはまだ特許が切れていない)。</p>
 <p>このような例は他の分野でも、たびたび見られるもので、CT画像から物体の表面形状を抽出するMarching Cubes法も、その特許権を回避する目的で、ほとんど同等なMarching Tetrahedra法が開発されたりした。このように、物事には表と裏とがあるのが常である。</p>
 </div>
 </section>
 </section>
-<section id="id14">
-<h3><span class="section-number">2.4.2. </span>特徴量のクラスタリング<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<section id="id13">
+<h3><span class="section-number">2.4.2. </span>特徴量のクラスタリング<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <p>BoVWを計算するためには、訓練データに含まれる全ての画像について、特徴量を計算し、それをクラスタリングする必要がある。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2097,7 +2097,7 @@ V(\mathbf{x}; \boldsymbol\Theta) = \nabla_{\boldsymbol\Theta} \log P(\mathbf{x} 
 \[
 \mathbb{E}_{\mathbf{x} \sim \mathcal{X}}[ \nabla_{\boldsymbol\Theta} \log P(\mathbf{x} | \boldsymbol\Theta)) ]
 \]</div>
-<p>さて、ここで、<span class="math notranslate nohighlight">\(P(\mathbf{x} | \boldsymbol\Theta)\)</span>が<span id="id15">[]</span>のガウス混合分布で与えられる場合を考える。以後、計算を簡単にするために、共分散行列は対角成分を<span class="math notranslate nohighlight">\(\boldsymbol\sigma_k\)</span>とする対角行列であるとする。</p>
+<p>さて、ここで、<span class="math notranslate nohighlight">\(P(\mathbf{x} | \boldsymbol\Theta)\)</span>が<a class="reference internal" href="#equation-eq-gaussian-mixture">(2.2)</a>のガウス混合分布で与えられる場合を考える。以後、計算を簡単にするために、共分散行列は対角成分を<span class="math notranslate nohighlight">\(\boldsymbol\sigma_k\)</span>とする対角行列であるとする。</p>
 <p>とあるパラメータ<span class="math notranslate nohighlight">\(\theta\)</span>に関する<span class="math notranslate nohighlight">\(\ln P(\mathbf{x} | \boldsymbol\Theta)\)</span>の微分は、</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2115,7 +2115,7 @@ V(\mathbf{x}; \boldsymbol\Theta) = \nabla_{\boldsymbol\Theta} \log P(\mathbf{x} 
 &amp;= \pi_k \left( \frac{(x_d - \mu_{k,d})^2}{\sigma_d^3} \right) \mathcal{N}(\mathbf{x} | \boldsymbol\mu_{k}, \boldsymbol\sigma_k)
 \end{align}
 \end{split}\]</div>
-<p>したがって、<span id="id16">[]</span>の寄与率<span class="math notranslate nohighlight">\(\gamma_k\)</span>を用いると、フィッシャーベクトルの各次元は以下のように書き直せる。</p>
+<p>したがって、<a class="reference internal" href="#equation-eq-membership">(2.3)</a>の寄与率<span class="math notranslate nohighlight">\(\gamma_k\)</span>を用いると、フィッシャーベクトルの各次元は以下のように書き直せる。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -2129,32 +2129,32 @@ V(\mathbf{x}; \boldsymbol\Theta) = \nabla_{\boldsymbol\Theta} \log P(\mathbf{x} 
 \end{split}\]</div>
 </section>
 </section>
-<section id="id17">
-<h2><span class="section-number">2.5. </span>練習問題<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h2>
+<section id="id14">
+<h2><span class="section-number">2.5. </span>練習問題<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>LBPとUniform LBPについて、文字の画像の輝度を増減したり、画像を回転させたときに、その特徴量がどのように変化するかを調べよ。</p></li>
 </ol>
 </section>
-<section id="id18">
-<h2><span class="section-number">2.6. </span>参考文献<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
-<div class="docutils container" id="id19">
+<section id="id15">
+<h2><span class="section-number">2.6. </span>参考文献<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id16">
 <dl class="citation">
-<dt class="label" id="id40"><span class="brackets"><a class="fn-backref" href="#id13">BTG06</a></span></dt>
+<dt class="label" id="id37"><span class="brackets"><a class="fn-backref" href="#id12">BTG06</a></span></dt>
 <dd><p>Herbert Bay, Tinne Tuytelaars, and Luc Van Gool. SURF: speeded up robust features. In <em>Computer Vision – ECCV 2006</em>, pages 404–417. Springer Berlin Heidelberg, 2006. <a class="reference external" href="https://doi.org/10.1007/11744023_32">doi:10.1007/11744023_32</a>.</p>
 </dd>
-<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id7">DT05</a></span></dt>
+<dt class="label" id="id21"><span class="brackets"><a class="fn-backref" href="#id7">DT05</a></span></dt>
 <dd><p>N. Dalal and B. Triggs. Histograms of oriented gradients for human detection. In <em>2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR\textquotesingle 05)</em>, volume 1, 886–893. IEEE, IEEE, 2005. <a class="reference external" href="https://doi.org/10.1109/cvpr.2005.177">doi:10.1109/cvpr.2005.177</a>.</p>
 </dd>
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id8">Low99</a></span></dt>
+<dt class="label" id="id22"><span class="brackets"><a class="fn-backref" href="#id8">Low99</a></span></dt>
 <dd><p>David G Lowe. Object recognition from local scale-invariant features. In <em>Proceedings of the seventh IEEE international conference on computer vision</em>, volume 2, 1150–1157. Ieee, 1999. <a class="reference external" href="https://doi.org/10.1109/iccv.1999.790410">doi:10.1109/iccv.1999.790410</a>.</p>
 </dd>
-<dt class="label" id="id26"><span class="brackets"><a class="fn-backref" href="#id9">Low04</a></span></dt>
+<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id9">Low04</a></span></dt>
 <dd><p>David G Lowe. Distinctive image features from scale-invariant keypoints. <em>International journal of computer vision</em>, 60:91–110, 2004. <a class="reference external" href="https://doi.org/10.1023/b:visi.0000029664.99615.94">doi:10.1023/b:visi.0000029664.99615.94</a>.</p>
 </dd>
-<dt class="label" id="id20"><span class="brackets"><a class="fn-backref" href="#id5">OPH96</a></span></dt>
+<dt class="label" id="id17"><span class="brackets"><a class="fn-backref" href="#id5">OPH96</a></span></dt>
 <dd><p>Timo Ojala, Matti Pietikäinen, and David Harwood. A comparative study of texture measures with classification based on featured distributions. <em>Pattern recognition</em>, 29(1):51–59, 1996. <a class="reference external" href="https://doi.org/10.1016/0031-3203(95)00067-4">doi:10.1016/0031-3203(95)00067-4</a>.</p>
 </dd>
-<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id6">OPM02</a></span></dt>
+<dt class="label" id="id20"><span class="brackets"><a class="fn-backref" href="#id6">OPM02</a></span></dt>
 <dd><p>Timo Ojala, Matti Pietikäinen, and Topi Maenpaa. Multiresolution gray-scale and rotation invariant texture classification with local binary patterns. <em>IEEE Transactions on pattern analysis and machine intelligence</em>, 24(7):971–987, 2002. <a class="reference external" href="https://doi.org/10.1109/tpami.2002.1017623">doi:10.1109/tpami.2002.1017623</a>.</p>
 </dd>
 </dl>
@@ -2243,16 +2243,16 @@ V(\mathbf{x}; \boldsymbol\Theta) = \nabla_{\boldsymbol\Theta} \log P(\mathbf{x} 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-visual-words">2.4. Bag of Visual Words</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-invariant-feature-transform-sift">2.4.1. Scale-Invariant Feature Transform (SIFT)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">特徴点の抽出</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">特徴量の計算</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">特徴量の計算</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.4.2. 特徴量のクラスタリング</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.4.2. 特徴量のクラスタリング</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gauss">2.4.3. Gauss混合モデルを用いた改良</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fisher">2.4.4. Fisherベクトルの利用</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.5. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.6. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.5. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.6. 参考文献</a></li>
 </ul>
   </nav></div>
 
