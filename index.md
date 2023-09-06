@@ -1,7 +1,7 @@
 機械学習発展 (実践)
 ===
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br/>
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
 [![github pages](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/gh-pages.yaml/badge.svg)](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/gh-pages.yaml)
 
 ## 講義の概要
