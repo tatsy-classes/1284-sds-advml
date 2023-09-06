@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 778, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 182, in ensure_async
-    result = await obj
-  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/jupyter_client/channels.py", line 315, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 1305, in execute
@@ -20,19 +9,47 @@ Traceback (most recent call last):
     return future.result()
   File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 1001, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 802, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 852, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 180 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-from sklearn.svm import LinearSVC
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+X_bovw2 = []
+for feature in tqdm(features):
+    sub_f = pca.transform(feature)
+    probs = gmm.predict_proba(sub_f)
+    X_bovw2.append(probs.mean(axis=0))
 
-clf9 = make_pipeline(StandardScaler(), LinearSVC(tol=1.0e-3, max_iter=100))
-clf9.fit(fvs, y)
--------------------
+X_bovw2 = np.stack(X_bovw2, axis=0)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNotFittedError[0m                            Traceback (most recent call last)
+Cell [0;32mIn[67], line 4[0m
+[1;32m      2[0m [38;5;28;01mfor[39;00m feature [38;5;129;01min[39;00m tqdm(features):
+[1;32m      3[0m     sub_f [38;5;241m=[39m pca[38;5;241m.[39mtransform(feature)
+[0;32m----> 4[0m     probs [38;5;241m=[39m [43mgmm[49m[38;5;241;43m.[39;49m[43mpredict_proba[49m[43m([49m[43msub_f[49m[43m)[49m
+[1;32m      5[0m     X_bovw2[38;5;241m.[39mappend(probs[38;5;241m.[39mmean(axis[38;5;241m=[39m[38;5;241m0[39m))
+[1;32m      7[0m X_bovw2 [38;5;241m=[39m np[38;5;241m.[39mstack(X_bovw2, axis[38;5;241m=[39m[38;5;241m0[39m)
+
+File [0;32m~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/mixture/_base.py:398[0m, in [0;36mBaseMixture.predict_proba[0;34m(self, X)[0m
+[1;32m    384[0m [38;5;28;01mdef[39;00m [38;5;21mpredict_proba[39m([38;5;28mself[39m, X):
+[1;32m    385[0m [38;5;250m    [39m[38;5;124;03m"""Evaluate the components' density for each sample.[39;00m
+[1;32m    386[0m 
+[1;32m    387[0m [38;5;124;03m    Parameters[39;00m
+[0;32m   (...)[0m
+[1;32m    396[0m [38;5;124;03m        Density of each Gaussian component for each sample in X.[39;00m
+[1;32m    397[0m [38;5;124;03m    """[39;00m
+[0;32m--> 398[0m     [43mcheck_is_fitted[49m[43m([49m[38;5;28;43mself[39;49m[43m)[49m
+[1;32m    399[0m     X [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_validate_data(X, reset[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+[1;32m    400[0m     _, log_resp [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_estimate_log_prob_resp(X)
+
+File [0;32m~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/utils/validation.py:1462[0m, in [0;36mcheck_is_fitted[0;34m(estimator, attributes, msg, all_or_any)[0m
+[1;32m   1459[0m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m([38;5;124m"[39m[38;5;132;01m%s[39;00m[38;5;124m is not an estimator instance.[39m[38;5;124m"[39m [38;5;241m%[39m (estimator))
+[1;32m   1461[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m _is_fitted(estimator, attributes, all_or_any):
+[0;32m-> 1462[0m     [38;5;28;01mraise[39;00m NotFittedError(msg [38;5;241m%[39m {[38;5;124m"[39m[38;5;124mname[39m[38;5;124m"[39m: [38;5;28mtype[39m(estimator)[38;5;241m.[39m[38;5;18m__name__[39m})
+
+[0;31mNotFittedError[0m: This GaussianMixture instance is not fitted yet. Call 'fit' with appropriate arguments before using this estimator.
 
