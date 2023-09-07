@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Tatsuya Yatagawa <tatsy.mail@gmail.com>"]
 readme = "README.md"
+license = "CC BY-NC-SA 4.0"
 packages = [{ include = "advml" }, { include = "advml/reversi" }]
 
 [tool.poetry.dependencies]
@@ -39,7 +40,7 @@ torchvision = [
   { markers = "sys_platform == 'linux'", version = "==0.15.0+cpu", source = "pytorch-cpu" },
   { markers = "sys_platform == 'darwin'", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp39-cp39-macosx_11_0_arm64.whl" },
 ]
-gymnasium = {extras = ["classic-control"], version = "^0.29.1"}
+gymnasium = { extras = ["classic-control"], version = "^0.29.1" }
 opencv-contrib-python = "^4.8.0.76"
 
 [tool.poetry.group.dev.dependencies]
