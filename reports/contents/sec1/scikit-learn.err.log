@@ -16,7 +16,7 @@ Traceback (most recent call last):
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
   File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
     return loop.run_until_complete(inner)
-  File "/opt/hostedtoolcache/Python/3.9.17/x64/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+  File "/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
     return future.result()
   File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
@@ -30,8 +30,15 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['%%time', '', 'from sklearn.mixture import GaussianMixture', '', 'gmm = GaussianMixture(']
-...
-['    max_iter=20,', '    tol=1.0e-3,', '    n_init=1,', ')', 'gmm.fit(sub_features)']
+from sklearn.model_selection import GridSearchCV, StratifiedShuffleSplit
+
+svm = SVC(tol=1.0e-4, max_iter=100)
+
+C_range = [0.01, 1.0, 100.0]
+gamma_range = [0.1, 1.0, 10.0]
+param_grid = {"C": C_range, "gamma": gamma_range}
+
+clf = GridSearchCV(svm, param_grid, cv=4, n_jobs=8, verbose=2)
+ret = clf.fit(X, y)
 -------------------
 

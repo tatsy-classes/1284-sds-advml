@@ -1479,7 +1479,7 @@ z_{ij} &amp;= \langle \psi_j, \phi(\mathbf{x}_i) - \mu \rangle \\
 <p>次にカーネル主成分分析を用いて、次元圧縮をしてみよう。やや天下り式ではあるが、今回は以下の式で表わされるコサインカーネルを用いてカーネル主成分分析を実行する。</p>
 <div class="math notranslate nohighlight">
 \[
-k(\mathbf{x}_i, \mathbf{x}_j) = \cos(\mathbf{x}_i^\top \mathbf{x}_j)
+k(\mathbf{x}_i, \mathbf{x}_j) = \frac{\mathbf{x}_i^\top \mathbf{x}_j}{\| \mathbf{x}_i \| \| \mathbf{x}_j \|}
 \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
