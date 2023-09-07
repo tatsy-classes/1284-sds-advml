@@ -452,6 +452,7 @@ document.write(`
 <span class="sd">下準備のコード</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
@@ -481,6 +482,7 @@ document.write(`
 <span class="c1"># 一部の警告を無視</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">ConvergenceWarning</span><span class="p">)</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYTHONWARNINGS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ignore&quot;</span>
 
 <span class="c1"># 結果を格納していくDataFrame</span>
 <span class="n">result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
@@ -655,25 +657,23 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 
 <span class="c1"># 訓練モデルの構築</span>
-<span class="n">lr_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tol&quot;</span><span class="p">:</span> <span class="mf">1.0e-2</span><span class="p">,</span> <span class="s2">&quot;max_iter&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span> <span class="s2">&quot;solver&quot;</span><span class="p">:</span> <span class="s2">&quot;lbfgs&quot;</span><span class="p">}</span>
+<span class="n">lr_params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;tol&quot;</span><span class="p">:</span> <span class="mf">1.0e-3</span><span class="p">,</span> <span class="s2">&quot;max_iter&quot;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">,</span> <span class="s2">&quot;solver&quot;</span><span class="p">:</span> <span class="s2">&quot;lbfgs&quot;</span><span class="p">}</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="o">**</span><span class="n">lr_params</span><span class="p">)</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-2 {color: black;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression(max_iter=5000, tol=0.01)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(max_iter=5000, tol=0.01)</pre></div></div></div></div></div></div></div>
+<div class="output text_html"><style>#sk-container-id-2 {color: black;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression(max_iter=5000, tol=0.001)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(max_iter=5000, tol=0.001)</pre></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練時の識別精度の確認</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;logis_acc_train&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># テストデータに対する識別精度の計算</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;logis_acc_test&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># 結果をDataFrameに追加</span>
@@ -737,7 +737,7 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bagging: acc(test)=90.55%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bagging: acc(test)=90.54%
 </pre></div>
 </div>
 </div>
@@ -759,13 +759,11 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練時の識別精度の確認</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;bag_acc_train&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># テストデータに対する識別精度の計算</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;bag_acc_test&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># 結果をDataFrameに追加</span>
@@ -778,7 +776,7 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 <p><strong>結果: バギングによる分類</strong></p>
 <ul class="simple">
 <li><p>訓練時精度: <span class="pasted-text">98.68</span>%</p></li>
-<li><p>評価時精度: <span class="pasted-text">89.63</span>%</p></li>
+<li><p>評価時精度: <span class="pasted-text">89.62</span>%</p></li>
 </ul>
 <p>バギングは、部分データを用いて学習した複数の分類器を組み合わせているだけなので、弱分類に用いる分類器(上記の例では<code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>)と比べて、それほど精度が増加しないことが多い。これは、部分データ同士の相関が大きく、結果として、弱分類器の予測が似通ってしまうことに起因する。</p>
 </section>
@@ -837,7 +835,7 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest: acc(test)=89.28%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Random Forest: acc(test)=89.27%
 </pre></div>
 </div>
 </div>
@@ -860,13 +858,11 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練時の識別精度の確認</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;rf_acc_train&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># テストデータに対する識別精度の計算</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;rf_acc_test&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># 結果をDataFrameに追加</span>
@@ -911,20 +907,18 @@ y = \sum_{i=1}^{n_{\rm weak}} \alpha_i f_i(\mathbf{x})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-5 {color: black;}#sk-container-id-5 pre{padding: 0;}#sk-container-id-5 div.sk-toggleable {background-color: white;}#sk-container-id-5 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-5 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-5 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-5 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-5 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-5 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-5 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-5 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-5 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-5 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-5 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-5 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-5 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-5 div.sk-item {position: relative;z-index: 1;}#sk-container-id-5 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-5 div.sk-item::before, #sk-container-id-5 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-5 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-5 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-5 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-5 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-5 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-5 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-5 div.sk-label-container {text-align: center;}#sk-container-id-5 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-5 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>AdaBoostClassifier(estimator=LogisticRegression(max_iter=5000, tol=0.01),
-                   n_estimators=10)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label sk-toggleable__label-arrow">AdaBoostClassifier</label><div class="sk-toggleable__content"><pre>AdaBoostClassifier(estimator=LogisticRegression(max_iter=5000, tol=0.01),
-                   n_estimators=10)</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label sk-toggleable__label-arrow">estimator: LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(max_iter=5000, tol=0.01)</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" ><label for="sk-estimator-id-9" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(max_iter=5000, tol=0.01)</pre></div></div></div></div></div></div></div></div></div></div></div></div>
+<div class="output text_html"><style>#sk-container-id-5 {color: black;}#sk-container-id-5 pre{padding: 0;}#sk-container-id-5 div.sk-toggleable {background-color: white;}#sk-container-id-5 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-5 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-5 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-5 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-5 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-5 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-5 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-5 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-5 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-5 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-5 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-5 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-5 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-5 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-5 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-5 div.sk-item {position: relative;z-index: 1;}#sk-container-id-5 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-5 div.sk-item::before, #sk-container-id-5 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-5 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-5 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-5 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-5 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-5 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-5 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-5 div.sk-label-container {text-align: center;}#sk-container-id-5 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-5 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-5" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>AdaBoostClassifier(estimator=LogisticRegression(max_iter=5000, tol=0.001),
+                   n_estimators=10)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-7" type="checkbox" ><label for="sk-estimator-id-7" class="sk-toggleable__label sk-toggleable__label-arrow">AdaBoostClassifier</label><div class="sk-toggleable__content"><pre>AdaBoostClassifier(estimator=LogisticRegression(max_iter=5000, tol=0.001),
+                   n_estimators=10)</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-8" type="checkbox" ><label for="sk-estimator-id-8" class="sk-toggleable__label sk-toggleable__label-arrow">estimator: LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(max_iter=5000, tol=0.001)</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-9" type="checkbox" ><label for="sk-estimator-id-9" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(max_iter=5000, tol=0.001)</pre></div></div></div></div></div></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練時の識別精度の確認</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;ada_acc_train&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># テストデータに対する識別精度の計算</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;ada_acc_test&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># 結果をDataFrameに追加</span>
@@ -983,13 +977,11 @@ r_i^{(1)} = -\frac{\partial L(y_i)}{\partial y_i}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練時の識別精度の確認</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;gbst_acc_train&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># テストデータに対する識別精度の計算</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;gbst_acc_test&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># 結果をDataFrameに追加</span>
@@ -1002,7 +994,7 @@ r_i^{(1)} = -\frac{\partial L(y_i)}{\partial y_i}
 <p><strong>結果: 勾配ブースティングによる分類</strong></p>
 <ul class="simple">
 <li><p>訓練時精度: <span class="pasted-text">85.53</span>%</p></li>
-<li><p>評価時精度: <span class="pasted-text">83.25</span>%</p></li>
+<li><p>評価時精度: <span class="pasted-text">79.61</span>%</p></li>
 </ul>
 <div class="note admonition">
 <p class="admonition-title">最新の勾配ブースティング</p>
@@ -1103,7 +1095,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ecf8e96a6be6a600c09d198ab96e25e728bd0e45b78e7e09e6aff48de27db0da.png" src="../../_images/ecf8e96a6be6a600c09d198ab96e25e728bd0e45b78e7e09e6aff48de27db0da.png" />
+<img alt="../../_images/33f39939540af5f24f92b46e04f489d0135e8a1a7adec069bff9ab16e429c3f9.png" src="../../_images/33f39939540af5f24f92b46e04f489d0135e8a1a7adec069bff9ab16e429c3f9.png" />
 </div>
 </div>
 <p>このサンプルデータに対して、上記の連立方程式を作成し、サポートベクトルとなる直線の方程式を求める。</p>
@@ -1151,7 +1143,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d53e1ec5223864f1ff1435e02665fae899a6ace0f0ed0ee714d75c52b64f5dfe.png" src="../../_images/d53e1ec5223864f1ff1435e02665fae899a6ace0f0ed0ee714d75c52b64f5dfe.png" />
+<img alt="../../_images/788438f89611bbb1b5a609a4002f961ca88b150db30543c0886b95591a87bd2b.png" src="../../_images/788438f89611bbb1b5a609a4002f961ca88b150db30543c0886b95591a87bd2b.png" />
 </div>
 </div>
 <p>この通り、正しくサポートベクトルが求められていることが確認できる。なお、上記は二つのクラスラベルを持つサンプルがサポートベクトルの両側に分かれて存在することを仮定した最適化を行っている。</p>
@@ -1189,13 +1181,11 @@ $<span class="math notranslate nohighlight">\(
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練時の識別精度の確認</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;lsvm_acc_train&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># テストデータに対する識別精度の計算</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;lsvm_acc_test&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># 結果をDataFrameに追加</span>
@@ -1239,7 +1229,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cc2b5648d1fc56c377aab97394d0d6c197fa4c16e53151b214c857439d2b04f3.png" src="../../_images/cc2b5648d1fc56c377aab97394d0d6c197fa4c16e53151b214c857439d2b04f3.png" />
+<img alt="../../_images/2e62df10d0c03d33fdcb688916b87e5f7ceafbb6de597c854ef5789212a5f1b6.png" src="../../_images/2e62df10d0c03d33fdcb688916b87e5f7ceafbb6de597c854ef5789212a5f1b6.png" />
 </div>
 </div>
 <p>このサンプルは、明らかに超平面(この場合は直線)では正しく二つのクラスを分割できないが、線形のSVMを学習して分類を行い、その予測結果に基づいて色づけを行うとどうなるだろうか。</p>
@@ -1291,7 +1281,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0aeb118f9e5bac1ef81dc2337a6389fb5bbbdc183d31d94f24912b4699017d59.png" src="../../_images/0aeb118f9e5bac1ef81dc2337a6389fb5bbbdc183d31d94f24912b4699017d59.png" />
+<img alt="../../_images/e71c924af0eacc137a032355870209d427eb6425f5d5bf0980bd3d0bbc645d57.png" src="../../_images/e71c924af0eacc137a032355870209d427eb6425f5d5bf0980bd3d0bbc645d57.png" />
 </div>
 </div>
 <p>予想通り、線形のSVMでは正しく識別を行うことができておらず、不適切にサポートベクトルが与えられてしまっていることが分かる。</p>
@@ -1325,7 +1315,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/c92491b5cb89f9dcdeee8c805322cd471eafe9f01fe00c99b93d63c51b5060b3.png" src="../../_images/c92491b5cb89f9dcdeee8c805322cd471eafe9f01fe00c99b93d63c51b5060b3.png" />
+<img alt="../../_images/96f3dd7a6b45e9e7d7dbdc323116876064bec95f01556dcf124afff7327ed5bd.png" src="../../_images/96f3dd7a6b45e9e7d7dbdc323116876064bec95f01556dcf124afff7327ed5bd.png" />
 </div>
 </div>
 <p>図から、何らかの変換により、次元を増やすことで、線形のSVMであっても上手く決定境界をきめることができそうであることが分かる。これがカーネル法の基本的なアイディアである。</p>
@@ -1437,7 +1427,7 @@ K = \Phi \Lambda \Phi^T
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/06f16cf08b63b3ea4514d2fd6fc85988b122cc8017e47e83edaab98d645192ea.png" src="../../_images/06f16cf08b63b3ea4514d2fd6fc85988b122cc8017e47e83edaab98d645192ea.png" />
+<img alt="../../_images/e7aa8530e3531176db123d29f88783e2b14eef426819769beda1f5ceb6355d07.png" src="../../_images/e7aa8530e3531176db123d29f88783e2b14eef426819769beda1f5ceb6355d07.png" />
 </div>
 </div>
 <p>図の通り、カーネル関数を用いることにより、必ずしも超平面では分割できないような対象に対しても、正しく分類ができていることが分かる。</p>
@@ -1455,13 +1445,11 @@ K = \Phi \Lambda \Phi^T
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練時の識別精度の確認</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;ksvm_acc_train&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># テストデータに対する識別精度の計算</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;ksvm_acc_test&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># 結果をDataFrameに追加</span>
@@ -1473,7 +1461,7 @@ K = \Phi \Lambda \Phi^T
 </div>
 <p><strong>結果: カーネルSVMによる分類</strong></p>
 <ul class="simple">
-<li><p>訓練時精度: <span class="pasted-text">82.27</span>%</p></li>
+<li><p>訓練時精度: <span class="pasted-text">82.26</span>%</p></li>
 <li><p>評価時精度: <span class="pasted-text">81.21</span>%</p></li>
 </ul>
 <p>すると、カーネル法を用いたSVMが線形SVMよりも精度が劣っていることが分かる。特にRBFを用いることで訓練の精度は上がっているが、過学習が起こり、テストデータに対する精度が大幅に低下していることが分かるだろう。</p>
@@ -1501,7 +1489,8 @@ K = \Phi \Lambda \Phi^T
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">containers</span><span class="p">:</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">105</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1509,7 +1498,7 @@ K = \Phi \Lambda \Phi^T
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0bc25db837f50d05eaa2d1f19da162a5a6e8941f301749bfa38ec731b968673d.png" src="../../_images/0bc25db837f50d05eaa2d1f19da162a5a6e8941f301749bfa38ec731b968673d.png" />
+<img alt="../../_images/f6cdb5cf00c99a6e97a8a01f44806dd227e418557dcce1fb75c3066ca1a6a1e2.png" src="../../_images/f6cdb5cf00c99a6e97a8a01f44806dd227e418557dcce1fb75c3066ca1a6a1e2.png" />
 </div>
 </div>
 </section>
@@ -1586,80 +1575,80 @@ K = \Phi \Lambda \Phi^T
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fe1da168a816452fbaefbeccb5e89c21"}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "31c196842c764926949cf864664d88e4", "version_major": 2, "version_minor": 0}</script></div>
 </details>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_11a50_row3_col0, #T_11a50_row3_col1, #T_11a50_row3_col2 {
+#T_e44f8_row3_col0, #T_e44f8_row3_col1, #T_e44f8_row3_col2 {
   background-color: pink;
   font-weight: bold;
 }
 </style>
-<table id="T_11a50">
+<table id="T_e44f8">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_11a50_level0_col0" class="col_heading level0 col0" >C</th>
-      <th id="T_11a50_level0_col1" class="col_heading level0 col1" >gamma</th>
-      <th id="T_11a50_level0_col2" class="col_heading level0 col2" >Accuracy</th>
+      <th id="T_e44f8_level0_col0" class="col_heading level0 col0" >C</th>
+      <th id="T_e44f8_level0_col1" class="col_heading level0 col1" >gamma</th>
+      <th id="T_e44f8_level0_col2" class="col_heading level0 col2" >Accuracy</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_11a50_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_11a50_row0_col0" class="data row0 col0" >0.010000</td>
-      <td id="T_11a50_row0_col1" class="data row0 col1" >0.100000</td>
-      <td id="T_11a50_row0_col2" class="data row0 col2" >62.950000</td>
+      <th id="T_e44f8_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_e44f8_row0_col0" class="data row0 col0" >0.010000</td>
+      <td id="T_e44f8_row0_col1" class="data row0 col1" >0.100000</td>
+      <td id="T_e44f8_row0_col2" class="data row0 col2" >62.950000</td>
     </tr>
     <tr>
-      <th id="T_11a50_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_11a50_row1_col0" class="data row1 col0" >0.010000</td>
-      <td id="T_11a50_row1_col1" class="data row1 col1" >1.000000</td>
-      <td id="T_11a50_row1_col2" class="data row1 col2" >71.400000</td>
+      <th id="T_e44f8_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_e44f8_row1_col0" class="data row1 col0" >0.010000</td>
+      <td id="T_e44f8_row1_col1" class="data row1 col1" >1.000000</td>
+      <td id="T_e44f8_row1_col2" class="data row1 col2" >71.400000</td>
     </tr>
     <tr>
-      <th id="T_11a50_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_11a50_row2_col0" class="data row2 col0" >0.010000</td>
-      <td id="T_11a50_row2_col1" class="data row2 col1" >10.000000</td>
-      <td id="T_11a50_row2_col2" class="data row2 col2" >76.900000</td>
+      <th id="T_e44f8_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_e44f8_row2_col0" class="data row2 col0" >0.010000</td>
+      <td id="T_e44f8_row2_col1" class="data row2 col1" >10.000000</td>
+      <td id="T_e44f8_row2_col2" class="data row2 col2" >76.900000</td>
     </tr>
     <tr>
-      <th id="T_11a50_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_11a50_row3_col0" class="data row3 col0" >1.000000</td>
-      <td id="T_11a50_row3_col1" class="data row3 col1" >0.100000</td>
-      <td id="T_11a50_row3_col2" class="data row3 col2" >82.940000</td>
+      <th id="T_e44f8_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_e44f8_row3_col0" class="data row3 col0" >1.000000</td>
+      <td id="T_e44f8_row3_col1" class="data row3 col1" >0.100000</td>
+      <td id="T_e44f8_row3_col2" class="data row3 col2" >82.940000</td>
     </tr>
     <tr>
-      <th id="T_11a50_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_11a50_row4_col0" class="data row4 col0" >1.000000</td>
-      <td id="T_11a50_row4_col1" class="data row4 col1" >1.000000</td>
-      <td id="T_11a50_row4_col2" class="data row4 col2" >70.540000</td>
+      <th id="T_e44f8_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_e44f8_row4_col0" class="data row4 col0" >1.000000</td>
+      <td id="T_e44f8_row4_col1" class="data row4 col1" >1.000000</td>
+      <td id="T_e44f8_row4_col2" class="data row4 col2" >70.540000</td>
     </tr>
     <tr>
-      <th id="T_11a50_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_11a50_row5_col0" class="data row5 col0" >1.000000</td>
-      <td id="T_11a50_row5_col1" class="data row5 col1" >10.000000</td>
-      <td id="T_11a50_row5_col2" class="data row5 col2" >77.030000</td>
+      <th id="T_e44f8_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_e44f8_row5_col0" class="data row5 col0" >1.000000</td>
+      <td id="T_e44f8_row5_col1" class="data row5 col1" >10.000000</td>
+      <td id="T_e44f8_row5_col2" class="data row5 col2" >77.000000</td>
     </tr>
     <tr>
-      <th id="T_11a50_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_11a50_row6_col0" class="data row6 col0" >100.000000</td>
-      <td id="T_11a50_row6_col1" class="data row6 col1" >0.100000</td>
-      <td id="T_11a50_row6_col2" class="data row6 col2" >79.910000</td>
+      <th id="T_e44f8_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_e44f8_row6_col0" class="data row6 col0" >100.000000</td>
+      <td id="T_e44f8_row6_col1" class="data row6 col1" >0.100000</td>
+      <td id="T_e44f8_row6_col2" class="data row6 col2" >79.910000</td>
     </tr>
     <tr>
-      <th id="T_11a50_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_11a50_row7_col0" class="data row7 col0" >100.000000</td>
-      <td id="T_11a50_row7_col1" class="data row7 col1" >1.000000</td>
-      <td id="T_11a50_row7_col2" class="data row7 col2" >48.500000</td>
+      <th id="T_e44f8_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_e44f8_row7_col0" class="data row7 col0" >100.000000</td>
+      <td id="T_e44f8_row7_col1" class="data row7 col1" >1.000000</td>
+      <td id="T_e44f8_row7_col2" class="data row7 col2" >48.500000</td>
     </tr>
     <tr>
-      <th id="T_11a50_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_11a50_row8_col0" class="data row8 col0" >100.000000</td>
-      <td id="T_11a50_row8_col1" class="data row8 col1" >10.000000</td>
-      <td id="T_11a50_row8_col2" class="data row8 col2" >69.790000</td>
+      <th id="T_e44f8_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_e44f8_row8_col0" class="data row8 col0" >100.000000</td>
+      <td id="T_e44f8_row8_col1" class="data row8 col1" >10.000000</td>
+      <td id="T_e44f8_row8_col2" class="data row8 col2" >69.760000</td>
     </tr>
   </tbody>
 </table>
@@ -1679,14 +1668,16 @@ K = \Phi \Lambda \Phi^T
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練時の識別精度の確認</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;ho_acc_train&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># テストデータに対する識別精度の計算</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;ho_acc_test&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># 結果をDataFrameに追加</span>
+<span class="n">result_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">),</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Holdout K-SVM&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="s2">&quot;Train&quot;</span><span class="p">]</span>
+<span class="n">result_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">),</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Holdout K-SVM&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1720,221 +1711,6 @@ K = \Phi \Lambda \Phi^T
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 4 folds for each of 9 candidates, totalling 36 fits
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/svm/_base.py:297: ConvergenceWarning: Solver terminated early (max_iter=100).  Consider pre-processing your data with StandardScaler or MinMaxScaler.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">46</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="n">C_range</span><span class="p">,</span> <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="n">gamma_range</span><span class="p">}</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">clf</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">svm</span><span class="p">,</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/base.py:1151,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1144</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1146</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1147</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1148</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
-<span class="g g-Whitespace">   </span><span class="mi">1149</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1150</span> <span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1151</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/model_selection/_search.py:898,</span> in <span class="ni">BaseSearchCV.fit</span><span class="nt">(self, X, y, groups, **fit_params)</span>
-<span class="g g-Whitespace">    </span><span class="mi">892</span>     <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_results</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">893</span>         <span class="n">all_candidate_params</span><span class="p">,</span> <span class="n">n_splits</span><span class="p">,</span> <span class="n">all_out</span><span class="p">,</span> <span class="n">all_more_results</span>
-<span class="g g-Whitespace">    </span><span class="mi">894</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">896</span>     <span class="k">return</span> <span class="n">results</span>
-<span class="ne">--&gt; </span><span class="mi">898</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_search</span><span class="p">(</span><span class="n">evaluate_candidates</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">900</span> <span class="c1"># multimetric is determined here because in the case of a callable</span>
-<span class="g g-Whitespace">    </span><span class="mi">901</span> <span class="c1"># self.scoring the return type is only known after calling</span>
-<span class="g g-Whitespace">    </span><span class="mi">902</span> <span class="n">first_test_score</span> <span class="o">=</span> <span class="n">all_out</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;test_scores&quot;</span><span class="p">]</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/model_selection/_search.py:1419,</span> in <span class="ni">GridSearchCV._run_search</span><span class="nt">(self, evaluate_candidates)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1417</span> <span class="k">def</span> <span class="nf">_run_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate_candidates</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1418</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Search all candidates in param_grid&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1419</span>     <span class="n">evaluate_candidates</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_grid</span><span class="p">))</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/model_selection/_search.py:845,</span> in <span class="ni">BaseSearchCV.fit.&lt;locals&gt;.evaluate_candidates</span><span class="nt">(candidate_params, cv, more_results)</span>
-<span class="g g-Whitespace">    </span><span class="mi">837</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">838</span>     <span class="nb">print</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">839</span>         <span class="s2">&quot;Fitting </span><span class="si">{0}</span><span class="s2"> folds for each of </span><span class="si">{1}</span><span class="s2"> candidates,&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">840</span>         <span class="s2">&quot; totalling </span><span class="si">{2}</span><span class="s2"> fits&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">841</span>             <span class="n">n_splits</span><span class="p">,</span> <span class="n">n_candidates</span><span class="p">,</span> <span class="n">n_candidates</span> <span class="o">*</span> <span class="n">n_splits</span>
-<span class="g g-Whitespace">    </span><span class="mi">842</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">843</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">845</span> <span class="n">out</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">846</span>     <span class="n">delayed</span><span class="p">(</span><span class="n">_fit_and_score</span><span class="p">)(</span>
-<span class="g g-Whitespace">    </span><span class="mi">847</span>         <span class="n">clone</span><span class="p">(</span><span class="n">base_estimator</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">848</span>         <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">849</span>         <span class="n">y</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">850</span>         <span class="n">train</span><span class="o">=</span><span class="n">train</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">851</span>         <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">852</span>         <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">853</span>         <span class="n">split_progress</span><span class="o">=</span><span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="n">n_splits</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">854</span>         <span class="n">candidate_progress</span><span class="o">=</span><span class="p">(</span><span class="n">cand_idx</span><span class="p">,</span> <span class="n">n_candidates</span><span class="p">),</span>
-<span class="g g-Whitespace">    </span><span class="mi">855</span>         <span class="o">**</span><span class="n">fit_and_score_kwargs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">856</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">857</span>     <span class="k">for</span> <span class="p">(</span><span class="n">cand_idx</span><span class="p">,</span> <span class="n">parameters</span><span class="p">),</span> <span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">858</span>         <span class="nb">enumerate</span><span class="p">(</span><span class="n">candidate_params</span><span class="p">),</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">859</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">860</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">862</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">863</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">864</span>         <span class="s2">&quot;No fits were performed. &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">865</span>         <span class="s2">&quot;Was the CV iterator empty? &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">866</span>         <span class="s2">&quot;Were there no candidates?&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">867</span>     <span class="p">)</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/sklearn/utils/parallel.py:65,</span> in <span class="ni">Parallel.__call__</span><span class="nt">(self, iterable)</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span> <span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="n">iterable_with_config</span> <span class="o">=</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span>     <span class="p">(</span><span class="n">_with_config</span><span class="p">(</span><span class="n">delayed_func</span><span class="p">,</span> <span class="n">config</span><span class="p">),</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>     <span class="k">for</span> <span class="n">delayed_func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">iterable</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">65</span> <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">iterable_with_config</span><span class="p">)</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/joblib/parallel.py:1952,</span> in <span class="ni">Parallel.__call__</span><span class="nt">(self, iterable)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1946</span> <span class="c1"># The first item from the output is blank, but it makes the interpreter</span>
-<span class="g g-Whitespace">   </span><span class="mi">1947</span> <span class="c1"># progress until it enters the Try/Except block of the generator and</span>
-<span class="g g-Whitespace">   </span><span class="mi">1948</span> <span class="c1"># reach the first `yield` statement. This starts the aynchronous</span>
-<span class="g g-Whitespace">   </span><span class="mi">1949</span> <span class="c1"># dispatch of the tasks to the workers.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1950</span> <span class="nb">next</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1952</span> <span class="k">return</span> <span class="n">output</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_generator</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/joblib/parallel.py:1595,</span> in <span class="ni">Parallel._get_outputs</span><span class="nt">(self, iterator, pre_dispatch)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1592</span>     <span class="k">yield</span>
-<span class="g g-Whitespace">   </span><span class="mi">1594</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">retrieval_context</span><span class="p">():</span>
-<span class="ne">-&gt; </span><span class="mi">1595</span>         <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retrieve</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1597</span> <span class="k">except</span> <span class="ne">GeneratorExit</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1598</span>     <span class="c1"># The generator has been garbage collected before being fully</span>
-<span class="g g-Whitespace">   </span><span class="mi">1599</span>     <span class="c1"># consumed. This aborts the remaining tasks if possible and warn</span>
-<span class="g g-Whitespace">   </span><span class="mi">1600</span>     <span class="c1"># the user if necessary.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1601</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_exception</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="nn">File ~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/joblib/parallel.py:1707,</span> in <span class="ni">Parallel._retrieve</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1702</span> <span class="c1"># If the next job is not ready for retrieval yet, we just wait for</span>
-<span class="g g-Whitespace">   </span><span class="mi">1703</span> <span class="c1"># async callbacks to progress.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1704</span> <span class="k">if</span> <span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jobs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span>
-<span class="g g-Whitespace">   </span><span class="mi">1705</span>     <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jobs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_status</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1706</span>         <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span> <span class="o">==</span> <span class="n">TASK_PENDING</span><span class="p">)):</span>
-<span class="ne">-&gt; </span><span class="mi">1707</span>     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1708</span>     <span class="k">continue</span>
-<span class="g g-Whitespace">   </span><span class="mi">1710</span> <span class="c1"># We need to be careful: the job list can be filling up as</span>
-<span class="g g-Whitespace">   </span><span class="mi">1711</span> <span class="c1"># we empty it and Python list are not thread-safe by</span>
-<span class="g g-Whitespace">   </span><span class="mi">1712</span> <span class="c1"># default hence the use of the lock</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1992,109 +1768,109 @@ K = \Phi \Lambda \Phi^T
       <th>0</th>
       <td>0.01</td>
       <td>0.1</td>
-      <td>0.6940</td>
-      <td>0.7104</td>
-      <td>0.6580</td>
-      <td>0.7060</td>
-      <td>0.6921</td>
-      <td>0.020582</td>
-      <td>7</td>
+      <td>0.9236</td>
+      <td>0.9264</td>
+      <td>0.9204</td>
+      <td>0.9228</td>
+      <td>0.9233</td>
+      <td>0.002142</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.01</td>
       <td>1.0</td>
-      <td>0.7144</td>
-      <td>0.7652</td>
-      <td>0.7084</td>
-      <td>0.6844</td>
-      <td>0.7181</td>
-      <td>0.029419</td>
-      <td>5</td>
+      <td>0.8340</td>
+      <td>0.8804</td>
+      <td>0.8216</td>
+      <td>0.8196</td>
+      <td>0.8389</td>
+      <td>0.024587</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0.01</td>
       <td>10.0</td>
-      <td>0.7724</td>
-      <td>0.7740</td>
-      <td>0.7652</td>
-      <td>0.7572</td>
-      <td>0.7672</td>
-      <td>0.006657</td>
-      <td>3</td>
+      <td>0.8792</td>
+      <td>0.8748</td>
+      <td>0.8716</td>
+      <td>0.8856</td>
+      <td>0.8778</td>
+      <td>0.005250</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>3</th>
       <td>1.0</td>
       <td>0.1</td>
-      <td>0.8216</td>
-      <td>0.8624</td>
-      <td>0.7596</td>
-      <td>0.8016</td>
-      <td>0.8113</td>
-      <td>0.037028</td>
+      <td>0.9576</td>
+      <td>0.9560</td>
+      <td>0.9512</td>
+      <td>0.9556</td>
+      <td>0.9551</td>
+      <td>0.002373</td>
       <td>1</td>
     </tr>
     <tr>
       <th>4</th>
       <td>1.0</td>
       <td>1.0</td>
-      <td>0.7588</td>
-      <td>0.7100</td>
-      <td>0.6520</td>
-      <td>0.6156</td>
-      <td>0.6841</td>
-      <td>0.054712</td>
-      <td>8</td>
+      <td>0.8536</td>
+      <td>0.8664</td>
+      <td>0.8556</td>
+      <td>0.8540</td>
+      <td>0.8574</td>
+      <td>0.005250</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>5</th>
       <td>1.0</td>
       <td>10.0</td>
-      <td>0.7732</td>
-      <td>0.7756</td>
-      <td>0.7668</td>
-      <td>0.7576</td>
-      <td>0.7683</td>
-      <td>0.006965</td>
-      <td>2</td>
+      <td>0.8796</td>
+      <td>0.8748</td>
+      <td>0.8720</td>
+      <td>0.8856</td>
+      <td>0.8780</td>
+      <td>0.005161</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>6</th>
       <td>100.0</td>
       <td>0.1</td>
-      <td>0.7724</td>
-      <td>0.7424</td>
-      <td>0.7876</td>
-      <td>0.7508</td>
-      <td>0.7633</td>
-      <td>0.017793</td>
-      <td>4</td>
+      <td>0.9532</td>
+      <td>0.9528</td>
+      <td>0.9516</td>
+      <td>0.9520</td>
+      <td>0.9524</td>
+      <td>0.000632</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>7</th>
       <td>100.0</td>
       <td>1.0</td>
-      <td>0.4260</td>
-      <td>0.4212</td>
-      <td>0.4420</td>
-      <td>0.3448</td>
-      <td>0.4085</td>
-      <td>0.037575</td>
+      <td>0.4812</td>
+      <td>0.5064</td>
+      <td>0.5056</td>
+      <td>0.5104</td>
+      <td>0.5009</td>
+      <td>0.011518</td>
       <td>9</td>
     </tr>
     <tr>
       <th>8</th>
       <td>100.0</td>
       <td>10.0</td>
-      <td>0.7072</td>
-      <td>0.7016</td>
-      <td>0.6968</td>
-      <td>0.6688</td>
-      <td>0.6936</td>
-      <td>0.014784</td>
-      <td>6</td>
+      <td>0.7140</td>
+      <td>0.7096</td>
+      <td>0.7084</td>
+      <td>0.7120</td>
+      <td>0.7110</td>
+      <td>0.002163</td>
+      <td>8</td>
     </tr>
   </tbody>
 </table>
@@ -2103,23 +1879,53 @@ K = \Phi \Lambda \Phi^T
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 訓練時の識別精度の確認</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">acc_train</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;cv_acc_train&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># テストデータに対する識別精度の計算</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="n">glue</span><span class="p">(</span><span class="s2">&quot;cv_acc_test&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># 結果をDataFrameに追加</span>
+<span class="n">result_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">),</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CV K-SVM&quot;</span><span class="p">,</span> <span class="n">acc_train</span><span class="p">,</span> <span class="s2">&quot;Train&quot;</span><span class="p">]</span>
+<span class="n">result_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">),</span> <span class="p">:]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CV K-SVM&quot;</span><span class="p">,</span> <span class="n">acc_test</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>結果: 交差検証の結果</strong></p>
 <ul class="simple">
-<li><p>訓練時精度: <span class="pasted-text">85.26</span>%</p></li>
-<li><p>評価時精度: <span class="pasted-text">83.29</span>%</p></li>
+<li><p>訓練時精度: <span class="pasted-text">99.94</span>%</p></li>
+<li><p>評価時精度: <span class="pasted-text">95.70</span>%</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">fil</span> <span class="o">=</span> <span class="n">result_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">&quot;SVM&quot;</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Method&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">,</span>
+    <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Phase&quot;</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">result_df</span><span class="p">[</span><span class="n">fil</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">errwidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">containers</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">105</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="n">borderpad</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ee8bac6d34cf9f72c425a232e43a84911ed7766ceab97673d1b475517be677b3.png" src="../../_images/ee8bac6d34cf9f72c425a232e43a84911ed7766ceab97673d1b475517be677b3.png" />
+</div>
+</div>
 </section>
 </section>
 <section id="id15">
@@ -2140,11 +1946,6 @@ K = \Phi \Lambda \Phi^T
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;\x80\x04\x95\x03\x18\x00\x00\x00\x00\x00&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2162,14 +1963,8 @@ K = \Phi \Lambda \Phi^T
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;rbf_svm.pickle&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">clf2</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">acc_test</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_pred</span> <span class="o">==</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">acc_test</span> <span class="o">=</span> <span class="n">clf2</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CV: acc(test)=</span><span class="si">{:.2f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc_test</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CV: acc(test)=83.29%
 </pre></div>
 </div>
 </div>
@@ -2192,37 +1987,6 @@ K = \Phi \Lambda \Phi^T
 </ul>
 <p>表にまとめると、以下のようになる。</p>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output text_html">
-<table style="width: 80%;">
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-            <th style="text-align:center;" colspan="2">正解</td>
-        </tr>
-    </thead>
-    <tr>
-        <td style="width: 25%; text-align: center;"></td>
-        <td style="width: 25%; text-align: center;"></td>
-        <td style="width: 25%; text-align: center;">病気である</td>
-        <td style="width: 25%; text-align: center;">病気でない</td>
-    </tr>
-    <tr>
-        <td rowspan="2" style="background: white; text-align: center;">
-            <span style="font-weight: bold;">予想</span>
-        </td>
-        <td style="width: 25%; text-align: center;">病気である</td>
-        <td style="width: 25%; text-align: center;">正陽性 (TP)</td>
-        <td style="width: 25%; text-align: center;">偽陽性 (FP)</td>
-    </tr>
-    <tr>
-        <td style="width: 25%; text-align: center;">病気でない</td>
-        <td style="width: 25%; text-align: center;">偽陰性 (FN)</td>
-        <td style="width: 25%; text-align: center;">偽陽性 (TN)</td>
-    </tr>
-</table>
-</div></div>
 </div>
 <p>この表記を用いた場合、ここまで用いてきた「精度 (Accuracy)」は以下のように定義できる。</p>
 <div class="math notranslate nohighlight">
@@ -2272,9 +2036,6 @@ K = \Phi \Lambda \Phi^T
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/626f25ebc5f6cc3c1d94911c3843992f8d6db7c991ae6d225559d7f8b0807785.png" src="../../_images/626f25ebc5f6cc3c1d94911c3843992f8d6db7c991ae6d225559d7f8b0807785.png" />
 </div>
 </div>
 <p>上記の混同行列は、2クラス分類の場合に示した2x2の表を拡張したものである。混同行列の各行を横に見ると、例えば0と判別したもののうち、実際に0で合ったものの割合が計算でき、これが再現率(recall)に対応する。反対に、混同行列の各列を縦に見ると正解が0であったもののうち、正しく0と分類した物の割合を計算でき、これが適合率(precision)に対応する。</p>
@@ -2335,9 +2096,9 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
 </div>
 <p><strong>結果: マクロ平均の値</strong></p>
 <ul class="simple">
-<li><p>macro-P: <span class="pasted-text">0.843</span></p></li>
-<li><p>macro-R: <span class="pasted-text">0.829</span></p></li>
-<li><p>macro-F: <span class="pasted-text">0.827</span></p></li>
+<li><p>macro-P: </p></li>
+<li><p>macro-R: </p></li>
+<li><p>macro-F: </p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2351,7 +2112,7 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
 </div>
 <p><strong>結果: マイクロ平均の値</strong></p>
 <ul class="simple">
-<li><p>maicro-avg: <span class="pasted-text">0.833</span></p></li>
+<li><p>maicro-avg: </p></li>
 </ul>
 </section>
 </section>

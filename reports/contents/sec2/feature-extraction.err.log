@@ -30,11 +30,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-from sklearn.ensemble import BaggingClassifier
-
-# 訓練モデルの構築 (弱識別器にロジスティック回帰を使用)
-weak = LogisticRegression(**lr_params)
-clf = BaggingClassifier(estimator=weak, n_estimators=10)
-clf.fit(X, y)
+['%%time', '', 'from sklearn.mixture import GaussianMixture', '', 'gmm = GaussianMixture(']
+...
+['    max_iter=20,', '    tol=1.0e-3,', '    n_init=1,', ')', 'gmm.fit(sub_features)']
 -------------------
 
