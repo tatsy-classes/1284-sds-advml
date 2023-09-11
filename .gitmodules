@@ -1,6 +1,6 @@
 [submodule "templates/sudoku-solver"]
 	path = templates/sudoku-solver
 	url = https://github.com/tatsy-classes/sudoku-solver-template.git
-[submodule "libs"]
+[submodule "lib/advml"]
 	path = lib/advml
 	url = https://github.com/tatsy/1284-sds-lib-advml.git
