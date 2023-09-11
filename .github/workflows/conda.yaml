@@ -30,11 +30,11 @@ jobs:
         run: |
           "$CONDA/bin/conda" env create --file environment.yaml
           "$CONDA/bin/conda" init bash
-          "$CONDA/bin/conda" run python -c "import torch"
+          "$CONDA/bin/conda" run -n advml python -c "import torch"
 
       - name: Setup Miniconda (Windows)
         if: "contains(matrix.os, 'windows')"
         run: |
           & "C:\Miniconda\condabin\conda.bat" env create --file environment.yaml
           & "C:\Miniconda\condabin\conda.bat" activate advml
-          & "C:\Miniconda\condabin\conda.bat" run python -c "import torch"
+          & "C:\Miniconda\condabin\conda.bat" run -n advml python -c "import torch"
