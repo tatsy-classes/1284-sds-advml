@@ -12,13 +12,13 @@ dependencies:
   - scikit-learn
   - scikit-image
   - pandas
-  - pytorch>=1.10.0
+  - pytorch=2.0.0
   - tqdm
   - networkx
   - ffmpeg
   - gymnasium[classic-control]
   - pip
   - pip:
-    - opencv-contrib
+    - opencv-contrib-python
     - openpyxml
     - jupyterlab
