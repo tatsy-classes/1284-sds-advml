@@ -34,7 +34,7 @@ jobs:
       - name: Setup Miniconda (Windows)
         if: "contains(matrix.os, 'windows')"
         run: |
-          "C:\Miniconda\condabin\conda.bat" env create --file environment.yaml
+          "C:\Miniconda\condabin\conda-env.bat" create --file environment.yaml
           "C:\Miniconda\condabin\conda.bat" activate advml
 
       - name: Check Installation
