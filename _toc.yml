@@ -28,6 +28,6 @@ parts:
       - file: contents/sec3/deep-reinforcement-learning
       - file: contents/sec3/exercise-othello
   - caption: Appendix
-    numbered: 3
+    numbered: 0
     chapters:
       - file: contents/appendix/notation
