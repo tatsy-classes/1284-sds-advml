@@ -24,6 +24,9 @@ execute:
   execute_notebooks: cache
   cache: ./.jupyter_cache
   timeout: 180
+  exclude_patterns:
+    - "scikit-learn.ipynb"
+    - "feature-extraction.ipynb"
 
 # HTML-specific settings
 html:
@@ -49,19 +52,20 @@ sphinx:
     language: ja
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     bibtex_reference_style: author_year
-    nb_mime_priority_overrides: [
-      ['html', 'application/vnd.jupyter.widget-view+json', 10],
-      ['html', 'application/vnd.bokehjs_load.v0+json', 15],
-      ['html', 'application/javascript', 20],
-      ['html', 'text/html', 30],
-      ['html', 'image/svg+xml', 40],
-      ['html', 'image/png', 50],
-      ['html', 'image/gif', 60],
-      ['html', 'image/jpeg', 70],
-      ['html', 'text/markdown', 80],
-      ['html', 'text/latex', 90],
-      ['html', 'text/plain', 100]
-    ]
+    nb_mime_priority_overrides:
+      [
+        ["html", "application/vnd.jupyter.widget-view+json", 10],
+        ["html", "application/vnd.bokehjs_load.v0+json", 15],
+        ["html", "application/javascript", 20],
+        ["html", "text/html", 30],
+        ["html", "image/svg+xml", 40],
+        ["html", "image/png", 50],
+        ["html", "image/gif", 60],
+        ["html", "image/jpeg", 70],
+        ["html", "text/markdown", 80],
+        ["html", "text/latex", 90],
+        ["html", "text/plain", 100],
+      ]
 
 bibtex_bibfiles:
   - "references.bib"
