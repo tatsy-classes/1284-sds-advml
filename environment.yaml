@@ -13,6 +13,7 @@ dependencies:
   - scikit-image
   - pandas
   - pytorch>=1.10.0
+  - torchvision>=0.11.0
   - tqdm
   - networkx
   - ffmpeg
