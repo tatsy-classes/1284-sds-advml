@@ -27,7 +27,7 @@ jobs:
 
       - name: Setup Miniconda
         run: |
-          $CONDA/bin/conda env create --file environment.yaml
+          "$CONDA/bin/conda" env create --file environment.yaml
 
       - name: Check Installation
         run: |
