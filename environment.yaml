@@ -12,7 +12,7 @@ dependencies:
   - scikit-learn
   - scikit-image
   - pandas
-  - pytorch=2.0.0
+  - pytorch>=1.10.0
   - tqdm
   - networkx
   - ffmpeg
