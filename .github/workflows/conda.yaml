@@ -10,7 +10,7 @@ jobs:
   deploy:
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         python-version: ["3.9", "3.10", "3.11"]
 
     runs-on: ${{ matrix.os }}
@@ -26,17 +26,21 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Setup Miniconda (MacOS/Linux)
-        if: "!contains('${{ matrix.os }}', 'windows')"
+        if: "!contains(matrix.os, 'windows')"
         run: |
           "$CONDA/bin/conda" env create --file environment.yaml
-          "$CONDA/bin/conda" activate advml
+
+      - name: Check installation (MacOS/Linux)
+        if: "!contains(matrix.os, 'windows')"
+        run: |
+          "$CONDA/bin/conda" run -n advml python -c "import torch"
 
       - name: Setup Miniconda (Windows)
-        if: "contains('${{ matrix.os }}', 'windows')"
+        if: "contains(matrix.os, 'windows')"
         run: |
-          "C:/Miniconda/condabin/conda.bat" env create --file environment.yaml
-          "C:/Miniconda/condabin/conda.bat" activate advml
+          & "C:\Miniconda\condabin\conda.bat" env create --file environment.yaml
 
-      - name: Check Installation
+      - name: Check installation (MacOS/Linux)
+        if: "contains(matrix.os, 'windows')"
         run: |
-          python -c "import torch"
+          & "C:\Miniconda\condabin\conda.bat" run -n advml python -c "import torch"

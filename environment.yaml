@@ -6,13 +6,15 @@ dependencies:
   - python>=3.9,<3.12
   - numpy
   - scipy
+  - pandas
+  - scikit-learn
+  - scikit-image
+  - openpyxl
   - opencv
   - matplotlib
   - seaborn
-  - scikit-learn
-  - scikit-image
-  - pandas
-  - pytorch=2.0.0
+  - pytorch>=1.10.0
+  - torchvision>=0.11.0
   - tqdm
   - networkx
   - ffmpeg
@@ -22,3 +24,4 @@ dependencies:
     - opencv-contrib-python
     - openpyxml
     - jupyterlab
+    - opencv-contrib-python
