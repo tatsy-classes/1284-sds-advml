@@ -11,7 +11,6 @@ dependencies:
   - seaborn
   - scikit-learn
   - scikit-image
-  - pandas
   - pytorch>=1.10.0
   - torchvision>=0.11.0
   - tqdm
@@ -20,6 +19,7 @@ dependencies:
   - gymnasium[classic-control]
   - pip
   - pip:
-    - opencv-contrib-python
+    - pandas
     - openpyxml
     - jupyterlab
+    - opencv-contrib-python
