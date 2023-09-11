@@ -1801,12 +1801,12 @@ AAAAAQAAAABMYXZmNTguNzYuMTAw
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time:
-31.7 ms +- 1.33 ms per loop (mean +- std. dev. of 10 runs, 1 loop each)
+28.9 ms +- 1.39 ms per loop (mean +- std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
-<p>上記は、素直にバックトラック法を実装した場合の実行時間であるが、一回の問題を解くのに平均<span class="pasted-text">31.7 ms</span>となっており、十分高速であることが分かる</p>
+<p>上記は、素直にバックトラック法を実装した場合の実行時間であるが、一回の問題を解くのに平均<span class="pasted-text">28.9 ms</span>となっており、十分高速であることが分かる</p>
 </section>
 <section id="id5">
 <h3><span class="section-number">8.1.3. </span>処理の効率化<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
@@ -1852,12 +1852,12 @@ AAAAAQAAAABMYXZmNTguNzYuMTAw
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time:
-2.03 s +- 9.46 ms per loop (mean +- std. dev. of 10 runs, 1 loop each)
+1.82 s +- 12.7 ms per loop (mean +- std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
-<p>この問題だと、上記の通り<span class="pasted-text">2.03 s</span>ほどの時間がかかる。</p>
+<p>この問題だと、上記の通り<span class="pasted-text">1.82 s</span>ほどの時間がかかる。</p>
 <p>実は、上記のコードは次の0のマスを探すまでの処理の効率が非常に悪い。0のマスは左上から右下に向かって探しているのだから、今新しく<code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j)</span></code>というマスに数字を入れたら<code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j+1)</span></code>以降の数字だけを調べれば良いのである。</p>
 <p>その他にも、バックトラック法を高速化するために、候補の数が少ないものから埋めていくなどの方法も考えられる。ぜひ、自分でプログラムを書いて試してみてほしい。確認用に難易度の異なる4問を示しておく。</p>
 <div class="cell docutils container">
@@ -2095,62 +2095,62 @@ AAAAAQAAAABMYXZmNTguNzYuMTAw
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_ce13d_row0_col3, #T_ce13d_row1_col3, #T_ce13d_row2_col3, #T_ce13d_row3_col3, #T_ce13d_row4_col3 {
+#T_6d348_row0_col3, #T_6d348_row1_col3, #T_6d348_row2_col3, #T_6d348_row3_col3, #T_6d348_row4_col3 {
   background-color: pink;
   font-weight: bold;
 }
 </style>
-<table id="T_ce13d">
+<table id="T_6d348">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_ce13d_level0_col0" class="col_heading level0 col0" >1</th>
-      <th id="T_ce13d_level0_col1" class="col_heading level0 col1" >2</th>
-      <th id="T_ce13d_level0_col2" class="col_heading level0 col2" >3</th>
-      <th id="T_ce13d_level0_col3" class="col_heading level0 col3" >4</th>
-      <th id="T_ce13d_level0_col4" class="col_heading level0 col4" >5</th>
+      <th id="T_6d348_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_6d348_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_6d348_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_6d348_level0_col3" class="col_heading level0 col3" >4</th>
+      <th id="T_6d348_level0_col4" class="col_heading level0 col4" >5</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_ce13d_level0_row0" class="row_heading level0 row0" >s_1</th>
-      <td id="T_ce13d_row0_col0" class="data row0 col0" >1</td>
-      <td id="T_ce13d_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_ce13d_row0_col2" class="data row0 col2" >0</td>
-      <td id="T_ce13d_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_ce13d_row0_col4" class="data row0 col4" >0</td>
+      <th id="T_6d348_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_6d348_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_6d348_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_6d348_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_6d348_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_6d348_row0_col4" class="data row0 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_ce13d_level0_row1" class="row_heading level0 row1" >s_2</th>
-      <td id="T_ce13d_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_ce13d_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_ce13d_row1_col2" class="data row1 col2" >1</td>
-      <td id="T_ce13d_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_ce13d_row1_col4" class="data row1 col4" >0</td>
+      <th id="T_6d348_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_6d348_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_6d348_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_6d348_row1_col2" class="data row1 col2" >1</td>
+      <td id="T_6d348_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_6d348_row1_col4" class="data row1 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_ce13d_level0_row2" class="row_heading level0 row2" >s_3</th>
-      <td id="T_ce13d_row2_col0" class="data row2 col0" >0</td>
-      <td id="T_ce13d_row2_col1" class="data row2 col1" >0</td>
-      <td id="T_ce13d_row2_col2" class="data row2 col2" >0</td>
-      <td id="T_ce13d_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_ce13d_row2_col4" class="data row2 col4" >1</td>
+      <th id="T_6d348_level0_row2" class="row_heading level0 row2" >s_3</th>
+      <td id="T_6d348_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_6d348_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_6d348_row2_col2" class="data row2 col2" >0</td>
+      <td id="T_6d348_row2_col3" class="data row2 col3" >1</td>
+      <td id="T_6d348_row2_col4" class="data row2 col4" >1</td>
     </tr>
     <tr>
-      <th id="T_ce13d_level0_row3" class="row_heading level0 row3" >s_4</th>
-      <td id="T_ce13d_row3_col0" class="data row3 col0" >0</td>
-      <td id="T_ce13d_row3_col1" class="data row3 col1" >0</td>
-      <td id="T_ce13d_row3_col2" class="data row3 col2" >1</td>
-      <td id="T_ce13d_row3_col3" class="data row3 col3" >0</td>
-      <td id="T_ce13d_row3_col4" class="data row3 col4" >0</td>
+      <th id="T_6d348_level0_row3" class="row_heading level0 row3" >s_4</th>
+      <td id="T_6d348_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_6d348_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_6d348_row3_col2" class="data row3 col2" >1</td>
+      <td id="T_6d348_row3_col3" class="data row3 col3" >0</td>
+      <td id="T_6d348_row3_col4" class="data row3 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_ce13d_level0_row4" class="row_heading level0 row4" >s_5</th>
-      <td id="T_ce13d_row4_col0" class="data row4 col0" >1</td>
-      <td id="T_ce13d_row4_col1" class="data row4 col1" >0</td>
-      <td id="T_ce13d_row4_col2" class="data row4 col2" >1</td>
-      <td id="T_ce13d_row4_col3" class="data row4 col3" >0</td>
-      <td id="T_ce13d_row4_col4" class="data row4 col4" >1</td>
+      <th id="T_6d348_level0_row4" class="row_heading level0 row4" >s_5</th>
+      <td id="T_6d348_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_6d348_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_6d348_row4_col2" class="data row4 col2" >1</td>
+      <td id="T_6d348_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_6d348_row4_col4" class="data row4 col4" >1</td>
     </tr>
   </tbody>
 </table>
@@ -2192,70 +2192,70 @@ AAAAAQAAAABMYXZmNTguNzYuMTAw
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_de179_row0_col3, #T_de179_row1_col3, #T_de179_row3_col3, #T_de179_row4_col3 {
+#T_82625_row0_col3, #T_82625_row1_col3, #T_82625_row3_col3, #T_82625_row4_col3 {
   background-color: pink;
   font-weight: bold;
 }
-#T_de179_row2_col0, #T_de179_row2_col1, #T_de179_row2_col2, #T_de179_row2_col4 {
+#T_82625_row2_col0, #T_82625_row2_col1, #T_82625_row2_col2, #T_82625_row2_col4 {
   background-color: powderblue;
   font-weight: bold;
 }
-#T_de179_row2_col3 {
+#T_82625_row2_col3 {
   background-color: plum;
   font-weight: bold;
 }
 </style>
-<table id="T_de179">
+<table id="T_82625">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_de179_level0_col0" class="col_heading level0 col0" >1</th>
-      <th id="T_de179_level0_col1" class="col_heading level0 col1" >2</th>
-      <th id="T_de179_level0_col2" class="col_heading level0 col2" >3</th>
-      <th id="T_de179_level0_col3" class="col_heading level0 col3" >4</th>
-      <th id="T_de179_level0_col4" class="col_heading level0 col4" >5</th>
+      <th id="T_82625_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_82625_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_82625_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_82625_level0_col3" class="col_heading level0 col3" >4</th>
+      <th id="T_82625_level0_col4" class="col_heading level0 col4" >5</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_de179_level0_row0" class="row_heading level0 row0" >s_1</th>
-      <td id="T_de179_row0_col0" class="data row0 col0" >1</td>
-      <td id="T_de179_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_de179_row0_col2" class="data row0 col2" >0</td>
-      <td id="T_de179_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_de179_row0_col4" class="data row0 col4" >0</td>
+      <th id="T_82625_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_82625_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_82625_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_82625_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_82625_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_82625_row0_col4" class="data row0 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_de179_level0_row1" class="row_heading level0 row1" >s_2</th>
-      <td id="T_de179_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_de179_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_de179_row1_col2" class="data row1 col2" >1</td>
-      <td id="T_de179_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_de179_row1_col4" class="data row1 col4" >0</td>
+      <th id="T_82625_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_82625_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_82625_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_82625_row1_col2" class="data row1 col2" >1</td>
+      <td id="T_82625_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_82625_row1_col4" class="data row1 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_de179_level0_row2" class="row_heading level0 row2" >s_3</th>
-      <td id="T_de179_row2_col0" class="data row2 col0" >0</td>
-      <td id="T_de179_row2_col1" class="data row2 col1" >0</td>
-      <td id="T_de179_row2_col2" class="data row2 col2" >0</td>
-      <td id="T_de179_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_de179_row2_col4" class="data row2 col4" >1</td>
+      <th id="T_82625_level0_row2" class="row_heading level0 row2" >s_3</th>
+      <td id="T_82625_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_82625_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_82625_row2_col2" class="data row2 col2" >0</td>
+      <td id="T_82625_row2_col3" class="data row2 col3" >1</td>
+      <td id="T_82625_row2_col4" class="data row2 col4" >1</td>
     </tr>
     <tr>
-      <th id="T_de179_level0_row3" class="row_heading level0 row3" >s_4</th>
-      <td id="T_de179_row3_col0" class="data row3 col0" >0</td>
-      <td id="T_de179_row3_col1" class="data row3 col1" >0</td>
-      <td id="T_de179_row3_col2" class="data row3 col2" >1</td>
-      <td id="T_de179_row3_col3" class="data row3 col3" >0</td>
-      <td id="T_de179_row3_col4" class="data row3 col4" >0</td>
+      <th id="T_82625_level0_row3" class="row_heading level0 row3" >s_4</th>
+      <td id="T_82625_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_82625_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_82625_row3_col2" class="data row3 col2" >1</td>
+      <td id="T_82625_row3_col3" class="data row3 col3" >0</td>
+      <td id="T_82625_row3_col4" class="data row3 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_de179_level0_row4" class="row_heading level0 row4" >s_5</th>
-      <td id="T_de179_row4_col0" class="data row4 col0" >1</td>
-      <td id="T_de179_row4_col1" class="data row4 col1" >0</td>
-      <td id="T_de179_row4_col2" class="data row4 col2" >1</td>
-      <td id="T_de179_row4_col3" class="data row4 col3" >0</td>
-      <td id="T_de179_row4_col4" class="data row4 col4" >1</td>
+      <th id="T_82625_level0_row4" class="row_heading level0 row4" >s_5</th>
+      <td id="T_82625_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_82625_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_82625_row4_col2" class="data row4 col2" >1</td>
+      <td id="T_82625_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_82625_row4_col4" class="data row4 col4" >1</td>
     </tr>
   </tbody>
 </table>
@@ -2297,70 +2297,70 @@ AAAAAQAAAABMYXZmNTguNzYuMTAw
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_06419_row0_col3, #T_06419_row0_col4, #T_06419_row1_col3, #T_06419_row1_col4, #T_06419_row3_col3, #T_06419_row3_col4 {
+#T_6f787_row0_col3, #T_6f787_row0_col4, #T_6f787_row1_col3, #T_6f787_row1_col4, #T_6f787_row3_col3, #T_6f787_row3_col4 {
   background-color: pink;
   font-weight: bold;
 }
-#T_06419_row2_col0, #T_06419_row2_col1, #T_06419_row2_col2, #T_06419_row4_col0, #T_06419_row4_col1, #T_06419_row4_col2 {
+#T_6f787_row2_col0, #T_6f787_row2_col1, #T_6f787_row2_col2, #T_6f787_row4_col0, #T_6f787_row4_col1, #T_6f787_row4_col2 {
   background-color: powderblue;
   font-weight: bold;
 }
-#T_06419_row2_col3, #T_06419_row2_col4, #T_06419_row4_col3, #T_06419_row4_col4 {
+#T_6f787_row2_col3, #T_6f787_row2_col4, #T_6f787_row4_col3, #T_6f787_row4_col4 {
   background-color: plum;
   font-weight: bold;
 }
 </style>
-<table id="T_06419">
+<table id="T_6f787">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_06419_level0_col0" class="col_heading level0 col0" >1</th>
-      <th id="T_06419_level0_col1" class="col_heading level0 col1" >2</th>
-      <th id="T_06419_level0_col2" class="col_heading level0 col2" >3</th>
-      <th id="T_06419_level0_col3" class="col_heading level0 col3" >4</th>
-      <th id="T_06419_level0_col4" class="col_heading level0 col4" >5</th>
+      <th id="T_6f787_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_6f787_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_6f787_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_6f787_level0_col3" class="col_heading level0 col3" >4</th>
+      <th id="T_6f787_level0_col4" class="col_heading level0 col4" >5</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_06419_level0_row0" class="row_heading level0 row0" >s_1</th>
-      <td id="T_06419_row0_col0" class="data row0 col0" >1</td>
-      <td id="T_06419_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_06419_row0_col2" class="data row0 col2" >0</td>
-      <td id="T_06419_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_06419_row0_col4" class="data row0 col4" >0</td>
+      <th id="T_6f787_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_6f787_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_6f787_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_6f787_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_6f787_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_6f787_row0_col4" class="data row0 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_06419_level0_row1" class="row_heading level0 row1" >s_2</th>
-      <td id="T_06419_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_06419_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_06419_row1_col2" class="data row1 col2" >1</td>
-      <td id="T_06419_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_06419_row1_col4" class="data row1 col4" >0</td>
+      <th id="T_6f787_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_6f787_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_6f787_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_6f787_row1_col2" class="data row1 col2" >1</td>
+      <td id="T_6f787_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_6f787_row1_col4" class="data row1 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_06419_level0_row2" class="row_heading level0 row2" >s_3</th>
-      <td id="T_06419_row2_col0" class="data row2 col0" >0</td>
-      <td id="T_06419_row2_col1" class="data row2 col1" >0</td>
-      <td id="T_06419_row2_col2" class="data row2 col2" >0</td>
-      <td id="T_06419_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_06419_row2_col4" class="data row2 col4" >1</td>
+      <th id="T_6f787_level0_row2" class="row_heading level0 row2" >s_3</th>
+      <td id="T_6f787_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_6f787_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_6f787_row2_col2" class="data row2 col2" >0</td>
+      <td id="T_6f787_row2_col3" class="data row2 col3" >1</td>
+      <td id="T_6f787_row2_col4" class="data row2 col4" >1</td>
     </tr>
     <tr>
-      <th id="T_06419_level0_row3" class="row_heading level0 row3" >s_4</th>
-      <td id="T_06419_row3_col0" class="data row3 col0" >0</td>
-      <td id="T_06419_row3_col1" class="data row3 col1" >0</td>
-      <td id="T_06419_row3_col2" class="data row3 col2" >1</td>
-      <td id="T_06419_row3_col3" class="data row3 col3" >0</td>
-      <td id="T_06419_row3_col4" class="data row3 col4" >0</td>
+      <th id="T_6f787_level0_row3" class="row_heading level0 row3" >s_4</th>
+      <td id="T_6f787_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_6f787_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_6f787_row3_col2" class="data row3 col2" >1</td>
+      <td id="T_6f787_row3_col3" class="data row3 col3" >0</td>
+      <td id="T_6f787_row3_col4" class="data row3 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_06419_level0_row4" class="row_heading level0 row4" >s_5</th>
-      <td id="T_06419_row4_col0" class="data row4 col0" >1</td>
-      <td id="T_06419_row4_col1" class="data row4 col1" >0</td>
-      <td id="T_06419_row4_col2" class="data row4 col2" >1</td>
-      <td id="T_06419_row4_col3" class="data row4 col3" >0</td>
-      <td id="T_06419_row4_col4" class="data row4 col4" >1</td>
+      <th id="T_6f787_level0_row4" class="row_heading level0 row4" >s_5</th>
+      <td id="T_6f787_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_6f787_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_6f787_row4_col2" class="data row4 col2" >1</td>
+      <td id="T_6f787_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_6f787_row4_col4" class="data row4 col4" >1</td>
     </tr>
   </tbody>
 </table>
@@ -2469,46 +2469,46 @@ AAAAAQAAAABMYXZmNTguNzYuMTAw
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_6a679_row0_col0, #T_6a679_row0_col1, #T_6a679_row1_col0, #T_6a679_row1_col1 {
+#T_3deb9_row0_col0, #T_3deb9_row0_col1, #T_3deb9_row1_col0, #T_3deb9_row1_col1 {
   background-color: plum;
   font-weight: bold;
 }
-#T_6a679_row0_col2, #T_6a679_row1_col2 {
+#T_3deb9_row0_col2, #T_3deb9_row1_col2 {
   background-color: powderblue;
   font-weight: bold;
 }
-#T_6a679_row2_col0, #T_6a679_row2_col1 {
+#T_3deb9_row2_col0, #T_3deb9_row2_col1 {
   background-color: pink;
   font-weight: bold;
 }
 </style>
-<table id="T_6a679">
+<table id="T_3deb9">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_6a679_level0_col0" class="col_heading level0 col0" >1</th>
-      <th id="T_6a679_level0_col1" class="col_heading level0 col1" >2</th>
-      <th id="T_6a679_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_3deb9_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_3deb9_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_3deb9_level0_col2" class="col_heading level0 col2" >3</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_6a679_level0_row0" class="row_heading level0 row0" >s_1</th>
-      <td id="T_6a679_row0_col0" class="data row0 col0" >1</td>
-      <td id="T_6a679_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_6a679_row0_col2" class="data row0 col2" >0</td>
+      <th id="T_3deb9_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_3deb9_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_3deb9_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_3deb9_row0_col2" class="data row0 col2" >0</td>
     </tr>
     <tr>
-      <th id="T_6a679_level0_row1" class="row_heading level0 row1" >s_2</th>
-      <td id="T_6a679_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_6a679_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_6a679_row1_col2" class="data row1 col2" >1</td>
+      <th id="T_3deb9_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_3deb9_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_3deb9_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_3deb9_row1_col2" class="data row1 col2" >1</td>
     </tr>
     <tr>
-      <th id="T_6a679_level0_row2" class="row_heading level0 row2" >s_4</th>
-      <td id="T_6a679_row2_col0" class="data row2 col0" >0</td>
-      <td id="T_6a679_row2_col1" class="data row2 col1" >0</td>
-      <td id="T_6a679_row2_col2" class="data row2 col2" >1</td>
+      <th id="T_3deb9_level0_row2" class="row_heading level0 row2" >s_4</th>
+      <td id="T_3deb9_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_3deb9_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_3deb9_row2_col2" class="data row2 col2" >1</td>
     </tr>
   </tbody>
 </table>
@@ -3751,12 +3751,12 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time:
-8.14 ms +- 619 us per loop (mean +- std. dev. of 10 runs, 1 loop each)
+6.14 ms +- 196 us per loop (mean +- std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
-<p>すると先ほど1秒以上かかっていた問題が、<strong>たったの<span class="pasted-text">8.14 ms</span>で解けている</strong>ことが分かる。このように、数独の問題をExact Coverの問題と捉えることが、通常のバックトラック法よりも遙かに高速に問題を解けることが確認できた。</p>
+<p>すると先ほど1秒以上かかっていた問題が、<strong>たったの<span class="pasted-text">6.14 ms</span>で解けている</strong>ことが分かる。このように、数独の問題をExact Coverの問題と捉えることが、通常のバックトラック法よりも遙かに高速に問題を解けることが確認できた。</p>
 <div class="note admonition">
 <p class="admonition-title">なぜ速く解けるのか？</p>
 <p>今紹介したExact Coverを解くAlgorithm Xでは、表の列の中で<strong>最も1の数が少ない列</strong>を選んでいる。この操作が何を意味するかを考えてみよう。</p>
