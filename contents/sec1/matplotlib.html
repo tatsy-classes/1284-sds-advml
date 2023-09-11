@@ -1309,7 +1309,9 @@ document.write(`
 <div class="important admonition">
 <p class="admonition-title">色覚障がいを持つ方への配慮</p>
 <p>多くの人には見過ごされがちだが、グラフ等を作成に色を使う場合には、色覚障がいの方への配慮を検討してほしい。色覚障がいは、女性よりも男性に多いと言われており、実に日本人男性の20人に1人が何らかの色覚異常を持っていると言われている。</p>
-<p>上記のSeabornの例では、<code class="docutils literal notranslate"><span class="pre">colorblind</span></code>のパレットを使って、それを実現しており、同様の設定は、<code class="docutils literal notranslate"><span class="pre">sns.set(palette=&quot;colorblind&quot;)</span></code>とすることでMatplotlibにも適用できる。</p>
+<p>人間の色を知覚する細胞である錐体細胞には赤に敏感なL錐体、緑に敏感なM錐体、青に敏感なS錐体がある。このうち、L錐体に異常をもち赤の認識が難しいことを赤色盲 (protanope)、緑の認識が難しいことを緑色盲 (deuteranope)という。Matplotlibでデフォルト設定されているカラーパレットはTableau10というものだが、このパレットの彩度や輝度を色覚障がいの種類によって、見え方がどう変わるかを示したウェブページがあるので、参考にしてほしい。</p>
+<p><a class="reference external" href="https://gist.github.com/mwaskom/b35f6ebc2d4b340b4f64a4e28e778486">https://gist.github.com/mwaskom/b35f6ebc2d4b340b4f64a4e28e778486</a></p>
+<p>なお、本資料ではSeabornで提供される、<code class="docutils literal notranslate"><span class="pre">colorblind</span></code>のパレットを使用してグラフの色を設定しており、同様の設定は、<code class="docutils literal notranslate"><span class="pre">sns.set(palette=&quot;colorblind&quot;)</span></code>とすることで実現できる。</p>
 </div>
 </section>
 </section>

@@ -402,29 +402,34 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.1. NumPyの配列操作</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1.1. 多次元配列を作る</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.2. 特殊な配列の初期化</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.3. 配列の情報</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.4. 配列要素へのアクセス</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.5. 配列の変形</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.2. 特殊な配列の初期化</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">同じ値での初期化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">等差数列・等比数列による初期化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二次元座標系の作成</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.2. NumPyを用いた線形代数</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2.1. スカラに対する演算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.2.2. 要素ごとの四則演算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.2.3. 各要素への関数適用</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2.4. ベクトルの内積</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.2.5. ベクトルの外積</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2.6. 行列の転置</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.2.7. 逆行列・疑似逆行列</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.2.8. 線形方程式を解く</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.2.9. 行列の固有値・固有ベクトル</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">固有値を求めるアルゴリズム</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.3. 配列の情報</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.1.4. 配列要素へのアクセス</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.1.5. 配列の変形</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.2. NumPyを用いた線形代数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2.1. スカラに対する演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.2.2. 要素ごとの四則演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2.3. 各要素への関数適用</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.2.4. ベクトルの内積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.2.5. ベクトルの外積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.2.6. 行列の転置</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.2.7. 逆行列・疑似逆行列</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.2.8. 線形方程式を解く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.2.9. 行列の固有値・固有ベクトル</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">固有値を求めるアルゴリズム</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.3. 疎行列</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.4. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">2.3. 疎行列</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">2.4. 練習問題</a></li>
 </ul>
             </nav>
         </div>
@@ -531,22 +536,12 @@ document.write(`
 </div>
 </div>
 </div>
-<p>また、NumPyにはいくつかの特殊な配列を作る関数が用意されていて、全ての要素が0や全ての要素が1、または特定の要素を持つ配列は次のように作成できる。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># 全ての要素が0の10x10の二次元配列</span>
-<span class="n">ones</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># 全ての要素が1の10x10の二次元配列</span>
-<span class="n">twos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 全ての要素が2の10x10の二次元配列</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>上記の関数を使う場合、関数の引数がPythonの配列ではなく、多次元配列の大きさを表す<strong>タプル</strong>になるので注意すること。</p>
 </section>
 <section id="id3">
 <h3><span class="section-number">2.1.2. </span>特殊な配列の初期化<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>NumPyでは直接、PythonのListを指定して配列を初期化する以外に、いくつかの便利な配列初期化方法が用意されている。ここでは、特によく用いるものをいくつか紹介する。</p>
-<p><strong>同じ値での初期化</strong></p>
+<section id="id4">
+<h4>同じ値での初期化<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">)))</span>  <span class="c1"># 全て0で初期化</span>
@@ -563,7 +558,30 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>等差数列・等比数列による初期化</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 多次元配列も可能</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mf">10.0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0. 0.]
+ [0. 0.]]
+[[1. 1.]
+ [1. 1.]]
+[[10. 10.]
+ [10. 10.]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>上記の関数を使う場合、関数の引数がPythonの配列ではなく、多次元配列の大きさを表す<strong>タプル</strong>になるので注意すること。</p>
+</section>
+<section id="id5">
+<h4>等差数列・等比数列による初期化<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
 <p>Pythonに標準で用意されている<code class="docutils literal notranslate"><span class="pre">range(10)</span></code>などと同様の文法で<code class="docutils literal notranslate"><span class="pre">np.arange</span></code>を使うことができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -640,7 +658,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p><strong>二次元座標系の作成</strong></p>
+</section>
+<section id="id6">
+<h4>二次元座標系の作成<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <p>特に画像を取り扱う場合など、画素の次元を取得するために、二次元の離散的な座標系を作成したいことがよくある。例えば<code class="docutils literal notranslate"><span class="pre">ix</span></code>は<code class="docutils literal notranslate"><span class="pre">[[1,</span> <span class="pre">2,</span> <span class="pre">...,</span> <span class="pre">10],</span> <span class="pre">...,</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">...,</span> <span class="pre">10]]</span></code>、<code class="docutils literal notranslate"><span class="pre">iy</span></code>は<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">1,</span> <span class="pre">...,</span> <span class="pre">1],</span> <span class="pre">[2,</span> <span class="pre">2,</span> <span class="pre">....,</span> <span class="pre">2],</span> <span class="pre">...,</span> <span class="pre">[10,</span> <span class="pre">10,</span> <span class="pre">...,</span> <span class="pre">10]]</span></code>といった形だ。このような場合には<code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">...,</span> <span class="pre">10]</span></code>という配列を作成した上で<code class="docutils literal notranslate"><span class="pre">np.meshgrid</span></code>を用いると良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -692,8 +712,9 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="id4">
-<h3><span class="section-number">2.1.3. </span>配列の情報<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="id7">
+<h3><span class="section-number">2.1.3. </span>配列の情報<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>上記のNumPyの配列をIPython上で表示すると</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -786,8 +807,8 @@ Updated type: float32
 <p>という処理を<strong>インスタンス化</strong>と呼ぶ。これらの用語はPythonに限らず、オブジェクト指向型言語の基本用語なので覚えておくこと。</p>
 </div>
 </section>
-<section id="id5">
-<h3><span class="section-number">2.1.4. </span>配列要素へのアクセス<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3><span class="section-number">2.1.4. </span>配列要素へのアクセス<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>通常、Pythonで一次元配列、二次元配列の要素にアクセスするには</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">arr1d</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">arr2d</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
@@ -850,8 +871,8 @@ Updated type: float32
 </div>
 </div>
 </section>
-<section id="id6">
-<h3><span class="section-number">2.1.5. </span>配列の変形<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id9">
+<h3><span class="section-number">2.1.5. </span>配列の変形<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>NumPyでは<code class="docutils literal notranslate"><span class="pre">reshape</span></code>を用いることで、配列の形を変更することもできる。例えば2x2の二次元配列を4要素の一次元配列に変形する場合、以下のように<code class="docutils literal notranslate"><span class="pre">reshape</span></code>を利用する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -942,10 +963,10 @@ newaxis (2, 1, 2)
 </div>
 </section>
 </section>
-<section id="id7">
-<h2><span class="section-number">2.2. </span>NumPyを用いた線形代数<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
-<section id="id8">
-<h3><span class="section-number">2.2.1. </span>スカラに対する演算<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<section id="id10">
+<h2><span class="section-number">2.2. </span>NumPyを用いた線形代数<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<section id="id11">
+<h3><span class="section-number">2.2.1. </span>スカラに対する演算<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <p>ベクトルや行列に対して、スカラを四則演算すると、要素ごとに同じ計算が行われる。例えば、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -962,8 +983,8 @@ newaxis (2, 1, 2)
 </div>
 <p>の例では、aの各要素に1が足し算されていることが分かる。これは、他の四則演算に対しても同様である。</p>
 </section>
-<section id="id9">
-<h3><span class="section-number">2.2.2. </span>要素ごとの四則演算<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="id12">
+<h3><span class="section-number">2.2.2. </span>要素ごとの四則演算<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <p>同じ要素数を持つベクトル同士や行列同士を四則演算すると、要素ごとの演算が行われる。例えば、</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -981,12 +1002,12 @@ newaxis (2, 1, 2)
 </div>
 <p>の例では、aとbの各要素に対して、和が取られていることが分かる。これは、他の四則演算に対しても同様である。</p>
 </section>
-<section id="id10">
-<h3><span class="section-number">2.2.3. </span>各要素への関数適用<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<section id="id13">
+<h3><span class="section-number">2.2.3. </span>各要素への関数適用<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <p>NumPyには<code class="docutils literal notranslate"><span class="pre">numpy.exp</span></code>などのように、ベクトル・行列の各要素に対して、特定のスカラに対する演算を行う関数が用意されている。一例として、<code class="docutils literal notranslate"><span class="pre">numpy.sin</span></code>、<code class="docutils literal notranslate"><span class="pre">numpy.cos</span></code>、<code class="docutils literal notranslate"><span class="pre">numpy.exp</span></code>、<code class="docutils literal notranslate"><span class="pre">numpy.log</span></code>などがあり、高校レベルで思いつくものであれば大抵は用意されている。</p>
 </section>
-<section id="id11">
-<h3><span class="section-number">2.2.4. </span>ベクトルの内積<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<section id="id14">
+<h3><span class="section-number">2.2.4. </span>ベクトルの内積<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <p>内積の計算には二つのベクトルに対して<code class="docutils literal notranslate"><span class="pre">numpy.dot</span></code>を用いれば良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1016,8 +1037,8 @@ newaxis (2, 1, 2)
 </div>
 </div>
 </section>
-<section id="id12">
-<h3><span class="section-number">2.2.5. </span>ベクトルの外積<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<section id="id15">
+<h3><span class="section-number">2.2.5. </span>ベクトルの外積<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
 <p>外積の計算には二つのベクトルに対して<code class="docutils literal notranslate"><span class="pre">numpy.cross</span></code>を用いれば良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1029,9 +1050,6 @@ newaxis (2, 1, 2)
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-3  6 -3]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1049,15 +1067,12 @@ newaxis (2, 1, 2)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-2
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 <p>この計算は二次元平面においてa → bというベクトルの移動が時計回りの回転(負の値になる)なのか、反時計回りの回転(正の値になる)なのかを調べる時などに役に立つ。</p>
 </section>
-<section id="id13">
-<h3><span class="section-number">2.2.6. </span>行列の転置<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<section id="id16">
+<h3><span class="section-number">2.2.6. </span>行列の転置<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
 <p>行列の転置はNumPyの2次元配列を表わす変数に対して <code class="docutils literal notranslate"><span class="pre">.T</span></code>をつけることで計算できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1096,8 +1111,8 @@ Shape of A: (4, 2, 3)
 </div>
 </div>
 </section>
-<section id="id14">
-<h3><span class="section-number">2.2.7. </span>逆行列・疑似逆行列<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<section id="id17">
+<h3><span class="section-number">2.2.7. </span>逆行列・疑似逆行列<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
 <p>とある行列が正則行列 (逆行列を持つ = 行列式が0でない)ときには<code class="docutils literal notranslate"><span class="pre">numpy.linalg.inv</span></code>を用いて逆行列が計算できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1176,7 +1191,7 @@ Message: Singular matrix
 \]</div>
 <p>という方程式において <span class="math notranslate nohighlight">\(\mathbf{A}^\top \mathbf{A}\)</span> が特異行列になることは実問題においては頻繁に起こる問題である。</p>
 <p>このような場合、上記の最小化問題の解は、特異行列に対して逆行列と似た性質を持つ疑似逆行列 (正しくはMoore-Penroseの疑似逆行列と呼ぶ)を右辺に乗ずることで求められる。</p>
-<p>すなわち、疑似逆行列を <span class="math notranslate nohighlight">\((\mathbf{A}^\top \mathbf{A})^\dagger\)</span> のように表わす時、最小化を実現する <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> は次の式のように定まる。</p>
+<p><strong>疑似逆行列を <span class="math notranslate nohighlight">\((\mathbf{A}^\top \mathbf{A})^\dagger\)</span> のように表わす</strong>時、最小化を実現する <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> は次の式のように定まる。</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x} = (\mathbf{A}^\top \mathbf{A})^\dagger (\mathbf{A}^\top \mathbf{b})
@@ -1224,8 +1239,8 @@ Message: Singular matrix
 <p>疑似逆行列を用いる、ということは行列が特異、すなわちランク落ちしている場合であるから、実際の線形方程式を満たす解は無数に存在することになる。疑似逆行列を用いて得られる解は、そのうち、ノルムの大きさ (より正確にはl2ノルムの大きさ)が最小になるものになるので、自身が求めたい解がその解で良いのかは、実際の問題を扱う上では重要だろう。</p>
 </div>
 </section>
-<section id="id15">
-<h3><span class="section-number">2.2.8. </span>線形方程式を解く<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<section id="id18">
+<h3><span class="section-number">2.2.8. </span>線形方程式を解く<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
 <p>先ほどの説明では、 <span class="math notranslate nohighlight">\(\mathbf{Ax} = \mathbf{b}\)</span> という線形方程式に対して、逆行列を計算して解 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> を求める方法について述べた。</p>
 <p>一方で、この方法は数値計算の側面からは、常に最良のやり方であるとは言い難い。通常、行列のサイズが <span class="math notranslate nohighlight">\(N \times N\)</span> の時に、逆行列を求めるためのアルゴリズムには<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%AC%E3%82%A6%E3%82%B9%E3%81%AE%E6%B6%88%E5%8E%BB%E6%B3%95">Gaussの消去法</a>などがあり、これらのアルゴリズムの計算量は <span class="math notranslate nohighlight">\(O(N^3)\)</span> である。それに加え、逆行列をベクトル <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> に乗ずる操作 (計算量は <span class="math notranslate nohighlight">\(O(N^2)\)</span> ) が必要となる。</p>
 <p>一方で、同様にGaussの消去法を使うにしても、逆行列を求めるのではなく、線形方程式を直接解くように用いることもできる。この場合も計算量は変わらず <span class="math notranslate nohighlight">\(O(N^3)\)</span> なのだが、この場合は、直接的に解となる <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> が得られるため、逆行列をベクトル <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> に乗ずる計算が不要な分、効率が良い。加えて、このような余計な行列計算を減らすことで、一般には浮動少数の計算による計算誤差を防ぐことができるため、より高精度に解が求められる。したがって、逆行列それ自体が不要であるならば、行列分解を用いて効率的に線形問題を解く<code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>を使う方がより適切である。</p>
@@ -1274,9 +1289,6 @@ Message: Singular matrix
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.  1.]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1306,8 +1318,8 @@ Message: Singular matrix
 <p>これ以外にも、Jacobi法を改良したGauss-Seidel法やSOR法がある他、実用的には<a class="reference external" href="https://ja.wikipedia.org/wiki/%E5%85%B1%E5%BD%B9%E5%8B%BE%E9%85%8D%E6%B3%95">共役勾配法</a> (CG法)と呼ばれる、より収束の早いアルゴリズムが用いられる。最も一般的な共役勾配法は対称正定値行列 (正定値 = 全ての固有値が0より大きい)にしか用いることができないが、これを非対称行列に拡張した双共役勾配法 (BiCG法)など、多くの発展的な手法が存在する。</p>
 </div>
 </section>
-<section id="id16">
-<h3><span class="section-number">2.2.9. </span>行列の固有値・固有ベクトル<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<section id="id19">
+<h3><span class="section-number">2.2.9. </span>行列の固有値・固有ベクトル<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
 <p>行列の固有値および固有ベクトルは、<a class="reference external" href="https://ja.wikipedia.org/wiki/%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90">主成分分析</a>のような多次元データの分析の他、様々なデータの性質を分析する上で欠かせない情報である。</p>
 <p>NumPyで行列の固有値ならびに固有ベクトルを求めるには<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eig</span></code>を用いれば良い。</p>
 <div class="cell docutils container">
@@ -1321,9 +1333,7 @@ Message: Singular matrix
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 3. -1.]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.70710678 -0.70710678]
+[[ 0.70710678 -0.70710678]
  [ 0.70710678  0.70710678]]
 </pre></div>
 </div>
@@ -1331,8 +1341,8 @@ Message: Singular matrix
 </div>
 <p>なお、通常、固有値に加えて、固有ベクトルを求めるには追加の計算が必要になるため、固有値だけが必要になる場合には、より高速に動作する関数として<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvals</span></code>を使うのが良い。</p>
 <p>また、上記の例では、あえて実数が固有値、固有ベクトルとなるように実対称行列の固有値・固有ベクトルを求めたが、通常、対称行列、ないしHermite行列の固有値・固有ベクトルの計算は非対称、ないし非Hermite行列の固有値よりも計算が簡単である。そのため、固有値の計算を行いたい対称が対称行列やHermite行列であることが分かっている場合には<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigh</span></code>や<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvalsh</span></code>のように末尾に&quot;h&quot;のついている関数を使うと、より効率的である (とは言っても、効果を実感できるのは少なくとも1000x1000程度の行列からだろう)。</p>
-<section id="id17">
-<h4>固有値を求めるアルゴリズム<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
+<section id="id20">
+<h4>固有値を求めるアルゴリズム<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
 <p>固有値を求めるという問題は、実用的に非常に広い応用を持つため、固有値を求める対象の行列の性質 (対称行列か、密行列か、疎行列かetc.)に応じて、様々なアルゴリズムが提案されている。ここでは、比較的単純なアルゴリズムとしてJacobi法 (先ほどの線形問題を解く方法とは異なる)とQR法について紹介する。</p>
 <p><strong>Jacobi法</strong>は<strong>対称行列</strong>に対するアルゴリズムで、Givens回転と呼ばれる行列の一部要素だけを変換するような下記の行列 <span class="math notranslate nohighlight">\(\mathbf{G}\)</span> を用いる (値の入っていない箇所の要素は全て0)。</p>
 <div class="math notranslate nohighlight">
@@ -1368,8 +1378,8 @@ Message: Singular matrix
 </section>
 </section>
 </section>
-<section id="id18">
-<h2><span class="section-number">2.3. </span>疎行列<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
+<section id="id21">
+<h2><span class="section-number">2.3. </span>疎行列<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h2>
 <p>疎行列とは、行列の要素のほとんどが0であるような行列を指す。計算機科学的には、<span class="math notranslate nohighlight">\(N \times N\)</span>の行列同士のかけ算には単純には<span class="math notranslate nohighlight">\(\mathcal{O}(N^3)\)</span>の計算量がかかるが、ほとんどの要素が0であるのなら、その要素とのかけ算は無視できるので、計算を効率化できる。</p>
 <p>疎行列の表し方にはいくつかの形式があるが、代表的なものはCSR(=Compressed Sparse Row)形式とCSC(=Compressed Sparse Column)形式の2つである。前者のCSR形式は、各列が非ゼロ要素の配列として表わされ、そのの配列として行列が表わされている。一方、後者のCSC形式は各行が非ゼロ要素の配列で表わされ、その配列として行列が表わされている。</p>
 <p>一例として</p>
@@ -1423,12 +1433,12 @@ Message: Singular matrix
 </div>
 <p>疎行列の場合にも<code class="docutils literal notranslate"><span class="pre">sp.sparse</span></code>や<code class="docutils literal notranslate"><span class="pre">sp.sparse.linalg</span></code>モジュールの関数を使うことで、行列に対する様々な演算ができるので、ぜひどのような計算ができるか各自で調べて見てほしい。</p>
 </section>
-<section id="id19">
-<h2><span class="section-number">2.4. </span>練習問題<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<section id="id22">
+<h2><span class="section-number">2.4. </span>練習問題<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>今回の講義で紹介したサンプルコードを踏まえて、正則行列に対する逆行列と、特異行列に対する疑似逆行列の違いと共通点について述べよ。</p></li>
-<li><p>逆行列を<code class="docutils literal notranslate"><span class="pre">numpy.linalg.inv</span></code>によって求めることで線形問題を解く方法と、<code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>を用いてLU分解により解を求める方法で計算精度がどの程度変化するかを確かめてみよ。なお、より結果を分かりやすくするために<code class="docutils literal notranslate"><span class="pre">numpy.random.random</span></code>を用いて100x100および100x1程度の大きめのサイズで <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> を作成し、精度については <span class="math notranslate nohighlight">\(\| \mathbf{A} \mathbf{x} - \mathbf{b} \|^2\)</span> の大きさを使って調べれば良い。</p></li>
-<li><p>前述のヤコビ法により、正しく線形問題が解ける(= <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>と解が一致)ことを調べよ。なお、ヤコビ法は優対角行列と呼ばれる対角成分が、各列の対角成分以外の成分の総和より大きい行列にしか用いることができないので、そのような行列を各自適当に設定すること。</p></li>
+<li><p>逆行列を<code class="docutils literal notranslate"><span class="pre">numpy.linalg.inv</span></code>によって求めることで線形問題を解く方法と、<code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>を用いてLU分解により解を求める方法で計算精度がどの程度変化するかを確かめてみよ。なお、より結果を分かりやすくするために<code class="docutils literal notranslate"><span class="pre">numpy.random.random</span></code>を用いて100x100および100x1程度の大きめのサイズで <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> を作成し、精度については <span class="math notranslate nohighlight">\(\| \mathbf{A} \mathbf{x} - \mathbf{b} \|^2\)</span> の大きさを使って調べること。</p></li>
+<li><p>前述の(反復計算による線形問題解法としての)Jacobi法により、正しく線形問題が解ける(= <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>と解が一致)ことを調べよ。なお、ヤコビ法は優対角行列と呼ばれる対角成分が、各列の対角成分以外の成分の総和より大きい行列にしか用いることができないので、そのような行列を各自適当に設定すること。</p></li>
 <li><p>NumPyには多項方程式を解くための関数として<code class="docutils literal notranslate"><span class="pre">numpy.roots</span></code>という関数が用意されている (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.roots.html">参考</a>、特性方程式の係数は手計算で求めること)。この関数を用いて、以下の行列について、特性方程式を解くことで得られる固有値と、<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eig</span></code>を解くことで得られる固有値が一致することを調べよ。</p></li>
 </ol>
 <div class="math notranslate nohighlight">
@@ -1440,7 +1450,7 @@ Message: Singular matrix
 \end{pmatrix}
 \end{split}\]</div>
 <ol class="arabic simple" start="5">
-<li><p>上記の3x3行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> に対してJacobi法ならびにQR法を用いて正しく固有値が求まる (= <code class="docutils literal notranslate"><span class="pre">numpy.linalg.eig</span></code>と同じ結果が得られる)ことを確かめよ。</p></li>
+<li><p>上記の3x3行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> に対して(固有値を求めるアルゴリズムとしての)Jacobi法ならびにQR法を用いて正しく固有値が求まる (= <code class="docutils literal notranslate"><span class="pre">numpy.linalg.eig</span></code>と同じ結果が得られる)ことを確かめよ。</p></li>
 </ol>
 </section>
 </section>
@@ -1514,29 +1524,34 @@ Message: Singular matrix
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.1. NumPyの配列操作</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1.1. 多次元配列を作る</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.2. 特殊な配列の初期化</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.3. 配列の情報</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.4. 配列要素へのアクセス</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.5. 配列の変形</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.2. 特殊な配列の初期化</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">同じ値での初期化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">等差数列・等比数列による初期化</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">二次元座標系の作成</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.2. NumPyを用いた線形代数</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2.1. スカラに対する演算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.2.2. 要素ごとの四則演算</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.2.3. 各要素への関数適用</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2.4. ベクトルの内積</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.2.5. ベクトルの外積</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2.6. 行列の転置</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.2.7. 逆行列・疑似逆行列</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.2.8. 線形方程式を解く</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.2.9. 行列の固有値・固有ベクトル</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">固有値を求めるアルゴリズム</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.3. 配列の情報</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.1.4. 配列要素へのアクセス</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.1.5. 配列の変形</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.2. NumPyを用いた線形代数</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2.1. スカラに対する演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.2.2. 要素ごとの四則演算</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2.3. 各要素への関数適用</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.2.4. ベクトルの内積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.2.5. ベクトルの外積</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.2.6. 行列の転置</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.2.7. 逆行列・疑似逆行列</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.2.8. 線形方程式を解く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.2.9. 行列の固有値・固有ベクトル</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">固有値を求めるアルゴリズム</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.3. 疎行列</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.4. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">2.3. 疎行列</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">2.4. 練習問題</a></li>
 </ul>
   </nav></div>
 
