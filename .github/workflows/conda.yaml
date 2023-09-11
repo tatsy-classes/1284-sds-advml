@@ -29,12 +29,14 @@ jobs:
         if: "!contains(matrix.os, 'windows')"
         run: |
           "$CONDA/bin/conda" env create --file environment.yaml
+          "$CONDA/bin/conda" init bash
           "$CONDA/bin/conda" activate advml
 
       - name: Setup Miniconda (Windows)
         if: "contains(matrix.os, 'windows')"
         run: |
           & "C:\Miniconda\condabin\conda.bat" env create --file environment.yaml
+          & "C:\Miniconda\condabin\conda.bat" init powershell
           & "C:\Miniconda\condabin\conda.bat" activate advml
 
       - name: Check Installation
