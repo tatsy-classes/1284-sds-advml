@@ -3,4 +3,4 @@
 	url = https://github.com/tatsy-classes/sudoku-solver-template.git
 [submodule "libs"]
 	path = libs
-	url = github:tatsy/1284-sds-lib-advml.git
+	url = https://github.com/tatsy/1284-sds-lib-advml.git
