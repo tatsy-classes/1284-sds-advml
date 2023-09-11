@@ -175,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../appendix/notation.html">1. 資料中の記号について</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/notation.html">資料中の表記について</a></li>
 </ul>
 
     </div>
@@ -402,7 +402,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1. 仮想開発環境とパッケージ管理</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anacondaminiconda">1.2. AnacondaとMiniconda</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda">1.2.1. Minicondaの導入</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda">1.2.1. Minicondaの導入</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsの設定</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mac-linux">Mac/Linuxの設定</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.2. パッケージのインストール・アンインストール</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.3. 仮想環境の作成・削除</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.4. 仮想環境の切り替え</a></li>
@@ -469,15 +473,18 @@ document.write(`
 <p>Minicondaを導入するには<a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>にアクセスし、自分のOSにあったインストーラをダウンロードしてくる。</p>
 <p>インストーラの選択だが、よほど古いPCを使っていない限り、Windowsなら「Windows 64-bit」を選択すれば良い。macOSの場合は、最近のM1/M2 Macを使っている場合は「macOS Apple M1 64bit bash」を選び、そうでない場合には「macOS Intel x86 64-bit bash」。Linuxの場合には、通常のデスクトップPCであれば「Linux 64-bit」を選べば良い。</p>
 <a class="reference internal image-reference" href="../../_images/miniconda_versions.jpg"><img alt="../../_images/miniconda_versions.jpg" class="align-center" src="../../_images/miniconda_versions.jpg" style="width: 75%;" /></a>
-<hr class="docutils" />
+<section id="windows">
+<h4>Windowsの設定<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h4>
 <p><strong>Windows</strong>であれば、インストーラの指示に従っていくとダウンロードが完了する。途中、以下の画面になったら、<strong>二番目の「Add Miniconda3 to my PATH environment variable」という項目にチェックを入れる</strong>こと。この項目にチェックを入れると、コマンドプロンプトやPowerShellから<code class="docutils literal notranslate"><span class="pre">conda</span></code>コマンドが使えるようになる。</p>
 <a class="reference internal image-reference" href="../../_images/windows_add_to_path.jpg"><img alt="../../_images/windows_add_to_path.jpg" class="align-center" src="../../_images/windows_add_to_path.jpg" style="width: 75%;" /></a>
 <p>インストールが完了したら、コマンドプロンプトないしPowerShellを起動し、以下のコマンドを実行する。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>init<span class="w"> </span>powershell
 </pre></div>
 </div>
-<p>すると、<code class="docutils literal notranslate"><span class="pre">conda</span></code>コマンドの各シェルソフトでの利用が可能になる。時折、最初の設定時に<code class="docutils literal notranslate"><span class="pre">conda</span></code>がコマンドとして認識されていない場合があるが、その場合は <code class="docutils literal notranslate"><span class="pre">$HOME/miniconda3/Scritps/conda</span></code>など、フルパスを直接していして実行すれば良い。</p>
-<hr class="docutils" />
+<p>すると、<code class="docutils literal notranslate"><span class="pre">conda</span></code>コマンドの各シェルソフトでの利用が可能になる。時折、最初の設定時に<code class="docutils literal notranslate"><span class="pre">conda</span></code>がコマンドとして認識されていない場合があるが、その場合は <code class="docutils literal notranslate"><span class="pre">$HOME/miniconda3/Scritps/conda</span></code>などの絶対パスを指定して実行する。</p>
+</section>
+<section id="mac-linux">
+<h4>Mac/Linuxの設定<a class="headerlink" href="#mac-linux" title="Permalink to this heading">#</a></h4>
 <p><strong>Mac</strong>や<strong>Linux</strong>であればターミナル環境を立ち上げた後、インストールしてきた<code class="docutils literal notranslate"><span class="pre">*.sh</span></code>ファイルをBashで実行する。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># インストーラのパスは適宜読み替えること</span>
 bash<span class="w"> </span>~/Downloads/Miconda3-xxxx-xxxxx.sh
@@ -502,6 +509,7 @@ conda<span class="w"> </span>init<span class="w"> </span>zsh
 <p>MacやLinuxの場合には、BashやZshに対して<code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>や<code class="docutils literal notranslate"><span class="pre">.zshrc</span></code>といった設定ファイルを書けば良いが、手っ取り早く初期設定がなされたシェルを使いたいのなら<a class="reference external" href="https://fishshell.com/">Fish</a>がおすすめだ。Fishはインストールした段階で、コマンドの補間等の最低限の機能が揃っているため、設定の敷居が低い。こちらも<a class="reference external" href="https://github.com/oh-my-fish/oh-my-fish">Oh My Fish</a>というソフトウェアを使うことで、もう少し気の利いた設定ができる。</p>
 <p>シェルの使いやすさは開発効率にも直結するので、ぜひ上記の設定にもトライしてみてほしい。</p>
 </div>
+</section>
 </section>
 <section id="id2">
 <h3><span class="section-number">1.2.2. </span>パッケージのインストール・アンインストール<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
@@ -580,7 +588,7 @@ conda<span class="w"> </span>init<span class="w"> </span>zsh
 </section>
 <section id="environment-yaml">
 <h3><span class="section-number">1.2.5. </span>environment.yamlの利用<a class="headerlink" href="#environment-yaml" title="Permalink to this heading">#</a></h3>
-<p>仮想環境を作る際、逐一、必要なパッケージを指定してインストールすると、別のPCに同じ環境を構築したいときに不便である。こんな時、Minicondaでは**environment.yaml`というファイルを利用して、仮想環境の設定をファイルを通じて行うことができる。</p>
+<p>仮想環境を作る際、逐一、必要なパッケージを指定してインストールすると、別のPCに同じ環境を構築したいときに不便である。こんな時、Minicondaでは<code class="docutils literal notranslate"><span class="pre">environment.yaml</span></code>というファイルを利用して、仮想環境の設定をファイルを通じて行うことができる。</p>
 <p>一例として、</p>
 <ul class="simple">
 <li><p>名前: advml</p></li>
@@ -598,7 +606,7 @@ conda<span class="w"> </span>init<span class="w"> </span>zsh
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matplotlib</span>
 </pre></div>
 </div>
-<p>environment.yamlから仮想環境を作成するには<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span></code> (<code class="docutils literal notranslate"><span class="pre">env</span></code>が入ることに注意)に、以下のようにYAMLファイルを指定すれば良い。</p>
+<p><code class="docutils literal notranslate"><span class="pre">environment.yaml</span></code>から仮想環境を作成するには<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span></code> (<code class="docutils literal notranslate"><span class="pre">env</span></code>が入ることに注意)に、以下のようにYAMLファイルを指定すれば良い。</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>environment.yaml
 </pre></div>
 </div>
@@ -684,6 +692,40 @@ conda<span class="w"> </span>init<span class="w"> </span>zsh
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello, world!
 HELLO, WORLD!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例4: 配列の和を求める</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 例5: 文字列のフォーマット</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">))</span>  <span class="c1"># C言語風</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x is </span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>  <span class="c1"># format関数を使う</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x is </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># フォーマット済み文字列リテラル (Python 3.6以降)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">x</span><span class="w"> </span><span class="si">= :</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># 評価元の文字列も表示 (Python 3.8以降)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is 10
+x is 10
+x is 10
+x = 10
 </pre></div>
 </div>
 </div>
@@ -864,7 +906,11 @@ runtime:
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.1. 仮想開発環境とパッケージ管理</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anacondaminiconda">1.2. AnacondaとMiniconda</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda">1.2.1. Minicondaの導入</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miniconda">1.2.1. Minicondaの導入</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windowsの設定</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mac-linux">Mac/Linuxの設定</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.2. パッケージのインストール・アンインストール</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.3. 仮想環境の作成・削除</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.2.4. 仮想環境の切り替え</a></li>
