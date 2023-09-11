@@ -16,9 +16,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
-      - name: Checkout submodules
-        shell: bash
-        run: git submodule update --init --recursive
+        with:
+          submodules: true
+          token: ${{ secrets.MY_PAT }}
 
       - name: Setup Python
         uses: actions/setup-python@v4
