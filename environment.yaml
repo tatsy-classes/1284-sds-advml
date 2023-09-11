@@ -3,22 +3,22 @@ channels:
   - defaults
   - pytorch
 dependencies:
-  - python^=3.9
+  - python>=3.9,<3.12
   - numpy
   - scipy
   - opencv
-  - opencv-contrib
   - matplotlib
   - seaborn
   - scikit-learn
   - scikit-image
-  - openpyxml
   - pandas
-  - pytorch^=1.10.0
+  - pytorch>=1.10.0
   - tqdm
   - networkx
   - ffmpeg
   - gymnasium[classic-control]
   - pip
   - pip:
+    - opencv-contrib
+    - openpyxml
     - jupyterlab
