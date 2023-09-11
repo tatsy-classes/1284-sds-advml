@@ -43,7 +43,7 @@ launch_buttons:
 # Launch button settings
 repository:
   url: https://github.com/tatsy/1284-sds-ml-advanced
-  path_to_book: contents
+  path_to_book: ./
   branch: master
 
 # Sphinx
