@@ -404,10 +404,16 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.1.1. 使用済みの数字を調べる</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.1.2. バックトラック法による解法</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.1.3. 処理の効率化</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exact-cover">8.1.4. 発展: Exact Coverによる高速な解法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exact-cover">8.1.4. 発展: Exact Coverによる高速な解法</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">数独のExact Coverによる定式化</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.2. 演習: コンピュータ数独大会</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.2. 演習: コンピュータ数独大会</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.2.1. 高度な問題を解くためのヒント</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -2637,8 +2643,8 @@ AAAdZGF0YQAAAAEAAAAATGF2ZjU4Ljc2LjEwMA==
 </div>
 </div>
 </div>
-<hr class="docutils" />
-<p><strong>数独のExact Coverによる定式化</strong></p>
+<section id="id6">
+<h4>数独のExact Coverによる定式化<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <p>では、数独の問題をExact Coverの問題として定式化してみよう。これには、数独の問題を少し違った見方から捕らえる必要がある。</p>
 <p>まず、各セルに何らかの値が入った場合に何が起こるのかを考えてみる。とあるA行X列のセルAXに1が入ることは、</p>
 <ul class="simple">
@@ -3775,8 +3781,9 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 </div>
 </section>
 </section>
-<section id="id6">
-<h2><span class="section-number">8.2. </span>演習: コンピュータ数独大会<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id7">
+<h2><span class="section-number">8.2. </span>演習: コンピュータ数独大会<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p>ここまでの内容を利用して、写真から数独の問題を読み取り、答えを返すプログラムを作成してみよう。</p>
 <p>本番では、以下のレベル1-3の内容で10問ずつ画像を与える。レベル1が1点、レベル2が2点、レベル3が3点の合計60点のうち何点を取れるかを競う。各レベルの画像は以下のような性質を持つ。</p>
 <ul class="simple">
@@ -3824,8 +3831,8 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 <p><strong>テスト方法</strong></p>
 <p>GitHub Classroomを使ってテストを行う。講義中で課題用のClassroomのURLを指示するので、そのURLをブラウザで開き、テンプレートレポジトリを自分のGitHubアカウントと紐付ける。以後、課題用のレポジトリにコードをpushする度にテストが走る。</p>
 <p>本講義では、実際の問題として与えている画像を公開することはしないが、どの程度の画像に対してプログラムが正しく動いているかは、Github Actionsのログを見ることで確認できる。</p>
-<div class="tips admonition">
-<p class="admonition-title">より高度な問題を解くためのヒント</p>
+<section id="id8">
+<h3><span class="section-number">8.2.1. </span>高度な問題を解くためのヒント<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>今回の演習では</p>
 <ul class="simple">
 <li><p>問題を画像から読み取る、</p></li>
@@ -3833,8 +3840,12 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 </ul>
 <p>という二つのタスクを解く必要がある。</p>
 <p>問題の読み取りについては、 <a class="reference internal" href="figure-detection.html#sec-figure-detection"><span class="std std-ref">図形の検出</span></a> の項で学んだ内容を参考に、数独問題の枠を検出し、セルの中の数字を切り離した画像を81枚得るようにするのが良い。ただし、レベル3のように問題が湾曲している場合には、問題全体に対して射影変換を考えても、問題を平面化することが難しいので、セルごとに射影変換を考える必要があるだろう。また、最初から問題を平面化することを放棄して、画像中から「数字がどこにあるか」、「その数字が何か」を直接検出して、数独の問題を復元する方法もあるかもしれない。</p>
+<p>また、ここまでで数字の認識にMNISTで学習した分類器を使ってきたが、今回与える数独の画像には、手書きの数字ではなくフォントを使って書かれた数字が使われている。この点を留意して、自分でデータセットを作り、分類器を学習することも有効だろう。</p>
 <p>次に数独の問題を解く際のポイントだが、今回は画像から問題を読み取っているために、読み取った数字が間違っている可能性がある。そのような誤りを許容するように解法のプログラムを書くと良い。具体的には「解が存在しない問題」や「解が複数ある問題」を上手く取り扱う方法を検討したり、数字を読み取った時に間違いを起こしそうなもの(例えば1と7など)を入れ替えて問題を何度か解いてみる、などの工夫が考えられるだろう。当然ながら、このような工夫を行うためには、一回の解法にかかる時間はできる限り少ない方が良い。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
 </div>
+</section>
 </section>
 </section>
 
@@ -3909,10 +3920,16 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.1.1. 使用済みの数字を調べる</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.1.2. バックトラック法による解法</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.1.3. 処理の効率化</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exact-cover">8.1.4. 発展: Exact Coverによる高速な解法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exact-cover">8.1.4. 発展: Exact Coverによる高速な解法</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">数独のExact Coverによる定式化</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">8.2. 演習: コンピュータ数独大会</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.2. 演習: コンピュータ数独大会</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.2.1. 高度な問題を解くためのヒント</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

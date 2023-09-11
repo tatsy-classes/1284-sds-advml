@@ -507,7 +507,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dc8122b269e2e0e4966fd5a3433089a10582d363e82e0b9404964895ea9c047f.png" src="../../_images/dc8122b269e2e0e4966fd5a3433089a10582d363e82e0b9404964895ea9c047f.png" />
+<img alt="../../_images/ab57d7c586a87a6d4c165817bab4ac96c1779b157ec5812eb86a9b090895069b.png" src="../../_images/ab57d7c586a87a6d4c165817bab4ac96c1779b157ec5812eb86a9b090895069b.png" />
 </div>
 </div>
 </section>
@@ -557,7 +557,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2b142e56448d21ccb31d074a7c43cbeb8af209ecb3c88079a71a7867d47b668a.png" src="../../_images/2b142e56448d21ccb31d074a7c43cbeb8af209ecb3c88079a71a7867d47b668a.png" />
+<img alt="../../_images/bfd01a873e7d678982b0097ddf75c44bfb1d40fb099993b5a2280cd5659673be.png" src="../../_images/bfd01a873e7d678982b0097ddf75c44bfb1d40fb099993b5a2280cd5659673be.png" />
 </div>
 </div>
 <p>また、 ヒストグラムを描画する際には、その合計が1になるように正規化することも多い。そのようにしたい場合には <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code> の引数に <code class="docutils literal notranslate"><span class="pre">density=True</span></code> を指定する</p>
@@ -577,7 +577,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6a57fbbbc4cf76c0b620b0e2890ba243228f06f69e6f45dc5dda97c24f47a9a2.png" src="../../_images/6a57fbbbc4cf76c0b620b0e2890ba243228f06f69e6f45dc5dda97c24f47a9a2.png" />
+<img alt="../../_images/1ac6f446dec461479aab9bcf8b4b079ee688bdae2e20b9e2ebc9188f9e381339.png" src="../../_images/1ac6f446dec461479aab9bcf8b4b079ee688bdae2e20b9e2ebc9188f9e381339.png" />
 </div>
 </div>
 </section>
@@ -1056,14 +1056,14 @@ document.write(`
     <span class="s2">&quot;This is a curve for $\sin(x)$&quot;</span><span class="p">,</span>
     <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">),</span>
     <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9</span><span class="p">),</span>
-    <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">},</span>
+    <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;arrowstyle&quot;</span><span class="p">:</span> <span class="s2">&quot;-&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;black&quot;</span><span class="p">},</span>
 <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a8731fdc7e719b73b9fd71ab577fbc7997fff0d7ef4e0ebc5725f5695eb5cefc.png" src="../../_images/a8731fdc7e719b73b9fd71ab577fbc7997fff0d7ef4e0ebc5725f5695eb5cefc.png" />
+<img alt="../../_images/d564007cd3951a027c4cb8fb92f80fffdff768b77267685e88cd728098deca3a.png" src="../../_images/d564007cd3951a027c4cb8fb92f80fffdff768b77267685e88cd728098deca3a.png" />
 </div>
 </div>
 </section>
@@ -1091,7 +1091,7 @@ document.write(`
 
 <span class="c1"># 1つ目のグラフ</span>
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_sin</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_sin</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_palette</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\sin(x)$&quot;</span><span class="p">)</span>
@@ -1099,7 +1099,7 @@ document.write(`
 
 <span class="c1"># 2つ目のグラフ</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_cos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:orange&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys_cos</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_palette</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\cos(x)$&quot;</span><span class="p">)</span>
@@ -1112,7 +1112,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/04f13459900c32fb52699fa56573e273c7e3b468dd235007dff75b95b890cf7b.png" src="../../_images/04f13459900c32fb52699fa56573e273c7e3b468dd235007dff75b95b890cf7b.png" />
+<img alt="../../_images/c57c4b33645422bbb78449dd8e08a4aedcd651ad4529846e201a3f40e082eb45.png" src="../../_images/c57c4b33645422bbb78449dd8e08a4aedcd651ad4529846e201a3f40e082eb45.png" />
 </div>
 </div>
 <p>2つめは、<code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code>関数により、一度に全てのグラフ要素を作ってしまう方法で、2行3列の要素が作りたければ、<code class="docutils literal notranslate"><span class="pre">plt.subplots(2,</span> <span class="pre">3)</span></code>のようにする。すると、<code class="docutils literal notranslate"><span class="pre">Figure</span></code>と<code class="docutils literal notranslate"><span class="pre">Axes</span></code>の配列が返ってくるので、配列の要素に対して、グラフの描画命令を呼び出せば良い。</p>
@@ -1196,7 +1196,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b5d30b08ffc67f05a5687347144c5bf1470ec17331a5826f96b09aa98f8a7f71.png" src="../../_images/b5d30b08ffc67f05a5687347144c5bf1470ec17331a5826f96b09aa98f8a7f71.png" />
+<img alt="../../_images/90c8d74a8cdb2ada3b82e1a088751bf33e0618a052bae168a6f46944bb2ab118.png" src="../../_images/90c8d74a8cdb2ada3b82e1a088751bf33e0618a052bae168a6f46944bb2ab118.png" />
 </div>
 </div>
 <div class="note admonition">
@@ -1269,7 +1269,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9203503406c34ba123cc80bb9309a893673028956ec067a8837563ad60336486.png" src="../../_images/9203503406c34ba123cc80bb9309a893673028956ec067a8837563ad60336486.png" />
+<img alt="../../_images/ace16d77cbcadaccb2acf3785879af14df2a99390ecb39ed86cf77ff6b472c6b.png" src="../../_images/ace16d77cbcadaccb2acf3785879af14df2a99390ecb39ed86cf77ff6b472c6b.png" />
 </div>
 </div>
 <p><strong>例2: 二次元散布図と各軸における周辺分布の描画</strong></p>
@@ -1301,7 +1301,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/82aa5d588be6d682b33914e5aa65c8f6f24e933f507db0c5c0f308034a3588e7.png" src="../../_images/82aa5d588be6d682b33914e5aa65c8f6f24e933f507db0c5c0f308034a3588e7.png" />
+<img alt="../../_images/dc50da4b52bfc9b45c95bb213b5d6af83a5b7d445b09778585ea53b9add2a357.png" src="../../_images/dc50da4b52bfc9b45c95bb213b5d6af83a5b7d445b09778585ea53b9add2a357.png" />
 </div>
 </div>
 <p>Seabornでは、この他にも数え切れないほど、様々なグラフが作成できるので、より深く勉強したい人は、Seabornのギャラリーを見て、自分の作りたいグラフを探してみると良い。</p>
