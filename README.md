@@ -1,8 +1,10 @@
 機械学習発展 (実践)
 ===
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
-[![github pages](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/gh-pages.yaml/badge.svg)](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/gh-pages.yaml)
+[![Github Pages](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/gh-pages.yaml/badge.svg)](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/gh-pages.yaml)
+[![Miniconda](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/conda.yaml/badge.svg?branch=master)](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/conda.yaml)
+
+[![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## 講義の概要
 
