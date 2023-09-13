@@ -14,6 +14,7 @@
 
 - Pythonの**読み書きが不自由なく**できる (基本的な読み書きだけだと辛いかもしれない)
 - WindowsのPowerShellやMac/Linuxの**ターミナルの基本操作**ができる
+- 大学1, 2年生程度の基本的な数学(**特に線形代数**)の知識
 
 ### 想定受講者
 
@@ -26,10 +27,10 @@
 
 ### 参考図書
 
-- M. Beyeler著、池田ほか訳『OpenCVとPythonによる機械学習プログラミング』、マイナビ [[URL]](https://book.mynavi.jp/ec/products/detail/id=92292)
-- A. Geron著『scikit-learn、Keras、TensorFlowによる実践機械学習 (第2版)』、オライリー社 [[URL]](https://www.oreilly.co.jp/books/9784873119281/)
-- 赤穂 著 『カーネル多変量解析』、岩波書店 [[URL]](https://www.iwanami.co.jp/book/b257891.html)
-- R. S. Sutton, A. G. Barto著、鈴木ほか訳『強化学習 (第2版)』、森北出版 [[URL]](https://www.morikita.co.jp/books/mid/082662)
+- M. Beyeler 著、池田ほか訳、『OpenCVとPythonによる機械学習プログラミング』、マイナビ [[URL]](https://book.mynavi.jp/ec/products/detail/id=92292)
+- A. Geron 著、下田 監修、長尾 訳、『scikit-learn、Keras、TensorFlowによる実践機械学習 (第2版)』、オライリー社 [[URL]](https://www.oreilly.co.jp/books/9784873119281/)
+- 赤穂 著、『カーネル多変量解析』、岩波書店 [[URL]](https://www.iwanami.co.jp/book/b257891.html)
+- R. S. Sutton, A. G. Barto 著、鈴木ほか訳、『強化学習 (第2版)』、森北出版 [[URL]](https://www.morikita.co.jp/books/mid/082662)
 
 ---
 
@@ -39,6 +40,11 @@
 
 - 実施時限: 秋冬学期 第2限
 - 教室: 東2号館棟2206教室
+
+### 講義形式
+
+- 資料の内容を全て講義内で解説することはしないので、必要に応じて自習をお願いします。
+- 単位が欲しいだけ人は、演習が最低限できていれば特に問題ありません。
 
 ### 講義日程
 
