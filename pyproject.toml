@@ -86,3 +86,9 @@ ignore = "Q000,E127,E203,E402,W503,W504"
 [tool.black]
 target-version = ["py39", "py310", "py311"]
 line-length = 99
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)s] %(message)s (%(filename)s:%(lineno)s)"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
