@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,6 +82,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -362,10 +372,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -373,7 +383,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -401,31 +411,31 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">7.1. 分類問題 (classification)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.2. データのスケーリング</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.3. 最近傍探索による分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.4. ロジスティック回帰による分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.5. バギングによる分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.6. ランダム・フォレストによる分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">7.7. AdaBoostによる分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.8. 勾配ブースティングによる分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-support-vector-machine">7.9. サポートベクトルマシンによる分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.10. カーネル法を用いたサポートベクトルマシン</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.10.1. ここまでの手法の比較</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.2. データのスケーリング</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.2.1. 最近傍探索による分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.2.2. ロジスティック回帰による分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.2.3. バギングによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.2.4. ランダム・フォレストによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">7.2.5. AdaBoostによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.2.6. 勾配ブースティングによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-support-vector-machine">7.2.7. サポートベクトルマシンによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.2.8. カーネル法を用いたサポートベクトルマシン</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.2.9. ここまでの手法の比較</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.11. ハイパーパラメータの調整</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.11.1. ホールドアウト検証</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7.11.2. 交差検証 (クロス・バリデーション)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.3. ハイパーパラメータの調整</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.3.1. ホールドアウト検証</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7.3.2. 交差検証 (クロス・バリデーション)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.12. 学習済みデータの保存</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">7.13. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">7.13.1. 2クラス分類の場合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">7.13.2. 多クラス分類の場合</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.4. 学習済みデータの保存</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">7.5. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">7.5.1. 2クラス分類の場合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">7.5.2. 多クラス分類の場合</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">7.14. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">7.15. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">7.6. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">7.7. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -595,9 +605,8 @@ document.write(`
 <p class="admonition-title">警告</p>
 <p>データのスケーリングを行う場合、<strong>スケールを決定するのに使えるデータは訓練データのみ</strong>であることに注意する (テストデータがどんなデータなのかは事前に分からないため)。また、テストをする際にスケーリングをするのを忘れないようにすること。</p>
 </div>
-</section>
 <section id="id2">
-<h2><span class="section-number">7.3. </span>最近傍探索による分類<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h3><span class="section-number">7.2.1. </span>最近傍探索による分類<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>識別を行う上で、最も単純な方法は手書き文字の画像を多次元ベクトルと見なして、多次元空間の近傍に多く存在するサンプルのラベルを、未知のデータのラベルとして採用するというものだろう。それを実現するのが<code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>である。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -646,7 +655,7 @@ document.write(`
 </ul>
 </section>
 <section id="id3">
-<h2><span class="section-number">7.4. </span>ロジスティック回帰による分類<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h3><span class="section-number">7.2.2. </span>ロジスティック回帰による分類<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>続いては入力を線形変換することで出力を予測する線形モデルの一種であるロジスティック回帰 (`LogisticRegression')を使ってみる。</p>
 <p>ロジスティック回帰のパラメータは行列<span class="math notranslate nohighlight">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span>とバイアス項<span class="math notranslate nohighlight">\(\mathbf{b} \in \mathbb{R}^{m}\)</span>で多クラスの分類問題の場合には、入力<span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^{n}\)</span>に対して、ソフトマックス関数<span class="math notranslate nohighlight">\(\sigma(\cdot)\)</span>を用いて出力である分類ラベル<span class="math notranslate nohighlight">\(\mathbf{y} \in \mathbb{R}^{m}\)</span>を予測する。</p>
 <div class="math notranslate nohighlight">
@@ -697,7 +706,7 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 </ul>
 </section>
 <section id="id4">
-<h2><span class="section-number">7.5. </span>バギングによる分類<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h3><span class="section-number">7.2.3. </span>バギングによる分類<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>バギング(bagging)とはBootstrap AGGregatINGから作られた造語であり、訓練データの部分集合にあたる<strong>ブートストラップ・サンプル</strong>を用いて学習した異なる分類器の多数決によって、最終的な分類予測を行う機械学習法である<strong>アンサンブル学習の一種</strong>である。</p>
 <p>例えば、訓練データが<span class="math notranslate nohighlight">\(N\)</span>個のサンプルからなる時、<span class="math notranslate nohighlight">\(M\)</span>個のサブサンプル (<span class="math notranslate nohighlight">\(M \leq N\)</span>)を取り出して、分類器を学習する。この操作を複数のサブサンプルと分類器に対して実行する。このようにブートストラップ・サンプルで訓練された分類器のことを<strong>弱分類器</strong>と呼ぶ。</p>
 <p>最終結果は、単純には、得られた分類器の予測の中で一番多数の票を集めたものが与えられる。以下に単純なバギングの実装例を与える。</p>
@@ -788,7 +797,7 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 <p>バギングは、部分データを用いて学習した複数の分類器を組み合わせているだけなので、弱分類に用いる分類器(上記の例では<code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>)と比べて、それほど精度が増加しないことが多い。これは、部分データ同士の相関が大きく、結果として、弱分類器の予測が似通ってしまうことに起因する。</p>
 </section>
 <section id="id5">
-<h2><span class="section-number">7.6. </span>ランダム・フォレストによる分類<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h3><span class="section-number">7.2.4. </span>ランダム・フォレストによる分類<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>ランダム・フォレストはバギングの弱分類器による推論が似通ってしまう問題を解決する分類器の一つである。バギングにおいて、予測が偏ってしまう原因は、ブートストラップ・サンプルのサイズ<span class="math notranslate nohighlight">\(M\)</span>が十分<span class="math notranslate nohighlight">\(N\)</span>に近ければ、訓練データの分布が似通ってしまうためである。</p>
 <p>そこで、ランダム・フォレストでは、訓練データの特徴のうち、ランダムに数個だけを選んで弱分類器を学習する。このようにすることで十分に<span class="math notranslate nohighlight">\(N\)</span>に近い<span class="math notranslate nohighlight">\(M\)</span>であっても、分布の異なるサンプル集合を得ることができる。</p>
 <p>ランダム・フォレストには通常、弱分類器として決定木が用いられることが多いが、以下では、<code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code>を用いた簡易実装を紹介する。</p>
@@ -886,7 +895,7 @@ x'_i = \sigma(\mathbf{x}) = \frac{\exp x_i}{\sum_{j=1}^n \exp x_j}
 </ul>
 </section>
 <section id="adaboost">
-<h2><span class="section-number">7.7. </span>AdaBoostによる分類<a class="headerlink" href="#adaboost" title="Permalink to this heading">#</a></h2>
+<h3><span class="section-number">7.2.5. </span>AdaBoostによる分類<a class="headerlink" href="#adaboost" title="Permalink to this heading">#</a></h3>
 <p>バギングを拡張したアンサンブル学習には、ランダム・フォレスト以外にも<strong>ブースティング</strong>という手法がある。ブースティングは、バギングのように独立した弱分類器を学習するのではなく、弱分類器の列を順に学習していく。この際、新しく列に追加される弱分類器は、<strong>それまでの学習結果で上手く分類できていないサンプルをより良く識別するように補正</strong>をいれて学習する。</p>
 <p>このようなブースティング法には多くのバリエーションがあるが、ここではその代表格である<strong>AdaBoost</strong>を紹介する。AdaBoostの大まかな学習手順は以下のようになる。</p>
 <ol class="arabic simple">
@@ -951,20 +960,18 @@ y = \sum_{i=1}^{n_{\rm weak}} \alpha_i f_i(\mathbf{x})
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">7.8. </span>勾配ブースティングによる分類<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h3><span class="section-number">7.2.6. </span>勾配ブースティングによる分類<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>ブースティングの手法には勾配ブースティングと呼ばれる手法もある。AdaBoostでは、<span class="math notranslate nohighlight">\(f_{t-1}\)</span>で分類が上手くいっていないサンプルに<strong>重みを強くつける</strong>という方法で識別精度が上がるように補正を掛けていた。</p>
 <p>勾配ブースティングは、<span class="math notranslate nohighlight">\(f_{t-1}\)</span>までの<strong>識別誤差</strong>を補正するように次の弱分類器<span class="math notranslate nohighlight">\(f_{t}\)</span>を学習する。言い換えると、各弱分類器は分類問題を解くのではなく、分類の誤差を補正するような<strong>勾配を予測する問題</strong>を解く。従って、勾配ブースティングは各弱分類器の予測を多数決で採用するのではなく、全ての弱分類器を統合した分類器<span class="math notranslate nohighlight">\(F_t\)</span>が一つの予測を返す。</p>
 <p>勾配ブースティングの大まかな学習手順は以下のようになる。</p>
 <ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(F_1 = f_1\)</span> を訓練データ <span class="math notranslate nohighlight">\((\mathbf{x}_i, y_i)\)</span> から作成する。</p></li>
-<li><p>現在の予測ベクトル <span class="math notranslate nohighlight">\(y_i^{(1)}\)</span> による誤差 <span class="math notranslate nohighlight">\(L\)</span> の勾配を以下のように計算する。</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
+<li><p><span class="math notranslate nohighlight">\(F_1 = f_1\)</span>を訓練データ<span class="math notranslate nohighlight">\((\mathbf{x}_i, y_i)\)</span>から作成する。</p></li>
+<li><p>現在の予測ベクトル<span class="math notranslate nohighlight">\(y_i^{(1)}\)</span>による誤差<span class="math notranslate nohighlight">\(L\)</span>の勾配
+$<span class="math notranslate nohighlight">\(
 r_i^{(1)} = -\frac{\partial L(y_i)}{\partial y_i}
-\]</div>
-<ol class="arabic simple" start="3">
-<li><p>この残差 <span class="math notranslate nohighlight">\(r_i^{(1)}\)</span> を最小化するように <span class="math notranslate nohighlight">\(f_2\)</span> を訓練データ <span class="math notranslate nohighlight">\((\mathbf{x}_i, r_i^{(1)})\)</span> により学習する。</p></li>
+\)</span>$
+を計算する。</p></li>
+<li><p>この残差<span class="math notranslate nohighlight">\(r_i^{(1)}\)</span>を最小化するように<span class="math notranslate nohighlight">\(f_2\)</span>を訓練データ<span class="math notranslate nohighlight">\((\mathbf{x}_i, r_i^{(1)}\)</span>により学習する。</p></li>
 <li><p><span class="math notranslate nohighlight">\(f_2\)</span>により与えられる勾配の予測値<span class="math notranslate nohighlight">\(h_2\)</span>を用いて誤差が最も下がるステップ幅<span class="math notranslate nohighlight">\(\gamma\)</span>をラインサーチによって求める。</p></li>
 <li><p><span class="math notranslate nohighlight">\(F_2(\mathbf{x}) = f_1(\mathbf{x}) + \gamma f_2(\mathbf{x})\)</span>と更新する。</p></li>
 <li><p>以下、2.から5.のステップを新たな<span class="math notranslate nohighlight">\(f_t\)</span>に対して繰り返す。</p></li>
@@ -1011,7 +1018,7 @@ r_i^{(1)} = -\frac{\partial L(y_i)}{\partial y_i}
 </div>
 </section>
 <section id="ssec-support-vector-machine">
-<span id="id9"></span><h2><span class="section-number">7.9. </span>サポートベクトルマシンによる分類<a class="headerlink" href="#ssec-support-vector-machine" title="Permalink to this heading">#</a></h2>
+<span id="id9"></span><h3><span class="section-number">7.2.7. </span>サポートベクトルマシンによる分類<a class="headerlink" href="#ssec-support-vector-machine" title="Permalink to this heading">#</a></h3>
 <p>サポートベクトルマシンは元々、2クラス分類に対して提案された手法で、<strong>サポートベクトル</strong>という境界線(より厳密には超平面)を2つのクラスに属するデータ集合から求める問題を解く。具体的には、データ空間の中で定義される超平面<span class="math notranslate nohighlight">\(\mathbf{a} \cdot \mathbf{x} + b=0\)</span>について、2つのクラスが<span class="math notranslate nohighlight">\(y_i \in \{ +1, -1 \}\)</span>のラベルを持つとして、以下の距離を最大化するような超平面のパラメータ<span class="math notranslate nohighlight">\((\mathbf{a}, b)\)</span>を求める。</p>
 <p>点と超平面との距離<span class="math notranslate nohighlight">\(d(\mathbf{x}_i)\)</span>は、<span class="math notranslate nohighlight">\(y_i\)</span>の符号を考慮すると、</p>
 <div class="math notranslate nohighlight">
@@ -1036,16 +1043,15 @@ d(\mathbf{x}_i) = \frac{|\mathbf{a} \cdot \mathbf{x}_i + b|}{\| \mathbf{a} \|} =
 \min_{\mathbf{a}, b} \frac{1}{2} \| \mathbf{a} \|^2 \quad \text{s.t.} \quad y_i (\mathbf{a} \cdot \mathbf{x}_i + b) \geq 1 \quad \text{for}~~i=1, \ldots, N
 \]</div>
 <p>あとはこの問題をLagrangeの未定乗数法を用いて解けば良い。</p>
-<p>上記の式にLagrangeの未定乗数法を適用してLagrange関数を求めると、</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p>上記の式にLagrangeの未定乗数法を適用してLagrange関数を求めると、
+$<span class="math notranslate nohighlight">\(
 \begin{aligned}
 \mathcal{L}(\mathbf{a}, b, \boldsymbol{\lambda})
 &amp;= \frac{1}{2} \| \mathbf{a} \|^2 - \boldsymbol{\lambda}^\top (\mathbf{y} \odot (\mathbf{X} \mathbf{a} + b \mathbf{1}) - \mathbf{1}) \\
 &amp;= \frac{1}{2} \| \mathbf{a} \|^2 - \boldsymbol{\lambda}^\top (\mathbf{Y} \mathbf{X} \mathbf{a} + b \mathbf{y} - \mathbf{1})
 \end{aligned}
-\end{split}\]</div>
-<p>のように書ける。ただし、<span class="math notranslate nohighlight">\(\mathbf{Y}\)</span>は<span class="math notranslate nohighlight">\(\mathbf{y}\)</span>の要素を対角成分に持つ対角成分である。この関数の勾配が0になる箇所を求めれば、所望の<span class="math notranslate nohighlight">\((\mathbf{a}, b)\)</span>が得られるので、以下の連立方程式を解けば良い。</p>
+\)</span><span class="math notranslate nohighlight">\(
+のように書ける。ただし、\)</span>\mathbf{Y}<span class="math notranslate nohighlight">\(は\)</span>\mathbf{y}<span class="math notranslate nohighlight">\(の要素を対角成分に持つ対角成分である。この関数の勾配が0になる箇所を求めれば、所望の\)</span>(\mathbf{a}, b)$が得られるので、以下の連立方程式を解けば良い。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -1212,7 +1218,7 @@ d(\mathbf{x}_i) = \frac{|\mathbf{a} \cdot \mathbf{x}_i + b|}{\| \mathbf{a} \|} =
 </ul>
 </section>
 <section id="id10">
-<h2><span class="section-number">7.10. </span>カーネル法を用いたサポートベクトルマシン<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<h3><span class="section-number">7.2.8. </span>カーネル法を用いたサポートベクトルマシン<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <p>ここまでの例では、分類対象が超平面により分割されることを仮定してきたが、実際の分布においては、必ずしも超平面で区切られる物ばかりではない。以下の例を見てほしい。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1475,8 +1481,9 @@ K = \Phi \Lambda \Phi^T
 <li><p>評価時精度: <span class="pasted-text">81.21</span>%</p></li>
 </ul>
 <p>すると、カーネル法を用いたSVMが線形SVMよりも精度が劣っていることが分かる。特にRBFを用いることで訓練の精度は上がっているが、過学習が起こり、テストデータに対する精度が大幅に低下していることが分かるだろう。</p>
+</section>
 <section id="id11">
-<h3><span class="section-number">7.10.1. </span>ここまでの手法の比較<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.2.9. </span>ここまでの手法の比較<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <p>最後にここまでの手法をグラフで比較すると、以下のようになる。手法選びの参考にしてほしい。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1513,11 +1520,11 @@ K = \Phi \Lambda \Phi^T
 </section>
 </section>
 <section id="id12">
-<h2><span class="section-number">7.11. </span>ハイパーパラメータの調整<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>ハイパーパラメータの調整<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
 <p>上記のサポートベクトルマシンの例では、おそらくテストデータに対する判別性能がそれほど高くならないはずである。カーネル法を用いたサポートベクトルマシンは強力で、線形SVMよりも高い性能を出すことが可能だが、ハイパーパラメータの設定によっては、訓練データに過剰適合するなどして、パフォーマンスが上がらないことがある。</p>
 <p>このような時には、何らかの方法で適切なハイパーパラメータ (SVMの例では<code class="docutils literal notranslate"><span class="pre">C</span></code>や<code class="docutils literal notranslate"><span class="pre">gamma</span></code>)を見つける必要がある。</p>
 <section id="id13">
-<h3><span class="section-number">7.11.1. </span>ホールドアウト検証<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.1. </span>ホールドアウト検証<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <p>広く用いられるハイパーパラメータの決定法はデータセットを訓練、検証、テストの三つのデータに分けて、検証用データに対するパフォーマンスが高くなるようなハイパーパラメータを設定する方法である。このような方法を<strong>ホールドアウト検証</strong>と呼ぶ。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1584,80 +1591,80 @@ K = \Phi \Lambda \Phi^T
 <span class="expanded">Hide code cell output</span>
 </summary>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "def7c0af1d6c4b64821aef39033744c0", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6d49d1bbba054461badc7d7083fb2c2f", "version_major": 2, "version_minor": 0}</script></div>
 </details>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_1f2b3_row3_col0, #T_1f2b3_row3_col1, #T_1f2b3_row3_col2 {
+#T_e182a_row3_col0, #T_e182a_row3_col1, #T_e182a_row3_col2 {
   background-color: pink;
   font-weight: bold;
 }
 </style>
-<table id="T_1f2b3">
+<table id="T_e182a">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_1f2b3_level0_col0" class="col_heading level0 col0" >C</th>
-      <th id="T_1f2b3_level0_col1" class="col_heading level0 col1" >gamma</th>
-      <th id="T_1f2b3_level0_col2" class="col_heading level0 col2" >Accuracy</th>
+      <th id="T_e182a_level0_col0" class="col_heading level0 col0" >C</th>
+      <th id="T_e182a_level0_col1" class="col_heading level0 col1" >gamma</th>
+      <th id="T_e182a_level0_col2" class="col_heading level0 col2" >Accuracy</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_1f2b3_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_1f2b3_row0_col0" class="data row0 col0" >0.010000</td>
-      <td id="T_1f2b3_row0_col1" class="data row0 col1" >0.100000</td>
-      <td id="T_1f2b3_row0_col2" class="data row0 col2" >62.950000</td>
+      <th id="T_e182a_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_e182a_row0_col0" class="data row0 col0" >0.010000</td>
+      <td id="T_e182a_row0_col1" class="data row0 col1" >0.100000</td>
+      <td id="T_e182a_row0_col2" class="data row0 col2" >62.950000</td>
     </tr>
     <tr>
-      <th id="T_1f2b3_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_1f2b3_row1_col0" class="data row1 col0" >0.010000</td>
-      <td id="T_1f2b3_row1_col1" class="data row1 col1" >1.000000</td>
-      <td id="T_1f2b3_row1_col2" class="data row1 col2" >71.400000</td>
+      <th id="T_e182a_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_e182a_row1_col0" class="data row1 col0" >0.010000</td>
+      <td id="T_e182a_row1_col1" class="data row1 col1" >1.000000</td>
+      <td id="T_e182a_row1_col2" class="data row1 col2" >71.400000</td>
     </tr>
     <tr>
-      <th id="T_1f2b3_level0_row2" class="row_heading level0 row2" >2</th>
-      <td id="T_1f2b3_row2_col0" class="data row2 col0" >0.010000</td>
-      <td id="T_1f2b3_row2_col1" class="data row2 col1" >10.000000</td>
-      <td id="T_1f2b3_row2_col2" class="data row2 col2" >76.900000</td>
+      <th id="T_e182a_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_e182a_row2_col0" class="data row2 col0" >0.010000</td>
+      <td id="T_e182a_row2_col1" class="data row2 col1" >10.000000</td>
+      <td id="T_e182a_row2_col2" class="data row2 col2" >76.900000</td>
     </tr>
     <tr>
-      <th id="T_1f2b3_level0_row3" class="row_heading level0 row3" >3</th>
-      <td id="T_1f2b3_row3_col0" class="data row3 col0" >1.000000</td>
-      <td id="T_1f2b3_row3_col1" class="data row3 col1" >0.100000</td>
-      <td id="T_1f2b3_row3_col2" class="data row3 col2" >82.940000</td>
+      <th id="T_e182a_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_e182a_row3_col0" class="data row3 col0" >1.000000</td>
+      <td id="T_e182a_row3_col1" class="data row3 col1" >0.100000</td>
+      <td id="T_e182a_row3_col2" class="data row3 col2" >82.940000</td>
     </tr>
     <tr>
-      <th id="T_1f2b3_level0_row4" class="row_heading level0 row4" >4</th>
-      <td id="T_1f2b3_row4_col0" class="data row4 col0" >1.000000</td>
-      <td id="T_1f2b3_row4_col1" class="data row4 col1" >1.000000</td>
-      <td id="T_1f2b3_row4_col2" class="data row4 col2" >70.540000</td>
+      <th id="T_e182a_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_e182a_row4_col0" class="data row4 col0" >1.000000</td>
+      <td id="T_e182a_row4_col1" class="data row4 col1" >1.000000</td>
+      <td id="T_e182a_row4_col2" class="data row4 col2" >70.540000</td>
     </tr>
     <tr>
-      <th id="T_1f2b3_level0_row5" class="row_heading level0 row5" >5</th>
-      <td id="T_1f2b3_row5_col0" class="data row5 col0" >1.000000</td>
-      <td id="T_1f2b3_row5_col1" class="data row5 col1" >10.000000</td>
-      <td id="T_1f2b3_row5_col2" class="data row5 col2" >77.000000</td>
+      <th id="T_e182a_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_e182a_row5_col0" class="data row5 col0" >1.000000</td>
+      <td id="T_e182a_row5_col1" class="data row5 col1" >10.000000</td>
+      <td id="T_e182a_row5_col2" class="data row5 col2" >77.000000</td>
     </tr>
     <tr>
-      <th id="T_1f2b3_level0_row6" class="row_heading level0 row6" >6</th>
-      <td id="T_1f2b3_row6_col0" class="data row6 col0" >100.000000</td>
-      <td id="T_1f2b3_row6_col1" class="data row6 col1" >0.100000</td>
-      <td id="T_1f2b3_row6_col2" class="data row6 col2" >79.910000</td>
+      <th id="T_e182a_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_e182a_row6_col0" class="data row6 col0" >100.000000</td>
+      <td id="T_e182a_row6_col1" class="data row6 col1" >0.100000</td>
+      <td id="T_e182a_row6_col2" class="data row6 col2" >79.910000</td>
     </tr>
     <tr>
-      <th id="T_1f2b3_level0_row7" class="row_heading level0 row7" >7</th>
-      <td id="T_1f2b3_row7_col0" class="data row7 col0" >100.000000</td>
-      <td id="T_1f2b3_row7_col1" class="data row7 col1" >1.000000</td>
-      <td id="T_1f2b3_row7_col2" class="data row7 col2" >48.500000</td>
+      <th id="T_e182a_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_e182a_row7_col0" class="data row7 col0" >100.000000</td>
+      <td id="T_e182a_row7_col1" class="data row7 col1" >1.000000</td>
+      <td id="T_e182a_row7_col2" class="data row7 col2" >48.500000</td>
     </tr>
     <tr>
-      <th id="T_1f2b3_level0_row8" class="row_heading level0 row8" >8</th>
-      <td id="T_1f2b3_row8_col0" class="data row8 col0" >100.000000</td>
-      <td id="T_1f2b3_row8_col1" class="data row8 col1" >10.000000</td>
-      <td id="T_1f2b3_row8_col2" class="data row8 col2" >69.760000</td>
+      <th id="T_e182a_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_e182a_row8_col0" class="data row8 col0" >100.000000</td>
+      <td id="T_e182a_row8_col1" class="data row8 col1" >10.000000</td>
+      <td id="T_e182a_row8_col2" class="data row8 col2" >69.760000</td>
     </tr>
   </tbody>
 </table>
@@ -1700,7 +1707,7 @@ K = \Phi \Lambda \Phi^T
 <p>この通り、ホールドアウト検証を実行したことで、より高い分類精度が得られていることが分かる。</p>
 </section>
 <section id="id14">
-<h3><span class="section-number">7.11.2. </span>交差検証 (クロス・バリデーション)<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.3.2. </span>交差検証 (クロス・バリデーション)<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <p>もう一つのよく用いられるハイパーパラメータの調整方法に交差検証(クロス・バリデーション)がある。交差検証は訓練データをいくつかのグループに分けて、そのグループのうち1つを除いたデータを訓練に用い、除いておいた1グループを検証に用いる、というものである。</p>
 <p>交差検証は、グループが<span class="math notranslate nohighlight">\(G\)</span>個あるとき、1つのパラメータセットについて<span class="math notranslate nohighlight">\(G\)</span>回の訓練と<span class="math notranslate nohighlight">\(G\)</span>回の検証が必要になるため、非常に計算量が大きい。</p>
 <p>ここでは、scikit-learnに用意されている<code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> (grid search cross validation)を用いて交差検証によるハイパーパラメータ調整を試してみる。</p>
@@ -1948,7 +1955,7 @@ K = \Phi \Lambda \Phi^T
 </section>
 </section>
 <section id="id15">
-<h2><span class="section-number">7.12. </span>学習済みデータの保存<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>学習済みデータの保存<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
 <p>ハイパーパラメータの調整が完了したら、学習済みのモデルをファイルに保存し、再学習なしで、テストに入れるようにしておこう。</p>
 <p>通常、モデルは複数のパラメータから構成されており、これらをファイルに保存できるような「文字列」や「バイト列」の集合に変換する操作を<strong>シリアライズ</strong>と呼ぶ。また、このようなシリアライズを行うプログラムを<strong>シリアライザ</strong>と呼ぶ。</p>
 <p>Pythonで標準使用できるシリアライザには<code class="docutils literal notranslate"><span class="pre">pickle</span></code>がある。<code class="docutils literal notranslate"><span class="pre">pickle</span></code>はPythonの標準的なオブジェクト (例えば<code class="docutils literal notranslate"><span class="pre">list</span></code>や<code class="docutils literal notranslate"><span class="pre">dict</span></code>や、その他のオブジェクト)をシリアライズしたバイトデータを作成してくれるので、それをファイルに保存すれば良い。</p>
@@ -2001,11 +2008,11 @@ K = \Phi \Lambda \Phi^T
 <p>このように、保存しておいたファイルから全く同じテスト精度が得られることが確認できた。</p>
 </section>
 <section id="id16">
-<h2><span class="section-number">7.13. </span>分類問題の評価方法<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.5. </span>分類問題の評価方法<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <p>ここまで、分類の精度を「どの程度正しく分類ができたか」について評価してきたが、この評価方法は必ずしも、分類器の性能を正しく評価するとは言い切れない。例えば、数字の識別問題において、データセットに含まれる数字の90%が0で、残りの10%が1-9であったとする。</p>
 <p>この場合、識別器がどんな画像が入力されても「0」だと認識するようになれば、90%の識別精度が得られることになるが、これは全ての数字を正しく識別しているとは言いがたい。</p>
 <section id="id17">
-<h3><span class="section-number">7.13.1. </span>2クラス分類の場合<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.5.1. </span>2クラス分類の場合<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
 <p>多クラス識別の問題について考える前に、2クラスの分類問題について考えてみる。例えば、とあるデータからある人が病気なのか、そうでないのかを識別するとしよう。</p>
 <p>この場合、以下の4つの場合が考えられる。</p>
 <ul class="simple">
@@ -2084,7 +2091,7 @@ K = \Phi \Lambda \Phi^T
 </div>
 </section>
 <section id="id18">
-<h3><span class="section-number">7.13.2. </span>多クラス分類の場合<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.5.2. </span>多クラス分類の場合<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
 <p>多クラス分類に対しても、精度(accuracy)、適合率(precision)、再現率(recall)、ならびにF1値と類似した指標を計算することができる。</p>
 <p>本題に入る前に、先ほど学習しておいたSVMの性能を、混合行列により可視化してみる。</p>
 <div class="cell docutils container">
@@ -2180,14 +2187,14 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
 </section>
 </section>
 <section id="id19">
-<h2><span class="section-number">7.14. </span>練習問題<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.6. </span>練習問題<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>マクロ平均ならびにマイクロ平均を用いて、本節で紹介した分類手法の性能を比較せよ。</p></li>
 <li><p>scikit-learnの<code class="docutils literal notranslate"><span class="pre">SVC</span></code>には<code class="docutils literal notranslate"><span class="pre">kernel=...</span></code>の引数に直接カーネル関数を渡すことができる。これを用いて、コサイン・カーネルならびにカイ二乗カーネルについて性能を評価せよ。</p></li>
 </ol>
 </section>
 <section id="id20">
-<h2><span class="section-number">7.15. </span>参考文献<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.7. </span>参考文献<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id21">
 <dl class="citation">
 <dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id7">CG16</a></span></dt>
@@ -2226,11 +2233,10 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="figure-detection.html"
@@ -2250,10 +2256,7 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2269,31 +2272,31 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">7.1. 分類問題 (classification)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.2. データのスケーリング</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.3. 最近傍探索による分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.4. ロジスティック回帰による分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.5. バギングによる分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.6. ランダム・フォレストによる分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">7.7. AdaBoostによる分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.8. 勾配ブースティングによる分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-support-vector-machine">7.9. サポートベクトルマシンによる分類</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.10. カーネル法を用いたサポートベクトルマシン</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.10.1. ここまでの手法の比較</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">7.2. データのスケーリング</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">7.2.1. 最近傍探索による分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">7.2.2. ロジスティック回帰による分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">7.2.3. バギングによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7.2.4. ランダム・フォレストによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaboost">7.2.5. AdaBoostによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7.2.6. 勾配ブースティングによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-support-vector-machine">7.2.7. サポートベクトルマシンによる分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7.2.8. カーネル法を用いたサポートベクトルマシン</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7.2.9. ここまでの手法の比較</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.11. ハイパーパラメータの調整</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.11.1. ホールドアウト検証</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7.11.2. 交差検証 (クロス・バリデーション)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.3. ハイパーパラメータの調整</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.3.1. ホールドアウト検証</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7.3.2. 交差検証 (クロス・バリデーション)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.12. 学習済みデータの保存</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">7.13. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">7.13.1. 2クラス分類の場合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">7.13.2. 多クラス分類の場合</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.4. 学習済みデータの保存</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">7.5. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">7.5.1. 2クラス分類の場合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">7.5.2. 多クラス分類の場合</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">7.14. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">7.15. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">7.6. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">7.7. 参考文献</a></li>
 </ul>
   </nav></div>
 
@@ -2341,8 +2344,8 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,6 +82,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -362,10 +372,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -373,7 +383,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -1819,10 +1829,10 @@ document.write(`
 \end{split}\]</div>
 <p>を計算し、<span class="math notranslate nohighlight">\(\mathbf{H}\)</span>のトレースと行列式の比、</p>
 <div class="math notranslate nohighlight" id="equation-eq-ratio-tr-det">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-eq-ratio-tr-det" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-eq-ratio-tr-det" title="この数式へのパーマリンク">#</a></span>\[
 \rho = \frac{(\text{tr} \mathbf{H})^2}{\text{det}\mathbf{H}}
 \]</div>
-<p>の値が一定の閾値<span class="math notranslate nohighlight">\(t\)</span>以下であれば、その候補特徴点を実際の特徴点として採用する。行列<span class="math notranslate nohighlight">\(\mathbf{H}\)</span>の固有値を<span class="math notranslate nohighlight">\(\lambda_1\)</span>, <span class="math notranslate nohighlight">\(\lambda_2\)</span> (ただし<span class="math notranslate nohighlight">\(\lambda_1 &gt; \lambda_2\)</span>とするとき、トレースと行列式は、それぞれ<span class="math notranslate nohighlight">\(\lambda_1 + \lambda_2\)</span>, <span class="math notranslate nohighlight">\(\lambda_1 \lambda_2\)</span>と表せるので、<a class="reference internal" href="#equation-eq-ratio-tr-det">(2.2)</a>は、</p>
+<p>の値が一定の閾値<span class="math notranslate nohighlight">\(t\)</span>以下であれば、その候補特徴点を実際の特徴点として採用する。行列<span class="math notranslate nohighlight">\(\mathbf{H}\)</span>の固有値を<span class="math notranslate nohighlight">\(\lambda_1\)</span>, <span class="math notranslate nohighlight">\(\lambda_2\)</span> (ただし<span class="math notranslate nohighlight">\(\lambda_1 &gt; \lambda_2\)</span>とするとき、トレースと行列式は、それぞれ<span class="math notranslate nohighlight">\(\lambda_1 + \lambda_2\)</span>, <span class="math notranslate nohighlight">\(\lambda_1 \lambda_2\)</span>と表せるので、<a class="reference internal" href="#equation-eq-ratio-tr-det">(2.1)</a>は、</p>
 <div class="math notranslate nohighlight">
 \[
 \rho = \frac{\left( \lambda_1 + \lambda_2 \right)^2}{\lambda_1 \lambda_2} = \frac{\left( 1 + \frac{\lambda_2}{\lambda_1} \right)^2}{\frac{\lambda_2}{\lambda_1}} = \frac{(1 + r)^2}{r^2}
@@ -1856,7 +1866,7 @@ t = \frac{(r + 1)^2}{r}
 </div>
 </div>
 <p>以上の処理を、直感的に述べれば、前半のDoGの処理は画像中の勾配がある箇所を検出し、さらに、その<strong>勾配がどの程度の鮮鋭度を持つのかをスケールとして定量化</strong>しようとしている。</p>
-<p>後半の処理、勾配の強さ (鮮鋭度は盛り上がりの角度であり、強さとは異なる)を見ており、<span class="math notranslate nohighlight">\(r = 10\)</span>とした場合に<a class="reference internal" href="#equation-eq-ratio-tr-det">(2.2)</a>が<span class="math notranslate nohighlight">\(t\)</span>より小さい、ということは、即ち<strong>ヘッセ行列の2つの固有値の比が一定以下</strong> (10:1以下)かを検証している。</p>
+<p>後半の処理、勾配の強さ (鮮鋭度は盛り上がりの角度であり、強さとは異なる)を見ており、<span class="math notranslate nohighlight">\(r = 10\)</span>とした場合に<a class="reference internal" href="#equation-eq-ratio-tr-det">(2.1)</a>が<span class="math notranslate nohighlight">\(t\)</span>より小さい、ということは、即ち<strong>ヘッセ行列の2つの固有値の比が一定以下</strong> (10:1以下)かを検証している。</p>
 <p>なお、この<span class="math notranslate nohighlight">\(r\)</span>の値は以下のOpenCVのコードでは<code class="docutils literal notranslate"><span class="pre">edgeThreshold</span></code>という変数に対応する。もし、各画像から検出される特徴点が少なすぎるようであれば、この値を少し上げると、固有値の差が小さい(=エッジがそれほど先鋭ではない)特徴点も残されるようになる。</p>
 <p>また、詳細は割愛するが、各特徴点には、勾配方向も同時に計算される。これは特徴点周りの画素に対して計算された勾配方向のヒストグラムの中で、いくつかの支配的な方向を特徴点に与えるものである。従って、各特徴点には2つ以上の勾配方向が割り当てられる可能性がある。</p>
 <hr class="docutils" />
@@ -2082,13 +2092,13 @@ Wall time: 2.3 s
 <p>そこで、クラスタリングを用いる代わりに、特徴量の分布をGauss混合モデルによって近似しておき、各ガウス分布への寄与 (小数で表わされる)の和を画像の特徴ベクトルとして与えることを考える。</p>
 <p><strong>Gauss混合モデル</strong>とは、複数のGauss分布を和が1となるような正の重みによって重み付けたものであり、確率密度関数<span class="math notranslate nohighlight">\(P(\mathbf{x} | \boldsymbol\Theta)\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^D\)</span>が以下の形で書ける。</p>
 <div class="math notranslate nohighlight" id="equation-eq-gaussian-mixture">
-<span class="eqno">(2.3)<a class="headerlink" href="#equation-eq-gaussian-mixture" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-eq-gaussian-mixture" title="この数式へのパーマリンク">#</a></span>\[
 P(\mathbf{x} | \boldsymbol\Theta) = \sum_{k=1}^K \frac{\alpha_k}{(2 \pi)^{D / 2} \left| \boldsymbol\Sigma_k \right|^{1/2}} \exp \left( - \frac{1}{2}(\mathbf{x} - \boldsymbol{\mu}_k)^\top \boldsymbol\Sigma_k^{-1}  (\mathbf{x} - \boldsymbol{\mu}_k) \right)
 \]</div>
 <p>のように書ける。この式で<span class="math notranslate nohighlight">\(\boldsymbol\Theta\)</span>はパラメータの集合 <span class="math notranslate nohighlight">\(\{ \alpha_k, \boldsymbol\mu_k, \boldsymbol\Sigma_k : k = 1, \ldots, K \}\)</span>を表わし、<span class="math notranslate nohighlight">\(\alpha_k \in [0, 1)\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol\mu_k \in \mathbb{R}^D\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol\Sigma_k \in \mathbb{R}^{D \times D}\)</span>は、それぞれ<span class="math notranslate nohighlight">\(k\)</span>番目のGauss分布に対する混合率、分布中心、共分散行列を表わす。</p>
 <p>ガウス混合分布を用いると、とある特徴量<span class="math notranslate nohighlight">\(\mathbf{x}\)</span>が<span class="math notranslate nohighlight">\(k\)</span>個のGauss分布のそれぞれにどの程度の寄与率<span class="math notranslate nohighlight">\(\gamma_k(\mathbf{x})\)</span>を持つかを以下のように計算できる。</p>
 <div class="math notranslate nohighlight" id="equation-eq-membership">
-<span class="eqno">(2.4)<a class="headerlink" href="#equation-eq-membership" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-eq-membership" title="この数式へのパーマリンク">#</a></span>\[
 \gamma_k(\mathbf{x}) = \frac{\alpha_k}{(2\pi)^{D/2} \left| \boldsymbol\Sigma_k \right|^{1/2}}\frac{\exp \left( - \frac{1}{2}(\mathbf{x} - \boldsymbol{\mu}_k)^\top \boldsymbol\Sigma_k^{-1}  (\mathbf{x} - \boldsymbol{\mu}_k) \right) }{P(\mathbf{x})}
 \]</div>
 <p>これにより、特徴量<span class="math notranslate nohighlight">\(\mathbf{x}\)</span>に対する、特徴表現として、</p>
@@ -2226,7 +2236,7 @@ V(\mathbf{x}; \boldsymbol\Theta) = \nabla_{\boldsymbol\Theta} \log P(\mathbf{x} 
 \[
 \mathbb{E}_{\mathbf{x} \sim \mathcal{X}} \left[ \nabla_{\boldsymbol\Theta} \log P(\mathbf{x} | \boldsymbol\Theta)) \right]
 \]</div>
-<p>さて、ここで、<span class="math notranslate nohighlight">\(P(\mathbf{x} | \boldsymbol\Theta)\)</span>が<a class="reference internal" href="#equation-eq-gaussian-mixture">(2.3)</a>のガウス混合分布で与えられる場合を考える。以後、計算を簡単にするために、共分散行列は対角成分を<span class="math notranslate nohighlight">\(\boldsymbol\sigma_k\)</span>とする対角行列であるとする。</p>
+<p>さて、ここで、<span class="math notranslate nohighlight">\(P(\mathbf{x} | \boldsymbol\Theta)\)</span>が<a class="reference internal" href="#equation-eq-gaussian-mixture">(2.2)</a>のガウス混合分布で与えられる場合を考える。以後、計算を簡単にするために、共分散行列は対角成分を<span class="math notranslate nohighlight">\(\boldsymbol\sigma_k\)</span>とする対角行列であるとする。</p>
 <p>とあるパラメータ<span class="math notranslate nohighlight">\(\theta\)</span>に関する<span class="math notranslate nohighlight">\(\ln P(\mathbf{x} | \boldsymbol\Theta)\)</span>の微分は、</p>
 <div class="math notranslate nohighlight">
 \[
@@ -2246,7 +2256,7 @@ V(\mathbf{x}; \boldsymbol\Theta) = \nabla_{\boldsymbol\Theta} \log P(\mathbf{x} 
 &amp;= \alpha_k \left[ \frac{(x_d - \mu_{k,d})^2}{\sigma_{k,d}^3} - \frac{1}{\sigma_{k,d}} \right] \mathcal{N}(\mathbf{x} | \boldsymbol\mu_{k}, \boldsymbol\sigma_k)
 \end{align}
 \end{split}\]</div>
-<p>したがって、<a class="reference internal" href="#equation-eq-membership">(2.4)</a>の寄与率<span class="math notranslate nohighlight">\(\gamma_k\)</span>を用いると、フィッシャーベクトルの各次元は以下のように書き直せる。</p>
+<p>したがって、<a class="reference internal" href="#equation-eq-membership">(2.3)</a>の寄与率<span class="math notranslate nohighlight">\(\gamma_k\)</span>を用いると、フィッシャーベクトルの各次元は以下のように書き直せる。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -2272,20 +2282,20 @@ L(\mathcal{X} | \boldsymbol\Theta) = \sum_{i=1}^N \log P(\mathbf{x}_i | \boldsym
 \]</div>
 <p>となることが分かる。この尤度関数のパラメータに関する偏微分からFisherベクトルを求めると、以下のようになる。</p>
 <div class="math notranslate nohighlight" id="equation-eq-deriv-alpha">
-<span class="eqno">(2.5)<a class="headerlink" href="#equation-eq-deriv-alpha" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-eq-deriv-alpha" title="この数式へのパーマリンク">#</a></span>\[
 \frac{\partial L(\mathcal{X} | \boldsymbol\Theta)}{\partial \alpha_k}
 = \sum_{i=1}^N \left[ \frac{\gamma_k(\mathbf{x}_i)}{\alpha_k} - \frac{\gamma_1(\mathbf{x}_i)}{\alpha_1}  \right] \quad \text{for} ~ k \geq 2  \]</div>
 <div class="math notranslate nohighlight" id="equation-eq-deriv-mu">
-<span class="eqno">(2.6)<a class="headerlink" href="#equation-eq-deriv-mu" title="この数式へのパーマリンク">#</a></span>\[\begin{split}
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-eq-deriv-mu" title="この数式へのパーマリンク">#</a></span>\[\begin{split}
 \frac{\partial L(\mathcal{X} | \boldsymbol\Theta)}{\partial \mu_{k,d}}
 = \sum_{i=1}^N \gamma_k(\mathbf{x}_i) \left[ \frac{x_d - \mu_{k,d}}{\sigma_{k,d}^2} \right] \\
 \end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-deriv-sigma">
-<span class="eqno">(2.7)<a class="headerlink" href="#equation-eq-deriv-sigma" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-eq-deriv-sigma" title="この数式へのパーマリンク">#</a></span>\[
 \frac{\partial L(\mathcal{X} | \boldsymbol\Theta)}{\partial \sigma_{k,d}}
 = \sum_{i=1}^N \gamma_k(\mathbf{x}_i) \left[ \frac{(x_d - \mu_{k,d})^2}{\sigma_{k,d}^3} - \frac{1}{\sigma_{k,d}} \right]
 \]</div>
-<p>ただし、<a class="reference internal" href="#equation-eq-deriv-alpha">(2.5)</a>では、<span class="math notranslate nohighlight">\(\sum_{k} \alpha_k = 1\)</span>であることを用いて、自由度を一つ減らしてある。</p>
+<p>ただし、<a class="reference internal" href="#equation-eq-deriv-alpha">(2.4)</a>では、<span class="math notranslate nohighlight">\(\sum_{k} \alpha_k = 1\)</span>であることを用いて、自由度を一つ減らしてある。</p>
 <p>ここまでの式から、Fisherベクトルの次元は<span class="math notranslate nohighlight">\(\alpha_k\)</span>に関する成分が<span class="math notranslate nohighlight">\(K - 1\)</span>次元、<span class="math notranslate nohighlight">\(\mu_{k,d}\)</span>に関する成分が<span class="math notranslate nohighlight">\(DK\)</span>次元、<span class="math notranslate nohighlight">\(\sigma_{k,d}\)</span>に関する成分が<span class="math notranslate nohighlight">\(DK\)</span>次元あるので、合計で<span class="math notranslate nohighlight">\((2D + 1) K - 1\)</span>次元となる。</p>
 </section>
 <section id="id17">
@@ -2295,7 +2305,7 @@ L(\mathcal{X} | \boldsymbol\Theta) = \sum_{i=1}^N \log P(\mathbf{x}_i | \boldsym
 <p>この影響を大きさの期待値を表わしているのがFisher情報量であり、各パラメータに関するFisher情報両はFisherベクトルの各要素の二乗平均により与えられる。Fisher情報量は、推定するパラメータを正しく推定するために、どの程度十分な情報(=サンプル)が得られているかを示しており、<strong>情報量が大きければ大きいほど、サンプルから求まるパラメータの最尤推定量が真の値に近づくことが期待される</strong> (推定量の分散とFisher情報量の逆数の関係はCramér-Raoの不等式で与えられる)。</p>
 <p>従って、とある画像に対して計算されるFisherベクトルは、<strong>その画像(から得られた特徴量の集合)が、画像全体(のGauss混合分布)から見て、どのようなの意外性を持つか、と言い換えても良い</strong>。その画像が全体のGauss混合分布にとって十分尤もらしいものであれば、尤度の勾配から定まるFisherベクトルの要素は小さな値(特に意外ではない)を取り、そうでなければ、大きな値(意外である)を取る、という訳である。</p>
 <p>ただし、画像の分類の観点から言えば、Fisherベクトルがどのような意味を持つか、ということよりも、それ自体が、単なるクラスタへの所属や、Gauss混合モデル以上に画像を上手く表現できるような特徴を与えるということに価値がある。</p>
-<p>実際、<a class="reference internal" href="#equation-eq-deriv-alpha">(2.5)</a>は画像が含む特徴量に関して、どの分布にどのくらいの割合で属するかを表わす0次統計量であるのに対し、<a class="reference internal" href="#equation-eq-deriv-mu">(2.6)</a>ならびに<a class="reference internal" href="#equation-eq-deriv-sigma">(2.7)</a>は、それぞれ1次統計量、2次統計量を表わしている。</p>
+<p>実際、<a class="reference internal" href="#equation-eq-deriv-alpha">(2.4)</a>は画像が含む特徴量に関して、どの分布にどのくらいの割合で属するかを表わす0次統計量であるのに対し、<a class="reference internal" href="#equation-eq-deriv-mu">(2.5)</a>ならびに<a class="reference internal" href="#equation-eq-deriv-sigma">(2.6)</a>は、それぞれ1次統計量、2次統計量を表わしている。</p>
 </section>
 <section id="id18">
 <h4>Fisherベクトルを用いた画像分類<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
@@ -2513,11 +2523,10 @@ L(\mathcal{X} | \boldsymbol\Theta) = \sum_{i=1}^N \log P(\mathbf{x}_i | \boldsym
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="data-visualization.html"
@@ -2537,10 +2546,7 @@ L(\mathcal{X} | \boldsymbol\Theta) = \sum_{i=1}^N \log P(\mathbf{x}_i | \boldsym
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2635,8 +2641,8 @@ L(\mathcal{X} | \boldsymbol\Theta) = \sum_{i=1}^N \log P(\mathbf{x}_i | \boldsym
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
   <footer class="bd-footer">
   </footer>

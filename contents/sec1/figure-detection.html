@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -64,8 +65,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/figure-detection';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -81,6 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -362,10 +370,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -373,7 +381,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -412,14 +420,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.2.1. 画像の前処理</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.2.2. エッジの検出</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.2.3. 図形の検出</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6.2.4. パースの除去</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">同次座標</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6.2.4. パースの除去</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">6.3. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">6.4. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">6.3. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">6.4. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -500,7 +505,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5c0f3b20346fe8a53399a27367fc075961ebf6554b31587f26594dcd26ffc483.png" src="../../_images/5c0f3b20346fe8a53399a27367fc075961ebf6554b31587f26594dcd26ffc483.png" />
+<img alt="../../_images/1cd69cb37a701c2216d5470cb92970fdb0ba5caf4431152b821b9a995e868691.png" src="../../_images/1cd69cb37a701c2216d5470cb92970fdb0ba5caf4431152b821b9a995e868691.png" />
 </div>
 </div>
 </section>
@@ -539,7 +544,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0723e4d0714aa44c32c49b730993b9a45c11747757e77aba94436f221522d2c7.png" src="../../_images/0723e4d0714aa44c32c49b730993b9a45c11747757e77aba94436f221522d2c7.png" />
+<img alt="../../_images/45d4a8e58a560bba7d250bc22464f490593f841011c614ad3d40e84070e0a4b9.png" src="../../_images/45d4a8e58a560bba7d250bc22464f490593f841011c614ad3d40e84070e0a4b9.png" />
 </div>
 </div>
 <p>エッジを統合する場合、エッジが白色の領域に検出されているとすると、<strong>先にdilation、次にerosionの順序で処理を施す</strong>。dilationにより二重のエッジのそれぞれが太くなり、重なることで、太い1本のエッジとなる。その後、erosionをかけることで、そのエッジが細くなり、1本の細いエッジとなる。</p>
@@ -566,7 +571,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/74cefd05428ed9c337674e6a4f3af381efe9499b52f240c4bc9c826347a981e2.png" src="../../_images/74cefd05428ed9c337674e6a4f3af381efe9499b52f240c4bc9c826347a981e2.png" />
+<img alt="../../_images/ca79bd179b54ca386a444f0c0794d36d14769e2ad39c121834875fe59c55f3a4.png" src="../../_images/ca79bd179b54ca386a444f0c0794d36d14769e2ad39c121834875fe59c55f3a4.png" />
 </div>
 </div>
 <p>上記の結果の通り、dilationとerosionを組み合わせることで二本の細いエッジが一本のエッジに統合されていることが分かる。</p>
@@ -593,13 +598,13 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/74cefd05428ed9c337674e6a4f3af381efe9499b52f240c4bc9c826347a981e2.png" src="../../_images/74cefd05428ed9c337674e6a4f3af381efe9499b52f240c4bc9c826347a981e2.png" />
+<img alt="../../_images/ca79bd179b54ca386a444f0c0794d36d14769e2ad39c121834875fe59c55f3a4.png" src="../../_images/ca79bd179b54ca386a444f0c0794d36d14769e2ad39c121834875fe59c55f3a4.png" />
 </div>
 </div>
 </section>
 <section id="id5">
 <h3><span class="section-number">6.1.3. </span>輪郭線の検出<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<p>ここまでに検出したエッジの情報を使って輪郭線を抽出する。輪郭線の抽出にはOpenCVの <code class="docutils literal notranslate"><span class="pre">findContours</span></code>という関数を用いる。この関数には1985年にSuzukiさんとAbeさんという日本人が提案したアルゴリズムが実装されている<span id="id6">[<a class="reference internal" href="#id37" title="Satoshi Suzuki and Keiichi Abe. Topological structural analysis of digitized binary images by border following. Computer Vision, Graphics, and Image Processing, 29(3):396, mar 1985. doi:10.1016/0734-189x(85)90136-7.">Suzuki and Abe, 1985</a>]</span>。</p>
+<p>ここまでに検出したエッジの情報を使って輪郭線を抽出する。輪郭線の抽出にはOpenCVの <code class="docutils literal notranslate"><span class="pre">findContours</span></code>という関数を用いる。この関数には1985年にSuzukiさんとAbeさんという日本人が提案したアルゴリズムが実装されている<span id="id6">[<a class="reference internal" href="#id36" title="Satoshi Suzuki and Keiichi Abe. Topological structural analysis of digitized binary images by border following. Computer Vision, Graphics, and Image Processing, 29(3):396, mar 1985. doi:10.1016/0734-189x(85)90136-7.">Suzuki and Abe, 1985</a>]</span>。</p>
 <p>このアルゴリズムは二値画像(1がエッジで0が背景の色とする)を<strong>ラスタスキャン</strong> (最初の列を左から右に見ていき、右端に到達したら、左から右に見ていく、以後繰り返し) していき、<strong>1が見つかったら、その画素から始まる輪郭線を追跡する</strong>。</p>
 <p>輪郭線の追跡は、<strong>今見ている画素の周りを時計回りに見ていき、初めて1となる画素にスキャン位置を移動する、という操作を繰り返す</strong>ことで行われる。端点に到達するか、元の位置の画素に戻ってきたら、再びラスタスキャン順に値が1の画素で、まだどの輪郭にも含まれていない画素を探し、以後、同様の処理を繰り返していく。</p>
 <p>OpenCVの <code class="docutils literal notranslate"><span class="pre">findContours</span></code>は3つの引数を取り、第1引数が入力の二値画像、第2引数が検出される輪郭線の階層関係、第3引数が抽出する輪郭線をどのように近似表現するかを表す。代表的な使い方は以下の通り。</p>
@@ -639,7 +644,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d48be1d49b8d6c94df5482c3657ecf5b1657d9a5b305df95a6a88138779f69b7.png" src="../../_images/d48be1d49b8d6c94df5482c3657ecf5b1657d9a5b305df95a6a88138779f69b7.png" />
+<img alt="../../_images/25fdf9b06aa625aef91e984fb89984bb54b9cf434d7ef48534a9add272a5361f.png" src="../../_images/25fdf9b06aa625aef91e984fb89984bb54b9cf434d7ef48534a9add272a5361f.png" />
 </div>
 </div>
 </section>
@@ -950,42 +955,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img19b6476aae6347ca953fdbb7f86cb5fc">
+  <img id="_anim_img3b624cbf24d843c9b51d85606504609a">
   <div class="anim-controls">
-    <input id="_anim_slider19b6476aae6347ca953fdbb7f86cb5fc" type="range" class="anim-slider"
+    <input id="_anim_slider3b624cbf24d843c9b51d85606504609a" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim19b6476aae6347ca953fdbb7f86cb5fc.set_frame(parseInt(this.value));">
+           oninput="anim3b624cbf24d843c9b51d85606504609a.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim19b6476aae6347ca953fdbb7f86cb5fc.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim3b624cbf24d843c9b51d85606504609a.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim19b6476aae6347ca953fdbb7f86cb5fc.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim3b624cbf24d843c9b51d85606504609a.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim19b6476aae6347ca953fdbb7f86cb5fc.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim3b624cbf24d843c9b51d85606504609a.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim19b6476aae6347ca953fdbb7f86cb5fc.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim3b624cbf24d843c9b51d85606504609a.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim19b6476aae6347ca953fdbb7f86cb5fc.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim3b624cbf24d843c9b51d85606504609a.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim19b6476aae6347ca953fdbb7f86cb5fc.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim3b624cbf24d843c9b51d85606504609a.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim19b6476aae6347ca953fdbb7f86cb5fc.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim3b624cbf24d843c9b51d85606504609a.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim19b6476aae6347ca953fdbb7f86cb5fc.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim3b624cbf24d843c9b51d85606504609a.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim19b6476aae6347ca953fdbb7f86cb5fc.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim3b624cbf24d843c9b51d85606504609a.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select19b6476aae6347ca953fdbb7f86cb5fc"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select3b624cbf24d843c9b51d85606504609a"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_19b6476aae6347ca953fdbb7f86cb5fc"
+      <input type="radio" name="state" value="once" id="_anim_radio1_3b624cbf24d843c9b51d85606504609a"
              >
-      <label for="_anim_radio1_19b6476aae6347ca953fdbb7f86cb5fc">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_19b6476aae6347ca953fdbb7f86cb5fc"
+      <label for="_anim_radio1_3b624cbf24d843c9b51d85606504609a">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_3b624cbf24d843c9b51d85606504609a"
              checked>
-      <label for="_anim_radio2_19b6476aae6347ca953fdbb7f86cb5fc">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_19b6476aae6347ca953fdbb7f86cb5fc"
+      <label for="_anim_radio2_3b624cbf24d843c9b51d85606504609a">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_3b624cbf24d843c9b51d85606504609a"
              >
-      <label for="_anim_radio3_19b6476aae6347ca953fdbb7f86cb5fc">Reflect</label>
+      <label for="_anim_radio3_3b624cbf24d843c9b51d85606504609a">Reflect</label>
     </form>
   </div>
 </div>
@@ -995,13 +1000,13 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img19b6476aae6347ca953fdbb7f86cb5fc";
-    var slider_id = "_anim_slider19b6476aae6347ca953fdbb7f86cb5fc";
-    var loop_select_id = "_anim_loop_select19b6476aae6347ca953fdbb7f86cb5fc";
+    var img_id = "_anim_img3b624cbf24d843c9b51d85606504609a";
+    var slider_id = "_anim_slider3b624cbf24d843c9b51d85606504609a";
+    var loop_select_id = "_anim_loop_select3b624cbf24d843c9b51d85606504609a";
     var frames = new Array(9);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjcuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/OQEPoAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABQjUlEQVR4nO3dd3wUdf7H8ffupgNJiAkJkdCRItUAIYjiSY6gqHByCshJEeFE\
 sQWleAoKnqBwnj8VDwsIngXQo9kiiCIqgWAgdJAeWkIJyZIE0nZ+fyB77pFQQshuMq/n47EP2dnP\
 zH5m3HzzzszOjMUwDEMAAAAwDau7GwAAAEDFIgACAACYDAEQAADAZAiAAAAAJkMABAAAMBkCIAAA\
@@ -1367,7 +1372,7 @@ AABMhgAIAABgMgRAAAAAkyEAAgAAmAwBEAAAwGQIgAAAACZDAAQAADAZAiAAAIDJEAABAABM5v8B\
 PT/IqQ+7IlsAAAAASUVORK5CYII=\
 "
   frames[1] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjcuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/OQEPoAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABeGUlEQVR4nO3deVxU5f4H8M/MAMM6LLIrCoiiJIqiIGZpyRXKSstbapZLLmVZ\
 GZZLNzW1UtPb7VfZtcytm+bSVbMNNbtqKYIiuIIrCC7DDsMiA8w8vz/QyQlUQGAGzuf9es2r5sxz\
 znzPOD5+5pzzPEcmhBAgIiIiIsmQm7oAIiIiImpeDIBEREREEsMASERERCQxDIBEREREEsMASERE\
@@ -1794,7 +1799,7 @@ MQyARERERBLDAEhEREQkMQyARERERBLDAEhEREQkMQyARERERBLDAEhEREQkMf8PWedVIRBr2jYA\
 AAAASUVORK5CYII=\
 "
   frames[2] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjcuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/OQEPoAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABjIUlEQVR4nO3deXhMZ/8G8HtmkkwWWUR2Yo0tthBEULTyStCWUkXVVqUUpbSW\
 vkVLW2tXtJba2lLbay0NqkURCSHWWGLLQiKLzGSdZGae3x+p+XUqiGSSmTj357rmqjnznGe+ZzqO\
 e845z3NkQggBIiIiIpIMubkLICIiIqKKxQBIREREJDEMgEREREQSwwBIREREJDEMgEREREQSwwBI\
@@ -2243,7 +2248,7 @@ RERERBLDAEhEREQkMQyARERERBLDAEhEREQkMQyARERERBLDAEhEREQkMQyARERERBLDAEhEREQk\
 MQyARERERBLDAEhEREQkMQyARERERBLzf+WhrG37s8hfAAAAAElFTkSuQmCC\
 "
   frames[3] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjcuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/OQEPoAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABh30lEQVR4nO3deXwM9/8H8NfuJtkcbA65iTOuEEIQUUUrXwna0qqi6qpSilJa\
 R38tLW2dbfXQOurqt1VXUS0NqkURQkhccQSRBBs5ZDd3sruf3x+p/domIXLtxryej8c+amc+M/ue\
 6RqvnZnPZ2RCCAEiIiIikgy5uQsgIiIiourFAEhEREQkMQyARERERBLDAEhEREQkMQyARERERBLD\
@@ -2687,7 +2692,7 @@ SERERCQxDIBEREREEsMASERERCQxDIBEREREEsMASERERCQxDIBEREREEvP/VcDvr9LDAZ4AAAAA\
 SUVORK5CYII=\
 "
   frames[4] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjcuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/OQEPoAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABfK0lEQVR4nO3deVhU5d8G8HtmgGGRYZFlQHDBnURRFMQsLXmVstKyUrNcMk1T\
 y7Rc+qVWVmranmW5V5pmuVWGmmWmIiiKKy64Acogi8ywDszM8/5BTk2AIAIzeO7Pdc2Vc85zznzP\
 aTzec5bnkQkhBIiIiIhIMuTWLoCIiIiI6hcDIBEREZHEMAASERERSQwDIBEREZHEMAASERERSQwD\
@@ -3118,7 +3123,7 @@ SQwDIBEREZHEMAASERERSQwDIBEREZHEMAASERERSQwDIBEREZHEMAASERERSQwDIBEREZHEMAAS\
 ERERSQwDIBEREZHEMAASERERSQwDIBEREZHEMAASERERScz/A1T55l+16p+8AAAAAElFTkSuQmCC\
 "
   frames[5] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjcuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/OQEPoAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABdEElEQVR4nO3deVwU9f8H8NfsAsshCyi3oIJ4kSgKgpipJV/xqLSs1CyPTL9Z\
 VoaW2jc1tfL8Vt/UMsurn5lmeVVGmmmmIiiKJx4oCqjLKayAXLuf3x/o5gYoIrAL83o+HvvInfnM\
 7HumZXgxM5/PSEIIASIiIiKSDYWpCyAiIiKiusUASERERCQzDIBEREREMsMASERERCQzDIBERERE\
@@ -3540,7 +3545,7 @@ kIiIiEhmGACJiIiIZIYBkIiIiEhmGACJiIiIZIYBkIiIiEhmGACJiIiIZIYBkIiIiEhmGACJiIiI\
 ZIYBkIiIiEhm/h8Lf5lVdO6sSQAAAABJRU5ErkJggg==\
 "
   frames[6] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjcuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/OQEPoAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABYaElEQVR4nO3deVhUZf8G8HtmgGGRYZFdcUHcSBRFIczSghdIKy0rNcslw7I0\
 DUulNzW1cuutfpZlmVurpuVSGWmWWYqiKK644IagwyozLLLMzPP7A52cBEUEZoZzf65rrpxnnnPm\
 e6bhcHPOeZ4jE0IIEBEREZFkyM1dABERERE1LgZAIiIiIolhACQiIiKSGAZAIiIiIolhACQiIiKS\
@@ -3941,7 +3946,7 @@ REQSwwBIREREJDEMgEREREQSwwBIREREJDEMgEREREQSwwBIREREJDEMgEREREQSwwBIREREJDEM\
 gEREREQSwwBIREREJDH/D2TshbH8d+iIAAAAAElFTkSuQmCC\
 "
   frames[7] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjcuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/OQEPoAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABXdElEQVR4nO3dd3wUdf7H8ffupkMKkEYgdKRINUAEUTjJQQRPsIKilEM4UVQE\
 FfAUCyq2U09FUQ4E76diRawRRNETIiUUKQEJLQRICCVZkkDK7vz+iKysBAghyW6Y1/Px2Ifsd78z\
 +5kxTN7MzPc7FsMwDAEAAMA0rJ4uAAAAANWLAAgAAGAyBEAAAACTIQACAACYDAEQAADAZAiAAAAA\
@@ -4338,7 +4343,7 @@ AAAAkyEAAgAAmAwBEAAAwGQIgAAAACZDAAQAADAZAiAAAIDJEAABAABMhgAIAABgMgRAAAAAk/l/\
 C8lZ9nd8kHAAAAAASUVORK5CYII=\
 "
   frames[8] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjcuMywgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/OQEPoAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjcuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8pXeV/AAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABWbElEQVR4nO3deVxU9f7H8fcw7MoigiCKu7nkGipplt7kquW9ZauWpXlNy9Iy\
 LZV+pZWVld3qVt4sr6bdm9lqthhpli1KmrjkgiZuuIEowgjINnN+f5CTk6iIwAye1/PxmEfMOd9z\
 5nNO4+HNOef7PRbDMAwBAADANLzcXQAAAACqFwEQAADAZAiAAAAAJkMABAAAMBkCIAAAgMkQAAEA\
@@ -4734,7 +4739,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim19b6476aae6347ca953fdbb7f86cb5fc = new Animation(frames, img_id, slider_id, 1000.0,
+        anim3b624cbf24d843c9b51d85606504609a = new Animation(frames, img_id, slider_id, 1000.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -4807,7 +4812,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/36859e18e96cb0e5e44ee48841c236ce257cb287182873de324dbb03724a1b23.png" src="../../_images/36859e18e96cb0e5e44ee48841c236ce257cb287182873de324dbb03724a1b23.png" />
+<img alt="../../_images/386fb737b969ebb30c31253813775b5a0cdc99775e3697b834645c22f624e4ca.png" src="../../_images/386fb737b969ebb30c31253813775b5a0cdc99775e3697b834645c22f624e4ca.png" />
 </div>
 </div>
 </section>
@@ -4851,7 +4856,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/4386b6c776508ab977f1265fedc027f4833f7bade12e4ecaec0de9a1932574a7.png" src="../../_images/4386b6c776508ab977f1265fedc027f4833f7bade12e4ecaec0de9a1932574a7.png" />
+<img alt="../../_images/414029bcca074062114dad0ccb8e968d8460be99004b276c59b79b94fa1814d4.png" src="../../_images/414029bcca074062114dad0ccb8e968d8460be99004b276c59b79b94fa1814d4.png" />
 </div>
 </div>
 <p>大津の二値化では、上記のように「自然画像を自然なまま二値化」した画像が得られるため、より白い領域だけを残すように閾値を調整する。<code class="docutils literal notranslate"><span class="pre">threshold</span></code>の第1戻り値は実際に二値化に用いた閾値であるため、これを少し大きくなるようにスケーリングして、再度二値化処理をかける。</p>
@@ -4872,7 +4877,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dfbfc625b6f51c00ad6a6b05cec4c708cbb051bec7f6d73b4dbc382042ab7c7e.png" src="../../_images/dfbfc625b6f51c00ad6a6b05cec4c708cbb051bec7f6d73b4dbc382042ab7c7e.png" />
+<img alt="../../_images/f6706a265e16cd4e6027fe6f2199f33ae7b9e303fbbb1214d580d306d388632a.png" src="../../_images/f6706a265e16cd4e6027fe6f2199f33ae7b9e303fbbb1214d580d306d388632a.png" />
 </div>
 </div>
 <p>すると、上記のように看板の部分だけが強調されたような画像を得ることができる。</p>
@@ -4898,7 +4903,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1c80c3150b8c7b9b0b33dee8b1da05f5d3ad3829818831c4e195ec7ca9d91bf8.png" src="../../_images/1c80c3150b8c7b9b0b33dee8b1da05f5d3ad3829818831c4e195ec7ca9d91bf8.png" />
+<img alt="../../_images/09ccd0711e9adef0cad0d5fe404f0055eaf8c4243b893d0a40c67490770ec033.png" src="../../_images/09ccd0711e9adef0cad0d5fe404f0055eaf8c4243b893d0a40c67490770ec033.png" />
 </div>
 </div>
 </section>
@@ -4918,7 +4923,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8f48248f1a2c34d7a1133890acd1e7b403b7efe80b6128d5165b58f3e903441a.png" src="../../_images/8f48248f1a2c34d7a1133890acd1e7b403b7efe80b6128d5165b58f3e903441a.png" />
+<img alt="../../_images/31bea81c99153dd20142a0e71304b91fadf0d209a2901c2ad51c80a8e648c06e.png" src="../../_images/31bea81c99153dd20142a0e71304b91fadf0d209a2901c2ad51c80a8e648c06e.png" />
 </div>
 </div>
 <p>輪郭線の描画結果を見てみると、確かに一番長い輪郭線が看板を囲むものになっていそうに見える。実際に、輪郭線の長さを計算して、最も長い輪郭線がどれかを確認してみる。</p>
@@ -4946,7 +4951,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/43bc43759d183e3b548ddd1ed2fea9993beb1d6571a22cac722aef958023b412.png" src="../../_images/43bc43759d183e3b548ddd1ed2fea9993beb1d6571a22cac722aef958023b412.png" />
+<img alt="../../_images/496a7effc297a023da6d591f1c180941dd593276b60ee6d1a1a874da3faa3539.png" src="../../_images/496a7effc297a023da6d591f1c180941dd593276b60ee6d1a1a874da3faa3539.png" />
 </div>
 </div>
 <p>確かに最も長い輪郭線が看板に対応していることが分かったので、次に看板の四つ角を取ってくる。<code class="docutils literal notranslate"><span class="pre">approxPolyDP</span></code>を使い、短い辺を潰してしまうことで四角形を得ることができる。</p>
@@ -4964,70 +4969,13 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ce7263c41e3e23f818626e7a00f79fc5a508e834e0b21125fc8356cb7665b360.png" src="../../_images/ce7263c41e3e23f818626e7a00f79fc5a508e834e0b21125fc8356cb7665b360.png" />
+<img alt="../../_images/5edc0112942d9456bdc28cfe4777dec2a5c787573b6fb20668dd33d7680c46ab.png" src="../../_images/5edc0112942d9456bdc28cfe4777dec2a5c787573b6fb20668dd33d7680c46ab.png" />
 </div>
 </div>
 <p>図のタイトルにあるように、今、赤色で描かれている矩形の角は4つであり、これで、看板に対応する四角形を取り出すことができた。</p>
 </section>
 <section id="id13">
 <h3><span class="section-number">6.2.4. </span>パースの除去<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
-<p>三次元の情報を二次元の写真に投影する方法はいくつかあり、その代表的なものが<strong>直投影</strong> (orthographic projection)と<strong>透視投影</strong> (perspective projection)である。人間の視覚は透視投影に近いとされており、カメラで写真を撮るときにも、およそ透視投影として二次元画像が得られる。</p>
-<p>日本語の<strong>パース</strong>とはperspectiveのことで、美術の授業などで、一点透視や二点透視などの図法を習った人も多いだろう。透視投影は、数学的には<strong>同次座標</strong> (homogeneous coodinates)と4×4の行列を用いて表わすことができる。</p>
-<section id="id14">
-<h4>同次座標<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
-<p>同次座標とは二次元の座標を表わすのに三次元の、三次元の座標を表わすのに四次元のベクトルを使うような座標表現である。例えば、二次元座標 <span class="math notranslate nohighlight">\(\mathbf{x} = (x, y)\)</span>の場合であれば、四次元目に冗長次元として<span class="math notranslate nohighlight">\(z = 1\)</span>を付与する。このベクトルに対して3×3の行列を作用させることで、様々な幾何変換を行うことができる。</p>
-<p>例えば、二次元空間上での平行移動は、単純な二次元ベクトルに2×2の行列を作用させるだけでは表わすことができないが、同次座標を考えることで、</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-\mathbf{I} &amp; \mathbf{t} \\
-\mathbf{0}^\top &amp; 1
-\end{bmatrix}
-\begin{bmatrix}
-\mathbf{x} \\ 1
-\end{bmatrix} =
-\begin{bmatrix}
-\mathbf{x} + \mathbf{t} \\ 1
-\end{bmatrix}
-\end{split}\]</div>
-<p>のように表わすことができる。また、<strong>行列を作用させた結果、第3成分<span class="math notranslate nohighlight">\(z\)</span>が1でない値をとった時は、ベクトルを<span class="math notranslate nohighlight">\(z\)</span>で割り算して、第3成分が1になるように正規化する</strong>。従って、同じ座標表現においては、</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}
-\mathbf{x} \\ w
-\end{bmatrix} \equiv
-\begin{bmatrix}
-\mathbf{x} / w \\ 1
-\end{bmatrix}
-\end{split}\]</div>
-<p>である。この時、作用させる行列のどの部分に0でない値 (対角成分は1でない値)が入っているかによって、変換の種類を以下のように分類できる。</p>
-<ul class="simple">
-<li><p><strong>線形変換:</strong> 左上2×2の要素のみが有意な値を持つ</p></li>
-<li><p><strong>アフィン変換:</strong> 左上2x3の要素のみが有意な値を持つ</p></li>
-<li><p><strong>透視投影変換:</strong> 全3x3の要素が有意な値を持つ</p></li>
-</ul>
-<p>透視投影変換 (perspective transform)を表わす行列を3x3の成分全てが未知であるとして</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{M} = \begin{bmatrix}
-\mathbf{A} &amp; \mathbf{b} \\
-\mathbf{c}^\top &amp; d
-\end{bmatrix}
-\end{split}\]</div>
-<p>としよう。この時、変換後のベクトル<span class="math notranslate nohighlight">\(\mathbf{x}'\)</span>は以下のように書ける。</p>
-<div class="math notranslate nohighlight" id="equation-eq-perspective-transform">
-<span class="eqno">(6.1)<a class="headerlink" href="#equation-eq-perspective-transform" title="この数式へのパーマリンク">#</a></span>\[
-\mathbf{x}' = \frac{\mathbf{A}\mathbf{x} + \mathbf{b}}{\mathbf{c}^\top \mathbf{x} + d}
-\]</div>
-<p>この方程式の未知数は3×3=9個で、式の数は2個である。実用的には<span class="math notranslate nohighlight">\(d=1\)</span>であるとして、未知数を一つ減らし、変換前後の二次元座標の組<span class="math notranslate nohighlight">\((\mathbf{x}, \mathbf{x}')\)</span>を4組の対応づけることで、方程式を8つ定義する。</p>
-<p>ここで察しの良い方は、<a class="reference internal" href="#equation-eq-perspective-transform">(6.1)</a>が<span class="math notranslate nohighlight">\(\mathbf{M}\)</span>の成分の線形式になっていないことに気づいたかもしれない。この式の右辺は未知数の分数となっているため、このままでは線形問題として解くことはできない。しかし、<span class="math notranslate nohighlight">\(d=1\)</span>として、右辺の分母を両辺にかけると、</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{A}\mathbf{x} + \mathbf{b} - (\mathbf{x}' \mathbf{x}^\top) \mathbf{c} = 1
-\]</div>
-<p>という<span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{c}\)</span>に関する線形式に変換することができる。あとは、この式を4組分集めることで、変形前後の四角形と四角形を対応付ける透視投影変換行列をを求めることができる。</p>
-<hr class="docutils" />
-<p>今回の例では、看板の4隅の点が分かっているので、その4点が、長方形の点に移るような透視投影変換を求める。ただし、このままでは、長方形の縦横比が分からないので、看板の4隅の点の座標を元に縦横比を求めた後、高さが1000画素となるように変換を考える。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">src_pts</span> <span class="o">=</span> <span class="n">approx</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span>
@@ -5051,34 +4999,29 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5dee75f0c505922797251240087c76582878ed13234d135eb93041ce54e61b17.png" src="../../_images/5dee75f0c505922797251240087c76582878ed13234d135eb93041ce54e61b17.png" />
+<img alt="../../_images/c45054662269832dadeac026f0bc9ae52eea97e0decee4314239a24c9858e291.png" src="../../_images/c45054662269832dadeac026f0bc9ae52eea97e0decee4314239a24c9858e291.png" />
 </div>
 </div>
-<p>このように、透視投影変換を考えることで、看板をあたかも正面から見たような画像を得ることができた。</p>
 </section>
 </section>
-</section>
-<section id="id15">
-<h2><span class="section-number">6.3. </span>練習問題<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<section id="id14">
+<h2><span class="section-number">6.3. </span>練習問題<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Ramer-Douglas-Peuckerのアルゴリズムでは、「開曲線」を線分の集合により近似する方法を紹介した。では、閉曲線に対して、同アルゴリズムを適用するにはどうすれば良いか。</p></li>
 <li><p><a class="reference internal" href="#ssec-figure-from-photo"><span class="std std-ref">実写真からの図形の検出</span></a>の例について、看板が白いことに着目して、<strong>二値化した時点で一番大きな白の領域を取り出す</strong>ことにより、看板の領域を抽出せよ。この際、最大の白色領域を取り出した後で、その最も外側にある輪郭を、看板の輪郭線とすれば良い。</p></li>
-<li><p>直投影と透視投影の工学的な応用先の違いについて、ものの見え方、縮尺の変化の観点から説明せよ。</p></li>
 </ol>
 </section>
-<section id="id16">
-<h2><span class="section-number">6.4. </span>参考文献<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
-<div class="docutils container" id="id17">
+<section id="id15">
+<h2><span class="section-number">6.4. </span>参考文献<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id16">
 <dl class="citation">
-<dt class="label" id="id37"><span class="brackets"><a class="fn-backref" href="#id6">SA85</a></span></dt>
+<dt class="label" id="id36"><span class="brackets"><a class="fn-backref" href="#id6">SA85</a></span></dt>
 <dd><p>Satoshi Suzuki and Keiichi Abe. Topological structural analysis of digitized binary images by border following. <em>Computer Vision, Graphics, and Image Processing</em>, 29(3):396, mar 1985. <a class="reference external" href="https://doi.org/10.1016/0734-189x(85)90136-7">doi:10.1016/0734-189x(85)90136-7</a>.</p>
 </dd>
 </dl>
@@ -5111,11 +5054,10 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="opencv.html"
@@ -5135,10 +5077,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -5165,14 +5104,11 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.2.1. 画像の前処理</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.2.2. エッジの検出</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.2.3. 図形の検出</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6.2.4. パースの除去</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">同次座標</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6.2.4. パースの除去</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">6.3. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">6.4. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">6.3. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">6.4. 参考文献</a></li>
 </ul>
   </nav></div>
 
@@ -5220,8 +5156,8 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
   <footer class="bd-footer">
   </footer>
