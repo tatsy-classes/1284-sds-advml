@@ -1,0 +1,76 @@
+Traceback (most recent call last):
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+    return loop.run_until_complete(inner)
+  File "/opt/hostedtoolcache/Python/3.9.18/x64/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/runner/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+pbar = tqdm(train_loader)
+for data in pbar:
+    X, y_true = data
+    X = X.reshape((X.size(0), -1))
+    y_pred = net(X)
+    loss = criterion(y_pred, y_true)
+    acc = (torch.argmax(y_pred, dim=1) == y_true).float().mean()
+
+    pbar.set_description("loss={:1.3f}, acc={:1.3f}".format(loss.item(), acc.item()))
+
+    optim.zero_grad()
+    loss.backward()
+    optim.step()
+
+    pbar.update()
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mRuntimeError[0m                              Traceback (most recent call last)
+Cell [0;32mIn[41], line 5[0m
+[1;32m      3[0m X, y_true [38;5;241m=[39m data
+[1;32m      4[0m X [38;5;241m=[39m X[38;5;241m.[39mreshape((X[38;5;241m.[39msize([38;5;241m0[39m), [38;5;241m-[39m[38;5;241m1[39m))
+[0;32m----> 5[0m y_pred [38;5;241m=[39m [43mnet[49m[43m([49m[43mX[49m[43m)[49m
+[1;32m      6[0m loss [38;5;241m=[39m criterion(y_pred, y_true)
+[1;32m      7[0m acc [38;5;241m=[39m (torch[38;5;241m.[39margmax(y_pred, dim[38;5;241m=[39m[38;5;241m1[39m) [38;5;241m==[39m y_true)[38;5;241m.[39mfloat()[38;5;241m.[39mmean()
+
+File [0;32m~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/torch/nn/modules/module.py:1501[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1496[0m [38;5;66;03m# If we don't have any hooks, we want to skip the rest of the logic in[39;00m
+[1;32m   1497[0m [38;5;66;03m# this function, and just call forward.[39;00m
+[1;32m   1498[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;28mself[39m[38;5;241m.[39m_backward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_backward_pre_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_pre_hooks
+[1;32m   1499[0m         [38;5;129;01mor[39;00m _global_backward_pre_hooks [38;5;129;01mor[39;00m _global_backward_hooks
+[1;32m   1500[0m         [38;5;129;01mor[39;00m _global_forward_hooks [38;5;129;01mor[39;00m _global_forward_pre_hooks):
+[0;32m-> 1501[0m     [38;5;28;01mreturn[39;00m [43mforward_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1502[0m [38;5;66;03m# Do not call functions when jit is used[39;00m
+[1;32m   1503[0m full_backward_hooks, non_full_backward_hooks [38;5;241m=[39m [], []
+
+Cell [0;32mIn[38], line 11[0m, in [0;36mNetwork.forward[0;34m(self, x)[0m
+[1;32m     10[0m [38;5;28;01mdef[39;00m [38;5;21mforward[39m([38;5;28mself[39m, x):
+[0;32m---> 11[0m     x [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mbn1([38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mfc1[49m[43m([49m[43mx[49m[43m)[49m)
+[1;32m     12[0m     x [38;5;241m=[39m torch[38;5;241m.[39mrelu(x)
+[1;32m     13[0m     x [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mbn2([38;5;28mself[39m[38;5;241m.[39mfc2(x))
+
+File [0;32m~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/torch/nn/modules/module.py:1501[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1496[0m [38;5;66;03m# If we don't have any hooks, we want to skip the rest of the logic in[39;00m
+[1;32m   1497[0m [38;5;66;03m# this function, and just call forward.[39;00m
+[1;32m   1498[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;28mself[39m[38;5;241m.[39m_backward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_backward_pre_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_pre_hooks
+[1;32m   1499[0m         [38;5;129;01mor[39;00m _global_backward_pre_hooks [38;5;129;01mor[39;00m _global_backward_hooks
+[1;32m   1500[0m         [38;5;129;01mor[39;00m _global_forward_hooks [38;5;129;01mor[39;00m _global_forward_pre_hooks):
+[0;32m-> 1501[0m     [38;5;28;01mreturn[39;00m [43mforward_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1502[0m [38;5;66;03m# Do not call functions when jit is used[39;00m
+[1;32m   1503[0m full_backward_hooks, non_full_backward_hooks [38;5;241m=[39m [], []
+
+File [0;32m~/.cache/pypoetry/virtualenvs/sds-adv-ml-t6Z6UgPC-py3.9/lib/python3.9/site-packages/torch/nn/modules/linear.py:114[0m, in [0;36mLinear.forward[0;34m(self, input)[0m
+[1;32m    113[0m [38;5;28;01mdef[39;00m [38;5;21mforward[39m([38;5;28mself[39m, [38;5;28minput[39m: Tensor) [38;5;241m-[39m[38;5;241m>[39m Tensor:
+[0;32m--> 114[0m     [38;5;28;01mreturn[39;00m [43mF[49m[38;5;241;43m.[39;49m[43mlinear[49m[43m([49m[38;5;28;43minput[39;49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mweight[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mbias[49m[43m)[49m
+
+[0;31mRuntimeError[0m: mat1 and mat2 must have the same dtype
+

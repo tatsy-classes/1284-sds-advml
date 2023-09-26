@@ -433,13 +433,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.2.7. 逆行列・疑似逆行列</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.2.8. 線形方程式を解く</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.2.9. 行列の固有値・固有ベクトル</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">固有値を求めるアルゴリズム</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi">Jacobi法</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qr">QR法</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">2.3. 疎行列</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">2.4. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">2.3. 疎行列</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">2.4. 練習問題</a></li>
 </ul>
             </nav>
         </div>
@@ -1197,8 +1198,8 @@ Shape of A: (4, 2, 3)
 </div>
 <p>上記の例では、例外処理をしており、<strong>LinAlgError</strong>が発生して、その例外メッセージが<strong>Singular matrix</strong>となることが確認できる。実際、上記の行列のランクは1で行列式は0.0になるので、各自で調べて見てほしい。</p>
 <p>さて、このようは特異行列に対して、逆行列を求めるにはどうすれば良いのだろうか？特異行列に対して、逆行列を求めたい場面というのは実用上はそれなりに多く、その一番身近な例が、以下のような最小二乗問題を解きたい場合だろう。</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-eq-least-squares">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-eq-least-squares" title="この数式へのパーマリンク">#</a></span>\[
 \min_{\mathbf{x}} \frac{1}{2} \| \mathbf{Ax} - \mathbf{b} \|^2
 \]</div>
 <p>この場合、 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> について被最小化関数を微分したものがゼロベクトルになる箇所を探せば、それが求める <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> だが、この際、被最小化関数の <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> についての微分によって得られる</p>
@@ -1245,14 +1246,14 @@ Shape of A: (4, 2, 3)
 <p class="admonition-title">数値誤差</p>
 <p>上記の例ではNumPyの関数を用いて行列式や逆行列を求める方法について紹介してきた。前述の通り、行列が正則であれば、<code class="docutils literal notranslate"><span class="pre">numpy.linalg.inv</span></code>で逆行列が求められ、そうでなければ特異行列である旨のエラーメッセージが表示されることを確認したが、実際の数値計算で、入力された行列が正則か特異かを判断するのには若干の問題がある。</p>
 <p>例えば、以下の行列の行列式を計算してみてほしい。</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{pmatrix}
   1 &amp; 2 &amp; 3 \\
   100 &amp; 200 &amp; 300 \\
   10000 &amp; 20000 &amp; 30000
 \end{pmatrix}
-\end{equation*}\]</div>
+\end{split}\]</div>
 <p>説明するまでもなく、上記の行列のランクは1だから、行列式は0になるはずだが...各自で結果を確認してみてほしい。</p>
 <p>このように実際の数値計算では数学的には特異であるような行列が正則と判断されてしまうことなどがあり、実際の問題で逆行列を計算するときには、注意が必要である。多くの場合は、逆行列の代わりに疑似逆行列を用いることで上記の問題を回避できるが、その場合には疑似逆行列を用いて得られる解が、どのような性質を持つかに留意する必要がある。</p>
 <p>疑似逆行列を用いる、ということは行列が特異、すなわちランク落ちしている場合であるから、実際の線形方程式を満たす解は無数に存在することになる。疑似逆行列を用いて得られる解は、そのうち、ノルムの大きさ (より正確にはl2ノルムの大きさ)が最小になるものになるので、自身が求めたい解がその解で良いのかは、実際の問題を扱う上では重要だろう。</p>
@@ -1376,9 +1377,9 @@ Shape of A: (4, 2, 3)
 </div>
 <p>なお、通常、固有値に加えて、固有ベクトルを求めるには追加の計算が必要になるため、固有値だけが必要になる場合には、より高速に動作する関数として<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvals</span></code>を使うのが良い。</p>
 <p>また、上記の例では、あえて実数が固有値、固有ベクトルとなるように実対称行列の固有値・固有ベクトルを求めたが、通常、対称行列、ないしHermite行列の固有値・固有ベクトルの計算は非対称、ないし非Hermite行列の固有値よりも計算が簡単である。そのため、固有値の計算を行いたい対称が対称行列やHermite行列であることが分かっている場合には<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigh</span></code>や<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eigvalsh</span></code>のように末尾に&quot;h&quot;のついている関数を使うと、より効率的である (とは言っても、効果を実感できるのは少なくとも1000x1000程度の行列からだろう)。</p>
-<section id="id20">
-<h4>固有値を求めるアルゴリズム<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
 <p>固有値を求めるという問題は、実用的に非常に広い応用を持つため、固有値を求める対象の行列の性質 (対称行列か、密行列か、疎行列かetc.)に応じて、様々なアルゴリズムが提案されている。ここでは、比較的単純なアルゴリズムとしてJacobi法 (先ほどの線形問題を解く方法とは異なる)とQR法について紹介する。</p>
+<section id="jacobi">
+<h4>Jacobi法<a class="headerlink" href="#jacobi" title="Permalink to this heading">#</a></h4>
 <p><strong>Jacobi法</strong>は<strong>対称行列</strong>に対するアルゴリズムで、Givens回転と呼ばれる行列の一部要素だけを変換するような下記の行列 <span class="math notranslate nohighlight">\(\mathbf{G}\)</span> を用いる (値の入っていない箇所の要素は全て0)。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1404,6 +1405,9 @@ Shape of A: (4, 2, 3)
 \]</div>
 <p>という変換を施すことで、 <span class="math notranslate nohighlight">\(a_{ij} = a_{ji}\)</span> の要素を0にすることができる。この操作を行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> の非対角成分のうち最も絶対値が大きい物が十分小さくなるまで繰り返すことで、固有値を対角行列とする行列 <span class="math notranslate nohighlight">\(\pmb{\Lambda}\)</span> へと <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> を変換することができる。</p>
 <p>また、Givens回転行列は直交行列であるため、元の行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> を <span class="math notranslate nohighlight">\(\pmb{\Lambda}\)</span> に変換する過程で用いた全てのGivens回転の積として得られる行列の各列が固有ベクトルとなる。</p>
+</section>
+<section id="qr">
+<h4>QR法<a class="headerlink" href="#qr" title="Permalink to this heading">#</a></h4>
 <p><strong>QR法</strong>はQR分解を用いて一般的な行列 (= 非対称行列でもよい)の固有値・固有ベクトルを求めるアルゴリズムで、対象の行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> が、QR分解によって <span class="math notranslate nohighlight">\(\mathbf{A} = \mathbf{QR}\)</span> (ただし、Qは直交行列、Rは上三角行列)と分解されるとすると、</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1413,9 +1417,9 @@ Shape of A: (4, 2, 3)
 </section>
 </section>
 </section>
-<section id="id21">
-<h2><span class="section-number">2.3. </span>疎行列<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h2>
-<p>疎行列とは、行列の要素のほとんどが0であるような行列を指す。計算機科学的には、<span class="math notranslate nohighlight">\(N \times N\)</span>の行列同士のかけ算には単純には<span class="math notranslate nohighlight">\(\mathcal{O}(N^3)\)</span>の計算量がかかるが、ほとんどの要素が0であるのなら、その要素とのかけ算は無視できるので、計算を効率化できる。</p>
+<section id="id20">
+<h2><span class="section-number">2.3. </span>疎行列<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
+<p>疎行列とは、行列の要素のほとんどが0であるような行列を指す。計算機科学的には、<span class="math notranslate nohighlight">\(N \times N\)</span>の行列同士のかけ算には単純には<span class="math notranslate nohighlight">\(O(N^3)\)</span>の計算量がかかるが、ほとんどの要素が0であるのなら、その要素とのかけ算は無視できるので、計算を効率化できる。</p>
 <p>疎行列の表し方にはいくつかの形式があるが、代表的なものはCSR(=Compressed Sparse Row)形式とCSC(=Compressed Sparse Column)形式の2つである。前者のCSR形式は、各列が非ゼロ要素の配列として表わされ、そのの配列として行列が表わされている。一方、後者のCSC形式は各行が非ゼロ要素の配列で表わされ、その配列として行列が表わされている。</p>
 <p>一例として</p>
 <div class="math notranslate nohighlight">
@@ -1468,10 +1472,11 @@ Shape of A: (4, 2, 3)
 </div>
 <p>疎行列の場合にも<code class="docutils literal notranslate"><span class="pre">sp.sparse</span></code>や<code class="docutils literal notranslate"><span class="pre">sp.sparse.linalg</span></code>モジュールの関数を使うことで、行列に対する様々な演算ができるので、ぜひどのような計算ができるか各自で調べて見てほしい。</p>
 </section>
-<section id="id22">
-<h2><span class="section-number">2.4. </span>練習問題<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h2>
+<section id="id21">
+<h2><span class="section-number">2.4. </span>練習問題<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>今回の講義で紹介したサンプルコードを踏まえて、正則行列に対する逆行列と、特異行列に対する疑似逆行列の違いと共通点について述べよ。</p></li>
+<li><p>疑似逆行列を用いて、<a class="reference internal" href="#equation-eq-least-squares">(2.1)</a>を解く場合、<span class="math notranslate nohighlight">\(\mathbf{Ax} = \mathbf{b}\)</span>という線形問題が、不良設定 (未知数の数が式の数より多い)のか、過剰拘束 (未知数の数が式の数より少ない)のかによって、得られる解の意味が異なる。それぞれは、どのような解を与えるのだろうか。</p></li>
 <li><p>逆行列を<code class="docutils literal notranslate"><span class="pre">numpy.linalg.inv</span></code>によって求めることで線形問題を解く方法と、<code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>を用いてLU分解により解を求める方法で計算精度がどの程度変化するかを確かめてみよ。なお、より結果を分かりやすくするために<code class="docutils literal notranslate"><span class="pre">numpy.random.random</span></code>を用いて100x100および100x1程度の大きめのサイズで <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> を作成し、精度については <span class="math notranslate nohighlight">\(\| \mathbf{A} \mathbf{x} - \mathbf{b} \|^2\)</span> の大きさを使って調べること。</p></li>
 <li><p>前述の(反復計算による線形問題解法としての)Jacobi法により、正しく線形問題が解ける(= <code class="docutils literal notranslate"><span class="pre">numpy.linalg.solve</span></code>と解が一致)ことを調べよ。なお、ヤコビ法は優対角行列と呼ばれる対角成分が、各列の対角成分以外の成分の総和より大きい行列にしか用いることができないので、そのような行列を各自適当に設定すること。</p></li>
 <li><p>NumPyには多項方程式を解くための関数として<code class="docutils literal notranslate"><span class="pre">numpy.roots</span></code>という関数が用意されている (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.roots.html">参考</a>、特性方程式の係数は手計算で求めること)。この関数を用いて、以下の行列について、特性方程式を解くことで得られる固有値と、<code class="docutils literal notranslate"><span class="pre">numpy.linalg.eig</span></code>を解くことで得られる固有値が一致することを調べよ。</p></li>
@@ -1484,7 +1489,7 @@ Shape of A: (4, 2, 3)
   3 &amp; 3 &amp; 3
 \end{pmatrix}
 \end{split}\]</div>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="6">
 <li><p>上記の3x3行列 <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> に対して(固有値を求めるアルゴリズムとしての)Jacobi法ならびにQR法を用いて正しく固有値が求まる (= <code class="docutils literal notranslate"><span class="pre">numpy.linalg.eig</span></code>と同じ結果が得られる)ことを確かめよ。</p></li>
 </ol>
 </section>
@@ -1576,13 +1581,14 @@ Shape of A: (4, 2, 3)
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.2.7. 逆行列・疑似逆行列</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.2.8. 線形方程式を解く</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.2.9. 行列の固有値・固有ベクトル</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">固有値を求めるアルゴリズム</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jacobi">Jacobi法</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qr">QR法</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">2.3. 疎行列</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">2.4. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">2.3. 疎行列</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">2.4. 練習問題</a></li>
 </ul>
   </nav></div>
 
