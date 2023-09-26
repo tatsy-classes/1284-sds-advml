@@ -426,16 +426,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.11. ハイパーパラメータの調整</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.11.1. ホールドアウト検証</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7.11.2. 交差検証 (クロス・バリデーション)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.11.3. 学習済みデータの保存</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.12. 学習済みデータの保存</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">7.13. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">7.13.1. 2クラス分類の場合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">7.13.2. 多クラス分類の場合</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">7.12. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">7.12.1. 2クラス分類の場合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">7.12.2. 多クラス分類の場合</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">7.14. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">7.15. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">7.13. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">7.14. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -1956,9 +1956,8 @@ K = \Phi \Lambda \Phi^T
 </div>
 </div>
 </section>
-</section>
 <section id="id15">
-<h2><span class="section-number">7.12. </span>学習済みデータの保存<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<h3><span class="section-number">7.11.3. </span>学習済みデータの保存<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
 <p>ハイパーパラメータの調整が完了したら、学習済みのモデルをファイルに保存し、再学習なしで、テストに入れるようにしておこう。</p>
 <p>通常、モデルは複数のパラメータから構成されており、これらをファイルに保存できるような「文字列」や「バイト列」の集合に変換する操作を<strong>シリアライズ</strong>と呼ぶ。また、このようなシリアライズを行うプログラムを<strong>シリアライザ</strong>と呼ぶ。</p>
 <p>Pythonで標準使用できるシリアライザには<code class="docutils literal notranslate"><span class="pre">pickle</span></code>がある。<code class="docutils literal notranslate"><span class="pre">pickle</span></code>はPythonの標準的なオブジェクト (例えば<code class="docutils literal notranslate"><span class="pre">list</span></code>や<code class="docutils literal notranslate"><span class="pre">dict</span></code>や、その他のオブジェクト)をシリアライズしたバイトデータを作成してくれるので、それをファイルに保存すれば良い。</p>
@@ -2010,12 +2009,13 @@ K = \Phi \Lambda \Phi^T
 </div>
 <p>このように、保存しておいたファイルから全く同じテスト精度が得られることが確認できた。</p>
 </section>
+</section>
 <section id="id16">
-<h2><span class="section-number">7.13. </span>分類問題の評価方法<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.12. </span>分類問題の評価方法<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <p>ここまで、分類の精度を「どの程度正しく分類ができたか」について評価してきたが、この評価方法は必ずしも、分類器の性能を正しく評価するとは言い切れない。例えば、数字の識別問題において、データセットに含まれる数字の90%が0で、残りの10%が1-9であったとする。</p>
 <p>この場合、識別器がどんな画像が入力されても「0」だと認識するようになれば、90%の識別精度が得られることになるが、これは全ての数字を正しく識別しているとは言いがたい。</p>
 <section id="id17">
-<h3><span class="section-number">7.13.1. </span>2クラス分類の場合<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.12.1. </span>2クラス分類の場合<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
 <p>多クラス識別の問題について考える前に、2クラスの分類問題について考えてみる。例えば、とあるデータからある人が病気なのか、そうでないのかを識別するとしよう。</p>
 <p>この場合、以下の4つの場合が考えられる。</p>
 <ul class="simple">
@@ -2094,7 +2094,7 @@ K = \Phi \Lambda \Phi^T
 </div>
 </section>
 <section id="id18">
-<h3><span class="section-number">7.13.2. </span>多クラス分類の場合<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">7.12.2. </span>多クラス分類の場合<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
 <p>多クラス分類に対しても、精度(accuracy)、適合率(precision)、再現率(recall)、ならびにF1値と類似した指標を計算することができる。</p>
 <p>本題に入る前に、先ほど学習しておいたSVMの性能を、混合行列により可視化してみる。</p>
 <div class="cell docutils container">
@@ -2190,14 +2190,14 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
 </section>
 </section>
 <section id="id19">
-<h2><span class="section-number">7.14. </span>練習問題<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.13. </span>練習問題<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>マクロ平均ならびにマイクロ平均を用いて、本節で紹介した分類手法の性能を比較せよ。</p></li>
 <li><p>scikit-learnの<code class="docutils literal notranslate"><span class="pre">SVC</span></code>には<code class="docutils literal notranslate"><span class="pre">kernel=...</span></code>の引数に直接カーネル関数を渡すことができる。これを用いて、コサイン・カーネルならびにカイ二乗カーネルについて性能を評価せよ。</p></li>
 </ol>
 </section>
 <section id="id20">
-<h2><span class="section-number">7.15. </span>参考文献<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">7.14. </span>参考文献<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id21">
 <dl class="citation">
 <dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id7">CG16</a></span></dt>
@@ -2290,16 +2290,16 @@ F_k &amp;= \frac{2 P_k R_k}{P_k + R_k}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7.11. ハイパーパラメータの調整</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7.11.1. ホールドアウト検証</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7.11.2. 交差検証 (クロス・バリデーション)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.11.3. 学習済みデータの保存</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.12. 学習済みデータの保存</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">7.13. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">7.13.1. 2クラス分類の場合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">7.13.2. 多クラス分類の場合</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">7.12. 分類問題の評価方法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">7.12.1. 2クラス分類の場合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">7.12.2. 多クラス分類の場合</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">7.14. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">7.15. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">7.13. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">7.14. 参考文献</a></li>
 </ul>
   </nav></div>
 
