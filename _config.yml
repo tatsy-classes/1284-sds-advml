@@ -27,6 +27,7 @@ execute:
   exclude_patterns:
     - "scikit-learn.ipynb"
     - "feature-extraction.ipynb"
+    - "deep-learning.ipynb"
 
 # HTML-specific settings
 html:
