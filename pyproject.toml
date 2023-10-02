@@ -29,6 +29,7 @@ pytest = "^7.4.0"
 ffmpeg = "^1.4"
 gymnasium = { extras = ["classic-control"], version = "^0.29.1" }
 opencv-contrib-python = "^4.8.0.76"
+torchviz = "^0.0.2"
 advml = { path = "./lib/advml/", develop = false }
 
 torch = [
