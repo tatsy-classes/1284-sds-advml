@@ -1074,7 +1074,7 @@ K = \sum_{\xi = -H}^{+H} \sum_{\eta = -H}^H f(\xi, \eta)
 </section>
 <section id="id11">
 <h4>バイラテラルフィルタ<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
-<p><strong>バイラテラルフィルタ</strong> (bilateral filter)はTomasiとManduchiによって1998年に提案されたフィルタ<span id="id12">[<a class="reference internal" href="#id39" title="C. Tomasi and R. Manduchi. Bilateral filtering for gray and color images. In Sixth International Conference on Computer Vision (IEEE Cat. No.98CH36271). Narosa Publishing House, 1998. doi:10.1109/iccv.1998.710815.">Tomasi and Manduchi, 1998</a>]</span>で、Gaussianフィルタが元画像の信号までぼかしてしまう問題を緩和したものである。</p>
+<p><strong>バイラテラルフィルタ</strong> (bilateral filter)はTomasiとManduchiによって1998年に提案されたフィルタ<span id="id12">[<a class="reference internal" href="#id40" title="C. Tomasi and R. Manduchi. Bilateral filtering for gray and color images. In Sixth International Conference on Computer Vision (IEEE Cat. No.98CH36271). Narosa Publishing House, 1998. doi:10.1109/iccv.1998.710815.">Tomasi and Manduchi, 1998</a>]</span>で、Gaussianフィルタが元画像の信号までぼかしてしまう問題を緩和したものである。</p>
 <p>具体的には、<strong>色が近い画素同士の間でだけぼかしがかかる</strong>ようにGauss関数に色を考慮する項を追加している。バイラテラルフィルタのフィルタカーネルは以下のように定義される。</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1163,9 +1163,9 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 <div class="note admonition">
 <p class="admonition-title">Futher Reading: ぼかしフィルタ</p>
 <p>上記の通り、単純なぼかしフィルタのノイズ除去性能には限界があり、ノイズレベルによっては、完全にノイズを取り去ることは難しい。ノイズ除去は、非常に古くから研究されているにも関わらず、現在でも多くの手法が提案されている。</p>
-<p>比較的性能が良い手法として広く知られている手法にはBM3D (Block Matching 3D) <span id="id14">[<a class="reference internal" href="#id40" title="Kostadin Dabov, Alessandro Foi, Vladimir Katkovnik, and Karen Egiazarian. Image denoising by sparse 3-d transform-domain collaborative filtering. IEEE Transactions on Image Processing, 16(8):2080–2095, aug 2007. doi:10.1109/tip.2007.901238.">Dabov <em>et al.</em>, 2007</a>]</span>があり、この手法は、注目画素の周辺を含む画像断片と類似した断片を画像全体から探してきて、その画像断片の集合を三次元的に処理することでフィルタを実現する手法である。</p>
-<p>また、画像フィルタを最適化問題として定式化する手法も多く提案されており、全変動 (total variation)を最小化する手法<span id="id15">[<a class="reference internal" href="#id42" title="Leonid I. Rudin, Stanley Osher, and Emad Fatemi. Nonlinear total variation based noise removal algorithms. Physica D: Nonlinear Phenomena, 60(1-4):259–268, nov 1992. doi:10.1016/0167-2789(92)90242-f.">Rudin <em>et al.</em>, 1992</a>]</span>や、画素の勾配の<span class="math notranslate nohighlight">\(L_0\)</span>ノルムを最小化する手法<span id="id16">[<a class="reference internal" href="#id41" title="Li Xu, Cewu Lu, Yi Xu, and Jiaya Jia. Image smoothing via L0 gradient minimization. In Proceedings of the 2011 SIGGRAPH Asia conference, volume 30, 1–12. Association for Computing Machinery (ACM), dec 2011. doi:10.1145/2070781.2024208.">Xu <em>et al.</em>, 2011</a>]</span>などがある。</p>
-<p>これ以外にも、近年、ノイズ付きの画像1枚「だけ」を深層学習することでノイズ除去を実現するDeep Image Prior法<span id="id17">[<a class="reference internal" href="#id44" title="Dmitry Ulyanov, Andrea Vedaldi, and Victor Lempitsky. Deep image prior. International Journal of Computer Vision, 128(7):1867–1888, mar 2020. doi:10.1007/s11263-020-01303-4.">Ulyanov <em>et al.</em>, 2020</a>]</span>や、ノイズ付き画像を大量に学習してノイズ除去を実現するNoise2Noise法<span id="id18">[<a class="reference internal" href="#id43" title="Jaakko Lehtinen, Jacob Munkberg, Jon Hasselgren, Samuli Laine, Tero Karras, Miika Aittala, and Timo Aila. Noise2Noise: learning image restoration without clean data. In Jennifer Dy and Andreas Krause, editors, Proceedings of the 35th International Conference on Machine Learning, volume 80 of Proceedings of Machine Learning Research, 2965–2974. PMLR, 10–15 Jul 2018. URL: https://proceedings.mlr.press/v80/lehtinen18a.html.">Lehtinen <em>et al.</em>, 2018</a>]</span>などが提案されている。</p>
+<p>比較的性能が良い手法として広く知られている手法にはBM3D (Block Matching 3D) <span id="id14">[<a class="reference internal" href="#id41" title="Kostadin Dabov, Alessandro Foi, Vladimir Katkovnik, and Karen Egiazarian. Image denoising by sparse 3-d transform-domain collaborative filtering. IEEE Transactions on Image Processing, 16(8):2080–2095, aug 2007. doi:10.1109/tip.2007.901238.">Dabov <em>et al.</em>, 2007</a>]</span>があり、この手法は、注目画素の周辺を含む画像断片と類似した断片を画像全体から探してきて、その画像断片の集合を三次元的に処理することでフィルタを実現する手法である。</p>
+<p>また、画像フィルタを最適化問題として定式化する手法も多く提案されており、全変動 (total variation)を最小化する手法<span id="id15">[<a class="reference internal" href="#id43" title="Leonid I. Rudin, Stanley Osher, and Emad Fatemi. Nonlinear total variation based noise removal algorithms. Physica D: Nonlinear Phenomena, 60(1-4):259–268, nov 1992. doi:10.1016/0167-2789(92)90242-f.">Rudin <em>et al.</em>, 1992</a>]</span>や、画素の勾配の<span class="math notranslate nohighlight">\(L_0\)</span>ノルムを最小化する手法<span id="id16">[<a class="reference internal" href="#id42" title="Li Xu, Cewu Lu, Yi Xu, and Jiaya Jia. Image smoothing via L0 gradient minimization. In Proceedings of the 2011 SIGGRAPH Asia conference, volume 30, 1–12. Association for Computing Machinery (ACM), dec 2011. doi:10.1145/2070781.2024208.">Xu <em>et al.</em>, 2011</a>]</span>などがある。</p>
+<p>これ以外にも、近年、ノイズ付きの画像1枚「だけ」を深層学習することでノイズ除去を実現するDeep Image Prior法<span id="id17">[<a class="reference internal" href="#id45" title="Dmitry Ulyanov, Andrea Vedaldi, and Victor Lempitsky. Deep image prior. International Journal of Computer Vision, 128(7):1867–1888, mar 2020. doi:10.1007/s11263-020-01303-4.">Ulyanov <em>et al.</em>, 2020</a>]</span>や、ノイズ付き画像を大量に学習してノイズ除去を実現するNoise2Noise法<span id="id18">[<a class="reference internal" href="#id44" title="Jaakko Lehtinen, Jacob Munkberg, Jon Hasselgren, Samuli Laine, Tero Karras, Miika Aittala, and Timo Aila. Noise2Noise: learning image restoration without clean data. In Jennifer Dy and Andreas Krause, editors, Proceedings of the 35th International Conference on Machine Learning, volume 80 of Proceedings of Machine Learning Research, 2965–2974. PMLR, 10–15 Jul 2018. URL: https://proceedings.mlr.press/v80/lehtinen18a.html.">Lehtinen <em>et al.</em>, 2018</a>]</span>などが提案されている。</p>
 </div>
 </section>
 </section>
@@ -1448,22 +1448,22 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 <h2><span class="section-number">5.5. </span>参考文献<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id25">
 <dl class="citation">
-<dt class="label" id="id40"><span class="brackets"><a class="fn-backref" href="#id14">DFKE07</a></span></dt>
+<dt class="label" id="id41"><span class="brackets"><a class="fn-backref" href="#id14">DFKE07</a></span></dt>
 <dd><p>Kostadin Dabov, Alessandro Foi, Vladimir Katkovnik, and Karen Egiazarian. Image denoising by sparse 3-d transform-domain collaborative filtering. <em>IEEE Transactions on Image Processing</em>, 16(8):2080–2095, aug 2007. <a class="reference external" href="https://doi.org/10.1109/tip.2007.901238">doi:10.1109/tip.2007.901238</a>.</p>
 </dd>
-<dt class="label" id="id43"><span class="brackets"><a class="fn-backref" href="#id18">LMH+18</a></span></dt>
+<dt class="label" id="id44"><span class="brackets"><a class="fn-backref" href="#id18">LMH+18</a></span></dt>
 <dd><p>Jaakko Lehtinen, Jacob Munkberg, Jon Hasselgren, Samuli Laine, Tero Karras, Miika Aittala, and Timo Aila. Noise2Noise: learning image restoration without clean data. In Jennifer Dy and Andreas Krause, editors, <em>Proceedings of the 35th International Conference on Machine Learning</em>, volume 80 of Proceedings of Machine Learning Research, 2965–2974. PMLR, 10–15 Jul 2018. URL: <a class="reference external" href="https://proceedings.mlr.press/v80/lehtinen18a.html">https://proceedings.mlr.press/v80/lehtinen18a.html</a>.</p>
 </dd>
-<dt class="label" id="id42"><span class="brackets"><a class="fn-backref" href="#id15">ROF92</a></span></dt>
+<dt class="label" id="id43"><span class="brackets"><a class="fn-backref" href="#id15">ROF92</a></span></dt>
 <dd><p>Leonid I. Rudin, Stanley Osher, and Emad Fatemi. Nonlinear total variation based noise removal algorithms. <em>Physica D: Nonlinear Phenomena</em>, 60(1-4):259–268, nov 1992. <a class="reference external" href="https://doi.org/10.1016/0167-2789(92)90242-f">doi:10.1016/0167-2789(92)90242-f</a>.</p>
 </dd>
-<dt class="label" id="id39"><span class="brackets"><a class="fn-backref" href="#id12">TM98</a></span></dt>
+<dt class="label" id="id40"><span class="brackets"><a class="fn-backref" href="#id12">TM98</a></span></dt>
 <dd><p>C. Tomasi and R. Manduchi. Bilateral filtering for gray and color images. In <em>Sixth International Conference on Computer Vision (IEEE Cat. No.98CH36271)</em>. Narosa Publishing House, 1998. <a class="reference external" href="https://doi.org/10.1109/iccv.1998.710815">doi:10.1109/iccv.1998.710815</a>.</p>
 </dd>
-<dt class="label" id="id44"><span class="brackets"><a class="fn-backref" href="#id17">UVL20</a></span></dt>
+<dt class="label" id="id45"><span class="brackets"><a class="fn-backref" href="#id17">UVL20</a></span></dt>
 <dd><p>Dmitry Ulyanov, Andrea Vedaldi, and Victor Lempitsky. Deep image prior. <em>International Journal of Computer Vision</em>, 128(7):1867–1888, mar 2020. <a class="reference external" href="https://doi.org/10.1007/s11263-020-01303-4">doi:10.1007/s11263-020-01303-4</a>.</p>
 </dd>
-<dt class="label" id="id41"><span class="brackets"><a class="fn-backref" href="#id16">XLXJ11</a></span></dt>
+<dt class="label" id="id42"><span class="brackets"><a class="fn-backref" href="#id16">XLXJ11</a></span></dt>
 <dd><p>Li Xu, Cewu Lu, Yi Xu, and Jiaya Jia. Image smoothing via L0 gradient minimization. In <em>Proceedings of the 2011 SIGGRAPH Asia conference</em>, volume 30, 1–12. Association for Computing Machinery (ACM), dec 2011. <a class="reference external" href="https://doi.org/10.1145/2070781.2024208">doi:10.1145/2070781.2024208</a>.</p>
 </dd>
 </dl>

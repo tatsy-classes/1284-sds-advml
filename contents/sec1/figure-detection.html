@@ -609,7 +609,7 @@ document.write(`
 </section>
 <section id="id5">
 <h3><span class="section-number">6.1.3. </span>輪郭線の検出<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<p>ここまでに検出したエッジの情報を使って輪郭線を抽出する。輪郭線の抽出にはOpenCVの <code class="docutils literal notranslate"><span class="pre">findContours</span></code>という関数を用いる。この関数には1985年にSuzukiさんとAbeさんという日本人が提案したアルゴリズムが実装されている<span id="id6">[<a class="reference internal" href="#id37" title="Satoshi Suzuki and Keiichi Abe. Topological structural analysis of digitized binary images by border following. Computer Vision, Graphics, and Image Processing, 29(3):396, mar 1985. doi:10.1016/0734-189x(85)90136-7.">Suzuki and Abe, 1985</a>]</span>。</p>
+<p>ここまでに検出したエッジの情報を使って輪郭線を抽出する。輪郭線の抽出にはOpenCVの <code class="docutils literal notranslate"><span class="pre">findContours</span></code>という関数を用いる。この関数には1985年にSuzukiさんとAbeさんという日本人が提案したアルゴリズムが実装されている<span id="id6">[<a class="reference internal" href="#id38" title="Satoshi Suzuki and Keiichi Abe. Topological structural analysis of digitized binary images by border following. Computer Vision, Graphics, and Image Processing, 29(3):396, mar 1985. doi:10.1016/0734-189x(85)90136-7.">Suzuki and Abe, 1985</a>]</span>。</p>
 <p>このアルゴリズムは二値画像(1がエッジで0が背景の色とする)を<strong>ラスタスキャン</strong> (最初の列を左から右に見ていき、右端に到達したら、左から右に見ていく、以後繰り返し) していき、<strong>1が見つかったら、その画素から始まる輪郭線を追跡する</strong>。</p>
 <p>輪郭線の追跡は、<strong>今見ている画素の周りを時計回りに見ていき、初めて1となる画素にスキャン位置を移動する、という操作を繰り返す</strong>ことで行われる。端点に到達するか、元の位置の画素に戻ってきたら、再びラスタスキャン順に値が1の画素で、まだどの輪郭にも含まれていない画素を探し、以後、同様の処理を繰り返していく。</p>
 <p>OpenCVの <code class="docutils literal notranslate"><span class="pre">findContours</span></code>は3つの引数を取り、第1引数が入力の二値画像、第2引数が検出される輪郭線の階層関係、第3引数が抽出する輪郭線をどのように近似表現するかを表す。代表的な使い方は以下の通り。</p>
@@ -5088,7 +5088,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 <h2><span class="section-number">6.4. </span>参考文献<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id17">
 <dl class="citation">
-<dt class="label" id="id37"><span class="brackets"><a class="fn-backref" href="#id6">SA85</a></span></dt>
+<dt class="label" id="id38"><span class="brackets"><a class="fn-backref" href="#id6">SA85</a></span></dt>
 <dd><p>Satoshi Suzuki and Keiichi Abe. Topological structural analysis of digitized binary images by border following. <em>Computer Vision, Graphics, and Image Processing</em>, 29(3):396, mar 1985. <a class="reference external" href="https://doi.org/10.1016/0734-189x(85)90136-7">doi:10.1016/0734-189x(85)90136-7</a>.</p>
 </dd>
 </dl>

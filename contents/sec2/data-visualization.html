@@ -735,7 +735,7 @@ D_{**} &amp;= 2N \sum_{i=1} \| \mathbf{z}_i \|^2
 </div>
 </div>
 <p>この多次元尺度構成法の結果は、定義式から分かるとおり、元のベクトルを線形に射影した物であり、元々のスイスロールのデータをとある方向 (元の空間での距離が最大限保たれる方向)から見たものと等価である。従って、主成分分析と比べて、ややスイスロールの帯の部分に拡がりのあるデータとなっているものの、全体の見た目としてはそれほど変わりがないことが分かる。</p>
-<p>一方で、MDSにはデータの間の距離を調整するSMACOF(Scaling by MAjorizing a COmplicated Function)というテクニック<span id="id3">[<a class="reference internal" href="#id23" title="De Leeuw. Application of convex analysis to multidimensional scaling. Recent Developments in Statistics, pages 133–145, 1977.">Leeuw, 1977</a>]</span>が知られている。SMACOFは、<span class="math notranslate nohighlight">\(\mathbf{Z}\)</span>をランダムに初期化した状態からスタートし、<span class="math notranslate nohighlight">\(\mathbf{Z}\)</span>から求まる距離行列<span class="math notranslate nohighlight">\(\mathbf{D}'\)</span>が目的の距離行列<span class="math notranslate nohighlight">\(\mathbf{D}\)</span>に近づくように、Guttman変換と呼ばれる変換を用いて<span class="math notranslate nohighlight">\(\mathbf{Z}\)</span>を更新していく。これにより、元の多次元尺度構成法とは異なった非線形変換による低次元空間表現を得ることができ、低次元空間でのデータ<span class="math notranslate nohighlight">\(\{ \mathbf{z}_1, \ldots, \mathbf{z}_N\}\)</span>の配置が、より元の空間での距離を反映した物にすることができる。</p>
+<p>一方で、MDSにはデータの間の距離を調整するSMACOF(Scaling by MAjorizing a COmplicated Function)というテクニック<span id="id3">[<a class="reference internal" href="#id24" title="De Leeuw. Application of convex analysis to multidimensional scaling. Recent Developments in Statistics, pages 133–145, 1977.">Leeuw, 1977</a>]</span>が知られている。SMACOFは、<span class="math notranslate nohighlight">\(\mathbf{Z}\)</span>をランダムに初期化した状態からスタートし、<span class="math notranslate nohighlight">\(\mathbf{Z}\)</span>から求まる距離行列<span class="math notranslate nohighlight">\(\mathbf{D}'\)</span>が目的の距離行列<span class="math notranslate nohighlight">\(\mathbf{D}\)</span>に近づくように、Guttman変換と呼ばれる変換を用いて<span class="math notranslate nohighlight">\(\mathbf{Z}\)</span>を更新していく。これにより、元の多次元尺度構成法とは異なった非線形変換による低次元空間表現を得ることができ、低次元空間でのデータ<span class="math notranslate nohighlight">\(\{ \mathbf{z}_1, \ldots, \mathbf{z}_N\}\)</span>の配置が、より元の空間での距離を反映した物にすることができる。</p>
 <p>SMACOFでは<strong>ストレス</strong> <span class="math notranslate nohighlight">\(S\)</span>と<strong>比率行列</strong> <span class="math notranslate nohighlight">\(R\)</span>を、現在の<span class="math notranslate nohighlight">\(\mathbf{Z}\)</span>から求まる距離行列<span class="math notranslate nohighlight">\(\mathbf{D}'\)</span>を用いて以下のように定義する。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -994,7 +994,7 @@ S &amp;= \frac{1}{2} \| \mathbf{D}' - \mathbf{D} \|_F \\
 </section>
 <section id="lle">
 <h3><span class="section-number">1.2.2. </span>局所線形埋め込み法 (LLE)<a class="headerlink" href="#lle" title="Permalink to this heading">#</a></h3>
-<p><strong>局所線形埋め込み法</strong> (LLE = Locally Linear Embedding) <span id="id5">[<a class="reference internal" href="#id24" title="Sam T. Roweis and Lawrence K. Saul. Nonlinear dimensionality reduction by locally linear embedding. Science, 290(5500):2323–2326, dec 2000. doi:10.1126/science.290.5500.2323.">Roweis and Saul, 2000</a>]</span>は、その名前が示す通り、高次元空間上の点である<span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>とその近傍において、線形性を保存するように低次元空間での表現を得る次元圧縮法である。</p>
+<p><strong>局所線形埋め込み法</strong> (LLE = Locally Linear Embedding) <span id="id5">[<a class="reference internal" href="#id25" title="Sam T. Roweis and Lawrence K. Saul. Nonlinear dimensionality reduction by locally linear embedding. Science, 290(5500):2323–2326, dec 2000. doi:10.1126/science.290.5500.2323.">Roweis and Saul, 2000</a>]</span>は、その名前が示す通り、高次元空間上の点である<span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>とその近傍において、線形性を保存するように低次元空間での表現を得る次元圧縮法である。</p>
 <p>今、<span class="math notranslate nohighlight">\(\mathbf{x}_i \in \mathbb{R}^D\)</span>の近傍点として、<span class="math notranslate nohighlight">\(\mathbf{x}_{i_1}, \ldots, \mathbf{x}_{i_K}\)</span>が与えられたとしよう。ここでいう線形性とは、<span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>が近傍点の凸結合として、以下のように表せることを意味する。</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1201,7 +1201,7 @@ w_{ik} \geq 0, &amp; &amp; k = 1, \ldots, K \\
 <img alt="../../_images/42cfa34fc45190ace13befe72ab2284f3c15ee43b84faa38667027105a74a6d7.png" src="../../_images/42cfa34fc45190ace13befe72ab2284f3c15ee43b84faa38667027105a74a6d7.png" />
 </div>
 </div>
-<p>局所線形埋め込み法には、その発展形として、改良局所線形埋め込み法 (Modified LLE) <span id="id6">[<a class="reference internal" href="#id25" title="Zhenyue Zhang and Jing Wang. Mlle: modified locally linear embedding using multiple weights. In B. Schölkopf, J. Platt, and T. Hoffman, editors, Advances in Neural Information Processing Systems, volume 19. MIT Press, 2006. URL: https://proceedings.neurips.cc/paper_files/paper/2006/file/fb2606a5068901da92473666256e6e5b-Paper.pdf.">Zhang and Wang, 2006</a>]</span> やHessian Eigenmap <span id="id7">[<a class="reference internal" href="#id26" title="David L Donoho and Carrie Grimes. Hessian eigenmaps: locally linear embedding techniques for high-dimensional data. Proceedings of the National Academy of Sciences, 100(10):5591–5596, 2003.">Donoho and Grimes, 2003</a>]</span> などがある。興味のある読者は是非、原論文を当たってみてほしい。</p>
+<p>局所線形埋め込み法には、その発展形として、改良局所線形埋め込み法 (Modified LLE) <span id="id6">[<a class="reference internal" href="#id26" title="Zhenyue Zhang and Jing Wang. Mlle: modified locally linear embedding using multiple weights. In B. Schölkopf, J. Platt, and T. Hoffman, editors, Advances in Neural Information Processing Systems, volume 19. MIT Press, 2006. URL: https://proceedings.neurips.cc/paper_files/paper/2006/file/fb2606a5068901da92473666256e6e5b-Paper.pdf.">Zhang and Wang, 2006</a>]</span> やHessian Eigenmap <span id="id7">[<a class="reference internal" href="#id27" title="David L Donoho and Carrie Grimes. Hessian eigenmaps: locally linear embedding techniques for high-dimensional data. Proceedings of the National Academy of Sciences, 100(10):5591–5596, 2003.">Donoho and Grimes, 2003</a>]</span> などがある。興味のある読者は是非、原論文を当たってみてほしい。</p>
 </section>
 <section id="id8">
 <h3><span class="section-number">1.2.3. </span>カーネル主成分分析<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
@@ -1990,16 +1990,16 @@ if (force === true) {
 <h2><span class="section-number">1.5. </span>参考文献<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id13">
 <dl class="citation">
-<dt class="label" id="id26"><span class="brackets"><a class="fn-backref" href="#id7">DG03</a></span></dt>
+<dt class="label" id="id27"><span class="brackets"><a class="fn-backref" href="#id7">DG03</a></span></dt>
 <dd><p>David L Donoho and Carrie Grimes. Hessian eigenmaps: locally linear embedding techniques for high-dimensional data. <em>Proceedings of the National Academy of Sciences</em>, 100(10):5591–5596, 2003.</p>
 </dd>
-<dt class="label" id="id23"><span class="brackets"><a class="fn-backref" href="#id3">Lee77</a></span></dt>
+<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id3">Lee77</a></span></dt>
 <dd><p>De Leeuw. Application of convex analysis to multidimensional scaling. <em>Recent Developments in Statistics</em>, pages 133–145, 1977.</p>
 </dd>
-<dt class="label" id="id24"><span class="brackets"><a class="fn-backref" href="#id5">RS00</a></span></dt>
+<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id5">RS00</a></span></dt>
 <dd><p>Sam T. Roweis and Lawrence K. Saul. Nonlinear dimensionality reduction by locally linear embedding. <em>Science</em>, 290(5500):2323–2326, dec 2000. <a class="reference external" href="https://doi.org/10.1126/science.290.5500.2323">doi:10.1126/science.290.5500.2323</a>.</p>
 </dd>
-<dt class="label" id="id25"><span class="brackets"><a class="fn-backref" href="#id6">ZW06</a></span></dt>
+<dt class="label" id="id26"><span class="brackets"><a class="fn-backref" href="#id6">ZW06</a></span></dt>
 <dd><p>Zhenyue Zhang and Jing Wang. Mlle: modified locally linear embedding using multiple weights. In B. Schölkopf, J. Platt, and T. Hoffman, editors, <em>Advances in Neural Information Processing Systems</em>, volume 19. MIT Press, 2006. URL: <a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2006/file/fb2606a5068901da92473666256e6e5b-Paper.pdf">https://proceedings.neurips.cc/paper_files/paper/2006/file/fb2606a5068901da92473666256e6e5b-Paper.pdf</a>.</p>
 </dd>
 </dl>
