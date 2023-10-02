@@ -1020,7 +1020,7 @@ M_3= \begin{pmatrix}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/9a5968cbb370c90fcef4cbdd125817109c1507211c85be4875502b0f65a92983.png" src="../../_images/9a5968cbb370c90fcef4cbdd125817109c1507211c85be4875502b0f65a92983.png" />
+<img alt="../../_images/ed9398cf75972a8ae5f10e3e137cde01c62935e48866cbc30bc858c653f0d407.png" src="../../_images/ed9398cf75972a8ae5f10e3e137cde01c62935e48866cbc30bc858c653f0d407.png" />
 </div>
 </div>
 <p>ノイズを付与すると、上記のように、元の画像が見分けづらくなる。このようなノイズは、写真を撮るときに被写体が暗い場合に多く生じる。また、ノイズの種類は異なるが、JPEG等の不可逆圧縮をかけることによっても、ノイズが生じる。</p>
@@ -1067,7 +1067,7 @@ K = \sum_{\xi = -H}^{+H} \sum_{\eta = -H}^H f(\xi, \eta)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/379fc110808fdc1d7586c150e71ff0b4b13dcd85e95a8e5d89bd3257be77bdd8.png" src="../../_images/379fc110808fdc1d7586c150e71ff0b4b13dcd85e95a8e5d89bd3257be77bdd8.png" />
+<img alt="../../_images/d2876c9137457195a43216eb82d96f1802068eb428b4419ec934d8d358dabebd.png" src="../../_images/d2876c9137457195a43216eb82d96f1802068eb428b4419ec934d8d358dabebd.png" />
 </div>
 </div>
 <p>このように、Gaussianフィルタにより、高周波のノイズは除けているものの、画像には斑点状ノイズが残ってしまっている。さらに、元のひまわりの画像信号にもぼけが生じており、元の画像を復元できているとは言いがたい。</p>
@@ -1105,7 +1105,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/71692c3685033190195b0f676e7a20056280cf64ca7a6e0967238d39cedc347d.png" src="../../_images/71692c3685033190195b0f676e7a20056280cf64ca7a6e0967238d39cedc347d.png" />
+<img alt="../../_images/a9370a9d45bcce11fb8b947f5ee8fa78b7551dede71c47f7a25dbd6f501dac27.png" src="../../_images/a9370a9d45bcce11fb8b947f5ee8fa78b7551dede71c47f7a25dbd6f501dac27.png" />
 </div>
 </div>
 <p>このように、Gaussianフィルタと比べると、元の信号のぼけが少なく、また高周波のノイズも低減できていることが分かる。バイラテラルフィルタは繰り返し書けることで、その効果を調整することができる。一例として弱いバイラテラルフィルタを10回程度適用すると、以下のような画像が得られる。</p>
@@ -1129,7 +1129,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/2770d5c1f07be10926923ef85d85a7c8c9c469c785e6a2f7be62a60cf4d80685.png" src="../../_images/2770d5c1f07be10926923ef85d85a7c8c9c469c785e6a2f7be62a60cf4d80685.png" />
+<img alt="../../_images/a8f421930717788905a36258339516a2ce9a84e4765250c8b5b58aad4de55238.png" src="../../_images/a8f421930717788905a36258339516a2ce9a84e4765250c8b5b58aad4de55238.png" />
 </div>
 </div>
 <p>このように、若干ではあるが、ノイズが低減され、元の画像に近い信号が得られているように見える。</p>
@@ -1155,7 +1155,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/93b4a2c51f8791f75dd61fb8e26a34ec5de723dfbe78739c682f76df797f203c.png" src="../../_images/93b4a2c51f8791f75dd61fb8e26a34ec5de723dfbe78739c682f76df797f203c.png" />
+<img alt="../../_images/17c8dec235fbcb491e26b7f216594d1bc4fda65038eb0dc5edddf97e6d7527fd.png" src="../../_images/17c8dec235fbcb491e26b7f216594d1bc4fda65038eb0dc5edddf97e6d7527fd.png" />
 </div>
 </div>
 <p>結果から分かる通り、メディアンフィルタは適度に元画像の信号を保ちつつ、目立ったノイズを低減できていることが分かる。さらに、Gaussianフィルタやバイラテラルフィルタは周辺画素との畳み込みによって、どうしても画素の値が灰色に近づいてしまい、コントラストが落ちるが、メディアンフィルタはノイズ画像に現れる輝度値を再利用しているだけなので、コントラストの落ち方が緩やかである。</p>
