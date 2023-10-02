@@ -646,7 +646,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NumPy&#39;s dtype: int32
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NumPy&#39;s dtype: int64
 Torch&#39;s dtype: torch.float32
 </pre></div>
 </div>
@@ -683,7 +683,7 @@ Torch&#39;s dtype: torch.float32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Torch&#39;s dtype: torch.int32
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Torch&#39;s dtype: torch.int64
 </pre></div>
 </div>
 </div>
@@ -735,7 +735,7 @@ Torch&#39;s dtype: torch.float32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Torch&#39;s dtype: torch.int32
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Torch&#39;s dtype: torch.int64
 </pre></div>
 </div>
 </div>
@@ -771,8 +771,8 @@ Torch&#39;s dtype: torch.float32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before: tensor([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=torch.int32)
- After: tensor([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18], dtype=torch.int32)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Before: tensor([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+ After: tensor([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18])
 </pre></div>
 </div>
 </div>
@@ -1087,7 +1087,7 @@ f(x, y) = a (x - 1)^2 + b(y - x^2)^2
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/a5ab0e930656d96acbac3a5aecf9fcb1f8b78c6e5990d691d81812232d3828ee.png" src="../../_images/a5ab0e930656d96acbac3a5aecf9fcb1f8b78c6e5990d691d81812232d3828ee.png" />
+<img alt="../../_images/4e40c37e814a907228152bb6d80163405f7e52ad3c066e45a5754bd2f7ce6a85.png" src="../../_images/4e40c37e814a907228152bb6d80163405f7e52ad3c066e45a5754bd2f7ce6a85.png" />
 </div>
 </div>
 <p>この関数は、<span class="math notranslate nohighlight">\((1.0, 1.0)\)</span>の点を打った場所が関数の最小値をとる箇所になっているのだが、最小値の近傍が非常に狭い谷のような形になっており、さらにその谷が放物線上に湾曲しているため、この赤点の位置の最小値を求めることが困難であるとされている。</p>
@@ -1323,7 +1323,7 @@ f(\mathbf{x} + \boldsymbol\delta) \approx f(\mathbf{x}) + \frac{1}{1!} \boldsymb
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/908e03c9622f9e28a6e62fad06c231659d0482c9823876048ef0cdbd118c2f44.png" src="../../_images/908e03c9622f9e28a6e62fad06c231659d0482c9823876048ef0cdbd118c2f44.png" />
+<img alt="../../_images/1582c9d0eb2246c11d36b2e41f13556d807ae648cb32649cbd51887a8a87e562.png" src="../../_images/1582c9d0eb2246c11d36b2e41f13556d807ae648cb32649cbd51887a8a87e562.png" />
 </div>
 </div>
 <p>この図では、<span class="math notranslate nohighlight">\((0.0, 0.0)\)</span>の初期値から<span class="math notranslate nohighlight">\((1.0, 1.0)\)</span>の最小値に至るまでの最適化の過程をマーカー付きの曲線で示している。各マーカーの位置を見てみると、徐々に最小値に至るスピードが遅くなりつつも、正しく関数の最小値を取る箇所に収束していることが分かる。</p>
@@ -1378,6 +1378,9 @@ g_{t+1} &amp;= \frac{\partial\mathcal{L}}{\partial\theta_{t}}
 <h4>オプティマイザを使用した最適化<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
 <p>深層学習では、上記のSGDやAdam等のオプティマイザを用いてニューラルネットワークのパラメータを最適化するのだが、この仕組みは最急降下法等の一階微分を用いる最適化問題にも使用することができる。</p>
 <p>そこで、深層学習に進む前に、まずは前述のRosenbrock関数を上記のオプティマイザを使って最適化し、その違いについて見てみよう。</p>
+<p>データローダとは、PyTorchを用いたニューラルネットワークの学習において、ミニバッチ学習を簡単にするための仕組みである。通常、深層学習には大量の訓練データが必要であり、それら全てを考慮したパラメータの更新方向(=勾配)を求めることは現実的ではない。</p>
+<p>そこで、大量の訓練データから少数のデータ、すなわちミニバッチをサンプルし、そのミニバッチ内のデータによって与えられる勾配が、データ全体から求まる勾配の近似として十分に正しく動作することを仮定する。データから収集してくるミニバッチの数は<code class="docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code>型のサブクラスとして用意されたデータセット・クラスを引数にとる<code class="docutils literal notranslate"><span class="pre">torch.data.utils.data.DataLoader</span></code>によって制御できる。</p>
+<p>では、上記のひらがな73文字データセットについて、まずはデータの読み出しを行う役割を持つデータセット・クラスを作成してみよう。データセット・クラスは<code class="docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code>型のサブクラスとして実装する。この際、コンストラクタと合わせて、データの総数を返す<code class="docutils literal notranslate"><span class="pre">__len__</span></code>関数と、データ1つをサンプルする<code class="docutils literal notranslate"><span class="pre">__getitem__</span></code>関数の二つを実装する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optims</span> <span class="o">=</span> <span class="p">{</span>
@@ -1456,7 +1459,7 @@ g_{t+1} &amp;= \frac{\partial\mathcal{L}}{\partial\theta_{t}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/1f37fe682699e9b6a3bf62e552bd1117287bd3dbeaf2c0203331c477652e8c05.png" src="../../_images/1f37fe682699e9b6a3bf62e552bd1117287bd3dbeaf2c0203331c477652e8c05.png" />
+<img alt="../../_images/89da12c2dad04ea5ba02a419926b61d4ba6042c1e933b67d765f496b558c9157.png" src="../../_images/89da12c2dad04ea5ba02a419926b61d4ba6042c1e933b67d765f496b558c9157.png" />
 </div>
 </div>
 <p>上記の結果を見てみると、SGDは最初の方で、解が大きく振動しているのに対して、Momentum SGDでは、それが多少緩和されていることが分かる。また、更新量から、その勾配を調整する仕組みが入っているRMSpropやAdamでは、ほとんど解が振動することなく、Rosenbrock関数の谷に沿って、解が収束している。</p>
@@ -1637,7 +1640,7 @@ f_\text{ReLU}(x) = \begin{cases}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/d6309b2a1ae7748ef033ac7c08ed080393a3d288c3489e4d0680675b8826c51f.png" src="../../_images/d6309b2a1ae7748ef033ac7c08ed080393a3d288c3489e4d0680675b8826c51f.png" />
+<img alt="../../_images/0837df3bbe9529e53ea9f7820ca6537afad99d1d859712abdde66f323d6994c2.png" src="../../_images/0837df3bbe9529e53ea9f7820ca6537afad99d1d859712abdde66f323d6994c2.png" />
 </div>
 </div>
 <p>このように、シグモイド関数は入力が0以上の時に1に近い値を、入力が0以下の時に0に近い値を返すようなものであり、これが人間のニューロン同士の結びつきをうまく表わしていると考えられていた。</p>
@@ -1671,7 +1674,7 @@ f_\text{ReLU}(x) = \begin{cases}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0550c9f22eb0960783d31518a8b699ea17a5d73add2f91a84dad1852a2c7a42d.png" src="../../_images/0550c9f22eb0960783d31518a8b699ea17a5d73add2f91a84dad1852a2c7a42d.png" />
+<img alt="../../_images/69e9b96a60e4204c5db5812b2ebafec6a581d70ea2bd3eedf5050a0316437cd8.png" src="../../_images/69e9b96a60e4204c5db5812b2ebafec6a581d70ea2bd3eedf5050a0316437cd8.png" />
 </div>
 </div>
 <p>この勾配消失により、ニューラルネットの入力に近い側の層において学習が上手く進まないことが長く問題とされてきたが、ReLUは、その導関数が0か1なので、シグモイド関数で問題となっていたような勾配消失の問題が起きづらくなっている。</p>
@@ -1955,7 +1958,7 @@ Better: tensor([ -69.5126,  -38.0426, -121.4912,  -77.5066,   -1.0827,   -0.4135
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8605d737ec2d4442ae384148c78b21dd", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "542254e8e38f47eda36e0d63abcc266a", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "a438b9d204b14dd696050f00138f72de", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "96c45353b55d4570a80554005bbede95", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "29f0c124ae01466dbe5b057edaab2150", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "ddf8d98dcd72441090a275b56df23da1", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p>上記の学習について、誤差と精度の変化をプロットしてみる。そのままだと、上下の振動が大きく見づらいので、移動平均を取って曲線を滑らかにしておく。</p>
 <div class="cell docutils container">
@@ -1981,16 +1984,20 @@ Better: tensor([ -69.5126,  -38.0426, -121.4912,  -77.5066,   -1.0827,   -0.4135
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">)),</span> <span class="n">losses</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;loss&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_palette</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Steps&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Loss&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">)),</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_palette</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.88</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ae9186fe29e5c0a26086212465a14bdb269d2b855712a80276b3a55459a67326.png" src="../../_images/ae9186fe29e5c0a26086212465a14bdb269d2b855712a80276b3a55459a67326.png" />
+<img alt="../../_images/7af69cbe434e5fd6552fa438a57cd94ea7a71f080521ee58178afeebd9fd06fe.png" src="../../_images/7af69cbe434e5fd6552fa438a57cd94ea7a71f080521ee58178afeebd9fd06fe.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2008,7 +2015,7 @@ Better: tensor([ -69.5126,  -38.0426, -121.4912,  -77.5066,   -1.0827,   -0.4135
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1d27a7b307024584be4259ed2080f697", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Acc: 0.765
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d1ba50ad0cae43b382c818d48f6bb28d", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Acc: 0.760
 </pre></div>
 </div>
 </div>
@@ -2132,7 +2139,7 @@ H' = \frac{H - K + 2P}{S} + 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f3e782010e654e6383a7a1efea7ecd09", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "ca2586acd8e84b419a8a91c88af37187", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "9db79b17672d48fd965bffb85cb936e6", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cc672d2aebfd49b8ae5fc1a48e36dcae", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "8681cb10fd154645860aefcc3a7e34a3", "version_major": 2, "version_minor": 0}</script><script type="application/vnd.jupyter.widget-view+json">{"model_id": "e8eedeb3de4c4bd18bc328e24f0443a7", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2152,15 +2159,18 @@ H' = \frac{H - K + 2P}{S} + 1
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">)),</span> <span class="n">losses</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;loss&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_palette</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">])</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Steps&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Loss&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">losses</span><span class="p">)),</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;accuracy&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color_palette</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.88</span><span class="p">,</span> <span class="mf">0.88</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.88</span><span class="p">,</span> <span class="mf">0.58</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/56265ad3b13c835d576372bf47b73dc8909bff537ba0235c5f4be7fed9c1b416.png" src="../../_images/56265ad3b13c835d576372bf47b73dc8909bff537ba0235c5f4be7fed9c1b416.png" />
+<img alt="../../_images/9d93fc11144cd6a353a03428d9d923ffca14e1d9261079464009a5d613ed82a6.png" src="../../_images/9d93fc11144cd6a353a03428d9d923ffca14e1d9261079464009a5d613ed82a6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2181,7 +2191,7 @@ H' = \frac{H - K + 2P}{S} + 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "742b5c726d6644f7b0459e0e471d3598", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Acc: 0.920
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d22a810471494eb8a301c6348337a061", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Acc: 0.910
 </pre></div>
 </div>
 </div>
@@ -2237,7 +2247,7 @@ H' = \frac{H - K + 2P}{S} + 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "29a3c8bdf82447d19a2fd170d4cab5ee", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Acc: 0.924
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a70dba1e5d864b899a9c20feb28d7d3f", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Acc: 0.910
 </pre></div>
 </div>
 </div>
