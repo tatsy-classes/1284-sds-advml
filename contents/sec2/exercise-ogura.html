@@ -428,8 +428,47 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-exercise-ogura">
 <span id="id1"></span><h1><span class="section-number">4. </span>演習2 - 百人一首エージェントを作る<a class="headerlink" href="#sec-exercise-ogura" title="Permalink to this heading">#</a></h1>
-<p>今回の演習では、小倉百人一首をプレイヤーAIを作成してみよう。ご存じの通り、小倉百人一首は、100種類の短歌からなるかるたの一種であり、読み札は短歌の上の句 (575の部分)であり、取り札が下の句(77の部分)である。</p>
+<p>今回の演習では、小倉百人一首をプレイヤーAIを作成してみよう。ご存じの通り、小倉百人一首は、100種類の短歌からなる「かるた」の一種であり、読み札は短歌の上の句 (5・7・5の部分)であり、取り札が下の句(7・7の部分)である。</p>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<p>「かるた」とは、取り札を床の上に並べて、読み手が読んだ読み札に対応する取り札に一番早く触れた人が取り札を取るというゲームである。全ての読み札を読み終えた時点で最も多くの取り札をもっていた人が勝ちとなる。</p>
+</div>
 <p>通常の小倉百人一種では、読み札には上の句と下の句の両方が漢字で書かれており、さらに挿絵がある。一方で取り札は下の句が濁点や半濁点を含まないひらがな46種類によって書かれている。</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">japanize_matplotlib</span>
+
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">150</span>
+
+<span class="n">yomi</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/ogura/yomifuda.jpg&quot;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
+<span class="n">tori</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;../../data/ogura/torifuda.jpg&quot;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">yomi</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;読み札&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">tori</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;取り札&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/ccee4e38434e5c72a92c5e3cacb791716678e1989c9009de131ba07caa7a1988.png" src="../../_images/ccee4e38434e5c72a92c5e3cacb791716678e1989c9009de131ba07caa7a1988.png" />
+</div>
+</div>
 <p>百人一首では100枚の札のうち50枚だけを並べて、それを2人のプレイヤーによって取り合う。読み札は100枚全てを用いるので、「空札」といって、読まれたけれども50枚の取り札には含まれない札というのも存在する。</p>
 <p>細かな百人一首のルールについては、以下の全日本かるた協会のウェブサイトを参考にしてほしい。</p>
 <p><strong>はじめての競技かるた:</strong> <a class="reference external" href="https://www.karuta.or.jp/karuta/first-time/">https://www.karuta.or.jp/karuta/first-time/</a></p>
