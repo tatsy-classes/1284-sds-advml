@@ -585,7 +585,7 @@ document.write(`
 </section>
 <section id="id1">
 <h2><span class="section-number">7.2. </span>データのスケーリング<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>機械学習器にデータを学習させる前にデータのスケールを揃えておくと精度が改善する場合が多い。最も良く用いられる方法は<strong>訓練データの平均と分散</strong>を計算して、データの各次元の平均が0、分散が1となるように変形する方法である。この方法は、scikit-learnの<code class="docutils literal notranslate"><span class="pre">StandardScalar</span></code>に実装されているので、今回はこれを使用する。</p>
+<p>機械学習器にデータを学習させる前にデータのスケールを揃えておくと精度が改善する場合が多い。最も良く用いられる方法は<strong>訓練データの平均と分散</strong>を計算して、データの各次元の平均が0、分散が1となるように変形する方法である。この方法は、scikit-learnの<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>に実装されているので、今回はこれを使用する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
