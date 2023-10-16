@@ -12,7 +12,6 @@ dependencies:
   - openpyxl
   - opencv
   - matplotlib
-  - japanaize_matplotlib
   - seaborn
   - pytorch>=1.10.0
   - torchvision>=0.11.0
@@ -23,4 +22,5 @@ dependencies:
   - pip
   - pip:
       - jupyterlab
+      - japanaize_matplotlib
       - opencv-contrib-python
