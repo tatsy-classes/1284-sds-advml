@@ -22,5 +22,5 @@ dependencies:
   - pip
   - pip:
       - jupyterlab
-      - japanaize_matplotlib
+      - japanize_matplotlib
       - opencv-contrib-python
