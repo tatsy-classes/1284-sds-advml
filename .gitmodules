@@ -7,3 +7,9 @@
 [submodule "templates/ogura-agent"]
 	path = templates/ogura-agent
 	url = https://github.com/tatsy-classes/ogura-agent-template.git
+[submodule "autograding/sudoku"]
+	path = autograding/sudoku
+	url = https://github.com/tatsy-classes/sudoku-autograding
+[submodule "autograding/ogura"]
+	path = autograding/ogura
+	url = https://github.com/tatsy-classes/ogura-autograding
