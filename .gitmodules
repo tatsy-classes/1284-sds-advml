@@ -4,3 +4,6 @@
 [submodule "lib/advml"]
 	path = lib/advml
 	url = https://github.com/tatsy/1284-sds-lib-advml.git
+[submodule "templates/ogura-agent"]
+	path = templates/ogura-agent
+	url = https://github.com/tatsy-classes/ogura-agent-template.git
