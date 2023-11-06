@@ -413,9 +413,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.1. 問題のレベル</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.2. 採点方法</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.3. 使用可能なプログラム</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.4. より高度な問題を解くヒント</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.2. より高度な問題を解くヒント</a></li>
 </ul>
             </nav>
         </div>
@@ -467,7 +465,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ccee4e38434e5c72a92c5e3cacb791716678e1989c9009de131ba07caa7a1988.png" src="../../_images/ccee4e38434e5c72a92c5e3cacb791716678e1989c9009de131ba07caa7a1988.png" />
+<img alt="../../_images/486944940e375673d8991a7120b3a0fc9ae495411fbaa829b2a005fe6c569273.png" src="../../_images/486944940e375673d8991a7120b3a0fc9ae495411fbaa829b2a005fe6c569273.png" />
 </div>
 </div>
 <p>百人一首では100枚の札のうち50枚だけを並べて、それを2人のプレイヤーによって取り合う。読み札は100枚全てを用いるので、「空札」といって、読まれたけれども50枚の取り札には含まれない札というのも存在する。</p>
@@ -513,25 +511,39 @@ document.write(`
 <section id="id3">
 <h3><span class="section-number">4.1.1. </span>問題のレベル<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>今回の演習では、以下の3つのレベルの入力を用意している。</p>
-<p><strong>レベル1</strong>では、画像に写っている取り札は1枚だけであり、読み札に対応する文字列も1つだけが与えられる。</p>
-<p><strong>レベル2</strong>では、画像に写っている取り札は3枚以上、5枚以下であり、読み札に対応する文字列は1つだけが与えられる。</p>
-<p><strong>レベル3</strong>では、画像に写っている取り札は3枚以上、5枚以下であり、読み札に対応する文字列は3つから5つ与えられる。</p>
-<p>これら、各レベルの入力が10枚ずつ与えられ、レベルに対応する点数、すなわちレベル1なら1点、レベル2なら2点、レベル3なら3点が、出力が完璧に正しい場合にのみ与えられる(したがって部分点はない)。</p>
-<p>また、全レベル共通で取り札の画像は、任意の方向に回転しており、複数枚の取り札が画像に含まれている場合もその向きは揃っていないものとする。</p>
+<ul class="simple">
+<li><p><strong>レベル1:</strong> 画像に写っている取り札は1枚だけであり、読み札に対応する文字列も1つだけが与えられる。</p></li>
+<li><p><strong>レベル2:</strong> 画像に写っている取り札は3枚以上、5枚以下であり、読み札に対応する文字列は3つが与えられる。</p></li>
+<li><p><strong>レベル3:</strong> 画像に写っている取り札は不特定多数であり、読み札に対応する文字列は最大5つ与えられる。</p></li>
+</ul>
+<p>これら、各レベルの入力が10枚ずつ与えられ、レベルに対応する点数、すなわちレベル1なら1点、レベル2なら2点、レベル3なら3点が、出力が完璧に正しい場合にのみ与えられる(したがって部分点はない)。実際に与えられる画像の例は以下の通り。</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../_images/8f54582a9e367c88e8de5e25b18f07463326f0b92ac6c4fec9eefa491a74c052.png" src="../../_images/8f54582a9e367c88e8de5e25b18f07463326f0b92ac6c4fec9eefa491a74c052.png" />
+</div>
+</div>
+<p><strong>使用可能なライブラリ</strong></p>
+<p>今回の実行環境では、以下のライブラリが使用可能となっている (Pipを使ってインストールされる)。これ以外のライブラリは使用できないので注意すること。</p>
+<ul class="simple">
+<li><p>numpy</p></li>
+<li><p>scikit-learn</p></li>
+<li><p>matplotlib</p></li>
+<li><p>pandas</p></li>
+<li><p>opencv-python</p></li>
+<li><p>pytorch-cpu</p></li>
+</ul>
+<p>上記の通り、実行環境においてはCPU版を用いるが、学習はGoogle Colab上などでGPUを用いて行っても良い。その場合、デバイスが学習環境と実行環境で異なるため、<code class="docutils literal notranslate"><span class="pre">torch.load</span></code>の引数に<code class="docutils literal notranslate"><span class="pre">map_location=...</span></code>を指定するのを忘れないようにすること。</p>
+<p><strong>テスト方法</strong></p>
+<p>まずは、各レベル5問ずつ練習データを提供するので、それを用いてテストを行うと良い。以下のURLからZIPファイルをダウンロードして、講義中に伝えるパスワードで展開して使うこと。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/tatsy-classes/ogura-agent-template/raw/master/data/samples.zip">百人一首演習 - 練習用データ</a></p></li>
+</ul>
+<p>本番の採点はGitHub Classroomを使って行う。講義中で課題用のClassroomのURLを指示するので、そのURLをブラウザで開き、テンプレートレポジトリを自分のGitHubアカウントと紐付ける。以後、課題用のレポジトリにコードをpushする度にテストが走る。</p>
+<p>本講義では、実際の問題として与えている画像を公開することはしないが、どの程度の画像に対してプログラムが正しく動いているかは、Github Actionsのログを見ることで確認できる。</p>
 </section>
 </section>
 <section id="id4">
-<h2><span class="section-number">4.2. </span>採点方法<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<p>今回の演習では、練習用の画像を各レベルにつき5枚ずつ与えるので、それを用いて、演習時間中にプログラムを作成すること。本番の授業の最初には、練習用とは異なる画像を、本番用として各レベルにつき10枚ずつ与えるので、講義時間中に自身のプログラムを修正して、なるべく多くの問題に正解できるようにあらかじめ準備をしておくこと。</p>
-</section>
-<section id="id5">
-<h2><span class="section-number">4.3. </span>使用可能なプログラム<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
-<p>今回のプログラムはGoogle Colab上にPyTorchを用いてGPU環境で深層学習を行うことを許可する。ただし、Google Colab上で使うことができないライブラリはPyTorch以外は使わないようにすること。</p>
-<p>また、プログラムは必ずしもJupyter Notebook形式で作成する必要はなく、通常のPython形式のファイルで作成しても良い (むしろどちらかというとこちらを推奨)。</p>
-<p>最初に断っておくが、今回の課題に関しては、必ずしも深層学習を使う必要はなく、古典的なBoVW+Fisherベクトル+SVMのような手法であっても、十分に良いスコアを取ることができるだろう。</p>
-</section>
-<section id="id6">
-<h2><span class="section-number">4.4. </span>より高度な問題を解くヒント<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>より高度な問題を解くヒント<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>小倉百人一首には、上の句にも下の句にも決まり字がある。一例として、</p>
 <ul class="simple">
 <li><p>はなのいろは うつりにけりな いたずらに わかみよにふる なかめせしまに</p></li>
@@ -541,7 +553,57 @@ document.write(`
 <p>また、今回の演習では、画像の中に複数の取り札が含まれている可能性がある (その代わり画像中に読み札以外の余計なものをは写っていない)ため、それらを全て画像として取り出す必要がある。しかも札の向きは任意であるため、ひらがなを認識できるような札の向きにどのように揃えるかは一つポイントになるだろう。</p>
 <p>今回も、データセットの作成には、<a class="reference internal" href="../sec1/exercise-sudoku.html#sec-exercise-sudoku"><span class="std std-ref">数独の演習</span></a>で用いたようなExcelやGoogleスプレッドシートを用いる方法が使える。今回は46文字のひらがなだけが対象であるので、以下の画像のように1行ごとに41文字を並べて、各行を異なるフォントにしてデータセットを作れば良いだろう (やはり、受講者同士で協力してデータセットを作って良い)。</p>
 <img alt="../../_images/gen_hira_excel.jpg" class="align-center" src="../../_images/gen_hira_excel.jpg" />
-<br/></section>
+<br/><p>また、よりプログラム的な方法としてPillowの<code class="docutils literal notranslate"><span class="pre">ImageDraw</span></code>を用いる方法もある。例えば、背景が白の画像を用意して、以下のように平仮名を書き込むことができる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span><span class="p">,</span> <span class="n">ImageFont</span>
+
+<span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span>
+<span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;い&quot;</span><span class="p">,</span> <span class="s2">&quot;ろ&quot;</span><span class="p">,</span> <span class="s2">&quot;は&quot;</span><span class="p">]</span>
+<span class="n">font</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">truetype</span><span class="p">(</span><span class="s2">&quot;./fonts/MPLUS1-Regular.ttf&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="n">imgs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="s2">&quot;white&quot;</span><span class="p">)</span>
+    <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">w</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;mm&quot;</span><span class="p">)</span>
+    <span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">imgs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">imgs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">imgs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">w</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;mm&quot;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>日本語用のフォントについては、各自のシステムにインストールされているフォントを使うか、あるいは<a class="reference external" href="https://fonts.google.com/?subset=japanese&amp;noto.script=Hira">Google Fonts</a>で日本語用のフォントをダウンロードして使用するのも良いだろう。</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -611,9 +673,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.1. 問題のレベル</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.2. 採点方法</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.3. 使用可能なプログラム</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.4. より高度な問題を解くヒント</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.2. より高度な問題を解くヒント</a></li>
 </ul>
   </nav></div>
 
