@@ -1147,8 +1147,8 @@ document.write(`
 </div>
 <p><strong>結果: 主成分分析による次元圧縮</strong></p>
 <ul class="simple">
-<li><p>訓練時精度: %</p></li>
-<li><p>評価時精度: %</p></li>
+<li><p>訓練時精度: <span class="pasted-text">30.09</span>%</p></li>
+<li><p>評価時精度: <span class="pasted-text">28.68</span>%</p></li>
 </ul>
 <section id="id5">
 <h3><span class="section-number">2.2.1. </span>輝度によるヒストグラム化<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
@@ -1243,8 +1243,8 @@ document.write(`
 </div>
 <p><strong>結果: 輝度ヒストグラムの利用</strong></p>
 <ul class="simple">
-<li><p>訓練時精度: %</p></li>
-<li><p>評価時精度: %</p></li>
+<li><p>訓練時精度: <span class="pasted-text">3.34</span>%</p></li>
+<li><p>評価時精度: <span class="pasted-text">2.58</span>%</p></li>
 </ul>
 <p>しかし、実際に試してみると上記のように満足な精度が得られるには至っていない。これは、ほとんどの画像がほぼ同じ割合の白と黒の領域でできていて、それをヒストグラム化してしまうと、文字の分類が難しくなるためである。</p>
 <p>また、輝度のヒストグラムは写真を写した時の周囲の明るさなどにも影響を受けるため、たとえ写真に写っている物が同じであったとしても、周囲の環境によって、ヒストグラムが変化してしまうなど、一貫性に乏しい。</p>
@@ -1454,8 +1454,8 @@ document.write(`
 </div>
 <p><strong>結果: Local Binary Patternの利用</strong></p>
 <ul class="simple">
-<li><p>訓練時精度: %</p></li>
-<li><p>評価時精度: %</p></li>
+<li><p>訓練時精度: <span class="pasted-text">10.73</span>%</p></li>
+<li><p>評価時精度: <span class="pasted-text">9.02</span>%</p></li>
 </ul>
 <p>先ほどの単純な輝度ヒストグラムに比べれば、精度は改善しているものの、画像をそのまま入力したSVMには劣る結果となっている。</p>
 <p>今、データセットに含まれるデータはひらがながランダムに回転したりスケールしたりしている。LBPは上記の計算方法からも分かるとおり、物体が回転してしまうと得られる値が変わってしまう性質がある。従って、今回のようにデータセット中でひらがながランダムに回転しているような場合には、もう少し工夫をする必要がある。</p>

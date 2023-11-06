@@ -2254,6 +2254,14 @@ H' = \frac{H - K + 2P}{S} + 1
 </div>
 </div>
 <p>このように、パラメータの読み込みにより、以前の結果を再現できていることが分かる。</p>
+<div class="warning admonition">
+<p class="admonition-title">異なるデバイスでのパラメータの読み込み</p>
+<p>学習を行ったデバイスと異なるデバイスで<code class="docutils literal notranslate"><span class="pre">.pth</span></code>ファイルを読み込む場合、単に <code class="docutils literal notranslate"><span class="pre">torch.load</span></code>を呼び出すだけでは<code class="docutils literal notranslate"><span class="pre">RuntimeError</span></code>になってしまう。</p>
+<p>これを防ぐには<code class="docutils literal notranslate"><span class="pre">torch.load</span></code>の引数に<code class="docutils literal notranslate"><span class="pre">map_location=...</span></code>を指定して、どの種類のデバイスに読み込むのかを指定する。例えばCUDA上で学習を行って得たパラメータをCPU上で読み込む場合には、以下のようにすれば良い。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ckpt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;ckpt.pth&quot;</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="ssec-avoid-overfit">
 <span id="id31"></span><h2><span class="section-number">3.8. </span>過学習を防ぐための工夫<a class="headerlink" href="#ssec-avoid-overfit" title="Permalink to this heading">#</a></h2>
