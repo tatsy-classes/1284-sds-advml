@@ -528,21 +528,22 @@ document.write(`
 <p>これら、各レベルの入力が10枚ずつ与えられ、レベルに対応する点数、すなわちレベル1なら1点、レベル2なら2点、レベル3なら3点が、出力が完璧に正しい場合にのみ与えられる(したがって部分点はない)。実際に与えられる画像の例は以下の通り。</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/8f54582a9e367c88e8de5e25b18f07463326f0b92ac6c4fec9eefa491a74c052.png" src="../../_images/8f54582a9e367c88e8de5e25b18f07463326f0b92ac6c4fec9eefa491a74c052.png" />
+<img alt="../../_images/e862a337dd1e85e8ed91a729181fc0af56d2503c2dffc1a5554ecc132330d6d6.png" src="../../_images/e862a337dd1e85e8ed91a729181fc0af56d2503c2dffc1a5554ecc132330d6d6.png" />
 </div>
 </div>
 </section>
 <section id="id4">
 <h3><span class="section-number">4.1.2. </span>ローカル環境でのテスト<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
-<p>本番の採点はGitHub Classroomを使って行う。講義中で課題用のClassroomのURLを指示するので、そのURLをブラウザで開き、テンプレートレポジトリを自分のGitHubアカウントと紐付ける。</p>
-<p>その後、レポジトリをcloneして、ローカル環境で<code class="docutils literal notranslate"><span class="pre">ogura.py</span></code>を編集してテストを実施する。</p>
-<p>まずは、各レベル5問ずつ練習データを提供するので、それを用いてテストを行うと良い。以下のURLからZIPファイルをダウンロードして、講義中に伝えるパスワードで展開して使うこと。</p>
+<p>本番の採点は<a class="reference external" href="https://classroom.github.com/classrooms">GitHub Classroom</a>を使って行う。講義中で課題用のClassroomのURLを指示するので、そのURLをブラウザで開き、テンプレート・レポジトリを自分のGitHubアカウントと紐付けること。</p>
+<p>その後、レポジトリをcloneして、ローカル環境で<code class="docutils literal notranslate"><span class="pre">ogura.py</span></code>を編集してテストを実施する。まずは、各レベル5問ずつ練習データを提供するので、それを用いてテストを行うと良い。以下のURLからZIPファイルをダウンロードして、講義中に伝えるパスワードで展開して使うこと。</p>
+<p><strong>サンプルファイル (各レベル5枚の計15枚)</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/tatsy-classes/ogura-agent-template/raw/master/data/samples.zip">百人一首演習 - 練習用データ</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/tatsy-classes/ogura-agent-template/raw/master/data/samples.zip">tatsy-classes/ogura-agent-template</a></p></li>
 </ul>
-<p>また、百人一首の一覧を57577の節ごとに区切ったリストを以下のURLにCSVファイルとして用意しているので、こちらも利用して良い。</p>
+<p>また、百人一首の一覧を5,7,5,7,7の節ごとに区切ったリストを以下のURLにCSVファイルとして用意しているので、こちらも利用して良い。</p>
+<p><strong>百人一首の一覧</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/tatsy-classes/ogura-agent-template/raw/master/data/ogura.csv">百人一首リスト</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/tatsy-classes/ogura-agent-template/raw/master/data/ogura.csv">tatsy-classes/ogura-agent-template</a></p></li>
 </ul>
 </section>
 <section id="id5">
@@ -572,6 +573,8 @@ document.write(`
 <h2><span class="section-number">4.2. </span>プログラム作成のヒント<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <section id="id7">
 <h3><span class="section-number">4.2.1. </span>取り札の取り出しについて<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="../sec1/figure-detection.html#ssec-figure-from-photo"><span class="std std-ref">図形の検出</span></a>の節で説明した方法を用いて取り札に対応する四角形を取り出し、パースを除去することによって、取り札の画像が取得できる。</p>
+<p>今回の演習では、数独の演習と異なり画像中に複数の取り札が含まれる。そのため<code class="docutils literal notranslate"><span class="pre">findContours</span></code>で取得した境界線について、それが取り札の輪郭なのか否かを判断する必要がある。ただし、入力画像には<strong>取り札以外の余計なものは写っていない</strong>ことが保証されているので、取り札の輪郭を認識することはそれほど難しくはないだろう。</p>
 </section>
 <section id="id8">
 <h3><span class="section-number">4.2.2. </span>決まり字について<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
@@ -581,10 +584,12 @@ document.write(`
 </ul>
 <p>という句であれば、上の句の決まり字は「はなの」であり、下の句の決まり字は「わかみよ」である。</p>
 <p>従って、厳密には、画像に写った読み札に書かれた文字全てを認識する必要はなく、札の右上の方に書かれた数文字だけを認識できれば十分である。もちろん、識別の精度は100%にはならないと思われるので、多めに文字を認識して、間違いがないようにする方が良い。</p>
+<p>百人一首の各短歌について、決まり字が何文字になるかは前述の<a class="reference external" href="https://github.com/tatsy-classes/ogura-agent-template/raw/master/data/ogura.csv">百人一首リスト</a>を使用してプログラム的に計算すると良い。</p>
 </section>
 <section id="id9">
 <h3><span class="section-number">4.2.3. </span>ひらがなの認識について<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
-<p>また、今回の演習では、画像の中に複数の取り札が含まれている可能性がある (その代わり画像中に読み札以外の余計なものをは写っていない)ため、それらを全て画像として取り出す必要がある。しかも札の向きは任意であるため、ひらがなを認識できるような札の向きにどのように揃えるかは一つポイントになるだろう。</p>
+<p>今回の演習においては、札の向きは任意であるため、ひらがながどのような向きであっても認識できるように分類器を用意する、あるいは、正しい向きに取り札の画像を回転する処理のいずれかが必要になる。</p>
+<p>ただ、取り札の上でひらがなが書かれている位置は、全ての札で共通なので、各文字が書かれている位置を判別する際には、その前提知識を用いると良い。</p>
 </section>
 <section id="id10">
 <h3><span class="section-number">4.2.4. </span>データセットの作成<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
