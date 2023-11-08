@@ -519,13 +519,13 @@ document.write(`
 </div>
 <section id="id3">
 <h3><span class="section-number">4.1.1. </span>問題のレベル<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
-<p>今回の演習では、以下の3つのレベルの入力を用意している。</p>
+<p>今回の演習では、以下の3つのレベルの入力を用意している。なお全レベルにおいて、入力画像に写っている取り札の数と与えられる読み札の文字列の数は等しいものとする。</p>
 <ul class="simple">
 <li><p><strong>レベル1:</strong> 画像に写っている取り札は1枚だけであり、読み札に対応する文字列も1つだけが与えられる。</p></li>
-<li><p><strong>レベル2:</strong> 画像に写っている取り札は3枚以上、5枚以下であり、読み札に対応する文字列は3つが与えられる。</p></li>
+<li><p><strong>レベル2:</strong> 画像に写っている取り札は3枚以上、5枚以下であり、読み札に対応する文字列も3つ以上、5つ以下が与えられる。</p></li>
 <li><p><strong>レベル3:</strong> 画像に写っている取り札は不特定多数であり、読み札に対応する文字列も不特性多数が与えられる。</p></li>
 </ul>
-<p>これら、各レベルの入力が10枚ずつ与えられ、レベルに対応する点数、すなわちレベル1なら1点、レベル2なら2点、レベル3なら3点が、出力が完璧に正しい場合にのみ与えられる(したがって部分点はない)。実際に与えられる画像の例は以下の通り。</p>
+<p>これら、各レベルの入力が10枚ずつ与えられ、レベルに対応する点数、すなわちレベル1なら1点、レベル2なら2点、レベル3なら3点が、出力が完璧に正しい場合にのみ与えられる(したがって部分点はない)。実際に与えられる画像の例は以下の通り (なお、<code class="docutils literal notranslate"><span class="pre">solve</span></code>関数に渡される画像はグレースケール化されている)。</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../_images/e862a337dd1e85e8ed91a729181fc0af56d2503c2dffc1a5554ecc132330d6d6.png" src="../../_images/e862a337dd1e85e8ed91a729181fc0af56d2503c2dffc1a5554ecc132330d6d6.png" />
