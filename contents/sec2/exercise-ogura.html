@@ -409,11 +409,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 演習の内容</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 演習内容</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.1. 問題のレベル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.1.2. ローカル環境でのテスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.1.3. 本番環境でのテスト</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.2. より高度な問題を解くヒント</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.2. プログラム作成のヒント</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.2.1. 取り札の取り出しについて</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.2.2. 決まり字について</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.2.3. ひらがなの認識について</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.2.4. データセットの作成</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -432,7 +440,7 @@ document.write(`
 <p class="admonition-title">注釈</p>
 <p>「かるた」とは、取り札を床の上に並べて、読み手が読んだ読み札に対応する取り札に一番早く触れた人が取り札を取るというゲームである。全ての読み札を読み終えた時点で最も多くの取り札をもっていた人が勝ちとなる。</p>
 </div>
-<p>通常の小倉百人一種では、読み札には上の句と下の句の両方が漢字で書かれており、さらに挿絵がある。一方で取り札は下の句が濁点や半濁点を含まないひらがな46種類によって書かれている。</p>
+<p>通常の小倉百人一種では、読み札には上の句と下の句の両方が漢字で書かれており、さらに挿絵がある。一方で取り札は下の句が濁点や半濁点を含まないひらがな45種類(「ゐ」と「ゑ」を含む)によって書かれている。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -472,31 +480,31 @@ document.write(`
 <p>細かな百人一首のルールについては、以下の全日本かるた協会のウェブサイトを参考にしてほしい。</p>
 <p><strong>はじめての競技かるた:</strong> <a class="reference external" href="https://www.karuta.or.jp/karuta/first-time/">https://www.karuta.or.jp/karuta/first-time/</a></p>
 <section id="id2">
-<h2><span class="section-number">4.1. </span>演習の内容<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>演習内容<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>今回の演習では、取り札が複数含まれた画像と、上の句を表す文字列の先頭数文字が与えられる。例えば、以下のような画像と文字列のペアが与えられる。</p>
-<p><strong>入力画像:</strong></p>
+<p><strong>入力画像 (実際に入力される画像はグレースケール画像):</strong></p>
+<a class="float-none mb-3 reference internal image-reference" href="../../_images/level2.jpg"><img alt="../../_images/level2.jpg" class="float-none mb-3 align-left" src="../../_images/level2.jpg" style="width: 60%;" /></a>
 <p><strong>入力文字列:</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">はなのいろは</span>  
-<span class="n">あさぼらけ</span>  
-<span class="n">ほととぎす</span>
+<span class="n">あさほらけ</span>  
+<span class="n">ほとときす</span>
+</pre></div>
+</div>
+<p><strong>正解出力:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
+<span class="mi">2</span>
+<span class="mi">0</span>
 </pre></div>
 </div>
 <p>この入力に対して、各行のひらがなの列に対して、取り札が一つに決まり、なおかつ、その札が画像に含まれる場合には<code class="docutils literal notranslate"><span class="pre">1</span></code>を、与えられた文字列では札が決まらない場合は<code class="docutils literal notranslate"><span class="pre">2</span></code>を、対応する取り札が存在しない場合には<code class="docutils literal notranslate"><span class="pre">0</span></code>を返すようにする。</p>
 <p>例えば、上の入力例では、「はなのいろは...」で始まる句は決まり字が3文字の「はなの」であり、なおかつ下の句である「わかみよにふる なかめせしまに」と書かれた札が画像に映っているので<code class="docutils literal notranslate"><span class="pre">1</span></code>が正解となる。</p>
 <p>一方、2つめの「あさぼらけ」は2枚しかない6文字決まり字の札であり、「あさぼらけ ありあけのつきと...」に対応する下の句である「よしののさとに ふれるしらゆき」と、「あさぼらけ うじのかわぎり...」に対応する下の句である「あらはれわたる せせのあしろき」の両方が画像に含まれており、どちらの札を取れば良いかが決まらない。従って正解は<code class="docutils literal notranslate"><span class="pre">2</span></code>となる。</p>
 <p>3つ目の「ほとどぎす」は1文字決まりの札であるため、対応する下の句が「たたありあけの つきそのこれる」になることは決定しているが、その下の句の札は画像中に存在しないため、正解は<code class="docutils literal notranslate"><span class="pre">0</span></code>となる。</p>
-<p>以上より、上記の入力に対する正しい出力の例は以下のようになる。</p>
-<p><strong>出力:</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span>
-<span class="mi">2</span>
-<span class="mi">0</span>
-</pre></div>
-</div>
 <p>これらを踏まえて、以下のような<strong>画像 (image)</strong> と <strong>文字列の配列 (poems)</strong> および問題のレベル (level)をとって、各和歌の決まりの状況を示す配列 (各要素は0-2)を返す以下の関数を実装すること。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ogura</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">],</span> <span class="n">poems</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="n">image</span><span class="p">:</span> <span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">],</span> <span class="n">poems</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">level</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Inputs:</span>
-<span class="sd">      image: input image</span>
+<span class="sd">      image: input grayscale image</span>
 <span class="sd">      poems: list of ogura poems</span>
 <span class="sd">      level: difficulty level of this problem (1-3)</span>
 <span class="sd">    Outputs:</span>
@@ -505,7 +513,8 @@ document.write(`
 <span class="sd">        1: possible poem can exist in the image, but there remains other possible poems</span>
 <span class="sd">        2: the specific poem exist in the card, and there is no other possible poems</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">poems</span><span class="p">)</span>
+    <span class="n">answer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">poems</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">answer</span>
 </pre></div>
 </div>
 <section id="id3">
@@ -514,7 +523,7 @@ document.write(`
 <ul class="simple">
 <li><p><strong>レベル1:</strong> 画像に写っている取り札は1枚だけであり、読み札に対応する文字列も1つだけが与えられる。</p></li>
 <li><p><strong>レベル2:</strong> 画像に写っている取り札は3枚以上、5枚以下であり、読み札に対応する文字列は3つが与えられる。</p></li>
-<li><p><strong>レベル3:</strong> 画像に写っている取り札は不特定多数であり、読み札に対応する文字列は最大5つ与えられる。</p></li>
+<li><p><strong>レベル3:</strong> 画像に写っている取り札は不特定多数であり、読み札に対応する文字列も不特性多数が与えられる。</p></li>
 </ul>
 <p>これら、各レベルの入力が10枚ずつ与えられ、レベルに対応する点数、すなわちレベル1なら1点、レベル2なら2点、レベル3なら3点が、出力が完璧に正しい場合にのみ与えられる(したがって部分点はない)。実際に与えられる画像の例は以下の通り。</p>
 <div class="cell tag_remove-input docutils container">
@@ -522,7 +531,27 @@ document.write(`
 <img alt="../../_images/8f54582a9e367c88e8de5e25b18f07463326f0b92ac6c4fec9eefa491a74c052.png" src="../../_images/8f54582a9e367c88e8de5e25b18f07463326f0b92ac6c4fec9eefa491a74c052.png" />
 </div>
 </div>
-<p><strong>使用可能なライブラリ</strong></p>
+</section>
+<section id="id4">
+<h3><span class="section-number">4.1.2. </span>ローカル環境でのテスト<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>本番の採点はGitHub Classroomを使って行う。講義中で課題用のClassroomのURLを指示するので、そのURLをブラウザで開き、テンプレートレポジトリを自分のGitHubアカウントと紐付ける。</p>
+<p>その後、レポジトリをcloneして、ローカル環境で<code class="docutils literal notranslate"><span class="pre">ogura.py</span></code>を編集してテストを実施する。</p>
+<p>まずは、各レベル5問ずつ練習データを提供するので、それを用いてテストを行うと良い。以下のURLからZIPファイルをダウンロードして、講義中に伝えるパスワードで展開して使うこと。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/tatsy-classes/ogura-agent-template/raw/master/data/samples.zip">百人一首演習 - 練習用データ</a></p></li>
+</ul>
+<p>また、百人一首の一覧を57577の節ごとに区切ったリストを以下のURLにCSVファイルとして用意しているので、こちらも利用して良い。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/tatsy-classes/ogura-agent-template/raw/master/data/ogura.csv">百人一首リスト</a></p></li>
+</ul>
+</section>
+<section id="id5">
+<h3><span class="section-number">4.1.3. </span>本番環境でのテスト<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>以後、課題用のレポジトリにコードをpushする度にテストが走る。本番環境では、一問(＝画像1枚)ごとに<strong>最大実行時間を1分</strong>に設定している。実行にそれ以上の時間がかかった場合、自動的にプログラムが終了されるので注意すること。</p>
+<p>本講義では、実際の問題として与えている画像を公開することはしないが、どの程度の画像に対してプログラムが正しく動いているかは、Github Actionsのログを見ることで確認できる。</p>
+<p>より詳細な課題作成の流れについてはテンプレート・レポジトリの<a class="reference external" href="https://github.com/tatsy-classes/ogura-agent-template">README.md</a>を確認すること。</p>
+<div class="warning admonition">
+<p class="admonition-title">使用可能なライブラリ</p>
 <p>今回の実行環境では、以下のライブラリが使用可能となっている (Pipを使ってインストールされる)。これ以外のライブラリは使用できないので注意すること。</p>
 <ul class="simple">
 <li><p>numpy</p></li>
@@ -531,45 +560,68 @@ document.write(`
 <li><p>pandas</p></li>
 <li><p>opencv-python</p></li>
 <li><p>pytorch-cpu</p></li>
+<li><p>tensorflow</p></li>
+<li><p>keras</p></li>
 </ul>
-<p>上記の通り、実行環境においてはCPU版を用いるが、学習はGoogle Colab上などでGPUを用いて行っても良い。その場合、デバイスが学習環境と実行環境で異なるため、<code class="docutils literal notranslate"><span class="pre">torch.load</span></code>の引数に<code class="docutils literal notranslate"><span class="pre">map_location=...</span></code>を指定するのを忘れないようにすること。</p>
-<p><strong>テスト方法</strong></p>
-<p>まずは、各レベル5問ずつ練習データを提供するので、それを用いてテストを行うと良い。以下のURLからZIPファイルをダウンロードして、講義中に伝えるパスワードで展開して使うこと。</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/tatsy-classes/ogura-agent-template/raw/master/data/samples.zip">百人一首演習 - 練習用データ</a></p></li>
-</ul>
-<p>本番の採点はGitHub Classroomを使って行う。講義中で課題用のClassroomのURLを指示するので、そのURLをブラウザで開き、テンプレートレポジトリを自分のGitHubアカウントと紐付ける。以後、課題用のレポジトリにコードをpushする度にテストが走る。</p>
-<p>本講義では、実際の問題として与えている画像を公開することはしないが、どの程度の画像に対してプログラムが正しく動いているかは、Github Actionsのログを見ることで確認できる。</p>
+<p>上記の通り、実行環境においてはCPUのみを用いるが、学習はGoogle Colab上などでGPUを用いて行っても良い。その場合、デバイスが学習環境と実行環境で異なるため、<code class="docutils literal notranslate"><span class="pre">torch.load</span></code>の引数に<code class="docutils literal notranslate"><span class="pre">map_location=...</span></code>を指定するのを忘れないようにすること。</p>
+<p>また、本講義ではPyTorchの使用方法について解説したが、TensorFlowやKerasの方が使い方に慣れている場合は、そちらを用いても良い。ただ、その場合も<strong>テスト環境ではCPUしか使うことができない</strong>ことに注意すること。また、仮にPyTorch以外のライブラリを用いた場合に生じる問題については質問は受け付けないので、各自で解決すること。</p>
+</div>
 </section>
 </section>
-<section id="id4">
-<h2><span class="section-number">4.2. </span>より高度な問題を解くヒント<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h2><span class="section-number">4.2. </span>プログラム作成のヒント<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h3><span class="section-number">4.2.1. </span>取り札の取り出しについて<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="id8">
+<h3><span class="section-number">4.2.2. </span>決まり字について<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>小倉百人一首には、上の句にも下の句にも決まり字がある。一例として、</p>
 <ul class="simple">
-<li><p>はなのいろは うつりにけりな いたずらに わかみよにふる なかめせしまに</p></li>
+<li><p>はなのいろは うつりにけりな いたすらに わかみよにふる なかめせしまに</p></li>
 </ul>
 <p>という句であれば、上の句の決まり字は「はなの」であり、下の句の決まり字は「わかみよ」である。</p>
 <p>従って、厳密には、画像に写った読み札に書かれた文字全てを認識する必要はなく、札の右上の方に書かれた数文字だけを認識できれば十分である。もちろん、識別の精度は100%にはならないと思われるので、多めに文字を認識して、間違いがないようにする方が良い。</p>
+</section>
+<section id="id9">
+<h3><span class="section-number">4.2.3. </span>ひらがなの認識について<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>また、今回の演習では、画像の中に複数の取り札が含まれている可能性がある (その代わり画像中に読み札以外の余計なものをは写っていない)ため、それらを全て画像として取り出す必要がある。しかも札の向きは任意であるため、ひらがなを認識できるような札の向きにどのように揃えるかは一つポイントになるだろう。</p>
-<p>今回も、データセットの作成には、<a class="reference internal" href="../sec1/exercise-sudoku.html#sec-exercise-sudoku"><span class="std std-ref">数独の演習</span></a>で用いたようなExcelやGoogleスプレッドシートを用いる方法が使える。今回は46文字のひらがなだけが対象であるので、以下の画像のように1行ごとに41文字を並べて、各行を異なるフォントにしてデータセットを作れば良いだろう (やはり、受講者同士で協力してデータセットを作って良い)。</p>
-<img alt="../../_images/gen_hira_excel.jpg" class="align-center" src="../../_images/gen_hira_excel.jpg" />
-<br/><p>また、よりプログラム的な方法としてPillowの<code class="docutils literal notranslate"><span class="pre">ImageDraw</span></code>を用いる方法もある。例えば、背景が白の画像を用意して、以下のように平仮名を書き込むことができる。</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">4.2.4. </span>データセットの作成<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>今回も、データセットの作成には、<a class="reference internal" href="../sec1/exercise-sudoku.html#sec-exercise-sudoku"><span class="std std-ref">数独の演習</span></a>で用いたようなExcelやGoogleスプレッドシートを用いる方法が使える。とはいえ、ひらがなは数字と比べると文字の種類が多いので、よりプログラム的な方法としてPillowの<code class="docutils literal notranslate"><span class="pre">ImageDraw</span></code>を用いる方法もある。</p>
+<p>例えば、背景が白の画像を用意して、以下のように平仮名を書き込むことができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span><span class="p">,</span> <span class="n">ImageFont</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span><span class="p">,</span> <span class="n">ImageFont</span>
 
 <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">64</span>
+
+<span class="c1"># 画像作成する文字</span>
 <span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;い&quot;</span><span class="p">,</span> <span class="s2">&quot;ろ&quot;</span><span class="p">,</span> <span class="s2">&quot;は&quot;</span><span class="p">]</span>
+
+<span class="c1"># フォントの設定</span>
 <span class="n">font</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">truetype</span><span class="p">(</span><span class="s2">&quot;./fonts/MPLUS1-Regular.ttf&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
 
+<span class="c1"># 各文字について画像を生成する</span>
 <span class="n">imgs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">),</span> <span class="s2">&quot;white&quot;</span><span class="p">)</span>
     <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
     <span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">w</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;mm&quot;</span><span class="p">)</span>
     <span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
-
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xticks</span><span class="o">=</span><span class="p">[],</span> <span class="n">yticks</span><span class="o">=</span><span class="p">[])</span>
@@ -587,22 +639,13 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">draw</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="n">w</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">h</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="n">t</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;mm&quot;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="n">imgs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;np&#39; is not defined
-</pre></div>
+<img alt="../../_images/6ef4914954fd930c0c94d37fcc6cfd96388bf33b5f70ac0c46334f45d50ef3ac.png" src="../../_images/6ef4914954fd930c0c94d37fcc6cfd96388bf33b5f70ac0c46334f45d50ef3ac.png" />
 </div>
 </div>
-</div>
-<p>日本語用のフォントについては、各自のシステムにインストールされているフォントを使うか、あるいは<a class="reference external" href="https://fonts.google.com/?subset=japanese&amp;noto.script=Hira">Google Fonts</a>で日本語用のフォントをダウンロードして使用するのも良いだろう。</p>
+<p>日本語用のフォントについては、各自のシステムにインストールされているフォントを使うか、あるいは<a class="reference external" href="https://fonts.google.com/?subset=japanese&amp;noto.script=Hira">Google Fonts</a>で日本語用のフォントをダウンロードして使用すると良いだろう。</p>
+</section>
 </section>
 </section>
 
@@ -669,11 +712,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 演習の内容</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 演習内容</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.1. 問題のレベル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.1.2. ローカル環境でのテスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.1.3. 本番環境でのテスト</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.2. より高度な問題を解くヒント</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.2. プログラム作成のヒント</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.2.1. 取り札の取り出しについて</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.2.2. 決まり字について</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.2.3. ひらがなの認識について</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.2.4. データセットの作成</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
