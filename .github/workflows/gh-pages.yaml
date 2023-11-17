@@ -48,7 +48,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           cache: "poetry"
-          cathe-dependency-path: "pyproject.toml"
+          cache-dependency-path: "pyproject.toml"
 
       - name: Install packages
         run: |
