@@ -57,7 +57,7 @@ jobs:
       - name: Build Cython modules
         run: |
           cd contents/sec3/othello && \
-          python setup.py build_ext --inplace
+          poetry run python setup.py build_ext --inplace
 
       - name: Build
         run: poetry run jb build --all .
