@@ -28,6 +28,7 @@ execute:
     - "scikit-learn.ipynb"
     - "feature-extraction.ipynb"
     - "deep-learning.ipynb"
+    - "othello-agent.ipynb"
 
 # HTML-specific settings
 html:

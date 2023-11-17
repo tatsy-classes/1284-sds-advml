@@ -38,22 +38,26 @@ jobs:
         with:
           node-version: "16"
 
+      - name: Install Poetry
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install poetry==1.5.1
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-
-      - name: Update Pip
-        run: |
-          python -m pip install --upgrade pip
-
-      - name: Install Poetry
-        run: |
-          python -m pip install poetry==1.5.1
+          cache: "poetry"
+          cathe-dependency-path: "pyproject.toml"
 
       - name: Install packages
         run: |
           poetry install --no-interaction
+
+      - name: Build Cython modules
+        run: |
+          cd contents/sec3/othello && \
+          python setup.py build_ext --inplace
 
       - name: Build
         run: poetry run jb build --all .
