@@ -1,0 +1,4 @@
+*.pyd
+*.cpp
+*.c
+build/*

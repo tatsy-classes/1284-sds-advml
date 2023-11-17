@@ -45,6 +45,7 @@ torchvision = [
 ]
 japanize-matplotlib = "^1.1.3"
 colorama = "^0.4.6"
+cython = "^3.0.5"
 
 [tool.poetry.group.dev.dependencies]
 pyproject-flake8 = "^6.0.0"

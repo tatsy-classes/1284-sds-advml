@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import os
 from enum import Enum
-from typing import Any, Dict, List, Tuple, Union
+from typing import List, Tuple, Union
+from itertools import product
 
 import numpy as np
 import numpy.typing as npt
@@ -10,7 +11,11 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw
 from IPython.core.pylabtools import print_figure
 
+from .cutils import cython_step, cython_is_legal_move
+
 Board = npt.NDArray[np.object_]
+
+__all__ = ["Player", "Move", "make"]
 
 
 class Player(Enum):
@@ -26,13 +31,16 @@ class Player(Enum):
         else:
             return Player.BLACK
 
+    def __eq__(self, other: Player) -> bool:
+        return self.value == other.value
+
     def __repr__(self) -> str:
         return str(self.value)
 
 
 class Move(object):
     def __init__(self, player: Player, x: int, y: int) -> None:
-        assert 0 <= x <= 8 and 0 <= y <= 8
+        assert 0 <= x < 8 and 0 <= y < 8
 
         self.player = player
         self.x = x
@@ -56,19 +64,23 @@ class Move(object):
 
     def __repr__(self) -> str:
         assert self.player in [Player.BLACK, Player.WHITE]
-        return str((self.player.name, self.x, self.y))
+        return str((self.player.name, self.x + 1, self.y + 1))
 
 
 class Env(object):
     def __init__(self) -> None:
         self.board: Board = np.full((8, 8), Player.NONE, dtype="object")
+        self.history: List[Move] = []
         self.stack: List[Board] = []
 
     def reset(self) -> Tuple[Player, npt.NDArray]:
+        self.board[:] = Player.NONE
         self.board[3, 3] = Player.BLACK
         self.board[4, 3] = Player.WHITE
         self.board[3, 4] = Player.WHITE
         self.board[4, 4] = Player.BLACK
+        self.history.clear()
+        self.stack.clear()
         return Player.BLACK, self.board
 
     def gameset(self) -> bool:
@@ -83,56 +95,41 @@ class Env(object):
         return True
 
     def undo(self) -> None:
+        self.history.pop()
         self.board = self.stack.pop()
 
     def step(self, move: Move) -> Tuple[Player, npt.NDArray]:
         """Update othello board by a move"""
+        # Store previous state
+        self.history.append(move)
+        self.stack.append(self.board.copy())
+
         if move.is_pass():
             return move.player.next(), self.board
 
         assert self._is_legal_move(move), "specified move is illegal!"
 
-        # Store previous state
-        self.stack.append(self.board.copy())
+        to_int = np.frompyfunc(lambda e: np.int32(e.value), 1, 1)
+        to_player = np.frompyfunc(lambda e: Player(e), 1, 1)
+        board = to_int(self.board).astype("int32")
+        assert board.dtype == np.int32
 
-        # Put an othello disk
-        player = move.player
-        x, y = move.x, move.y
-        self.board[x, y] = player
+        cython_step(move.player.value, move.x, move.y, board)
 
-        # Turn over another player's disks
-        directions = [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]
-        for dx, dy in directions:
-            nx, ny = x + dx, y + dy
-            if nx >= 0 and nx < 8 and ny >= 0 and ny < 8 and self.board[nx, ny] == player.next():
-                nx += dx
-                ny += dy
-                if nx >= 0 and nx < 8 and ny >= 0 and ny < 8:
-                    while self.board[nx, ny] == player.next():
-                        nx += dx
-                        ny += dy
-                        if nx < 0 or nx >= 8 or ny < 0 or ny >= 8:
-                            return move.player.next(), self.board
-
-                    if self.board[nx, ny] == player:
-                        while True:
-                            nx -= dx
-                            ny -= dy
-                            if nx == x and ny == y:
-                                break
-                            self.board[nx, ny] = player
-
+        self.board = to_player(board)
         return move.player.next(), self.board
 
     def legal_moves(self, player: Player) -> List[Move]:
         """List legal moves"""
-        moves = []
-        for i in range(8):
-            for j in range(8):
-                move = Move(player, i, j)
-                if self._is_legal_move(move):
-                    moves.append(move)
 
+        to_int = np.frompyfunc(lambda e: np.int32(e.value), 1, 1)
+        board = to_int(self.board).astype("int32")
+        assert board.dtype == np.int32
+
+        def fn(i: int, j: int):
+            return cython_is_legal_move(player.value, i, j, board)
+
+        moves = [Move(player, i, j) for i, j in product(range(8), range(8)) if fn(i, j)]
         return moves
 
     def render(self) -> npt.NDArray[np.uint8]:
@@ -140,8 +137,18 @@ class Env(object):
         csize = size // 8  # size of cell
         margin = 10  # margin from disk to grid line
 
+        # Initialize board with green color
         img = Image.new("RGB", (size, size), color="#007700")
         draw = ImageDraw.Draw(img)
+
+        # If board history exists, highlight last move
+        if len(self.history) > 0:
+            last_move = self.history[-1]
+            i, j = last_move.x, last_move.y
+            if 0 <= i < 8 and 0 <= j < 8:
+                x = j * csize
+                y = i * csize
+                draw.rectangle((x, y, x + csize, y + csize), fill="#00aa00")
 
         # Grid lines
         for i in range(1, 8):
@@ -210,11 +217,11 @@ class Env(object):
         for i in range(self.board.shape[0]):
             ret += "|"
             for j in range(self.board.shape[1]):
-                if self.board[i, j] == 0:
+                if self.board[i, j] == Player.NONE:
                     ret += " "
-                elif self.board[i, j] == 1:
+                elif self.board[i, j] == Player.BLACK:
                     ret += "o"
-                elif self.board[i, j] == -1:
+                elif self.board[i, j] == Player.WHITE:
                     ret += "x"
                 ret += "|"
             ret += os.linesep
@@ -224,8 +231,7 @@ class Env(object):
     def count(self, player: Player = Player.NONE) -> Union[int, Tuple[int, int]]:
         if player == Player.NONE:
             return np.sum(self.board == Player.BLACK), np.sum(self.board == Player.WHITE)
-        else:
-            return np.sum(self.board == player)
+        return np.sum(self.board == player)
 
     def __dir__(self) -> List[str]:
         return [
@@ -244,3 +250,7 @@ class Env(object):
         data = print_figure(fig, "png")
         plt.close(fig)
         return data
+
+
+def make() -> Env:
+    return Env()
