@@ -496,28 +496,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># オセロモジュールのインポート</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">othello</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">othello</span> <span class="kn">import</span> <span class="n">Move</span><span class="p">,</span> <span class="n">Player</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="mi">1284</span><span class="o">-</span><span class="n">sds</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">advanced</span><span class="o">/</span><span class="mi">1284</span><span class="o">-</span><span class="n">sds</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">advanced</span><span class="o">/</span><span class="n">contents</span><span class="o">/</span><span class="n">sec3</span><span class="o">/</span><span class="n">othello</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">.othello</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">work</span><span class="o">/</span><span class="mi">1284</span><span class="o">-</span><span class="n">sds</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">advanced</span><span class="o">/</span><span class="mi">1284</span><span class="o">-</span><span class="n">sds</span><span class="o">-</span><span class="n">ml</span><span class="o">-</span><span class="n">advanced</span><span class="o">/</span><span class="n">contents</span><span class="o">/</span><span class="n">sec3</span><span class="o">/</span><span class="n">othello</span><span class="o">/</span><span class="n">othello</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">14</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">IPython.core.pylabtools</span> <span class="kn">import</span> <span class="n">print_figure</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">.cutils</span> <span class="kn">import</span> <span class="n">cython_step</span><span class="p">,</span> <span class="n">cython_is_legal_move</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">Board</span> <span class="o">=</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">object_</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Player&quot;</span><span class="p">,</span> <span class="s2">&quot;Move&quot;</span><span class="p">,</span> <span class="s2">&quot;make&quot;</span><span class="p">]</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;othello.cutils&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2252,8 +2230,14 @@ B-win: 746, W-win: 213, Draw: 41
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cell-score vs Random&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Minimax vs Random&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;B-win: </span><span class="si">{</span><span class="n">b_win</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">, W-win: </span><span class="si">{</span><span class="n">w_win</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">, Draw: </span><span class="si">{</span><span class="n">draw</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cell-score vs Random
+B-win: 927, W-win: 49, Draw: 24
 </pre></div>
 </div>
 </div>
@@ -2346,6 +2330,9 @@ B-win: 746, W-win: 213, Draw: 41
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b1c18202726a0e0fff382b8ac890d6e6134dd0258bb8dacd3c60a3914d4096e0.png" src="../../_images/b1c18202726a0e0fff382b8ac890d6e6134dd0258bb8dacd3c60a3914d4096e0.png" />
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2381,6 +2368,22 @@ B-win: 746, W-win: 213, Draw: 41
 <span class="n">b_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">w_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">draw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c3cdbf37d89b4b62910806b6a1884118", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alpha-beta vs Random&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;B-win: </span><span class="si">{</span><span class="n">b_win</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">, W-win: </span><span class="si">{</span><span class="n">w_win</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">, Draw: </span><span class="si">{</span><span class="n">draw</span><span class="si">:</span><span class="s2">d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alpha-beta vs Random
+B-win: 933, W-win: 52, Draw: 15
 </pre></div>
 </div>
 </div>
