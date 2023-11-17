@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os
-from enum import Enum
+import enum
 from typing import List, Tuple, Union
 from itertools import product
 
@@ -18,7 +18,7 @@ Board = npt.NDArray[np.object_]
 __all__ = ["Player", "Move", "make"]
 
 
-class Player(Enum):
+class Player(enum.IntEnum):
     NONE = 0
     BLACK = 1
     WHITE = -1
@@ -30,12 +30,6 @@ class Player(Enum):
             return Player.WHITE
         else:
             return Player.BLACK
-
-    def __eq__(self, other: Player) -> bool:
-        return self.value == other.value
-
-    def __repr__(self) -> str:
-        return str(self.value)
 
 
 class Move(object):
@@ -69,7 +63,7 @@ class Move(object):
 
 class Env(object):
     def __init__(self) -> None:
-        self.board: Board = np.full((8, 8), Player.NONE, dtype="object")
+        self.board: Board = np.full((8, 8), Player.NONE, dtype="int32")
         self.history: List[Move] = []
         self.stack: List[Board] = []
 
@@ -107,27 +101,17 @@ class Env(object):
         if move.is_pass():
             return move.player.next(), self.board
 
-        assert self._is_legal_move(move), "specified move is illegal!"
+        # assert self._is_legal_move(move), "specified move is illegal!"
 
-        to_int = np.frompyfunc(lambda e: np.int32(e.value), 1, 1)
-        to_player = np.frompyfunc(lambda e: Player(e), 1, 1)
-        board = to_int(self.board).astype("int32")
-        assert board.dtype == np.int32
+        cython_step(move.player.value, move.x, move.y, self.board)
 
-        cython_step(move.player.value, move.x, move.y, board)
-
-        self.board = to_player(board)
         return move.player.next(), self.board
 
     def legal_moves(self, player: Player) -> List[Move]:
         """List legal moves"""
 
-        to_int = np.frompyfunc(lambda e: np.int32(e.value), 1, 1)
-        board = to_int(self.board).astype("int32")
-        assert board.dtype == np.int32
-
         def fn(i: int, j: int):
-            return cython_is_legal_move(player.value, i, j, board)
+            return cython_is_legal_move(player.value, i, j, self.board)
 
         moves = [Move(player, i, j) for i, j in product(range(8), range(8)) if fn(i, j)]
         return moves
