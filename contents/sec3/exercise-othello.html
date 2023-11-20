@@ -65,6 +65,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec3/exercise-othello';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -409,7 +411,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 演習内容</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q">5.1. Q学習における関数近似</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.2. 演習内容</a></li>
 </ul>
             </nav>
         </div>
@@ -423,14 +426,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-exercise-othello">
 <span id="id1"></span><h1><span class="section-number">5. </span>演習3 - オセロエージェントを作る<a class="headerlink" href="#sec-exercise-othello" title="Permalink to this heading">#</a></h1>
-<p>今回の演習では、いわゆるオセロのAIを作成してみよう。</p>
-<div class="admonition warning">
-<p class="admonition-title">警告</p>
-<p>オセロとは日本で生まれた「リバーシ」の一種であり、リバーシとオセロには、ルールの差こそないものの、若干の違いがある。これらの違いについてはWikipedia等を参照のこと。</p>
-<p>参考: <a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%BB%E3%83%AD_(%E3%83%9C%E3%83%BC%E3%83%89%E3%82%B2%E3%83%BC%E3%83%A0)">オセロ（ボードゲーム）- Wikipedia</a></p>
-</div>
+<p>今回の演習では、前節、<a class="reference internal" href="othello-agent.html#sec-othello-agent"><span class="std std-ref">基本のオセロAI</span></a>の延長として、より強いオセロのAIを作成してみよう。</p>
+<p>前節では、オセロAIの基本であるゲーム木の探索方法について、マス評価値に基づいた<span class="xref myst">ミニマックス探索</span>と、マス評価値に依らない<span class="xref myst">原始モンテカルロ探索</span>について解説した。</p>
+<p>本演習では、これらの延長として、Q関数の<strong>関数近似</strong>に基づいたAIの強化に取り組んでみよう。</p>
+<section id="q">
+<h2><span class="section-number">5.1. </span>Q学習における関数近似<a class="headerlink" href="#q" title="Permalink to this heading">#</a></h2>
+<p><strong>関数近似</strong>とは、Q関数<span class="math notranslate nohighlight">\(Q(s, a)\)</span>を何らかの機械学習モデルによって近似する手法を指す。<a class="reference internal" href="q-learning.html#sec-q-learning"><span class="std std-ref">Q学習の基本</span></a>で紹介した手法ではQテーブルを離散化していたが、このような手法は、状態数の多いゲームでは適用が難しい。</p>
+<p>今回、演習で扱うオセロも取り得る盤の状態は、64個のマスについて、黒、白、空の3通りが考えられるから、その状態数は<span class="math notranslate nohighlight">\(3^{64} \approx 3 \times 10^{30}\)</span>にもなる。従って、このような大量の状態数に対して、そのまま離散的なQテーブルを定義することは現実的ではない。</p>
+</section>
 <section id="id2">
-<h2><span class="section-number">5.1. </span>演習内容<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">5.2. </span>演習内容<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>今回の演習では<strong>オセロの盤面を表す二次元配列</strong>が与えられた時に、次の手を返すようなAIを作成する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -525,7 +530,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 演習内容</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q">5.1. Q学習における関数近似</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.2. 演習内容</a></li>
 </ul>
   </nav></div>
 
