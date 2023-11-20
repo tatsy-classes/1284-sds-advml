@@ -433,6 +433,18 @@ document.write(`
 <h2><span class="section-number">5.1. </span>Q学習における関数近似<a class="headerlink" href="#q" title="Permalink to this heading">#</a></h2>
 <p><strong>関数近似</strong>とは、Q関数<span class="math notranslate nohighlight">\(Q(s, a)\)</span>を何らかの機械学習モデルによって近似する手法を指す。<a class="reference internal" href="q-learning.html#sec-q-learning"><span class="std std-ref">Q学習の基本</span></a>で紹介した手法ではQテーブルを離散化していたが、このような手法は、状態数の多いゲームでは適用が難しい。</p>
 <p>今回、演習で扱うオセロも取り得る盤の状態は、64個のマスについて、黒、白、空の3通りが考えられるから、その状態数は<span class="math notranslate nohighlight">\(3^{64} \approx 3 \times 10^{30}\)</span>にもなる。従って、このような大量の状態数に対して、そのまま離散的なQテーブルを定義することは現実的ではない。</p>
+<p>そこで、状態<span class="math notranslate nohighlight">\(s\)</span>を入力とし、取り得る行動<span class="math notranslate nohighlight">\(a \in \mathcal{A}\)</span>について、行動価値を与えるような関数<span class="math notranslate nohighlight">\(Q(s, a)\)</span>を機械学習モデルによって表現することを考える。</p>
+<p>最も単純な例として、状態を表わすパラメータをベクトル<span class="math notranslate nohighlight">\(\mathbf{s}\)</span>として表わし、この線形変換により、各行動の価値を要素に持つベクトル<span class="math notranslate nohighlight">\(\mathbf{a}\)</span>を求めるようなモデルを考えることができる。</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{a} = \text{softmax}(\mathbf{W} \mathbf{s} + \mathbf{b})
+\]</div>
+<p>このような線形モデルであれば、Q学習の更新式:</p>
+<div class="math notranslate nohighlight">
+\[
+Q_{\rm new}(s, a) = Q(s,a ) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]
+\]</div>
+<p>の第2項に現れるTD誤差を最小化するようにモデルのパラメータ<span class="math notranslate nohighlight">\(\mathbf{W}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>を最適化すれば良い。</p>
 </section>
 <section id="id2">
 <h2><span class="section-number">5.2. </span>演習内容<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
