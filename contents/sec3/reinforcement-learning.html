@@ -414,15 +414,15 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 多腕バンディット問題</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. スロットゲームの実装</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.2. ランダムにスロットを回す</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.1.3. 今一番当たっているスロットを回す</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varepsilon-greedy">1.2. <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.2.1. ソフトマックス探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2. 一番当たっているスロットを回す (貪欲法)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varepsilon-greedy">1.3. <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3.1. ソフトマックス探索</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-confidence-bound-ucb">1.3. Upper Confidence Bound (UCB)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.4. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-confidence-bound-ucb">1.4. Upper Confidence Bound (UCB)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.5. 練習問題</a></li>
 </ul>
             </nav>
         </div>
@@ -450,9 +450,9 @@ document.write(`
 <span class="sd">下準備のコード</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="c1"># グラフの設定</span>
 <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">150</span>
@@ -461,6 +461,8 @@ document.write(`
 </div>
 </div>
 </details>
+</div>
+<div class="cell tag_remove-input docutils container">
 </div>
 <section id="id2">
 <h2><span class="section-number">1.1. </span>多腕バンディット問題<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
@@ -476,6 +478,8 @@ document.write(`
 
 
 <span class="k">class</span> <span class="nc">SlotArm</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;スロットアームを表わすクラス&quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">ratio</span> <span class="o">=</span> <span class="n">ratio</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
@@ -489,31 +493,44 @@ document.write(`
 </div>
 </div>
 </div>
-<p>この<code class="docutils literal notranslate"><span class="pre">SlotArm</span></code>クラスを配列として、スロット台を複数用意する。以下では、5台のスロット台を用意し、それらが当たりを出す確率が0.1から0.2刻みで0.9までであるとする (これは実際には未知の値である)。</p>
+<p>この<code class="docutils literal notranslate"><span class="pre">SlotArm</span></code>クラスを配列として、スロット台を複数用意する。以下では、5台のスロット台を用意し、それらが当たりを出す確率が0.1から0.2刻みで0.9までであるとする (<strong>これは実際には未知の値である</strong>)。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_arms</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># スロットアームの数</span>
+<span class="n">n_arms</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># 0.1-0.9までの当たり確率を0.2刻みで設定</span>
+<span class="c1"># その後、順番をランダムに入れ替える</span>
 <span class="n">ratios</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="n">n_arms</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ratios</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="n">ratios</span><span class="p">)</span>
+
+<span class="c1"># 用意した当たり確率を用いてスロットアームをインスタンス化</span>
 <span class="n">arms</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_arms</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ratio</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ratios</span><span class="p">):</span>
     <span class="n">arms</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">SlotArm</span><span class="p">(</span><span class="n">ratio</span><span class="o">=</span><span class="n">ratio</span><span class="p">)</span>
 
+<span class="c1"># スロットを回す回数</span>
 <span class="n">n_play</span> <span class="o">=</span> <span class="mi">20000</span>
+
+<span class="c1"># 描画に用いる変数</span>
 <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_play</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell tag_remove-input docutils container">
+</div>
 </section>
 <section id="id4">
 <h3><span class="section-number">1.1.2. </span>ランダムにスロットを回す<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
-<p>では、上記の問題設定で、ランダムに3つのスロット台のいずれかを回した場合に、どの程度の当たりが出るかを見てみよう。以下の実験では10万回スロットをプレイできるとして実験をしてみる。</p>
+<p>では、上記の問題設定で、ランダムに<span class="output text_plain">5</span>つのスロット台のいずれかを回した場合に、どの程度の当たりが出るかを見てみよう。以下の実験では<span class="output text_plain">20000</span>回スロットをプレイできるとして実験をしてみる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_play</span><span class="p">):</span>
+    <span class="c1"># ランダムに1つのスロットを選ぶ</span>
     <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_arms</span><span class="p">)</span>
+    <span class="c1"># 当たり外れを記録</span>
     <span class="k">if</span> <span class="n">arms</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">roll</span><span class="p">():</span>
         <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -521,19 +538,20 @@ document.write(`
 
 <span class="n">history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 <span class="n">accum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
-<span class="n">E_rand</span> <span class="o">=</span> <span class="n">accum</span> <span class="o">/</span> <span class="n">xs</span>
-<span class="n">S_rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">history</span> <span class="o">-</span> <span class="n">E_rand</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ratio = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">E_rand</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.496
+<span class="n">E_rand</span> <span class="o">=</span> <span class="n">accum</span> <span class="o">/</span> <span class="n">xs</span>  <span class="c1"># 当たり確率</span>
+<span class="n">S_rand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">history</span> <span class="o">-</span> <span class="n">E_rand</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">)</span>  <span class="c1"># 推定当たり確率の分散</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p><strong>ランダムにスロットを選択した場合</strong></p>
+<ul class="simple">
+<li><p>当たり確率: <span class="pasted-text">0.501</span></p></li>
+</ul>
+<p>以下には、横軸にスロットを回した回数を取り、当たり確率とその推定値分散をプロットしたものを示す。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -566,26 +584,32 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5c2f96a0d76cdbd3690df43f0a1cd6d5675d6b6a1dbb7653ea802842f5eaa2e2.png" src="../../_images/5c2f96a0d76cdbd3690df43f0a1cd6d5675d6b6a1dbb7653ea802842f5eaa2e2.png" />
+<img alt="../../_images/ff6e9a1ee84086fe7474ec4c38ab4b37c0c68edc47d16ef91156b267cb66aebc.png" src="../../_images/ff6e9a1ee84086fe7474ec4c38ab4b37c0c68edc47d16ef91156b267cb66aebc.png" />
 </div>
 </div>
-<p>この結果から分かる通り、ランダムに回す場合には、得られる報酬は、当たり確率の平均値である<span class="math notranslate nohighlight">\((0.3 + 0.8 + 0.4) / 3 = 0.5\)</span>程度に張り付いていることが分かる。回し方を工夫することで、この当たり確率を上げることをできるかがポイントとなる。</p>
+<p>この結果から分かる通り、ランダムに回す場合には、得られる報酬は、当たり確率の<span class="pasted-text">0.50</span>程度に張り付いていることが分かる。回し方を工夫することで、この当たり確率を上げることをできるかがポイントとなる。</p>
+</section>
 </section>
 <section id="id5">
-<h3><span class="section-number">1.1.3. </span>今一番当たっているスロットを回す<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<p>報酬を増やすためにあり得そうな方法は、今、一番当たっているスロットを常に回す、という方法である。この方式をWinner-Take-Allの頭文字からWTA方式と呼ぶこととする。</p>
-<p>以下に、各スロットの現在の当たり確率を保存しておいて、それが最大になるものを回すようにプログラムを示す。ただし、最初の数回は当たり確率が安定しない可能性があるので、最初の10%は、ランダムに回している。</p>
+<h2><span class="section-number">1.2. </span>一番当たっているスロットを回す (貪欲法)<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>報酬を増やすためにあり得そうな方法は、今、一番当たっているスロットを常に回す、という方法である。この方式を<strong>貪欲法</strong>と呼ぶ。</p>
+<p>以下に、各スロットの現在の当たり確率を保存しておいて、それが最大になるものを回すようにプログラムを示す。</p>
+<p>ただし、最初の数回は当たり確率が安定しない可能性があるので、最初の10%は、ランダムに回している。このように最初の何回かを乱数による影響を除去するためにランダム試行する操作を<strong>バーンイン</strong>と呼ぶ。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_burnout</span> <span class="o">=</span> <span class="n">n_play</span> <span class="o">//</span> <span class="mi">10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># バーンインの回数</span>
+<span class="n">n_burnin</span> <span class="o">=</span> <span class="n">n_play</span> <span class="o">//</span> <span class="mi">10</span>
 
+<span class="c1"># 当たり外れの履歴、当たり回数、プレイ回数を記録</span>
 <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">n_hit_of_arm</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span>
 <span class="n">n_play_of_arm</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_play</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_burnout</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_burnin</span><span class="p">:</span>
+        <span class="c1"># バーンイン中ならランダムに回す</span>
         <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_arms</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># そうでなければ、当たり確率が最大のものを回す</span>
         <span class="n">rs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">h</span> <span class="o">/</span> <span class="n">p</span> <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">1.0</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">n_hit_of_arm</span><span class="p">,</span> <span class="n">n_play_of_arm</span><span class="p">)]</span>
         <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span>
 
@@ -599,19 +623,20 @@ document.write(`
 
 <span class="n">history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 <span class="n">accum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
-<span class="n">E_wta</span> <span class="o">=</span> <span class="n">accum</span> <span class="o">/</span> <span class="n">xs</span>
-<span class="n">S_wta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">history</span> <span class="o">-</span> <span class="n">E_wta</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ratio = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">E_wta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.863
+<span class="n">E_greedy</span> <span class="o">=</span> <span class="n">accum</span> <span class="o">/</span> <span class="n">xs</span>
+<span class="n">S_greedy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">history</span> <span class="o">-</span> <span class="n">E_greedy</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p><strong>貪欲法</strong></p>
+<ul class="simple">
+<li><p>当たり確率: <span class="pasted-text">0.863</span></p></li>
+</ul>
+<p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -632,12 +657,12 @@ document.write(`
 
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
     <span class="n">xs</span><span class="p">,</span>
-    <span class="n">E_wta</span> <span class="o">-</span> <span class="n">S_wta</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
-    <span class="n">E_wta</span> <span class="o">+</span> <span class="n">S_wta</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">E_greedy</span> <span class="o">-</span> <span class="n">S_greedy</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">E_greedy</span> <span class="o">+</span> <span class="n">S_greedy</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
     <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">E_wta</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;wta&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">E_greedy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;greedy&quot;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_play</span><span class="p">])</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
@@ -653,21 +678,25 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/4f79d9634713eda3261aa25948bfa7c8c46f2c96760dbe322f3039c93316a87e.png" src="../../_images/4f79d9634713eda3261aa25948bfa7c8c46f2c96760dbe322f3039c93316a87e.png" />
+<img alt="../../_images/007a11f1b140915da66b1d2036896c07e936231295004bf81b16be54a832a280.png" src="../../_images/007a11f1b140915da66b1d2036896c07e936231295004bf81b16be54a832a280.png" />
 </div>
 </div>
-<p>一番当たっている物を回す、という戦略はそれほど悪くはないように見える。実際、最終的な報酬は、最も当たりやすいスロットの当たり確率である0.65に近づいている。</p>
+<p>上記の結果を見てみると、一番当たっている物を回す、という戦略はそれほど悪くはないように見える。実際、最終的な報酬は、最も当たりやすいスロットの当たり確率である<span class="pasted-text">0.90</span>に近づいている。</p>
 <p>しかし、最初の10%を回した時点の当たり確率の推定値にその後の報酬が強く依存する上、10%の回数はランダムに回すことから、そこまでで得られる報酬は有意には増加しない。</p>
-</section>
+<p>今回はスロットの当たり確率にそれなりに差があるため、全体の試行回数の10%である2000回程度で、一番当たるスロットがどれかが判明するが、実際には当たり確率が非常に近い場合もあり、貪欲法には依然改善の余地がある。</p>
 </section>
 <section id="varepsilon-greedy">
-<h2><span class="section-number">1.2. </span><span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法<a class="headerlink" href="#varepsilon-greedy" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.3. </span><span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法<a class="headerlink" href="#varepsilon-greedy" title="Permalink to this heading">#</a></h2>
 <p><span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法は、とある定数<span class="math notranslate nohighlight">\(0 &lt; \varepsilon &lt; 1\)</span>について、<span class="math notranslate nohighlight">\(\varepsilon\)</span>の確率でランダムにスロットを選び、<span class="math notranslate nohighlight">\(1 - \varepsilon\)</span>の確率で一番当たっているスロットを回す、という方法である。</p>
-<p>こうすることで、仮に最初の当たり確率推定値が間違っていたとしても、それを徐々に修正する力が働く。</p>
+<p>一例として<span class="math notranslate nohighlight">\(\varepsilon=0.1\)</span>の場合には、先ほどランダムに10%の試行回数をバーンインに用いたものとそれほど変わらないように思える。</p>
+<p>しかし、最初の10%を完全にランダムに回してしまうと、本当はもう少し早い段階で一番当たりそうなスロットが判明しているかもしれないのに、それを無視してしまうことになる。そのため、現在分かっている情報をできるだけ有効活用しよう、というのが<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法の考え方である。</p>
+<p>通常、試行回数が増えれば増えるほど、各スロットの当たり確率の推定値が真値に近づいていくので、<span class="math notranslate nohighlight">\(\varepsilon\)</span>の値は、試行回数とともに徐々に小さくしていくことが多い。以下の実装では、<span class="math notranslate nohighlight">\(\varepsilon=0.5\)</span>を初期値とし、最終<span class="output text_plain">20000</span>回の時に<span class="math notranslate nohighlight">\(\varepsilon=0.001\)</span>となるように等比数列的に<span class="math notranslate nohighlight">\(\varepsilon\)</span>の値を下げていくことにする。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">n_burnout</span> <span class="o">=</span> <span class="n">n_play</span> <span class="o">//</span> <span class="mi">10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e0</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">e1</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">discount</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e0</span><span class="p">))</span> <span class="o">/</span> <span class="n">n_play</span><span class="p">)</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="n">e0</span>
 
 <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">n_hit_of_arm</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span>
@@ -687,22 +716,23 @@ document.write(`
         <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 
     <span class="n">n_play_of_arm</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">epsilon</span> <span class="o">*=</span> <span class="n">discount</span>
 
 <span class="n">history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 <span class="n">accum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 <span class="n">E_eps</span> <span class="o">=</span> <span class="n">accum</span> <span class="o">/</span> <span class="n">xs</span>
-<span class="n">S_eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">history</span> <span class="o">-</span> <span class="n">E_wta</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ratio = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">E_wta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.863
+<span class="n">S_eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">history</span> <span class="o">-</span> <span class="n">E_eps</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p><strong><span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法</strong></p>
+<ul class="simple">
+<li><p>当たり確率: <span class="pasted-text">0.868</span></p></li>
+</ul>
+<p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
@@ -718,12 +748,12 @@ document.write(`
 
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
     <span class="n">xs</span><span class="p">,</span>
-    <span class="n">E_wta</span> <span class="o">-</span> <span class="n">S_wta</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
-    <span class="n">E_wta</span> <span class="o">+</span> <span class="n">S_wta</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">E_greedy</span> <span class="o">-</span> <span class="n">S_greedy</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">E_greedy</span> <span class="o">+</span> <span class="n">S_greedy</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
     <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">E_wta</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;wta&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">E_greedy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;greedy&quot;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
     <span class="n">xs</span><span class="p">,</span>
@@ -747,12 +777,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c7cc67a7a664a86ff99080833d5556218e1d068f3bf018d3b2e4e4fc523a7ee3.png" src="../../_images/c7cc67a7a664a86ff99080833d5556218e1d068f3bf018d3b2e4e4fc523a7ee3.png" />
+<img alt="../../_images/66655d73ae37be9570a3da6b3bcedde681ab434fc1c331981da34d43aa50340e.png" src="../../_images/66655d73ae37be9570a3da6b3bcedde681ab434fc1c331981da34d43aa50340e.png" />
 </div>
 </div>
 <p>このように、ちょっとした工夫を加えるだけで、かなり早い段階から最大の当たり確率である0.65に近い当たり確率が得られていることが分かる。</p>
 <section id="id6">
-<h3><span class="section-number">1.2.1. </span>ソフトマックス探索<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">1.3.1. </span>ソフトマックス探索<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法でも十分に良い結果が得られているが、探査のために完全なランダム行動を取る、という点には、まだ改善の余地がある。</p>
 <p>例えば、スロットの当たり確率が0.05のスロットも、この時にランダムに選ばれてしまう点はマイナスである。</p>
 <p>そこで、ランダムな探査の代わりに、現在の推定当たり確率から求まる評価関数によって、探査行動の選択を考える。このような評価関数の一つにソフトマックス関数がある。</p>
@@ -797,18 +827,18 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 <span class="n">history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 <span class="n">accum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 <span class="n">E_smax</span> <span class="o">=</span> <span class="n">accum</span> <span class="o">/</span> <span class="n">xs</span>
-<span class="n">S_smax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">history</span> <span class="o">-</span> <span class="n">E_wta</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ratio = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">E_wta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.863
+<span class="n">S_smax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">history</span> <span class="o">-</span> <span class="n">E_smax</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p><strong>ソフトマックス探索</strong></p>
+<ul class="simple">
+<li><p>当たり確率: <span class="pasted-text">0.866</span></p></li>
+</ul>
+<p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -829,12 +859,12 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
     <span class="n">xs</span><span class="p">,</span>
-    <span class="n">E_wta</span> <span class="o">-</span> <span class="n">S_wta</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
-    <span class="n">E_wta</span> <span class="o">+</span> <span class="n">S_wta</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">E_greedy</span> <span class="o">-</span> <span class="n">S_greedy</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">E_greedy</span> <span class="o">+</span> <span class="n">S_greedy</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
     <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">E_wta</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;wta&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">E_greedy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;greedy&quot;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
     <span class="n">xs</span><span class="p">,</span>
@@ -868,14 +898,23 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/9ba175586bab017745c03c8fa375af12f06e8292aadc9a767d8c970d8517b4e0.png" src="../../_images/9ba175586bab017745c03c8fa375af12f06e8292aadc9a767d8c970d8517b4e0.png" />
+<img alt="../../_images/5f667aa432b5e870cdd92c9eb293cd2cc8924ea7baf5a1ed0f25ff4d0a781eae.png" src="../../_images/5f667aa432b5e870cdd92c9eb293cd2cc8924ea7baf5a1ed0f25ff4d0a781eae.png" />
 </div>
 </div>
+<p>上記の結果から、十分に試行回数が多いときには<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法とソフトマックス法にはそれほど差がないが、ソフトマックス法は<strong>試行回数が少ない場合でも、安定して高い平均報酬が得られている</strong>ことが分かる。</p>
 </section>
 </section>
 <section id="upper-confidence-bound-ucb">
-<h2><span class="section-number">1.3. </span>Upper Confidence Bound (UCB)<a class="headerlink" href="#upper-confidence-bound-ucb" title="Permalink to this heading">#</a></h2>
-<p>先ほどのソフトマックス探索</p>
+<h2><span class="section-number">1.4. </span>Upper Confidence Bound (UCB)<a class="headerlink" href="#upper-confidence-bound-ucb" title="Permalink to this heading">#</a></h2>
+<p>先ほどのソフトマックス探索は、多腕バンディット問題のような、各試行によって当たり確率が変化しないような問題に対しては高い性能を示すことが知られているが、その時々で当たり確率が変動するような対象に対しては、安定して作用しないこと知られている。</p>
+<p>また、ソフトマックス法はソフトマックス関数により得られた次の試行を選ぶための確率密度分布が経験的に良い値になることを利用している。だが、ソフトマックス関数を適用する前の現在の推定当たり確率に適当なスケールをかけ算する余地があり、どの程度のスケールでソフトマックス関数を計算するのが最適なのかは問題に依存する。</p>
+<p>このようなソフトマックス法の経験的な部分を、より理論的に補った手法にUCB値を用いる手法がある。UCB値にはいくつかの式が知られているが、最も一般的なUCB1は以下の式で表わされる。</p>
+<div class="math notranslate nohighlight">
+\[
+\text{UCB1} = \frac{N_{\rm hit}}{N_{\rm play}} + \sqrt{\frac{2 \log(N_{\rm total})}{N_\textrm{play}}}
+\]</div>
+<p>この式で<span class="math notranslate nohighlight">\(N_{\rm hit}\)</span>と<span class="math notranslate nohighlight">\(N_{\rm play}\)</span>は、評価したいアームの当たり回数と試行回数、<span class="math notranslate nohighlight">\(N_{\rm total}\)</span>は全アームの試行回数の合計を表わす。</p>
+<p>UCB1値の第１項は単純なアームの当たり確率を表わし、第２項はその推定値にどの程度の偏り(=バイアス)が含まれているかを表わしている。この式は、推定値が高いか、あるいは偏りが大きく、推定値の信頼性が低いアームをより多く回すという戦略を示している。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
@@ -901,18 +940,18 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 <span class="n">history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 <span class="n">accum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 <span class="n">E_ucb</span> <span class="o">=</span> <span class="n">accum</span> <span class="o">/</span> <span class="n">xs</span>
-<span class="n">S_ucb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">history</span> <span class="o">-</span> <span class="n">E_wta</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ratio = </span><span class="si">{:.3f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">E_wta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ratio = 0.863
+<span class="n">S_ucb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">history</span> <span class="o">-</span> <span class="n">E_ucb</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span> <span class="o">/</span> <span class="n">xs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p><strong>UCB1</strong></p>
+<ul class="simple">
+<li><p>当たり確率: <span class="pasted-text">0.890</span></p></li>
+</ul>
+<p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -933,12 +972,12 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
     <span class="n">xs</span><span class="p">,</span>
-    <span class="n">E_wta</span> <span class="o">-</span> <span class="n">S_wta</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
-    <span class="n">E_wta</span> <span class="o">+</span> <span class="n">S_wta</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">E_greedy</span> <span class="o">-</span> <span class="n">S_greedy</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
+    <span class="n">E_greedy</span> <span class="o">+</span> <span class="n">S_greedy</span> <span class="o">*</span> <span class="mf">3.0</span><span class="p">,</span>
     <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
     <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">E_wta</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;wta&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">E_greedy</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;greedy&quot;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
     <span class="n">xs</span><span class="p">,</span>
@@ -981,12 +1020,13 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/1c7bf803a90d1bb1064cd57597af0075f461634204d48f154e5b1e9d8e7aa4df.png" src="../../_images/1c7bf803a90d1bb1064cd57597af0075f461634204d48f154e5b1e9d8e7aa4df.png" />
+<img alt="../../_images/0cb7d235125286f4e3989128e4abc70fa5673b9788a806df2a6699d425dd2d70.png" src="../../_images/0cb7d235125286f4e3989128e4abc70fa5673b9788a806df2a6699d425dd2d70.png" />
 </div>
 </div>
+<p>上記の通り、UCB1値を用いることでソフトマックス法を大きく上回る平均報酬が得られていることが分かる。</p>
 </section>
 <section id="id7">
-<h2><span class="section-number">1.4. </span>練習問題<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.5. </span>練習問題<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>UCBにはいくつかの種類があり、本資料で紹介したものはUCB1と呼ばれる。UCB2やUCB1-tunedと呼ばれる評価関数について調査し、その性能をUCB1と比較せよ。</p></li>
 </ul>
@@ -1059,15 +1099,15 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1. 多腕バンディット問題</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.1. スロットゲームの実装</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.2. ランダムにスロットを回す</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.1.3. 今一番当たっているスロットを回す</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varepsilon-greedy">1.2. <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.2.1. ソフトマックス探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2. 一番当たっているスロットを回す (貪欲法)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#varepsilon-greedy">1.3. <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.3.1. ソフトマックス探索</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-confidence-bound-ucb">1.3. Upper Confidence Bound (UCB)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.4. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-confidence-bound-ucb">1.4. Upper Confidence Bound (UCB)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.5. 練習問題</a></li>
 </ul>
   </nav></div>
 
