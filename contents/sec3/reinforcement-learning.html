@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec3/reinforcement-learning';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="2. Q学習" href="q-learning.html" />
+    <link rel="next" title="2. Q学習の基礎" href="q-learning.html" />
     <link rel="prev" title="4. 演習2 - 百人一首エージェントを作る" href="../sec2/exercise-ogura.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第3部 強化学習の基礎とリバーシエージェントの実装</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. 強化学習の基礎</a></li>
-<li class="toctree-l1"><a class="reference internal" href="q-learning.html">2. Q学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="q-learning.html">2. Q学習の基礎</a></li>
 <li class="toctree-l1"><a class="reference internal" href="othello-agent.html">3. オセロAIの作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deep-reinforcement-learning.html">4. 深層強化学習</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise-othello.html">5. 演習3 - オセロエージェントを作る</a></li>
@@ -422,7 +422,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-confidence-bound-ucb">1.4. Upper Confidence Bound (UCB)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.5. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.5. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.6. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -547,9 +548,9 @@ document.write(`
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
-<p><strong>ランダムにスロットを選択した場合</strong></p>
+<p><strong>結果: ランダムにスロットを回す</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.501</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.498</span></p></li>
 </ul>
 <p>以下には、横軸にスロットを回した回数を取り、当たり確率とその推定値分散をプロットしたものを示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -584,7 +585,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ff6e9a1ee84086fe7474ec4c38ab4b37c0c68edc47d16ef91156b267cb66aebc.png" src="../../_images/ff6e9a1ee84086fe7474ec4c38ab4b37c0c68edc47d16ef91156b267cb66aebc.png" />
+<img alt="../../_images/1dd4b9e84e840a7bae40d67c406f4e79b01f3f3a9e0abd58bc1a19405d34f8a5.png" src="../../_images/1dd4b9e84e840a7bae40d67c406f4e79b01f3f3a9e0abd58bc1a19405d34f8a5.png" />
 </div>
 </div>
 <p>この結果から分かる通り、ランダムに回す場合には、得られる報酬は、当たり確率の<span class="pasted-text">0.50</span>程度に張り付いていることが分かる。回し方を工夫することで、この当たり確率を上げることをできるかがポイントとなる。</p>
@@ -632,9 +633,9 @@ document.write(`
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
-<p><strong>貪欲法</strong></p>
+<p><strong>結果: 貪欲法</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.863</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.861</span></p></li>
 </ul>
 <p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -678,7 +679,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/007a11f1b140915da66b1d2036896c07e936231295004bf81b16be54a832a280.png" src="../../_images/007a11f1b140915da66b1d2036896c07e936231295004bf81b16be54a832a280.png" />
+<img alt="../../_images/b7be546038629eae7517d5b800ed353b1fb122a9977cb10c48d814da2676a860.png" src="../../_images/b7be546038629eae7517d5b800ed353b1fb122a9977cb10c48d814da2676a860.png" />
 </div>
 </div>
 <p>上記の結果を見てみると、一番当たっている物を回す、という戦略はそれほど悪くはないように見える。実際、最終的な報酬は、最も当たりやすいスロットの当たり確率である<span class="pasted-text">0.90</span>に近づいている。</p>
@@ -695,7 +696,7 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e0</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="n">e1</span> <span class="o">=</span> <span class="mf">0.001</span>
-<span class="n">discount</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e0</span><span class="p">))</span> <span class="o">/</span> <span class="n">n_play</span><span class="p">)</span>
+<span class="n">e_scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e0</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_play</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">epsilon</span> <span class="o">=</span> <span class="n">e0</span>
 
 <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
@@ -716,7 +717,7 @@ document.write(`
         <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 
     <span class="n">n_play_of_arm</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="n">epsilon</span> <span class="o">*=</span> <span class="n">discount</span>
+    <span class="n">epsilon</span> <span class="o">*=</span> <span class="n">e_scale</span>
 
 <span class="n">history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 <span class="n">accum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
@@ -728,12 +729,17 @@ document.write(`
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
-<p><strong><span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法</strong></p>
+<p><strong>結果: <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.868</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.863</span></p></li>
 </ul>
 <p>以下には得られた平均報酬の比較を示す。</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 
@@ -776,16 +782,17 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/66655d73ae37be9570a3da6b3bcedde681ab434fc1c331981da34d43aa50340e.png" src="../../_images/66655d73ae37be9570a3da6b3bcedde681ab434fc1c331981da34d43aa50340e.png" />
+<img alt="../../_images/2bee54cb6414b6a05cde9b286ca09bdca48529b6388f13a76983458b19d1ecd8.png" src="../../_images/2bee54cb6414b6a05cde9b286ca09bdca48529b6388f13a76983458b19d1ecd8.png" />
 </div>
 </div>
-<p>このように、ちょっとした工夫を加えるだけで、かなり早い段階から最大の当たり確率である0.65に近い当たり確率が得られていることが分かる。</p>
+<p>このように、ちょっとした工夫を加えるだけで、かなり早い段階から最大の当たり確率である<span class="pasted-text">0.90</span>に近い当たり確率が得られていることが分かる。</p>
 <section id="id6">
 <h3><span class="section-number">1.3.1. </span>ソフトマックス探索<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p><span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法でも十分に良い結果が得られているが、探査のために完全なランダム行動を取る、という点には、まだ改善の余地がある。</p>
 <p>例えば、スロットの当たり確率が0.05のスロットも、この時にランダムに選ばれてしまう点はマイナスである。</p>
-<p>そこで、ランダムな探査の代わりに、現在の推定当たり確率から求まる評価関数によって、探査行動の選択を考える。このような評価関数の一つにソフトマックス関数がある。</p>
+<p>そこで、ランダムな探査の代わりに、現在の推定当たり確率から求まる評価関数によって、探査行動の選択を考える。このような評価関数の一つにソフトマックス関数がある。このようなソフトマックス関数を使って評価関数を定義する手法を<strong>ソフトマックス探索</strong>あるいは<strong>Bolzmann探索</strong>と呼ぶ。</p>
 <p>ソフトマックス関数は<a class="reference internal" href="../sec2/deep-learning.html#sec-deep-learning"><span class="std std-ref">深層学習による機械分類</span></a>の際にも紹介した。今回は、<span class="math notranslate nohighlight">\(i\)</span>番目のスロットに対して求まっている当たり確率の期待値が<span class="math notranslate nohighlight">\(x_i\)</span>であるとしたときに、スロットの評価値<span class="math notranslate nohighlight">\(v_i\)</span>を以下のように定義する。</p>
 <div class="math notranslate nohighlight">
 \[
@@ -794,27 +801,23 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 <p>ソフトマックス関数により得られる評価値は0から1の間の実数を取り、全てのスロットの評価値の合計は1となる。この時、仮に当たり確率の期待値が0であっても、ある程度の割合で選択され、一方で、確率としては、より当たり確率が高いものを相対的に多く選ぶという意味で、ランダム性と当たり確率の利用のバランスが良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">n_burnout</span> <span class="o">=</span> <span class="n">n_play</span> <span class="o">//</span> <span class="mi">10</span>
-
-
-<span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ソフトマックス関数&quot;&quot;&quot;</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-
-<span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">n_hit_of_arm</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span>
 <span class="n">n_play_of_arm</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">arms</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_play</span><span class="p">):</span>
     <span class="n">rs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">h</span> <span class="o">/</span> <span class="n">p</span> <span class="k">if</span> <span class="n">p</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mf">1e5</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">n_hit_of_arm</span><span class="p">,</span> <span class="n">n_play_of_arm</span><span class="p">)]</span>
     <span class="n">rs</span> <span class="o">=</span> <span class="n">softmax</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span>
-
-    <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_arms</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="n">rs</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">arms</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">roll</span><span class="p">():</span>
         <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
@@ -834,9 +837,9 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
-<p><strong>ソフトマックス探索</strong></p>
+<p><strong>結果: ソフトマックス探索</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.866</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.903</span></p></li>
 </ul>
 <p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -898,7 +901,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/5f667aa432b5e870cdd92c9eb293cd2cc8924ea7baf5a1ed0f25ff4d0a781eae.png" src="../../_images/5f667aa432b5e870cdd92c9eb293cd2cc8924ea7baf5a1ed0f25ff4d0a781eae.png" />
+<img alt="../../_images/f3ca0c63105fa21f69c3d19b2ce9ea0e059c101ca64f7a6e1e40ee8867725486.png" src="../../_images/f3ca0c63105fa21f69c3d19b2ce9ea0e059c101ca64f7a6e1e40ee8867725486.png" />
 </div>
 </div>
 <p>上記の結果から、十分に試行回数が多いときには<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法とソフトマックス法にはそれほど差がないが、ソフトマックス法は<strong>試行回数が少ない場合でも、安定して高い平均報酬が得られている</strong>ことが分かる。</p>
@@ -908,13 +911,14 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 <h2><span class="section-number">1.4. </span>Upper Confidence Bound (UCB)<a class="headerlink" href="#upper-confidence-bound-ucb" title="Permalink to this heading">#</a></h2>
 <p>先ほどのソフトマックス探索は、多腕バンディット問題のような、各試行によって当たり確率が変化しないような問題に対しては高い性能を示すことが知られているが、その時々で当たり確率が変動するような対象に対しては、安定して作用しないこと知られている。</p>
 <p>また、ソフトマックス法はソフトマックス関数により得られた次の試行を選ぶための確率密度分布が経験的に良い値になることを利用している。だが、ソフトマックス関数を適用する前の現在の推定当たり確率に適当なスケールをかけ算する余地があり、どの程度のスケールでソフトマックス関数を計算するのが最適なのかは問題に依存する。</p>
-<p>このようなソフトマックス法の経験的な部分を、より理論的に補った手法にUCB値を用いる手法がある。UCB値にはいくつかの式が知られているが、最も一般的なUCB1は以下の式で表わされる。</p>
+<p>このようなソフトマックス法の経験的な部分を、より理論的に補った手法に<strong>UCB値を用いる手法</strong> <span id="id7">[<a class="reference internal" href="#id38" title="Peter Auer, Nicolò Cesa-Bianchi, and Paul Fischer. Finite-time analysis of the multiarmed bandit problem. Machine Learning, 47(2/3):235–256, 2002. doi:10.1023/a:1013689704352.">Auer <em>et al.</em>, 2002</a>]</span>がある。UCB値にはいくつかの式が知られているが、最も一般的なUCB1は以下の式で表わされる。</p>
 <div class="math notranslate nohighlight">
 \[
-\text{UCB1} = \frac{N_{\rm hit}}{N_{\rm play}} + \sqrt{\frac{2 \log(N_{\rm total})}{N_\textrm{play}}}
+\text{UCB1}_i = \frac{n_{i,{\rm hit}}}{n_{i,{\rm play}}} + \sqrt{\frac{2 \log(n_{\rm total})}{n_{i, {\rm play}}}}
 \]</div>
-<p>この式で<span class="math notranslate nohighlight">\(N_{\rm hit}\)</span>と<span class="math notranslate nohighlight">\(N_{\rm play}\)</span>は、評価したいアームの当たり回数と試行回数、<span class="math notranslate nohighlight">\(N_{\rm total}\)</span>は全アームの試行回数の合計を表わす。</p>
-<p>UCB1値の第１項は単純なアームの当たり確率を表わし、第２項はその推定値にどの程度の偏り(=バイアス)が含まれているかを表わしている。この式は、推定値が高いか、あるいは偏りが大きく、推定値の信頼性が低いアームをより多く回すという戦略を示している。</p>
+<p>この式で<span class="math notranslate nohighlight">\(n_{i,{\rm hit}}\)</span>と<span class="math notranslate nohighlight">\(n_{i,{\rm play}}\)</span>は、評価したいアームの当たり回数と試行回数、<span class="math notranslate nohighlight">\(n_{\rm total}\)</span>は全アームの試行回数の合計を表わす。</p>
+<p>UCB1値の第１項は単純なアームの当たり確率を表わし、第２項はその推定値にどの程度の偏り(=バイアス)が含まれているかを表わしている。</p>
+<p>この式のポイントは他のアームが回される、という行動によってバイアスを表わす第2項が変化する、という点で、推定値が高いか、あるいは偏りが大きく、推定値の信頼性が低いアームをより多く回すという戦略を上手く表わしている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
@@ -947,7 +951,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
-<p><strong>UCB1</strong></p>
+<p><strong>結果: UCB1</strong></p>
 <ul class="simple">
 <li><p>当たり確率: <span class="pasted-text">0.890</span></p></li>
 </ul>
@@ -1020,16 +1024,27 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0cb7d235125286f4e3989128e4abc70fa5673b9788a806df2a6699d425dd2d70.png" src="../../_images/0cb7d235125286f4e3989128e4abc70fa5673b9788a806df2a6699d425dd2d70.png" />
+<img alt="../../_images/0870ebf875a013a9e0e97d4fc940aec6a4056cdf49e2bbd492f829832c14e9c6.png" src="../../_images/0870ebf875a013a9e0e97d4fc940aec6a4056cdf49e2bbd492f829832c14e9c6.png" />
 </div>
 </div>
-<p>上記の通り、UCB1値を用いることでソフトマックス法を大きく上回る平均報酬が得られていることが分かる。</p>
+<p>上記のようにUCB1は多腕バンディット問題のような、状態変化が少ない問題においてはソフトマックス法に劣った結果となっているが、<strong>モデルを決定するパラメータがない</strong>点や、状態変化が起こるモデルへの有用性が高い。</p>
+<p>この点については、以後の<a class="reference internal" href="q-learning.html#sec-q-learning"><span class="std std-ref">Q学習</span></a>の節などで各自で確認してみてほしい。</p>
 </section>
-<section id="id7">
-<h2><span class="section-number">1.5. </span>練習問題<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id8">
+<h2><span class="section-number">1.5. </span>練習問題<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>UCBにはいくつかの種類があり、本資料で紹介したものはUCB1と呼ばれる。UCB2やUCB1-tunedと呼ばれる評価関数について調査し、その性能をUCB1と比較せよ。</p></li>
 </ul>
+</section>
+<section id="id9">
+<h2><span class="section-number">1.6. </span>参考文献<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<div class="docutils container" id="id10">
+<dl class="citation">
+<dt class="label" id="id38"><span class="brackets"><a class="fn-backref" href="#id7">ACBF02</a></span></dt>
+<dd><p>Peter Auer, Nicolò Cesa-Bianchi, and Paul Fischer. Finite-time analysis of the multiarmed bandit problem. <em>Machine Learning</em>, 47(2/3):235–256, 2002. <a class="reference external" href="https://doi.org/10.1023/a:1013689704352">doi:10.1023/a:1013689704352</a>.</p>
+</dd>
+</dl>
+</div>
 </section>
 </section>
 
@@ -1077,7 +1092,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Q学習</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Q学習の基礎</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1107,7 +1122,8 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upper-confidence-bound-ucb">1.4. Upper Confidence Bound (UCB)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.5. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.5. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.6. 参考文献</a></li>
 </ul>
   </nav></div>
 

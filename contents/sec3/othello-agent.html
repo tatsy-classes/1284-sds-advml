@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="4. 深層強化学習" href="deep-reinforcement-learning.html" />
-    <link rel="prev" title="2. Q学習" href="q-learning.html" />
+    <link rel="prev" title="2. Q学習の基礎" href="q-learning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   </head>
@@ -177,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第3部 強化学習の基礎とリバーシエージェントの実装</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="reinforcement-learning.html">1. 強化学習の基礎</a></li>
-<li class="toctree-l1"><a class="reference internal" href="q-learning.html">2. Q学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="q-learning.html">2. Q学習の基礎</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">3. オセロAIの作成</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deep-reinforcement-learning.html">4. 深層強化学習</a></li>
 <li class="toctree-l1"><a class="reference internal" href="exercise-othello.html">5. 演習3 - オセロエージェントを作る</a></li>
@@ -411,9 +411,9 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. オセロゲーム環境</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.2. ランダムな着手</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.3. マス評価値による着手</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.4. ミニマックス探索による着手</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.5. 発展: アルファベータ探索による着手</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.3. マス評価値を用いた探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.4. ミニマックス探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.5. 発展: アルファベータ探索</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.6. 原始モンテカルロ探索</a></li>
 </ul>
             </nav>
@@ -1982,7 +1982,7 @@ B-win: 422, W-win: 534, Draw: 44
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">3.3. </span>マス評価値による着手<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>マス評価値を用いた探索<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
@@ -2110,7 +2110,7 @@ B-win: 739, W-win: 221, Draw: 40
 </div>
 </section>
 <section id="id4">
-<h2><span class="section-number">3.4. </span>ミニマックス探索による着手<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>ミニマックス探索<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">minimax</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">move</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">max_depth</span><span class="p">):</span>
@@ -2246,7 +2246,7 @@ B-win: 932, W-win: 47, Draw: 21
 <p>上記の通り、ミニマックス探索で2手先を読むだけで飛躍的に勝率が上昇していることが分かる。</p>
 </section>
 <section id="id5">
-<h2><span class="section-number">3.5. </span>発展: アルファベータ探索による着手<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.5. </span>発展: アルファベータ探索<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">alpha_beta</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">move</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">max_depth</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">99999</span><span class="p">):</span>
@@ -2559,7 +2559,7 @@ B-win: 83, W-win: 13, Draw: 4
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Q学習</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Q学習の基礎</p>
       </div>
     </a>
     <a class="right-next"
@@ -2588,9 +2588,9 @@ B-win: 83, W-win: 13, Draw: 4
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. オセロゲーム環境</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.2. ランダムな着手</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.3. マス評価値による着手</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.4. ミニマックス探索による着手</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.5. 発展: アルファベータ探索による着手</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.3. マス評価値を用いた探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.4. ミニマックス探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.5. 発展: アルファベータ探索</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.6. 原始モンテカルロ探索</a></li>
 </ul>
   </nav></div>
