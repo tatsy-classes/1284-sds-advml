@@ -31,6 +31,17 @@ class Player(enum.IntEnum):
         else:
             return Player.BLACK
 
+    def __str__(self) -> str:
+        return self.__repr__()
+
+    def __repr__(self) -> str:
+        if self == Player.BLACK:
+            return "BLACK"
+        elif self == Player.WHITE:
+            return "WHITE"
+        else:
+            return "NONE"
+
 
 class Move(object):
     def __init__(self, player: Player, x: int, y: int) -> None:
@@ -49,12 +60,12 @@ class Move(object):
         move.x, move.y = -1, -1
         return move
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: Move) -> bool:
         if self.player != other.player:
             return False
         if self.x != other.x:
             return False
-        return self.y != other.y
+        return self.y == other.y
 
     def __repr__(self) -> str:
         assert self.player in [Player.BLACK, Player.WHITE]
@@ -228,9 +239,19 @@ class Env(object):
         ]
 
     def _repr_png_(self):
-        fig, ax = plt.subplots()
-        ax.imshow(self.render())
-        ax.set(xticks=[], yticks=[])
+        fig, ax = plt.subplots(figsize=(6, 6), dpi=100)
+        img = self.render()
+        size = img.shape[0]
+        csize = size // 8
+
+        ax.imshow(img)
+        ax.xaxis.tick_top()
+        ax.set(
+            xticks=np.arange(csize // 2, size, csize),
+            yticks=np.arange(csize // 2, size, csize),
+            xticklabels=np.arange(1, 9),
+            yticklabels=np.arange(1, 9),
+        )
         data = print_figure(fig, "png")
         plt.close(fig)
         return data

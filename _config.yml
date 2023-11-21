@@ -29,6 +29,7 @@ execute:
     - "feature-extraction.ipynb"
     - "deep-learning.ipynb"
     - "othello-agent.ipynb"
+    - "exercise-othello.ipynb"
 
 # HTML-specific settings
 html:
