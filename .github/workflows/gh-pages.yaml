@@ -40,8 +40,7 @@ jobs:
 
       - name: Install Poetry
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install poetry==1.5.1
+          pipx install poetry==1.5.1
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -53,11 +52,6 @@ jobs:
       - name: Install packages
         run: |
           poetry install --no-interaction
-
-      - name: Build Cython modules
-        run: |
-          cd contents/sec3/othello && \
-          poetry run python setup.py build_ext --inplace
 
       - name: Build
         run: poetry run jb build --all .
