@@ -7,12 +7,12 @@ on:
       - dev
 
 jobs:
-  build-windows:
+  build:
     strategy:
       matrix:
-        os: ["windows-latest", "macos-latest"]
+        os: ["windows-latest", "macos-latest", "ubuntu-latest"]
         python-version-major: [3]
-        python-version-minor: [7, 8, 9, 10, 11]
+        python-version-minor: [9, 10, 11]
     env:
       python-version: ${{ format('{0}.{1}', matrix.python-version-major, matrix.python-version-minor) }}
 
@@ -37,4 +37,4 @@ jobs:
         run: |
           poetry install
       - name: Check
-        run: poetry run python -c "import othello.othello"
+        run: poetry run python -c "import othello"

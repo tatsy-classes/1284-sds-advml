@@ -12,12 +12,14 @@ license = "CC BY-NC-SA 4.0"
 
 packages = [{ include = "othello", from = "modules" }]
 exclude = [
+  "lib/*",
+  "data/*",
+  "contents/*",
   "autograding/*",
   "dist/*",
   "templates/*",
   "_static/*",
   "_build/*",
-  ".github/*",
   ".github/*",
   ".pytest_cache/*",
   ".mypy_cache/*",
