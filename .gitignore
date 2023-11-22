@@ -8,12 +8,15 @@ __pycache__
 poetry.lock
 
 *.zip
+*.so
 
 .DS_Store
 
 *.bak
 *.sav.tmp
 
-.vscode/*
-_build/*
+.vscode/
+_build/
 openml/
+dist/
+build/

@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw
 from IPython.core.pylabtools import print_figure
 
-from .cutils import cython_step, cython_is_legal_move
+from .cothello import cython_step, cython_is_legal_move
 
 Board = npt.NDArray[np.object_]
 
