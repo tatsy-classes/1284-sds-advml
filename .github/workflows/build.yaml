@@ -16,7 +16,7 @@ jobs:
     env:
       python-version: ${{ format('{0}.{1}', matrix.python-version-major, matrix.python-version-minor) }}
 
-    run-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
