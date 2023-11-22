@@ -1041,7 +1041,7 @@ AAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1OC43Ni4xMDA=
 </div>
 </div>
 </div>
-<p>このように<code class="docutils literal notranslate"><span class="pre">digits</span></code>変数にはパラメータと同数で、0-7の整数が与えられる。ということは、この数字を8進数であると考えて、10進数表記に直せば、各離散状態に対して重複のない整数のインデックスを付与することができる。</p>
+<p>現在は各パラメータの範囲を8つに分割しているので、<code class="docutils literal notranslate"><span class="pre">digits</span></code>には0-7の整数が与えられる。従って、この数字を8進数であると考えて、10進数表記に直せば、各離散状態に対して重複のない整数のインデックスを付与することができる。</p>
 <p>このような計算は、単純には以下のようなfor文を用いたコードで実現できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1714,6 +1714,8 @@ bHN0AAAAJal0b28AAAAdZGF0YQAAAAEAAAAATGF2ZjU4Ljc2LjEwMA==
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
+<p>今回は<span class="output text_plain">10000</span>エピソードしか学習を行なっていないが、それでもランダムの時と比較して、かなり長い時間に渡り振子を倒れないようにキープできていることが分かる。</p>
+<p>エピソードの数を増やしたり、<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法以外の方法を用いた場合に、どのように学習結果が変化するかについては、ぜひ自信でコードを修正して試してみてほしい。</p>
 </section>
 </section>
 <section id="id6">
