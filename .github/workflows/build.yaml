@@ -25,8 +25,7 @@ jobs:
           token: ${{ secrets.MY_PAT }}
       - name: Install Poetry
         run: |
-          python -m pip install --upgrade pip
-          python -m pip install poetry
+          pipx install poetry
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
