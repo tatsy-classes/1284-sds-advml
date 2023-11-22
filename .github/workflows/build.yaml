@@ -38,6 +38,6 @@ jobs:
           pip install --upgrade poetry
       - name: Install dependencies
         run: |
-          poetry install
+          poetry install --only-root
       - name: Check
         run: poetry run python -c "import othello"
