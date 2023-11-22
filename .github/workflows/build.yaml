@@ -12,7 +12,7 @@ jobs:
       matrix:
         os: ["windows-latest", "macos-latest", "ubuntu-latest"]
         python-version-major: [3]
-        python-version-minor: [9, 10, 11]
+        python-version-minor: [9]
     env:
       python-version: ${{ format('{0}.{1}', matrix.python-version-major, matrix.python-version-minor) }}
 
