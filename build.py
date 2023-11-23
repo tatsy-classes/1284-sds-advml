@@ -26,8 +26,8 @@ class MyBuildExt(build_ext):
     def build_extension(self, ext):
         if self.compiler.compiler_type == "unix":
             for e in self.extensions:
-                e.extra_compile_args.extend(["-std=c++11", "-fopenmp"])
-                e.extra_link_args.extend(["-fopenmp"])
+                e.extra_compile_args.extend(["-std=c++11"])
+                e.extra_link_args.extend([])
 
         elif self.compiler.compiler_type == "msvc":
             for e in self.extensions:
