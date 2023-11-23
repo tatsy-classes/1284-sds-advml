@@ -459,8 +459,8 @@ document.write(`
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">joblib</span>
-<span class="kn">import</span> <span class="nn">IPython.display</span> <span class="k">as</span> <span class="nn">display</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">IPython.display</span> <span class="k">as</span> <span class="nn">display</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
 <span class="kn">from</span> <span class="nn">matplotlib.animation</span> <span class="kn">import</span> <span class="n">ArtistAnimation</span>
@@ -518,9 +518,11 @@ document.write(`
 <section id="id2">
 <h3><span class="section-number">3.1.1. </span>オセロモジュールのインストール<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>今回は、講義用に用意したオセロ用のゲーム環境を用いる。ゲーム環境用のモジュールは以下のURLからダウンロードできる。</p>
-<p><a class="github reference external" href="https://github.com/tatsy/1284-sds-ml-advanced/blob/04373681857fa15b89b4b993bf295e2313903d4d/lib/sdsadvml-0.1.0.tar.gz">tatsy/1284-sds-ml-advanced</a></p>
-<p>ここから<code class="docutils literal notranslate"><span class="pre">sdsadvml-0.1.0.tar.gz</span></code>をダウンロード後、ファイルを展開すると、その中に<code class="docutils literal notranslate"><span class="pre">setup.py</span></code>というファイルが入っている。WindowsならコマンドプロンプトかPowerShell、MacOSならターミナルを開き、以下のAnacondaの仮想環境を切り替えた上で、以下のコマンドを実行するとライブラリがインストールされる。</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>setup.py<span class="w"> </span>install
+<p><a class="github reference external" href="https://github.com/tatsy/1284-sds-ml-advanced/releases/tag/v0.1.0">tatsy/1284-sds-ml-advanced</a></p>
+<p>このURLにはPython3.9用のインストールパッケージ (Wheel)がOSごとに用意されている。Windows, Linuxの場合はそれぞれ対応するものを、MacOSの場合はM1, M2等のCPUを持つモデルなら<code class="docutils literal notranslate"><span class="pre">..._arm64.whl</span></code>、そうでない場合は<code class="docutils literal notranslate"><span class="pre">..._x86_64.whl</span></code>をダウンロードする。</p>
+<p>ダウンロード後、Anacondaの仮想環境を<code class="docutils literal notranslate"><span class="pre">advml</span></code>等の本資料用のものに切り替えた後、WindowsならコマンドプロンプトかPowerShell、Macならターミナルを開いて、以下のコマンドでパッケージをインストールする。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;xxx&quot;の部分は自分がダウンロードしたWheelのファイル名に読み替えること</span>
+pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 </pre></div>
 </div>
 </section>
@@ -2173,15 +2175,15 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a60934efd04f442780190c7aea7d76ed", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9ec4adc9fa2a4e93a5f9017e2fee02d7", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
 <p><strong>対局結果: ランダム vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">455</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">501</span></p></li>
-<li><p>引き分け: <span class="output text_plain">44</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">477</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">482</span></p></li>
+<li><p>引き分け: <span class="output text_plain">41</span></p></li>
 </ul>
 <p>このようにランダムな着手では当然ながら、勝率はおよそ五分五分になる。ただし、オセロは後手である白番の方が若干有利であると言われており、ランダムに着手した場合には白番の勝率がやや高くなっている。</p>
 <p>以後は、この着手の方法を改良していき、より高い勝率を目指してみる。以下、利便性のために、ランダムに着手する関数として<code class="docutils literal notranslate"><span class="pre">move_by_random</span></code>を作成しておく。</p>
@@ -2295,15 +2297,15 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "65e0c4ee36ed4a698ae3f7f41d218b7f", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e2c7d56c05ad4632afbe7d33cb5784d5", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
 <p><strong>対局結果: セル評価値 vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">736</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">221</span></p></li>
-<li><p>引き分け: <span class="output text_plain">43</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">737</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">233</span></p></li>
+<li><p>引き分け: <span class="output text_plain">30</span></p></li>
 </ul>
 <p>上記の通り、人間の経験則を導入することでランダムに着手するのと比べて大幅に勝率が上昇していることが分かる。</p>
 </section>
@@ -2394,15 +2396,15 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5228269b571a490b92efcfb870b14c2f", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8139c57011e241a4b1905aa5d9fdeb3a", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
 <p><strong>対局結果: ミニマックス vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">866</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">108</span></p></li>
-<li><p>引き分け: <span class="output text_plain">26</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">862</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">120</span></p></li>
+<li><p>引き分け: <span class="output text_plain">18</span></p></li>
 </ul>
 <p>上記の通り、ミニマックス探索で2手先を読むだけで飛躍的に勝率が上昇していることが分かる。</p>
 <p>ただし、ミニマックス探索は再帰的に手を探索するため、より多くの手を読もうとすると、かなり多くの時間を要する。実際、ミニマックス探索は「本来探索する必要のない手」も探索しているがために、余計に計算を行なっている。</p>
@@ -2496,7 +2498,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "534c5ed70af942958e3e6c8c9a15a816", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "62b642986f5745d2ad3ba11248e9409d", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2509,9 +2511,9 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 <p><strong>対局結果: ミニマックス vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">817</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">176</span></p></li>
-<li><p>引き分け: <span class="output text_plain">7</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">789</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">200</span></p></li>
+<li><p>引き分け: <span class="output text_plain">11</span></p></li>
 </ul>
 </section>
 <section id="id9">
