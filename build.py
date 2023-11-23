@@ -24,6 +24,15 @@ class MyBuildExt(build_ext):
             raise Exception("File not found. Could not compile C extension.")
 
     def build_extension(self, ext):
+        if self.compiler.compiler_type == "unix":
+            for e in self.extensions:
+                e.extra_compile_args.extend(["-std=c++11", "-fopenmp"])
+                e.extra_link_args.extend(["-fopenmp"])
+
+        elif self.compiler.compiler_type == "msvc":
+            for e in self.extensions:
+                e.extra_compile_args.extend(["/std:c11", "/openmp"])
+
         try:
             build_ext.build_extension(self, ext)
         except (CCompilerError, PackageDiscoveryError, ValueError):

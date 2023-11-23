@@ -4,9 +4,11 @@ __pycache__
 .ipynb_checkpoints
 .jupyter_cache
 *.pth
+setup.py
 
 poetry.lock
 
+*.html
 *.zip
 *.so
 

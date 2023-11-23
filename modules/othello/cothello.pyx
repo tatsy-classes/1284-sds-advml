@@ -1,8 +1,15 @@
 from libcpp cimport bool
 cimport cython
 import numpy as np
-cimport numpy as cnp
+cimport numpy as np
+from cython cimport view
+from cython.parallel import prange
 
+directions_ = np.array([
+    [0, 1], [1, 0], [0, -1], [-1, 0],
+    [1, 1], [-1, -1], [1, -1], [-1, 1],
+], dtype="int32")
+cdef int[:, :] directions = directions_
 
 cdef enum CPlayer:
     NONE = 0
@@ -12,13 +19,9 @@ cdef enum CPlayer:
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cpdef bool cython_is_legal_move(const int player, const int x, const int y, cnp.ndarray[int, ndim=2] board):
+cpdef bool cython_is_legal_move(const int player, const int x, const int y, int[:, :] board) noexcept nogil:
     cdef int oppo = -1 * player
     cdef int i, nx, ny, dx, dy
-    cdef cnp.ndarray[int, ndim=2] directions = np.array([
-        [0, 1], [1, 0], [0, -1], [-1, 0],
-        [1, 1], [-1, -1], [1, -1], [-1, 1],
-    ], dtype="int32")
 
     # If the spot is not empty, it's not a legal move
     if board[x, y] != CPlayer.NONE:
@@ -36,8 +39,8 @@ cpdef bool cython_is_legal_move(const int player, const int x, const int y, cnp.
             continue
 
         while True:
-            nx += dx
-            ny += dy
+            nx = nx + dx
+            ny = ny + dy
             if nx < 0 or nx >= 8 or ny < 0 or ny >= 8:
                 break
 
@@ -51,14 +54,24 @@ cpdef bool cython_is_legal_move(const int player, const int x, const int y, cnp.
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cpdef void cython_step(const int player, const int x, const int y, cnp.ndarray[int, ndim=2] board):
+cpdef bool[:, :] cython_legal_moves(const int player, int[:, :] board):
+    cdef int x, y
+    cdef np.ndarray[np.uint8_t, cast=True, ndim=2] is_legal = np.zeros((8, 8), dtype="uint8")
+    cdef bool[:, :] view = is_legal
+
+    for x in range(8):
+        for y in range(8):
+            view[x, y] = cython_is_legal_move(player, x, y, board)
+
+    return is_legal
+
+
+@cython.boundscheck(False)
+@cython.wraparound(False)
+cpdef void cython_step(const int player, const int x, const int y, int[:, :] board) noexcept nogil:
     cdef int oppo = -1 * player
     cdef int i, nx, ny, dx, dy
     cdef bool inside
-    cdef cnp.ndarray[int, ndim=2] directions = np.array([
-        [0, 1], [1, 0], [0, -1], [-1, 0],
-        [1, 1], [-1, -1], [1, -1], [-1, 1],
-    ], dtype="int32")
 
     # Put an othello disk
     board[x, y] = player
@@ -70,8 +83,8 @@ cpdef void cython_step(const int player, const int x, const int y, cnp.ndarray[i
         nx, ny = x, y
         inside = True
         while True:
-            nx += dx
-            ny += dy
+            nx = nx + dx
+            ny = ny + dy
             if nx < 0 or nx >= 8 or ny < 0 or ny >= 8:
                 inside = False
                 break
@@ -81,6 +94,6 @@ cpdef void cython_step(const int player, const int x, const int y, cnp.ndarray[i
 
         if inside and board[nx, ny] == player:
             while nx != x or ny != y:
-                nx -= dx
-                ny -= dy
-                board[nx, ny] = player
+                nx = nx - dx
+                ny = ny - dy
+                board[nx, ny] = player                      

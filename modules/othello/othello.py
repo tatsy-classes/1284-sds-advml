@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw
 from IPython.core.pylabtools import print_figure
 
-from .cothello import cython_step, cython_is_legal_move
+from .cothello import cython_step, cython_legal_moves, cython_is_legal_move
 
 Board = npt.NDArray[np.object_]
 
@@ -112,8 +112,6 @@ class Env(object):
         if move.is_pass():
             return move.player.next(), self.board
 
-        # assert self._is_legal_move(move), "specified move is illegal!"
-
         cython_step(move.player.value, move.x, move.y, self.board)
 
         return move.player.next(), self.board
@@ -121,10 +119,8 @@ class Env(object):
     def legal_moves(self, player: Player) -> List[Move]:
         """List legal moves"""
 
-        def fn(i: int, j: int):
-            return cython_is_legal_move(player.value, i, j, self.board)
-
-        moves = [Move(player, i, j) for i, j in product(range(8), range(8)) if fn(i, j)]
+        is_legal = cython_legal_moves(player, self.board)
+        moves = [Move(player, x, y) for x, y in product(range(8), range(8)) if is_legal[x, y]]
         return moves
 
     def render(self) -> npt.NDArray[np.uint8]:
