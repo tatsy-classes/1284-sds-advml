@@ -526,24 +526,29 @@ Q_{\rm new}(s, a) = Q(s,a ) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a')
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.multioutput</span> <span class="kn">import</span> <span class="n">MultiOutputRegressor</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDRegressor</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPRegressor</span>
 
-<span class="n">reg</span> <span class="o">=</span> <span class="n">MultiOutputRegressor</span><span class="p">(</span>
-    <span class="n">SGDRegressor</span><span class="p">(</span>
-        <span class="n">learning_rate</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span>
-        <span class="n">eta0</span><span class="o">=</span><span class="mf">1.0e-4</span><span class="p">,</span>
-        <span class="n">tol</span><span class="o">=</span><span class="mf">1.0e-6</span><span class="p">,</span>
-        <span class="n">warm_start</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">)</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="n">MLPRegressor</span><span class="p">(</span>
+    <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,),</span>
+    <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span>
+    <span class="n">learning_rate_init</span><span class="o">=</span><span class="mf">1.0e-4</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">warm_start</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">dummy_X</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">8</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))]</span>
-<span class="n">dummy_y</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">8</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))]</span>
+<span class="n">dummy_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">reg</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">dummy_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">reg</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">reg</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">dummy_X</span><span class="p">,</span> <span class="n">dummy_y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>MLPRegressor(alpha=0.0, batch_size=32, hidden_layer_sizes=(128,),
+             learning_rate_init=0.0001, warm_start=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">MLPRegressor</label><div class="sk-toggleable__content"><pre>MLPRegressor(alpha=0.0, batch_size=32, hidden_layer_sizes=(128,),
+             learning_rate_init=0.0001, warm_start=True)</pre></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -551,89 +556,20 @@ Q_{\rm new}(s, a) = Q(s,a ) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a')
     <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">is_pass</span><span class="p">():</span>
         <span class="k">return</span> <span class="mi">64</span>
     <span class="k">return</span> <span class="n">move</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="n">move</span><span class="o">.</span><span class="n">x</span>
-
-
-<span class="k">def</span> <span class="nf">get_feature</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
-    <span class="n">b0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">player</span> <span class="o">*</span> <span class="n">board</span><span class="p">)</span>
-    <span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">player</span> <span class="o">*</span> <span class="n">board</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">b0</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">b1</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;double&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_episodes</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.99</span>
-
-<span class="n">e0</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">e1</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">e_scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e0</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_episodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">epsilon</span> <span class="o">=</span> <span class="n">e0</span>
-
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_episodes</span><span class="p">)):</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-    <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">gameset</span><span class="p">():</span>
-        <span class="c1"># 入力のベクトルは現在の状態</span>
-        <span class="n">feature</span> <span class="o">=</span> <span class="n">get_feature</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
-        <span class="n">action_values</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">feature</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-
-        <span class="c1"># 手を指して状態を進める</span>
-        <span class="c1"># 以下はε-greedy法で手を選ぶ</span>
-        <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">best_move</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
-                <span class="n">action_index</span> <span class="o">=</span> <span class="n">get_move_index</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">action_values</span><span class="p">[</span><span class="n">action_index</span><span class="p">]:</span>
-                    <span class="n">best_score</span> <span class="o">=</span> <span class="n">action_values</span><span class="p">[</span><span class="n">action_index</span><span class="p">]</span>
-                    <span class="n">best_move</span> <span class="o">=</span> <span class="n">m</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">best_move</span>
-
-        <span class="n">next_player</span><span class="p">,</span> <span class="n">next_board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
-
-        <span class="c1"># 対戦結果に応じて報酬(罰)を与える</span>
-        <span class="n">reward</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">gameset</span><span class="p">():</span>
-            <span class="n">n_me</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-            <span class="n">n_you</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">next_player</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">n_me</span> <span class="o">&gt;</span> <span class="n">n_you</span><span class="p">:</span>
-                <span class="n">reward</span> <span class="o">=</span> <span class="mf">1.0</span>
-            <span class="k">elif</span> <span class="n">n_me</span> <span class="o">==</span> <span class="n">n_you</span><span class="p">:</span>
-                <span class="n">reward</span> <span class="o">=</span> <span class="mf">0.5</span>
-
-            <span class="n">best_score</span> <span class="o">=</span> <span class="mf">0.0</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># 相手にとって対する最も良いQ値を得る</span>
-            <span class="n">feature</span> <span class="o">=</span> <span class="n">get_feature</span><span class="p">(</span><span class="n">next_player</span><span class="p">,</span> <span class="n">next_board</span><span class="p">)</span>
-            <span class="n">next_action_values</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">feature</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">next_action_values</span><span class="p">)</span>
-
-        <span class="n">action_index</span> <span class="o">=</span> <span class="n">get_move_index</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
-        <span class="n">target</span> <span class="o">=</span> <span class="n">action_values</span>
-        <span class="n">target</span><span class="p">[</span><span class="n">action_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">best_score</span>
-        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-
-        <span class="c1"># 変数を更新</span>
-        <span class="n">player</span> <span class="o">=</span> <span class="n">next_player</span>
-        <span class="n">board</span> <span class="o">=</span> <span class="n">next_board</span>
-
-    <span class="c1"># 1エピソードごとに回帰モデルを更新</span>
-    <span class="n">reg</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-    <span class="n">epsilon</span> <span class="o">*=</span> <span class="n">e_scale</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_feature</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+    <span class="n">b0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">player</span> <span class="o">*</span> <span class="n">board</span><span class="p">)</span>
+    <span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">player</span> <span class="o">*</span> <span class="n">board</span><span class="p">)</span>
+    <span class="n">feature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">b0</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">b1</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span>
+    <span class="k">return</span> <span class="n">feature</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9404c860643b43bd86b24cd5f7d05999", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -650,11 +586,7 @@ Q_{\rm new}(s, a) = Q(s,a ) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a')
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_jobs</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">n_episodes</span> <span class="o">=</span> <span class="mi">1000</span>
-
-
-<span class="k">def</span> <span class="nf">match</span><span class="p">():</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match</span><span class="p">():</span>
     <span class="c1"># ゲームのリセット</span>
     <span class="n">env</span> <span class="o">=</span> <span class="n">othello</span><span class="o">.</span><span class="n">make</span><span class="p">()</span>
     <span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
@@ -674,9 +606,9 @@ Q_{\rm new}(s, a) = Q(s,a ) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a')
                 <span class="n">feature</span> <span class="o">=</span> <span class="n">get_feature</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
                 <span class="n">action_values</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">feature</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
                 <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
-                    <span class="n">action_index</span> <span class="o">=</span> <span class="n">get_move_index</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">action_values</span><span class="p">[</span><span class="n">action_index</span><span class="p">]:</span>
-                        <span class="n">best_score</span> <span class="o">=</span> <span class="n">action_values</span><span class="p">[</span><span class="n">action_index</span><span class="p">]</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">action_values</span><span class="p">[</span><span class="n">get_move_index</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+                    <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">:</span>
+                        <span class="n">best_score</span> <span class="o">=</span> <span class="n">value</span>
                         <span class="n">best_move</span> <span class="o">=</span> <span class="n">m</span>
 
                 <span class="n">move</span> <span class="o">=</span> <span class="n">best_move</span>
@@ -689,22 +621,134 @@ Q_{\rm new}(s, a) = Q(s,a ) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a')
         <span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">win_score</span><span class="p">(</span><span class="n">n_matches</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">tqdm_joblib</span><span class="p">(</span><span class="n">n_matches</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)(</span>
+                <span class="p">(</span><span class="n">joblib</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">match</span><span class="p">)()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_matches</span><span class="p">)),</span>
+            <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)(</span>
+            <span class="p">(</span><span class="n">joblib</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">match</span><span class="p">)()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_matches</span><span class="p">)),</span>
+        <span class="p">)</span>
+        
+    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>
+    <span class="n">b_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">w_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">draw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
 
+    <span class="k">return</span> <span class="n">b_win</span> <span class="o">/</span> <span class="n">n_matches</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_episodes</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">n_matches</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.999</span>
 
-<span class="k">with</span> <span class="n">tqdm_joblib</span><span class="p">(</span><span class="n">n_episodes</span><span class="p">):</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)(</span>
-        <span class="p">(</span><span class="n">joblib</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">match</span><span class="p">)()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_episodes</span><span class="p">)),</span>
-    <span class="p">)</span>
+<span class="n">e0</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">e1</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">e_scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e0</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_episodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="n">e0</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>
-<span class="n">b_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">w_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="n">draw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">n_episodes</span> <span class="o">*</span> <span class="n">n_epochs</span><span class="p">)</span>
+<span class="n">win</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_episodes</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_matches</span><span class="p">):</span>
+        <span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">gameset</span><span class="p">():</span>
+            <span class="c1"># 入力のベクトルは現在の状態</span>
+            <span class="n">feature</span> <span class="o">=</span> <span class="n">get_feature</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
+            <span class="n">action_values</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">feature</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+            <span class="c1"># 手を指して状態を進める</span>
+            <span class="c1"># 以下はε-greedy法で手を選ぶ</span>
+            <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
+                <span class="n">move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">best_move</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="n">action_values</span><span class="p">[</span><span class="n">get_move_index</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+                    <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">:</span>
+                        <span class="n">best_score</span> <span class="o">=</span> <span class="n">value</span>
+                        <span class="n">best_move</span> <span class="o">=</span> <span class="n">m</span>
+                <span class="n">move</span> <span class="o">=</span> <span class="n">best_move</span>
+
+            <span class="n">next_player</span><span class="p">,</span> <span class="n">next_board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+
+            <span class="n">reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">gameset</span><span class="p">():</span>
+                <span class="c1"># 対戦結果に応じて報酬(罰)を与える</span>
+                <span class="n">n_now</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+                <span class="n">n_next</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">next_player</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">n_now</span> <span class="o">&gt;</span> <span class="n">n_next</span><span class="p">:</span>
+                    <span class="n">reward</span> <span class="o">=</span> <span class="mf">1.0</span>
+                <span class="k">elif</span> <span class="n">n_now</span> <span class="o">&lt;</span> <span class="n">n_next</span><span class="p">:</span>
+                    <span class="n">reward</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">reward</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+                <span class="c1"># 次の局面はないので, 次局面からの報酬伝搬はない</span>
+                <span class="n">next_best_score</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># 相手にとって最も良いQ値を得る</span>
+                <span class="n">next_moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">next_player</span><span class="p">)</span>
+                <span class="n">feature</span> <span class="o">=</span> <span class="n">get_feature</span><span class="p">(</span><span class="n">next_player</span><span class="p">,</span> <span class="n">next_board</span><span class="p">)</span>
+                <span class="n">next_action_values</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">feature</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">next_moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">next_best_score</span> <span class="o">=</span> <span class="n">next_action_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">next_best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+                    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">next_moves</span><span class="p">:</span>
+                        <span class="n">value</span> <span class="o">=</span> <span class="n">next_action_values</span><span class="p">[</span><span class="n">get_move_index</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+                        <span class="k">if</span> <span class="n">next_best_score</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">:</span>
+                            <span class="n">next_best_score</span> <span class="o">=</span> <span class="n">value</span>
+
+                <span class="c1"># 相手の報酬は自分にとっては損なのでマイナスにする</span>
+                <span class="n">next_best_score</span> <span class="o">*=</span> <span class="o">-</span><span class="mf">1.0</span>
+                
+            <span class="c1"># 着手に対応する行動価値を更新</span>
+            <span class="n">action_index</span> <span class="o">=</span> <span class="n">get_move_index</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">action_values</span>
+            <span class="n">target</span><span class="p">[</span><span class="n">action_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">next_best_score</span>
+            <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+            <span class="c1"># 変数を更新</span>
+            <span class="n">player</span> <span class="o">=</span> <span class="n">next_player</span>
+            <span class="n">board</span> <span class="o">=</span> <span class="n">next_board</span>
+
+    <span class="c1"># 1エピソードごとに回帰モデルを更新</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+        <span class="n">reg</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;win=</span><span class="si">{</span><span class="n">win</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, loss=</span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">loss_</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="n">win</span> <span class="o">=</span> <span class="n">win_score</span><span class="p">()</span>
+    <span class="n">epsilon</span> <span class="o">*=</span> <span class="n">e_scale</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "48b7d262ede04ac6882d6a280a2b07ea", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "814d78f659cb445bbf2f959fd4683592", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
@@ -717,9 +761,9 @@ Q_{\rm new}(s, a) = Q(s,a ) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a')
 </div>
 <p><strong>対局結果: Q学習 vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">478</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">484</span></p></li>
-<li><p>引き分け: <span class="output text_plain">38</span></p></li>
+<li><p>黒番勝ち: </p></li>
+<li><p>白番勝ち: </p></li>
+<li><p>引き分け: </p></li>
 </ul>
 </section>
 </section>

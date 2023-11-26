@@ -418,7 +418,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.3. セル評価値を用いた着手</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-minimax">3.4. ミニマックス探索</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-monte-carlo">3.5. 原始モンテカルロ探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.6. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.6. モンテカルロ木探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.7. 練習問題</a></li>
 </ul>
             </nav>
         </div>
@@ -2175,15 +2176,15 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9ec4adc9fa2a4e93a5f9017e2fee02d7", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "c146741cb35344a68b4a73e0a70d6011", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
 <p><strong>対局結果: ランダム vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">477</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">482</span></p></li>
-<li><p>引き分け: <span class="output text_plain">41</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">436</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">514</span></p></li>
+<li><p>引き分け: <span class="output text_plain">50</span></p></li>
 </ul>
 <p>このようにランダムな着手では当然ながら、勝率はおよそ五分五分になる。ただし、オセロは後手である白番の方が若干有利であると言われており、ランダムに着手した場合には白番の勝率がやや高くなっている。</p>
 <p>以後は、この着手の方法を改良していき、より高い勝率を目指してみる。以下、利便性のために、ランダムに着手する関数として<code class="docutils literal notranslate"><span class="pre">move_by_random</span></code>を作成しておく。</p>
@@ -2297,15 +2298,15 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e2c7d56c05ad4632afbe7d33cb5784d5", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "0a70bf4587454a9ab7d6c66a641164e7", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
 <p><strong>対局結果: セル評価値 vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">737</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">233</span></p></li>
-<li><p>引き分け: <span class="output text_plain">30</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">756</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">201</span></p></li>
+<li><p>引き分け: <span class="output text_plain">43</span></p></li>
 </ul>
 <p>上記の通り、人間の経験則を導入することでランダムに着手するのと比べて大幅に勝率が上昇していることが分かる。</p>
 </section>
@@ -2396,15 +2397,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8139c57011e241a4b1905aa5d9fdeb3a", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="cell tag_remove-input docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "960ea18dc7374647af445ec06b1b1c1d", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: ミニマックス vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">862</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">120</span></p></li>
-<li><p>引き分け: <span class="output text_plain">18</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">761</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">225</span></p></li>
+<li><p>引き分け: <span class="output text_plain">14</span></p></li>
 </ul>
 <p>上記の通り、ミニマックス探索で2手先を読むだけで飛躍的に勝率が上昇していることが分かる。</p>
 <p>ただし、ミニマックス探索は再帰的に手を探索するため、より多くの手を読もうとすると、かなり多くの時間を要する。実際、ミニマックス探索は「本来探索する必要のない手」も探索しているがために、余計に計算を行なっている。</p>
@@ -2498,26 +2497,50 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "62b642986f5745d2ad3ba11248e9409d", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ce089a5658004b3ca58e6b6ce999aac0", "version_major": 2, "version_minor": 0}</script></div>
 </div>
+<p><strong>対局結果: ミニマックス vs ランダム</strong></p>
+<ul class="simple">
+<li><p>黒番勝ち: <span class="output text_plain">761</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">225</span></p></li>
+<li><p>引き分け: <span class="output text_plain">14</span></p></li>
+</ul>
+</section>
+<section id="id9">
+<h2><span class="section-number">3.6. </span>モンテカルロ木探索<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;mc_b_win&quot;</span><span class="p">,</span> <span class="n">b_win</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;mc_w_win&quot;</span><span class="p">,</span> <span class="n">w_win</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;mc_draw&quot;</span><span class="p">,</span> <span class="n">draw</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">player</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_check</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">child_nodes</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">moves</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+            <span class="n">new_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">child_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_node</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">undo</span><span class="p">()</span>            
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>対局結果: ミニマックス vs ランダム</strong></p>
-<ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">789</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">200</span></p></li>
-<li><p>引き分け: <span class="output text_plain">11</span></p></li>
-</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_mcts</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+    <span class="n">root_node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+    <span class="n">root_node</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="id9">
-<h2><span class="section-number">3.6. </span>練習問題<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h2><span class="section-number">3.7. </span>練習問題<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>本文中に示した<code class="docutils literal notranslate"><span class="pre">minimax</span></code>関数を改良して、アルファベータ探索を実装せよ。</p></li>
 </ul>
@@ -2596,7 +2619,8 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.3. セル評価値を用いた着手</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-minimax">3.4. ミニマックス探索</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-monte-carlo">3.5. 原始モンテカルロ探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.6. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.6. モンテカルロ木探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.7. 練習問題</a></li>
 </ul>
   </nav></div>
 
