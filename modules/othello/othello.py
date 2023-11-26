@@ -60,7 +60,7 @@ class Move(object):
         move.x, move.y = -1, -1
         return move
 
-    def __eq__(self, other: Move) -> bool:
+    def __eq__(self, other) -> bool:
         if self.player != other.player:
             return False
         if self.x != other.x:
@@ -93,7 +93,7 @@ class Env(object):
         self.stack.clear()
         return Player.BLACK, self.board
 
-    def gameset(self) -> bool:
+    def is_done(self) -> bool:
         black_moves = self.legal_moves(Player.BLACK)
         if len(black_moves) != 0:
             return False
@@ -103,6 +103,15 @@ class Env(object):
             return False
 
         return True
+
+    def count(self, player: Player) -> int:
+        return np.sum(self.board == player)
+
+    def is_win(self, player: Player) -> bool:
+        return self.count(player) > self.count(player.next())
+
+    def is_lose(self, player: Player) -> bool:
+        return not self.is_win(player)
 
     def undo(self) -> None:
         self.history.pop()
@@ -223,11 +232,6 @@ class Env(object):
             ret += os.linesep
             ret += sep
         return ret
-
-    def count(self, player: Player = Player.NONE) -> Union[int, Tuple[int, int]]:
-        if player == Player.NONE:
-            return np.sum(self.board == Player.BLACK), np.sum(self.board == Player.WHITE)
-        return np.sum(self.board == player)
 
     def __dir__(self) -> List[str]:
         return [
