@@ -18,7 +18,6 @@ poetry.lock
 *.bak
 *.sav.tmp
 
-.vscode/
 _build/
 openml/
 dist/

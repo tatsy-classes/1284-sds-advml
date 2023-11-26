@@ -1,0 +1,15 @@
+{
+  // Python
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  // Live Server
+  "liveServer.settings.port": 3000,
+  "liveServer.settings.root": "./_build/html/"
+}

@@ -14,5 +14,5 @@
 	path = autograding/ogura
 	url = https://github.com/tatsy-classes/ogura-autograding.git
 [submodule "templates/othello"]
-	path = template/othello
+	path = templates/othello
 	url = https://github.com/tatsy-classes/othello.git
