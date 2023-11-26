@@ -78,6 +78,11 @@ class Env(object):
         self.history: List[Move] = []
         self.stack: List[Board] = []
 
+    def copy(self) -> Env:
+        env = Env()
+        env.board = self.board.copy()
+        return env
+
     def reset(self) -> Tuple[Player, npt.NDArray]:
         self.board[:] = Player.NONE
         self.board[3, 3] = Player.BLACK
