@@ -96,4 +96,4 @@ cpdef void cython_step(const int player, const int x, const int y, int[:, :] boa
             while nx != x or ny != y:
                 nx = nx - dx
                 ny = ny - dy
-                board[nx, ny] = player                      
+                board[nx, ny] = player
