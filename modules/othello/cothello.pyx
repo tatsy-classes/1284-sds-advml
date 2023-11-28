@@ -19,8 +19,8 @@ cdef enum CPlayer:
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cpdef bool cython_is_legal_move(const int player, const int x, const int y, int[:, :] board) noexcept nogil:
-    cdef int oppo = -1 * player
+cpdef bool c_is_legal_move(const int player, const int x, const int y, int[:, :] board) noexcept nogil:
+    cdef int other = -1 * player
     cdef int i, nx, ny, dx, dy
 
     # If the spot is not empty, it's not a legal move
@@ -35,7 +35,7 @@ cpdef bool cython_is_legal_move(const int player, const int x, const int y, int[
         if nx < 0 or nx >= 8 or ny < 0 or ny >= 8:
             continue
 
-        if board[nx, ny] != oppo:
+        if board[nx, ny] != other:
             continue
 
         while True:
@@ -54,22 +54,22 @@ cpdef bool cython_is_legal_move(const int player, const int x, const int y, int[
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cpdef bool[:, :] cython_legal_moves(const int player, int[:, :] board):
+cpdef bool[:, :] c_legal_moves(const int player, int[:, :] board):
     cdef int x, y
     cdef np.ndarray[np.uint8_t, cast=True, ndim=2] is_legal = np.zeros((8, 8), dtype="uint8")
     cdef bool[:, :] view = is_legal
 
     for x in range(8):
         for y in range(8):
-            view[x, y] = cython_is_legal_move(player, x, y, board)
+            view[x, y] = c_is_legal_move(player, x, y, board)
 
     return is_legal
 
 
 @cython.boundscheck(False)
 @cython.wraparound(False)
-cpdef void cython_step(const int player, const int x, const int y, int[:, :] board) noexcept nogil:
-    cdef int oppo = -1 * player
+cpdef void c_step(const int player, const int x, const int y, int[:, :] board) noexcept nogil:
+    cdef int other = -1 * player
     cdef int i, nx, ny, dx, dy
     cdef bool inside
 
@@ -89,7 +89,7 @@ cpdef void cython_step(const int player, const int x, const int y, int[:, :] boa
                 inside = False
                 break
 
-            if board[nx, ny] != oppo:
+            if board[nx, ny] != other:
                 break
 
         if inside and board[nx, ny] == player:

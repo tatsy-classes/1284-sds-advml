@@ -11,11 +11,11 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw
 from IPython.core.pylabtools import print_figure
 
-from .cothello import cython_step, cython_legal_moves, cython_is_legal_move
+from .cothello import c_step, c_legal_moves
 
 Board = npt.NDArray[np.object_]
 
-__all__ = ["Player", "Move", "make"]
+__all__ = ["Player", "Move", "Env", "make"]
 
 
 class Player(enum.IntEnum):
@@ -74,16 +74,19 @@ class Move(object):
 
 class Env(object):
     def __init__(self) -> None:
+        self.player = Player.BLACK
         self.board: Board = np.full((8, 8), Player.NONE, dtype="int32")
         self.history: List[Move] = []
         self.stack: List[Board] = []
 
     def copy(self) -> Env:
         env = Env()
+        env.player = self.player
         env.board = self.board.copy()
         return env
 
     def reset(self) -> Tuple[Player, npt.NDArray]:
+        self.player = Player.BLACK
         self.board[:] = Player.NONE
         self.board[3, 3] = Player.BLACK
         self.board[4, 3] = Player.WHITE
@@ -114,26 +117,33 @@ class Env(object):
         return not self.is_win(player)
 
     def undo(self) -> None:
+        self.player = self.player.next()
         self.history.pop()
         self.board = self.stack.pop()
 
     def step(self, move: Move) -> Tuple[Player, npt.NDArray]:
         """Update othello board by a move"""
+        if move.player != self.player:
+            raise RuntimeError("Player in env and that in move do not match!!")
+
         # Store previous state
         self.history.append(move)
         self.stack.append(self.board.copy())
 
+        self.player = self.player.next()
         if move.is_pass():
             return move.player.next(), self.board
 
-        cython_step(move.player.value, move.x, move.y, self.board)
+        c_step(move.player.value, move.x, move.y, self.board)
 
         return move.player.next(), self.board
 
-    def legal_moves(self, player: Player) -> List[Move]:
+    def legal_moves(self, player: Player = Player.NONE) -> List[Move]:
         """List legal moves"""
+        if player == Player.NONE:
+            player = self.player
 
-        is_legal = cython_legal_moves(player, self.board)
+        is_legal = c_legal_moves(player, self.board)
         moves = [Move(player, x, y) for x, y in product(range(8), range(8)) if is_legal[x, y]]
         return moves
 
@@ -198,10 +208,10 @@ class Env(object):
         directions = [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]
 
         # For each direction...
-        aite = player.next()
+        other = player.next()
         for dx, dy in directions:
             nx, ny = x + dx, y + dy
-            if nx >= 0 and nx < 8 and ny >= 0 and ny < 8 and self.board[nx, ny] == aite:
+            if nx >= 0 and nx < 8 and ny >= 0 and ny < 8 and self.board[nx, ny] == other:
                 while True:  # Keep going in that direction
                     nx, ny = nx + dx, ny + dy
                     if nx < 0 or nx >= 8 or ny < 0 or ny >= 8:
