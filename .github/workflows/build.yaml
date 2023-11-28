@@ -12,7 +12,8 @@ jobs:
   build:
     strategy:
       matrix:
-        os: ["windows-latest", "macos-latest", "macos-13", "ubuntu-latest"]
+        os:
+          ["windows-latest", "macos-latest", "macos-13-arm64", "ubuntu-latest"]
         python-version-major: [3]
         python-version-minor: [9]
     env:
