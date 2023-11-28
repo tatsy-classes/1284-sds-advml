@@ -559,17 +559,17 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 </div>
 </div>
 <p>上記のように、オセロ環境は初期状態ではディスクが配置されていない。ここでも<code class="docutils literal notranslate"><span class="pre">gymnasium</span></code>と同様に<code class="docutils literal notranslate"><span class="pre">reset</span></code>関数を呼び出すことで、ゲーム環境が初期化される。</p>
-<p>なお、<code class="docutils literal notranslate"><span class="pre">reset</span></code>関数は現在の手番を表わす<code class="docutils literal notranslate"><span class="pre">player</span></code>と、現在の盤面状態を表わすNumPyの配列である<code class="docutils literal notranslate"><span class="pre">board</span></code>を返してくる。この点は<code class="docutils literal notranslate"><span class="pre">gymnasium</span></code>と異なっているので注意すること。</p>
+<p>なお、オセロのプレイヤーや盤の情報などは全て変数<code class="docutils literal notranslate"><span class="pre">env</span></code>の中に<code class="docutils literal notranslate"><span class="pre">env.player</span></code>ならびに<code class="docutils literal notranslate"><span class="pre">env.board</span></code>として格納されており、<code class="docutils literal notranslate"><span class="pre">gymnasium</span></code>と異なっているので注意すること。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -581,7 +581,7 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">board</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -617,7 +617,7 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 <p><code class="docutils literal notranslate"><span class="pre">env</span></code>には、現在の盤の状態で取ることができる「有効手」の配列を取得する<code class="docutils literal notranslate"><span class="pre">legal_moves</span></code>関数が提供されている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -629,17 +629,17 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 </div>
 </div>
 <p>上記の出力から、黒番が3行5列、4行6列、5行3列、6行4列の4箇所のいずれかにディスクを置くことができることが分かる。</p>
-<p>着手を決定したら、<code class="docutils literal notranslate"><span class="pre">env.step</span></code>関数に手を表わす変数を渡す。<code class="docutils literal notranslate"><span class="pre">step</span></code>関数は<code class="docutils literal notranslate"><span class="pre">reset</span></code>関数と同様に次の手番を表わすプレイヤーと、現在の盤面の状態を返す。</p>
+<p>着手を決定したら、<code class="docutils literal notranslate"><span class="pre">env.update</span></code>関数に手を表す変数を渡すと盤の状態が更新される。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -651,7 +651,7 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">board</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -690,27 +690,23 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ゲームのリセット</span>
-<span class="n">player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+<span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># エピソード開始</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">is_done</span><span class="p">():</span>
-    <span class="c1"># 有効手の列挙</span>
-    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-
     <span class="c1"># 現在の状態画像を保存</span>
     <span class="n">img</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
     <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 
+    <span class="c1"># 有効手の列挙</span>
+    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
+    
     <span class="c1"># 着手可能な手があればランダムに1つを選ぶ</span>
-    <span class="c1"># 選べる手がなければパスする</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+    <span class="n">move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
 
     <span class="c1"># 着手による盤の状態の更新</span>
-    <span class="n">player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2132,22 +2128,22 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match</span><span class="p">():</span>
     <span class="c1"># ゲームのリセット</span>
     <span class="n">env</span> <span class="o">=</span> <span class="n">othello</span><span class="o">.</span><span class="n">make</span><span class="p">()</span>
-    <span class="n">player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
     <span class="c1"># エピソード開始</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">is_done</span><span class="p">():</span>
         <span class="c1"># 有効手の列挙</span>
-        <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+        <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
 
         <span class="c1"># 着手可能な手があればランダムに1つを選ぶ</span>
         <span class="c1"># 選べる手がなければパスする</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
 
         <span class="c1"># 着手による盤の状態の更新</span>
-        <span class="n">player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">),</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
 
@@ -2165,25 +2161,22 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5c3aa5dfbd274cbc8f571bd1d012947e", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1bd3889c6c554a4ba3d1efb1954c11b2", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: ランダム vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">442</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">508</span></p></li>
-<li><p>引き分け: <span class="output text_plain">50</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">457</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">499</span></p></li>
+<li><p>引き分け: <span class="output text_plain">44</span></p></li>
 </ul>
 <p>このようにランダムな着手では当然ながら、勝率はおよそ五分五分になる。ただし、オセロは後手である白番の方が若干有利であると言われており、ランダムに着手した場合には白番の勝率がやや高くなっている。</p>
 <p>以後は、この着手の方法を改良していき、より高い勝率を目指してみる。以下、利便性のために、ランダムに着手する関数として<code class="docutils literal notranslate"><span class="pre">move_by_random</span></code>を作成しておく。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;有効手の中からランダムに手を選ぶ&quot;&quot;&quot;</span>
-    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
+    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2227,22 +2220,21 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_score</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_score</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;セル評価値を用いた着手&quot;&quot;&quot;</span>
-    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># 有効手の中で最も評価値が高いセルに着手する</span>
-        <span class="n">best_move</span> <span class="o">=</span> <span class="n">moves</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99999</span>
-        <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
-            <span class="n">score</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[</span><span class="n">move</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">move</span><span class="o">.</span><span class="n">y</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">score</span><span class="p">:</span>
-                <span class="n">best_move</span> <span class="o">=</span> <span class="n">move</span>
-                <span class="n">best_score</span> <span class="o">=</span> <span class="n">score</span>
+    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
+    <span class="n">best_move</span> <span class="o">=</span> <span class="n">moves</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">is_pass</span><span class="p">():</span>
+            <span class="k">continue</span>
 
-        <span class="k">return</span> <span class="n">best_move</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[</span><span class="n">move</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">move</span><span class="o">.</span><span class="n">y</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">score</span><span class="p">:</span>
+            <span class="n">best_move</span> <span class="o">=</span> <span class="n">move</span>
+            <span class="n">best_score</span> <span class="o">=</span> <span class="n">score</span>
+
+    <span class="k">return</span> <span class="n">best_move</span>
 </pre></div>
 </div>
 </div>
@@ -2253,21 +2245,21 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match</span><span class="p">():</span>
     <span class="c1"># ゲームのリセット</span>
     <span class="n">env</span> <span class="o">=</span> <span class="n">othello</span><span class="o">.</span><span class="n">make</span><span class="p">()</span>
-    <span class="n">player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
     <span class="c1"># エピソード開始</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">is_done</span><span class="p">():</span>
         <span class="c1"># 黒番:</span>
-        <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span>
             <span class="c1"># セル評価値が最も高い場所に着手する</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_score</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_score</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
         <span class="c1"># 白番:</span>
-        <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">:</span>
             <span class="c1"># 着手可能な手があればランダムに1つを選ぶ</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 
         <span class="c1"># 着手による盤の状態の更新</span>
-        <span class="n">player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">),</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
 
@@ -2285,13 +2277,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cdb8d4614a87408f88327c9d72c73b72", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9ce88842da844765989d1adabca7252a", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: セル評価値 vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">728</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">235</span></p></li>
-<li><p>引き分け: <span class="output text_plain">37</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">708</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">241</span></p></li>
+<li><p>引き分け: <span class="output text_plain">51</span></p></li>
 </ul>
 <p>上記の通り、人間の経験則を導入することでランダムに着手するのと比べて大幅に勝率が上昇していることが分かる。</p>
 </section>
@@ -2304,14 +2296,14 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">minimax</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">move</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">max_depth</span><span class="p">):</span>
-    <span class="n">next_player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">depth</span> <span class="o">&gt;=</span> <span class="n">max_depth</span><span class="p">:</span>
         <span class="n">score</span> <span class="o">=</span> <span class="n">move</span><span class="o">.</span><span class="n">player</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">board</span> <span class="o">*</span> <span class="n">scores</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># 相手にとってのベストスコアを計算</span>
-        <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99999</span>
-        <span class="k">for</span> <span class="n">next_move</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">next_player</span><span class="p">):</span>
+        <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+        <span class="k">for</span> <span class="n">next_move</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">():</span>
             <span class="n">score</span> <span class="o">=</span> <span class="n">minimax</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">next_move</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">max_depth</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">score</span><span class="p">:</span>
                 <span class="n">best_score</span> <span class="o">=</span> <span class="n">score</span>
@@ -2327,13 +2319,11 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_minimax</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
-    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_minimax</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
 
     <span class="n">best_move</span> <span class="o">=</span> <span class="n">moves</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99999</span>
+    <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
     <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
         <span class="n">score</span> <span class="o">=</span> <span class="n">minimax</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">move</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max_depth</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">score</span><span class="p">:</span>
@@ -2350,21 +2340,21 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match</span><span class="p">():</span>
     <span class="c1"># ゲームのリセット</span>
     <span class="n">env</span> <span class="o">=</span> <span class="n">othello</span><span class="o">.</span><span class="n">make</span><span class="p">()</span>
-    <span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
     <span class="c1"># エピソード開始</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">is_done</span><span class="p">():</span>
         <span class="c1"># 黒番:</span>
-        <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span>
             <span class="c1"># ミニマックス探索</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_minimax</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_minimax</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
         <span class="c1"># 白番:</span>
-        <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">:</span>
             <span class="c1"># セル評価値に基づく着手</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 
         <span class="c1"># 着手による盤の状態の更新</span>
-        <span class="n">player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">),</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
 
@@ -2382,13 +2372,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1f71a0917e484040b8fb01936b62a40b", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3e8f840c61fc4306b7a5f04d351ff991", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: ミニマックス vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">881</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">97</span></p></li>
-<li><p>引き分け: <span class="output text_plain">22</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">823</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">143</span></p></li>
+<li><p>引き分け: <span class="output text_plain">34</span></p></li>
 </ul>
 <p>上記の通り、ミニマックス探索で2手先を読むだけで飛躍的に勝率が上昇していることが分かる。</p>
 <p>ただし、ミニマックス探索は再帰的に手を探索するため、より多くの手を読もうとすると、かなり多くの時間を要する。実際、ミニマックス探索は「本来探索する必要のない手」も探索しているがために、余計に計算を行なっている。</p>
@@ -2403,19 +2393,16 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">playout</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">is_done</span><span class="p">():</span>
         <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
-        <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+        <span class="n">move</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_monte_carlo</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
-    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_monte_carlo</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
 
@@ -2439,7 +2426,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 
         <span class="c1"># 手を進めてプレイアウトする</span>
         <span class="n">env_cpy</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="n">env_cpy</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">move_idx</span><span class="p">])</span>
+        <span class="n">env_cpy</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">move_idx</span><span class="p">])</span>
         <span class="n">playout</span><span class="p">(</span><span class="n">env_cpy</span><span class="p">)</span>
 
         <span class="c1"># UCB1値計算用のチェック回数と勝利数を更新</span>
@@ -2457,21 +2444,21 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match</span><span class="p">():</span>
     <span class="c1"># ゲームのリセット</span>
     <span class="n">env</span> <span class="o">=</span> <span class="n">othello</span><span class="o">.</span><span class="n">make</span><span class="p">()</span>
-    <span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
     <span class="c1"># エピソード開始</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">is_done</span><span class="p">():</span>
         <span class="c1"># 黒番:</span>
-        <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span>
             <span class="c1"># 原始モンテカルロ探索</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_monte_carlo</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_monte_carlo</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
         <span class="c1"># 白番:</span>
-        <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">:</span>
             <span class="c1"># 着手可能な手があればランダムに1つを選ぶ</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 
         <span class="c1"># 着手による盤の状態の更新</span>
-        <span class="n">player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">),</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
 
@@ -2489,13 +2476,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7cfa512c16b74ba0bdc09f310a6ca1d8", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3697a968fb7b4e498f407dea83835063", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: 原始モンテカルロ vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">877</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">117</span></p></li>
-<li><p>引き分け: <span class="output text_plain">6</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">862</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">131</span></p></li>
+<li><p>引き分け: <span class="output text_plain">7</span></p></li>
 </ul>
 </section>
 <section id="id9">
@@ -2508,21 +2495,18 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
     <span class="c1"># 子ノードを展開するまでのチェック回数</span>
     <span class="n">N_VALID_CHECKS</span> <span class="o">=</span> <span class="mi">10</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">player</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">player</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">env</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_check</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">child_nodes</span> <span class="o">=</span> <span class="p">[]</span>
 
     <span class="k">def</span> <span class="nf">expand</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">moves</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">moves</span> <span class="o">=</span> <span class="p">[</span><span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">)]</span>
-
+        <span class="n">moves</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
-            <span class="n">next_player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-            <span class="n">new_node</span> <span class="o">=</span> <span class="n">UctNode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">,</span> <span class="n">next_player</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+            <span class="n">new_node</span> <span class="o">=</span> <span class="n">UctNode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">child_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_node</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">undo</span><span class="p">()</span>
 
@@ -2567,12 +2551,9 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
         <span class="n">player</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player</span>
 
         <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">is_done</span><span class="p">():</span>
-            <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
-            <span class="n">player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+            <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
+            <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">is_win</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="p">):</span>
             <span class="k">return</span> <span class="mi">1</span>
@@ -2607,14 +2588,9 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_mcts</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-    <span class="c1"># 有効手がなければパス</span>
-    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_mcts</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
     <span class="c1"># ノードと直接の子ノードの作成</span>
-    <span class="n">root_node</span> <span class="o">=</span> <span class="n">UctNode</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
+    <span class="n">root_node</span> <span class="o">=</span> <span class="n">UctNode</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
     <span class="n">root_node</span><span class="o">.</span><span class="n">expand</span><span class="p">()</span>
 
     <span class="c1"># 評価を繰り返す</span>
@@ -2626,6 +2602,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
     <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">root_node</span><span class="o">.</span><span class="n">child_nodes</span><span class="p">:</span>
         <span class="n">n_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">n_check</span><span class="p">)</span>
 
+    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">moves</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">n_list</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -2636,21 +2613,21 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match</span><span class="p">():</span>
     <span class="c1"># ゲームのリセット</span>
     <span class="n">env</span> <span class="o">=</span> <span class="n">othello</span><span class="o">.</span><span class="n">make</span><span class="p">()</span>
-    <span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+    <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
 
     <span class="c1"># エピソード開始</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">is_done</span><span class="p">():</span>
         <span class="c1"># 黒番:</span>
-        <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span>
             <span class="c1"># 原始モンテカルロ探索</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_mcts</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_mcts</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
         <span class="c1"># 白番:</span>
-        <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">:</span>
             <span class="c1"># 着手可能な手があればランダムに1つを選ぶ</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 
         <span class="c1"># 着手による盤の状態の更新</span>
-        <span class="n">player</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+        <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">),</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
 
@@ -2668,13 +2645,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e0ec6b0894604130a456d68f5314beb8", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f2e604bc11ec4f889274ba955bda2f37", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: モンテカルロ木探索 vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">993</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">7</span></p></li>
-<li><p>引き分け: <span class="output text_plain">0</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">882</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">77</span></p></li>
+<li><p>引き分け: <span class="output text_plain">41</span></p></li>
 </ul>
 </section>
 <section id="id10">
