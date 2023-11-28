@@ -55,7 +55,7 @@ class Move(object):
         return self.x < 0 and self.y < 0
 
     @staticmethod
-    def Pass(player: Player):
+    def make_pass(player: Player) -> Move:
         move = Move(player, 0, 0)
         move.x, move.y = -1, -1
         return move
@@ -85,7 +85,7 @@ class Env(object):
         env.board = self.board.copy()
         return env
 
-    def reset(self) -> Tuple[Player, npt.NDArray]:
+    def reset(self) -> None:
         self.player = Player.BLACK
         self.board[:] = Player.NONE
         self.board[3, 3] = Player.BLACK
@@ -94,15 +94,14 @@ class Env(object):
         self.board[4, 4] = Player.BLACK
         self.history.clear()
         self.stack.clear()
-        return Player.BLACK, self.board
 
     def is_done(self) -> bool:
         black_moves = self.legal_moves(Player.BLACK)
-        if len(black_moves) != 0:
+        if not black_moves[0].is_pass():
             return False
 
         white_moves = self.legal_moves(Player.WHITE)
-        if len(white_moves) != 0:
+        if not white_moves[0].is_pass():
             return False
 
         return True
@@ -121,7 +120,7 @@ class Env(object):
         self.history.pop()
         self.board = self.stack.pop()
 
-    def step(self, move: Move) -> Tuple[Player, npt.NDArray]:
+    def update(self, move: Move) -> None:
         """Update othello board by a move"""
         if move.player != self.player:
             raise RuntimeError("Player in env and that in move do not match!!")
@@ -131,12 +130,8 @@ class Env(object):
         self.stack.append(self.board.copy())
 
         self.player = self.player.next()
-        if move.is_pass():
-            return move.player.next(), self.board
-
-        c_step(move.player.value, move.x, move.y, self.board)
-
-        return move.player.next(), self.board
+        if not move.is_pass():
+            c_step(move.player.value, move.x, move.y, self.board)
 
     def legal_moves(self, player: Player = Player.NONE) -> List[Move]:
         """List legal moves"""
@@ -145,6 +140,10 @@ class Env(object):
 
         is_legal = c_legal_moves(player, self.board)
         moves = [Move(player, x, y) for x, y in product(range(8), range(8)) if is_legal[x, y]]
+
+        if len(moves) == 0:
+            moves = [Move.make_pass(self.player)]
+
         return moves
 
     def render(self) -> npt.NDArray[np.uint8]:
@@ -197,34 +196,6 @@ class Env(object):
 
         return np.array(img, dtype="uint8")
 
-    def _is_legal_move(self, move: Move) -> bool:
-        # If the spot is not empty, it's not a legal move
-        player = move.player
-        x, y = move.x, move.y
-        if self.board[x, y] != Player.NONE:
-            return False
-
-        # Directions to check for opponent's discs
-        directions = [(0, 1), (1, 0), (0, -1), (-1, 0), (1, 1), (-1, -1), (1, -1), (-1, 1)]
-
-        # For each direction...
-        other = player.next()
-        for dx, dy in directions:
-            nx, ny = x + dx, y + dy
-            if nx >= 0 and nx < 8 and ny >= 0 and ny < 8 and self.board[nx, ny] == other:
-                while True:  # Keep going in that direction
-                    nx, ny = nx + dx, ny + dy
-                    if nx < 0 or nx >= 8 or ny < 0 or ny >= 8:
-                        break
-
-                    if self.board[nx, ny] == Player.NONE:
-                        break
-
-                    if self.board[nx, ny] == player:
-                        return True
-
-        return False
-
     def __repr__(self) -> str:
         sep = "+-" * 8 + "+" + os.linesep
         ret = ""
@@ -245,8 +216,9 @@ class Env(object):
 
     def __dir__(self) -> List[str]:
         return [
+            "copy",
             "reset",
-            "step",
+            "update",
             "undo",
             "legal_moves",
             "render",
