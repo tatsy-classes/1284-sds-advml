@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>8. 演習1 - 画像入力式数独ソルバーを作る &#8212; 機械学習発展 (実践)</title>
+    <title>4. 演習1 - 画像入力式数独ソルバーを作る &#8212; 機械学習発展 (実践)</title>
   
   
   
@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="1. データ可視化と次元圧縮" href="../sec2/data-visualization.html" />
-    <link rel="prev" title="7. scikit-learnによる機械分類の基本" href="scikit-learn.html" />
+    <link rel="prev" title="3. scikit-learnによる機械分類の基本" href="scikit-learn.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   </head>
@@ -159,16 +159,19 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
-<ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="setup-python.html">1. Python環境の設定</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy.html">2. NumPyの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opencv.html">5. OpenCVの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="figure-detection.html">6. 図形の検出</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scikit-learn.html">7. scikit-learnによる機械分類の基本</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">1. OpenCVの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="figure-detection.html">2. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scikit-learn.html">3. scikit-learnによる機械分類の基本</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. 演習1 - 画像入力式数独ソルバーを作る</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
 <ul class="nav bd-sidenav">
@@ -414,18 +417,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.1. 数独を解く</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.1.1. 使用済みの数字を調べる</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.1.2. バックトラック法による解法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.1.3. 処理の効率化</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exact-cover">8.1.4. 発展: Exact Coverによる高速な解法</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 数独を解く</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.1. 使用済みの数字を調べる</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.1.2. バックトラック法による解法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.1.3. 処理の効率化</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exact-cover">4.1.4. 発展: Exact Coverによる高速な解法</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">数独のExact Coverによる定式化</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.2. 演習: コンピュータ数独大会</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.2.1. 高度な問題を解くためのヒント</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.2. 演習: コンピュータ数独大会</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.2.1. 高度な問題を解くためのヒント</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">問題領域の切り出し</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">機械分類による数字の認識</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">数独の問題を解く</a></li>
@@ -445,7 +448,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-exercise-sudoku">
-<span id="id1"></span><h1><span class="section-number">8. </span>演習1 - 画像入力式数独ソルバーを作る<a class="headerlink" href="#sec-exercise-sudoku" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">4. </span>演習1 - 画像入力式数独ソルバーを作る<a class="headerlink" href="#sec-exercise-sudoku" title="Permalink to this heading">#</a></h1>
 <p>ご存知の通り、数独というのは9x9のマスの中に1-9の数字を一定のルールのもとで入れていくパズルである。このルールとはすなわち、</p>
 <ul class="simple">
 <li><p>同じ行に同じ数字が存在しない</p></li>
@@ -487,7 +490,7 @@ document.write(`
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">8.1. </span>数独を解く<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span>数独を解く<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>まずは数独の問題がテキストで与えられている場合について、解き方を見ていこう。</p>
 <p>今回は数独の問題が以下の形式のテキストとして与えられることとする。Pythonは複数行のテキストを以下のように定義することができる。</p>
 <div class="cell docutils container">
@@ -634,7 +637,7 @@ document.write(`
 <p>プログラミングにおいては、改行文字の違いが問題となることも多いので、LFに統一する、あるいはCRLFに統一する、など自分でルールを決めてエディタ(VSCodeなど)を設定しておくと良い。</p>
 </div>
 <section id="id3">
-<h3><span class="section-number">8.1.1. </span>使用済みの数字を調べる<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.1.1. </span>使用済みの数字を調べる<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>問題が数字の配列として表せたところで、使用済みの数字を調べる方法を見ていく。今<code class="docutils literal notranslate"><span class="pre">i</span></code>行<code class="docutils literal notranslate"><span class="pre">j</span></code>列にある数字の候補にどの数字が残っているのかを調べたいとする。</p>
 <p>NumPyを用いると、<code class="docutils literal notranslate"><span class="pre">i</span></code>行目にある数字は<code class="docutils literal notranslate"><span class="pre">problem[i,</span> <span class="pre">:]</span></code>という配列で、<code class="docutils literal notranslate"><span class="pre">j</span></code>列目にある数字は<code class="docutils literal notranslate"><span class="pre">problem[:,</span> <span class="pre">j]</span></code>という配列で表せる。また3x3のブロックについては、ブロックの右上の座標が<code class="docutils literal notranslate"><span class="pre">(3</span> <span class="pre">*</span> <span class="pre">(i</span> <span class="pre">//</span> <span class="pre">3),</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">(j</span> <span class="pre">//</span> <span class="pre">3))</span></code>と表せることに注目すれば、以下でブロック内の数字が得られる。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span>
@@ -680,7 +683,7 @@ Block #1-1: [0 3 5 0 0 9 0 4 0]
 <p>このように、<code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>の空マスに入りうる候補の数字は<code class="docutils literal notranslate"><span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">7}</span></code>の3つであることが分かる。</p>
 </section>
 <section id="id4">
-<h3><span class="section-number">8.1.2. </span>バックトラック法による解法<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.1.2. </span>バックトラック法による解法<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>最初に、数独をコンピュータに解かせる最も単純な方法を考えてみよう。</p>
 <p>上記の使用済みの数字を調べる方法を少し変更すれば、各行、各列、各ブロックで数字が正しく1度だけ使われているかどうかを調べることができそうだ。とすれば、全ての空きマスに適当に数字を入れて、その結果が正しいかどうかを順に試せば良さそうに思える。</p>
 <p>ただ、これでは正しい解が見つかる確率が低すぎるため、計算に時間がかかりすぎる。各マスに入れられる数字の候補は9通りでマスが81マスあるので、最悪の場合には<span class="math notranslate nohighlight">\(9^{81} \approx 2.0 \times 10^{77}\)</span>個の候補について調べる必要がある。</p>
@@ -1828,7 +1831,7 @@ AAAAAQAAAABMYXZmNTguNzYuMTAw
 <p>上記は、素直にバックトラック法を実装した場合の実行時間であるが、一回の問題を解くのに平均<span class="pasted-text">28.6 ms</span>となっており、十分高速であることが分かる</p>
 </section>
 <section id="id5">
-<h3><span class="section-number">8.1.3. </span>処理の効率化<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.1.3. </span>処理の効率化<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>上記の方法でも、最初に示した数独の問題であれば数十ミリ秒で解くことができる。だが、次の問題はどうだろう？</p>
 <p>参照: <a class="reference external" href="https://www.j-cast.com/premium/2018/10/19341452.html?p=all">https://www.j-cast.com/premium/2018/10/19341452.html?p=all</a></p>
 <div class="cell docutils container">
@@ -1956,7 +1959,7 @@ AAAAAQAAAABMYXZmNTguNzYuMTAw
 </div>
 </section>
 <section id="exact-cover">
-<h3><span class="section-number">8.1.4. </span>発展: Exact Coverによる高速な解法<a class="headerlink" href="#exact-cover" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.1.4. </span>発展: Exact Coverによる高速な解法<a class="headerlink" href="#exact-cover" title="Permalink to this heading">#</a></h3>
 <p>バックトラック法よりも遙かに高速な解法として、数独の問題をExact Coverの問題として定式化する方法がある。</p>
 <p>Exact Cover問題とは、とある集合<span class="math notranslate nohighlight">\(\mathcal{S}\)</span>と、その部分集合<span class="math notranslate nohighlight">\(s_1, \ldots, s_n\)</span>がいくつか与えられた時に、以下の2つの条件を満たすように部分集合を選ぶ問題である。</p>
 <p><strong>条件1:</strong> 選ばれた部分集合<span class="math notranslate nohighlight">\(s_{i_1}, \ldots, s_{i_M}\)</span>の和集合が集合<span class="math notranslate nohighlight">\(\mathcal{S}\)</span>と同じになる</p>
@@ -3786,7 +3789,7 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 </section>
 </section>
 <section id="id7">
-<h2><span class="section-number">8.2. </span>演習: コンピュータ数独大会<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>演習: コンピュータ数独大会<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p>ここまでの内容を利用して、写真から数独の問題を読み取り、答えを返すプログラムを作成してみよう。</p>
 <p>本番では、以下のレベル1-3の内容で10問ずつ画像を与える。レベル1が1点、レベル2が2点、レベル3が3点の合計60点のうち何点を取れるかを競う。各レベルの画像は以下のような性質を持つ。</p>
 <ul class="simple">
@@ -3839,7 +3842,7 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 <p>本番の採点はGitHub Classroomを使って行う。講義中で課題用のClassroomのURLを指示するので、そのURLをブラウザで開き、テンプレートレポジトリを自分のGitHubアカウントと紐付ける。以後、課題用のレポジトリにコードをpushする度にテストが走る。</p>
 <p>本講義では、実際の問題として与えている画像を公開することはしないが、どの程度の画像に対してプログラムが正しく動いているかは、Github Actionsのログを見ることで確認できる。</p>
 <section id="id8">
-<h3><span class="section-number">8.2.1. </span>高度な問題を解くためのヒント<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">4.2.1. </span>高度な問題を解くためのヒント<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>今回の演習では</p>
 <ul class="simple">
 <li><p>問題の領域を画像から切り出す</p></li>
@@ -3907,7 +3910,7 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>scikit-learnによる機械分類の基本</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>scikit-learnによる機械分類の基本</p>
       </div>
     </a>
     <a class="right-next"
@@ -3934,18 +3937,18 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">8.1. 数独を解く</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.1.1. 使用済みの数字を調べる</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.1.2. バックトラック法による解法</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.1.3. 処理の効率化</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exact-cover">8.1.4. 発展: Exact Coverによる高速な解法</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1. 数独を解く</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.1. 使用済みの数字を調べる</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.1.2. バックトラック法による解法</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.1.3. 処理の効率化</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exact-cover">4.1.4. 発展: Exact Coverによる高速な解法</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">数独のExact Coverによる定式化</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">8.2. 演習: コンピュータ数独大会</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">8.2.1. 高度な問題を解くためのヒント</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.2. 演習: コンピュータ数独大会</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.2.1. 高度な問題を解くためのヒント</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">問題領域の切り出し</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">機械分類による数字の認識</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">数独の問題を解く</a></li>

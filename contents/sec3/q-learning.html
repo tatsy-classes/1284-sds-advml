@@ -162,16 +162,19 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../sec1/setup-python.html">1. Python環境の設定</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sec1/numpy.html">2. NumPyの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sec1/matplotlib.html">3. Matplotlibの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sec1/pandas.html">4. Pandasの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/opencv.html">5. OpenCVの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/figure-detection.html">6. 図形の検出</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/scikit-learn.html">7. scikit-learnによる機械分類の基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/exercise-sudoku.html">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sec1/opencv.html">1. OpenCVの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/figure-detection.html">2. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/scikit-learn.html">3. scikit-learnによる機械分類の基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/exercise-sudoku.html">4. 演習1 - 画像入力式数独ソルバーを作る</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
 <ul class="nav bd-sidenav">
@@ -515,24 +518,24 @@ document.write(`
 <p>Markov性を満たす状態遷移であれば、とある状態<span class="math notranslate nohighlight">\(s\)</span>において、行動を<span class="math notranslate nohighlight">\(a\)</span>取ったときに、別の状態<span class="math notranslate nohighlight">\(s'\)</span>に移る確率は<span class="math notranslate nohighlight">\(s, a\)</span>だけに関する事後確率として<span class="math notranslate nohighlight">\(P(s' | s, a)\)</span>のように書ける。</p>
 <p>Q学習では、この事後分布<span class="math notranslate nohighlight">\(P(s' | s, a)\)</span>を用いて、行動評価関数<span class="math notranslate nohighlight">\(Q(s, a)\)</span>が以下のBellmanの最適性公式を満たすと仮定する。</p>
 <div class="math notranslate nohighlight" id="equation-eq-bellman-equation">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-eq-bellman-equation" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-eq-bellman-equation" title="この数式へのパーマリンク">#</a></span>\[
 Q(s, a) = R(s, a) + \gamma \sum_{a' \in \mathcal{A}} P(s' | s, a) Q(s', a')
 \]</div>
 <p>この式において<span class="math notranslate nohighlight">\(\gamma\)</span>は<strong>割引因子</strong> (discount factor)と呼ばれる値で、<span class="math notranslate nohighlight">\(0 &lt; \gamma &lt; 1\)</span>であり、<span class="math notranslate nohighlight">\(R(s, a)\)</span>は状態<span class="math notranslate nohighlight">\(s\)</span>において行動<span class="math notranslate nohighlight">\(a\)</span>を取ったときに即座に得られる報酬を表す。</p>
-<p><a class="reference internal" href="#equation-eq-bellman-equation">(2.8)</a>は、<strong>最適な行動価値関数が、その時、即座に得られる報酬<span class="math notranslate nohighlight">\(R(s, a)\)</span>と未来の行動から得られる報酬に一定の減衰を加えたものの和として表せる</strong>ことを示している。</p>
+<p><a class="reference internal" href="#equation-eq-bellman-equation">(2.9)</a>は、<strong>最適な行動価値関数が、その時、即座に得られる報酬<span class="math notranslate nohighlight">\(R(s, a)\)</span>と未来の行動から得られる報酬に一定の減衰を加えたものの和として表せる</strong>ことを示している。</p>
 <p>一方、多くの状態遷移のモデルでは、状態遷移は確率的なものではなく、行動<span class="math notranslate nohighlight">\(a\)</span>の結果として<strong>一意に次の状態が決まる</strong>ことが多い。そこで<span class="math notranslate nohighlight">\(P(s' | s, a) = 1\)</span>と仮定する。さらに、仮に理想的なQ関数が求まっているのであれば、<span class="math notranslate nohighlight">\(s'\)</span>において行動価値が最大になる行動<span class="math notranslate nohighlight">\(a'\)</span>をQ関数から決定できるので、<span class="math notranslate nohighlight">\(a'\)</span>は行動価値が最大になるものであると仮定する。</p>
-<p>これら2つの仮定により、<a class="reference internal" href="#equation-eq-bellman-equation">(2.8)</a>は、以下の形で書き直せる。</p>
+<p>これら2つの仮定により、<a class="reference internal" href="#equation-eq-bellman-equation">(2.9)</a>は、以下の形で書き直せる。</p>
 <div class="math notranslate nohighlight" id="equation-eq-bellman-equation-2">
-<span class="eqno">(2.9)<a class="headerlink" href="#equation-eq-bellman-equation-2" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-eq-bellman-equation-2" title="この数式へのパーマリンク">#</a></span>\[
 Q(s, a) = R(s, a) + \gamma \max_{a' \in \mathcal{A}} Q(s', a')
 \]</div>
-<p>Q学習は、<a class="reference internal" href="#equation-eq-bellman-equation-2">(2.9)</a>を満たすような<span class="math notranslate nohighlight">\(Q(s, a)\)</span>を強化学習の枠組みによって求めるものである。</p>
+<p>Q学習は、<a class="reference internal" href="#equation-eq-bellman-equation-2">(2.10)</a>を満たすような<span class="math notranslate nohighlight">\(Q(s, a)\)</span>を強化学習の枠組みによって求めるものである。</p>
 </section>
 <section id="id2">
 <h2><span class="section-number">2.2. </span>アルゴリズム<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>Q学習は、実際の環境において、適当な行動を取ったときに得られる報酬と状態遷移から、<a class="reference internal" href="#equation-eq-bellman-equation-2">(2.9)</a>の両辺の差が小さくなるように<span class="math notranslate nohighlight">\(Q(s, a)\)</span>の値を更新する。</p>
+<p>Q学習は、実際の環境において、適当な行動を取ったときに得られる報酬と状態遷移から、<a class="reference internal" href="#equation-eq-bellman-equation-2">(2.10)</a>の両辺の差が小さくなるように<span class="math notranslate nohighlight">\(Q(s, a)\)</span>の値を更新する。</p>
 <p>典型的なQ学習の実装では、<span class="math notranslate nohighlight">\(s\)</span>と<span class="math notranslate nohighlight">\(a\)</span>を離散化して、<span class="math notranslate nohighlight">\(Q(s, a)\)</span>を二次元配列として扱う。このような離散化されたQ関数を<strong>Qテーブル</strong>と呼ぶ。</p>
-<p>Qテーブルの更新は現在の<span class="math notranslate nohighlight">\(Q(s, a)\)</span>の値 (学習途中は必ずしも<a class="reference internal" href="#equation-eq-bellman-equation-2">(2.9)</a>を満たしていないことに注意)を<a class="reference internal" href="#equation-eq-bellman-equation-2">(2.9)</a>の右辺に近づくように更新する。</p>
+<p>Qテーブルの更新は現在の<span class="math notranslate nohighlight">\(Q(s, a)\)</span>の値 (学習途中は必ずしも<a class="reference internal" href="#equation-eq-bellman-equation-2">(2.10)</a>を満たしていないことに注意)を<a class="reference internal" href="#equation-eq-bellman-equation-2">(2.10)</a>の右辺に近づくように更新する。</p>
 <p>具体的には、学習率<span class="math notranslate nohighlight">\(0 &lt; \alpha &lt; 1\)</span>を用いて、以下の式で<span class="math notranslate nohighlight">\(Q(s, a)\)</span>を更新する。</p>
 <div class="math notranslate nohighlight">
 \[
@@ -540,10 +543,10 @@ Q_{\rm new}(s, a) = (1 - \alpha) Q(s, a) + \alpha \left[ R(s, a) + \gamma \max_{
 \]</div>
 <p>また、この式は以下の形で書き直すことができる。</p>
 <div class="math notranslate nohighlight" id="equation-eq-q-update">
-<span class="eqno">(2.10)<a class="headerlink" href="#equation-eq-q-update" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-eq-q-update" title="この数式へのパーマリンク">#</a></span>\[
 Q_{\rm new}(s, a) = Q(s,a ) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]
 \]</div>
-<p><a class="reference internal" href="#equation-eq-q-update">(2.10)</a>の右辺の</p>
+<p><a class="reference internal" href="#equation-eq-q-update">(2.11)</a>の右辺の</p>
 <div class="math notranslate nohighlight">
 \[
 R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, a)
@@ -1091,7 +1094,7 @@ AAAtaWxzdAAAACWpdG9vAAAAHWRhdGEAAAABAAAAAExhdmY1OC43Ni4xMDA=
 <section id="varepsilon-greedyq">
 <h3><span class="section-number">2.3.3. </span><span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法によるQテーブルの更新<a class="headerlink" href="#varepsilon-greedyq" title="Permalink to this heading">#</a></h3>
 <p>ここまでで下準備が整ったので、前回<a class="reference internal" href="reinforcement-learning.html#sec-reinforcement-learning"><span class="std std-ref">強化学習の基礎</span></a>の節で紹介した<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法を用いてQ学習を実行してみる。</p>
-<p>Q学習においては、とある状態<span class="math notranslate nohighlight">\(s\)</span>において<strong>何らかの方策</strong>によって行動<span class="math notranslate nohighlight">\(a\)</span>を決定し、行動後の状態<span class="math notranslate nohighlight">\(s'\)</span>を得る。その後、<span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(s'\)</span>の組に基づき、<a class="reference internal" href="#equation-eq-q-update">(2.10)</a>に従ってQテーブルを更新する。</p>
+<p>Q学習においては、とある状態<span class="math notranslate nohighlight">\(s\)</span>において<strong>何らかの方策</strong>によって行動<span class="math notranslate nohighlight">\(a\)</span>を決定し、行動後の状態<span class="math notranslate nohighlight">\(s'\)</span>を得る。その後、<span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(s'\)</span>の組に基づき、<a class="reference internal" href="#equation-eq-q-update">(2.11)</a>に従ってQテーブルを更新する。</p>
 <p>この際、行動<span class="math notranslate nohighlight">\(a\)</span>を決定する際に用いる方策に、<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法の他、前節で紹介した手法が使える。</p>
 <p>Q学習で<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法を用いる場合、多腕バンディット問題の時と同様、適当な<span class="math notranslate nohighlight">\(0 &lt; \varepsilon &lt; 1\)</span>を決めておき、<span class="math notranslate nohighlight">\(\varepsilon\)</span>の確率でランダムな行動を、<span class="math notranslate nohighlight">\(1-\varepsilon\)</span>の確率でQテーブルに基づいた最適な行動を取れば良い。</p>
 <div class="cell docutils container">

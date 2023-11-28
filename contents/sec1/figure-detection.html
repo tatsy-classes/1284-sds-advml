@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>6. 図形の検出 &#8212; 機械学習発展 (実践)</title>
+    <title>2. 図形の検出 &#8212; 機械学習発展 (実践)</title>
   
   
   
@@ -70,8 +70,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/figure-detection';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="7. scikit-learnによる機械分類の基本" href="scikit-learn.html" />
-    <link rel="prev" title="5. OpenCVの基本" href="opencv.html" />
+    <link rel="next" title="3. scikit-learnによる機械分類の基本" href="scikit-learn.html" />
+    <link rel="prev" title="1. OpenCVの基本" href="opencv.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   </head>
@@ -159,16 +159,19 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
-<ul class="current nav bd-sidenav">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="setup-python.html">1. Python環境の設定</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy.html">2. NumPyの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opencv.html">5. OpenCVの基本</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. 図形の検出</a></li>
-<li class="toctree-l1"><a class="reference internal" href="scikit-learn.html">7. scikit-learnによる機械分類の基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercise-sudoku.html">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="opencv.html">1. OpenCVの基本</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scikit-learn.html">3. scikit-learnによる機械分類の基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise-sudoku.html">4. 演習1 - 画像入力式数独ソルバーを作る</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
 <ul class="nav bd-sidenav">
@@ -414,26 +417,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 単純図形の検出</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.1.1. エッジの検出</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.1.2. エッジの統合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.1.3. 輪郭線の検出</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.1.4. 輪郭線の描画</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.1.5. 輪郭線の分類</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 単純図形の検出</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.1. エッジの検出</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.2. エッジの統合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.3. 輪郭線の検出</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.4. 輪郭線の描画</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.1.5. 輪郭線の分類</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-figure-from-photo">6.2. 実写真からの図形の検出</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.2.1. 画像の前処理</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.2.2. エッジの検出</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.2.3. 図形の検出</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6.2.4. パースの除去</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-figure-from-photo">2.2. 実写真からの図形の検出</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.2.1. 画像の前処理</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2.2. エッジの検出</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.2.3. 図形の検出</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2.4. パースの除去</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">同次座標</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">6.3. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">6.4. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.3. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.4. 参考文献</a></li>
 </ul>
             </nav>
         </div>
@@ -446,15 +449,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-figure-detection">
-<span id="id1"></span><h1><span class="section-number">6. </span>図形の検出<a class="headerlink" href="#sec-figure-detection" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">2. </span>図形の検出<a class="headerlink" href="#sec-figure-detection" title="Permalink to this heading">#</a></h1>
 <p>OpenCVを用いて画像中から図形を検出してみよう。図形の検出は、画像からのエッジの情報を取り出す処理と、エッジ情報を元に境界線を認識する処理、境界線から図形の形状を分類する処理の三つに分けられる。</p>
 <p>さらに、実写真から図形を取り出す場合には、いわゆるパースを考慮した図形の検出が必要になる。</p>
 <section id="id2">
-<h2><span class="section-number">6.1. </span>単純図形の検出<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.1. </span>単純図形の検出<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>まず手始めに、以下の単純な図形が描かれた画像を題材として、図形の検出方法を見てみる。</p>
 <a class="reference internal image-reference" href="../../_images/figures.png"><img alt="../../_images/figures.png" class="align-center" src="../../_images/figures.png" style="width: 80%;" /></a>
 <section id="id3">
-<h3><span class="section-number">6.1.1. </span>エッジの検出<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.1.1. </span>エッジの検出<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p><a class="reference internal" href="opencv.html#edge-detection"><span class="std std-ref">「OpenCVの基本」</span></a>で、紹介したように、画像からエッジの情報を得るアルゴリズムには<strong>Sobelフィルタ</strong>や<strong>Cannyフィルタ</strong>がある。</p>
 <p>これらのフィルタを画像に適用した後、候補となる画素の中で勾配が一定以上となる場所を閾値処理により取り出す二値化処理を施すことで、最終的なエッジが得られる。</p>
 <p>以下がOpenCVでSobelフィルタとCanny法によりエッジ画像を得るプログラムと、その結果である。なお、Cannyフィルタは直接、二値画像を出力するため、二値化の処理はSobelフィルタの結果だけに適用している。</p>
@@ -519,7 +522,7 @@ document.write(`
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">6.1.2. </span>エッジの統合<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.1.2. </span>エッジの統合<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>結果を見てみると、上記の入力画像は<strong>図形の輪郭線が幅を持つため、エッジが二重線で検出されている</strong>ことが分かる。もちろん、これで間違いとは言えないが、エッジが内側の線と外側の線の間で曖昧に検出されており、この後の輪郭線検出に影響を及ぼす可能性がある。この問題は自然画像を入力とする場合には、より顕著となる。</p>
 <p>そこで、輪郭線を抽出する前に、モルフォロジー演算によりエッジの統合を行っておく。モルフォロジー演算は一般的には二値画像を入力として、白色の領域を広げたり狭めたりする操作である(モルフォロジー演算の数学的な意味とは解釈が異なるので注意)。今回は白色領域を広げる処理であるdilationと白色領域を狭める処理であるerosionを連続して施すことでエッジの統合を行う。</p>
 <p>モルフォロジー演算は構造要素と呼ばれる小さな画像のようなものを入力の二値画像にしたがって繰り返す操作に対応する。したがって、OpenCV(やMATLABなどの他のライブラリ)では、モルフォロジー演算の関数は二値画像と構造要素を引数にとる。OpenCVを用いる場合には、dilationとerosionはそれぞれ以下のようなコードで実現される。</p>
@@ -612,7 +615,7 @@ document.write(`
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">6.1.3. </span>輪郭線の検出<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.1.3. </span>輪郭線の検出<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>ここまでに検出したエッジの情報を使って輪郭線を抽出する。輪郭線の抽出にはOpenCVの <code class="docutils literal notranslate"><span class="pre">findContours</span></code>という関数を用いる。この関数には1985年にSuzukiさんとAbeさんという日本人が提案したアルゴリズムが実装されている<span id="id6">[<a class="reference internal" href="#id38" title="Satoshi Suzuki and Keiichi Abe. Topological structural analysis of digitized binary images by border following. Computer Vision, Graphics, and Image Processing, 29(3):396, mar 1985. doi:10.1016/0734-189x(85)90136-7.">Suzuki and Abe, 1985</a>]</span>。</p>
 <p>このアルゴリズムは二値画像(1がエッジで0が背景の色とする)を<strong>ラスタスキャン</strong> (最初の列を左から右に見ていき、右端に到達したら、左から右に見ていく、以後繰り返し) していき、<strong>1が見つかったら、その画素から始まる輪郭線を追跡する</strong>。</p>
 <p>輪郭線の追跡は、<strong>今見ている画素の周りを時計回りに見ていき、初めて1となる画素にスキャン位置を移動する、という操作を繰り返す</strong>ことで行われる。端点に到達するか、元の位置の画素に戻ってきたら、再びラスタスキャン順に値が1の画素で、まだどの輪郭にも含まれていない画素を探し、以後、同様の処理を繰り返していく。</p>
@@ -632,7 +635,7 @@ document.write(`
 <p>この他の使い方については公式のドキュメントを参考にしてほしい。</p>
 </section>
 <section id="id7">
-<h3><span class="section-number">6.1.4. </span>輪郭線の描画<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.1.4. </span>輪郭線の描画<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>上記の方法で検出された輪郭線は<code class="docutils literal notranslate"><span class="pre">findContours</span></code>と対になる<code class="docutils literal notranslate"><span class="pre">drawContours</span></code>で描画できる。この関数は以下の引数を取る。</p>
 <ul class="simple">
 <li><p>第1引数: 描画先の画像</p></li>
@@ -658,7 +661,7 @@ document.write(`
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">6.1.5. </span>輪郭線の分類<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.1.5. </span>輪郭線の分類<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>各輪郭線がどのような図形か(円か？多角形か？そうなら何角形か？)を判別するには、<strong>輪郭線を多角形として近似して、その頂点の数を調べれば良い</strong>。</p>
 <p><code class="docutils literal notranslate"><span class="pre">findContours</span></code> で検出された輪郭線 (<code class="docutils literal notranslate"><span class="pre">cv2.CHAIN_APPROX_SIMPLE</span></code>を使った場合)は特定の向きの直線のみを端点で近似している。そのため、現在検出されている多角形は、<strong>必ずしも角の点だけで表されているわけではない</strong>。実際、<code class="docutils literal notranslate"><span class="pre">contours[i]</span></code>の長さを見てみると、六角形なども直線が複数の点で表わされているために、6個以上の頂点を含むことが分かる。</p>
 <p>そこで、検出されている輪郭線を更に粗く角の点だけで近似することを考える。これにはOpenCVの<code class="docutils literal notranslate"><span class="pre">cv2.approxPolyDP</span></code>という関数が使える。この関数の接尾語になっているDPはDouglas-Peuckerの頭文字であり、内部では<a class="reference external" href="https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm">Ramer-Douglas-Peucker法</a>というアルゴリズムが使われている。</p>
@@ -4827,12 +4830,12 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </section>
 </section>
 <section id="ssec-figure-from-photo">
-<span id="id9"></span><h2><span class="section-number">6.2. </span>実写真からの図形の検出<a class="headerlink" href="#ssec-figure-from-photo" title="Permalink to this heading">#</a></h2>
+<span id="id9"></span><h2><span class="section-number">2.2. </span>実写真からの図形の検出<a class="headerlink" href="#ssec-figure-from-photo" title="Permalink to this heading">#</a></h2>
 <p>続いては、以下の駅の写真から看板を抜き出してみよう。</p>
 <a class="reference internal image-reference" href="../../_images/inawashiro.jpg"><img alt="../../_images/inawashiro.jpg" class="align-center" src="../../_images/inawashiro.jpg" style="width: 80%;" /></a>
 <p>単純図形の時と同じように輪郭線を抜き出そう。ただし、今回は自然画像であり、含まれる画像の色が様々なので少し工夫が必要になる。</p>
 <section id="id10">
-<h3><span class="section-number">6.2.1. </span>画像の前処理<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.1. </span>画像の前処理<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <p>まず、エッジを抜き出す際には、細かな輝度の変化はそれほど重要ではなく、大きな輝度の変化が起こる場所だけが分かれば良い。自然画像には多くの場合、細かなノイズがのっているので、最初にぼかしフィルタをかけてノイズを減らしておく。</p>
 <p>次に、看板が白いことに注目して、グレースケール画像を先に二値化してしまう。この際、自動で閾値を決める方法に「大津の二値化」と呼ばれる方法がある。大津の二値化は画像を輝度のヒストグラムとして表わしたときに、2つに分けられたヒストグラムのそれぞれが持つ色の分散をできる限り小さくするように閾値を決める。</p>
 <div class="cell docutils container">
@@ -4892,7 +4895,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 <p>すると、上記のように看板の部分だけが強調されたような画像を得ることができる。</p>
 </section>
 <section id="id11">
-<h3><span class="section-number">6.2.2. </span>エッジの検出<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.2. </span>エッジの検出<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <p>二値化により前処理した画像から「基本図形」の時と同様にエッジを検出する。今回はCanny法によりエッジを検出し、モルフォロジー演算で余計な輪郭線を除去する。この際、dilationとerosionでdilation側の構造要素を少し大きめに取っておくと、エッジがはっきりと残る。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4917,7 +4920,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </section>
 <section id="id12">
-<h3><span class="section-number">6.2.3. </span>図形の検出<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.3. </span>図形の検出<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <p>看板を取り出すための方針として、写真に写っている物のうち、<strong>輪郭線が最も長いもの</strong>が写真に写っている主要物体であると仮定する。この仮定に基づき、各輪郭線の長さを計算し、最も長い輪郭線だけを残す。</p>
 <p>まずは<code class="docutils literal notranslate"><span class="pre">findContours</span></code>を使って、どのような輪郭線が抽出されるのかを確認する。仮定に基づいて処理を行う際には、<strong>考えた仮定が本当に成り立ちそうかを予め必ずチェックする</strong>こと。</p>
 <div class="cell docutils container">
@@ -4984,7 +4987,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 <p>図のタイトルにあるように、今、赤色で描かれている矩形の角は4つであり、これで、看板に対応する四角形を取り出すことができた。</p>
 </section>
 <section id="id13">
-<h3><span class="section-number">6.2.4. </span>パースの除去<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.4. </span>パースの除去<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <p>三次元の情報を二次元の写真に投影する方法はいくつかあり、その代表的なものが<strong>直投影</strong> (orthographic projection)と<strong>透視投影</strong> (perspective projection)である。人間の視覚は透視投影に近いとされており、カメラで写真を撮るときにも、およそ透視投影として二次元画像が得られる。</p>
 <p>日本語の<strong>パース</strong>とはperspectiveのことで、美術の授業などで、一点透視や二点透視などの図法を習った人も多いだろう。透視投影は、数学的には<strong>同次座標</strong> (homogeneous coodinates)と4×4の行列を用いて表わすことができる。</p>
 <section id="id14">
@@ -5030,11 +5033,11 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 \end{split}\]</div>
 <p>としよう。この時、変換後のベクトル<span class="math notranslate nohighlight">\(\mathbf{x}'\)</span>は以下のように書ける。</p>
 <div class="math notranslate nohighlight" id="equation-eq-perspective-transform">
-<span class="eqno">(6.1)<a class="headerlink" href="#equation-eq-perspective-transform" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-eq-perspective-transform" title="この数式へのパーマリンク">#</a></span>\[
 \mathbf{x}' = \frac{\mathbf{A}\mathbf{x} + \mathbf{b}}{\mathbf{c}^\top \mathbf{x} + d}
 \]</div>
 <p>この方程式の未知数は3×3=9個で、式の数は2個である。実用的には<span class="math notranslate nohighlight">\(d=1\)</span>であるとして、未知数を一つ減らし、変換前後の二次元座標の組<span class="math notranslate nohighlight">\((\mathbf{x}, \mathbf{x}')\)</span>を4組の対応づけることで、方程式を8つ定義する。</p>
-<p>ここで察しの良い方は、<a class="reference internal" href="#equation-eq-perspective-transform">(6.1)</a>が<span class="math notranslate nohighlight">\(\mathbf{M}\)</span>の成分の線形式になっていないことに気づいたかもしれない。この式の右辺は未知数の分数となっているため、このままでは線形問題として解くことはできない。しかし、<span class="math notranslate nohighlight">\(d=1\)</span>として、右辺の分母を両辺にかけると、</p>
+<p>ここで察しの良い方は、<a class="reference internal" href="#equation-eq-perspective-transform">(2.2)</a>が<span class="math notranslate nohighlight">\(\mathbf{M}\)</span>の成分の線形式になっていないことに気づいたかもしれない。この式の右辺は未知数の分数となっているため、このままでは線形問題として解くことはできない。しかし、<span class="math notranslate nohighlight">\(d=1\)</span>として、右辺の分母を両辺にかけると、</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{A}\mathbf{x} + \mathbf{b} - (\mathbf{x}' \mathbf{x}^\top) \mathbf{c} = 1
@@ -5081,7 +5084,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </section>
 </section>
 <section id="id15">
-<h2><span class="section-number">6.3. </span>練習問題<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3. </span>練習問題<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Ramer-Douglas-Peuckerのアルゴリズムでは、「開曲線」を線分の集合により近似する方法を紹介した。では、閉曲線に対して、同アルゴリズムを適用するにはどうすれば良いか。</p></li>
 <li><p><a class="reference internal" href="#ssec-figure-from-photo"><span class="std std-ref">実写真からの図形の検出</span></a>の例について、看板が白いことに着目して、<strong>二値化した時点で一番大きな白の領域を取り出す</strong>ことにより、看板の領域を抽出せよ。この際、最大の白色領域を取り出した後で、その最も外側にある輪郭を、看板の輪郭線とすれば良い。</p></li>
@@ -5089,7 +5092,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </ol>
 </section>
 <section id="id16">
-<h2><span class="section-number">6.4. </span>参考文献<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.4. </span>参考文献<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <div class="docutils container" id="id17">
 <dl class="citation">
 <dt class="label" id="id38"><span class="brackets"><a class="fn-backref" href="#id6">SA85</a></span></dt>
@@ -5136,7 +5139,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>OpenCVの基本</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>OpenCVの基本</p>
       </div>
     </a>
     <a class="right-next"
@@ -5144,7 +5147,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>scikit-learnによる機械分類の基本</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>scikit-learnによる機械分類の基本</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -5163,26 +5166,26 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.1. 単純図形の検出</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.1.1. エッジの検出</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.1.2. エッジの統合</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.1.3. 輪郭線の検出</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.1.4. 輪郭線の描画</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.1.5. 輪郭線の分類</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 単純図形の検出</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.1. エッジの検出</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.2. エッジの統合</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.3. 輪郭線の検出</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.1.4. 輪郭線の描画</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.1.5. 輪郭線の分類</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-figure-from-photo">6.2. 実写真からの図形の検出</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6.2.1. 画像の前処理</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6.2.2. エッジの検出</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">6.2.3. 図形の検出</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6.2.4. パースの除去</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-figure-from-photo">2.2. 実写真からの図形の検出</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.2.1. 画像の前処理</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.2.2. エッジの検出</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.2.3. 図形の検出</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.2.4. パースの除去</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">同次座標</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">6.3. 練習問題</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">6.4. 参考文献</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.3. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.4. 参考文献</a></li>
 </ul>
   </nav></div>
 

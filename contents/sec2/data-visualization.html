@@ -74,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="2. 特徴量抽出" href="feature-extraction.html" />
-    <link rel="prev" title="8. 演習1 - 画像入力式数独ソルバーを作る" href="../sec1/exercise-sudoku.html" />
+    <link rel="prev" title="4. 演習1 - 画像入力式数独ソルバーを作る" href="../sec1/exercise-sudoku.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   </head>
@@ -162,16 +162,19 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../sec1/setup-python.html">1. Python環境の設定</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sec1/numpy.html">2. NumPyの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sec1/matplotlib.html">3. Matplotlibの基本</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../sec1/pandas.html">4. Pandasの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/opencv.html">5. OpenCVの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/figure-detection.html">6. 図形の検出</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/scikit-learn.html">7. scikit-learnによる機械分類の基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/exercise-sudoku.html">8. 演習1 - 画像入力式数独ソルバーを作る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sec1/opencv.html">1. OpenCVの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/figure-detection.html">2. 図形の検出</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/scikit-learn.html">3. scikit-learnによる機械分類の基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/exercise-sudoku.html">4. 演習1 - 画像入力式数独ソルバーを作る</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第2部 ひらがなOCRソフトと百人一首エージェントの実装</span></p>
 <ul class="current nav bd-sidenav">
@@ -635,17 +638,17 @@ D_{ij} = \| \mathbf{x}_i - \mathbf{x}_j \|
 \]</div>
 <p>低次元空間における<span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>のベクトル表現<span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span>は、この距離をできる限り保つように計算される。すなわち、任意の<span class="math notranslate nohighlight">\(\mathbf{z}_i\)</span>と<span class="math notranslate nohighlight">\(\mathbf{z}_j\)</span>の組に対して、</p>
 <div class="math notranslate nohighlight" id="equation-eq-z-vs-d">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-eq-z-vs-d" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-eq-z-vs-d" title="この数式へのパーマリンク">#</a></span>\[
 \| \mathbf{z}_i - \mathbf{z}_j \| = D_{ij}
 \]</div>
 <p>となることが求められる。今、多次元尺度構成法では<strong>距離だけを保てば良い</strong>ので、<span class="math notranslate nohighlight">\(\mathbf{x}_1, \ldots, \mathbf{x}_N\)</span>の重心が原点となるように平行移動してある、すなわち、</p>
 <div class="math notranslate nohighlight" id="equation-eq-center-is-origin">
-<span class="eqno">(1.2)<a class="headerlink" href="#equation-eq-center-is-origin" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-eq-center-is-origin" title="この数式へのパーマリンク">#</a></span>\[
 \sum_{i=1}^N \mathbf{x}_i = \mathbf{0}
 \]</div>
-<p>が成り立つとして、以下の議論を行う。始めに、<a class="reference internal" href="#equation-eq-z-vs-d">(1.1)</a>の両辺を二乗すると、</p>
+<p>が成り立つとして、以下の議論を行う。始めに、<a class="reference internal" href="#equation-eq-z-vs-d">(1.2)</a>の両辺を二乗すると、</p>
 <div class="math notranslate nohighlight" id="equation-eq-d-square">
-<span class="eqno">(1.3)<a class="headerlink" href="#equation-eq-d-square" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-eq-d-square" title="この数式へのパーマリンク">#</a></span>\[
 D_{ij}^2 = \| \mathbf{z}_i \|^2 + \| \mathbf{z}_j \|^2 -2 \mathbf{z}_i^\top \mathbf{z}_j
 \]</div>
 <p>となる。ここでさらに、</p>
@@ -657,7 +660,7 @@ D_{*j} &amp;= \sum_{i=1}^N D_{ij} \\
 D_{**} &amp;= \sum_{i,j} D_{ij} \\
 \end{align}
 \end{split}\]</div>
-<p>のように置くと、これらは、<a class="reference internal" href="#equation-eq-d-square">(1.3)</a>ならび<a class="reference internal" href="#equation-eq-center-is-origin">(1.2)</a>から、以下のように計算できる。</p>
+<p>のように置くと、これらは、<a class="reference internal" href="#equation-eq-d-square">(1.4)</a>ならび<a class="reference internal" href="#equation-eq-center-is-origin">(1.3)</a>から、以下のように計算できる。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -677,7 +680,7 @@ D_{**} &amp;= 2N \sum_{i=1} \| \mathbf{z}_i \|^2
 \end{split}\]</div>
 <p>最後の式を用いると、<span class="math notranslate nohighlight">\(\mathbf{Z} = [ \mathbf{z}_1 \cdots \mathbf{z}_N ] \in \mathbb{R}^{M \times N}\)</span>に対して、</p>
 <div class="math notranslate nohighlight" id="equation-eq-mds">
-<span class="eqno">(1.4)<a class="headerlink" href="#equation-eq-mds" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-mds" title="この数式へのパーマリンク">#</a></span>\[
 \mathbf{Z}^\top \mathbf{Z} = -\frac{1}{2} \mathbf{H} \mathbf{D}^2 \mathbf{H}
 \]</div>
 <p>という式が成り立つ。なお、ここでは、<span class="math notranslate nohighlight">\(\mathbf{D}^2\)</span>は<span class="math notranslate nohighlight">\(\mathbf{D}\)</span>の各要素を二乗したものであるとし、<span class="math notranslate nohighlight">\(\mathbf{H}\)</span>は以下のように定義される。</p>
@@ -686,7 +689,7 @@ D_{**} &amp;= 2N \sum_{i=1} \| \mathbf{z}_i \|^2
 \mathbf{H} = \mathbf{I} - \frac{1}{N} \mathbf{1} \mathbf{1}^\top
 \]</div>
 <p>ただし、<span class="math notranslate nohighlight">\(\mathbf{I}\)</span>は単位行列、<span class="math notranslate nohighlight">\(\mathbf{1}\mathbf{1}^\top\)</span>は全ての要素が1の<span class="math notranslate nohighlight">\(N\times N\)</span>要素を持つ行列であるとする。</p>
-<p>今、<a class="reference internal" href="#equation-eq-mds">(1.4)</a>の右辺を<span class="math notranslate nohighlight">\(\mathbf{K}\)</span>と置くこととすると、<span class="math notranslate nohighlight">\(\mathbf{K}\)</span>は半正定値行列であり、<span class="math notranslate nohighlight">\(\mathbf{Z}\)</span>の解として、以下が得られる。</p>
+<p>今、<a class="reference internal" href="#equation-eq-mds">(1.5)</a>の右辺を<span class="math notranslate nohighlight">\(\mathbf{K}\)</span>と置くこととすると、<span class="math notranslate nohighlight">\(\mathbf{K}\)</span>は半正定値行列であり、<span class="math notranslate nohighlight">\(\mathbf{Z}\)</span>の解として、以下が得られる。</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{Z} = [ \sqrt{\lambda_1} \mathbf{u}_1 \cdots \sqrt{\lambda_M} \mathbf{u}_M ]^\top
@@ -1011,7 +1014,7 @@ S &amp;= \frac{1}{2} \| \mathbf{D}' - \mathbf{D} \|_F \\
 \]</div>
 <p>これを用いると、解くべき最適化問題は次のようになることが分かる。</p>
 <div class="math notranslate nohighlight" id="equation-eq-lle-weight-derivation">
-<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-lle-weight-derivation" title="この数式へのパーマリンク">#</a></span>\[\begin{split}
+<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-lle-weight-derivation" title="この数式へのパーマリンク">#</a></span>\[\begin{split}
 \begin{align}
 &amp; \underset{\mathbf{w}_i}{\text{minimize:}} \quad \frac{1}{2} \| \mathbf{D}_i^\top \mathbf{w}_i \|^2 \\
 &amp;\begin{aligned}
@@ -1025,7 +1028,7 @@ S &amp;= \frac{1}{2} \| \mathbf{D}' - \mathbf{D} \|_F \\
 \[
 \mathcal{L}(\mathbf{w}_i, \beta, \boldsymbol\mu) = \frac{1}{2} \| \mathbf{D}_i^\top \mathbf{w}_i \|^2 - \lambda (\mathbf{1}^\top \mathbf{w}_i - 1) - \sum_{k=1}^K \mu_k w_{ik}
 \]</div>
-<p>このラグランジアンを用いると、<a class="reference internal" href="#equation-eq-lle-weight-derivation">(1.5)</a>のKKT条件は以下のように書ける。</p>
+<p>このラグランジアンを用いると、<a class="reference internal" href="#equation-eq-lle-weight-derivation">(1.6)</a>のKKT条件は以下のように書ける。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align}
@@ -1050,7 +1053,7 @@ w_{ik} \geq 0, &amp; &amp; k = 1, \ldots, K \\
 \[
 \frac{1}{2} \| \mathbf{D}_i^\top \mathbf{w}_i \|^2 = \frac{1}{2} \mathbf{w}_i (\mathbf{D}_i \mathbf{D}_i^\top) \mathbf{w}_i \geq \frac{1}{2} \lambda \mathbf{1}^\top \mathbf{w}_i
 \]</div>
-<p>以上より、<a class="reference internal" href="#equation-eq-lle-weight-derivation">(1.5)</a>を満たすように<span class="math notranslate nohighlight">\(\frac{1}{2} \| \mathbf{D}_i^\top \mathbf{z}_i \|^2\)</span>を最小化するとき、その最小値は<span class="math notranslate nohighlight">\(\frac{1}{2} \lambda \mathbf{1}^\top \mathbf{w}_i\)</span>になることが分かる。</p>
+<p>以上より、<a class="reference internal" href="#equation-eq-lle-weight-derivation">(1.6)</a>を満たすように<span class="math notranslate nohighlight">\(\frac{1}{2} \| \mathbf{D}_i^\top \mathbf{z}_i \|^2\)</span>を最小化するとき、その最小値は<span class="math notranslate nohighlight">\(\frac{1}{2} \lambda \mathbf{1}^\top \mathbf{w}_i\)</span>になることが分かる。</p>
 <p>よって、その時の<span class="math notranslate nohighlight">\(\mathbf{w}_i\)</span>を求めるためには、等式を満たす場合に関して、両辺を<span class="math notranslate nohighlight">\(\mathbf{w}_i\)</span>で微分することにより得られる以下の線形方程式を解けば良い。</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1075,7 +1078,7 @@ w_{ik} \geq 0, &amp; &amp; k = 1, \ldots, K \\
 \]</div>
 <p>が成立すると仮定する。これを全てのデータ点に対して考慮すれば、解くべき問題は以下の二乗誤差の最小化に帰着される。</p>
 <div class="math notranslate nohighlight" id="equation-eq-lle-quadratic-form">
-<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-lle-quadratic-form" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-lle-quadratic-form" title="この数式へのパーマリンク">#</a></span>\[
 \sum_{i=1}^N \left\| \mathbf{z}_i - \sum_{k=1} w_{ik} \mathbf{z}_{i_k} \right\|^2 = \mathbf{z}^\top (\mathbf{I} - \mathbf{W})^\top (\mathbf{I} - \mathbf{W}) \mathbf{z}
 \]</div>
 <p>ただし、行列<span class="math notranslate nohighlight">\(\mathbf{W}\)</span>は、その<span class="math notranslate nohighlight">\(i\)</span>行において<span class="math notranslate nohighlight">\(i_1, \ldots, i_K\)</span>列の成分だけが非零の値を持つような疎行列、<span class="math notranslate nohighlight">\(\mathbf{Z} = [ \mathbf{z}_i \cdots \mathbf{z}_N ]^\top \in \mathbb{R}^{N\times d}\)</span>である。</p>
@@ -1212,7 +1215,7 @@ w_{ik} \geq 0, &amp; &amp; k = 1, \ldots, K \\
 <p><strong>カーネル主成分分析</strong>は<a class="reference internal" href="../sec1/scikit-learn.html#ssec-support-vector-machine"><span class="std std-ref">サポートベクトルマシン</span></a>の項で紹介したカーネル法を用いた主成分分析の拡張である。カーネル法では、与えられたデータ<span class="math notranslate nohighlight">\(\mathbf{x}_i\)</span>をとある線形汎関数<span class="math notranslate nohighlight">\(\phi \in \mathcal{H}\)</span>を用いて、<span class="math notranslate nohighlight">\(\phi(\mathbf{x}_i)\)</span>のように変換する。カーネル主成分分析はこの<span class="math notranslate nohighlight">\(\phi(\mathbf{x}_i)\)</span>に対して主成分分析を行う手法である。</p>
 <p>今、仮に<span class="math notranslate nohighlight">\(\phi(\mathbf{x}_i)\)</span>の平均が原点にあると仮定すると、その分散共分散行列<span class="math notranslate nohighlight">\(C: \mathcal{H} \mapsto \mathcal{H}\)</span>は次のように書ける (今、<span class="math notranslate nohighlight">\(\phi\)</span>が線形汎関数であるので、分散共分散行列がヒルベルト空間<span class="math notranslate nohighlight">\(\mathcal{H}\)</span>上の線形演算子になっていることに注意)。</p>
 <div class="math notranslate nohighlight" id="equation-eq-kpca-covariance">
-<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-kpca-covariance" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-kpca-covariance" title="この数式へのパーマリンク">#</a></span>\[
 C(u, v) = \frac{1}{N} \sum_{i=1}^N \phi(\mathbf{x}_i)(u) \phi(\mathbf{x}_i)(v)
 \]</div>
 <p>しかし、一般に関数<span class="math notranslate nohighlight">\(\phi\)</span>は未知であり、<span class="math notranslate nohighlight">\(\phi(\mathbf{x}_i)\)</span>がどのような形になるかを知ることはできない。そこで、<span class="math notranslate nohighlight">\(C\)</span>を陽に求める代わりに、カーネル法を用いて、主成分分析の結果だけを求めることを試みる。</p>
@@ -1231,18 +1234,18 @@ V
 <hr class="docutils" />
 <p>次に、これを<span class="math notranslate nohighlight">\(\phi(\mathbf{x}_i), i = 1, \ldots, N\)</span>を考え、その平均を関数<span class="math notranslate nohighlight">\(\mu \in \mathcal{H}\)</span>で表わす。とある線形汎関数<span class="math notranslate nohighlight">\(\psi \in \mathcal{H}\)</span>の方向に沿った分散<span class="math notranslate nohighlight">\(V\)</span>は</p>
 <div class="math notranslate nohighlight" id="equation-eq-kpca-variance">
-<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-kpca-variance" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(1.9)<a class="headerlink" href="#equation-eq-kpca-variance" title="この数式へのパーマリンク">#</a></span>\[
 V = \frac{1}{N} \sum_{i=1}^N \langle \psi, \phi(\mathbf{x}_i) - \mu \rangle^2, \quad \mu = \frac{1}{N} \sum_{i=1}^N \phi(\mathbf{x}_i)
 \]</div>
 <p>のように書ける。ただし <span class="math notranslate nohighlight">\(\| \psi \|^2 = \langle \psi, \psi \rangle = 1\)</span>である。この分散の値を考える場合、<span class="math notranslate nohighlight">\(\psi\)</span>と内積を取る相手は<span class="math notranslate nohighlight">\(\phi(\mathbf{x}_i) - \mu\)</span>に限定されているため、</p>
 <div class="math notranslate nohighlight" id="equation-eq-kpca-psi">
-<span class="eqno">(1.9)<a class="headerlink" href="#equation-eq-kpca-psi" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(1.10)<a class="headerlink" href="#equation-eq-kpca-psi" title="この数式へのパーマリンク">#</a></span>\[
 \psi = \sum_{j=1}^N \alpha_j (\phi(\mathbf{x}_j) - \mu)
 \]</div>
 <p>のように表わしても、内積の値は変化せず、故に分散の値も変化しない (三次元空間において、内積を取る相手のベクトルがとある平面内にしか存在しない場合を考えるとイメージがつきやすい)。</p>
-<p><a class="reference internal" href="#equation-eq-kpca-psi">(1.9)</a>を<a class="reference internal" href="#equation-eq-kpca-variance">(1.8)</a>に代入し、更に<span class="math notranslate nohighlight">\(k(\mathbf{x}_i, \mathbf{x}_j) = \langle \phi(\mathbf{x}_i, \mathbf{x}_j)\)</span>の性質を用いると、分散<span class="math notranslate nohighlight">\(V\)</span>は次のように書き直せる。</p>
+<p><a class="reference internal" href="#equation-eq-kpca-psi">(1.10)</a>を<a class="reference internal" href="#equation-eq-kpca-variance">(1.9)</a>に代入し、更に<span class="math notranslate nohighlight">\(k(\mathbf{x}_i, \mathbf{x}_j) = \langle \phi(\mathbf{x}_i, \mathbf{x}_j)\)</span>の性質を用いると、分散<span class="math notranslate nohighlight">\(V\)</span>は次のように書き直せる。</p>
 <div class="math notranslate nohighlight" id="equation-eq-kpca-quadratic">
-<span class="eqno">(1.10)<a class="headerlink" href="#equation-eq-kpca-quadratic" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(1.11)<a class="headerlink" href="#equation-eq-kpca-quadratic" title="この数式へのパーマリンク">#</a></span>\[
 \begin{equation}
 V = \frac{1}{N} \sum_{i=1}^N \sum_{j=1}^N \alpha_j \langle \phi(\mathbf{x}_i) - \mu, \phi(\mathbf{x}_j) - \mu \rangle^2
 \end{equation}
@@ -1260,7 +1263,7 @@ V = \frac{1}{N} \sum_{i=1}^N \sum_{j=1}^N \alpha_j \langle \phi(\mathbf{x}_i) - 
 \[
 \mathbf{H} = \mathbf{I} - \frac{1}{N} \mathbf{1} \mathbf{1}^\top
 \]</div>
-<p>とおくと、<a class="reference internal" href="#equation-eq-kpca-quadratic">(1.10)</a>は以下のように書き直せる。</p>
+<p>とおくと、<a class="reference internal" href="#equation-eq-kpca-quadratic">(1.11)</a>は以下のように書き直せる。</p>
 <div class="math notranslate nohighlight">
 \[
 V = \boldsymbol\alpha^\top (\mathbf{H} \mathbf{K} \mathbf{H})^2 \boldsymbol\alpha
@@ -1990,7 +1993,7 @@ if (force === true) {
 <section id="id11">
 <h2><span class="section-number">1.4. </span>練習問題<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>多次元尺度構成法の項で紹介した<a class="reference internal" href="#equation-eq-mds">(1.4)</a>を自身で導出せよ。</p></li>
+<li><p>多次元尺度構成法の項で紹介した<a class="reference internal" href="#equation-eq-mds">(1.5)</a>を自身で導出せよ。</p></li>
 <li><p>単純なMDSとSMACOFを用いたMDSをMNISTのデータに適用し、違いについて考察せよ。</p></li>
 <li><p>MNISTのデータについて、コサインカーネルを行った主成分分析により得られる画像を第⑤主成分まで調べて見よ (ヒント: <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>の<code class="docutils literal notranslate"><span class="pre">KernelPCA</span></code>で<code class="docutils literal notranslate"><span class="pre">inverse_transform=True</span></code>を用いる)。</p></li>
 </ol>
@@ -2052,7 +2055,7 @@ if (force === true) {
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>演習1 - 画像入力式数独ソルバーを作る</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>演習1 - 画像入力式数独ソルバーを作る</p>
       </div>
     </a>
     <a class="right-next"
