@@ -1,13 +1,16 @@
 format: jb-book
 root: index
 parts:
-  - caption: 第1部 画像読み取り式数独ソルバの実装
+  - caption: 第0部 各種基本ライブラリの使用法
     numbered: 3
     chapters:
       - file: contents/sec1/setup-python
       - file: contents/sec1/numpy
       - file: contents/sec1/matplotlib
       - file: contents/sec1/pandas
+  - caption: 第1部 画像読み取り式数独ソルバの実装
+    numbered: 3
+    chapters:
       - file: contents/sec1/opencv
       - file: contents/sec1/figure-detection
       - file: contents/sec1/scikit-learn
