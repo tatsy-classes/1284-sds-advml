@@ -680,12 +680,7 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 </div>
 </div>
 <p>オセロはルール上、着手可能な手がない、すなわちどこにディスクを置いても裏返せる相手方のディスクが存在しない時にはパスをすることになる。</p>
-<p>有効手が存在しない時には<code class="docutils literal notranslate"><span class="pre">legal_moves</span></code>が空の配列を返してくるので、そのときには<code class="docutils literal notranslate"><span class="pre">Move.Pass(player)</span></code>を呼び出して、パスを表わす「手」を用意する。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>有効手が存在しない時には<code class="docutils literal notranslate"><span class="pre">legal_moves</span></code>が長さが1でパスを表す手を含む配列を返してくる。その手 (<code class="docutils literal notranslate"><span class="pre">Move</span></code>)がパスの手かどうかは<code class="docutils literal notranslate"><span class="pre">move.is_pass()</span></code>で判定できる。</p>
 <p>これらを踏まえて、黒番、白番ともにランダムに着手させて、盤の状態変化を確認する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2136,11 +2131,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
         <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
 
         <span class="c1"># 着手可能な手があればランダムに1つを選ぶ</span>
-        <span class="c1"># 選べる手がなければパスする</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">player</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
+        <span class="n">move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
 
         <span class="c1"># 着手による盤の状態の更新</span>
         <span class="n">env</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
@@ -2161,13 +2152,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1bd3889c6c554a4ba3d1efb1954c11b2", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "43090542f6d346b5b763b3ae64217530", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: ランダム vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">457</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">499</span></p></li>
-<li><p>引き分け: <span class="output text_plain">44</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">462</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">505</span></p></li>
+<li><p>引き分け: <span class="output text_plain">33</span></p></li>
 </ul>
 <p>このようにランダムな着手では当然ながら、勝率はおよそ五分五分になる。ただし、オセロは後手である白番の方が若干有利であると言われており、ランダムに着手した場合には白番の勝率がやや高くなっている。</p>
 <p>以後は、この着手の方法を改良していき、より高い勝率を目指してみる。以下、利便性のために、ランダムに着手する関数として<code class="docutils literal notranslate"><span class="pre">move_by_random</span></code>を作成しておく。</p>
@@ -2277,13 +2268,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "9ce88842da844765989d1adabca7252a", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6db25ffcfee34ae7b6d1b48b104ae664", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: セル評価値 vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">708</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">241</span></p></li>
-<li><p>引き分け: <span class="output text_plain">51</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">750</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">202</span></p></li>
+<li><p>引き分け: <span class="output text_plain">48</span></p></li>
 </ul>
 <p>上記の通り、人間の経験則を導入することでランダムに着手するのと比べて大幅に勝率が上昇していることが分かる。</p>
 </section>
@@ -2372,13 +2363,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3e8f840c61fc4306b7a5f04d351ff991", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ede9ffafce4445a4af5a753c36a80de0", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: ミニマックス vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">823</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">143</span></p></li>
-<li><p>引き分け: <span class="output text_plain">34</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">826</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">141</span></p></li>
+<li><p>引き分け: <span class="output text_plain">33</span></p></li>
 </ul>
 <p>上記の通り、ミニマックス探索で2手先を読むだけで飛躍的に勝率が上昇していることが分かる。</p>
 <p>ただし、ミニマックス探索は再帰的に手を探索するため、より多くの手を読もうとすると、かなり多くの時間を要する。実際、ミニマックス探索は「本来探索する必要のない手」も探索しているがために、余計に計算を行なっている。</p>
@@ -2403,9 +2394,6 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_monte_carlo</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
     <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-
     <span class="n">n_wins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
     <span class="n">n_checks</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trials</span><span class="p">):</span>
@@ -2476,13 +2464,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3697a968fb7b4e498f407dea83835063", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "fca81ecd46f44473ac7ae6b20cb5850d", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: 原始モンテカルロ vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">862</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">131</span></p></li>
-<li><p>引き分け: <span class="output text_plain">7</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">873</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">119</span></p></li>
+<li><p>引き分け: <span class="output text_plain">8</span></p></li>
 </ul>
 </section>
 <section id="id9">
@@ -2645,13 +2633,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f2e604bc11ec4f889274ba955bda2f37", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "29399981c2e7456e83566c1905c29d60", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: モンテカルロ木探索 vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">882</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">77</span></p></li>
-<li><p>引き分け: <span class="output text_plain">41</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">880</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">80</span></p></li>
+<li><p>引き分け: <span class="output text_plain">40</span></p></li>
 </ul>
 </section>
 <section id="id10">
