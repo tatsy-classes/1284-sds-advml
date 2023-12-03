@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec3/othello-agent';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="4. 深層強化学習" href="deep-reinforcement-learning.html" />
+    <link rel="next" title="5. 深層強化学習" href="deep-reinforcement-learning.html" />
     <link rel="prev" title="2. Q学習の基礎" href="q-learning.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
@@ -183,8 +183,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="reinforcement-learning.html">1. 強化学習の基礎</a></li>
 <li class="toctree-l1"><a class="reference internal" href="q-learning.html">2. Q学習の基礎</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">3. オセロAIの作成</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deep-reinforcement-learning.html">4. 深層強化学習</a></li>
-<li class="toctree-l1"><a class="reference internal" href="exercise-othello.html">5. 演習3 - オセロエージェントを作る</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="deep-reinforcement-learning.html">5. 深層強化学習</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercise-othello.html">6. 演習3 - オセロエージェントを作る</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="nav bd-sidenav">
@@ -415,6 +416,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">3. オセロAIの作成</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. オセロゲーム環境</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.1. オセロモジュールのインストール</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.2. オセロモジュールの概要</a></li>
@@ -423,10 +425,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.2. ランダムな着手</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.3. セル評価値を用いた着手</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-minimax">3.4. ミニマックス探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-monte-carlo">3.5. 原始モンテカルロ探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.6. モンテカルロ木探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.7. 練習問題</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-monte-carlo">4. (ssec:monte-carlo)=</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.1. 原始モンテカルロ探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.2. モンテカルロ木探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.3. 練習問題</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -2380,8 +2388,16 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <p>従って、今得られている価値が最大の手の評価値より、相手の手の探索中に得られる評価値が小さくなった瞬間に、それ以上手を探索する必要がなくなる。このような原理に基づいて探索の枝刈りを行なう手法に<strong>アルファベータ探索</strong>がある。</p>
 <p>アルファベータ探索は上記の<code class="docutils literal notranslate"><span class="pre">minimax</span></code>関数を少し改良するだけで実装できるので、練習問題として取り組んでみて、探索の効率が上昇することを確認してほしい。</p>
 </section>
-<section id="ssec-monte-carlo">
-<span id="id8"></span><h2><span class="section-number">3.5. </span>原始モンテカルロ探索<a class="headerlink" href="#ssec-monte-carlo" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ssec-monte-carlo">
+<h1><span class="section-number">4. </span>(ssec:monte-carlo)=<a class="headerlink" href="#ssec-monte-carlo" title="Permalink to this heading">#</a></h1>
+<section id="id8">
+<h2><span class="section-number">4.1. </span>原始モンテカルロ探索<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>ここまでに紹介したミニマックス法やアルファベータ法は、現在の状態に対して何らかの評価値が既に与えられている場合には有効であるものの、このような評価値を<strong>どのように決定すれば最適なのか</strong>は実際のところ難しい。</p>
+<p>特に上記の例では、オセロ盤の状態ではなく、セルに対して評価値を与えているが、実際のオセロにおいて、どのセルにディスクを置けばより勝ちに近づくかは、そのときに既に置かれているディスクに依存するだろう。</p>
+<p>従って、ここまでのセルの評価値に基づく探索には限界があり、<strong>実際に勝てるのかどうか</strong>に基づいた着手を目指す必要があると分かる。しかし、勝ち負けを知るためにはオセロを終局までプレイしなければならず、その過程でどのような手を指すのが良いのかはどう決めれば良いだろうか。</p>
+<p><strong>原始モンテカルロ探索</strong>は、モンテカルロ法、すなわちランダムな着手によって、今のオセロ盤の状態がどの程度、勝ちやすい、負けやすい状態なのかを近似的に推測しながら着手を行う手法である。言い換えれば、どのような手が良いのかは一旦おいておいて、<strong>適当に指しても勝ちやすければ、それが勝ちやすい局面</strong>と見なして着手を決定する。</p>
+<p>今、とあるオセロの局面を考えたとき、着手できる手は通常複数ある。このような複数の手をランダムに指して、どの手がより勝ちに近づくかを推定するのだが、この問題は、まさに<strong>多腕バンディット問題</strong>と同様の問題であることが分かる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">playout</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
@@ -2477,7 +2493,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </ul>
 </section>
 <section id="id9">
-<h2><span class="section-number">3.6. </span>モンテカルロ木探索<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span>モンテカルロ木探索<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UctNode</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -2646,7 +2662,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </ul>
 </section>
 <section id="id10">
-<h2><span class="section-number">3.7. </span>練習問題<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span>練習問題<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>本文中に示した<code class="docutils literal notranslate"><span class="pre">minimax</span></code>関数を改良して、アルファベータ探索を実装せよ。</p></li>
 </ul>
@@ -2697,7 +2713,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>深層強化学習</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>深層強化学習</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2716,6 +2732,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">3. オセロAIの作成</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. オセロゲーム環境</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.1. オセロモジュールのインストール</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.2. オセロモジュールの概要</a></li>
@@ -2724,10 +2741,16 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.2. ランダムな着手</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.3. セル評価値を用いた着手</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-minimax">3.4. ミニマックス探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-monte-carlo">3.5. 原始モンテカルロ探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.6. モンテカルロ木探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.7. 練習問題</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-monte-carlo">4. (ssec:monte-carlo)=</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.1. 原始モンテカルロ探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.2. モンテカルロ木探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.3. 練習問題</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
