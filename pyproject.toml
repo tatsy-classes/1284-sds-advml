@@ -1,23 +1,24 @@
 [tool.poetry]
 name = "sdsadvml"
 version = "0.2.0"
-description = ""
+description = "Advanced machine learning course in Hitotsubashi University"
 authors = ["Tatsuya Yatagawa <tatsy.mail@gmail.com>"]
 readme = "README.md"
+homepage = "https://tatsy.github.io/1284-sds-ml-advanced/"
+repository = "https://github.com/tatsy/1284-sds-ml-advanced.git"
 license = "CC BY-NC-SA 4.0"
 
 exclude = [
-  "lib/*",
-  "data/*",
-  "contents/*",
   "autograding/*",
+  "contents/*",
+  "data/*",
   "dist/*",
   "templates/*",
-  "_static/*",
   "_build/*",
+  "_static/*",
   ".github/*",
-  ".pytest_cache/*",
   ".mypy_cache/*",
+  ".pytest_cache/*",
 ]
 
 [tool.poetry.dependencies]
@@ -43,24 +44,29 @@ pytest = "^7.4.0"
 ffmpeg = "^1.4"
 gymnasium = { extras = ["classic-control"], version = "^0.29.1" }
 opencv-contrib-python = "^4.8.0.76"
-advml = { git = "https://github.com/tatsy/1284-sds-lib-advml", develop = false }
-cothello = { git = "https://github.com/tatsy-classes/cothello.git", develop = false }
+japanize-matplotlib = "^1.1.3"
+colorama = "^0.4.6"
 
 torch = [
-  { markers = "sys_platform == 'win32'", version = "==2.0.0+cpu", source = "pytorch-cpu" },
-  { markers = "sys_platform == 'linux'", version = "==2.0.0+cpu", source = "pytorch-cpu" },
-  { markers = "sys_platform == 'darwin' and (platform_machine == 'arm64' or platform_machine == 'aarch64')", url = "https://download.pytorch.org/whl/cpu/torch-2.0.0-cp39-none-macosx_11_0_arm64.whl" },
-  { markers = "sys_platform == 'darwin' and platform_machine == 'x86_64'", url = "https://download.pytorch.org/whl/cpu/torch-2.0.0-cp39-none-macosx_10_9_x86_64.whl" },
+  { markers = "sys_platform == 'win32'", version = "==2.0.0+cpu", source = "pytorch-cpu", optional = true },
+  { markers = "sys_platform == 'linux'", version = "==2.0.0+cpu", source = "pytorch-cpu", optional = true },
+  { markers = "sys_platform == 'darwin' and (platform_machine == 'arm64' or platform_machine == 'aarch64')", url = "https://download.pytorch.org/whl/cpu/torch-2.0.0-cp39-none-macosx_11_0_arm64.whl", optional = true },
+  { markers = "sys_platform == 'darwin' and platform_machine == 'x86_64'", url = "https://download.pytorch.org/whl/cpu/torch-2.0.0-cp39-none-macosx_10_9_x86_64.whl", optional = true },
 ]
 
 torchvision = [
-  { markers = "sys_platform == 'win32'", version = "==0.15.0+cpu", source = "pytorch-cpu" },
-  { markers = "sys_platform == 'linux'", version = "==0.15.0+cpu", source = "pytorch-cpu" },
-  { markers = "sys_platform == 'darwin' and (platform_machine == 'arm64' or platform_machine == 'aarch64')", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp39-cp39-macosx_11_0_arm64.whl" },
-  { markers = "sys_platform == 'darwin' and platform_machine == 'x86_64'", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp39-cp39-macosx_10_9_x86_64.whl" },
+  { markers = "sys_platform == 'win32'", version = "==0.15.0+cpu", source = "pytorch-cpu", optional = true },
+  { markers = "sys_platform == 'linux'", version = "==0.15.0+cpu", source = "pytorch-cpu", optional = true },
+  { markers = "sys_platform == 'darwin' and (platform_machine == 'arm64' or platform_machine == 'aarch64')", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp39-cp39-macosx_11_0_arm64.whl", optional = true },
+  { markers = "sys_platform == 'darwin' and platform_machine == 'x86_64'", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp39-cp39-macosx_10_9_x86_64.whl", optional = true },
 ]
-japanize-matplotlib = "^1.1.3"
-colorama = "^0.4.6"
+
+advml = { git = "https://github.com/tatsy/1284-sds-lib-advml", optional = true }
+cothello = { git = "https://github.com/tatsy-classes/cothello.git", optional = true }
+
+[tool.poetry.extras]
+"dl" = ["torch", "torchvision"]
+"ext" = ["advml", "cothello"]
 
 [tool.poetry.group.dev.dependencies]
 pyproject-flake8 = "^6.0.0"
