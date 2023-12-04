@@ -34,7 +34,7 @@ jobs:
             ${{ matrix.os }}-jupyter-
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: "16"
 
@@ -51,7 +51,8 @@ jobs:
 
       - name: Install packages
         run: |
-          poetry install --no-interaction
+          poetry install --no-root
+          poetry install --all-extras
 
       - name: Build
         run: poetry run jb build --all .

@@ -61,8 +61,11 @@ torchvision = [
   { markers = "sys_platform == 'darwin' and platform_machine == 'x86_64'", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp39-cp39-macosx_10_9_x86_64.whl" },
 ]
 
-advml = { git = "git@github.com:tatsy/1284-sds-lib-advml" }
-cothello = { git = "git@github.com:tatsy-classes/cothello.git" }
+advml = { path = "modules/advml", optional = true }
+othello = { path = "modules/othello", optional = true }
+
+[tool.poetry.extras]
+modules = ["advml", "othello"]
 
 [tool.poetry.group.dev.dependencies]
 pyproject-flake8 = "^6.0.0"

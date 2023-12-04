@@ -16,3 +16,9 @@
 [submodule "autograding/ogura"]
 	path = autograding/ogura
 	url = https://github.com/tatsy-classes/ogura-autograding.git
+[submodule "modules/advml"]
+	path = modules/advml
+	url = https://github.com/tatsy/1284-sds-lib-advml.git
+[submodule "modules/othello"]
+	path = modules/othello
+	url = https://github.com/tatsy-classes/cothello.git
