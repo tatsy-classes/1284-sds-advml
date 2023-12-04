@@ -592,7 +592,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/1dd4b9e84e840a7bae40d67c406f4e79b01f3f3a9e0abd58bc1a19405d34f8a5.png" src="../../_images/1dd4b9e84e840a7bae40d67c406f4e79b01f3f3a9e0abd58bc1a19405d34f8a5.png" />
+<img alt="../../_images/3b8c10afab3c85fe6ec95b2a1897b9f455776bcefb1eb1d38dce075df844b661.png" src="../../_images/3b8c10afab3c85fe6ec95b2a1897b9f455776bcefb1eb1d38dce075df844b661.png" />
 </div>
 </div>
 <p>この結果から分かる通り、ランダムに回す場合には、得られる報酬は、当たり確率の<span class="pasted-text">0.50</span>程度に張り付いていることが分かる。回し方を工夫することで、この当たり確率を上げることをできるかがポイントとなる。</p>
@@ -642,7 +642,7 @@ document.write(`
 </div>
 <p><strong>結果: 貪欲法</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.861</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.860</span></p></li>
 </ul>
 <p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -686,7 +686,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/b7be546038629eae7517d5b800ed353b1fb122a9977cb10c48d814da2676a860.png" src="../../_images/b7be546038629eae7517d5b800ed353b1fb122a9977cb10c48d814da2676a860.png" />
+<img alt="../../_images/c005eb373552fdf34e291bf7a3510d2472527d7e0a33511a55240c13a9135a7f.png" src="../../_images/c005eb373552fdf34e291bf7a3510d2472527d7e0a33511a55240c13a9135a7f.png" />
 </div>
 </div>
 <p>上記の結果を見てみると、一番当たっている物を回す、という戦略はそれほど悪くはないように見える。実際、最終的な報酬は、最も当たりやすいスロットの当たり確率である<span class="pasted-text">0.90</span>に近づいている。</p>
@@ -738,7 +738,7 @@ document.write(`
 </div>
 <p><strong>結果: <span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.863</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.868</span></p></li>
 </ul>
 <p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -791,7 +791,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/2bee54cb6414b6a05cde9b286ca09bdca48529b6388f13a76983458b19d1ecd8.png" src="../../_images/2bee54cb6414b6a05cde9b286ca09bdca48529b6388f13a76983458b19d1ecd8.png" />
+<img alt="../../_images/0887b16e784827ea3c5531eda24e941301d3c30ebe034076a987cb473ebca557.png" src="../../_images/0887b16e784827ea3c5531eda24e941301d3c30ebe034076a987cb473ebca557.png" />
 </div>
 </div>
 <p>このように、ちょっとした工夫を加えるだけで、かなり早い段階から最大の当たり確率である<span class="pasted-text">0.90</span>に近い当たり確率が得られていることが分かる。</p>
@@ -846,7 +846,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 <p><strong>結果: ソフトマックス探索</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.903</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.899</span></p></li>
 </ul>
 <p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -908,7 +908,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/f3ca0c63105fa21f69c3d19b2ce9ea0e059c101ca64f7a6e1e40ee8867725486.png" src="../../_images/f3ca0c63105fa21f69c3d19b2ce9ea0e059c101ca64f7a6e1e40ee8867725486.png" />
+<img alt="../../_images/c6093e901b4ae75b92e75820e647f36638e1994c297108b1feca36a78199dc48.png" src="../../_images/c6093e901b4ae75b92e75820e647f36638e1994c297108b1feca36a78199dc48.png" />
 </div>
 </div>
 <p>上記の結果から、十分に試行回数が多いときには<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法とソフトマックス法にはそれほど差がないが、ソフトマックス法は<strong>試行回数が少ない場合でも、安定して高い平均報酬が得られている</strong>ことが分かる。</p>
@@ -960,7 +960,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 <p><strong>結果: UCB1</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.890</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.886</span></p></li>
 </ul>
 <p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -1031,7 +1031,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0870ebf875a013a9e0e97d4fc940aec6a4056cdf49e2bbd492f829832c14e9c6.png" src="../../_images/0870ebf875a013a9e0e97d4fc940aec6a4056cdf49e2bbd492f829832c14e9c6.png" />
+<img alt="../../_images/e1dfe8b4729ec9ccad3f8443c867d5bf462269f766bd578edaf09b613dbb655a.png" src="../../_images/e1dfe8b4729ec9ccad3f8443c867d5bf462269f766bd578edaf09b613dbb655a.png" />
 </div>
 </div>
 <p>上記のようにUCB1は多腕バンディット問題のような、状態変化が少ない問題においてはソフトマックス法に劣った結果となっているが、<strong>モデルを決定するパラメータがない</strong>点や、状態変化が起こるモデルへの有用性が高い。</p>
