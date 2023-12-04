@@ -2190,13 +2190,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b14d8b39b1e24427972e171c6092170e", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6d1ecb6969af43fb81df991817dd3070", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: ランダム vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">452</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">511</span></p></li>
-<li><p>引き分け: <span class="output text_plain">37</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">462</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">498</span></p></li>
+<li><p>引き分け: <span class="output text_plain">40</span></p></li>
 </ul>
 <p>このようにランダムな着手では当然ながら、勝率はおよそ五分五分になる。ただし、オセロは後手である白番の方が若干有利であると言われており、ランダムに着手した場合には白番の勝率がやや高くなっている。</p>
 <p>以後は、この着手の方法を改良していき、より高い勝率を目指してみる。以下、利便性のために、ランダムに着手する関数として<code class="docutils literal notranslate"><span class="pre">move_by_random</span></code>を作成しておく。</p>
@@ -2318,13 +2318,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "66e7728a233346b18929fd2f5d224cab", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6617d2800cdb4c39aa5b059f21e5dec6", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: セル評価値 vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">735</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">213</span></p></li>
-<li><p>引き分け: <span class="output text_plain">52</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">728</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">226</span></p></li>
+<li><p>引き分け: <span class="output text_plain">46</span></p></li>
 </ul>
 <p>上記の通り、人間の経験則を導入することでランダムに着手するのと比べて大幅に勝率が上昇していることが分かる。</p>
 </section>
@@ -2426,13 +2426,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "444f77921a6540bbac357ab8ea5793bb", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b8d486140f9e4274995f178cecf5c105", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: ミニマックス vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">825</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">132</span></p></li>
-<li><p>引き分け: <span class="output text_plain">43</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">831</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">135</span></p></li>
+<li><p>引き分け: <span class="output text_plain">34</span></p></li>
 </ul>
 <p>上記の通り、ミニマックス探索で2手先を読むだけで飛躍的に勝率が上昇していることが分かる。</p>
 <p>ただし、ミニマックス探索は再帰的に手を探索するため、より多くの手を読もうとすると、かなり多くの時間を要する。実際、ミニマックス探索は「本来探索する必要のない手」も探索しているがために、余計に計算を行なっている。</p>
@@ -2571,13 +2571,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </details>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cb98acca302a4d97a786b08c55954c73", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "94166f5729074613a5f469b2df90ad04", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: 原始モンテカルロ vs ランダム</strong></p>
 <ul class="simple">
 <li><p>黒番勝ち: <span class="output text_plain">875</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">117</span></p></li>
-<li><p>引き分け: <span class="output text_plain">8</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">123</span></p></li>
+<li><p>引き分け: <span class="output text_plain">2</span></p></li>
 </ul>
 <p>このように、セル評価値のような人間の前提知識に頼ることなく、原始モンテカルロ法により、高い勝率が得られていることが分かる。</p>
 <p>しかし、原始モンテカルロ探索をミニマックス探索と対戦させてみると、まだ、その勝率はミニマックス探索に及ばないことが分かる。人間の事前知識は意外にも侮れない。</p>
@@ -2636,13 +2636,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </details>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "8295eeeb39a0419eb399436cc0366c14", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "02a1bc1633a548a5bb221ec4d888f64e", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: 原始モンテカルロ(黒番) vs ミニマックス (白番)</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">299</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">685</span></p></li>
-<li><p>引き分け: <span class="output text_plain">16</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">320</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">666</span></p></li>
+<li><p>引き分け: <span class="output text_plain">14</span></p></li>
 </ul>
 </section>
 <section id="id9">
@@ -2847,13 +2847,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4efed53c8c284ff6aeae48a6bc4cd7fd", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5bda78dd1cff4c41a253136895a70a3f", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: モンテカルロ木探索 (黒番) vs ミニマックス (白番)</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">470</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">452</span></p></li>
-<li><p>引き分け: <span class="output text_plain">78</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">456</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">463</span></p></li>
+<li><p>引き分け: <span class="output text_plain">81</span></p></li>
 </ul>
 <p>上記の通り、相手の手や、その後に続く自分の手に対してもUCB1値に基づく有望手の推定を行なうことで、ミニマックス法と同程度の強さを実現することができた。上記の例では、1手の探索に用いる手の評価回数を <code class="docutils literal notranslate"><span class="pre">n_trials=20</span></code> としているが、この数を増やすと、着手に時間はかかるようになるが、より勝ちやすい手を選べるようになる。</p>
 </section>
