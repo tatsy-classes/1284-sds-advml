@@ -22,3 +22,6 @@
 [submodule "modules/othello"]
 	path = modules/othello
 	url = https://github.com/tatsy-classes/cothello.git
+[submodule "autograding/othello"]
+	path = autograding/othello
+	url = https://github.com/tatsy-classes/othello-autograding.git
