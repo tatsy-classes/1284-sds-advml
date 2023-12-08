@@ -65,8 +65,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec3/exercise-othello';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
@@ -417,14 +415,20 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q">5.1. Q学習における関数近似</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-learn">5.1.1. scikit-learnを用いた関数近似</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 演習内容</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.1.1. 対戦相手のレベル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.1.2. ローカル環境でのテスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.1.3. 本番環境でのテスト</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.2. 演習内容</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2.1. 対戦相手のレベル</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.2.2. ローカル環境でのテスト</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2.3. 本番環境でのテスト</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2. 課題の進め方</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">5.2.1. ゲームAIの概観</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2.2. 課題の始めに試すこと</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.2.3. より強いAIを作るために</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">ミニマックス系</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">モンテカルロ系</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -442,375 +446,111 @@ document.write(`
 <span id="id1"></span><h1><span class="section-number">5. </span>演習3 - オセロエージェントを作る<a class="headerlink" href="#sec-exercise-othello" title="Permalink to this heading">#</a></h1>
 <p>今回の演習では、前節、<a class="reference internal" href="othello-agent.html#sec-othello-agent"><span class="std std-ref">基本のオセロAI</span></a>の延長として、より強いオセロのAIを作成してみよう。</p>
 <p>前節では、オセロAIの基本であるゲーム木の探索方法について、マス評価値に基づいた<a class="reference internal" href="othello-agent.html#ssec-minimax"><span class="std std-ref">ミニマックス探索</span></a>と、マス評価値に依らない<a class="reference internal" href="othello-agent.html#ssec-monte-carlo"><span class="std std-ref">原始モンテカルロ探索</span></a>について解説した。</p>
-<p>本演習では、これらの延長として、Q関数の<strong>関数近似</strong>に基づいたAIの強化に取り組んでみよう。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">sklearn.exceptions</span> <span class="kn">import</span> <span class="n">ConvergenceWarning</span>
-
-<span class="c1"># グラフの設定</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">150</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;colorblind&quot;</span><span class="p">)</span>
-
-<span class="c1"># シードの固定</span>
-<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">31415</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">31415</span><span class="p">)</span>
-
-<span class="c1"># 一部の警告を無視</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">ConvergenceWarning</span><span class="p">)</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">)</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PYTHONWARNINGS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ignore&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell tag_remove-input docutils container">
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># joblib用のtqdm</span>
-<span class="kn">import</span> <span class="nn">contextlib</span>
-
-<span class="kn">import</span> <span class="nn">joblib</span>
-<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
-
-
-<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
-<span class="k">def</span> <span class="nf">tqdm_joblib</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="p">,</span> <span class="n">miniters</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">smoothing</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-    <span class="k">class</span> <span class="nc">TqdmBatchCompletionCallback</span><span class="p">(</span><span class="n">joblib</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">BatchCompletionCallBack</span><span class="p">):</span>
-        <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-            <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
-            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-    <span class="n">old_batch_callback</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">BatchCompletionCallBack</span>
-    <span class="n">joblib</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">BatchCompletionCallBack</span> <span class="o">=</span> <span class="n">TqdmBatchCompletionCallback</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">yield</span> <span class="n">pbar</span>
-    <span class="k">finally</span><span class="p">:</span>
-        <span class="n">joblib</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">BatchCompletionCallBack</span> <span class="o">=</span> <span class="n">old_batch_callback</span>
-        <span class="n">pbar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<section id="q">
-<h2><span class="section-number">5.1. </span>Q学習における関数近似<a class="headerlink" href="#q" title="Permalink to this heading">#</a></h2>
-<p><strong>関数近似</strong>とは、Q関数<span class="math notranslate nohighlight">\(Q(s, a)\)</span>を何らかの機械学習モデルによって近似する手法を指す。<a class="reference internal" href="q-learning.html#sec-q-learning"><span class="std std-ref">Q学習の基本</span></a>で紹介した手法ではQテーブルを離散化していたが、このような手法は、状態数の多いゲームでは適用が難しい。</p>
-<p>今回、演習で扱うオセロも取り得る盤の状態は、64個のマスについて、黒、白、空の3通りが考えられるから、その状態数は<span class="math notranslate nohighlight">\(3^{64} \approx 3 \times 10^{30}\)</span>にもなる。従って、このような大量の状態数に対して、そのまま離散的なQテーブルを定義することは現実的ではない。</p>
-<p>そこで、状態<span class="math notranslate nohighlight">\(s\)</span>を入力とし、取り得る行動<span class="math notranslate nohighlight">\(a \in \mathcal{A}\)</span>について、行動価値を与えるような関数<span class="math notranslate nohighlight">\(Q(s, a)\)</span>を機械学習モデルによって表現することを考える。</p>
-<p>最も単純な例として、状態を表わすパラメータをベクトル<span class="math notranslate nohighlight">\(\mathbf{s}\)</span>として表わし、この線形変換により、各行動の価値を要素に持つベクトル<span class="math notranslate nohighlight">\(\mathbf{a}\)</span>を求めるようなモデルを考えることができる。</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{a} = \mathbf{W} \mathbf{s} + \mathbf{b}
-\]</div>
-<p>このような線形モデルであれば、Q学習の更新式:</p>
-<div class="math notranslate nohighlight">
-\[
-Q_{\rm new}(s, a) = Q(s,a ) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a') - Q(s, a) \right]
-\]</div>
-<p>の第2項に現れるTD誤差を最小化するようにモデルのパラメータ<span class="math notranslate nohighlight">\(\mathbf{W}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>を最適化すれば良い。</p>
-<section id="scikit-learn">
-<h3><span class="section-number">5.1.1. </span>scikit-learnを用いた関数近似<a class="headerlink" href="#scikit-learn" title="Permalink to this heading">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">othello</span>
-<span class="kn">from</span> <span class="nn">othello</span> <span class="kn">import</span> <span class="n">Move</span><span class="p">,</span> <span class="n">Player</span>
-
-<span class="n">env</span> <span class="o">=</span> <span class="n">othello</span><span class="o">.</span><span class="n">make</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPRegressor</span>
-
-<span class="n">reg</span> <span class="o">=</span> <span class="n">MLPRegressor</span><span class="p">(</span>
-    <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">128</span><span class="p">,),</span>
-    <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">,</span>
-    <span class="n">learning_rate</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span>
-    <span class="n">learning_rate_init</span><span class="o">=</span><span class="mf">1.0e-4</span><span class="p">,</span>
-    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
-    <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
-    <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">warm_start</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">dummy_X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">reg</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">dummy_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">reg</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">reg</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">dummy_X</span><span class="p">,</span> <span class="n">dummy_y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>MLPRegressor(alpha=0.0, batch_size=32, hidden_layer_sizes=(128,),
-             learning_rate_init=0.0001, warm_start=True)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">MLPRegressor</label><div class="sk-toggleable__content"><pre>MLPRegressor(alpha=0.0, batch_size=32, hidden_layer_sizes=(128,),
-             learning_rate_init=0.0001, warm_start=True)</pre></div></div></div></div></div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_move_index</span><span class="p">(</span><span class="n">move</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">is_pass</span><span class="p">():</span>
-        <span class="k">return</span> <span class="mi">64</span>
-    <span class="k">return</span> <span class="n">move</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">+</span> <span class="n">move</span><span class="o">.</span><span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_feature</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
-    <span class="n">b0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">+</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">player</span> <span class="o">*</span> <span class="n">board</span><span class="p">)</span>
-    <span class="n">b1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">player</span> <span class="o">*</span> <span class="n">board</span><span class="p">)</span>
-    <span class="n">feature</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">b0</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">b1</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span>
-    <span class="k">return</span> <span class="n">feature</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;有効手の中からランダムに手を選ぶ&quot;&quot;&quot;</span>
-    <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match</span><span class="p">():</span>
-    <span class="c1"># ゲームのリセット</span>
-    <span class="n">env</span> <span class="o">=</span> <span class="n">othello</span><span class="o">.</span><span class="n">make</span><span class="p">()</span>
-    <span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-
-    <span class="c1"># エピソード開始</span>
-    <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">gameset</span><span class="p">():</span>
-        <span class="c1"># 黒番:</span>
-        <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">BLACK</span><span class="p">:</span>
-            <span class="c1"># セル評価値が最も高い場所に着手する</span>
-            <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">best_move</span> <span class="o">=</span> <span class="kc">None</span>
-                <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-                <span class="n">feature</span> <span class="o">=</span> <span class="n">get_feature</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
-                <span class="n">action_values</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">feature</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
-                    <span class="n">value</span> <span class="o">=</span> <span class="n">action_values</span><span class="p">[</span><span class="n">get_move_index</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
-                    <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">:</span>
-                        <span class="n">best_score</span> <span class="o">=</span> <span class="n">value</span>
-                        <span class="n">best_move</span> <span class="o">=</span> <span class="n">m</span>
-
-                <span class="n">move</span> <span class="o">=</span> <span class="n">best_move</span>
-        <span class="c1"># 白番:</span>
-        <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="n">Player</span><span class="o">.</span><span class="n">WHITE</span><span class="p">:</span>
-            <span class="c1"># 着手可能な手があればランダムに1つを選ぶ</span>
-            <span class="n">move</span> <span class="o">=</span> <span class="n">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">player</span><span class="p">)</span>
-
-        <span class="c1"># 着手による盤の状態の更新</span>
-        <span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">win_score</span><span class="p">(</span><span class="n">n_matches</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
-        <span class="k">with</span> <span class="n">tqdm_joblib</span><span class="p">(</span><span class="n">n_matches</span><span class="p">):</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)(</span>
-                <span class="p">(</span><span class="n">joblib</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">match</span><span class="p">)()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_matches</span><span class="p">)),</span>
-            <span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="n">n_jobs</span><span class="p">)(</span>
-            <span class="p">(</span><span class="n">joblib</span><span class="o">.</span><span class="n">delayed</span><span class="p">(</span><span class="n">match</span><span class="p">)()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_matches</span><span class="p">)),</span>
-        <span class="p">)</span>
-        
-    <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int32&quot;</span><span class="p">)</span>
-    <span class="n">b_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="n">w_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-    <span class="n">draw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">result</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">result</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-
-    <span class="k">return</span> <span class="n">b_win</span> <span class="o">/</span> <span class="n">n_matches</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_episodes</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">n_matches</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.999</span>
-
-<span class="n">e0</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">e1</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">e_scale</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">e0</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_episodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-<span class="n">epsilon</span> <span class="o">=</span> <span class="n">e0</span>
-
-<span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="n">n_episodes</span> <span class="o">*</span> <span class="n">n_epochs</span><span class="p">)</span>
-<span class="n">win</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_episodes</span><span class="p">):</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_matches</span><span class="p">):</span>
-        <span class="n">player</span><span class="p">,</span> <span class="n">board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
-        <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">gameset</span><span class="p">():</span>
-            <span class="c1"># 入力のベクトルは現在の状態</span>
-            <span class="n">feature</span> <span class="o">=</span> <span class="n">get_feature</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
-            <span class="n">action_values</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">feature</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-
-            <span class="c1"># 手を指して状態を進める</span>
-            <span class="c1"># 以下はε-greedy法で手を選ぶ</span>
-            <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">:</span>
-                <span class="n">move</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">best_move</span> <span class="o">=</span> <span class="kc">None</span>
-                <span class="n">best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
-                    <span class="n">value</span> <span class="o">=</span> <span class="n">action_values</span><span class="p">[</span><span class="n">get_move_index</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
-                    <span class="k">if</span> <span class="n">best_score</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">:</span>
-                        <span class="n">best_score</span> <span class="o">=</span> <span class="n">value</span>
-                        <span class="n">best_move</span> <span class="o">=</span> <span class="n">m</span>
-                <span class="n">move</span> <span class="o">=</span> <span class="n">best_move</span>
-
-            <span class="n">next_player</span><span class="p">,</span> <span class="n">next_board</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
-
-            <span class="n">reward</span> <span class="o">=</span> <span class="mf">0.0</span>
-            <span class="k">if</span> <span class="n">env</span><span class="o">.</span><span class="n">gameset</span><span class="p">():</span>
-                <span class="c1"># 対戦結果に応じて報酬(罰)を与える</span>
-                <span class="n">n_now</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-                <span class="n">n_next</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">next_player</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">n_now</span> <span class="o">&gt;</span> <span class="n">n_next</span><span class="p">:</span>
-                    <span class="n">reward</span> <span class="o">=</span> <span class="mf">1.0</span>
-                <span class="k">elif</span> <span class="n">n_now</span> <span class="o">&lt;</span> <span class="n">n_next</span><span class="p">:</span>
-                    <span class="n">reward</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">reward</span> <span class="o">=</span> <span class="mf">0.0</span>
-
-                <span class="c1"># 次の局面はないので, 次局面からの報酬伝搬はない</span>
-                <span class="n">next_best_score</span> <span class="o">=</span> <span class="mf">0.0</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># 相手にとって最も良いQ値を得る</span>
-                <span class="n">next_moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">(</span><span class="n">next_player</span><span class="p">)</span>
-                <span class="n">feature</span> <span class="o">=</span> <span class="n">get_feature</span><span class="p">(</span><span class="n">next_player</span><span class="p">,</span> <span class="n">next_board</span><span class="p">)</span>
-                <span class="n">next_action_values</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="n">feature</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">next_moves</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">next_best_score</span> <span class="o">=</span> <span class="n">next_action_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">next_best_score</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-                    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">next_moves</span><span class="p">:</span>
-                        <span class="n">value</span> <span class="o">=</span> <span class="n">next_action_values</span><span class="p">[</span><span class="n">get_move_index</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
-                        <span class="k">if</span> <span class="n">next_best_score</span> <span class="o">&lt;</span> <span class="n">value</span><span class="p">:</span>
-                            <span class="n">next_best_score</span> <span class="o">=</span> <span class="n">value</span>
-
-                <span class="c1"># 相手の報酬は自分にとっては損なのでマイナスにする</span>
-                <span class="n">next_best_score</span> <span class="o">*=</span> <span class="o">-</span><span class="mf">1.0</span>
-                
-            <span class="c1"># 着手に対応する行動価値を更新</span>
-            <span class="n">action_index</span> <span class="o">=</span> <span class="n">get_move_index</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
-            <span class="n">target</span> <span class="o">=</span> <span class="n">action_values</span>
-            <span class="n">target</span><span class="p">[</span><span class="n">action_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">reward</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">next_best_score</span>
-            <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">target</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-
-            <span class="c1"># 変数を更新</span>
-            <span class="n">player</span> <span class="o">=</span> <span class="n">next_player</span>
-            <span class="n">board</span> <span class="o">=</span> <span class="n">next_board</span>
-
-    <span class="c1"># 1エピソードごとに回帰モデルを更新</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
-        <span class="n">reg</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">partial_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-        <span class="n">pbar</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;win=</span><span class="si">{</span><span class="n">win</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, loss=</span><span class="si">{</span><span class="n">reg</span><span class="o">.</span><span class="n">loss_</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-
-    <span class="n">win</span> <span class="o">=</span> <span class="n">win_score</span><span class="p">()</span>
-    <span class="n">epsilon</span> <span class="o">*=</span> <span class="n">e_scale</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "814d78f659cb445bbf2f959fd4683592", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="cell tag_remove-output docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glue</span><span class="p">(</span><span class="s2">&quot;ql_b_win&quot;</span><span class="p">,</span> <span class="n">b_win</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;ql_w_win&quot;</span><span class="p">,</span> <span class="n">w_win</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;ql_draw&quot;</span><span class="p">,</span> <span class="n">draw</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>対局結果: Q学習 vs ランダム</strong></p>
-<ul class="simple">
-<li><p>黒番勝ち: </p></li>
-<li><p>白番勝ち: </p></li>
-<li><p>引き分け: </p></li>
-</ul>
-</section>
-</section>
+<p>今回の演習では、これらにいくつかの改良を加えて、より強いオセロAIの実現を目指そう。</p>
 <section id="id2">
-<h2><span class="section-number">5.2. </span>演習内容<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>今回の演習では以下のようなオセロをプレイするエージェントのクラスを実装する。ただし、基本的にはオセロ環境が渡されてくる<code class="docutils literal notranslate"><span class="pre">Agent.play</span></code>だけを編集すれば良い。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<h2><span class="section-number">5.1. </span>演習内容<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>今回の演習では以下のようなオセロプレイヤーのクラスを実装し、レベル別のオセロAIに対して7割以上の勝率を目指す。以下が実装すべき<code class="docutils literal notranslate"><span class="pre">MyPlayer</span></code>クラスのひな形である。複雑なAIを実装しない限りは、はオセロ環境が渡されてくる<code class="docutils literal notranslate"><span class="pre">MyPlayer</span></code>クラスの<code class="docutils literal notranslate"><span class="pre">play</span></code>関数のみを編集すれば十分だろう。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">from</span> <span class="nn">othello</span> <span class="kn">import</span> <span class="n">Env</span><span class="p">,</span> <span class="n">Move</span><span class="p">,</span> <span class="n">Player</span>
+<span class="kn">from</span> <span class="nn">players.base</span> <span class="kn">import</span> <span class="n">BasePlayer</span>
 
 
-<span class="k">class</span> <span class="nc">Agent</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">MyPlayer</span><span class="p">(</span><span class="n">BasePlayer</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
 
-    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Move</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        この関数を更新、以下はランダムに着手する例</span>
+<span class="sd">        ゲーム開始時に行いたい処理を記述</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">env</span><span class="p">:</span> <span class="n">Env</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Move</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        この関数を主に更新する、以下はランダムに着手する例</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">Move</span><span class="o">.</span><span class="n">Pass</span><span class="p">(</span><span class="n">player</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+<p>より詳細な課題作成の流れについては以下の説明に従うと入手できるテンプレート・レポジトリの<a class="reference external" href="https://github.com/tatsy-classes/othello-template">README.md</a>に従うこと。</p>
 <section id="id3">
-<h3><span class="section-number">5.2.1. </span>対戦相手のレベル<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.1. </span>対戦相手のレベル<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>対戦相手の詳細な実装については公開しないが、概ね以下の方針に従った実装になっている。</p>
 <ul class="simple">
-<li><p><strong>レベル1:</strong> セル評価値を用いたアルファベータ探索で2手先まで読むAI</p></li>
-<li><p><strong>レベル2:</strong> 上記のscikit-learnを用いた関数近似によって、次の手の価値を評価するAI</p></li>
-<li><p><strong>レベル3:</strong> Q関数の学習方法を改良し、さらにQ関数に基づいて2手先まで読むAI</p></li>
+<li><p><strong>レベル1:</strong> 盤面の評価値を改良したミニマックス探索に基づくAI</p></li>
+<li><p><strong>レベル2:</strong> アルファ・ベータ探索により、より多くの手を読むAI</p></li>
+<li><p><strong>レベル3:</strong> モンテカルロ木探索において過去の計算の再利用により、探索を効率化したAI</p></li>
 </ul>
+<p>レベル1, 2に関しては盤面の評価値をベースとしたAI、レベル3は盤面の評価値を用いず、プレイアウトとモンテカルロ木探索に基づくAIとなっている。</p>
 </section>
 <section id="id4">
-<h3><span class="section-number">5.2.2. </span>ローカル環境でのテスト<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.2. </span>ローカル環境でのテスト<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>本演習の採点は<a class="reference external" href="https://classroom.github.com/classrooms">GitHub Classroom</a>を使って行う。講義中で演習用のClassroomのURLを指示するので、そのURLをブラウザで開き、テンプレート・レポジトリを自分のGitHubアカウントと紐付けること。</p>
+<p>その後、レポジトリをcloneして、ローカル環境で<code class="docutils literal notranslate"><span class="pre">player.py</span></code>を編集してテストを実施する。テンプレート・レポジトリには、ランダムに着手するAIである<code class="docutils literal notranslate"><span class="pre">randomize.py</span></code>とミニマックス探索に基づく<code class="docutils literal notranslate"><span class="pre">minimax.py</span></code>が提供されているので、それらとテストプレイすることができる。</p>
+<p>テストプレイには<code class="docutils literal notranslate"><span class="pre">pytest</span></code>を用いる。テンプレート・レポジトリのフォルダをターミナル環境で開き、以下のコマンドを実行する。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--path<span class="w"> </span><span class="s2">&quot;players/randomize.py&quot;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">players/randomize.py</span></code>の部分を別のプレイヤーが実装されたファイル名に変更すると、そのプレイヤーに対してテストを実行される。</p>
+<p>また<code class="docutils literal notranslate"><span class="pre">pytest</span></code>とは別に、直接、対戦環境を呼び出して、任意の2つのAIを対戦させることもできる。自分の作成したAIの強さを確かめるのに利用してほしい。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>match.py<span class="w"> </span>--file1<span class="w"> </span><span class="s2">&quot;player1.py&quot;</span><span class="w"> </span>--file2<span class="w"> </span><span class="s2">&quot;player2.py&quot;</span><span class="w"> </span>-n<span class="w"> </span><span class="m">100</span><span class="w"> </span>--verbose
+</pre></div>
+</div>
+<p>上記のコマンドで<code class="docutils literal notranslate"><span class="pre">player1.py</span></code>ならびに<code class="docutils literal notranslate"><span class="pre">player2.py</span></code>はAIを実装したPythonのスクリプトファイルに変更すること。また<code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">100</span></code>のように数字をしていすると、100回テスト対戦が行われる。最後の<code class="docutils literal notranslate"><span class="pre">--verbose</span></code>フラグは、対戦中の付加情報を表示するためのフラグである。</p>
 </section>
 <section id="id5">
-<h3><span class="section-number">5.2.3. </span>本番環境でのテスト<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">5.1.3. </span>本番環境でのテスト<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>Github Classroomでは、演習用のレポジトリにコードをプッシュする度にテストが実行される。本番環境では、</p>
+<p>本番環境では、各レベルのAIと合計20回対戦する。この結果、勝率が7割を超えていれば、そのレベルはクリアとなる。各レベルをクリアすると<strong>レベル×10点</strong>が与えられる。</p>
+<p>この際、20回の対戦にレベル1なら1分、レベル2なら2分、レベル3なら3分以上経過すると、タイムアウトになるので、なるべく早く手を考えるAIを作成することに留意してほしい。</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>ただし、<strong>実行に用いられる乱数は毎回変化する</strong>仕様にしているので、各レベルのAIに確実に7割以上の勝率を上げられるものを作らないと点数が下がる可能性があることに注意。</p>
+</div>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">5.2. </span>課題の進め方<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<section id="ai">
+<h3><span class="section-number">5.2.1. </span>ゲームAIの概観<a class="headerlink" href="#ai" title="Permalink to this heading">#</a></h3>
+<p>前節、<a class="reference internal" href="othello-agent.html#sec-othello-agent"><span class="std std-ref">基本のオセロAI</span></a>では</p>
+<ul class="simple">
+<li><p>人間の事前知識に基づいたセルの評価に基づく手法 (ミニマックス探索など)</p></li>
+<li><p>人間の事前知識に依らない手法 (モンテカルロ木探索など)</p></li>
+</ul>
+<p>の2タイプのAIについて紹介した。</p>
+<p>オセロゲームの場合、任意の盤状態において着手できる合法手は10前後であるため、手の探索が十分に高速なAIであれば、アルファ・ベータ探索のような枝刈り全探索に基づく手法により、かなり強いAIを作ることができる。また、アルファ・ベータ探索に用いる盤の評価値についても、前節で紹介したセルの評価値に加えて、相手が着手できる合法手の数 (少ない方が良い)や、確定石の数を含めることが考えられる。</p>
+<p>モンテカルロ木探索は、オセロよりも着手できる合法手が多いゲーム (将棋や囲碁など)で、そもそも全ての手を枝刈りしたとしても探索することが難しい場合に有効な手法である。また、近年、囲碁AIとして注目を集めたAlphaGoや、その発展形であるAlphaZeroは、モンテカルロ木探索と深層学習による着手の選択、盤面の評価を組み合わせた手法である。</p>
+<p>ただし、繰り返しになるがオセロゲームは合法手の数が相対的に少ないため、着手の選択までを深層学習でやらせるべきかは悩ましいところである。実際、将棋などのゲームでは深層学習ベースの手法は形勢の判断力には優れるものの、特に最終版での手の選択にはやや劣るという側面もある。</p>
+<p>これら2つのタイプのAIの側面を考慮した上で、どのようなAIを実装するのかを検討してみてほしい。</p>
+</section>
+<section id="id7">
+<h3><span class="section-number">5.2.2. </span>課題の始めに試すこと<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<p>まずは、初期状態で与えられている「ランダムに着手するAI」で各レベル、どのくらいの勝率が得られるかをチェックしておこう。</p>
+<p>その上で、テンプレート・レポジトリにはミニマックス探索に基づくAIが与えられているので、これを改良して、より強いAIを作っていくのが良いだろう。</p>
+<p>また、前節でモンテカルロ木探索に基づく着手の手法は紹介済みであるので、このコードを<code class="docutils literal notranslate"><span class="pre">MyPlayer</span></code>に移植するだけでも、それなりの強さのAIを作ることができるだろう。</p>
+</section>
+<section id="id8">
+<h3><span class="section-number">5.2.3. </span>より強いAIを作るために<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p>今回の演習では20回のテストプレイにかかる時間が最大でも3分以内とかなり短い。GitHub Actionsの実行環境では、それほど早いCPUを使うことはできないので、単にミニマックス探索の探索の深さを増やす、などの方法では簡単にタイムアウトしてしまう。</p>
+<p>よって、ミニマックス系かモンテカルロ系のどちらについても、<strong>効率的により良い手を見つけるにはどうすれば良いか</strong>を考えなければならない。</p>
+<section id="id9">
+<h4>ミニマックス系<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<p><strong>ミニマックス系</strong>に関しては、まず、<strong>アルファ・ベータ探索による枝刈り</strong>を導入すべきだろう。おそらく、同じ計算時間で1手は多く読むことができるはずである (盤面の候補は指数関数的に増えるので、これでもかなり効率化されている)。また、アルファ・ベータ探索による枝刈りよりも効率的 (だが複雑)な枝刈りの手法として<a class="reference external" href="https://en.wikipedia.org/wiki/Principal_variation_search">NegaScout法</a>などもあるので、興味のある読者は実装に挑戦してみてほしい。</p>
+<p>また、アルファ・ベータ探索は、枝刈りにより処理を効率化する(つまり、それ以上評価を進めても、最大評価とならない盤面の探索をしない)手法であるため、最初の方の探索で高い評価値が得られる手順が見つかれば、相当数の盤面を調べなくて済む。この考えに基づけば、ミニマックス探索の実装になるように合法手を得られた順に調べるのは効率的とは言えない。この探索順序を工夫することで、より効率的な手の探索が行えるはずだ。</p>
+<p>加えて、ミニマックス系は読みの深さが深くなればなるほど強くなる一方で、多くの盤面を評価しようとすると、計算上が指数関数的に大きくなるという問題がある。だが、オセロゲームは終局の直前になると、そもそも石を置ける場所が少なくなるため、仮に全探索をしたとしても、検討すべき盤面の数が飛躍的に減っていく。従って、終盤、空マスの数が少なくなったら、読みの深さを深くする、などの方法が考えられるだろう。</p>
+<p>最後に、より良い手を見つけるために、セルの評価値に基づく盤面の評価を改善することが考えられる。オセロには、相手が着手できなければパスになるというルールがあり、また確定石と呼ばれる確実に自分の色の石になるマスが決まるという特性がある。これらの特性を考慮すると、より相手にとっての合法手が少なく、また確定石の数がより多くなるような手を優先的に調べるのが良さそうに思える。ただし、確定石の数を調べるには、それなりに計算コストがかかるため、角やエッジに探索範囲を絞るなどの工夫が必要になるだろう。</p>
+</section>
+<section id="id10">
+<h4>モンテカルロ系<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
+<p><strong>モンテカルロ系</strong>に関して、前節のモンテカルロ木探索に基づく手法には1つ大きく改善すべき点がある。</p>
+<p>前節の実装では、新しい手を考える時に、その都度新しくUCTのノードを作り、その子ノードに対する評価していた。しかし、多くの場合、モンテカルロ木探索で着手した結果は、それほど悪い手ではなく、探索中には相手の手も考慮しているため、相手が探索中に考えた手を指してくる可能性が高い。その意味で、過去の探索結果を捨ててしまうような上記の実装は効率的とは言えない。</p>
+<p>そこで、過去の探索において探索して2手先の盤に対応するノードを着手時にキャッシュしておき、次に手番が回ってきたときに、キャッシュしたノードの中に対応するノードが見つかれば、そこから探索を再開する、という方法が考えられる。これにより、仮に1回の着手時に行うプレイアウトの回数が100回などに制限されていたとしても、実際にはより多くの回数プレイアウトを行ったのと同等の評価結果を得ることができる。</p>
+<p>ただし、裏を返せば (オセロではそれほど効果的ではないが)、モンテカルロ系のAIは予想外の手を指されると、一から盤の評価をやり直さなければならなくなるため、あえてその弱点を突くような実装にするという工夫をいれることもできるかもしれない。</p>
+<p>また、オセロは60手で確実にゲームが終わるためプレイアウトの効率は比較的良いものの、終局までプレイアウトをしないと盤面の評価値を更新できないことはマイナスとも言える。そこでプレイアウトを終局まで行う代わりに、その局面がどのくらい勝ちやすい局面なのかを機械学習する方法が考えられる。これは盤面の状態を入力とし、スカラの評価値を返すような機械学習モデルを作成すれば良いため、少しの頑張りで導入できるだろう。</p>
+<p>最後に、上記の盤面の勝ちやすさの判定に加えて、どの手に着手するかも機械学習によって決定する、ということもできる。これはAlphaZeroが使用している方法で、モンテカルロ木探索と深層学習器による盤面の評価、着手の決定を組み合わせてプレイアウトを区入り返し、より良い評価関数と着手方策を強化学習的に得る手法である。このような考え方はミニマックス系にも導入可能ではあるが、学習の時点では純粋にゲームの勝ち負けだけを考慮するモンテカルロ系の手法を用いた方がバイアスが少ないAIが得られるだろう (が、それがイコール強いかどうかは別問題)。</p>
+</section>
 </section>
 </section>
 </section>
@@ -878,14 +618,20 @@ Q_{\rm new}(s, a) = Q(s,a ) + \alpha \left[ R(s, a) + \gamma \max_{a'} Q(s', a')
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q">5.1. Q学習における関数近似</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-learn">5.1.1. scikit-learnを用いた関数近似</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.1. 演習内容</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.1.1. 対戦相手のレベル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.1.2. ローカル環境でのテスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.1.3. 本番環境でのテスト</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5.2. 演習内容</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5.2.1. 対戦相手のレベル</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5.2.2. ローカル環境でのテスト</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">5.2.3. 本番環境でのテスト</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.2. 課題の進め方</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">5.2.1. ゲームAIの概観</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2.2. 課題の始めに試すこと</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.2.3. より強いAIを作るために</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">ミニマックス系</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">モンテカルロ系</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

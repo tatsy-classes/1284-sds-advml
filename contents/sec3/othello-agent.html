@@ -418,16 +418,20 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. オセロゲーム環境</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.1. オセロモジュールのインストール</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.2. オセロモジュールの概要</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.1. オセロモジュールのインストール</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">各自の計算機でビルドする方法 (推奨)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wheel">Wheelからインストールする方法</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.2. ランダムな着手</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.3. セル評価値を用いた着手</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1.2. オセロモジュールの概要</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2. ランダムな着手</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.3. セル評価値を用いた着手</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-minimax">3.4. ミニマックス探索</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-monte-carlo">3.5. 原始モンテカルロ探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.6. モンテカルロ木探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.7. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.6. モンテカルロ木探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.7. 練習問題</a></li>
 </ul>
             </nav>
         </div>
@@ -441,10 +445,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ai">
 <span id="sec-othello-agent"></span><h1><span class="section-number">3. </span>オセロAIの作成<a class="headerlink" href="#ai" title="Permalink to this heading">#</a></h1>
-<p>ここからは、より高度な強化学習の対象としてオセロを取り扱う。ご存じの通り、オセロは(諸説あるものの)日本で発祥した「はさみ碁」の一種で、白と黒のディスクを8×8の盤の上に並べ、同色で挟まれたディスクを裏返すことで、より多くのマスを獲得した方が勝利するというゲームである。</p>
+<p>ここからは、より高度な強化学習の対象としてオセロを取り扱う。ご存じの通り、オセロは(諸説あるものの)日本で発祥した「はさみ碁」の一種で、白と黒の石を8×8の盤の上に並べ、同色で挟まれた石を裏返すことで、より多くのマスを獲得した方が勝利するというゲームである。</p>
 <div class="admonition note">
 <p class="admonition-title">注釈</p>
-<p>オセロは日本以外ではリバーシのように呼ばれることがある。リバーシは初期状態として、ディスクが置かれていない状態からスタートするが、オセロは盤の中央に白黒2枚ずつのディスクを置いた状態からスタートする、という違いがある。</p>
+<p>オセロというゲーム名はメガハウス社の登録商標であり、日本以外ではリバーシのように呼ばれることがある。リバーシは初期状態として、石が置かれていない状態からスタートするが、オセロは盤の中央に白黒2枚ずつの石を置いた状態からスタートする、という違いがある。</p>
 <p>参考: <a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%AA%E3%82%BB%E3%83%AD_(%E3%83%9C%E3%83%BC%E3%83%89%E3%82%B2%E3%83%BC%E3%83%A0)">オセロ（ボードゲーム）- Wikipedia</a></p>
 </div>
 <hr class="docutils" />
@@ -547,20 +551,45 @@ document.write(`
 <h2><span class="section-number">3.1. </span>オセロゲーム環境<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <section id="id2">
 <h3><span class="section-number">3.1.1. </span>オセロモジュールのインストール<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<p>今回は、講義用に用意したオセロ用のゲーム環境を用いる。ゲーム環境用のモジュールは以下のURLからダウンロードできる。</p>
-<p><a class="github reference external" href="https://github.com/tatsy-classes/cothello/releases/">tatsy-classes/cothello</a></p>
-<p>このURLにはPython3.9用のインストールパッケージ (Wheel)がOSごとに用意されている。Windows, Linuxの場合はそれぞれ対応するものを、MacOSの場合はM1, M2等のCPUを持つモデルなら<code class="docutils literal notranslate"><span class="pre">..._arm64.whl</span></code>、そうでない場合は<code class="docutils literal notranslate"><span class="pre">..._x86_64.whl</span></code>をダウンロードする。</p>
-<p>ダウンロード後、Anacondaの仮想環境を<code class="docutils literal notranslate"><span class="pre">advml</span></code>等の本資料用のものに切り替えた後、WindowsならコマンドプロンプトかPowerShell、Macならターミナルを開いて、以下のコマンドでパッケージをインストールする。</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;xxx&quot;の部分は自分がダウンロードしたWheelのファイル名に読み替えること</span>
-pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
+<p>今回は、講義用に用意したオセロ用のゲーム環境を用いる。ゲーム環境用のモジュールは以下のGitHubレポジトリに公開されている。</p>
+<p><a class="github reference external" href="https://github.com/tatsy-classes/cothello/">tatsy-classes/cothello</a></p>
+<p>今回は各自の計算機上でビルドを行うインストール方法とwheelと呼ばれるビルド済みのパッケージを用いる方法を2種類を紹介する。</p>
+<section id="id3">
+<h4>各自の計算機でビルドする方法 (推奨)<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<p>上記のモジュールはPythonをC/C++により拡張するためのソフトウェアであるCythonを用いて書かれている。CythonのビルドにはC/C++のコンパイラが必要なため、これらを予め各自の計算機にインストールしておく必要がある。</p>
+<p><strong>Windows</strong>であれば、<a class="reference external" href="https://www.google.com/search?q=visual+studio+build+tools+install">Visual Studio Build Tools</a>をインストールする。ウェブ検索してインストーラを取得したら、インストール時に「C++によるデスクトップ開発」(Desktop development with C++)というワークロードを選ぶのを忘れないようにすること。</p>
+<p><strong>MacOS</strong>であれば<a class="reference external" href="https://www.google.com/search?q=xcode+install">Xcode</a>をインストールすればC/C++のコンパイラが一緒にインストールされる。しかし、Xcodeは開発環境そのものも含むため、おすすめとして、<a class="reference external" href="https://brew.sh/">Homebrew</a>をインストールし、その過程でインストールされるXcode Command Line Toolsを用いるのが良い。</p>
+<p><strong>Linux</strong>の場合であれば、別段コンパイラのインストールは不要だが、この機会にgccやclangなどのコンパイラをアップデートしておくと良い (そもそもLinuxを使っている人に、このアドバイスは不要かもしれないが...)。</p>
+<p>上記のコンパイラのインストールが完了したら、Anacondaの仮想環境を<code class="docutils literal notranslate"><span class="pre">advml</span></code>や<code class="docutils literal notranslate"><span class="pre">othello</span></code>等の本資料用のものに切り替えた後、Pipを用いてインストールを行う。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/tatsy-classes/cothello.git
 </pre></div>
 </div>
+<p>上記のコンパイラのインストールに問題がなければ、自動的にソースコードがダウンロードされた後にビルドとインストールが実行される。</p>
 </section>
-<section id="id3">
-<h3><span class="section-number">3.1.2. </span>オセロモジュールの概要<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="wheel">
+<h4>Wheelからインストールする方法<a class="headerlink" href="#wheel" title="Permalink to this heading">#</a></h4>
+<p>予め、いくつかのOS上で作成したビルド済みのモジュールであるwheelは以下のURLからダウンロードできる。</p>
+<p><a class="github reference external" href="https://github.com/tatsy-classes/cothello/releases/">tatsy-classes/cothello</a></p>
+<p>このURLにはPython 3.9, 3.10, 3.11用のインストールパッケージ (Wheel)がOSごとに用意されている。Windows, Linuxの場合はそれぞれ対応する<code class="docutils literal notranslate"><span class="pre">xxxxxx-win_amd64.whl</span></code>と<code class="docutils literal notranslate"><span class="pre">xxxxxx-manylinux_2_35_x86_64.whl</span></code>をダウンロードする。</p>
+<p>MacOSの場合はM1/M2等のCPU (ARM製)を持つモデルなら<code class="docutils literal notranslate"><span class="pre">xxxxxx-macos_14_0_arm64.whl</span></code>、そうでない場合 (Intel製)は<code class="docutils literal notranslate"><span class="pre">xxxxxx-macos_12_0_x86_64.whl</span></code>をダウンロードする (どちらか分からない場合は「このMacについて」の「チップ」を確認)。</p>
+<p>ダウンロード後、Anacondaの仮想環境を<code class="docutils literal notranslate"><span class="pre">advml</span></code>や<code class="docutils literal notranslate"><span class="pre">othello</span></code>等の本資料用のものに切り替えた後、WindowsならコマンドプロンプトかPowerShell、Macならターミナルを開いて、以下のコマンドでパッケージをインストールする。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># &quot;xxxxxx&quot;の部分は自分がダウンロードしたWheelのファイル名に読み替えること</span>
+pip<span class="w"> </span>install<span class="w"> </span>othello-xxxxxx.whl
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">自分でビルドするか、ビルド済みを使うか</p>
+<p>Pythonに限らず、実行環境を用いるインタプリタ言語の場合、その速度不足を補うために、処理の一部をより低レベルなプログラミング言語であるC/C++で作成することは多い。しかし、C/C++に依存するライブラリを個々の計算機上にインストールするにはビルドというやっかいな作業が必要になる。とはいえ、上記の方法で各OSにあったコンパイラをインストール済みであれば、多くのモジュールは特に苦労することなくインストールできるだろう。</p>
+<p>一方でビルド済みのパッケージを使うことの利点はなんと言っても、個々の計算機にビルドするための環境 (コンパイラ等)をインストールしなくて良いということである。Anaconda等でインストールされるモジュールは、実は環境に合わせて事前にビルドされたものであり、その事前ビルドされたパッケージが存在しない場合 (有名ライブラリでは少ないが)、インストールができない、という問題が生じることがある。</p>
+<p>単なるユーザとして一生を終えるつもりなら、自分でビルドする必要はないかもしれないが、世界中には研究レベルで、自分でビルドしなければ使えないようなライブラリが宝の山のごとく存在している。ぜひ、この機会に、自分でビルドする道の第一歩を踏み出してほしい。</p>
+</div>
+</section>
+</section>
+<section id="id4">
+<h3><span class="section-number">3.1.2. </span>オセロモジュールの概要<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>このモジュールには大きく分けて、3つのクラスが定義されている。</p>
-<p><strong>Env</strong>はオセロゲームを取り扱う環境で、有効手の列挙や盤の状態の更新などの関数を提供する。ただし、<code class="docutils literal notranslate"><span class="pre">Env</span></code>クラスは直接インスタンス化する代わりに、<code class="docutils literal notranslate"><span class="pre">gymnasium</span></code>と同様に環境作成用の<code class="docutils literal notranslate"><span class="pre">make</span></code>関数が用意されているので、こちらを用いる。</p>
-<p><strong>Move</strong>はオセロゲームにおける「手」を表わすクラスで、現在のプレイヤーとディスクを置く場所を格納している。</p>
+<p><strong>Env</strong>はオセロゲームを取り扱う環境で、有効手の列挙や盤の状態の更新などの関数を提供する。ただし、<code class="docutils literal notranslate"><span class="pre">Env</span></code>クラスは直接インスタンス化する代わりに、<code class="docutils literal notranslate"><span class="pre">gymnasium</span></code>と同様に環境作成用の<code class="docutils literal notranslate"><span class="pre">make</span></code>関数が用意されているので、こちらを用いると良い。</p>
+<p><strong>Move</strong>はオセロゲームにおける「手」を表わすクラスで、現在のプレイヤーと石を置く場所を格納している。</p>
 <p><strong>Player</strong>は厳密には列挙型として定義されていて、プレイヤーが黒番なのか白番なのかに加えて、次のプレイヤーに手渡しする関数などが提供されている。</p>
 <p>まずは、これらをモジュールからインポートして、ゲーム環境を作成してみる。</p>
 <div class="cell docutils container">
@@ -584,7 +613,7 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 <img alt="../../_images/7b54cfcbf144337ab41688db015d63096b75c0f117e225f9e5d2df7cc26f80dd.png" src="../../_images/7b54cfcbf144337ab41688db015d63096b75c0f117e225f9e5d2df7cc26f80dd.png" />
 </div>
 </div>
-<p>上記のように、オセロ環境は初期状態ではディスクが配置されていない。ここでも<code class="docutils literal notranslate"><span class="pre">gymnasium</span></code>と同様に<code class="docutils literal notranslate"><span class="pre">reset</span></code>関数を呼び出すことで、ゲーム環境が初期化される。</p>
+<p>上記のように、オセロ環境は初期状態では石が配置されていない。ここでも<code class="docutils literal notranslate"><span class="pre">gymnasium</span></code>と同様に<code class="docutils literal notranslate"><span class="pre">reset</span></code>関数を呼び出すことで、ゲーム環境が初期化される。</p>
 <p>なお、オセロのプレイヤーや盤の情報などは全て変数<code class="docutils literal notranslate"><span class="pre">env</span></code>の中に<code class="docutils literal notranslate"><span class="pre">env.player</span></code>ならびに<code class="docutils literal notranslate"><span class="pre">env.board</span></code>として格納されており、<code class="docutils literal notranslate"><span class="pre">gymnasium</span></code>と異なっているので注意すること。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -637,8 +666,8 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 </div>
 </section>
 </section>
-<section id="id4">
-<h2><span class="section-number">3.2. </span>ランダムな着手<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<section id="id5">
+<h2><span class="section-number">3.2. </span>ランダムな着手<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p>まずは、オセロ環境の仕様を理解するために、白番、黒番ともにランダムに行動させて、どのように状態が変化するかを見てみよう。</p>
 <p><code class="docutils literal notranslate"><span class="pre">env</span></code>には、現在の盤の状態で取ることができる「有効手」の配列を取得する<code class="docutils literal notranslate"><span class="pre">legal_moves</span></code>関数が提供されている。</p>
 <div class="cell docutils container">
@@ -654,7 +683,7 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 </div>
 </div>
 </div>
-<p>上記の出力から、黒番が3行5列、4行6列、5行3列、6行4列の4箇所のいずれかにディスクを置くことができることが分かる。</p>
+<p>上記の出力から、黒番が3行5列、4行6列、5行3列、6行4列の4箇所のいずれかに石を置くことができることが分かる。</p>
 <p>着手を決定したら、<code class="docutils literal notranslate"><span class="pre">env.update</span></code>関数に手を表す変数を渡すと盤の状態が更新される。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -694,7 +723,7 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">env</span></code>のJupyter Notebook環境における表示により、黒番が3行5列にディスクを置いたことで、着手したセルがハイライトされて、かつ、盤の状態が正しく更新されていることが確認できる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">env</span></code>のJupyter Notebook環境における表示により、黒番が3行5列に石を置いたことで、着手したセルがハイライトされて、かつ、盤の状態が正しく更新されていることが確認できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span>
@@ -705,7 +734,7 @@ pip<span class="w"> </span>install<span class="w"> </span>xxx.whl
 <img alt="../../_images/2e4b9dcbf11be24c7c5ed1a92ccce422c8da56facedf2e97a2cab9097a7db981.png" src="../../_images/2e4b9dcbf11be24c7c5ed1a92ccce422c8da56facedf2e97a2cab9097a7db981.png" />
 </div>
 </div>
-<p>オセロはルール上、着手可能な手がない、すなわちどこにディスクを置いても裏返せる相手方のディスクが存在しない時にはパスをすることになる。</p>
+<p>オセロはルール上、着手可能な手がない、すなわちどこに石を置いても裏返せる相手方の石が存在しない時にはパスをすることになる。</p>
 <p>有効手が存在しない時には<code class="docutils literal notranslate"><span class="pre">legal_moves</span></code>が長さが1でパスを表す手を含む配列を返してくる。その手 (<code class="docutils literal notranslate"><span class="pre">Move</span></code>)がパスの手かどうかは<code class="docutils literal notranslate"><span class="pre">move.is_pass()</span></code>で判定できる。</p>
 <p>これらを踏まえて、黒番、白番ともにランダムに着手させて、盤の状態変化を確認する。</p>
 <div class="cell docutils container">
@@ -2191,13 +2220,13 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cdd67e2209314a67affa2f6e8a1be762", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2059708b501d4f3496056cdbdc20a520", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <p><strong>対局結果: ランダム vs ランダム</strong></p>
 <ul class="simple">
-<li><p>黒番勝ち: <span class="output text_plain">466</span></p></li>
-<li><p>白番勝ち: <span class="output text_plain">494</span></p></li>
-<li><p>引き分け: <span class="output text_plain">40</span></p></li>
+<li><p>黒番勝ち: <span class="output text_plain">449</span></p></li>
+<li><p>白番勝ち: <span class="output text_plain">514</span></p></li>
+<li><p>引き分け: <span class="output text_plain">37</span></p></li>
 </ul>
 <p>このようにランダムな着手では当然ながら、勝率はおよそ五分五分になる。ただし、オセロは後手である白番の方が若干有利であると言われており、ランダムに着手した場合には白番の勝率がやや高くなっている。</p>
 <p>以後は、この着手の方法を改良していき、より高い勝率を目指してみる。以下、利便性のために、ランダムに着手する関数として<code class="docutils literal notranslate"><span class="pre">move_by_random</span></code>を作成しておく。</p>
@@ -2214,16 +2243,16 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <div class="note admonition">
 <p class="admonition-title">オセロが解けた？</p>
 <p>2023年10月に「Othello is Solved」という衝撃的なタイトルの論文が、プレプリント投稿サイトのarXivに公開された。この論文は、オセロゲームが「弱解決」したことを示している論文で、「弱解決」とは両対局者が常に最善の手を指し続けると、結果がどうなるかが解析できたことを示す。</p>
-<p>人間の体感としては後手の方が(最後にディスクをおけるという意味で)若干有利のように感じるが、この論文によれば、オセロは、<strong>両者が最善手を指し続けると引き分けになる</strong>そうだ。興味のある読者は是非、以下の原著を読んでみてほしい。</p>
+<p>人間の体感としては後手の方が(最後に石をおけるという意味で)若干有利のように感じるが、この論文によれば、オセロは、<strong>両者が最善手を指し続けると引き分けになる</strong>そうだ。興味のある読者は是非、以下の原著を読んでみてほしい。</p>
 <p>Othello is Solved: <a class="reference external" href="https://arxiv.org/abs/2310.19387">https://arxiv.org/abs/2310.19387</a></p>
 </div>
 </section>
-<section id="id5">
-<h2><span class="section-number">3.3. </span>セル評価値を用いた着手<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h2><span class="section-number">3.3. </span>セル評価値を用いた着手<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>人間(の初心者)がオセロを指すときに最初に覚えることと言えば、角が取れるように着手を調整する、ということだろう。</p>
-<p>角のセルは一度ディスクを置いてしまえば、それ以降、相手に取られることがなく、また縁の領域にあるディスクを一度に多くひっくり返すこともできるため、角にディスクを置くことができれば有利になることが多い。</p>
-<p>一方で、角のセルに隣接するセルにディスクを置くと、相手に角を取られる可能性が出てくるので、角に隣接するセルにはできる限りディスクを置かない方が良いことが分かる。</p>
-<p>このような人間の経験則に従って、各セルにディスクを置くことが、どのくらい得でどのくらい損なのかを表わす評価値を以下のように定義する。</p>
+<p>角のセルは一度石を置いてしまえば、それ以降、相手に取られることがなく、また縁の領域にある石を一度に多くひっくり返すこともできるため、角に石を置くことができれば有利になることが多い。</p>
+<p>一方で、角のセルに隣接するセルに石を置くと、相手に角を取られる可能性が出てくるので、角に隣接するセルにはできる限り石を置かない方が良いことが分かる。</p>
+<p>このような人間の経験則に従って、各セルに石を置くことが、どのくらい得でどのくらい損なのかを表わす評価値を以下のように定義する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
@@ -2245,7 +2274,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
-<figure class="align-default" id="id6" style="width: 512px">
+<figure class="align-default" id="id7" style="width: 512px">
 <img alt="../../_images/1453a95c29d5b32d8b371a77e9d38d95fa729574e1ef01177044d943d399740c.png" src="../../_images/1453a95c29d5b32d8b371a77e9d38d95fa729574e1ef01177044d943d399740c.png" />
 </figure>
 <div class="cell docutils container">
@@ -2330,9 +2359,9 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <p>上記の通り、人間の経験則を導入することでランダムに着手するのと比べて大幅に勝率が上昇していることが分かる。</p>
 </section>
 <section id="ssec-minimax">
-<span id="id7"></span><h2><span class="section-number">3.4. </span>ミニマックス探索<a class="headerlink" href="#ssec-minimax" title="Permalink to this heading">#</a></h2>
+<span id="id8"></span><h2><span class="section-number">3.4. </span>ミニマックス探索<a class="headerlink" href="#ssec-minimax" title="Permalink to this heading">#</a></h2>
 <p>上記のセル評価値に基づく着手では、今まさに打とうとしている手が、<strong>その時点においてどのくらいの価値を持つのか</strong>だけを考慮していた。</p>
-<p>しかし、実際には、局面によっては、角に単にセルの評価値が高いディスクに置くよりも、その後、何手か指した後に、より勝ちの高い手が打てるような手も存在するだろう。</p>
+<p>しかし、実際には、局面によっては、角に単にセルの評価値が高い石に置くよりも、その後、何手か指した後に、より勝ちの高い手が打てるような手も存在するだろう。</p>
 <p>実際に人間がオセロをプレイするときも、ある程度は「次に相手が何を」してくるかを考えているはずで、その際、<strong>できるだけ自分に得</strong>で<strong>できるだけ相手に損</strong>な手を指すのが良いと考えるだろう。</p>
 <p>このような考え方に基づいて、手を先読みして着手を探索する手法に<strong>ミニマックス探索</strong>がある (min-max探索ではないので注意)。</p>
 <div class="cell docutils container">
@@ -2442,9 +2471,9 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <p>アルファベータ探索は上記の<code class="docutils literal notranslate"><span class="pre">minimax</span></code>関数を少し改良するだけで実装できるので、練習問題として取り組んでみて、探索の効率が上昇することを確認してほしい。</p>
 </section>
 <section id="ssec-monte-carlo">
-<span id="id8"></span><h2><span class="section-number">3.5. </span>原始モンテカルロ探索<a class="headerlink" href="#ssec-monte-carlo" title="Permalink to this heading">#</a></h2>
+<span id="id9"></span><h2><span class="section-number">3.5. </span>原始モンテカルロ探索<a class="headerlink" href="#ssec-monte-carlo" title="Permalink to this heading">#</a></h2>
 <p>ここまでに紹介したミニマックス法やアルファベータ法は、現在の状態に対して何らかの評価値が既に与えられている場合には有効であるものの、このような評価値を<strong>どのように決定すれば最適なのか</strong>は実際のところ難しい。</p>
-<p>特に上記の例では、オセロ盤の状態ではなく、セルに対して評価値を与えているが、実際のオセロにおいて、どのセルにディスクを置けばより勝ちに近づくかは、そのときに既に置かれているディスクに依存するだろう。</p>
+<p>特に上記の例では、オセロ盤の状態ではなく、セルに対して評価値を与えているが、実際のオセロにおいて、どのセルに石を置けばより勝ちに近づくかは、そのときに既に置かれている石に依存するだろう。</p>
 <p>従って、ここまでのセルの評価値に基づく探索には限界があり、<strong>実際に勝てるのかどうか</strong>に基づいた着手を目指す必要があると分かる。しかし、勝ち負けを知るためにはオセロを終局までプレイしなければならない。では、その過程ではどのような手を指せば良いだろうか。</p>
 <p><strong>原始モンテカルロ探索</strong>は、モンテカルロ法、すなわちランダムな着手によって、今の<strong>オセロ盤の状態がどの程度、勝ちやすい、負けやすい状態なのかを近似的に推測しながら着手する手法</strong>である。言い換えれば、どのような手が良いのかは一旦おいておいて、<strong>適当に指しても勝ちやすければ、それが勝ちやすい局面</strong>と見なして着手を決定する。</p>
 <p>今、とあるオセロの局面を考えたとき、着手できる手は通常複数ある。このような複数の手をランダムに指して、どの手がより勝ちに近づくかを推定するのだが、この問題は、まさに<strong>多腕バンディット問題</strong>と同様の問題であることが分かる。多腕バンディット問題においては、どのスロットアームを回すかを最適化していたが、今回はオセロの有効手に対して同様の操作を行なう。</p>
@@ -2646,8 +2675,8 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <li><p>引き分け: <span class="output text_plain">11</span></p></li>
 </ul>
 </section>
-<section id="id9">
-<h2><span class="section-number">3.6. </span>モンテカルロ木探索<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h2><span class="section-number">3.6. </span>モンテカルロ木探索<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <p>原始モンテカルロの弱点は、<strong>自分の候補手に対してしか有望な手を考えていない</strong>という点にある。原始モンテカルロにおいては、自分が候補手を指したあとは<strong>自分も相手もランダムに着手する</strong>と仮定しているが、実際の対局においては、自分も相手も、より勝ちやすい手を指すのが普通だろう。</p>
 <p><strong>モンテカルロ木探索</strong>は、上記の問題を解決するために、自分に対しても相手に対しても原始モンテカルロ同様にUCB1値に基づいて最善手を推定する手法である。</p>
 <p>ここで「木探索」という用語が出てくるが、モンテカルロ木探索では<a class="reference external" href="https://ja.wikipedia.org/wiki/%E3%82%B2%E3%83%BC%E3%83%A0%E6%9C%A8">ゲーム木</a>と呼ばれる木構造の中で手を探索する。ゲーム木では「局面を表すノード」が「その局面における候補手を指すことで得られる次局面を表すノード」とツリー状に接続されている。</p>
@@ -2858,11 +2887,12 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 </ul>
 <p>上記の通り、相手の手や、その後に続く自分の手に対してもUCB1値に基づく有望手の推定を行なうことで、ミニマックス法と同程度の強さを実現することができた。上記の例では、1手の探索に用いる手の評価回数を <code class="docutils literal notranslate"><span class="pre">n_trials=20</span></code> としているが、この数を増やすと、着手に時間はかかるようになるが、より勝ちやすい手を選べるようになる。</p>
 </section>
-<section id="id10">
-<h2><span class="section-number">3.7. </span>練習問題<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<section id="id11">
+<h2><span class="section-number">3.7. </span>練習問題<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>本文中に示した<code class="docutils literal notranslate"><span class="pre">minimax</span></code>関数を改良して、アルファベータ探索を実装せよ。</p></li>
-<li><p>原始モンテカルロ探索やモンテカルロ木探索において、プレイアウトする手の選択方法をUCB1値でない方法 (<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法やソフトマックス探索)に置き換えた時、オセロAIの強さはどの程度変化するか調べよ。</p></li>
+<li><p>ミニマックス探索で利用したセル評価値に基づく盤面の評価に加えて、相手の着手できる合法手の数や、それ以後、確実に奪われない確定石の数を考慮した、より高度な評価関数を設計せよ。</p></li>
+<li><p>原始モンテカルロ探索やモンテカルロ木探索において、プレイアウトする手の選択方法をUCB1値でない方法 (<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy 法やソフトマックス探索)に置き換えた時、オセロAIの強さはどの程度変化するか調べよ。</p></li>
 </ul>
 </section>
 </section>
@@ -2931,16 +2961,20 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. オセロゲーム環境</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.1. オセロモジュールのインストール</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.2. オセロモジュールの概要</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.1. オセロモジュールのインストール</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">各自の計算機でビルドする方法 (推奨)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wheel">Wheelからインストールする方法</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.2. ランダムな着手</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.3. セル評価値を用いた着手</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1.2. オセロモジュールの概要</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2. ランダムな着手</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.3. セル評価値を用いた着手</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-minimax">3.4. ミニマックス探索</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ssec-monte-carlo">3.5. 原始モンテカルロ探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.6. モンテカルロ木探索</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.7. 練習問題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.6. モンテカルロ木探索</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.7. 練習問題</a></li>
 </ul>
   </nav></div>
 
