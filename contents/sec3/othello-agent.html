@@ -588,7 +588,7 @@ pip<span class="w"> </span>install<span class="w"> </span>othello-xxxxxx.whl
 <section id="id4">
 <h3><span class="section-number">3.1.2. </span>オセロモジュールの概要<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>このモジュールには大きく分けて、3つのクラスが定義されている。</p>
-<p><strong>Env</strong>はオセロゲームを取り扱う環境で、有効手の列挙や盤の状態の更新などの関数を提供する。ただし、<code class="docutils literal notranslate"><span class="pre">Env</span></code>クラスは直接インスタンス化する代わりに、<code class="docutils literal notranslate"><span class="pre">gymnasium</span></code>と同様に環境作成用の<code class="docutils literal notranslate"><span class="pre">make</span></code>関数が用意されているので、こちらを用いると良い。</p>
+<p><strong>Env</strong>はオセロゲームを取り扱う環境で、合法手の列挙や盤の状態の更新などの関数を提供する。ただし、<code class="docutils literal notranslate"><span class="pre">Env</span></code>クラスは直接インスタンス化する代わりに、<code class="docutils literal notranslate"><span class="pre">gymnasium</span></code>と同様に環境作成用の<code class="docutils literal notranslate"><span class="pre">make</span></code>関数が用意されているので、こちらを用いると良い。</p>
 <p><strong>Move</strong>はオセロゲームにおける「手」を表わすクラスで、現在のプレイヤーと石を置く場所を格納している。</p>
 <p><strong>Player</strong>は厳密には列挙型として定義されていて、プレイヤーが黒番なのか白番なのかに加えて、次のプレイヤーに手渡しする関数などが提供されている。</p>
 <p>まずは、これらをモジュールからインポートして、ゲーム環境を作成してみる。</p>
@@ -669,7 +669,7 @@ pip<span class="w"> </span>install<span class="w"> </span>othello-xxxxxx.whl
 <section id="id5">
 <h2><span class="section-number">3.2. </span>ランダムな着手<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p>まずは、オセロ環境の仕様を理解するために、白番、黒番ともにランダムに行動させて、どのように状態が変化するかを見てみよう。</p>
-<p><code class="docutils literal notranslate"><span class="pre">env</span></code>には、現在の盤の状態で取ることができる「有効手」の配列を取得する<code class="docutils literal notranslate"><span class="pre">legal_moves</span></code>関数が提供されている。</p>
+<p><code class="docutils literal notranslate"><span class="pre">env</span></code>には、現在の盤の状態で取ることができる「合法手」の配列を取得する<code class="docutils literal notranslate"><span class="pre">legal_moves</span></code>関数が提供されている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
@@ -735,7 +735,7 @@ pip<span class="w"> </span>install<span class="w"> </span>othello-xxxxxx.whl
 </div>
 </div>
 <p>オセロはルール上、着手可能な手がない、すなわちどこに石を置いても裏返せる相手方の石が存在しない時にはパスをすることになる。</p>
-<p>有効手が存在しない時には<code class="docutils literal notranslate"><span class="pre">legal_moves</span></code>が長さが1でパスを表す手を含む配列を返してくる。その手 (<code class="docutils literal notranslate"><span class="pre">Move</span></code>)がパスの手かどうかは<code class="docutils literal notranslate"><span class="pre">move.is_pass()</span></code>で判定できる。</p>
+<p>合法手が存在しない時には<code class="docutils literal notranslate"><span class="pre">legal_moves</span></code>が長さが1でパスを表す手を含む配列を返してくる。その手 (<code class="docutils literal notranslate"><span class="pre">Move</span></code>)がパスの手かどうかは<code class="docutils literal notranslate"><span class="pre">move.is_pass()</span></code>で判定できる。</p>
 <p>これらを踏まえて、黒番、白番ともにランダムに着手させて、盤の状態変化を確認する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -749,7 +749,7 @@ pip<span class="w"> </span>install<span class="w"> </span>othello-xxxxxx.whl
     <span class="n">img</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
     <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 
-    <span class="c1"># 有効手の列挙</span>
+    <span class="c1"># 合法手の列挙</span>
     <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
 
     <span class="c1"># 着手可能な手があればランダムに1つを選ぶ</span>
@@ -2182,7 +2182,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 
     <span class="c1"># エピソード開始</span>
     <span class="k">while</span> <span class="ow">not</span> <span class="n">env</span><span class="o">.</span><span class="n">is_done</span><span class="p">():</span>
-        <span class="c1"># 有効手の列挙</span>
+        <span class="c1"># 合法手の列挙</span>
         <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
 
         <span class="c1"># 着手可能な手があればランダムに1つを選ぶ</span>
@@ -2233,7 +2233,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">move_by_random</span><span class="p">(</span><span class="n">env</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;有効手の中からランダムに手を選ぶ&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;合法手の中からランダムに手を選ぶ&quot;&quot;&quot;</span>
     <span class="n">moves</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">legal_moves</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
 </pre></div>
@@ -2476,7 +2476,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
 <p>特に上記の例では、オセロ盤の状態ではなく、セルに対して評価値を与えているが、実際のオセロにおいて、どのセルに石を置けばより勝ちに近づくかは、そのときに既に置かれている石に依存するだろう。</p>
 <p>従って、ここまでのセルの評価値に基づく探索には限界があり、<strong>実際に勝てるのかどうか</strong>に基づいた着手を目指す必要があると分かる。しかし、勝ち負けを知るためにはオセロを終局までプレイしなければならない。では、その過程ではどのような手を指せば良いだろうか。</p>
 <p><strong>原始モンテカルロ探索</strong>は、モンテカルロ法、すなわちランダムな着手によって、今の<strong>オセロ盤の状態がどの程度、勝ちやすい、負けやすい状態なのかを近似的に推測しながら着手する手法</strong>である。言い換えれば、どのような手が良いのかは一旦おいておいて、<strong>適当に指しても勝ちやすければ、それが勝ちやすい局面</strong>と見なして着手を決定する。</p>
-<p>今、とあるオセロの局面を考えたとき、着手できる手は通常複数ある。このような複数の手をランダムに指して、どの手がより勝ちに近づくかを推定するのだが、この問題は、まさに<strong>多腕バンディット問題</strong>と同様の問題であることが分かる。多腕バンディット問題においては、どのスロットアームを回すかを最適化していたが、今回はオセロの有効手に対して同様の操作を行なう。</p>
+<p>今、とあるオセロの局面を考えたとき、着手できる手は通常複数ある。このような複数の手をランダムに指して、どの手がより勝ちに近づくかを推定するのだが、この問題は、まさに<strong>多腕バンディット問題</strong>と同様の問題であることが分かる。多腕バンディット問題においては、どのスロットアームを回すかを最適化していたが、今回はオセロの合法手に対して同様の操作を行なう。</p>
 <p>まず、とある局面からランダムにプレイを行なって終局まで進める操作を関数として定義しておく。このような操作を<strong>プレアウト</strong>と呼ぶ。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2523,7 +2523,7 @@ dG9vAAAAHGRhdGEAAAABAAAAAExhdmY2MC4zLjEwMA==
                 <span class="n">move_idx</span> <span class="o">=</span> <span class="n">i</span>
                 <span class="k">break</span>
 
-        <span class="c1"># 全ての有効手を最低1回調べたら、UCB1値に基づいて着手</span>
+        <span class="c1"># 全ての合法手を最低1回調べたら、UCB1値に基づいて着手</span>
         <span class="k">if</span> <span class="n">move_idx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">ucb1_vals</span> <span class="o">=</span> <span class="p">[]</span>
             <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">n_wins</span><span class="p">,</span> <span class="n">n_checks</span><span class="p">):</span>

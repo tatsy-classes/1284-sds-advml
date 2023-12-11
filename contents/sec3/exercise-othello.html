@@ -449,7 +449,7 @@ document.write(`
 <p>今回の演習では、これらにいくつかの改良を加えて、より強いオセロAIの実現を目指そう。</p>
 <section id="id2">
 <h2><span class="section-number">5.1. </span>演習内容<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>今回の演習では以下のようなオセロプレイヤーのクラスを実装し、レベル別のオセロAIに対して7割以上の勝率を目指す。以下が実装すべき<code class="docutils literal notranslate"><span class="pre">MyPlayer</span></code>クラスのひな形である。複雑なAIを実装しない限りは、はオセロ環境が渡されてくる<code class="docutils literal notranslate"><span class="pre">MyPlayer</span></code>クラスの<code class="docutils literal notranslate"><span class="pre">play</span></code>関数のみを編集すれば十分だろう。</p>
+<p>今回の演習ではオセロプレイヤーのクラスを実装し、レベル別のオセロAIに対して<strong>7割以上の勝率</strong>を目指す。以下が実装すべき<code class="docutils literal notranslate"><span class="pre">MyPlayer</span></code>クラスの雛形である。複雑なAIを実装しない限りは、はオセロ環境が渡されてくる<code class="docutils literal notranslate"><span class="pre">MyPlayer</span></code>クラスの<code class="docutils literal notranslate"><span class="pre">play</span></code>関数のみを編集すれば十分だろう。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 
 <span class="kn">from</span> <span class="nn">othello</span> <span class="kn">import</span> <span class="n">Env</span><span class="p">,</span> <span class="n">Move</span><span class="p">,</span> <span class="n">Player</span>
@@ -494,15 +494,14 @@ document.write(`
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">players/randomize.py</span></code>の部分を別のプレイヤーが実装されたファイル名に変更すると、そのプレイヤーに対してテストを実行される。</p>
 <p>また<code class="docutils literal notranslate"><span class="pre">pytest</span></code>とは別に、直接、対戦環境を呼び出して、任意の2つのAIを対戦させることもできる。自分の作成したAIの強さを確かめるのに利用してほしい。</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>match.py<span class="w"> </span>--file1<span class="w"> </span><span class="s2">&quot;player1.py&quot;</span><span class="w"> </span>--file2<span class="w"> </span><span class="s2">&quot;player2.py&quot;</span><span class="w"> </span>-n<span class="w"> </span><span class="m">100</span><span class="w"> </span>--verbose
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>match.py<span class="w"> </span>--file1<span class="w"> </span><span class="s2">&quot;player.py&quot;</span><span class="w"> </span>--file2<span class="w"> </span><span class="s2">&quot;opponent.py&quot;</span><span class="w"> </span>-n<span class="w"> </span><span class="m">100</span><span class="w"> </span>--verbose
 </pre></div>
 </div>
-<p>上記のコマンドで<code class="docutils literal notranslate"><span class="pre">player1.py</span></code>ならびに<code class="docutils literal notranslate"><span class="pre">player2.py</span></code>はAIを実装したPythonのスクリプトファイルに変更すること。また<code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">100</span></code>のように数字をしていすると、100回テスト対戦が行われる。最後の<code class="docutils literal notranslate"><span class="pre">--verbose</span></code>フラグは、対戦中の付加情報を表示するためのフラグである。</p>
+<p>上記のコマンドで<code class="docutils literal notranslate"><span class="pre">player.py</span></code>ならびに<code class="docutils literal notranslate"><span class="pre">opponent.py</span></code>はAIを実装したPythonのスクリプトファイルに変更すること。また<code class="docutils literal notranslate"><span class="pre">-n</span> <span class="pre">100</span></code>のように数字をしていすると、100回テスト対戦が行われる。最後の<code class="docutils literal notranslate"><span class="pre">--verbose</span></code>フラグは、対戦中の盤面情報を表示するためのフラグである。</p>
 </section>
 <section id="id5">
 <h3><span class="section-number">5.1.3. </span>本番環境でのテスト<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<p>Github Classroomでは、演習用のレポジトリにコードをプッシュする度にテストが実行される。本番環境では、</p>
-<p>本番環境では、各レベルのAIと合計20回対戦する。この結果、勝率が7割を超えていれば、そのレベルはクリアとなる。各レベルをクリアすると<strong>レベル×10点</strong>が与えられる。</p>
+<p>Github Classroomでは、演習用のレポジトリにコードをプッシュする度にテストが実行される。本番環境では、各レベルのAIと20のテストプレイが実行される。この結果、勝率が7割を超えていれば、そのレベルはクリアとなる。各レベルをクリアすると<strong>レベル×10点</strong>が与えられる。</p>
 <p>この際、20回の対戦にレベル1なら1分、レベル2なら2分、レベル3なら3分以上経過すると、タイムアウトになるので、なるべく早く手を考えるAIを作成することに留意してほしい。</p>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
@@ -520,36 +519,36 @@ document.write(`
 <li><p>人間の事前知識に依らない手法 (モンテカルロ木探索など)</p></li>
 </ul>
 <p>の2タイプのAIについて紹介した。</p>
-<p>オセロゲームの場合、任意の盤状態において着手できる合法手は10前後であるため、手の探索が十分に高速なAIであれば、アルファ・ベータ探索のような枝刈り全探索に基づく手法により、かなり強いAIを作ることができる。また、アルファ・ベータ探索に用いる盤の評価値についても、前節で紹介したセルの評価値に加えて、相手が着手できる合法手の数 (少ない方が良い)や、確定石の数を含めることが考えられる。</p>
-<p>モンテカルロ木探索は、オセロよりも着手できる合法手が多いゲーム (将棋や囲碁など)で、そもそも全ての手を枝刈りしたとしても探索することが難しい場合に有効な手法である。また、近年、囲碁AIとして注目を集めたAlphaGoや、その発展形であるAlphaZeroは、モンテカルロ木探索と深層学習による着手の選択、盤面の評価を組み合わせた手法である。</p>
-<p>ただし、繰り返しになるがオセロゲームは合法手の数が相対的に少ないため、着手の選択までを深層学習でやらせるべきかは悩ましいところである。実際、将棋などのゲームでは深層学習ベースの手法は形勢の判断力には優れるものの、特に最終版での手の選択にはやや劣るという側面もある。</p>
+<p>オセロゲームの場合、任意の盤状態において着手できる合法手は10前後であるため、手の探索が十分に高速なAIで、かつ考慮時間が数十秒あれば、アルファ・ベータ法のような枝刈りを用いることで手を終局までの盤面をおおよそ読み切ることができる。</p>
+<p>また、アルファ・ベータ探索に用いる盤の評価値についても、前節で紹介したセルの評価値に加えて、相手が着手できる合法手の数 (少ない方が良い)や、確定石の数 (多い方が良い)を含めることが考えられる。</p>
+<p>モンテカルロ木探索は、オセロよりも着手できる合法手が多いゲーム (将棋や囲碁など)で、枝刈りしたとしても有効な局面の多くを探索することが難しい場合に有効な手法である。また、近年、囲碁AIとして注目を集めたAlphaGoや、その発展形であるAlphaZeroは、モンテカルロ木探索と深層学習による着手の選択、盤面の評価を組み合わせた手法である。</p>
 <p>これら2つのタイプのAIの側面を考慮した上で、どのようなAIを実装するのかを検討してみてほしい。</p>
 </section>
 <section id="id7">
 <h3><span class="section-number">5.2.2. </span>課題の始めに試すこと<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
-<p>まずは、初期状態で与えられている「ランダムに着手するAI」で各レベル、どのくらいの勝率が得られるかをチェックしておこう。</p>
-<p>その上で、テンプレート・レポジトリにはミニマックス探索に基づくAIが与えられているので、これを改良して、より強いAIを作っていくのが良いだろう。</p>
-<p>また、前節でモンテカルロ木探索に基づく着手の手法は紹介済みであるので、このコードを<code class="docutils literal notranslate"><span class="pre">MyPlayer</span></code>に移植するだけでも、それなりの強さのAIを作ることができるだろう。</p>
+<p>まずは、テンプレート・レポジトリに与えられているミニマックス探索に基づくAI(<code class="docutils literal notranslate"><span class="pre">players/minimax.py</span></code>)が与えられているので、このAIが各レベルのAIに対して、どの程度の勝率になるのかをチェックしておこう。その上で、これを改良して、より強いAIを作っていくのが良い。</p>
+<p>また、前節でモンテカルロ木探索に基づく着手の手法は紹介済みであるので、このコードを<code class="docutils literal notranslate"><span class="pre">MyPlayer</span></code>に移植するだけでも、それなりの強さのAIを作ることができる。</p>
 </section>
 <section id="id8">
 <h3><span class="section-number">5.2.3. </span>より強いAIを作るために<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
-<p>今回の演習では20回のテストプレイにかかる時間が最大でも3分以内とかなり短い。GitHub Actionsの実行環境では、それほど早いCPUを使うことはできないので、単にミニマックス探索の探索の深さを増やす、などの方法では簡単にタイムアウトしてしまう。</p>
+<p>今回の演習では20回のテストプレイの制限時間が最大でも3分以内とかなり短い。また、GitHub Actionsの実行環境では、それほど早いCPUを使うことはできないので、単にミニマックス探索の探索の深さを増やす、などの方法では簡単にタイムアウトしてしまう。</p>
 <p>よって、ミニマックス系かモンテカルロ系のどちらについても、<strong>効率的により良い手を見つけるにはどうすれば良いか</strong>を考えなければならない。</p>
 <section id="id9">
 <h4>ミニマックス系<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
-<p><strong>ミニマックス系</strong>に関しては、まず、<strong>アルファ・ベータ探索による枝刈り</strong>を導入すべきだろう。おそらく、同じ計算時間で1手は多く読むことができるはずである (盤面の候補は指数関数的に増えるので、これでもかなり効率化されている)。また、アルファ・ベータ探索による枝刈りよりも効率的 (だが複雑)な枝刈りの手法として<a class="reference external" href="https://en.wikipedia.org/wiki/Principal_variation_search">NegaScout法</a>などもあるので、興味のある読者は実装に挑戦してみてほしい。</p>
+<p><strong>ミニマックス系</strong>に関しては、まず、<strong>アルファ・ベータ探索による枝刈り</strong>を導入すべきだろう。単純なミニマックス探索では、読みを深くするごとに、評価すべき盤面の数が指数関数的に増加するが、アルファ・ベータ探索等の枝刈り手法により、評価局面の数を大幅に減らすことができる。</p>
+<p>単純なアルファ・ベータ探索を実装するだけでも、同じ計算時間で1手は多く読むことができる。盤面の数は読み進める手数に応じて指数関数的に増えるので、1手多く呼べるだけでも大幅な効率化である。また、アルファ・ベータ探索による枝刈りよりも、さらに効率的 (だが複雑)な枝刈りの手法として<a class="reference external" href="https://en.wikipedia.org/wiki/Principal_variation_search">NegaScout法</a>などもあるので、興味のある読者は実装に挑戦してみてほしい。</p>
 <p>また、アルファ・ベータ探索は、枝刈りにより処理を効率化する(つまり、それ以上評価を進めても、最大評価とならない盤面の探索をしない)手法であるため、最初の方の探索で高い評価値が得られる手順が見つかれば、相当数の盤面を調べなくて済む。この考えに基づけば、ミニマックス探索の実装になるように合法手を得られた順に調べるのは効率的とは言えない。この探索順序を工夫することで、より効率的な手の探索が行えるはずだ。</p>
-<p>加えて、ミニマックス系は読みの深さが深くなればなるほど強くなる一方で、多くの盤面を評価しようとすると、計算上が指数関数的に大きくなるという問題がある。だが、オセロゲームは終局の直前になると、そもそも石を置ける場所が少なくなるため、仮に全探索をしたとしても、検討すべき盤面の数が飛躍的に減っていく。従って、終盤、空マスの数が少なくなったら、読みの深さを深くする、などの方法が考えられるだろう。</p>
-<p>最後に、より良い手を見つけるために、セルの評価値に基づく盤面の評価を改善することが考えられる。オセロには、相手が着手できなければパスになるというルールがあり、また確定石と呼ばれる確実に自分の色の石になるマスが決まるという特性がある。これらの特性を考慮すると、より相手にとっての合法手が少なく、また確定石の数がより多くなるような手を優先的に調べるのが良さそうに思える。ただし、確定石の数を調べるには、それなりに計算コストがかかるため、角やエッジに探索範囲を絞るなどの工夫が必要になるだろう。</p>
+<p>加えて、オセロゲームは終局の直前になると、そもそも石を置ける場所が少なくなるため、仮にミニマックス探索の要領で全探索を実行したとしても、検討すべき盤面の数が飛躍的に減っていく。従って、終盤、空マスの数が少なくなったら、読みの深さを深くする、などの方法により終盤力を高めることもできるだろう。</p>
+<p>最後に、より良い手を見つけるために、セルの評価値に基づく盤面の評価を改善することが考えられる。オセロには、相手が着手できなければパスになるというルールがあるため、なるべく相手の合法手の数が少なくなるように指す方が有利になると考えられる。また確定石と呼ばれる確実に自分の色の石になるマスが決まるため、確定石の数がより多くなるように指す方が当然有利だろう。</p>
 </section>
 <section id="id10">
 <h4>モンテカルロ系<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
 <p><strong>モンテカルロ系</strong>に関して、前節のモンテカルロ木探索に基づく手法には1つ大きく改善すべき点がある。</p>
-<p>前節の実装では、新しい手を考える時に、その都度新しくUCTのノードを作り、その子ノードに対する評価していた。しかし、多くの場合、モンテカルロ木探索で着手した結果は、それほど悪い手ではなく、探索中には相手の手も考慮しているため、相手が探索中に考えた手を指してくる可能性が高い。その意味で、過去の探索結果を捨ててしまうような上記の実装は効率的とは言えない。</p>
+<p>前節の実装では、新しい手を考える時に、その都度新しくUCTのノードを作り、その子ノードに対する評価していた。しかし、多くの場合、モンテカルロ木探索で着手した結果は、それほど悪い手ではなく、探索中には相手の手も考慮しているため、<strong>相手が探索中に考えた手を指してくる可能性が高い</strong>。その意味で、過去の探索結果を捨ててしまうような上記の実装は効率的とは言えない。</p>
 <p>そこで、過去の探索において探索して2手先の盤に対応するノードを着手時にキャッシュしておき、次に手番が回ってきたときに、キャッシュしたノードの中に対応するノードが見つかれば、そこから探索を再開する、という方法が考えられる。これにより、仮に1回の着手時に行うプレイアウトの回数が100回などに制限されていたとしても、実際にはより多くの回数プレイアウトを行ったのと同等の評価結果を得ることができる。</p>
 <p>ただし、裏を返せば (オセロではそれほど効果的ではないが)、モンテカルロ系のAIは予想外の手を指されると、一から盤の評価をやり直さなければならなくなるため、あえてその弱点を突くような実装にするという工夫をいれることもできるかもしれない。</p>
-<p>また、オセロは60手で確実にゲームが終わるためプレイアウトの効率は比較的良いものの、終局までプレイアウトをしないと盤面の評価値を更新できないことはマイナスとも言える。そこでプレイアウトを終局まで行う代わりに、その局面がどのくらい勝ちやすい局面なのかを機械学習する方法が考えられる。これは盤面の状態を入力とし、スカラの評価値を返すような機械学習モデルを作成すれば良いため、少しの頑張りで導入できるだろう。</p>
-<p>最後に、上記の盤面の勝ちやすさの判定に加えて、どの手に着手するかも機械学習によって決定する、ということもできる。これはAlphaZeroが使用している方法で、モンテカルロ木探索と深層学習器による盤面の評価、着手の決定を組み合わせてプレイアウトを区入り返し、より良い評価関数と着手方策を強化学習的に得る手法である。このような考え方はミニマックス系にも導入可能ではあるが、学習の時点では純粋にゲームの勝ち負けだけを考慮するモンテカルロ系の手法を用いた方がバイアスが少ないAIが得られるだろう (が、それがイコール強いかどうかは別問題)。</p>
+<p>また、オセロは60手で確実にゲームが終わるためプレイアウトの効率は比較的良いものの、終局までプレイアウトをしないと盤面の評価値を更新できないことはマイナスとも言える。そこでプレイアウトを終局まで行う代わりに、その局面がどのくらい勝ちやすい局面なのかを機械学習する方法が考えられる。一例として、十分に多くの試行回数により得られた盤面の評価値を学習データとして用意しておき、盤面の状態を入力、スカラの評価値を出力とするような機械学習モデルを作るという方法が考えられる。</p>
+<p>最後に、上記の盤面の勝ちやすさの判定に加えて、どの手に着手するかも機械学習によって決定する、ということもできる。これはAlphaZeroが使用している方法で、モンテカルロ木探索と深層学習器による盤面の評価、着手の決定を組み合わせてプレイアウトを繰り返し、より良い評価関数と着手方策を強化学習により手法である。</p>
 </section>
 </section>
 </section>
