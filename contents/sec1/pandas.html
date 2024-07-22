@@ -9,25 +9,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>4. Pandasの基本 &#8212; 機械学習発展 (実践)</title>
+    <title>3. Pandasの基本 &#8212; 機械学習発展 (実践)</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="1. OpenCVの基本" href="opencv.html" />
-    <link rel="prev" title="3. Matplotlibの基本" href="matplotlib.html" />
+    <link rel="prev" title="2. Matplotlibの基本" href="matplotlib.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   </head>
@@ -79,28 +79,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -122,12 +117,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +147,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../index.html">
   
@@ -159,10 +164,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="setup-python.html">1. Python環境の設定</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy.html">2. NumPyの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">1. NumPyの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">2. Matplotlibの基本</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Pandasの基本</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
 <ul class="nav bd-sidenav">
@@ -204,7 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -213,7 +217,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -376,10 +380,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -387,7 +391,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -415,16 +419,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">4.1. DataFrameの操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1.1. 行と列の取り出し</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1.2. 行と列の追加</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.3. 行と列の削除</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.1.4. 要素へのアクセス</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">3.1. DataFrameの操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1.1. 行と列の取り出し</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.2. 行と列の追加</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.3. 行と列の削除</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1.4. 要素へのアクセス</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.2. 数値計算</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.3. データの入出力</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.4. グラフの作成</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2. 数値計算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.3. データの入出力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.4. グラフの作成</a></li>
 </ul>
             </nav>
         </div>
@@ -434,10 +438,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pandas">
-<span id="sec-pandas"></span><h1><span class="section-number">4. </span>Pandasの基本<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h1>
+<span id="sec-pandas"></span><h1><span class="section-number">3. </span>Pandasの基本<a class="headerlink" href="#pandas" title="Permalink to this heading">#</a></h1>
 <p>Pandas (panel-data-sの略)は、Python向けのデータ分析ライブラリで、主にスプレッドシート状のデータを扱うことができる。Pandasでは以下に説明する<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を使って、データの操作やファイル入出力、グラフの作成等を行うことができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -457,7 +461,7 @@ document.write(`
 </div>
 </div>
 <section id="dataframe">
-<h2><span class="section-number">4.1. </span>DataFrameの操作<a class="headerlink" href="#dataframe" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.1. </span>DataFrameの操作<a class="headerlink" href="#dataframe" title="Permalink to this heading">#</a></h2>
 <p>Pandasの中核をなすデータ構造に<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>がある。DataFrameとは、スプレッドシート状のデータを扱うデータ構造で、Excelのように数値を縦横に配置したデータを作ることができる。</p>
 <a class="reference internal image-reference" href="https://pandas.pydata.org/docs/_images/01_table_dataframe.svg"><img alt="https://pandas.pydata.org/docs/_images/01_table_dataframe.svg" class="align-center" src="https://pandas.pydata.org/docs/_images/01_table_dataframe.svg" width="80%" /></a>
 <div align="center">
@@ -662,7 +666,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">index</span></code>を指定しない場合は、<code class="docutils literal notranslate"><span class="pre">index</span></code>に当たる0, 1, 2, ...がラベルであると見なされる。特に行お操作を行うときに、ラベルがインデックスなのか、その他の文字列等なのかを意識しておくことが大事になる。</p>
 </div>
 <section id="id1">
-<h3><span class="section-number">4.1.1. </span>行と列の取り出し<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.1.1. </span>行と列の取り出し<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Pandasでは行と列の意味合いが微妙に異なっており、それぞれを取り扱う場合に異なる操作が必要となる。</p>
 <p><strong>列の取り出し</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>の各列は<code class="docutils literal notranslate"><span class="pre">Series</span></code>という型で表わされていて、dfに各列のラベルを与えることで取り出すことができる。</p>
@@ -778,7 +782,7 @@ Name: Taro, dtype: int64
 </div>
 </section>
 <section id="id2">
-<h3><span class="section-number">4.1.2. </span>行と列の追加<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.1.2. </span>行と列の追加<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p><strong>列の追加</strong></p>
 <p>列を追加する方法はいくつかあるが、行と列でできるだけ似た操作を使うのなら<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>を辞書型のように扱って、データ列を代入する方法と<code class="docutils literal notranslate"><span class="pre">concat</span></code>を使う方法の2つがある。この2つなら辞書型として扱う方法の方が簡単で、行ラベルがインデックスなのか文字列等七日によって区別する必要がない。</p>
 <div class="cell tag_remove-input docutils container">
@@ -1190,7 +1194,7 @@ Name: Taro, dtype: int64
 </div>
 </section>
 <section id="id3">
-<h3><span class="section-number">4.1.3. </span>行と列の削除<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.1.3. </span>行と列の削除<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>行や列の削除には共通で<code class="docutils literal notranslate"><span class="pre">drop</span></code>を用いる。この関数の引数には<code class="docutils literal notranslate"><span class="pre">index=...</span></code>(行ラベルを指定)と<code class="docutils literal notranslate"><span class="pre">columns=...</span></code>(列ラベルを指定)という引数があり、これらを用いて削除すべき行や列を指定する。なお、<code class="docutils literal notranslate"><span class="pre">drop</span></code>は<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>自体を<strong>更新しない</strong>ので、もし<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>自体を更新したい場合には引数に<code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>を与える。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1377,7 +1381,7 @@ Name: Taro, dtype: int64
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">4.1.4. </span>要素へのアクセス<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">3.1.4. </span>要素へのアクセス<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>要素へのアクセスには、これまでにも登場した<code class="docutils literal notranslate"><span class="pre">loc</span></code>や<code class="docutils literal notranslate"><span class="pre">iloc</span></code>を用いる。これらに行、列のラベルやインデックスを指定することで要素へのアクセスができる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1524,7 +1528,7 @@ Name: Math, dtype: int64
 </section>
 </section>
 <section id="id5">
-<h2><span class="section-number">4.2. </span>数値計算<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.2. </span>数値計算<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p>Pandasでは、<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>の各行や各列、データ全体に対して統計量を簡単に取ることができる。統計量には平均(<code class="docutils literal notranslate"><span class="pre">mean</span></code>)や標準偏差(<code class="docutils literal notranslate"><span class="pre">std</span></code>)などが用意されており、以下のように計算できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1769,7 +1773,7 @@ Name: Eng. dev., dtype: float64
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">4.3. </span>データの入出力<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.3. </span>データの入出力<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>次に、先ほど作成した<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>をファイルに出力してみよう。出力できるファイル形式は様々だが、CSVとExcel形式のファイルをここでは試してみる。</p>
 <p><strong>ファイルへの出力</strong></p>
 <p>CSVを出力する場合には<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>の<code class="docutils literal notranslate"><span class="pre">to_csv</span></code>を用いれば良く、第1引数に出力先のファイル名を指定する。加えて<strong>日本語を出力する場合には<code class="docutils literal notranslate"><span class="pre">encoding=&quot;utf_8_sig&quot;</span></code>あるいは<code class="docutils literal notranslate"><span class="pre">encoding=&quot;shift_jis&quot;</span></code>を指定</strong>しておく。</p>
@@ -2056,7 +2060,7 @@ Name: Eng. dev., dtype: float64
 </div>
 </section>
 <section id="id7">
-<h2><span class="section-number">4.4. </span>グラフの作成<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">3.4. </span>グラフの作成<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>は<code class="docutils literal notranslate"><span class="pre">plot</span></code>というメンバを持ち、さらに<code class="docutils literal notranslate"><span class="pre">plot</span></code>に対してグラフの種類に対応するメソッドを呼び出すことで簡単にグラフを作成することができる。以下は棒グラフと散布図を作る例である。また、同様の出力は<code class="docutils literal notranslate"><span class="pre">plot</span></code>をメソッドとして呼び出して<code class="docutils literal notranslate"><span class="pre">kind</span></code>パラメータにグラフの種類を指定することでも実現できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2081,7 +2085,7 @@ Name: Eng. dev., dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cefca1b853c2815a9f8d1ded82bbbb91cc00a6f33175499978382caefd4d4ed8.png" src="../../_images/cefca1b853c2815a9f8d1ded82bbbb91cc00a6f33175499978382caefd4d4ed8.png" />
+<img alt="../../_images/6082814d29ddab3387311403af3b5578cdda0eb155c343889ad1e4250bdcf743.png" src="../../_images/6082814d29ddab3387311403af3b5578cdda0eb155c343889ad1e4250bdcf743.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2093,7 +2097,7 @@ Name: Eng. dev., dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cefca1b853c2815a9f8d1ded82bbbb91cc00a6f33175499978382caefd4d4ed8.png" src="../../_images/cefca1b853c2815a9f8d1ded82bbbb91cc00a6f33175499978382caefd4d4ed8.png" />
+<img alt="../../_images/6082814d29ddab3387311403af3b5578cdda0eb155c343889ad1e4250bdcf743.png" src="../../_images/6082814d29ddab3387311403af3b5578cdda0eb155c343889ad1e4250bdcf743.png" />
 </div>
 </div>
 <p>なお、グラフの見た目を調整したい場合には、<code class="docutils literal notranslate"><span class="pre">plt.title</span></code>等のメソッドを順次呼び出せば良い。</p>
@@ -2110,7 +2114,7 @@ Name: Eng. dev., dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/be5ea5752d01b71985109b5146dbfc8e7558123402a277c3201bbd59641af122.png" src="../../_images/be5ea5752d01b71985109b5146dbfc8e7558123402a277c3201bbd59641af122.png" />
+<img alt="../../_images/26f91a1e2d220130e697ac23251b49d813c50c58c6b393b80fd2224774cd76c4.png" src="../../_images/26f91a1e2d220130e697ac23251b49d813c50c58c6b393b80fd2224774cd76c4.png" />
 </div>
 </div>
 <p>また、複数のグラフを並べたい場合には<code class="docutils literal notranslate"><span class="pre">plot</span></code>の<code class="docutils literal notranslate"><span class="pre">ax</span></code>パラメータに対してMatplotlibの<code class="docutils literal notranslate"><span class="pre">SubplotAxis</span></code>を指定すれば良い。</p>
@@ -2132,7 +2136,7 @@ Name: Eng. dev., dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c88983440cef1281f5e5790884b36be187e8945aabe95e42f9a2620fad7f80aa.png" src="../../_images/c88983440cef1281f5e5790884b36be187e8945aabe95e42f9a2620fad7f80aa.png" />
+<img alt="../../_images/5be1aaae04ba50f8b9c29ca8c00aa9ecdf7d7ac35a9ce06f20b9099827285499.png" src="../../_images/5be1aaae04ba50f8b9c29ca8c00aa9ecdf7d7ac35a9ce06f20b9099827285499.png" />
 </div>
 </div>
 </section>
@@ -2165,7 +2169,7 @@ Name: Eng. dev., dtype: float64
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -2174,7 +2178,7 @@ Name: Eng. dev., dtype: float64
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Matplotlibの基本</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Matplotlibの基本</p>
       </div>
     </a>
     <a class="right-next"
@@ -2195,22 +2199,23 @@ Name: Eng. dev., dtype: float64
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> 目次
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">4.1. DataFrameの操作</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.1.1. 行と列の取り出し</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.1.2. 行と列の追加</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4.1.3. 行と列の削除</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.1.4. 要素へのアクセス</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">3.1. DataFrameの操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1.1. 行と列の取り出し</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.1.2. 行と列の追加</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.1.3. 行と列の削除</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1.4. 要素へのアクセス</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.2. 数値計算</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">4.3. データの入出力</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.4. グラフの作成</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2. 数値計算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.3. データの入出力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.4. グラフの作成</a></li>
 </ul>
   </nav></div>
 
@@ -2259,8 +2264,8 @@ Name: Eng. dev., dtype: float64
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

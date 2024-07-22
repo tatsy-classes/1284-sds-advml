@@ -9,25 +9,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>3. Matplotlibの基本 &#8212; 機械学習発展 (実践)</title>
+    <title>2. Matplotlibの基本 &#8212; 機械学習発展 (実践)</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -70,8 +70,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'contents/sec1/matplotlib';</script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="4. Pandasの基本" href="pandas.html" />
-    <link rel="prev" title="2. NumPyの基本" href="numpy.html" />
+    <link rel="next" title="3. Pandasの基本" href="pandas.html" />
+    <link rel="prev" title="1. NumPyの基本" href="numpy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   </head>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -146,6 +149,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../index.html">
   
@@ -161,10 +166,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="setup-python.html">1. Python環境の設定</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy.html">2. NumPyの基本</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Matplotlibの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">1. NumPyの基本</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Matplotlibの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">3. Pandasの基本</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
 <ul class="nav bd-sidenav">
@@ -206,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -215,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -378,10 +382,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -389,7 +393,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -417,29 +421,29 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. Matplotlibとは？</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.2. 基本的なグラフの作成</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.2.1. 空の画面を表示する</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.2.2. 折れ線グラフ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2.3. 散布図</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2.4. 棒グラフ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2.5. 円グラフ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.2.6. ヒストグラム</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.2.7. グラフを保存する</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.1. Matplotlibとは？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2. 基本的なグラフの作成</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.1. 空の画面を表示する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.2. 折れ線グラフ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.3. 散布図</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.2.4. 棒グラフ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.2.5. 円グラフ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2.6. ヒストグラム</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.2.7. グラフを保存する</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">画像の種類について</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.3. グラフの調整</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.3.1. グラフのタイトル、軸ラベル</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3.2. グラフの色、スタイルの設定</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.3.3. 軸の刻み幅、表示形式の調整</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3.3.4. 凡例の表示</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">3.3.5. グリッド線を引く</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">3.3.6. 片対数グラフ、両対数グラフ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">3.3.7. エラーバーの表示</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">3.3.8. その他の機能</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3. グラフの調整</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3.1. グラフのタイトル、軸ラベル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.2. グラフの色、スタイルの設定</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.3.3. 軸の刻み幅、表示形式の調整</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.3.4. 凡例の表示</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.3.5. グリッド線を引く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.3.6. 片対数グラフ、両対数グラフ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.3.7. エラーバーの表示</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.3.8. その他の機能</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">背景色の設定</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">注釈を入れる</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">複数のグラフを並べる</a></li>
@@ -447,8 +451,8 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">3.4. 三次元データのプロット</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">3.5. Seabornの併用</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">2.4. 三次元データのプロット</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">2.5. Seabornの併用</a></li>
 </ul>
             </nav>
         </div>
@@ -458,21 +462,21 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matplotlib">
-<span id="sec-matplotlib"></span><h1><span class="section-number">3. </span>Matplotlibの基本<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h1>
+<span id="sec-matplotlib"></span><h1><span class="section-number">2. </span>Matplotlibの基本<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h1>
 <section id="id1">
-<h2><span class="section-number">3.1. </span>Matplotlibとは？<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.1. </span>Matplotlibとは？<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Matplotlibはデータ可視化のためのPythonのライブラリで、様々なグラフを細かく調整を入れて作成することができる。また、今日は類似するライブラリとして<a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a>や<a class="reference external" href="https://plotly.com/python/">Plotly</a>, <a class="reference external" href="https://bokeh.org/">Bokeh</a>などがあるが、この中でMatplotlibは比較的単純 (がゆえに綺麗な可視化をしようとすると手間がかかる...)で、それ故、現在でも広く用いられているライブラリである。特に、Matplotlibは文法がMATLABと類似しているため、MATLABを使い慣れている読者には親しみやすいかもしれない。</p>
 <p>本講義では、その単純さからMatplotlibを用いるが、必要に応じて、Seaborn, Plotly, Bokehのギャラリーなどを見て、自分の好みのライブラリを使うのが良いだろう。</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 </section>
 <section id="id2">
-<h2><span class="section-number">3.2. </span>基本的なグラフの作成<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.2. </span>基本的なグラフの作成<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <section id="id3">
-<h3><span class="section-number">3.2.1. </span>空の画面を表示する<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.1. </span>空の画面を表示する<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -491,7 +495,7 @@ document.write(`
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">3.2.2. </span>折れ線グラフ<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.2. </span>折れ線グラフ<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>折れ線グラフは <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> を用いて作成できる。これを用いて、sin関数を <span class="math notranslate nohighlight">\([-\pi, \pi]\)</span> の範囲で書いてみよう。データの準備にはNumPyの <code class="docutils literal notranslate"><span class="pre">numpy.linspace</span></code> 関数を使うと良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -505,12 +509,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/afcbe810842102c004c0f327b78ff1beb9f61dde7e0432af2611cc78b3ca471e.png" src="../../_images/afcbe810842102c004c0f327b78ff1beb9f61dde7e0432af2611cc78b3ca471e.png" />
+<img alt="../../_images/4d2e30a674e7ec9300a8c3d4a07b9e1fb78e7f0aa4473ac26dc41ab999a436c1.png" src="../../_images/4d2e30a674e7ec9300a8c3d4a07b9e1fb78e7f0aa4473ac26dc41ab999a436c1.png" />
 </div>
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">3.2.3. </span>散布図<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.3. </span>散布図<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>散布図は <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code> を用いて作成できる。これを用いて、二次元正規分布に従うデータの散布図を作ってみよう。この際、<code class="docutils literal notranslate"><span class="pre">plt.xlim</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.ylim</span></code> を使った範囲指定と、<code class="docutils literal notranslate"><span class="pre">plt.gca().set_aspect</span></code>を用いたグラフの縦横比の指定をしておこう。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -524,12 +528,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/72a4053e11a16d62bb2d606577f284c4b336d8208e203389c02f269939b6d42a.png" src="../../_images/72a4053e11a16d62bb2d606577f284c4b336d8208e203389c02f269939b6d42a.png" />
+<img alt="../../_images/70f88626eb073a9d274c37aff7b36f21842280732769848dcd6ee4f935998b4d.png" src="../../_images/70f88626eb073a9d274c37aff7b36f21842280732769848dcd6ee4f935998b4d.png" />
 </div>
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">3.2.4. </span>棒グラフ<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.4. </span>棒グラフ<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>棒グラフはラベルと、各ラベルに対する値の組み合わせによって作成する。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -541,12 +545,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a1d2e2e80cd0bbb576b1032934da90584095c987bb8c1ccc01cb2ee9803b6343.png" src="../../_images/a1d2e2e80cd0bbb576b1032934da90584095c987bb8c1ccc01cb2ee9803b6343.png" />
+<img alt="../../_images/b71e0378fc660f1823e4588ec388ca8e5d0f442de101467a6959e651a54b64ec.png" src="../../_images/b71e0378fc660f1823e4588ec388ca8e5d0f442de101467a6959e651a54b64ec.png" />
 </div>
 </div>
 </section>
 <section id="id7">
-<h3><span class="section-number">3.2.5. </span>円グラフ<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.5. </span>円グラフ<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>円グラフを描く関数 <code class="docutils literal notranslate"><span class="pre">plt.pie</span></code> の使い方は棒グラフのものとほとんど同じだが、引数の指定の仕方が微妙に異なるので注意 (特に色を指定するための引数が棒グラフは<code class="docutils literal notranslate"><span class="pre">color=...</span></code>にも関わらず、円グラフは<code class="docutils literal notranslate"><span class="pre">colors=...</span></code>)。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,12 +562,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/39e369c622194d7b8f4455333594111f8f2d5926ceba079dd0407e78e38fcc85.png" src="../../_images/39e369c622194d7b8f4455333594111f8f2d5926ceba079dd0407e78e38fcc85.png" />
+<img alt="../../_images/73674c912220a7596c28237a5836d199285703b8142f1abdaf02578c2a48c2bf.png" src="../../_images/73674c912220a7596c28237a5836d199285703b8142f1abdaf02578c2a48c2bf.png" />
 </div>
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">3.2.6. </span>ヒストグラム<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.6. </span>ヒストグラム<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>ヒストグラムは <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code> 関数を用いれば、グラフの作成とヒストグラム自体の計算を両方行うことができる。以下では、正規分布に従う乱数を1000個作成して、その分布がどうなっているかをヒストグラムで表示している。また、以下のコードで使用してはいないものの <code class="docutils literal notranslate"><span class="pre">freq</span></code> と <code class="docutils literal notranslate"><span class="pre">ranges</span></code> はそれぞれヒストグラムの頻度と、その頻度の範囲を示す値の配列 (ビン数+1の長さ)となっている。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -574,7 +578,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c1a407c9bd7cd0ff4b075d55a4f3b5e8f76cbaed8033a8af022a9bb4e92c4fe7.png" src="../../_images/c1a407c9bd7cd0ff4b075d55a4f3b5e8f76cbaed8033a8af022a9bb4e92c4fe7.png" />
+<img alt="../../_images/8761e4c3a9132bbdd688f1aa1fe7c71a5dd0a44004cc2d911bf579e189dc8854.png" src="../../_images/8761e4c3a9132bbdd688f1aa1fe7c71a5dd0a44004cc2d911bf579e189dc8854.png" />
 </div>
 </div>
 <p>また、 ヒストグラムを描画する際には、その合計が1になるように正規化することも多い。そのようにしたい場合には <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code> の引数に <code class="docutils literal notranslate"><span class="pre">density=True</span></code> を指定する</p>
@@ -594,12 +598,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1cd70d136059a60d5f16c6cd812c2c4042fb777e64e68d339e0f4bd564714fda.png" src="../../_images/1cd70d136059a60d5f16c6cd812c2c4042fb777e64e68d339e0f4bd564714fda.png" />
+<img alt="../../_images/ea52063aa95dafc05c49f5a7027b959aa818df4f1fd897e283d4e39a75cba26e.png" src="../../_images/ea52063aa95dafc05c49f5a7027b959aa818df4f1fd897e283d4e39a75cba26e.png" />
 </div>
 </div>
 </section>
 <section id="id9">
-<h3><span class="section-number">3.2.7. </span>グラフを保存する<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.7. </span>グラフを保存する<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>グラフを保存するには <code class="docutils literal notranslate"><span class="pre">plt.savefig</span></code> を用いる。この際、JPEGやPNGといったラスタ形式のフォーマットの他、EPSやPDFといったベクタ形式の画像も出力できる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -614,7 +618,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/afcbe810842102c004c0f327b78ff1beb9f61dde7e0432af2611cc78b3ca471e.png" src="../../_images/afcbe810842102c004c0f327b78ff1beb9f61dde7e0432af2611cc78b3ca471e.png" />
+<img alt="../../_images/4d2e30a674e7ec9300a8c3d4a07b9e1fb78e7f0aa4473ac26dc41ab999a436c1.png" src="../../_images/4d2e30a674e7ec9300a8c3d4a07b9e1fb78e7f0aa4473ac26dc41ab999a436c1.png" />
 </div>
 </div>
 <p>画像の計算機上での表現方法には大きく分けてラスタ画像(ピクセル形式とも呼ぶ)とベクタ画像(ドロー形式とも呼ぶ)があり、JPEG形式等、一般的なカメラで撮影される画像は通常、ラスタ形式で表わされている。詳細については、以下のTipsを見てほしい。</p>
@@ -631,10 +635,10 @@ document.write(`
 </section>
 </section>
 <section id="id11">
-<h2><span class="section-number">3.3. </span>グラフの調整<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3. </span>グラフの調整<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <p>以下では、sin関数とcos関数を描画したものを例にして、グラフの見た目を調整していく。</p>
 <section id="id12">
-<h3><span class="section-number">3.3.1. </span>グラフのタイトル、軸ラベル<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.1. </span>グラフのタイトル、軸ラベル<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <p>Matplotlibでグラフにタイトルをつけるには<code class="docutils literal notranslate"><span class="pre">plt.title</span></code>を用いる。また、軸のラベルを設定するには横軸には<code class="docutils literal notranslate"><span class="pre">plt.xlabel</span></code>、縦軸には<code class="docutils literal notranslate"><span class="pre">plt.ylabel</span></code>を用いる。</p>
 <p>なお、この際、グラフのタイトル等の文字列中に<code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">...</span> <span class="pre">$</span></code>のようにドルマークで囲んだ領域を設けると、ここにLaTeXで用いるような数式を入れることができる。</p>
 <div class="cell docutils container">
@@ -655,12 +659,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/318a2a69e97e2e5b3c79fd6f3ac595e31a3c2c51cb4c1293e99ad52f7db562b0.png" src="../../_images/318a2a69e97e2e5b3c79fd6f3ac595e31a3c2c51cb4c1293e99ad52f7db562b0.png" />
+<img alt="../../_images/47a81657d6c379e1a4a56b9fbe80e0b80235a8bf04e82400234984bfd4e72ae5.png" src="../../_images/47a81657d6c379e1a4a56b9fbe80e0b80235a8bf04e82400234984bfd4e72ae5.png" />
 </div>
 </div>
 </section>
 <section id="id13">
-<h3><span class="section-number">3.3.2. </span>グラフの色、スタイルの設定<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.2. </span>グラフの色、スタイルの設定<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <p>グラフの色を設定する方法はグラフの種類により微妙に異なるが、<code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>で描く曲線のグラフに関しては、曲線の太さを<code class="docutils literal notranslate"><span class="pre">linewidth</span></code>、曲線の色を<code class="docutils literal notranslate"><span class="pre">linecolor</span></code>、曲線のスタイルを<code class="docutils literal notranslate"><span class="pre">linestyle</span></code>でそれぞれ設定できる。</p>
 <p><strong>曲線の色</strong>
 色に関しては<code class="docutils literal notranslate"><span class="pre">&quot;red&quot;</span></code>や<code class="docutils literal notranslate"><span class="pre">&quot;blue&quot;</span></code>のような一般的な色以外にも多数の色が用意されている。詳細はMatplotlibの公式ページを参考にしてほしい。</p>
@@ -693,12 +697,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cc58950a4f3ce0c00ac834229773b4521e7acf941e55c325261e3122c0c786cf.png" src="../../_images/cc58950a4f3ce0c00ac834229773b4521e7acf941e55c325261e3122c0c786cf.png" />
+<img alt="../../_images/9ee1ea81f50d32e521e3063bf57e67f2f6afc2f0bb272678af017b0f653be7d3.png" src="../../_images/9ee1ea81f50d32e521e3063bf57e67f2f6afc2f0bb272678af017b0f653be7d3.png" />
 </div>
 </div>
 </section>
 <section id="id14">
-<h3><span class="section-number">3.3.3. </span>軸の刻み幅、表示形式の調整<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.3. </span>軸の刻み幅、表示形式の調整<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <p>軸の刻み幅を変更するには、<code class="docutils literal notranslate"><span class="pre">plt.xticks</span></code>、<code class="docutils literal notranslate"><span class="pre">plt.yticks</span></code>を用いる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -724,7 +728,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/655570de2b42fb3aa8f6cb55f2f5eaccc643961e66c6bd96caf08e4024839a2d.png" src="../../_images/655570de2b42fb3aa8f6cb55f2f5eaccc643961e66c6bd96caf08e4024839a2d.png" />
+<img alt="../../_images/e225226e4a8011416b7713d7ecfabb0e434dd34cdacf121bc5ccec97a3979dda.png" src="../../_images/e225226e4a8011416b7713d7ecfabb0e434dd34cdacf121bc5ccec97a3979dda.png" />
 </div>
 </div>
 <p>なお、このままでも良いのだが、三角関数を描画するときには、<code class="docutils literal notranslate"><span class="pre">-3.14</span></code>や<code class="docutils literal notranslate"><span class="pre">3.14</span></code>の代わりに<span class="math notranslate nohighlight">\(-\pi\)</span>や<span class="math notranslate nohighlight">\(\pi\)</span>と描画したいと考えるだろう。このような場合には、<code class="docutils literal notranslate"><span class="pre">AxisSubplot</span></code>のメソッドである<code class="docutils literal notranslate"><span class="pre">set_major_formatter</span></code>ならびに<code class="docutils literal notranslate"><span class="pre">set_major_locator</span></code>を用いる。</p>
@@ -768,13 +772,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/25c05160c68b3c82c64f0ffadee1e434012be8c2cf22de060ec3990fe05f4a9d.png" src="../../_images/25c05160c68b3c82c64f0ffadee1e434012be8c2cf22de060ec3990fe05f4a9d.png" />
+<img alt="../../_images/332b48d2f2bde1930f83c1a503bbfe02785669bce7bd1af1ff8fbbbbf6980830.png" src="../../_images/332b48d2f2bde1930f83c1a503bbfe02785669bce7bd1af1ff8fbbbbf6980830.png" />
 </div>
 </div>
 <p>※ 上記コードの<code class="docutils literal notranslate"><span class="pre">plt.gca()</span></code>は、現在描画中のグラフオブジェクト(より厳密には<code class="docutils literal notranslate"><span class="pre">AxisSubplot</span></code>)を返す関数。</p>
 </section>
 <section id="id15">
-<h3><span class="section-number">3.3.4. </span>凡例の表示<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.4. </span>凡例の表示<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
 <p>凡例を表示するには、各描画要素に<code class="docutils literal notranslate"><span class="pre">label=&quot;xxx&quot;</span></code>という引数を与えた上で、描画直前に<code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code>と書けば良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -799,7 +803,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f7d4e4b7b846e250bb25f6903aaa44e87ceeb50d48b7875babbbd8c16a2bec87.png" src="../../_images/f7d4e4b7b846e250bb25f6903aaa44e87ceeb50d48b7875babbbd8c16a2bec87.png" />
+<img alt="../../_images/04a541342c0a19f52fa0498e424a829450294d1f93ee8cd2178e8d4cb963ad10.png" src="../../_images/04a541342c0a19f52fa0498e424a829450294d1f93ee8cd2178e8d4cb963ad10.png" />
 </div>
 </div>
 <p>なお、凡例の位置は<code class="docutils literal notranslate"><span class="pre">plt.legend</span></code>に対して<code class="docutils literal notranslate"><span class="pre">loc={位置}</span></code>という引数を与えれば良く、位置には</p>
@@ -836,12 +840,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f4eb480f0b30f343a46184abc1842be115cb7f1301a161c821c32300b81b40c8.png" src="../../_images/f4eb480f0b30f343a46184abc1842be115cb7f1301a161c821c32300b81b40c8.png" />
+<img alt="../../_images/90c55f451a6277ced6946a6d64fd6ceb75e4a44ea29919b3deb5c66e2ad9c907.png" src="../../_images/90c55f451a6277ced6946a6d64fd6ceb75e4a44ea29919b3deb5c66e2ad9c907.png" />
 </div>
 </div>
 </section>
 <section id="id16">
-<h3><span class="section-number">3.3.5. </span>グリッド線を引く<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.5. </span>グリッド線を引く<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
 <p>グリッド線を引くには<code class="docutils literal notranslate"><span class="pre">plt.grid</span></code>を用いる。この関数に軸を表わす<code class="docutils literal notranslate"><span class="pre">axis</span></code>、色を表わす<code class="docutils literal notranslate"><span class="pre">color</span></code>、線のスタイルを表わす<code class="docutils literal notranslate"><span class="pre">linestyle</span></code>等を指定することで、グリッド線の表示をコントロールできる。なおグリッド線はtickの入っている箇所に引かれるので、本数を減らしたい場合は前述の<code class="docutils literal notranslate"><span class="pre">xticks</span></code>、<code class="docutils literal notranslate"><span class="pre">yticks</span></code>で調整をすると良い。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -867,12 +871,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/534f1f4b843e7ebd279e8963da36839a2a4a0b79af42535a71723ef2a9ef9420.png" src="../../_images/534f1f4b843e7ebd279e8963da36839a2a4a0b79af42535a71723ef2a9ef9420.png" />
+<img alt="../../_images/3c1bb0986b32212c85d46f565ba7e91492b54f7bdd8448803cccc0f5b6922c5a.png" src="../../_images/3c1bb0986b32212c85d46f565ba7e91492b54f7bdd8448803cccc0f5b6922c5a.png" />
 </div>
 </div>
 </section>
 <section id="id17">
-<h3><span class="section-number">3.3.6. </span>片対数グラフ、両対数グラフ<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.6. </span>片対数グラフ、両対数グラフ<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
 <p>x軸、y軸のそれぞれを対数目盛に変更することもできる。これには<code class="docutils literal notranslate"><span class="pre">plt.xscale(&quot;log&quot;)</span></code>、<code class="docutils literal notranslate"><span class="pre">plt.yscale(&quot;log&quot;)</span></code>を用いる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -900,12 +904,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4a405c0744db6c5a7ef57e874203d53d1a14672dbccd531d2fe6ef7046ebf7b8.png" src="../../_images/4a405c0744db6c5a7ef57e874203d53d1a14672dbccd531d2fe6ef7046ebf7b8.png" />
+<img alt="../../_images/4680708616d7f8d93f6c2a5e6e15b3e3670ac27ce483a4f485f9c6a7c4caf9b9.png" src="../../_images/4680708616d7f8d93f6c2a5e6e15b3e3670ac27ce483a4f485f9c6a7c4caf9b9.png" />
 </div>
 </div>
 </section>
 <section id="id18">
-<h3><span class="section-number">3.3.7. </span>エラーバーの表示<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.7. </span>エラーバーの表示<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
 <p>以下の例では、リンゴ、バナナ、サクランボ、ドリアンの価格に対して、平均と標準偏差を求めて、エラーバーを表示してみる。使用するデータは以下の通り。 (Pandasの使い方については<a class="reference internal" href="pandas.html#sec-pandas"><span class="std std-ref">次節</span></a>で詳しく紹介)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1013,12 +1017,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3dd60f873a761bea6bbb336798bf1ba423d15af6a20f170eacda742baa91d0b2.png" src="../../_images/3dd60f873a761bea6bbb336798bf1ba423d15af6a20f170eacda742baa91d0b2.png" />
+<img alt="../../_images/ac6aa47f24b19bb662c3eea6763626e253115aab6c37dadb1cde48eddbdba119.png" src="../../_images/ac6aa47f24b19bb662c3eea6763626e253115aab6c37dadb1cde48eddbdba119.png" />
 </div>
 </div>
 </section>
 <section id="id19">
-<h3><span class="section-number">3.3.8. </span>その他の機能<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.8. </span>その他の機能<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
 <section id="id20">
 <h4>背景色の設定<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">plt.gca().set_facecolor</span></code>を用いる。</p>
@@ -1044,7 +1048,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4678bce5946f5ebd3deda0a4d5d2c5fa7c9ff7369b2ec9bc9ba68e84f4e17bad.png" src="../../_images/4678bce5946f5ebd3deda0a4d5d2c5fa7c9ff7369b2ec9bc9ba68e84f4e17bad.png" />
+<img alt="../../_images/d6a107c6cea9cfe5017934213d82af8e117e325de836e94519676376753b4f8d.png" src="../../_images/d6a107c6cea9cfe5017934213d82af8e117e325de836e94519676376753b4f8d.png" />
 </div>
 </div>
 </section>
@@ -1080,7 +1084,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e3b2fe453f22445f85900503f594e9ce30e637c0bc21cbd377d890473ac1693f.png" src="../../_images/e3b2fe453f22445f85900503f594e9ce30e637c0bc21cbd377d890473ac1693f.png" />
+<img alt="../../_images/48955faddf959272c8e57fee3e772f151cd7cb48fcf20247b2db39600a83aeea.png" src="../../_images/48955faddf959272c8e57fee3e772f151cd7cb48fcf20247b2db39600a83aeea.png" />
 </div>
 </div>
 </section>
@@ -1129,7 +1133,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9ce7d34953741d58654ff0800f3b028b28cfb0e70723c2d9f2ec44adf87f2c16.png" src="../../_images/9ce7d34953741d58654ff0800f3b028b28cfb0e70723c2d9f2ec44adf87f2c16.png" />
+<img alt="../../_images/c9f712c828be46791cf68feb03097a6884628819cae0513e98cbcd6455b6f362.png" src="../../_images/c9f712c828be46791cf68feb03097a6884628819cae0513e98cbcd6455b6f362.png" />
 </div>
 </div>
 <p>2つめは、<code class="docutils literal notranslate"><span class="pre">plt.subplots</span></code>関数により、一度に全てのグラフ要素を作ってしまう方法で、2行3列の要素が作りたければ、<code class="docutils literal notranslate"><span class="pre">plt.subplots(2,</span> <span class="pre">3)</span></code>のようにする。すると、<code class="docutils literal notranslate"><span class="pre">Figure</span></code>と<code class="docutils literal notranslate"><span class="pre">Axes</span></code>の配列が返ってくるので、配列の要素に対して、グラフの描画命令を呼び出せば良い。</p>
@@ -1162,14 +1166,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9ce7d34953741d58654ff0800f3b028b28cfb0e70723c2d9f2ec44adf87f2c16.png" src="../../_images/9ce7d34953741d58654ff0800f3b028b28cfb0e70723c2d9f2ec44adf87f2c16.png" />
+<img alt="../../_images/c9f712c828be46791cf68feb03097a6884628819cae0513e98cbcd6455b6f362.png" src="../../_images/c9f712c828be46791cf68feb03097a6884628819cae0513e98cbcd6455b6f362.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="id23">
-<h2><span class="section-number">3.4. </span>三次元データのプロット<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.4. </span>三次元データのプロット<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h2>
 <p>最後に、Matplotlibを用いた三次元プロットについてみてみる。今回は機械学習で広く用いられるSwiss Rollのデータを用いて可視化をしてみよう。</p>
 <p>3次元プロットを作成する場合には、単に <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code>等を呼び出すだけでは不十分で、3次元プロット用の<code class="docutils literal notranslate"><span class="pre">Axes</span></code>を作成する必要がある。具体的には<code class="docutils literal notranslate"><span class="pre">add_subplot</span></code>のパラメータに<code class="docutils literal notranslate"><span class="pre">projection=&quot;3d&quot;</span></code>を与える。</p>
 <p>あとは、これまでx座標とy座標だけを引数として渡していた<code class="docutils literal notranslate"><span class="pre">scatter</span></code>関数に対して、z座標を表わす値を合わせて指定すれば良い。</p>
@@ -1213,7 +1217,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3e9317ba8fbf9cb9dc1f1c27823485b2dd86b9afb2c7d464d236bf109f17b985.png" src="../../_images/3e9317ba8fbf9cb9dc1f1c27823485b2dd86b9afb2c7d464d236bf109f17b985.png" />
+<img alt="../../_images/698b8e3ca4ac4692c8bdebe2c033a3b56907f667cf83afadf891362bcc0ff93a.png" src="../../_images/698b8e3ca4ac4692c8bdebe2c033a3b56907f667cf83afadf891362bcc0ff93a.png" />
 </div>
 </div>
 <div class="note admonition">
@@ -1223,7 +1227,7 @@ document.write(`
 </div>
 </section>
 <section id="seaborn">
-<span id="ssec-seaborn"></span><h2><span class="section-number">3.5. </span>Seabornの併用<a class="headerlink" href="#seaborn" title="Permalink to this heading">#</a></h2>
+<span id="ssec-seaborn"></span><h2><span class="section-number">2.5. </span>Seabornの併用<a class="headerlink" href="#seaborn" title="Permalink to this heading">#</a></h2>
 <p>SeabornはMatplotlibと同様にデータ可視化のためのライブラリで、より複雑なグラフをより洗練された見た目で表示することができる。データをPandasのDataFrameで準備する必要があるなど、少し覚えるのには段階を踏む必要があるが、慣れればより目的に沿った見た目のグラフを簡単に作成できる。</p>
 <p>なお、単にSeaborn風にテーマを変更したいだけで、描画はこれまで通りMatplotlibで行う、という場合には、単に</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -1286,7 +1290,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d1eeb4be2afc63ea6a465887677a1ff2b75033f124eae9715cc41ff36e10be23.png" src="../../_images/d1eeb4be2afc63ea6a465887677a1ff2b75033f124eae9715cc41ff36e10be23.png" />
+<img alt="../../_images/146aa9aa46cb009536ccd56e69c29bff0814b3524b512f1df7275b7cdf0da0ec.png" src="../../_images/146aa9aa46cb009536ccd56e69c29bff0814b3524b512f1df7275b7cdf0da0ec.png" />
 </div>
 </div>
 <p><strong>例2: 二次元散布図と各軸における周辺分布の描画</strong></p>
@@ -1318,7 +1322,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8fd6d40c2b21f481acfed40e8c065099d5f269dac39f37dab8d660a2633bfaed.png" src="../../_images/8fd6d40c2b21f481acfed40e8c065099d5f269dac39f37dab8d660a2633bfaed.png" />
+<img alt="../../_images/dcd9382d9daa2003f686a9d2eb16d238c779dbb53df575e290dc2eab075d2533.png" src="../../_images/dcd9382d9daa2003f686a9d2eb16d238c779dbb53df575e290dc2eab075d2533.png" />
 </div>
 </div>
 <p>Seabornでは、この他にも数え切れないほど、様々なグラフが作成できるので、より深く勉強したい人は、Seabornのギャラリーを見て、自分の作りたいグラフを探してみると良い。</p>
@@ -1360,7 +1364,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1369,7 +1373,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>NumPyの基本</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>NumPyの基本</p>
       </div>
     </a>
     <a class="right-next"
@@ -1377,7 +1381,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Pandasの基本</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Pandasの基本</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1390,35 +1394,36 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> 目次
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.1. Matplotlibとは？</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.2. 基本的なグラフの作成</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.2.1. 空の画面を表示する</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.2.2. 折れ線グラフ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2.3. 散布図</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2.4. 棒グラフ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">3.2.5. 円グラフ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">3.2.6. ヒストグラム</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3.2.7. グラフを保存する</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.1. Matplotlibとは？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2. 基本的なグラフの作成</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.1. 空の画面を表示する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.2. 折れ線グラフ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.3. 散布図</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.2.4. 棒グラフ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.2.5. 円グラフ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.2.6. ヒストグラム</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.2.7. グラフを保存する</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">画像の種類について</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">3.3. グラフの調整</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">3.3.1. グラフのタイトル、軸ラベル</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">3.3.2. グラフの色、スタイルの設定</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">3.3.3. 軸の刻み幅、表示形式の調整</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">3.3.4. 凡例の表示</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">3.3.5. グリッド線を引く</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">3.3.6. 片対数グラフ、両対数グラフ</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">3.3.7. エラーバーの表示</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">3.3.8. その他の機能</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.3. グラフの調整</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">2.3.1. グラフのタイトル、軸ラベル</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">2.3.2. グラフの色、スタイルの設定</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">2.3.3. 軸の刻み幅、表示形式の調整</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">2.3.4. 凡例の表示</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">2.3.5. グリッド線を引く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">2.3.6. 片対数グラフ、両対数グラフ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">2.3.7. エラーバーの表示</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">2.3.8. その他の機能</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">背景色の設定</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">注釈を入れる</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">複数のグラフを並べる</a></li>
@@ -1426,8 +1431,8 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">3.4. 三次元データのプロット</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">3.5. Seabornの併用</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">2.4. 三次元データのプロット</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn">2.5. Seabornの併用</a></li>
 </ul>
   </nav></div>
 
@@ -1476,8 +1481,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -146,6 +149,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../index.html">
   
@@ -161,10 +166,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="setup-python.html">1. Python環境の設定</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy.html">2. NumPyの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">1. NumPyの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">2. Matplotlibの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">3. Pandasの基本</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
 <ul class="current nav bd-sidenav">
@@ -206,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -215,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -378,10 +382,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -389,7 +393,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -446,7 +450,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-figure-detection">
 <span id="id1"></span><h1><span class="section-number">2. </span>図形の検出<a class="headerlink" href="#sec-figure-detection" title="Permalink to this heading">#</a></h1>
@@ -517,7 +521,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/cc63707e9d75a4a8a986dabd3165c65d2277fbd1e11895fd11aff7c70452ce65.png" src="../../_images/cc63707e9d75a4a8a986dabd3165c65d2277fbd1e11895fd11aff7c70452ce65.png" />
+<img alt="../../_images/ba00c73dc8fad8ef4b2f376f1bcf67b0788c963b14b2e8c5dc2c3cb3e905da90.png" src="../../_images/ba00c73dc8fad8ef4b2f376f1bcf67b0788c963b14b2e8c5dc2c3cb3e905da90.png" />
 </div>
 </div>
 </section>
@@ -556,7 +560,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e5c510a6c39397fb77f9c794ba153e1b933e1fe17bf8ce161b478b27eecbe3aa.png" src="../../_images/e5c510a6c39397fb77f9c794ba153e1b933e1fe17bf8ce161b478b27eecbe3aa.png" />
+<img alt="../../_images/a5abf8b65cfc9a97df11797f3937911b8507d26619e0f0642986c85bf9e535e5.png" src="../../_images/a5abf8b65cfc9a97df11797f3937911b8507d26619e0f0642986c85bf9e535e5.png" />
 </div>
 </div>
 <p>エッジを統合する場合、エッジが白色の領域に検出されているとすると、<strong>先にdilation、次にerosionの順序で処理を施す</strong>。dilationにより二重のエッジのそれぞれが太くなり、重なることで、太い1本のエッジとなる。その後、erosionをかけることで、そのエッジが細くなり、1本の細いエッジとなる。</p>
@@ -583,7 +587,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/919f0db9db818aafa6a21ccd2daab3fba7dfad3e38d0b9ddeda372a2684f65f6.png" src="../../_images/919f0db9db818aafa6a21ccd2daab3fba7dfad3e38d0b9ddeda372a2684f65f6.png" />
+<img alt="../../_images/ae42f45c8633c8cd7b74879b63950ca601d865d5a289b919cc775c3e5648313f.png" src="../../_images/ae42f45c8633c8cd7b74879b63950ca601d865d5a289b919cc775c3e5648313f.png" />
 </div>
 </div>
 <p>上記の結果の通り、dilationとerosionを組み合わせることで二本の細いエッジが一本のエッジに統合されていることが分かる。</p>
@@ -610,7 +614,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/919f0db9db818aafa6a21ccd2daab3fba7dfad3e38d0b9ddeda372a2684f65f6.png" src="../../_images/919f0db9db818aafa6a21ccd2daab3fba7dfad3e38d0b9ddeda372a2684f65f6.png" />
+<img alt="../../_images/ae42f45c8633c8cd7b74879b63950ca601d865d5a289b919cc775c3e5648313f.png" src="../../_images/ae42f45c8633c8cd7b74879b63950ca601d865d5a289b919cc775c3e5648313f.png" />
 </div>
 </div>
 </section>
@@ -656,7 +660,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cbdbd13d8a770db489f9d0827cd73006e3c676b37a8f65b49ccf35d46b741161.png" src="../../_images/cbdbd13d8a770db489f9d0827cd73006e3c676b37a8f65b49ccf35d46b741161.png" />
+<img alt="../../_images/d5fd560eee9e72a4ace2e0eea7649b90bf6d36bfb7d14101be9c0d040b69be52.png" src="../../_images/d5fd560eee9e72a4ace2e0eea7649b90bf6d36bfb7d14101be9c0d040b69be52.png" />
 </div>
 </div>
 </section>
@@ -967,42 +971,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img9681368637af43a49bfd36a51d431d46">
+  <img id="_anim_img13740995f69c43629fb28716cb768921">
   <div class="anim-controls">
-    <input id="_anim_slider9681368637af43a49bfd36a51d431d46" type="range" class="anim-slider"
+    <input id="_anim_slider13740995f69c43629fb28716cb768921" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim9681368637af43a49bfd36a51d431d46.set_frame(parseInt(this.value));">
+           oninput="anim13740995f69c43629fb28716cb768921.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim9681368637af43a49bfd36a51d431d46.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim13740995f69c43629fb28716cb768921.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim9681368637af43a49bfd36a51d431d46.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim13740995f69c43629fb28716cb768921.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim9681368637af43a49bfd36a51d431d46.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim13740995f69c43629fb28716cb768921.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim9681368637af43a49bfd36a51d431d46.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim13740995f69c43629fb28716cb768921.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim9681368637af43a49bfd36a51d431d46.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim13740995f69c43629fb28716cb768921.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim9681368637af43a49bfd36a51d431d46.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim13740995f69c43629fb28716cb768921.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim9681368637af43a49bfd36a51d431d46.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim13740995f69c43629fb28716cb768921.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim9681368637af43a49bfd36a51d431d46.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim13740995f69c43629fb28716cb768921.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim9681368637af43a49bfd36a51d431d46.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim13740995f69c43629fb28716cb768921.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select9681368637af43a49bfd36a51d431d46"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select13740995f69c43629fb28716cb768921"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_9681368637af43a49bfd36a51d431d46"
+      <input type="radio" name="state" value="once" id="_anim_radio1_13740995f69c43629fb28716cb768921"
              >
-      <label for="_anim_radio1_9681368637af43a49bfd36a51d431d46">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_9681368637af43a49bfd36a51d431d46"
+      <label for="_anim_radio1_13740995f69c43629fb28716cb768921">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_13740995f69c43629fb28716cb768921"
              checked>
-      <label for="_anim_radio2_9681368637af43a49bfd36a51d431d46">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_9681368637af43a49bfd36a51d431d46"
+      <label for="_anim_radio2_13740995f69c43629fb28716cb768921">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_13740995f69c43629fb28716cb768921"
              >
-      <label for="_anim_radio3_9681368637af43a49bfd36a51d431d46">Reflect</label>
+      <label for="_anim_radio3_13740995f69c43629fb28716cb768921">Reflect</label>
     </form>
   </div>
 </div>
@@ -1012,13 +1016,13 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img9681368637af43a49bfd36a51d431d46";
-    var slider_id = "_anim_slider9681368637af43a49bfd36a51d431d46";
-    var loop_select_id = "_anim_loop_select9681368637af43a49bfd36a51d431d46";
+    var img_id = "_anim_img13740995f69c43629fb28716cb768921";
+    var slider_id = "_anim_slider13740995f69c43629fb28716cb768921";
+    var loop_select_id = "_anim_loop_select13740995f69c43629fb28716cb768921";
     var frames = new Array(9);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjguMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8g+/7EAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjkuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/TGe4hAAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABQjUlEQVR4nO3dd3wUdf7H8ffupgNJiAkJkdCRItUAIYjiSY6gqHByCshJEeFE\
 sQWleAoKnqBwnj8VDwsIngXQo9kiiCIqgWAgdJAeWkIJyZIE0nZ+fyB77pFQQshuMq/n47EP2dnP\
 zH5m3HzzzszOjMUwDEMAAAAwDau7GwAAAEDFIgACAACYDAEQAADAZAiAAAAAJkMABAAAMBkCIAAA\
@@ -1384,7 +1388,7 @@ AABMhgAIAABgMgRAAAAAkyEAAgAAmAwBEAAAwGQIgAAAACZDAAQAADAZAiAAAIDJEAABAABM5v8B\
 PT/IqQ+7IlsAAAAASUVORK5CYII=\
 "
   frames[1] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjguMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8g+/7EAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjkuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/TGe4hAAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABeGUlEQVR4nO3deVxU5f4H8M/MAMM6LLIrCoiiJIqiIGZpyRXKSstbapZLLmVZ\
 GZZLNzW1UtPb7VfZtcytm+bSVbMNNbtqKYIiuIIrCC7DDsMiA8w8vz/QyQlUQGAGzuf9es2r5sxz\
 znzPOD5+5pzzPEcmhBAgIiIiIsmQm7oAIiIiImpeDIBEREREEsMASERERCQxDIBEREREEsMASERE\
@@ -1811,7 +1815,7 @@ MQyARERERBLDAEhEREQkMQyARERERBLDAEhEREQkMQyARERERBLDAEhEREQkMf8PWedVIRBr2jYA\
 AAAASUVORK5CYII=\
 "
   frames[2] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjguMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8g+/7EAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjkuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/TGe4hAAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABjIUlEQVR4nO3deXhMZ/8G8HtmkkwWWUR2Yo0tthBEULTyStCWUkXVVqUUpbSW\
 vkVLW2tXtJba2lLbay0NqkURCSHWWGLLQiKLzGSdZGae3x+p+XUqiGSSmTj357rmqjnznGe+ZzqO\
 e845z3NkQggBIiIiIpIMubkLICIiIqKKxQBIREREJDEMgEREREQSwwBIREREJDEMgEREREQSwwBI\
@@ -2260,7 +2264,7 @@ RERERBLDAEhEREQkMQyARERERBLDAEhEREQkMQyARERERBLDAEhEREQkMQyARERERBLDAEhEREQk\
 MQyARERERBLDAEhEREQkMQyARERERBLzf+WhrG37s8hfAAAAAElFTkSuQmCC\
 "
   frames[3] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjguMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8g+/7EAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjkuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/TGe4hAAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABh30lEQVR4nO3deXwM9/8H8NfuJtkcbA65iTOuEEIQUUUrXwna0qqi6qpSilJa\
 R38tLW2dbfXQOurqt1VXUS0NqkURQkhccQSRBBs5ZDd3sruf3x+p/domIXLtxryej8c+amc+M/ue\
 6RqvnZnPZ2RCCAEiIiIikgy5uQsgIiIiourFAEhEREQkMQyARERERBLDAEhEREQkMQyARERERBLD\
@@ -2704,7 +2708,7 @@ SERERCQxDIBEREREEsMASERERCQxDIBEREREEsMASERERCQxDIBEREREEvP/VcDvr9LDAZ4AAAAA\
 SUVORK5CYII=\
 "
   frames[4] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjguMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8g+/7EAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjkuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/TGe4hAAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABfK0lEQVR4nO3deVhU5d8G8HtmgGGRYZFlQHDBnURRFMQsLXmVstKyUrNcMk1T\
 y7Rc+qVWVmranmW5V5pmuVWGmmWmIiiKKy64Acogi8ywDszM8/5BTk2AIAIzeO7Pdc2Vc85zznzP\
 aTzec5bnkQkhBIiIiIhIMuTWLoCIiIiI6hcDIBEREZHEMAASERERSQwDIBEREZHEMAASERERSQwD\
@@ -3135,7 +3139,7 @@ SQwDIBEREZHEMAASERERSQwDIBEREZHEMAASERERSQwDIBEREZHEMAASERERSQwDIBEREZHEMAAS\
 ERERSQwDIBEREZHEMAASERERSQwDIBEREZHEMAASERERScz/A1T55l+16p+8AAAAAElFTkSuQmCC\
 "
   frames[5] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjguMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8g+/7EAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjkuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/TGe4hAAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABdEElEQVR4nO3deVwU9f8H8NfsAsshCyi3oIJ4kSgKgpipJV/xqLSs1CyPTL9Z\
 VoaW2jc1tfL8Vt/UMsurn5lmeVVGmmmmIiiKJx4oCqjLKayAXLuf3x/o5gYoIrAL83o+HvvInfnM\
 7HumZXgxM5/PSEIIASIiIiKSDYWpCyAiIiKiusUASERERCQzDIBEREREMsMASERERCQzDIBERERE\
@@ -3557,7 +3561,7 @@ kIiIiEhmGACJiIiIZIYBkIiIiEhmGACJiIiIZIYBkIiIiEhmGACJiIiIZIYBkIiIiEhmGACJiIiI\
 ZIYBkIiIiEhm/h8Lf5lVdO6sSQAAAABJRU5ErkJggg==\
 "
   frames[6] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjguMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8g+/7EAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjkuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/TGe4hAAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABYaElEQVR4nO3deVhUZf8G8HtmgGGRYZFdcUHcSBRFIczSghdIKy0rNcslw7I0\
 DUulNzW1cuutfpZlmVurpuVSGWmWWYqiKK644IagwyozLLLMzPP7A52cBEUEZoZzf65rrpxnnnPm\
 e6bhcHPOeZ4jE0IIEBEREZFkyM1dABERERE1LgZAIiIiIolhACQiIiKSGAZAIiIiIolhACQiIiKS\
@@ -3958,7 +3962,7 @@ REQSwwBIREREJDEMgEREREQSwwBIREREJDEMgEREREQSwwBIREREJDEMgEREREQSwwBIREREJDEM\
 gEREREQSwwBIREREJDH/D2TshbH8d+iIAAAAAElFTkSuQmCC\
 "
   frames[7] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjguMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8g+/7EAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjkuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/TGe4hAAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABXdElEQVR4nO3dd3wUdf7H8ffupkMKkEYgdKRINUAEUTjJQQRPsIKilEM4UVQE\
 FfAUCyq2U09FUQ4E76diRawRRNETIiUUKQEJLQRICCVZkkDK7vz+iKysBAghyW6Y1/Px2Ifsd78z\
 +5kxTN7MzPc7FsMwDAEAAMA0rJ4uAAAAANWLAAgAAGAyBEAAAACTIQACAACYDAEQAADAZAiAAAAA\
@@ -4355,7 +4359,7 @@ AAAAkyEAAgAAmAwBEAAAwGQIgAAAACZDAAQAADAZAiAAAIDJEAABAABMhgAIAABgMgRAAAAAk/l/\
 C8lZ9nd8kHAAAAAASUVORK5CYII=\
 "
   frames[8] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAoAAAAHgCAYAAAA10dzkAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjguMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8g+/7EAAAACXBIWXMAAA9h\
+bGliIHZlcnNpb24zLjkuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/TGe4hAAAACXBIWXMAAA9h\
 AAAPYQGoP6dpAABWbElEQVR4nO3deVxU9f7H8fcw7MoigiCKu7nkGipplt7kquW9ZauWpXlNy9Iy\
 LZV+pZWVld3qVt4sr6bdm9lqthhpli1KmrjkgiZuuIEowgjINnN+f5CTk6iIwAye1/PxmEfMOd9z\
 5nNO4+HNOef7PRbDMAwBAADANLzcXQAAAACqFwEQAADAZAiAAAAAJkMABAAAMBkCIAAAgMkQAAEA\
@@ -4751,7 +4755,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim9681368637af43a49bfd36a51d431d46 = new Animation(frames, img_id, slider_id, 1000.0,
+        anim13740995f69c43629fb28716cb768921 = new Animation(frames, img_id, slider_id, 1000.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -4824,7 +4828,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/14810adf7e434e8f8f829e57dffa5dcf190165ebff9d758f95802b3d7798c6e1.png" src="../../_images/14810adf7e434e8f8f829e57dffa5dcf190165ebff9d758f95802b3d7798c6e1.png" />
+<img alt="../../_images/276ef2ad630488d32870d8cba4ccbf27ffc8dbd6a92e0121b7285a51c1dd1402.png" src="../../_images/276ef2ad630488d32870d8cba4ccbf27ffc8dbd6a92e0121b7285a51c1dd1402.png" />
 </div>
 </div>
 </section>
@@ -4868,7 +4872,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0941550281ba68eec091228cba65af698e93dc50a04671da1b9e664e6d3a331b.png" src="../../_images/0941550281ba68eec091228cba65af698e93dc50a04671da1b9e664e6d3a331b.png" />
+<img alt="../../_images/946dac6340f5ca6732b2a4729d2a3c5ed0dfd9c57b96320bb71899d0365aef0b.png" src="../../_images/946dac6340f5ca6732b2a4729d2a3c5ed0dfd9c57b96320bb71899d0365aef0b.png" />
 </div>
 </div>
 <p>大津の二値化では、上記のように「自然画像を自然なまま二値化」した画像が得られるため、より白い領域だけを残すように閾値を調整する。<code class="docutils literal notranslate"><span class="pre">threshold</span></code>の第1戻り値は実際に二値化に用いた閾値であるため、これを少し大きくなるようにスケーリングして、再度二値化処理をかける。</p>
@@ -4889,7 +4893,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6cf4000688eed525a0be00bfe19c8df7a71b4c3f665513ab76fdc4fc254f96d2.png" src="../../_images/6cf4000688eed525a0be00bfe19c8df7a71b4c3f665513ab76fdc4fc254f96d2.png" />
+<img alt="../../_images/4401ae985e7c37d1f84627916e8b0d3b97da5bff9bc10f25c8ff5775d9213993.png" src="../../_images/4401ae985e7c37d1f84627916e8b0d3b97da5bff9bc10f25c8ff5775d9213993.png" />
 </div>
 </div>
 <p>すると、上記のように看板の部分だけが強調されたような画像を得ることができる。</p>
@@ -4915,7 +4919,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5a82d049d3fc17b35a7994b99a8c7a3ec3391ec1a13908975d19751ebbde2fe9.png" src="../../_images/5a82d049d3fc17b35a7994b99a8c7a3ec3391ec1a13908975d19751ebbde2fe9.png" />
+<img alt="../../_images/cadd220210c97e1b1f5074da6ec4c157cba0a23f5da6c1af15f45c6a010cb5eb.png" src="../../_images/cadd220210c97e1b1f5074da6ec4c157cba0a23f5da6c1af15f45c6a010cb5eb.png" />
 </div>
 </div>
 </section>
@@ -4935,7 +4939,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9c7567c64e3f87522697c158ca6e2eab12a428290d4358bc700aae6cac7d5468.png" src="../../_images/9c7567c64e3f87522697c158ca6e2eab12a428290d4358bc700aae6cac7d5468.png" />
+<img alt="../../_images/66e41e7cf7c464da510078d6348674ca874f17e34f6fff8ca8c6e4ac3dee159e.png" src="../../_images/66e41e7cf7c464da510078d6348674ca874f17e34f6fff8ca8c6e4ac3dee159e.png" />
 </div>
 </div>
 <p>輪郭線の描画結果を見てみると、確かに一番長い輪郭線が看板を囲むものになっていそうに見える。実際に、輪郭線の長さを計算して、最も長い輪郭線がどれかを確認してみる。</p>
@@ -4963,7 +4967,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e4cadf3739815184c72879250450e8a271eac9e9e0d38c2b0d3eaa6e08b7ed85.png" src="../../_images/e4cadf3739815184c72879250450e8a271eac9e9e0d38c2b0d3eaa6e08b7ed85.png" />
+<img alt="../../_images/fa8f184d6a4bb5062bc7c55ff6951bc89b0db97fd84a56cb8ae9540af5e397f7.png" src="../../_images/fa8f184d6a4bb5062bc7c55ff6951bc89b0db97fd84a56cb8ae9540af5e397f7.png" />
 </div>
 </div>
 <p>確かに最も長い輪郭線が看板に対応していることが分かったので、次に看板の四つ角を取ってくる。<code class="docutils literal notranslate"><span class="pre">approxPolyDP</span></code>を使い、短い辺を潰してしまうことで四角形を得ることができる。</p>
@@ -4981,7 +4985,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/24aa5c35622758f98b8279079b4fab5db1d71cdca2888ca1feb0629a90c7f93e.png" src="../../_images/24aa5c35622758f98b8279079b4fab5db1d71cdca2888ca1feb0629a90c7f93e.png" />
+<img alt="../../_images/9c5ffb8f4ce594b20853f1b46d253ddf59921cff7acbbe0b00ff48189e2f569b.png" src="../../_images/9c5ffb8f4ce594b20853f1b46d253ddf59921cff7acbbe0b00ff48189e2f569b.png" />
 </div>
 </div>
 <p>図のタイトルにあるように、今、赤色で描かれている矩形の角は4つであり、これで、看板に対応する四角形を取り出すことができた。</p>
@@ -5033,11 +5037,11 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 \end{split}\]</div>
 <p>としよう。この時、変換後のベクトル<span class="math notranslate nohighlight">\(\mathbf{x}'\)</span>は以下のように書ける。</p>
 <div class="math notranslate nohighlight" id="equation-eq-perspective-transform">
-<span class="eqno">(2.2)<a class="headerlink" href="#equation-eq-perspective-transform" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-eq-perspective-transform" title="この数式へのパーマリンク">#</a></span>\[
 \mathbf{x}' = \frac{\mathbf{A}\mathbf{x} + \mathbf{b}}{\mathbf{c}^\top \mathbf{x} + d}
 \]</div>
 <p>この方程式の未知数は3×3=9個で、式の数は2個である。実用的には<span class="math notranslate nohighlight">\(d=1\)</span>であるとして、未知数を一つ減らし、変換前後の二次元座標の組<span class="math notranslate nohighlight">\((\mathbf{x}, \mathbf{x}')\)</span>を4組の対応づけることで、方程式を8つ定義する。</p>
-<p>ここで察しの良い方は、<a class="reference internal" href="#equation-eq-perspective-transform">(2.2)</a>が<span class="math notranslate nohighlight">\(\mathbf{M}\)</span>の成分の線形式になっていないことに気づいたかもしれない。この式の右辺は未知数の分数となっているため、このままでは線形問題として解くことはできない。しかし、<span class="math notranslate nohighlight">\(d=1\)</span>として、右辺の分母を両辺にかけると、</p>
+<p>ここで察しの良い方は、<a class="reference internal" href="#equation-eq-perspective-transform">(2.1)</a>が<span class="math notranslate nohighlight">\(\mathbf{M}\)</span>の成分の線形式になっていないことに気づいたかもしれない。この式の右辺は未知数の分数となっているため、このままでは線形問題として解くことはできない。しかし、<span class="math notranslate nohighlight">\(d=1\)</span>として、右辺の分母を両辺にかけると、</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{A}\mathbf{x} + \mathbf{b} - (\mathbf{x}' \mathbf{x}^\top) \mathbf{c} = 1
@@ -5076,7 +5080,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a1de151c52083e16983e02dc54bc886a2df9c060532d323a7456f86d6368ef14.png" src="../../_images/a1de151c52083e16983e02dc54bc886a2df9c060532d323a7456f86d6368ef14.png" />
+<img alt="../../_images/1347ead60d9c9e90501fe8864b8c12f5c246d336f2d4bbb33c3d334055b2ebf0.png" src="../../_images/1347ead60d9c9e90501fe8864b8c12f5c246d336f2d4bbb33c3d334055b2ebf0.png" />
 </div>
 </div>
 <p>このように、透視投影変換を考えることで、看板をあたかも正面から見たような画像を得ることができた。</p>
@@ -5130,7 +5134,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -5159,6 +5163,7 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -5234,8 +5239,8 @@ EAABAABMhgAIAABgMgRAAAAAk/l/gtmKKIewUigAAAAASUVORK5CYII=\
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

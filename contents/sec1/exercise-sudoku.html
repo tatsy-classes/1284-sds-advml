@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -146,6 +149,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../index.html">
   
@@ -161,10 +166,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="setup-python.html">1. Python環境の設定</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy.html">2. NumPyの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">1. NumPyの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">2. Matplotlibの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">3. Pandasの基本</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
 <ul class="current nav bd-sidenav">
@@ -206,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -215,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -378,10 +382,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -389,7 +393,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -445,7 +449,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-exercise-sudoku">
 <span id="id1"></span><h1><span class="section-number">4. </span>演習1 - 画像入力式数独ソルバーを作る<a class="headerlink" href="#sec-exercise-sudoku" title="Permalink to this heading">#</a></h1>
@@ -1831,12 +1835,12 @@ YXZmNTguNzYuMTAw
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time:
-23.9 ms +- 3.2 ms per loop (mean +- std. dev. of 10 runs, 1 loop each)
+25.8 ms +- 2.52 ms per loop (mean +- std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
-<p>上記は、素直にバックトラック法を実装した場合の実行時間であるが、一回の問題を解くのに平均<span class="pasted-text">23.9 ms</span>となっており、十分高速であることが分かる</p>
+<p>上記は、素直にバックトラック法を実装した場合の実行時間であるが、一回の問題を解くのに平均<span class="pasted-text">25.8 ms</span>となっており、十分高速であることが分かる</p>
 </section>
 <section id="id5">
 <h3><span class="section-number">4.1.3. </span>処理の効率化<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
@@ -1882,12 +1886,12 @@ YXZmNTguNzYuMTAw
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time:
-1.48 s +- 41.1 ms per loop (mean +- std. dev. of 10 runs, 1 loop each)
+1.47 s +- 51.5 ms per loop (mean +- std. dev. of 10 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
 </div>
-<p>この問題だと、上記の通り<span class="pasted-text">1.48 s</span>ほどの時間がかかる。</p>
+<p>この問題だと、上記の通り<span class="pasted-text">1.47 s</span>ほどの時間がかかる。</p>
 <p>実は、上記のコードは次の0のマスを探すまでの処理の効率が非常に悪い。0のマスは左上から右下に向かって探しているのだから、今新しく<code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j)</span></code>というマスに数字を入れたら<code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j+1)</span></code>以降の数字だけを調べれば良いのである。</p>
 <p>その他にも、バックトラック法を高速化するために、候補の数が少ないものから埋めていくなどの方法も考えられる。ぜひ、自分でプログラムを書いて試してみてほしい。確認用に難易度の異なる4問を示しておく。</p>
 <div class="cell docutils container">
@@ -2125,62 +2129,62 @@ YXZmNTguNzYuMTAw
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_ee940_row0_col3, #T_ee940_row1_col3, #T_ee940_row2_col3, #T_ee940_row3_col3, #T_ee940_row4_col3 {
+#T_fd696_row0_col3, #T_fd696_row1_col3, #T_fd696_row2_col3, #T_fd696_row3_col3, #T_fd696_row4_col3 {
   background-color: pink;
   font-weight: bold;
 }
 </style>
-<table id="T_ee940">
+<table id="T_fd696">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_ee940_level0_col0" class="col_heading level0 col0" >1</th>
-      <th id="T_ee940_level0_col1" class="col_heading level0 col1" >2</th>
-      <th id="T_ee940_level0_col2" class="col_heading level0 col2" >3</th>
-      <th id="T_ee940_level0_col3" class="col_heading level0 col3" >4</th>
-      <th id="T_ee940_level0_col4" class="col_heading level0 col4" >5</th>
+      <th id="T_fd696_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_fd696_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_fd696_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_fd696_level0_col3" class="col_heading level0 col3" >4</th>
+      <th id="T_fd696_level0_col4" class="col_heading level0 col4" >5</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_ee940_level0_row0" class="row_heading level0 row0" >s_1</th>
-      <td id="T_ee940_row0_col0" class="data row0 col0" >1</td>
-      <td id="T_ee940_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_ee940_row0_col2" class="data row0 col2" >0</td>
-      <td id="T_ee940_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_ee940_row0_col4" class="data row0 col4" >0</td>
+      <th id="T_fd696_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_fd696_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_fd696_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_fd696_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_fd696_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_fd696_row0_col4" class="data row0 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_ee940_level0_row1" class="row_heading level0 row1" >s_2</th>
-      <td id="T_ee940_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_ee940_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_ee940_row1_col2" class="data row1 col2" >1</td>
-      <td id="T_ee940_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_ee940_row1_col4" class="data row1 col4" >0</td>
+      <th id="T_fd696_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_fd696_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_fd696_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_fd696_row1_col2" class="data row1 col2" >1</td>
+      <td id="T_fd696_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_fd696_row1_col4" class="data row1 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_ee940_level0_row2" class="row_heading level0 row2" >s_3</th>
-      <td id="T_ee940_row2_col0" class="data row2 col0" >0</td>
-      <td id="T_ee940_row2_col1" class="data row2 col1" >0</td>
-      <td id="T_ee940_row2_col2" class="data row2 col2" >0</td>
-      <td id="T_ee940_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_ee940_row2_col4" class="data row2 col4" >1</td>
+      <th id="T_fd696_level0_row2" class="row_heading level0 row2" >s_3</th>
+      <td id="T_fd696_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_fd696_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_fd696_row2_col2" class="data row2 col2" >0</td>
+      <td id="T_fd696_row2_col3" class="data row2 col3" >1</td>
+      <td id="T_fd696_row2_col4" class="data row2 col4" >1</td>
     </tr>
     <tr>
-      <th id="T_ee940_level0_row3" class="row_heading level0 row3" >s_4</th>
-      <td id="T_ee940_row3_col0" class="data row3 col0" >0</td>
-      <td id="T_ee940_row3_col1" class="data row3 col1" >0</td>
-      <td id="T_ee940_row3_col2" class="data row3 col2" >1</td>
-      <td id="T_ee940_row3_col3" class="data row3 col3" >0</td>
-      <td id="T_ee940_row3_col4" class="data row3 col4" >0</td>
+      <th id="T_fd696_level0_row3" class="row_heading level0 row3" >s_4</th>
+      <td id="T_fd696_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_fd696_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_fd696_row3_col2" class="data row3 col2" >1</td>
+      <td id="T_fd696_row3_col3" class="data row3 col3" >0</td>
+      <td id="T_fd696_row3_col4" class="data row3 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_ee940_level0_row4" class="row_heading level0 row4" >s_5</th>
-      <td id="T_ee940_row4_col0" class="data row4 col0" >1</td>
-      <td id="T_ee940_row4_col1" class="data row4 col1" >0</td>
-      <td id="T_ee940_row4_col2" class="data row4 col2" >1</td>
-      <td id="T_ee940_row4_col3" class="data row4 col3" >0</td>
-      <td id="T_ee940_row4_col4" class="data row4 col4" >1</td>
+      <th id="T_fd696_level0_row4" class="row_heading level0 row4" >s_5</th>
+      <td id="T_fd696_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_fd696_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_fd696_row4_col2" class="data row4 col2" >1</td>
+      <td id="T_fd696_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_fd696_row4_col4" class="data row4 col4" >1</td>
     </tr>
   </tbody>
 </table>
@@ -2222,70 +2226,70 @@ YXZmNTguNzYuMTAw
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_81685_row0_col3, #T_81685_row1_col3, #T_81685_row3_col3, #T_81685_row4_col3 {
+#T_daa62_row0_col3, #T_daa62_row1_col3, #T_daa62_row3_col3, #T_daa62_row4_col3 {
   background-color: pink;
   font-weight: bold;
 }
-#T_81685_row2_col0, #T_81685_row2_col1, #T_81685_row2_col2, #T_81685_row2_col4 {
+#T_daa62_row2_col0, #T_daa62_row2_col1, #T_daa62_row2_col2, #T_daa62_row2_col4 {
   background-color: powderblue;
   font-weight: bold;
 }
-#T_81685_row2_col3 {
+#T_daa62_row2_col3 {
   background-color: plum;
   font-weight: bold;
 }
 </style>
-<table id="T_81685">
+<table id="T_daa62">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_81685_level0_col0" class="col_heading level0 col0" >1</th>
-      <th id="T_81685_level0_col1" class="col_heading level0 col1" >2</th>
-      <th id="T_81685_level0_col2" class="col_heading level0 col2" >3</th>
-      <th id="T_81685_level0_col3" class="col_heading level0 col3" >4</th>
-      <th id="T_81685_level0_col4" class="col_heading level0 col4" >5</th>
+      <th id="T_daa62_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_daa62_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_daa62_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_daa62_level0_col3" class="col_heading level0 col3" >4</th>
+      <th id="T_daa62_level0_col4" class="col_heading level0 col4" >5</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_81685_level0_row0" class="row_heading level0 row0" >s_1</th>
-      <td id="T_81685_row0_col0" class="data row0 col0" >1</td>
-      <td id="T_81685_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_81685_row0_col2" class="data row0 col2" >0</td>
-      <td id="T_81685_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_81685_row0_col4" class="data row0 col4" >0</td>
+      <th id="T_daa62_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_daa62_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_daa62_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_daa62_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_daa62_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_daa62_row0_col4" class="data row0 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_81685_level0_row1" class="row_heading level0 row1" >s_2</th>
-      <td id="T_81685_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_81685_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_81685_row1_col2" class="data row1 col2" >1</td>
-      <td id="T_81685_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_81685_row1_col4" class="data row1 col4" >0</td>
+      <th id="T_daa62_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_daa62_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_daa62_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_daa62_row1_col2" class="data row1 col2" >1</td>
+      <td id="T_daa62_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_daa62_row1_col4" class="data row1 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_81685_level0_row2" class="row_heading level0 row2" >s_3</th>
-      <td id="T_81685_row2_col0" class="data row2 col0" >0</td>
-      <td id="T_81685_row2_col1" class="data row2 col1" >0</td>
-      <td id="T_81685_row2_col2" class="data row2 col2" >0</td>
-      <td id="T_81685_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_81685_row2_col4" class="data row2 col4" >1</td>
+      <th id="T_daa62_level0_row2" class="row_heading level0 row2" >s_3</th>
+      <td id="T_daa62_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_daa62_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_daa62_row2_col2" class="data row2 col2" >0</td>
+      <td id="T_daa62_row2_col3" class="data row2 col3" >1</td>
+      <td id="T_daa62_row2_col4" class="data row2 col4" >1</td>
     </tr>
     <tr>
-      <th id="T_81685_level0_row3" class="row_heading level0 row3" >s_4</th>
-      <td id="T_81685_row3_col0" class="data row3 col0" >0</td>
-      <td id="T_81685_row3_col1" class="data row3 col1" >0</td>
-      <td id="T_81685_row3_col2" class="data row3 col2" >1</td>
-      <td id="T_81685_row3_col3" class="data row3 col3" >0</td>
-      <td id="T_81685_row3_col4" class="data row3 col4" >0</td>
+      <th id="T_daa62_level0_row3" class="row_heading level0 row3" >s_4</th>
+      <td id="T_daa62_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_daa62_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_daa62_row3_col2" class="data row3 col2" >1</td>
+      <td id="T_daa62_row3_col3" class="data row3 col3" >0</td>
+      <td id="T_daa62_row3_col4" class="data row3 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_81685_level0_row4" class="row_heading level0 row4" >s_5</th>
-      <td id="T_81685_row4_col0" class="data row4 col0" >1</td>
-      <td id="T_81685_row4_col1" class="data row4 col1" >0</td>
-      <td id="T_81685_row4_col2" class="data row4 col2" >1</td>
-      <td id="T_81685_row4_col3" class="data row4 col3" >0</td>
-      <td id="T_81685_row4_col4" class="data row4 col4" >1</td>
+      <th id="T_daa62_level0_row4" class="row_heading level0 row4" >s_5</th>
+      <td id="T_daa62_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_daa62_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_daa62_row4_col2" class="data row4 col2" >1</td>
+      <td id="T_daa62_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_daa62_row4_col4" class="data row4 col4" >1</td>
     </tr>
   </tbody>
 </table>
@@ -2327,70 +2331,70 @@ YXZmNTguNzYuMTAw
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_6f060_row0_col3, #T_6f060_row0_col4, #T_6f060_row1_col3, #T_6f060_row1_col4, #T_6f060_row3_col3, #T_6f060_row3_col4 {
+#T_d3bf4_row0_col3, #T_d3bf4_row0_col4, #T_d3bf4_row1_col3, #T_d3bf4_row1_col4, #T_d3bf4_row3_col3, #T_d3bf4_row3_col4 {
   background-color: pink;
   font-weight: bold;
 }
-#T_6f060_row2_col0, #T_6f060_row2_col1, #T_6f060_row2_col2, #T_6f060_row4_col0, #T_6f060_row4_col1, #T_6f060_row4_col2 {
+#T_d3bf4_row2_col0, #T_d3bf4_row2_col1, #T_d3bf4_row2_col2, #T_d3bf4_row4_col0, #T_d3bf4_row4_col1, #T_d3bf4_row4_col2 {
   background-color: powderblue;
   font-weight: bold;
 }
-#T_6f060_row2_col3, #T_6f060_row2_col4, #T_6f060_row4_col3, #T_6f060_row4_col4 {
+#T_d3bf4_row2_col3, #T_d3bf4_row2_col4, #T_d3bf4_row4_col3, #T_d3bf4_row4_col4 {
   background-color: plum;
   font-weight: bold;
 }
 </style>
-<table id="T_6f060">
+<table id="T_d3bf4">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_6f060_level0_col0" class="col_heading level0 col0" >1</th>
-      <th id="T_6f060_level0_col1" class="col_heading level0 col1" >2</th>
-      <th id="T_6f060_level0_col2" class="col_heading level0 col2" >3</th>
-      <th id="T_6f060_level0_col3" class="col_heading level0 col3" >4</th>
-      <th id="T_6f060_level0_col4" class="col_heading level0 col4" >5</th>
+      <th id="T_d3bf4_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_d3bf4_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_d3bf4_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_d3bf4_level0_col3" class="col_heading level0 col3" >4</th>
+      <th id="T_d3bf4_level0_col4" class="col_heading level0 col4" >5</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_6f060_level0_row0" class="row_heading level0 row0" >s_1</th>
-      <td id="T_6f060_row0_col0" class="data row0 col0" >1</td>
-      <td id="T_6f060_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_6f060_row0_col2" class="data row0 col2" >0</td>
-      <td id="T_6f060_row0_col3" class="data row0 col3" >0</td>
-      <td id="T_6f060_row0_col4" class="data row0 col4" >0</td>
+      <th id="T_d3bf4_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_d3bf4_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_d3bf4_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_d3bf4_row0_col2" class="data row0 col2" >0</td>
+      <td id="T_d3bf4_row0_col3" class="data row0 col3" >0</td>
+      <td id="T_d3bf4_row0_col4" class="data row0 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_6f060_level0_row1" class="row_heading level0 row1" >s_2</th>
-      <td id="T_6f060_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_6f060_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_6f060_row1_col2" class="data row1 col2" >1</td>
-      <td id="T_6f060_row1_col3" class="data row1 col3" >0</td>
-      <td id="T_6f060_row1_col4" class="data row1 col4" >0</td>
+      <th id="T_d3bf4_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_d3bf4_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_d3bf4_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_d3bf4_row1_col2" class="data row1 col2" >1</td>
+      <td id="T_d3bf4_row1_col3" class="data row1 col3" >0</td>
+      <td id="T_d3bf4_row1_col4" class="data row1 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_6f060_level0_row2" class="row_heading level0 row2" >s_3</th>
-      <td id="T_6f060_row2_col0" class="data row2 col0" >0</td>
-      <td id="T_6f060_row2_col1" class="data row2 col1" >0</td>
-      <td id="T_6f060_row2_col2" class="data row2 col2" >0</td>
-      <td id="T_6f060_row2_col3" class="data row2 col3" >1</td>
-      <td id="T_6f060_row2_col4" class="data row2 col4" >1</td>
+      <th id="T_d3bf4_level0_row2" class="row_heading level0 row2" >s_3</th>
+      <td id="T_d3bf4_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_d3bf4_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_d3bf4_row2_col2" class="data row2 col2" >0</td>
+      <td id="T_d3bf4_row2_col3" class="data row2 col3" >1</td>
+      <td id="T_d3bf4_row2_col4" class="data row2 col4" >1</td>
     </tr>
     <tr>
-      <th id="T_6f060_level0_row3" class="row_heading level0 row3" >s_4</th>
-      <td id="T_6f060_row3_col0" class="data row3 col0" >0</td>
-      <td id="T_6f060_row3_col1" class="data row3 col1" >0</td>
-      <td id="T_6f060_row3_col2" class="data row3 col2" >1</td>
-      <td id="T_6f060_row3_col3" class="data row3 col3" >0</td>
-      <td id="T_6f060_row3_col4" class="data row3 col4" >0</td>
+      <th id="T_d3bf4_level0_row3" class="row_heading level0 row3" >s_4</th>
+      <td id="T_d3bf4_row3_col0" class="data row3 col0" >0</td>
+      <td id="T_d3bf4_row3_col1" class="data row3 col1" >0</td>
+      <td id="T_d3bf4_row3_col2" class="data row3 col2" >1</td>
+      <td id="T_d3bf4_row3_col3" class="data row3 col3" >0</td>
+      <td id="T_d3bf4_row3_col4" class="data row3 col4" >0</td>
     </tr>
     <tr>
-      <th id="T_6f060_level0_row4" class="row_heading level0 row4" >s_5</th>
-      <td id="T_6f060_row4_col0" class="data row4 col0" >1</td>
-      <td id="T_6f060_row4_col1" class="data row4 col1" >0</td>
-      <td id="T_6f060_row4_col2" class="data row4 col2" >1</td>
-      <td id="T_6f060_row4_col3" class="data row4 col3" >0</td>
-      <td id="T_6f060_row4_col4" class="data row4 col4" >1</td>
+      <th id="T_d3bf4_level0_row4" class="row_heading level0 row4" >s_5</th>
+      <td id="T_d3bf4_row4_col0" class="data row4 col0" >1</td>
+      <td id="T_d3bf4_row4_col1" class="data row4 col1" >0</td>
+      <td id="T_d3bf4_row4_col2" class="data row4 col2" >1</td>
+      <td id="T_d3bf4_row4_col3" class="data row4 col3" >0</td>
+      <td id="T_d3bf4_row4_col4" class="data row4 col4" >1</td>
     </tr>
   </tbody>
 </table>
@@ -2499,46 +2503,46 @@ YXZmNTguNzYuMTAw
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_9616f_row0_col0, #T_9616f_row0_col1, #T_9616f_row1_col0, #T_9616f_row1_col1 {
+#T_85eef_row0_col0, #T_85eef_row0_col1, #T_85eef_row1_col0, #T_85eef_row1_col1 {
   background-color: plum;
   font-weight: bold;
 }
-#T_9616f_row0_col2, #T_9616f_row1_col2 {
+#T_85eef_row0_col2, #T_85eef_row1_col2 {
   background-color: powderblue;
   font-weight: bold;
 }
-#T_9616f_row2_col0, #T_9616f_row2_col1 {
+#T_85eef_row2_col0, #T_85eef_row2_col1 {
   background-color: pink;
   font-weight: bold;
 }
 </style>
-<table id="T_9616f">
+<table id="T_85eef">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_9616f_level0_col0" class="col_heading level0 col0" >1</th>
-      <th id="T_9616f_level0_col1" class="col_heading level0 col1" >2</th>
-      <th id="T_9616f_level0_col2" class="col_heading level0 col2" >3</th>
+      <th id="T_85eef_level0_col0" class="col_heading level0 col0" >1</th>
+      <th id="T_85eef_level0_col1" class="col_heading level0 col1" >2</th>
+      <th id="T_85eef_level0_col2" class="col_heading level0 col2" >3</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_9616f_level0_row0" class="row_heading level0 row0" >s_1</th>
-      <td id="T_9616f_row0_col0" class="data row0 col0" >1</td>
-      <td id="T_9616f_row0_col1" class="data row0 col1" >1</td>
-      <td id="T_9616f_row0_col2" class="data row0 col2" >0</td>
+      <th id="T_85eef_level0_row0" class="row_heading level0 row0" >s_1</th>
+      <td id="T_85eef_row0_col0" class="data row0 col0" >1</td>
+      <td id="T_85eef_row0_col1" class="data row0 col1" >1</td>
+      <td id="T_85eef_row0_col2" class="data row0 col2" >0</td>
     </tr>
     <tr>
-      <th id="T_9616f_level0_row1" class="row_heading level0 row1" >s_2</th>
-      <td id="T_9616f_row1_col0" class="data row1 col0" >0</td>
-      <td id="T_9616f_row1_col1" class="data row1 col1" >1</td>
-      <td id="T_9616f_row1_col2" class="data row1 col2" >1</td>
+      <th id="T_85eef_level0_row1" class="row_heading level0 row1" >s_2</th>
+      <td id="T_85eef_row1_col0" class="data row1 col0" >0</td>
+      <td id="T_85eef_row1_col1" class="data row1 col1" >1</td>
+      <td id="T_85eef_row1_col2" class="data row1 col2" >1</td>
     </tr>
     <tr>
-      <th id="T_9616f_level0_row2" class="row_heading level0 row2" >s_4</th>
-      <td id="T_9616f_row2_col0" class="data row2 col0" >0</td>
-      <td id="T_9616f_row2_col1" class="data row2 col1" >0</td>
-      <td id="T_9616f_row2_col2" class="data row2 col2" >1</td>
+      <th id="T_85eef_level0_row2" class="row_heading level0 row2" >s_4</th>
+      <td id="T_85eef_row2_col0" class="data row2 col0" >0</td>
+      <td id="T_85eef_row2_col1" class="data row2 col1" >0</td>
+      <td id="T_85eef_row2_col2" class="data row2 col2" >1</td>
     </tr>
   </tbody>
 </table>
@@ -2684,6 +2688,656 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+/tmp/ipykernel_4198/661926126.py:14: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise in a future error of pandas. Value &#39;0&#39; has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  df.iloc[:] = 0
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3762,31 +4416,12 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[5 2 1 7 6 8 3 4 9]
- [3 6 8 2 4 9 1 5 7]
- [9 4 7 5 1 3 6 8 2]
- [4 5 9 6 8 2 7 3 1]
- [8 1 6 3 9 7 4 2 5]
- [2 7 3 4 5 1 9 6 8]
- [6 9 4 8 7 5 2 1 3]
- [7 8 2 1 3 6 5 9 4]
- [1 3 5 9 2 4 8 7 6]]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Execution time:
-6.18 ms +- 198 us per loop (mean +- std. dev. of 10 runs, 1 loop each)
-</pre></div>
 </div>
-</div>
-</div>
-<p>すると先ほど1秒以上かかっていた問題が、<strong>たったの<span class="pasted-text">6.18 ms</span>で解けている</strong>ことが分かる。このように、数独の問題をExact Coverの問題と捉えることが、通常のバックトラック法よりも遙かに高速に問題を解けることが確認できた。</p>
+<p>すると先ほど1秒以上かかっていた問題が、<strong>たったので解けている</strong>ことが分かる。このように、数独の問題をExact Coverの問題と捉えることが、通常のバックトラック法よりも遙かに高速に問題を解けることが確認できた。</p>
 <div class="note admonition">
 <p class="admonition-title">なぜ速く解けるのか？</p>
 <p>今紹介したExact Coverを解くAlgorithm Xでは、表の列の中で<strong>最も1の数が少ない列</strong>を選んでいる。この操作が何を意味するかを考えてみよう。</p>
@@ -3807,7 +4442,7 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
 </ul>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/30b4d310126003bd1a0977882e692f5961f5f286e16509a0550ad5ef271d8cac.png" src="../../_images/30b4d310126003bd1a0977882e692f5961f5f286e16509a0550ad5ef271d8cac.png" />
+<img alt="../../_images/2dee697d6ea3ac2a575c11a145642ff4ad5049d345c788c29791821956f4ae7a.png" src="../../_images/2dee697d6ea3ac2a575c11a145642ff4ad5049d345c788c29791821956f4ae7a.png" />
 </div>
 </div>
 <p><strong>入力の形式</strong></p>
@@ -3909,7 +4544,7 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -3938,6 +4573,7 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -4012,8 +4648,8 @@ s_{\text{Row-A,Col-X}} = \{ c_{\text{Fill,Row-A,Col-X}}, c_{\text{1,Row-A}}, c_{
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

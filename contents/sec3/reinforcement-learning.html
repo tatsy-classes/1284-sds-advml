@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -146,6 +149,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../index.html">
   
@@ -161,10 +166,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../sec1/setup-python.html">1. Python環境の設定</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/numpy.html">2. NumPyの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/matplotlib.html">3. Matplotlibの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../sec1/pandas.html">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/numpy.html">1. NumPyの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/matplotlib.html">2. Matplotlibの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sec1/pandas.html">3. Pandasの基本</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
 <ul class="nav bd-sidenav">
@@ -206,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -215,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -378,10 +382,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -389,7 +393,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -439,7 +443,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-reinforcement-learning">
 <span id="id1"></span><h1><span class="section-number">1. </span>強化学習の基礎<a class="headerlink" href="#sec-reinforcement-learning" title="Permalink to this heading">#</a></h1>
@@ -556,7 +560,7 @@ document.write(`
 </div>
 <p><strong>結果: ランダムにスロットを回す</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.498</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.499</span></p></li>
 </ul>
 <p>以下には、横軸にスロットを回した回数を取り、当たり確率とその推定値分散をプロットしたものを示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -591,7 +595,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/3b8c10afab3c85fe6ec95b2a1897b9f455776bcefb1eb1d38dce075df844b661.png" src="../../_images/3b8c10afab3c85fe6ec95b2a1897b9f455776bcefb1eb1d38dce075df844b661.png" />
+<img alt="../../_images/a9c8acc48e9c0dd814785b615c40ac9c6509f7f9cd985af4cb86ee1a1334bcb7.png" src="../../_images/a9c8acc48e9c0dd814785b615c40ac9c6509f7f9cd985af4cb86ee1a1334bcb7.png" />
 </div>
 </div>
 <p>この結果から分かる通り、ランダムに回す場合には、得られる報酬は、当たり確率の<span class="pasted-text">0.50</span>程度に張り付いていることが分かる。回し方を工夫することで、この当たり確率を上げることをできるかがポイントとなる。</p>
@@ -641,7 +645,7 @@ document.write(`
 </div>
 <p><strong>結果: 貪欲法</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.860</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.858</span></p></li>
 </ul>
 <p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -685,7 +689,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/c005eb373552fdf34e291bf7a3510d2472527d7e0a33511a55240c13a9135a7f.png" src="../../_images/c005eb373552fdf34e291bf7a3510d2472527d7e0a33511a55240c13a9135a7f.png" />
+<img alt="../../_images/ee55aadd459cf4dfc6c2e00be17e68bb33b660882dee694fbe573f23f9d801c6.png" src="../../_images/ee55aadd459cf4dfc6c2e00be17e68bb33b660882dee694fbe573f23f9d801c6.png" />
 </div>
 </div>
 <p>上記の結果を見てみると、一番当たっている物を回す、という戦略はそれほど悪くはないように見える。実際、最終的な報酬は、最も当たりやすいスロットの当たり確率である<span class="pasted-text">0.90</span>に近づいている。</p>
@@ -790,7 +794,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0887b16e784827ea3c5531eda24e941301d3c30ebe034076a987cb473ebca557.png" src="../../_images/0887b16e784827ea3c5531eda24e941301d3c30ebe034076a987cb473ebca557.png" />
+<img alt="../../_images/ee954bf340455b42ffe4b646456acc756a561ffefb3cd707fa4c51ae29ea7777.png" src="../../_images/ee954bf340455b42ffe4b646456acc756a561ffefb3cd707fa4c51ae29ea7777.png" />
 </div>
 </div>
 <p>このように、ちょっとした工夫を加えるだけで、かなり早い段階から最大の当たり確率である<span class="pasted-text">0.90</span>に近い当たり確率が得られていることが分かる。</p>
@@ -845,7 +849,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 <p><strong>結果: ソフトマックス探索</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.899</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.900</span></p></li>
 </ul>
 <p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -907,7 +911,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/c6093e901b4ae75b92e75820e647f36638e1994c297108b1feca36a78199dc48.png" src="../../_images/c6093e901b4ae75b92e75820e647f36638e1994c297108b1feca36a78199dc48.png" />
+<img alt="../../_images/e17446ac606a4e5420508f99ffe495aa8d9ddb0c13d878d302f7c6af11e77c0b.png" src="../../_images/e17446ac606a4e5420508f99ffe495aa8d9ddb0c13d878d302f7c6af11e77c0b.png" />
 </div>
 </div>
 <p>上記の結果から、十分に試行回数が多いときには<span class="math notranslate nohighlight">\(\varepsilon\)</span>-greedy法とソフトマックス法にはそれほど差がないが、ソフトマックス法は<strong>試行回数が少ない場合でも、安定して高い平均報酬が得られている</strong>ことが分かる。</p>
@@ -959,7 +963,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 <p><strong>結果: UCB1</strong></p>
 <ul class="simple">
-<li><p>当たり確率: <span class="pasted-text">0.886</span></p></li>
+<li><p>当たり確率: <span class="pasted-text">0.892</span></p></li>
 </ul>
 <p>以下には得られた平均報酬の比較を示す。</p>
 <div class="cell tag_hide-input docutils container">
@@ -1030,7 +1034,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e1dfe8b4729ec9ccad3f8443c867d5bf462269f766bd578edaf09b613dbb655a.png" src="../../_images/e1dfe8b4729ec9ccad3f8443c867d5bf462269f766bd578edaf09b613dbb655a.png" />
+<img alt="../../_images/21b270d2747647149e8447980168ebe66139117e6f9fbfed920f0beea101be2c.png" src="../../_images/21b270d2747647149e8447980168ebe66139117e6f9fbfed920f0beea101be2c.png" />
 </div>
 </div>
 <p>上記のようにUCB1は多腕バンディット問題のような、状態変化が少ない問題においてはソフトマックス法に劣った結果となっているが、<strong>モデルを決定するパラメータがない</strong>点や、状態変化が起こるモデルへの有用性が高い。</p>
@@ -1081,7 +1085,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1110,6 +1114,7 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1178,8 +1183,8 @@ v_i = \frac{e^{x_i}}{\sum_{i=1}^N e^{x_i}}
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

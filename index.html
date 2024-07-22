@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
-    <link rel="next" title="1. Python環境の設定" href="contents/sec1/setup-python.html" />
+    <link rel="next" title="1. NumPyの基本" href="contents/sec1/numpy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   </head>
@@ -78,28 +78,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +116,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -143,6 +148,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="#">
   
@@ -158,10 +165,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="contents/sec1/setup-python.html">1. Python環境の設定</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contents/sec1/numpy.html">2. NumPyの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contents/sec1/matplotlib.html">3. Matplotlibの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contents/sec1/pandas.html">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/sec1/numpy.html">1. NumPyの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/sec1/matplotlib.html">2. Matplotlibの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contents/sec1/pandas.html">3. Pandasの基本</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
 <ul class="nav bd-sidenav">
@@ -203,7 +209,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -212,7 +218,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -344,10 +350,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -355,7 +361,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -405,7 +411,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1>機械学習発展 (実践)<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
@@ -464,9 +470,14 @@ document.write(`
 <section id="id9">
 <h3>講義日程<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
+<li><p><strong>事前準備</strong></p>
+<ul>
+<li><p><a class="reference external" href="https://tatsy.github.io/1284-sds-programming-2/contents/setup-python.html">Python環境の設定</a></p></li>
+<li><p><a class="reference external" href="https://tatsy.github.io/1284-sds-programming-2/contents/setup-git.html">Git環境の設定</a></p></li>
+</ul>
+</li>
 <li><p><strong>第1回</strong></p>
 <ul>
-<li><p><a class="reference internal" href="contents/sec1/setup-python.html#sec-setup-python"><span class="std std-ref">Python環境の設定</span></a></p></li>
 <li><p><a class="reference internal" href="contents/sec1/numpy.html#sec-numpy"><span class="std std-ref">NumPyの基本</span></a></p></li>
 <li><p><a class="reference internal" href="contents/sec1/matplotlib.html#sec-matplotlib"><span class="std std-ref">Matplotlibの基本</span></a></p></li>
 <li><p><a class="reference internal" href="contents/sec1/pandas.html#sec-pandas"><span class="std std-ref">Pandasの基本</span></a></p></li>
@@ -541,7 +552,7 @@ document.write(`
 </section>
 <section id="build-status">
 <h2>Build Status<a class="headerlink" href="#build-status" title="Permalink to this heading">#</a></h2>
-<table class="colwidths-auto table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Document</p></th>
 <th class="head"><p>Modified</p></th>
@@ -552,85 +563,80 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="contents/appendix/notation.html"><span class="doc">contents/appendix/notation</span></a></p></td>
-<td><p>2023-12-04 13:13</p></td>
+<td><p>2024-07-22 00:04</p></td>
 <td><p>cache</p></td>
-<td><p>8.48</p></td>
+<td><p>8.12</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="contents/sec1/exercise-sudoku.html"><span class="doc">contents/sec1/exercise-sudoku</span></a></p></td>
-<td><p>2023-12-04 13:14</p></td>
+<td><p>2024-07-22 00:05</p></td>
 <td><p>cache</p></td>
-<td><p>59.97</p></td>
+<td><p>57.85</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="contents/sec1/figure-detection.html"><span class="doc">contents/sec1/figure-detection</span></a></p></td>
-<td><p>2023-12-04 13:14</p></td>
+<td><p>2024-07-22 00:05</p></td>
 <td><p>cache</p></td>
-<td><p>5.5</p></td>
+<td><p>4.76</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="contents/sec1/matplotlib.html"><span class="doc">contents/sec1/matplotlib</span></a></p></td>
-<td><p>2023-12-04 13:15</p></td>
+<td><p>2024-07-22 00:05</p></td>
 <td><p>cache</p></td>
-<td><p>8.57</p></td>
+<td><p>7.88</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="contents/sec1/numpy.html"><span class="doc">contents/sec1/numpy</span></a></p></td>
-<td><p>2023-12-04 13:15</p></td>
+<td><p>2024-07-22 00:05</p></td>
 <td><p>cache</p></td>
-<td><p>1.33</p></td>
+<td><p>1.27</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="xref doc reference internal" href="contents/sec1/opencv.html"><span class="doc">contents/sec1/opencv</span></a></p></td>
-<td><p>2023-12-04 13:15</p></td>
+<td><p>2024-07-22 00:06</p></td>
 <td><p>cache</p></td>
-<td><p>32.31</p></td>
+<td><p>29.89</p></td>
 <td><p>✅</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="xref doc reference internal" href="contents/sec1/pandas.html"><span class="doc">contents/sec1/pandas</span></a></p></td>
-<td><p>2023-12-04 13:15</p></td>
+<td><p>2024-07-22 00:06</p></td>
 <td><p>cache</p></td>
-<td><p>3.32</p></td>
+<td><p>3.23</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="contents/sec1/setup-python.html"><span class="doc">contents/sec1/setup-python</span></a></p></td>
-<td><p>2023-12-04 13:15</p></td>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="contents/sec2/data-visualization.html"><span class="doc">contents/sec2/data-visualization</span></a></p></td>
+<td><p>2024-07-22 00:07</p></td>
 <td><p>cache</p></td>
-<td><p>0.77</p></td>
+<td><p>60.3</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="contents/sec2/data-visualization.html"><span class="doc">contents/sec2/data-visualization</span></a></p></td>
-<td><p>2023-12-04 13:16</p></td>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="contents/sec2/exercise-ogura.html"><span class="doc">contents/sec2/exercise-ogura</span></a></p></td>
+<td><p>2024-07-22 00:07</p></td>
 <td><p>cache</p></td>
-<td><p>63.18</p></td>
+<td><p>2.57</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="contents/sec2/exercise-ogura.html"><span class="doc">contents/sec2/exercise-ogura</span></a></p></td>
-<td><p>2023-12-04 13:16</p></td>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="contents/sec3/deep-reinforcement-learning.html"><span class="doc">contents/sec3/deep-reinforcement-learning</span></a></p></td>
+<td><p>2024-07-22 00:07</p></td>
 <td><p>cache</p></td>
-<td><p>2.75</p></td>
+<td><p>1.04</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="contents/sec3/deep-reinforcement-learning.html"><span class="doc">contents/sec3/deep-reinforcement-learning</span></a></p></td>
-<td><p>2023-12-04 13:16</p></td>
+<tr class="row-even"><td><p><a class="xref doc reference internal" href="contents/sec3/q-learning.html"><span class="doc">contents/sec3/q-learning</span></a></p></td>
+<td><p>2024-07-22 00:08</p></td>
 <td><p>cache</p></td>
-<td><p>0.94</p></td>
+<td><p>61.76</p></td>
 <td><p>✅</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="xref doc reference internal" href="contents/sec3/q-learning.html"><span class="doc">contents/sec3/q-learning</span></a></p></td>
-<td><p>2023-12-08 08:20</p></td>
+<tr class="row-odd"><td><p><a class="xref doc reference internal" href="contents/sec3/reinforcement-learning.html"><span class="doc">contents/sec3/reinforcement-learning</span></a></p></td>
+<td><p>2024-07-22 00:08</p></td>
 <td><p>cache</p></td>
-<td><p>90.3</p></td>
-<td><p>✅</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="xref doc reference internal" href="contents/sec3/reinforcement-learning.html"><span class="doc">contents/sec3/reinforcement-learning</span></a></p></td>
-<td><p>2023-12-04 13:18</p></td>
-<td><p>cache</p></td>
-<td><p>5.06</p></td>
+<td><p>4.84</p></td>
 <td><p>✅</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -671,15 +677,15 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="contents/sec1/setup-python.html"
+       href="contents/sec1/numpy.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">次へ</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>Python環境の設定</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>NumPyの基本</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -691,6 +697,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -759,8 +766,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

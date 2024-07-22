@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -71,7 +71,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
     <link rel="next" title="2. 図形の検出" href="figure-detection.html" />
-    <link rel="prev" title="4. Pandasの基本" href="pandas.html" />
+    <link rel="prev" title="3. Pandasの基本" href="pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="ja"/>
   </head>
@@ -81,28 +81,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -124,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -146,6 +149,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../index.html">
   
@@ -161,10 +166,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">第0部 各種基本ライブラリの使用法</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="setup-python.html">1. Python環境の設定</a></li>
-<li class="toctree-l1"><a class="reference internal" href="numpy.html">2. NumPyの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">3. Matplotlibの基本</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas.html">4. Pandasの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy.html">1. NumPyの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matplotlib.html">2. Matplotlibの基本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas.html">3. Pandasの基本</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">第1部 画像読み取り式数独ソルバの実装</span></p>
 <ul class="current nav bd-sidenav">
@@ -206,7 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -215,7 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -378,10 +382,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -389,7 +393,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="検索" aria-label="検索" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -459,7 +463,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="opencv">
 <span id="sec-opencv"></span><h1><span class="section-number">1. </span>OpenCVの基本<a class="headerlink" href="#opencv" title="Permalink to this heading">#</a></h1>
@@ -544,7 +548,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c1d506c47375ab1f6699c2b49e2b5a4145e4dda05b54d0536ea9fe8490cdf673.png" src="../../_images/c1d506c47375ab1f6699c2b49e2b5a4145e4dda05b54d0536ea9fe8490cdf673.png" />
+<img alt="../../_images/08d859448acbe76d9311c2c1ad36670dec9e7309a422514f0e2b176510d6f977.png" src="../../_images/08d859448acbe76d9311c2c1ad36670dec9e7309a422514f0e2b176510d6f977.png" />
 </div>
 </div>
 <p>ご覧の通り、色合いがおかしな画像になっていることが分かる。これは、OpenCVでカラー画像を読み込むと色を表わす3チャネルが赤・緑・青 (RGB)の順番ではなく青・緑・赤 (BGR)の逆順になっているためで、これを直すには以下のように色表現を変更する必要がある。</p>
@@ -566,7 +570,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e2ff8053ef271372e9e17cbf612fad3072f1643f264ede6c0dbc4fac8ec2cce5.png" src="../../_images/e2ff8053ef271372e9e17cbf612fad3072f1643f264ede6c0dbc4fac8ec2cce5.png" />
+<img alt="../../_images/ba42d5b1349e1f2c6b1a4d3284ceaf748a165ba5610293e759292efeba3d6484.png" src="../../_images/ba42d5b1349e1f2c6b1a4d3284ceaf748a165ba5610293e759292efeba3d6484.png" />
 </div>
 </div>
 </section>
@@ -668,7 +672,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ac95cc451c5d119bb7d84dee20f40e00bfbfac9b48e6c28dcc10e0dc36527460.png" src="../../_images/ac95cc451c5d119bb7d84dee20f40e00bfbfac9b48e6c28dcc10e0dc36527460.png" />
+<img alt="../../_images/0fce558cff226740242e310b9e5a6599becb3416a4eb0ee796fec87f024838ab.png" src="../../_images/0fce558cff226740242e310b9e5a6599becb3416a4eb0ee796fec87f024838ab.png" />
 </div>
 </div>
 </section>
@@ -706,7 +710,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/ab9100b4176f2b6d03c7be4bd882f167945c5ee9a4fd0b8405e06a591e084d7c.png" src="../../_images/ab9100b4176f2b6d03c7be4bd882f167945c5ee9a4fd0b8405e06a591e084d7c.png" />
+<img alt="../../_images/780f7f53cb1ac553fd69af00a16dc8654acfbaf7788e7359ba4a18b22051f6ad.png" src="../../_images/780f7f53cb1ac553fd69af00a16dc8654acfbaf7788e7359ba4a18b22051f6ad.png" />
 </div>
 </div>
 <p>続いて<code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code>を用いる方法だが、この関数は名前の通り、アフィン変換に基づいて画像を変形する関数だ。ここでは、アフィン変換について詳細に解説することは避けるが、アフィン変換は2x3の行列を使って、画素の座標を変換することで画像のリサンプリングを行う。</p>
@@ -781,7 +785,7 @@ M_3 &amp;= \begin{pmatrix}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/544c87c44d560afaa2659634b6cac260fa7952fd3188bbbed3df8db1492a6ec6.png" src="../../_images/544c87c44d560afaa2659634b6cac260fa7952fd3188bbbed3df8db1492a6ec6.png" />
+<img alt="../../_images/d972ccd3dc822084fad8107b02c91f7154cef7e048841f2f42f68ccf72cbd67d.png" src="../../_images/d972ccd3dc822084fad8107b02c91f7154cef7e048841f2f42f68ccf72cbd67d.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code>は画像領域自体は変形しないため、<code class="docutils literal notranslate"><span class="pre">cv2.rotate</span></code>とは違い両端に黒い領域が現れてしまっているが、回転のされ方としては正しい回転となっていることが分かる。</p>
@@ -805,7 +809,7 @@ M_3 &amp;= \begin{pmatrix}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/544c87c44d560afaa2659634b6cac260fa7952fd3188bbbed3df8db1492a6ec6.png" src="../../_images/544c87c44d560afaa2659634b6cac260fa7952fd3188bbbed3df8db1492a6ec6.png" />
+<img alt="../../_images/d972ccd3dc822084fad8107b02c91f7154cef7e048841f2f42f68ccf72cbd67d.png" src="../../_images/d972ccd3dc822084fad8107b02c91f7154cef7e048841f2f42f68ccf72cbd67d.png" />
 </div>
 </div>
 </section>
@@ -862,7 +866,7 @@ M_3 &amp;= \begin{pmatrix}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/4324c3bc693e55b277e4d3190ec6f9ed4082a8ccac56074d8f0ca71f88843bad.png" src="../../_images/4324c3bc693e55b277e4d3190ec6f9ed4082a8ccac56074d8f0ca71f88843bad.png" />
+<img alt="../../_images/b107036c9aa9eb5f6c73513452d45f4b5de4edc8b4dd71b91ea87585d8a5cb55.png" src="../../_images/b107036c9aa9eb5f6c73513452d45f4b5de4edc8b4dd71b91ea87585d8a5cb55.png" />
 </div>
 </div>
 <p>また、余談にはなるが、NumPyにも配列の上下左右を入れ替えるメソッドが用意されており、上下反転なら<code class="docutils literal notranslate"><span class="pre">np.flipud</span></code>、左右反転なら <code class="docutils literal notranslate"><span class="pre">np.fliplr</span></code>、左右両方に回転させたい場合には <code class="docutils literal notranslate"><span class="pre">np.flip</span></code> の第2引数に縦を縦軸を表わす0, 横軸を表わす1という軸のインデックスを配列として指定すれば良い。</p>
@@ -909,7 +913,7 @@ M_3 &amp;= \begin{pmatrix}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/4324c3bc693e55b277e4d3190ec6f9ed4082a8ccac56074d8f0ca71f88843bad.png" src="../../_images/4324c3bc693e55b277e4d3190ec6f9ed4082a8ccac56074d8f0ca71f88843bad.png" />
+<img alt="../../_images/b107036c9aa9eb5f6c73513452d45f4b5de4edc8b4dd71b91ea87585d8a5cb55.png" src="../../_images/b107036c9aa9eb5f6c73513452d45f4b5de4edc8b4dd71b91ea87585d8a5cb55.png" />
 </div>
 </div>
 <p>また、最後に <code class="docutils literal notranslate"><span class="pre">cv2.warpAffine</span></code> を用いる方法についてだが、こちらは、X軸対称、Y軸対称、X-Y両軸対称の反転を意味する行列 <span class="math notranslate nohighlight">\(M_1\)</span>、<span class="math notranslate nohighlight">\(M_2\)</span>、<span class="math notranslate nohighlight">\(M_3\)</span> がそれぞれ</p>
@@ -982,7 +986,7 @@ M_3= \begin{pmatrix}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/525d155ddcbd21554f6b9fae3f3c9c7bc8cd4735c1427880a8b83196b817d4e3.png" src="../../_images/525d155ddcbd21554f6b9fae3f3c9c7bc8cd4735c1427880a8b83196b817d4e3.png" />
+<img alt="../../_images/c96002af004faae17b80ba1efcd52272fb08731b43afcb1f1747e50af5043e73.png" src="../../_images/c96002af004faae17b80ba1efcd52272fb08731b43afcb1f1747e50af5043e73.png" />
 </div>
 </div>
 </section>
@@ -992,7 +996,7 @@ M_3= \begin{pmatrix}
 <p>画像のフィルタ処理には、目的に応じて多くの種類があるが、ここでは、<strong>ぼかしフィルタ</strong> (ノイズ除去フィルタ)と、<strong>エッジ検出フィルタ</strong>について紹介する。</p>
 <p>この際、「フィルタ」というのは、とある「フィルタカーネル」関数と、二次元画像の畳み込み演算であることに留意してほしい。具体的には、画像を位置 <span class="math notranslate nohighlight">\((x, y)\)</span>の関数として <span class="math notranslate nohighlight">\(I(x, y)\)</span>と表わし、フィルタカーネルを<span class="math notranslate nohighlight">\(f(x, y)\)</span>のように表わすとすれば、フィルタ処理は、畳み込み演算として</p>
 <div class="math notranslate nohighlight" id="equation-eq-filter-convolution">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-eq-filter-convolution" title="この数式へのパーマリンク">#</a></span>\[
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-eq-filter-convolution" title="この数式へのパーマリンク">#</a></span>\[
 \iint I(x + \xi, y + \eta) f(\xi, \eta) {\rm d}\xi {\rm d}\eta
 \]</div>
 <p>のように書けることを覚えておいてほしい。</p>
@@ -1027,7 +1031,7 @@ M_3= \begin{pmatrix}
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/8ccdcda4687b19db03a6bf32c3181e5b961f45fd35faa27f5d2e1758ecbe6fd2.png" src="../../_images/8ccdcda4687b19db03a6bf32c3181e5b961f45fd35faa27f5d2e1758ecbe6fd2.png" />
+<img alt="../../_images/0f0caa94024c2940680c45a5876ec956a0cc011bfbb1a92cab7a4e3972ec05bf.png" src="../../_images/0f0caa94024c2940680c45a5876ec956a0cc011bfbb1a92cab7a4e3972ec05bf.png" />
 </div>
 </div>
 <p>ノイズを付与すると、上記のように、元の画像が見分けづらくなる。このようなノイズは、写真を撮るときに被写体が暗い場合に多く生じる。また、ノイズの種類は異なるが、JPEG等の不可逆圧縮をかけることによっても、ノイズが生じる。</p>
@@ -1039,7 +1043,7 @@ M_3= \begin{pmatrix}
 f(x, y) = \frac{1}{K} \exp\left( -\frac{x^2 + y^2}{2 \sigma^2} \right)
 \]</div>
 <p>ただし、<span class="math notranslate nohighlight">\(K\)</span>は、カーネル関数の定義域全体での積分が1となるような規格化定数であるとする。定義の通り、Gaussianフィルタのフィルタカーネルは定義域が二次元の実平面全体であるため、これをコンピュータに計算させることはできない。</p>
-<p>しかし、Gauss関数は、原点から遠い<span class="math notranslate nohighlight">\((x, y)\)</span>には、ほとんど0と見なせる値を取るので、実用的には、有限の範囲についての積分だけを考えれば十分である。そこで、<a class="reference internal" href="#equation-eq-filter-convolution">(1.1)</a>を以下のように離散化する。</p>
+<p>しかし、Gauss関数は、原点から遠い<span class="math notranslate nohighlight">\((x, y)\)</span>には、ほとんど0と見なせる値を取るので、実用的には、有限の範囲についての積分だけを考えれば十分である。そこで、<a class="reference internal" href="#equation-eq-filter-convolution">(1.2)</a>を以下のように離散化する。</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{1}{K} \sum_{\xi = -H}^{+H} \sum_{\eta = -H}^H I(x + \xi, y + \eta) f(\xi, \eta)
@@ -1074,7 +1078,7 @@ K = \sum_{\xi = -H}^{+H} \sum_{\eta = -H}^H f(\xi, \eta)
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/09d3c4b5c2d4f5b8c8dc1f378b9b79f12fd3251f7fd518bf092c7f11d8970a20.png" src="../../_images/09d3c4b5c2d4f5b8c8dc1f378b9b79f12fd3251f7fd518bf092c7f11d8970a20.png" />
+<img alt="../../_images/c87eb7eae3e87ec09418360cda96dcd28bdf96962a625f685f40285b56e7d8d5.png" src="../../_images/c87eb7eae3e87ec09418360cda96dcd28bdf96962a625f685f40285b56e7d8d5.png" />
 </div>
 </div>
 <p>このように、Gaussianフィルタにより、高周波のノイズは除けているものの、画像には斑点状ノイズが残ってしまっている。さらに、元のひまわりの画像信号にもぼけが生じており、元の画像を復元できているとは言いがたい。</p>
@@ -1112,7 +1116,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/e3e303c260fa3f3aa882606bc084cb546565b5716200d96ec6d5b707b17e00db.png" src="../../_images/e3e303c260fa3f3aa882606bc084cb546565b5716200d96ec6d5b707b17e00db.png" />
+<img alt="../../_images/2c4c39c2de93d7a10c5b6f9f7401443ac8abda063502b1ce7625f53a9f53e7af.png" src="../../_images/2c4c39c2de93d7a10c5b6f9f7401443ac8abda063502b1ce7625f53a9f53e7af.png" />
 </div>
 </div>
 <p>このように、Gaussianフィルタと比べると、元の信号のぼけが少なく、また高周波のノイズも低減できていることが分かる。バイラテラルフィルタは繰り返し書けることで、その効果を調整することができる。一例として弱いバイラテラルフィルタを10回程度適用すると、以下のような画像が得られる。</p>
@@ -1136,7 +1140,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/7924f2da36138ae6c095fe03c1493579a83eb6ab8ba414fd7547fe4dd4244e3c.png" src="../../_images/7924f2da36138ae6c095fe03c1493579a83eb6ab8ba414fd7547fe4dd4244e3c.png" />
+<img alt="../../_images/e581d433656e0cf4dac49c709da76e8de41bfd2bd3a7461b4db2ac4d1f019416.png" src="../../_images/e581d433656e0cf4dac49c709da76e8de41bfd2bd3a7461b4db2ac4d1f019416.png" />
 </div>
 </div>
 <p>このように、若干ではあるが、ノイズが低減され、元の画像に近い信号が得られているように見える。</p>
@@ -1162,7 +1166,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/85394fdab9c98cc5931a993f371ce21d36bf2c9e0d3a846268b2ed3bf6f67b7d.png" src="../../_images/85394fdab9c98cc5931a993f371ce21d36bf2c9e0d3a846268b2ed3bf6f67b7d.png" />
+<img alt="../../_images/b29a8ead1ef43a6b7c897645bfed5ed8ce418d8b1ccbe23f1f8d439c7c88c6ec.png" src="../../_images/b29a8ead1ef43a6b7c897645bfed5ed8ce418d8b1ccbe23f1f8d439c7c88c6ec.png" />
 </div>
 </div>
 <p>結果から分かる通り、メディアンフィルタは適度に元画像の信号を保ちつつ、目立ったノイズを低減できていることが分かる。さらに、Gaussianフィルタやバイラテラルフィルタは周辺画素との畳み込みによって、どうしても画素の値が灰色に近づいてしまい、コントラストが落ちるが、メディアンフィルタはノイズ画像に現れる輝度値を再利用しているだけなので、コントラストの落ち方が緩やかである。</p>
@@ -1188,7 +1192,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/997735f2e74ee7273db75aaf82ea7a39c1740ac625fd9c328589465863bdd36e.png" src="../../_images/997735f2e74ee7273db75aaf82ea7a39c1740ac625fd9c328589465863bdd36e.png" />
+<img alt="../../_images/efcae3204e877c52401f0592a7bd1b8a5360c3c8276ef266c2cb8471e4ceaa40.png" src="../../_images/efcae3204e877c52401f0592a7bd1b8a5360c3c8276ef266c2cb8471e4ceaa40.png" />
 </div>
 </div>
 <p>このカーネルは横方向には画素値の中心差分を取っており、縦方向は、Gaussianフィルタのような中央に近い画素を強く重み付けるぼかしフィルタとなっていることが分かる。</p>
@@ -1204,7 +1208,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8ca1105e9d34f682eeec5a2412cc67d80fd43ddbff63763e11f6aff51c555301.png" src="../../_images/8ca1105e9d34f682eeec5a2412cc67d80fd43ddbff63763e11f6aff51c555301.png" />
+<img alt="../../_images/763852fd4b3c543a70b225a50d129292c6bd6cf4ef2700b0c48052749cb049f0.png" src="../../_images/763852fd4b3c543a70b225a50d129292c6bd6cf4ef2700b0c48052749cb049f0.png" />
 </div>
 </div>
 <p>OpenCVでSobelフィルタを適用するには <code class="docutils literal notranslate"><span class="pre">cv2.Sobel</span></code>を用いる。この関数はグレースケールの画像を第1引数にとり、第2引数に画像の輝度値を表わす数値型 (8bit符号なし整数なら<code class="docutils literal notranslate"><span class="pre">cv2.CV_8U</span></code>、32bit浮動小数なら<code class="docutils literal notranslate"><span class="pre">cv2.CV_32F</span></code>)を与える。第3引数と第4引数は、勾配を取る方向と強さを表わしていて、<code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">0</span></code>の順で引数が与えられればx方向に強さ1で、<code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1</span></code>の順で与えられればy方向に強さ1で勾配を取る。これに加えて<code class="docutils literal notranslate"><span class="pre">ksize=...</span></code>のパラメータに整数を指定することで、フィルタカーネルの大きさを指定する。</p>
@@ -1243,7 +1247,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/0234535a1e09d6c6dc2e6e46db3a09ba4e5f90bfc770b8af08edf468213558c2.png" src="../../_images/0234535a1e09d6c6dc2e6e46db3a09ba4e5f90bfc770b8af08edf468213558c2.png" />
+<img alt="../../_images/11c003e3d3bc7aaf73e922b9fb46d55217cfb44e7ae245acdb712c870f102474.png" src="../../_images/11c003e3d3bc7aaf73e922b9fb46d55217cfb44e7ae245acdb712c870f102474.png" />
 </div>
 </div>
 <p>上記の画像では正の勾配を赤色で、負の勾配を青色で表現している。結果から、Sobelフィルタによって、画像のx, y各方向に対する勾配を元にしたエッジが求まっていることが確認できる。</p>
@@ -1265,7 +1269,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8d34e614843edc4d4cd3d5d88ec1b716be2e5e491f73c430747ad52c01985f6b.png" src="../../_images/8d34e614843edc4d4cd3d5d88ec1b716be2e5e491f73c430747ad52c01985f6b.png" />
+<img alt="../../_images/10bc248f164bf81f41095fae560dfabef31b2d731e531447bdb71c5df447d7dc.png" src="../../_images/10bc248f164bf81f41095fae560dfabef31b2d731e531447bdb71c5df447d7dc.png" />
 </div>
 </div>
 </section>
@@ -1298,7 +1302,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/5f5e0e9ea78031a4942c9bfb2d6e2a41e508114c7f0984051dd28f7b41fe0d31.png" src="../../_images/5f5e0e9ea78031a4942c9bfb2d6e2a41e508114c7f0984051dd28f7b41fe0d31.png" />
+<img alt="../../_images/b53e1bba4f729990e6fd5cf9b76f7e5e43796c130453ecb09bd8edc8514afcc9.png" src="../../_images/b53e1bba4f729990e6fd5cf9b76f7e5e43796c130453ecb09bd8edc8514afcc9.png" />
 </div>
 </div>
 </section>
@@ -1359,7 +1363,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/d2fde81455f4bdb7a17a51a64bc48825d9eac9bca6dbb1410cddc0e982f81c77.png" src="../../_images/d2fde81455f4bdb7a17a51a64bc48825d9eac9bca6dbb1410cddc0e982f81c77.png" />
+<img alt="../../_images/83e9e411739435f6c7bec1559375479089285cbf9bb23928f10ac994e5a1f424.png" src="../../_images/83e9e411739435f6c7bec1559375479089285cbf9bb23928f10ac994e5a1f424.png" />
 </div>
 </div>
 <p>このように極大の部分だけを取り出すと、かなりエッジの線が細くなったことが分かる。</p>
@@ -1408,7 +1412,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../_images/1d31d4037bbb7b93b032c77ced9943f4e8ab4dbe0574798cbe949fd5b8a65014.png" src="../../_images/1d31d4037bbb7b93b032c77ced9943f4e8ab4dbe0574798cbe949fd5b8a65014.png" />
+<img alt="../../_images/3bc9aef7b03e64f8652996893b9b4cc3e7be9babc53812f187b31fedceff22f2.png" src="../../_images/3bc9aef7b03e64f8652996893b9b4cc3e7be9babc53812f187b31fedceff22f2.png" />
 </div>
 </div>
 <p>OpenCVの<code class="docutils literal notranslate"><span class="pre">cv2.Canny</span></code>には上記と同様のコードが、以下のようなパラメータによって得られる。</p>
@@ -1435,7 +1439,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/da9415a81ddca4bdb5aaa7b1eb010e296a3b3a2a14048cc90ac613fd0ab79c56.png" src="../../_images/da9415a81ddca4bdb5aaa7b1eb010e296a3b3a2a14048cc90ac613fd0ab79c56.png" />
+<img alt="../../_images/8b989b67b5c95ae1b632f07960dadc8ae5de06f1e53b6d39538c5ff77e9f3581.png" src="../../_images/8b989b67b5c95ae1b632f07960dadc8ae5de06f1e53b6d39538c5ff77e9f3581.png" />
 </div>
 </div>
 <p>二つの画像を比べてみると、概ね同じ画像が得られていることが分かる。</p>
@@ -1505,7 +1509,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1514,7 +1518,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">前へ</p>
-        <p class="prev-next-title"><span class="section-number">4. </span>Pandasの基本</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Pandasの基本</p>
       </div>
     </a>
     <a class="right-next"
@@ -1534,6 +1538,7 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1622,8 +1627,8 @@ f(x, y, \xi, \eta) = \frac{1}{K} \exp\left(- \frac{(\xi^2 + \eta^2)}{2 \sigma_s^
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
