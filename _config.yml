@@ -9,6 +9,8 @@ description: >-
 exclude_patterns:
   - _build
   - data
+  - modules
+  - autograding
   - templates
   - Thumbs.db
   - .DS_Store
@@ -55,7 +57,15 @@ sphinx:
   config:
     language: ja
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
+      loader:
+        load: ["[tex]/physics"]
+      tex:
+        packages: { "[+]": ["physics"] }
     bibtex_reference_style: author_year
+    html_theme_options:
+      pygments_light_style: gotthard-light
+      pygments_dark_style: material
     nb_mime_priority_overrides:
       [
         ["html", "application/vnd.jupyter.widget-view+json", 10],

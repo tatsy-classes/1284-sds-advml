@@ -1,13 +1,16 @@
 format: jb-book
 root: index
 parts:
-  - caption: 第0部 基本事項
+  - caption: 事前準備
     numbered: 3
     chapters:
       - title: Python環境の設定
         url: https://tatsy.github.io/1284-sds-programming-2/contents/setup-python.html
       - title: GitHubの設定
         url: https://tatsy.github.io/1284-sds-programming-2/contents/setup-git.html
+  - caption: 第0部 各種ライブラリの基本
+    numbered: 3
+    chapters:
       - file: contents/sec1/numpy
       - file: contents/sec1/matplotlib
       - file: contents/sec1/pandas
@@ -33,7 +36,7 @@ parts:
       - file: contents/sec3/othello-agent
       - file: contents/sec3/deep-reinforcement-learning
       - file: contents/sec3/exercise-othello
-  - caption: Appendix
+  - caption: 付録
     numbered: 0
     chapters:
       - file: contents/appendix/notation

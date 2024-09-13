@@ -1,10 +1,9 @@
 機械学習発展 (実践)
 ===
 
-[![Github Pages](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/gh-pages.yaml/badge.svg)](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/gh-pages.yaml)
-[![Miniconda](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/conda.yaml/badge.svg?branch=master)](https://github.com/tatsy/1284-sds-ml-advanced/actions/workflows/conda.yaml)
-
-[![Creative Commons License](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![GitHub Pages](https://github.com/tatsy-classes/1284-sds-advml/actions/workflows/gh-pages.yaml/badge.svg)](https://github.com/tatsy-classes/1284-sds-advml/actions/workflows/gh-pages.yaml)
+[![Python environment](https://github.com/tatsy-classes/1284-sds-advml/actions/workflows/python.yaml/badge.svg)](https://github.com/tatsy-classes/1284-sds-advml/actions/workflows/python.yaml)
+[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## 講義の概要
 
@@ -44,7 +43,7 @@
 ### 講義形式
 
 - 資料の内容を全て講義内で解説することはしないので、必要に応じて自習をお願いします。
-- 資料を全て理解する必要はありませんが、演習については上手く課題が解けるように取り組んでください。
+- 資料を全て理解する必要はありませんが、演習については課題が解けるように取り組んでください。
 
 ### 講義日程
 

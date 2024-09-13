@@ -1,4 +1,8 @@
 {
+  // Markdown
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
   // Python
   "[python]": {
     "editor.tabSize": 4,
@@ -7,7 +11,7 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": "always"
     },
-    "editor.defaultFormatter": "ms-python.black-formatter"
+    "editor.defaultFormatter": "eeyore.yapf"
   },
   // Notebook
   "notebook.stickyScroll.enabled": true,
@@ -16,7 +20,7 @@
   },
   "notebook.formatOnSave.enabled": true,
   "notebook.formatOnCellExecution": true,
-  "notebook.defaultFormatter": "ms-python.black-formatter",
+  "notebook.defaultFormatter": "eeyore.yapf",
   // Live Server
   "liveServer.settings.port": 3001,
   "liveServer.settings.root": "./_build/html/"

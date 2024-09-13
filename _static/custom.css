@@ -16,3 +16,15 @@ h5,
 h6 {
   font-family: "roboto", "m plus 1p", "noto color emoji", sans-serif;
 }
+
+div.question {
+  border-left-color: var(--pst-color-primary);
+}
+div.question .admonition-title {
+  background-color: var(--pst-color-primary-bg);
+}
+div.question .admonition-title:after {
+  color: var(--pst-color-primary);
+  font-family: "Font Awesome 5 Free";
+  content: "\f059";
+}

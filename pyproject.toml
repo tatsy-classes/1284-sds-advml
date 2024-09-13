@@ -90,7 +90,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.isort]
 profile = "black"
-length_sort = "True"
+length_sort = true
 line_length = 99
 
 [tool.mypy]
