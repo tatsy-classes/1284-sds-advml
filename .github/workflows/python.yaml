@@ -1,4 +1,4 @@
-name: Miniconda
+name: Python environment
 
 on:
   push:
