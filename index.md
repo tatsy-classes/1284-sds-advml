@@ -49,10 +49,11 @@
 ### 講義日程
 
 - **第1回**
-  - [Python環境の設定](sec:setup-python)
+  - [Python環境の設定](https://tatsy.github.io/1284-sds-programming-2/contents/setup-python.html)
+  - [Git環境の設定](https://tatsy.github.io/1284-sds-programming-2/contents/setup-git.html)
   - [NumPyの基本](sec:numpy)
-  - [Matplotlibの基本](sec:matplotlib)
-  - [Pandasの基本](sec:pandas)
+  - [Matplotlibの基本 (自習)](sec:matplotlib)
+  - [Pandasの基本 (自習)](sec:pandas)
 
 - **第2回**
   - [OpenCVの基本](sec:opencv)

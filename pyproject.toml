@@ -7,6 +7,7 @@ readme = "README.md"
 homepage = "https://tatsy.github.io/1284-sds-ml-advanced/"
 repository = "https://github.com/tatsy/1284-sds-ml-advanced.git"
 license = "CC BY-NC-SA 4.0"
+package-mode = false
 
 exclude = [
   "autograding/*",
@@ -22,7 +23,7 @@ exclude = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.12"
+python = "~=3.10.0"
 numpy = "^1.25.0"
 scipy = "^1.11.1"
 scikit-learn = "^1.2.2"
@@ -50,15 +51,15 @@ colorama = "^0.4.6"
 torch = [
   { markers = "sys_platform == 'win32'", version = "==2.0.0+cpu", source = "pytorch-cpu" },
   { markers = "sys_platform == 'linux'", version = "==2.0.0+cpu", source = "pytorch-cpu" },
-  { markers = "sys_platform == 'darwin' and (platform_machine == 'arm64' or platform_machine == 'aarch64')", url = "https://download.pytorch.org/whl/cpu/torch-2.0.0-cp39-none-macosx_11_0_arm64.whl" },
-  { markers = "sys_platform == 'darwin' and platform_machine == 'x86_64'", url = "https://download.pytorch.org/whl/cpu/torch-2.0.0-cp39-none-macosx_10_9_x86_64.whl" },
+  { markers = "sys_platform == 'darwin' and (platform_machine == 'arm64' or platform_machine == 'aarch64')", url = "https://download.pytorch.org/whl/cpu/torch-2.0.0-cp310-none-macosx_11_0_arm64.whl" },
+  { markers = "sys_platform == 'darwin' and platform_machine == 'x86_64'", url = "https://download.pytorch.org/whl/cpu/torch-2.0.0-cp310-none-macosx_10_9_x86_64.whl" },
 ]
 
 torchvision = [
   { markers = "sys_platform == 'win32'", version = "==0.15.0+cpu", source = "pytorch-cpu" },
   { markers = "sys_platform == 'linux'", version = "==0.15.0+cpu", source = "pytorch-cpu" },
-  { markers = "sys_platform == 'darwin' and (platform_machine == 'arm64' or platform_machine == 'aarch64')", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp39-cp39-macosx_11_0_arm64.whl" },
-  { markers = "sys_platform == 'darwin' and platform_machine == 'x86_64'", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp39-cp39-macosx_10_9_x86_64.whl" },
+  { markers = "sys_platform == 'darwin' and (platform_machine == 'arm64' or platform_machine == 'aarch64')", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp310-cp310-macosx_11_0_arm64.whl" },
+  { markers = "sys_platform == 'darwin' and platform_machine == 'x86_64'", url = "https://download.pytorch.org/whl/cpu/torchvision-0.15.0-cp310-cp310-macosx_10_9_x86_64.whl" },
 ]
 
 advml = { path = "modules/advml", develop = true }
@@ -93,19 +94,19 @@ length_sort = "True"
 line_length = 99
 
 [tool.mypy]
-python_version = 3.9
+python_version = "3.10"
 follow_imports = "silent"
-disallow_any_generics = "True"
-strict_optional = "True"
-check_untyped_defs = "True"
-allow_redefinition = "True"
+disallow_any_generics = true
+strict_optional = true
+check_untyped_defs = true
+allow_redefinition = true
 
 [tool.flake8]
 max-line-length = 99
 ignore = "Q000,E127,E203,E402,W503,W504"
 
 [tool.black]
-target-version = ["py39", "py310", "py311"]
+target-version = ["py310"]
 line-length = 99
 
 [tool.pytest.ini_options]
