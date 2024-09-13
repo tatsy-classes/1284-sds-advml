@@ -38,20 +38,15 @@ jobs:
         with:
           node-version: "16"
 
-      - name: Install Poetry
-        run: |
-          pipx install poetry==1.5.1
-
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           cache: "poetry"
-          cache-dependency-path: "pyproject.toml"
 
       - name: Install packages
         run: |
-          poetry install --no-root
+          poetry install
           poetry install --all-extras
 
       - name: Build

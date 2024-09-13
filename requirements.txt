@@ -14,5 +14,6 @@ ffmpeg
 gymnasium[classic-control]
 jupyterlab
 japanize_matplotlib
+--extra-index-url https://download.pytorch.org/whl/cpu
 pytorch>=1.10.0
 torchvision>=0.11.0
