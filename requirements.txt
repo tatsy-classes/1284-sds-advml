@@ -15,5 +15,5 @@ gymnasium[classic-control]
 jupyterlab
 japanize_matplotlib
 --extra-index-url https://download.pytorch.org/whl/cpu
-pytorch
-torchvision
+pytorch==1.12.1+cpu
+torchvision==0.13.1+cpu
