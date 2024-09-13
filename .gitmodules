@@ -1,9 +1,9 @@
+[submodule "lib/advml"]
+	path = lib/advml
+	url = https://github.com/tatsy-classes/1284-sds-advml-utils.git
 [submodule "templates/sudoku"]
 	path = templates/sudoku
 	url = https://github.com/tatsy-classes/sudoku-solver-template.git
-[submodule "lib/advml"]
-	path = lib/advml
-	url = https://github.com/tatsy/1284-sds-lib-advml.git
 [submodule "templates/ogura"]
 	path = templates/ogura
 	url = https://github.com/tatsy-classes/ogura-agent-template.git
