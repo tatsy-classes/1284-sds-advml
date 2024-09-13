@@ -25,12 +25,18 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Create venv
+      - name: Create venv (Linux/MacOS)
+        if: "!contains(matrix.os, 'windows')"
         run: |
           python -m venv .venv
           source .venv/bin/activate
           pip install -r requirements.txt
+          python -c "import torch"
 
-      - name: Check installation
+      - name: Create venv (Windows)
+        if: "contains(matrix.os, 'windows')"
         run: |
+          python -m venv .venv
+          ./.venv/Scripts/activate
+          pip install -r requirements.txt
           python -c "import torch"
