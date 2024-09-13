@@ -7,8 +7,6 @@ __pycache__
 *.pth
 setup.py
 
-poetry.lock
-
 *.html
 *.zip
 *.so

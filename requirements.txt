@@ -1,0 +1,19 @@
+numpy
+scipy
+pandas
+scikit-learn
+scikit-image
+openpyxl
+opencv-python
+opencv-contrib-python
+matplotlib
+seaborn
+tqdm
+networkx
+ffmpeg
+gymnasium[classic-control]
+jupyterlab
+japanize_matplotlib
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==1.12.1
+torchvision==0.13.1

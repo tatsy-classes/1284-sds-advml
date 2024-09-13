@@ -1,10 +1,13 @@
 format: jb-book
 root: index
 parts:
-  - caption: 第0部 各種基本ライブラリの使用法
+  - caption: 第0部 基本事項
     numbered: 3
     chapters:
-      - file: contents/sec1/setup-python
+      - title: Python環境の設定
+        url: https://tatsy.github.io/1284-sds-programming-2/contents/setup-python.html
+      - title: GitHubの設定
+        url: https://tatsy.github.io/1284-sds-programming-2/contents/setup-git.html
       - file: contents/sec1/numpy
       - file: contents/sec1/matplotlib
       - file: contents/sec1/pandas

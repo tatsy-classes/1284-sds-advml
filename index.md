@@ -54,8 +54,8 @@
 
 - **第1回**
   - [NumPyの基本](sec:numpy)
-  - [Matplotlibの基本](sec:matplotlib)
-  - [Pandasの基本](sec:pandas)
+  - [Matplotlibの基本 (自習)](sec:matplotlib)
+  - [Pandasの基本 (自習)](sec:pandas)
 
 - **第2回**
   - [OpenCVの基本](sec:opencv)
