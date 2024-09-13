@@ -15,6 +15,7 @@ exclude_patterns:
   - .pytest_cache
   - .mypy_cache
   - .jupyter_cache
+  - .pytest_cache
   - "**.ipynb_checkpoints"
 
 only_build_toc_files: true

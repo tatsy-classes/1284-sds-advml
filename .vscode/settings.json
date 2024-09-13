@@ -5,11 +5,19 @@
     "editor.formatOnSave": true,
     "editor.formatOnType": false,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
+      "source.organizeImports": "always"
     },
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
+  // Notebook
+  "notebook.stickyScroll.enabled": true,
+  "notebook.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "notebook.formatOnSave.enabled": true,
+  "notebook.formatOnCellExecution": true,
+  "notebook.defaultFormatter": "ms-python.black-formatter",
   // Live Server
-  "liveServer.settings.port": 3000,
+  "liveServer.settings.port": 3001,
   "liveServer.settings.root": "./_build/html/"
 }
