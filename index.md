@@ -48,8 +48,8 @@
 ### 講義日程
 
 - **事前準備**
-  - [Python環境の設定](https://tatsy.github.io/1284-sds-programming-2/contents/setup-python.html)
-  - [Git環境の設定](https://tatsy.github.io/1284-sds-programming-2/contents/setup-git.html)
+  - [Python環境の設定](https://tatsy-classes/1284-sds-prog2/contents/setup-python.html)
+  - [Git環境の設定](https://tatsy-classes/1284-sds-prog2/contents/setup-git.html)
 
 - **第1回**
   - [NumPyの基本](sec:numpy)
@@ -64,10 +64,10 @@
   - [scikit-learnによる機械分類の基本](sec:scikit-learn)
 
 - **第4回**
-  - [演習1 画像入力式数独ソルバーを作る](sec:exercise-sudoku)
+  - [演習1 画像入力式数独ソルバーの作成](sec:exercise-sudoku)
 
 - **第5回**
-  - [演習1 コンピュータ・数独大会](sec:exercise-sudoku)
+  - [演習1 画像入力式数独ソルバーの作成](sec:exercise-sudoku)
 
 - **第6回**
   - [データ可視化と次元圧縮](sec:data-visualization)
@@ -77,10 +77,10 @@
   - [深層学習による物体認識](sec:deep-learning)
 
 - **第8回**
-  - [演習2 百人一首エージェントを作る](sec:exercise-ogura)
+  - [演習2 百人一首エージェントの作成](sec:exercise-ogura)
 
 - **第9回**
-  - [演習2 コンピュータ・百人一首大会](sec:exercise-ogura)
+  - [演習2 百人一首エージェントの作成](sec:exercise-ogura)
 
 - **第10回**
   - [強化学習の基礎](sec:reinforcement-learning)
@@ -91,10 +91,10 @@
   - [深層強化学習](sec:deep-reinforcement-learning)
 
 - **第12回**
-  - [演習3 オセロエージェントを作る](sec:exercise-othello)
+  - [演習3 オセロエージェントの作成](sec:exercise-othello)
 
 - **第13回**
-  - [演習3 コンピュータ・オセロ大会](sec:exercise-othello)
+  - [演習3 オセロエージェントの作成](sec:exercise-othello)
 
 ## Build Status
 
