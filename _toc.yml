@@ -5,9 +5,9 @@ parts:
     numbered: 3
     chapters:
       - title: Python環境の設定
-        url: https://tatsy.github.io/1284-sds-programming-2/contents/setup-python.html
+        url: https://tatsy-classes.github.io/1284-sds-prog2/contents/setup-python.html
       - title: GitHubの設定
-        url: https://tatsy.github.io/1284-sds-programming-2/contents/setup-git.html
+        url: https://tatsy-classes.github.io/1284-sds-prog2/contents/setup-git.html
   - caption: 第0部 各種ライブラリの基本
     numbered: 3
     chapters:

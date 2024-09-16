@@ -19,6 +19,11 @@ jobs:
           submodules: true
           token: ${{ secrets.MY_PAT }}
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Install FFmpeg
         run: |
           sudo apt-get update -y
@@ -31,11 +36,6 @@ jobs:
           key: ${{ matrix.os }}-jupyter-${{ hashFiles('**/*.ipynb') }}
           restore-keys: |
             ${{ matrix.os }}-jupyter-
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
 
       - name: Install Poetry
         run: |
