@@ -2,6 +2,7 @@ __pycache__
 *.pyc
 *.pyd
 *.pickle
+*.joblib
 .ipynb_checkpoints
 .jupyter_cache
 *.pth

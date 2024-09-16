@@ -4,6 +4,7 @@ pandas
 pillow
 scikit-learn
 scikit-image
+joblib
 openpyxl
 opencv-python
 opencv-contrib-python
