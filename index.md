@@ -5,7 +5,8 @@
 [![Python environment](https://github.com/tatsy-classes/1284-sds-advml/actions/workflows/python.yaml/badge.svg)](https://github.com/tatsy-classes/1284-sds-advml/actions/workflows/python.yaml)
 [![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-## 講義の概要
+講義の概要
+---
 
 この講義ではPythonを用いて、画像認識と機械学習の実践的な利用法について学ぶ。資料の中では、ライブラリを使った実装を用いる場合も、その背景にある理論とライブラリに頼らない簡易実装を与える。これにより、**ライブラリのユーザから卒業**し、自分の必要とする機械学習のメソッドを実装する力を養う。
 
@@ -35,7 +36,8 @@
 
 以下、一橋大生向け情報
 
-## 講義について
+講義について
+---
 
 - 実施時限: 秋冬学期 第2限
 - 教室: 東2号館棟2206教室
@@ -95,7 +97,13 @@
 - **第13回**
   - [演習3 オセロエージェントの作成](sec:exercise-othello)
 
-## Build Status
+課題の提出方法
+---
+
+- [こちら](sec:submit-assignment)を参照ください。
+
+Build Status
+---
 
 ```{nb-exec-table}
 ```

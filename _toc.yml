@@ -38,4 +38,5 @@ parts:
   - caption: 付録
     numbered: 0
     chapters:
+      - file: contents/appendix/submit-assignment
       - file: contents/appendix/notation
