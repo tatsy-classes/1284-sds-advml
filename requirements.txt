@@ -1,6 +1,7 @@
 numpy
 scipy
 pandas
+pillow
 scikit-learn
 scikit-image
 openpyxl
