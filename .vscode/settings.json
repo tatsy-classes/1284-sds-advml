@@ -22,6 +22,6 @@
   "notebook.formatOnCellExecution": true,
   "notebook.defaultFormatter": "eeyore.yapf",
   // Live Server
-  "liveServer.settings.port": 3001,
+  "liveServer.settings.port": 3000,
   "liveServer.settings.root": "./_build/html/"
 }
