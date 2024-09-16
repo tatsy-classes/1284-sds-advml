@@ -36,7 +36,7 @@ execute:
 
 # HTML-specific settings
 html:
-  home_page_in_navbar: false
+  home_page_in_navbar: true
   use_multitoc_numbering: true
   use_repository_button: true
   use_issues_button: true
@@ -48,9 +48,7 @@ launch_buttons:
 
 # Launch button settings
 repository:
-  url: https://github.com/tatsy/1284-sds-ml-advanced
-  path_to_book: ./
-  branch: master
+  url: https://github.com/tatsy-classes/1284-sds-advml
 
 # Sphinx
 sphinx:
