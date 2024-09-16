@@ -11,7 +11,7 @@
     "editor.codeActionsOnSave": {
       "source.organizeImports": "always"
     },
-    "editor.defaultFormatter": "eeyore.yapf"
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
   // Notebook
   "notebook.stickyScroll.enabled": true,
@@ -20,7 +20,7 @@
   },
   "notebook.formatOnSave.enabled": true,
   "notebook.formatOnCellExecution": true,
-  "notebook.defaultFormatter": "eeyore.yapf",
+  "notebook.defaultFormatter": "ms-python.black-formatter",
   // Live Server
   "liveServer.settings.port": 3000,
   "liveServer.settings.root": "./_build/html/"
