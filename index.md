@@ -61,7 +61,7 @@
   - [図形の検出](sec:figure-detection)
 
 - **第3回**
-  - [scikit-learnによる機械分類の基本](sec:scikit-learn)
+  - [scikit-learnによる機械分類の基礎](sec:scikit-learn)
 
 - **第4回**
   - [演習1 画像入力式数独ソルバーの作成](sec:exercise-sudoku)
@@ -71,10 +71,10 @@
 
 - **第6回**
   - [データ可視化と次元圧縮](sec:data-visualization)
-  - [特徴量抽出](sec:feature-extraction)
 
 - **第7回**
-  - [深層学習による物体認識](sec:deep-learning)
+  - [画像からの特徴量抽出](sec:feature-extraction)
+  - [深層学習による物体認識 (自習)](sec:deep-learning)
 
 - **第8回**
   - [演習2 百人一首エージェントの作成](sec:exercise-ogura)
