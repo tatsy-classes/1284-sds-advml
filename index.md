@@ -87,8 +87,7 @@
   - [Q学習の基礎](sec:q-learning)
 
 - **第11回**
-  - [基本のオセロAI](sec:othello-agent)
-  - [深層強化学習](sec:deep-reinforcement-learning)
+  - [オセロAIの基礎](sec:othello-agent)
 
 - **第12回**
   - [演習3 オセロエージェントの作成](sec:exercise-othello)

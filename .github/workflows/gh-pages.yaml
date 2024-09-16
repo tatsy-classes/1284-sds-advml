@@ -30,7 +30,7 @@ jobs:
           sudo apt-get install -y ffmpeg
 
       - name: Cache Jupyter execution
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .jupyter_cache
           key: ${{ matrix.os }}-jupyter-${{ hashFiles('**/*.ipynb') }}
@@ -42,7 +42,7 @@ jobs:
           pipx install poetry==${{ env.POETRY_VERSION }}
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: "poetry"

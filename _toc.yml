@@ -34,7 +34,6 @@ parts:
       - file: contents/sec3/reinforcement-learning
       - file: contents/sec3/q-learning
       - file: contents/sec3/othello-agent
-      - file: contents/sec3/deep-reinforcement-learning
       - file: contents/sec3/exercise-othello
   - caption: 付録
     numbered: 0
