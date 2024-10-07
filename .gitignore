@@ -5,6 +5,8 @@ __pycache__
 *.joblib
 .ipynb_checkpoints
 .jupyter_cache
+.pytest_cache
+.mypy_cache
 *.pth
 setup.py
 
