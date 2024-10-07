@@ -1,6 +1,9 @@
-[submodule "lib/advml"]
-	path = lib/advml
+[submodule "modules/advml"]
+	path = modules/advml
 	url = https://github.com/tatsy-classes/1284-sds-advml-utils.git
+[submodule "modules/othello"]
+	path = modules/othello
+	url = https://github.com/tatsy-classes/cothello.git
 [submodule "templates/sudoku"]
 	path = templates/sudoku
 	url = https://github.com/tatsy-classes/sudoku-solver-template.git
@@ -16,12 +19,6 @@
 [submodule "autograding/ogura"]
 	path = autograding/ogura
 	url = https://github.com/tatsy-classes/ogura-autograding.git
-[submodule "modules/advml"]
-	path = modules/advml
-	url = https://github.com/tatsy/1284-sds-lib-advml.git
-[submodule "modules/othello"]
-	path = modules/othello
-	url = https://github.com/tatsy-classes/cothello.git
 [submodule "autograding/othello"]
 	path = autograding/othello
 	url = https://github.com/tatsy-classes/othello-autograding.git
