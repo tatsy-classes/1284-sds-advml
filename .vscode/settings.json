@@ -23,5 +23,6 @@
   "notebook.defaultFormatter": "ms-python.black-formatter",
   // Live Server
   "liveServer.settings.port": 3000,
-  "liveServer.settings.root": "./_build/html/"
+  "liveServer.settings.root": "./_build/html/",
+  "cSpell.words": ["advml"]
 }
