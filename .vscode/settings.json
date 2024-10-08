@@ -4,6 +4,7 @@
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   // Python
+  "flake8.path": "pflake8",
   "[python]": {
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
