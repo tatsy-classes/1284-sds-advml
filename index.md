@@ -75,7 +75,7 @@
   - [データ可視化と次元圧縮](sec:data-visualization)
 
 - **第7回**
-  - [画像からの特徴量抽出](sec:feature-extraction)
+  - [画像特徴量の抽出](sec:feature-extraction)
   - [深層学習による物体認識 (自習)](sec:deep-learning)
 
 - **第8回**
