@@ -29,6 +29,7 @@ execute:
   timeout: 180
   exclude_patterns:
     - "scikit-learn.ipynb"
+    - "exercise-sudoku.ipynb"
     - "feature-extraction.ipynb"
     - "deep-learning.ipynb"
     - "othello-agent.ipynb"
@@ -80,6 +81,7 @@ sphinx:
     sass_src_dir: "_assets"
     sass_out_dir: "_static"
     sass_targets: { "custom.scss": "custom.css" }
+    html_css_files: ["custom.css"]
 
 bibtex_bibfiles:
   - "references.bib"
