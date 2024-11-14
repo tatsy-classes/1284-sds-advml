@@ -73,6 +73,7 @@ jupyter-book = "^0.15.1"
 jupyterlab-code-formatter = "^2.2.1"
 lxml = "^4.9.3"
 docutils = "0.17.1"
+sphinxcontrib-sass = "^0.3.4"
 
 [[tool.poetry.source]]
 name = "PyPI"

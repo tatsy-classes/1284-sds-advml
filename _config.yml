@@ -61,6 +61,8 @@ repository:
 # Sphinx
 sphinx:
   recursive_update: true
+  extra_extensions:
+    - sphinxcontrib.sass
   config:
     language: ja
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js
@@ -74,6 +76,10 @@ sphinx:
       pygments_light_style: gotthard-light
       pygments_dark_style: material
     suppress_warnings: ["mystnb.unknown_mime_type"]
+    # sphinxcontrib.sass
+    sass_src_dir: "_assets"
+    sass_out_dir: "_static"
+    sass_targets: { "custom.scss": "custom.css" }
 
 bibtex_bibfiles:
   - "references.bib"
