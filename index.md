@@ -87,6 +87,7 @@
 - **第10回**
   - [強化学習の基礎](sec:reinforcement-learning)
   - [SARSAとQ学習](sec:q-learning)
+  - [深層Q学習 (自習)](sec:deep-q-learning)
 
 - **第11回**
   - [オセロAIの基礎](sec:othello-agent)

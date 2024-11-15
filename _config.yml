@@ -32,7 +32,8 @@ execute:
     - "exercise-sudoku.ipynb"
     - "feature-extraction.ipynb"
     - "deep-learning.ipynb"
-    - "othello-agent.ipynb"
+    - "deep-q-learning.ipynb"
+    - "othello-player.ipynb"
     - "exercise-othello.ipynb"
 
 # HTML-specific settings

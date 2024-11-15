@@ -33,6 +33,7 @@ parts:
     chapters:
       - file: contents/sec3/reinforcement-learning
       - file: contents/sec3/q-learning
+      - file: contents/sec3/deep-q-learning
       - file: contents/sec3/othello-player
       - file: contents/sec3/exercise-othello
   - caption: 付録
