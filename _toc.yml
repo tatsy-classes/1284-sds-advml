@@ -28,7 +28,7 @@ parts:
       - file: contents/sec2/feature-extraction
       - file: contents/sec2/deep-learning
       - file: contents/sec2/exercise-ogura
-  - caption: 第3部 強化学習の基礎とリバーシエージェントの実装
+  - caption: 第3部 強化学習の基礎とオセロプレイヤーの実装
     numbered: 3
     chapters:
       - file: contents/sec3/reinforcement-learning

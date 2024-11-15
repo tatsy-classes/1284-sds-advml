@@ -66,22 +66,29 @@ sphinx:
     - sphinxcontrib.sass
   config:
     language: ja
+    numfig: true
+    math_numfig: true
+    numfig_secnum_depth: 1
+    # MathJax
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js
     mathjax3_config:
       loader:
         load: ["[tex]/physics", "[tex]/boldsymbol"]
       tex:
         packages: { "[+]": ["physics", "boldsymbol"] }
+    # BibTeX
     bibtex_reference_style: author_year
+    # Theme
     html_theme_options:
       pygments_light_style: gotthard-light
       pygments_dark_style: material
-    suppress_warnings: ["mystnb.unknown_mime_type"]
     # sphinxcontrib.sass
     sass_src_dir: "_assets"
     sass_out_dir: "_static"
     sass_targets: { "custom.scss": "custom.css" }
     html_css_files: ["custom.css"]
+    # Others
+    suppress_warnings: ["mystnb.unknown_mime_type"]
 
 bibtex_bibfiles:
   - "references.bib"
