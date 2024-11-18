@@ -50,14 +50,14 @@ colorama = "^0.4.6"
 pybind11 = "^2.13.6"
 
 torch = [
-  { markers = "sys_platform == 'win32'", version = "==2.2.2+cpu", source = "pytorch-cpu" },
-  { markers = "sys_platform == 'linux'", version = "==2.2.2+cpu", source = "pytorch-cpu" },
+  { markers = "sys_platform == 'win32'", version = "==2.2.2+cu121", source = "pytorch-cu121" },
+  { markers = "sys_platform == 'linux'", version = "==2.2.2+cu121", source = "pytorch-cu121" },
   { markers = "sys_platform == 'darwin'", version = "<2.2.2" },
 ]
 
 torchvision = [
-  { markers = "sys_platform == 'win32'", version = "==0.17.2+cpu", source = "pytorch-cpu" },
-  { markers = "sys_platform == 'linux'", version = "==0.17.2+cpu", source = "pytorch-cpu" },
+  { markers = "sys_platform == 'win32'", version = "==0.17.2+cu121", source = "pytorch-cu121" },
+  { markers = "sys_platform == 'linux'", version = "==0.17.2+cu121", source = "pytorch-cu121" },
   { markers = "sys_platform == 'darwin'", version = "<0.17.2" },
 ]
 
@@ -82,6 +82,11 @@ priority = "primary"
 [[tool.poetry.source]]
 name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
+
+[[tool.poetry.source]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
 priority = "explicit"
 
 [build-system]
