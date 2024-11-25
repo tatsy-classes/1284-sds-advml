@@ -62,7 +62,7 @@ repository:
 
 # Sphinx
 sphinx:
-  recursive_update: false
+  recursive_update: true
   extra_extensions:
     - sphinxcontrib.sass
   config:
@@ -76,9 +76,9 @@ sphinx:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js
     mathjax3_config:
       loader:
-        load: ["[tex]/boldsymbol"]
+        load: ["[tex]/boldsymbol", "[tex]/physics"]
       tex:
-        packages: { "[+]": ["boldsymbol"] }
+        packages: { "[+]": ["boldsymbol", "physics"] }
     myst_update_mathjax: false
     # BibTeX
     bibtex_reference_style: author_year
