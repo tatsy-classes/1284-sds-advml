@@ -62,7 +62,7 @@ repository:
 
 # Sphinx
 sphinx:
-  recursive_update: true
+  recursive_update: false
   extra_extensions:
     - sphinxcontrib.sass
   config:
@@ -70,19 +70,18 @@ sphinx:
     numfig: true
     math_numfig: true
     numfig_secnum_depth: 1
+    # Theme
+    pygments_style: gotthard-light
     # MathJax
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js
     mathjax3_config:
       loader:
-        load: ["[tex]/physics", "[tex]/boldsymbol"]
+        load: ["[tex]/boldsymbol"]
       tex:
-        packages: { "[+]": ["physics", "boldsymbol"] }
+        packages: { "[+]": ["boldsymbol"] }
+    myst_update_mathjax: false
     # BibTeX
     bibtex_reference_style: author_year
-    # Theme
-    html_theme_options:
-      pygments_light_style: gotthard-light
-      pygments_dark_style: material
     # sphinxcontrib.sass
     sass_src_dir: "_assets"
     sass_out_dir: "_static"
