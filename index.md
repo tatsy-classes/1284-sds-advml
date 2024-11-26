@@ -54,49 +54,49 @@
   - [Git環境の設定](https://tatsy-classes.github.io/1284-sds-prog2/contents/setup-git.html)
 
 - **第1回**
-  - [NumPyの基本](sec:numpy)
-  - [Matplotlibの基本 (自習)](sec:matplotlib)
-  - [Pandasの基本 (自習)](sec:pandas)
+  - {ref}`sec:numpy`
+  - {ref}`sec:matplotlib` (自習)
+  - {ref}`sec:pandas` (自習)
 
 - **第2回**
-  - [OpenCVの基本](sec:opencv)
-  - [図形の検出](sec:figure-detection)
+  - {ref}`sec:opencv`
+  - {ref}`sec:figure-detection`
 
 - **第3回**
-  - [scikit-learnによる機械分類の基礎](sec:scikit-learn)
+  - {ref}`sec:scikit-learn`
 
 - **第4回**
-  - [演習1 画像入力式数独ソルバーの作成](sec:exercise-sudoku)
+  - {ref}`sec:exercise-sudoku`
 
 - **第5回**
-  - [演習1 画像入力式数独ソルバーの作成](sec:exercise-sudoku)
+  - {ref}`sec:exercise-sudoku`
 
 - **第6回**
-  - [データ可視化と次元圧縮](sec:data-visualization)
+  - {ref}`sec:data-visualization`
 
 - **第7回**
-  - [画像特徴量の抽出](sec:feature-extraction)
-  - [深層学習による物体認識 (自習)](sec:deep-learning)
+  - {ref}`sec:feature-extraction`
+  - {ref}`sec:deep-learning` (自習)
 
 - **第8回**
-  - [演習2 百人一首エージェントの作成](sec:exercise-ogura)
+  - {ref}`sec:exercise-ogura`
 
 - **第9回**
-  - [演習2 百人一首エージェントの作成](sec:exercise-ogura)
+  - {ref}`sec:exercise-ogura`
 
 - **第10回**
-  - [強化学習の基礎](sec:reinforcement-learning)
-  - [SARSAとQ学習](sec:q-learning)
-  - [深層Q学習 (自習)](sec:deep-q-learning)
+  - {ref}`sec:reinforcement-learning`
+  - {ref}`sec:q-learning`
+  - {ref}`sec:deep-q-learning` (自習)
 
 - **第11回**
-  - [オセロAIの基礎](sec:othello-agent)
+  - {ref}`sec:othello-player`
 
 - **第12回**
-  - [演習3 オセロエージェントの作成](sec:exercise-othello)
+  - {ref}`sec:exercise-othello`
 
 - **第13回**
-  - [演習3 オセロエージェントの作成](sec:exercise-othello)
+  - {ref}`sec:exercise-othello`
 
 課題の提出方法
 ---
