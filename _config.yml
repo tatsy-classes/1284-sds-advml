@@ -71,7 +71,8 @@ sphinx:
     math_numfig: true
     numfig_secnum_depth: 1
     # Theme
-    pygments_style: gotthard-light
+    # pygments_style: gotthard-light
+    pygments_style: material
     # MathJax
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js
     mathjax3_config:
